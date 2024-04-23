@@ -8,6 +8,7 @@ type InputContainerProps = SwitchProps & {
 	isRequired?: boolean;
 	helper?: string;
 	value?: boolean | undefined;
+	placeholder?: any;
 };
 
 const VSwitch: React.FC<InputContainerProps> = ({
@@ -19,9 +20,18 @@ const VSwitch: React.FC<InputContainerProps> = ({
 	...props
 }) => {
 	return (
-		<FormControl display='flex' gap={4} alignItems='center' isRequired={isRequired}>
+		<FormControl
+			display='flex'
+			gap={4}
+			alignItems='center'
+			isRequired={isRequired}>
 			<Label htmlFor='email-alerts'>{label}</Label>
-			<Switch isChecked={value} id='email-alerts' colorScheme='brand' {...props} />
+			<Switch
+				isChecked={value}
+				id='email-alerts'
+				colorScheme='brand'
+				{...props}
+			/>
 		</FormControl>
 	);
 };

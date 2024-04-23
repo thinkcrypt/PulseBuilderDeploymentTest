@@ -25,6 +25,7 @@ type InputContainerProps = InputProps & {
 	isRequired?: boolean;
 	helper?: string;
 	value: string[];
+	placeholder?: any;
 };
 
 const VTags: React.FC<InputContainerProps> = ({
@@ -77,11 +78,17 @@ const VTags: React.FC<InputContainerProps> = ({
 	); // Add value and props.onChange to the dependency array
 
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
 
-				<Stack spacing={1} w='full'>
+				<Stack
+					spacing={1}
+					w='full'>
 					<InputGroup>
 						<Input
 							value={tag}
@@ -97,7 +104,9 @@ const VTags: React.FC<InputContainerProps> = ({
 							placeholder={placeholder ? placeholder : label}
 							_placeholder={{ fontSize: 14, fontWeight: '500' }}
 						/>
-						<InputRightElement h='32px' p={0}>
+						<InputRightElement
+							h='32px'
+							p={0}>
 							<IconButton
 								onClick={addTag}
 								size='xs'
@@ -110,10 +119,16 @@ const VTags: React.FC<InputContainerProps> = ({
 
 					{helper && <HelperText>{helper}</HelperText>}
 				</Stack>
-				<Wrap gap={1} pt={2}>
+				<Wrap
+					gap={1}
+					pt={2}>
 					{value?.map((item: string, i: number) => (
 						<WrapItem key={i}>
-							<Tag size='sm' variant='solid' colorScheme='brand' borderRadius='full'>
+							<Tag
+								size='sm'
+								variant='solid'
+								colorScheme='brand'
+								borderRadius='full'>
 								<TagLabel> {item}</TagLabel>
 								<TagCloseButton onClick={() => deleteTag(item)} />
 							</Tag>

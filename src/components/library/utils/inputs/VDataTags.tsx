@@ -27,6 +27,7 @@ type InputContainerProps = InputProps &
 		helper?: string;
 		value: string[];
 		model: string;
+		placeholder?: any;
 	};
 
 const VDataTags: React.FC<InputContainerProps> = ({
@@ -86,17 +87,29 @@ const VDataTags: React.FC<InputContainerProps> = ({
 	};
 
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
 
-				<Stack spacing={1} w='full'>
-					<Flex align='center' gap={2}>
-						<SelectContainer value={tag} onChange={handleChange}>
+				<Stack
+					spacing={1}
+					w='full'>
+					<Flex
+						align='center'
+						gap={2}>
+						<SelectContainer
+							value={tag}
+							onChange={handleChange}>
 							<option value=''>Select {model}</option>
 							{data &&
 								data?.doc?.map((item: any, i: number) => (
-									<option key={i} value={item?._id}>
+									<option
+										key={i}
+										value={item?._id}>
 										{item?.name}
 									</option>
 								))}
@@ -113,10 +126,16 @@ const VDataTags: React.FC<InputContainerProps> = ({
 
 					{helper && <HelperText>{helper}</HelperText>}
 				</Stack>
-				<Wrap gap={1} pt={2}>
+				<Wrap
+					gap={1}
+					pt={2}>
 					{value?.map((item: string, i: number) => (
 						<WrapItem key={i}>
-							<Tag size='sm' variant='solid' colorScheme='brand' borderRadius='full'>
+							<Tag
+								size='sm'
+								variant='solid'
+								colorScheme='brand'
+								borderRadius='full'>
 								<TagLabel>{getNameById(item)}</TagLabel>
 								<TagCloseButton onClick={() => deleteTag(item)} />
 							</Tag>

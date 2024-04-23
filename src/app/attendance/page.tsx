@@ -3,8 +3,8 @@ import { NextPage } from 'next';
 import PageTable from '@/components/library/pages/page-tables/PageTable';
 import data from './dataModel';
 
-const page: NextPage = () => {
+const AttendancePage: NextPage = () => {
 	return <PageTable table={data} />;
 };
 
-export default page;
+export default AttendancePage;

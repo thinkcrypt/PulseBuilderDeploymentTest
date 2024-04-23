@@ -16,7 +16,6 @@ import CreateMenu from '../library/menu/CreateMenu';
 import Column from '../containers/Column';
 import SelfMenu from '../library/menu/SelfMenu';
 import SideDrawer from '../nav/sidebar/SideDrawer';
-import MomentumScroll from '../scroll/MomentumScroll';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 const PADDING_TOP = { base: 16, md: 16, lg: 16 };
@@ -53,10 +52,14 @@ const Layout: FC<LayoutProps> = ({
 					w={sizes.HOME_NAV_MAX_WIDTH}
 					left={sizes.HOME_NAV_LEFT}
 					_dark={{ bg: 'navbar.dark' }}>
-					<Flex w='full' justify='space-between'>
+					<Flex
+						w='full'
+						justify='space-between'>
 						{title}
 					</Flex>
-					<Flex align='center' gap={4}>
+					<Flex
+						align='center'
+						gap={4}>
 						<SelfMenu />
 						<CreateMenu />
 					</Flex>
@@ -64,10 +67,22 @@ const Layout: FC<LayoutProps> = ({
 			</Flex>
 			<Body scrollBehavior='smooth'>
 				{type == 'default' && <Sidebar />}
-				<Flex flexDir='column' w='full' pl={type != 'default' ? 0 : sizes.HOME_NAV_LEFT} {...props}>
-					<Flex pt={type == 'pos' ? 12 : PADDING_TOP} flex={1} w='full'>
-						<Flex p={PX} pb={0} w='full'>
-							<Column w='full' gap={4}>
+				<Flex
+					flexDir='column'
+					w='full'
+					pl={type != 'default' ? 0 : sizes.HOME_NAV_LEFT}
+					{...props}>
+					<Flex
+						pt={type == 'pos' ? 12 : PADDING_TOP}
+						flex={1}
+						w='full'>
+						<Flex
+							p={PX}
+							pb={0}
+							w='full'>
+							<Column
+								w='full'
+								gap={4}>
 								{children}
 							</Column>
 						</Flex>

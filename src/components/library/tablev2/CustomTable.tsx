@@ -33,7 +33,14 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	hidePreferences,
 	selectedItems,
 }) => {
-	const tbody = isLoading ? <TableSkeleton row={10} col={col || 5} /> : children;
+	const tbody = isLoading ? (
+		<TableSkeleton
+			row={10}
+			col={col || 5}
+		/>
+	) : (
+		children
+	);
 
 	const dispatch = useAppDispatch();
 
@@ -44,7 +51,10 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	return (
 		<>
 			{selectedItems?.length > 0 ? (
-				<Flex p={2} w='full' py={2}>
+				<Flex
+					p={2}
+					w='full'
+					py={2}>
 					<SpaceBetween
 						px={1}
 						w='full'
@@ -58,8 +68,14 @@ const CustomTable: React.FC<CustomTableProps> = ({
 							color: 'gray.200',
 						}}>
 						<Flex>
-							<Flex align='center' gap={2}>
-								<CloseButton size='md' borderRadius='full' onClick={onUnselect} />
+							<Flex
+								align='center'
+								gap={2}>
+								<CloseButton
+									size='md'
+									borderRadius='full'
+									onClick={onUnselect}
+								/>
 								<Text>{selectedItems?.length} selected</Text>
 							</Flex>
 						</Flex>
@@ -67,15 +83,25 @@ const CustomTable: React.FC<CustomTableProps> = ({
 					</SpaceBetween>
 				</Flex>
 			) : (
-				<SpaceBetween p={2} border='1px solid transparent'>
-					<Flex align='center' gap={1} justify='space-between' w='100%'>
+				<SpaceBetween
+					p={2}
+					border='1px solid transparent'>
+					<Flex
+						align='center'
+						gap={1}
+						justify='space-between'
+						w='100%'>
 						{Boolean(filters) && (
-							<Flex gap={2} align='center'>
+							<Flex
+								gap={2}
+								align='center'>
 								<DynamicFilters path={filters} />
 							</Flex>
 						)}
 
-						<Flex align='center' gap={2}>
+						<Flex
+							align='center'
+							gap={2}>
 							{!hidePreferences && <Preferences path={path} />}
 							<TableSearch />
 							<TableRefresh />
@@ -84,7 +110,9 @@ const CustomTable: React.FC<CustomTableProps> = ({
 				</SpaceBetween>
 			)}
 
-			<TableContainer sx={styles.table} pb={6}>
+			<TableContainer
+				sx={styles.table}
+				pb={6}>
 				<Table size='sm'>
 					<Thead>
 						<Tr>{header}</Tr>
@@ -93,9 +121,11 @@ const CustomTable: React.FC<CustomTableProps> = ({
 				</Table>
 			</TableContainer>
 			{data?.docsInPage == 0 && (
-				<Center flexDir='column' h='200px'>
+				<Center
+					flexDir='column'
+					h='200px'>
 					<Text>No results found.</Text>
-					<Text>There aren't any results for that query. Try using different filters.</Text>
+					<Text>There {`aren't`} any results for that query. Try using different filters.</Text>
 				</Center>
 			)}
 			<ResultContainer data={data} />

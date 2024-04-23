@@ -16,6 +16,7 @@ type InputContainerProps = TextareaProps & {
 	label: string;
 	isRequired?: boolean;
 	helper?: string;
+	placeholder?: any;
 };
 
 const VTextarea: React.FC<InputContainerProps> = ({
@@ -28,10 +29,16 @@ const VTextarea: React.FC<InputContainerProps> = ({
 }) => {
 	const borderColor = useColorModeValue('brand.500', 'brand.200');
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
-				<Stack spacing={1} w='full'>
+				<Stack
+					spacing={1}
+					w='full'>
 					<Textarea
 						minH='200px'
 						size='sm'

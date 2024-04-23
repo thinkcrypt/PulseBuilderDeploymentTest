@@ -25,7 +25,11 @@ export const Title: React.FC<TitleProps> = ({ children, sort, info }) => {
 	};
 
 	const body = Boolean(sort) ? (
-		<Flex as={motion.div} align='center' gap={1} whileTap={{ scale: 0.9 }}>
+		<Flex
+			as={motion.div}
+			align='center'
+			gap={1}
+			whileTap={{ scale: 0.9 }}>
 			{children}
 			{icon}
 		</Flex>
@@ -34,16 +38,24 @@ export const Title: React.FC<TitleProps> = ({ children, sort, info }) => {
 	);
 
 	const tooltip = info && (
-		<Tooltip label={info} hasArrow placement='bottom-end'>
+		<Tooltip
+			label={info}
+			hasArrow
+			placement='bottom-end'>
 			<span>
-				<BsInfoCircle ml={4} />
+				<BsInfoCircle />
 			</span>
 		</Tooltip>
 	);
 
 	return (
-		<Th cursor={Boolean(sort) ? 'pointer' : 'default'} onClick={handleSort} userSelect='none'>
-			<Flex align='center' gap={2}>
+		<Th
+			cursor={Boolean(sort) ? 'pointer' : 'default'}
+			onClick={handleSort}
+			userSelect='none'>
+			<Flex
+				align='center'
+				gap={2}>
 				{body}
 				{tooltip}
 			</Flex>

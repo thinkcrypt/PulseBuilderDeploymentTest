@@ -127,9 +127,16 @@ const FormContent: FC<FormPageType> = ({
 	};
 
 	return sections.map((section: any, i: number) => (
-		<FormDivision key={i} borderWidth={0} p={0} bg='transparent' _dark={{ bg: 'trasnparent' }}>
+		<FormDivision
+			key={i}
+			borderWidth={0}
+			p={0}
+			bg='transparent'
+			_dark={{ bg: 'trasnparent' }}>
 			{section?.map((item: any, i: number) => (
-				<FormItem item={item}>
+				<FormItem
+					item={item}
+					key={i}>
 					{(!item?.renderCondition || item?.renderCondition(formData)) && (
 						<FormInput
 							isRequired={item?.isRequired || false}

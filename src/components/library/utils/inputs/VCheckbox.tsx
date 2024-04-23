@@ -9,6 +9,7 @@ type InputContainerProps = CheckboxProps & {
 	isRequired?: boolean;
 	helper?: string;
 	value: boolean | undefined;
+	placeholder?: string;
 };
 
 const VCheckbox: React.FC<InputContainerProps> = ({
@@ -20,10 +21,17 @@ const VCheckbox: React.FC<InputContainerProps> = ({
 	...props
 }) => {
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
-				<Checkbox isChecked={value} colorScheme='brand' {...props}>
+				<Checkbox
+					isChecked={value}
+					colorScheme='brand'
+					{...props}>
 					{placeholder || label}
 				</Checkbox>
 				{helper && <HelperText>{helper}</HelperText>}

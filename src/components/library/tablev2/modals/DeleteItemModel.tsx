@@ -47,11 +47,16 @@ const DeleteItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) =>
 
 	return (
 		<>
-			<MenuItem color='red' onClick={onOpen}>
+			<MenuItem
+				color='red'
+				onClick={onOpen}>
 				Delete
 			</MenuItem>
 
-			<AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={close}>
+			<AlertDialog
+				isOpen={isOpen}
+				leastDestructiveRef={cancelRef}
+				onClose={close}>
 				<AlertDialogOverlay>
 					<AlertDialogContent
 						boxShadow='lg'
@@ -60,15 +65,23 @@ const DeleteItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) =>
 						_dark={{
 							bg: 'menu.dark',
 						}}>
-						<AlertDialogHeader fontSize='lg' fontWeight='bold'>
+						<AlertDialogHeader
+							fontSize='lg'
+							fontWeight='bold'>
 							Delete {title}
 						</AlertDialogHeader>
 
-						<AlertDialogBody>Are you sure? You can't undo this action afterwards.</AlertDialogBody>
+						<AlertDialogBody>
+							Are you sure? You {`can't`} undo this action afterwards.
+						</AlertDialogBody>
 
 						<AlertDialogFooter>
 							{!result?.isLoading && (
-								<Button ref={cancelRef} onClick={close} size='sm' colorScheme='gray'>
+								<Button
+									ref={cancelRef}
+									onClick={close}
+									size='sm'
+									colorScheme='gray'>
 									Discard
 								</Button>
 							)}

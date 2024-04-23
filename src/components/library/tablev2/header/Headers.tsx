@@ -45,7 +45,10 @@ const Headers = ({ tableData, fields, selectable, isLoading, data }: HeadersProp
 			{tableData.map(({ title, sort, dataKey, type }) => {
 				if (!fields?.includes(dataKey) && type !== 'menu') return null;
 				return (
-					<Title ifItemsSelected={selectedItems?.length > 0 ? true : false} sort={sort}>
+					<Title
+						key={title}
+						ifItemsSelected={selectedItems?.length > 0 ? true : false}
+						sort={sort}>
 						{title}
 					</Title>
 				);

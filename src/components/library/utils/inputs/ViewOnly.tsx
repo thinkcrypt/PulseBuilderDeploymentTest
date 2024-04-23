@@ -9,6 +9,7 @@ type InputContainerProps = InputProps & {
 	isRequired?: boolean;
 	helper?: string;
 	value: string;
+	placeholder?: any;
 };
 
 const ViewOnly: React.FC<InputContainerProps> = ({
@@ -23,9 +24,13 @@ const ViewOnly: React.FC<InputContainerProps> = ({
 
 	return (
 		<FormControl gap={4}>
-			<Stack spacing={2} w='full'>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
-				<Stack spacing={1} w='full'>
+				<Stack
+					spacing={1}
+					w='full'>
 					<Text>{value || '...'}</Text>
 					{helper && <HelperText>{helper}</HelperText>}
 				</Stack>

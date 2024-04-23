@@ -150,7 +150,11 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 		<>
 			<Flex onClick={onOpen}>{trigger || path}</Flex>
 
-			<Modal size='2xl' isOpen={isOpen} onClose={onModalClose} closeOnOverlayClick={false}>
+			<Modal
+				size='2xl'
+				isOpen={isOpen}
+				onClose={onModalClose}
+				closeOnOverlayClick={false}>
 				<ModalOverlay />
 				<ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
 					<ModalHeader>{`${type === 'update' ? 'Update' : 'Create'} ${path}`}</ModalHeader>
@@ -161,7 +165,9 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 								{sections.map((section: any, i: number) => (
 									<FormDivision key={i}>
 										{section?.map((item: any, i: number) => (
-											<FormItem item={item}>
+											<FormItem
+												item={item}
+												key={i}>
 												{(!item?.renderCondition || item?.renderCondition(formData)) && (
 													<FormInput
 														isRequired={item?.isRequired || false}
@@ -182,10 +188,17 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 							</ModalFormSection>
 						</ModalBody>
 						<ModalFooter py={4}>
-							<Button mr={2} size='xs' onClick={onModalClose} colorScheme='gray'>
+							<Button
+								mr={2}
+								size='xs'
+								onClick={onModalClose}
+								colorScheme='gray'>
 								Discard
 							</Button>
-							<Button size='xs' type='submit' isLoading={isLoading}>
+							<Button
+								size='xs'
+								type='submit'
+								isLoading={isLoading}>
 								Confirm
 							</Button>
 						</ModalFooter>

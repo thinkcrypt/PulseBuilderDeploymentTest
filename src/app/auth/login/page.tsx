@@ -12,7 +12,7 @@ type FormDataType = {
 	password: string;
 };
 
-const page: FC<{}> = () => {
+const LoginPage: FC<{}> = () => {
 	const [formData, setFormData] = useState<FormDataType>({
 		email: '',
 		password: '',
@@ -67,4 +67,4 @@ const page: FC<{}> = () => {
 	);
 };
 
-export default page;
+export default LoginPage;

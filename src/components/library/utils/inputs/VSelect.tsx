@@ -11,6 +11,7 @@ type InputContainerProps = SelectProps & {
 	helper?: string;
 	value: string | boolean;
 	children: React.ReactNode;
+	placeholder?: any;
 };
 
 const VSelect: React.FC<InputContainerProps> = ({
@@ -23,11 +24,19 @@ const VSelect: React.FC<InputContainerProps> = ({
 	...props
 }) => {
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
-				<Stack spacing={1} w='full'>
-					<SelectContainer value={value} {...props}>
+				<Stack
+					spacing={1}
+					w='full'>
+					<SelectContainer
+						value={value}
+						{...props}>
 						{children}
 					</SelectContainer>
 					{helper && <HelperText>{helper}</HelperText>}

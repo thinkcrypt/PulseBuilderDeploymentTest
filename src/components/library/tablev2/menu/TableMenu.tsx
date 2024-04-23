@@ -21,26 +21,42 @@ const TableMenu = ({
 	return (
 		<Menu>
 			<TableData>
-				<MenuButton as={IconButton} size='sm' icon={<Icon name='settings' />} variant='ghost' />
+				<MenuButton
+					as={IconButton}
+					size='sm'
+					icon={<Icon name='settings' />}
+					variant='ghost'
+				/>
 			</TableData>
 
 			<MenuContainer>
 				{data?.map((item: any, i: number) => {
 					if (item?.type == 'edit')
 						return (
-							<Link href={`/${path}/edit/${id}`}>
+							<Link
+								key={i}
+								href={`/${path}/edit/${id}`}>
 								<MenuItem key={i}>{item?.title}</MenuItem>
 							</Link>
 						);
 					if (item?.type == 'view')
 						return (
-							<Link href={`/${path}/${id}`}>
-								<MenuItem key={i}>{item?.title}</MenuItem>
+							<Link
+								key={i}
+								href={`/${path}/${id}`}>
+								<MenuItem>{item?.title}</MenuItem>
 							</Link>
 						);
 
 					if (item?.type == 'delete')
-						return <DeleteItemModal key={i} id={id} title={title} path={path} />;
+						return (
+							<DeleteItemModal
+								key={i}
+								id={id}
+								title={title}
+								path={path}
+							/>
+						);
 
 					return <MenuItem key={i}>{item?.title}</MenuItem>;
 				})}

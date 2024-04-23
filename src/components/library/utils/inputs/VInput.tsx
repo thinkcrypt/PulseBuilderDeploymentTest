@@ -9,6 +9,7 @@ type InputContainerProps = InputProps & {
 	isRequired?: boolean;
 	helper?: string;
 	value: string;
+	placeholder?: any;
 };
 
 const VInput: React.FC<InputContainerProps> = ({
@@ -22,11 +23,17 @@ const VInput: React.FC<InputContainerProps> = ({
 	const borderColor = useColorModeValue('brand.500', 'brand.200');
 
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
 
-				<Stack spacing={1} w='full'>
+				<Stack
+					spacing={1}
+					w='full'>
 					<Input
 						size='sm'
 						px={3}
