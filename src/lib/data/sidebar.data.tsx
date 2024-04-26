@@ -21,6 +21,12 @@ const sidebar: SidebarItemType[] = [
 		icon: 'category',
 		path: 'attendance',
 	},
+	{
+		title: 'Leave',
+		href: '/leave',
+		icon: 'leave',
+		path: 'leave',
+	},
 
 	{
 		title: 'Settings',

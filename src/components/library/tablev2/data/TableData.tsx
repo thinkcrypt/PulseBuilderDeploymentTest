@@ -1,4 +1,4 @@
-import { Checkbox, TableCellProps } from '@chakra-ui/react';
+import { Badge, Checkbox, TableCellProps } from '@chakra-ui/react';
 import moment from 'moment';
 import React, { ReactNode } from 'react';
 import CustomTd from './CustomTd';
@@ -54,10 +54,34 @@ const typeToComponent: any = {
 	// If the type is 'image-text', format the content as an image
 };
 
-const TableData: React.FC<TableDataPropsType> = ({ children, id, type, imageKey, ...props }) => {
+const TableData: React.FC<TableDataPropsType> = ({
+	children,
+	id,
+	type,
+	tagType,
+	imageKey,
+	...props
+}) => {
 	// Determine the component to use based on the type of the content
 	const Component = type ? typeToComponent[type] : CustomTd;
 	// Render the component with the given props and content
+
+	if (type == 'tag') {
+		const getColor = (value: string) => {
+			const tag = tagType?.find(tag => tag.value === value);
+			return tag ? tag.color : 'gray';
+		};
+		return (
+			<CustomTd>
+				<Badge
+					colorScheme={getColor(children)}
+					size='2xs'
+					fontSize='12px'>
+					{children}
+				</Badge>
+			</CustomTd>
+		);
+	}
 
 	if (type === 'image-text') {
 		return (

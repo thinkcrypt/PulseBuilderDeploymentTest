@@ -8,7 +8,16 @@ type Options = {
 type CommonProps = {
 	date?: boolean;
 	price?: boolean;
-	type?: 'date' | 'time' | 'date-only' | 'price' | 'boolean' | 'menu' | 'image-text' | 'checkbox';
+	type?:
+		| 'date'
+		| 'time'
+		| 'date-only'
+		| 'price'
+		| 'boolean'
+		| 'menu'
+		| 'image-text'
+		| 'checkbox'
+		| 'tag';
 	title?: string;
 	sort?: string;
 	dataKey?: string;
@@ -17,6 +26,7 @@ type CommonProps = {
 	editable?: boolean;
 	default?: boolean;
 	style?: any;
+	tagType?: { value?: string; color?: string }[];
 };
 
 type SelectProps = CommonProps & {

@@ -9,6 +9,7 @@ import useCustomToast from '@/hooks/useCustomToast';
 import FormInput from '@/components/library/create-page/inputs/form-input/FormInput';
 import FormItem from '@/components/library/create-page/form-section/FormItem';
 import FormDivision from '../form-section/FormDivision';
+import { usePostMutation } from '@/store/services/commonApi';
 
 type FormPageType = {
 	formData: any;
@@ -20,6 +21,7 @@ type FormPageType = {
 	title: string;
 	type?: 'add' | 'update';
 	id?: string;
+	useCommonApi?: boolean;
 };
 
 const FormPage: FC<FormPageType> = ({
@@ -32,6 +34,7 @@ const FormPage: FC<FormPageType> = ({
 	title,
 	type,
 	id,
+	useCommonApi,
 }) => {
 	const { isSuccess, isLoading, isError, error } = result;
 	const [changedData, setChangedData] = useState({});
@@ -101,7 +104,11 @@ const FormPage: FC<FormPageType> = ({
 			trigger({ path, id, body: changedData });
 			return;
 		} else {
-			trigger(formData);
+			if (useCommonApi) {
+				trigger({ path, body: formData });
+			} else {
+				trigger(formData);
+			}
 		}
 	};
 

@@ -86,7 +86,9 @@ const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
 	// Return the layout, page heading, table, and toast components
 	return (
 		<>
-			<Layout title={table?.title} path={table?.path}>
+			<Layout
+				title={table?.title}
+				path={table?.path}>
 				<PageHeading
 					title={table?.title} //Heading of the page
 					button={table?.button?.title} //Button Title
@@ -111,7 +113,10 @@ const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
 				</CustomTable>
 			</Layout>
 			{/* Toast component to display error */}
-			<Toast error={error} isError={isError} />
+			<Toast
+				error={error}
+				isError={isError}
+			/>
 		</>
 	);
 };

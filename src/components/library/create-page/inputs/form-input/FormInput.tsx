@@ -40,25 +40,62 @@ const FormInput: FC<FormInputProps> = ({
 }) => {
 	switch (type) {
 		case 'image':
-			return <VImage isRequired={isRequired} onChange={props.onChange} {...props} />;
+			return (
+				<VImage
+					isRequired={isRequired}
+					onChange={props.onChange}
+					{...props}
+				/>
+			);
 		case 'select':
 			return (
-				<VSelect isRequired={isRequired} {...props}>
+				<VSelect
+					isRequired={isRequired}
+					{...props}>
+					<option
+						value=''
+						disabled
+						selected>
+						Select option
+					</option>
 					{options?.map((option: any, i: number) => (
-						<option key={i} value={option.value}>
+						<option
+							key={i}
+							value={option.value}>
 							{option.label}
 						</option>
 					))}
 				</VSelect>
 			);
 		case 'switch':
-			return <VSwitch isRequired={isRequired} {...props} />;
+			return (
+				<VSwitch
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
 		case 'textarea' || 'nested-textarea':
-			return <VTextarea isRequired={isRequired} {...props} />;
+			return (
+				<VTextarea
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
 		case 'data-select':
-			return <VDataSelect isRequired={isRequired} model={props?.model || ''} {...props} />;
+			return (
+				<VDataSelect
+					isRequired={isRequired}
+					model={props?.model || ''}
+					{...props}
+				/>
+			);
 		case 'checkbox':
-			return <VCheckbox isRequired={isRequired} {...props} />;
+			return (
+				<VCheckbox
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
 		case 'data-menu':
 			return (
 				<VDataMenu
@@ -71,13 +108,30 @@ const FormInput: FC<FormInputProps> = ({
 		case 'view-only':
 			return <ViewOnly {...props} />;
 		case 'tag':
-			return <VTags type={type} isRequired={isRequired} {...props} />;
+			return (
+				<VTags
+					type={type}
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
 		case 'data-tag':
 			return (
-				<VDataTags type={type} model={props?.model || ''} isRequired={isRequired} {...props} />
+				<VDataTags
+					type={type}
+					model={props?.model || ''}
+					isRequired={isRequired}
+					{...props}
+				/>
 			);
 		default:
-			return <VInput type={type} isRequired={isRequired} {...props} />;
+			return (
+				<VInput
+					type={type}
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
 	}
 };
 

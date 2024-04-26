@@ -12,7 +12,9 @@ const TableMenu = ({
 	id,
 	path,
 	title,
+	item: dataItem,
 }: {
+	item: any;
 	data: any;
 	id: string;
 	path: string;
@@ -39,6 +41,7 @@ const TableMenu = ({
 								<MenuItem key={i}>{item?.title}</MenuItem>
 							</Link>
 						);
+
 					if (item?.type == 'view')
 						return (
 							<Link
@@ -55,6 +58,15 @@ const TableMenu = ({
 								id={id}
 								title={title}
 								path={path}
+							/>
+						);
+
+					if (item?.type == 'custom')
+						return (
+							<item.modal
+								key={i}
+								id={id}
+								data={dataItem}
 							/>
 						);
 

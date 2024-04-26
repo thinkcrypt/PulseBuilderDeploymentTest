@@ -25,6 +25,7 @@ import { TiPrinter } from 'react-icons/ti';
 import { IoMdBarcode } from 'react-icons/io';
 import { CiMenuBurger } from 'react-icons/ci';
 import { GrSubtract } from 'react-icons/gr';
+import { SiCkeditor4 } from 'react-icons/si';
 
 type IconProps = {
 	size?: number;
@@ -57,6 +58,7 @@ const icons: any = {
 	pos: TiPrinter,
 	barcode: IoMdBarcode,
 	menu: CiMenuBurger,
+	leave: SiCkeditor4,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {
