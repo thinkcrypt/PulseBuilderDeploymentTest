@@ -10,7 +10,7 @@ const template: FC<TemplateProps> = ({ children }) => {
 			minH='100vh'
 			px={{ base: '16px', md: '128px' }}
 			w='100%'
-			py='62px'>
+			py={{ base: '32px', md: '62px' }}>
 			{children}
 		</Flex>
 	);
