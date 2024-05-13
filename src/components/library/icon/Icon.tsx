@@ -26,6 +26,7 @@ import { IoMdBarcode } from 'react-icons/io';
 import { CiMenuBurger } from 'react-icons/ci';
 import { GrSubtract } from 'react-icons/gr';
 import { SiCkeditor4 } from 'react-icons/si';
+import { FaRegEdit } from 'react-icons/fa';
 
 type IconProps = {
 	size?: number;
@@ -59,6 +60,7 @@ const icons: any = {
 	barcode: IoMdBarcode,
 	menu: CiMenuBurger,
 	leave: SiCkeditor4,
+	edit: FaRegEdit,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

@@ -40,13 +40,13 @@ export const userApi = mainApi.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, { path }) => [path],
 		}),
-		updateById: builder.mutation<any, { path: string; id: string; body: any }>({
+		updateById: builder.mutation<any, { path: string; id: string; body: any; invalidate?: any }>({
 			query: ({ path, id, body }): any => ({
 				url: `${path}/${id}`,
 				method: 'PUT',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, id }) => [path],
+			invalidatesTags: (result, error, { path, id, invalidate = '' }) => [path, invalidate],
 		}),
 		deleteById: builder.mutation<any, { path: string; id: string }>({
 			query: ({ path, id }): any => ({

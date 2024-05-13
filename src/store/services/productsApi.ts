@@ -13,20 +13,29 @@ export const productsApi = mainApi.injectEndpoints({
 				isActive,
 				filters = {},
 			}) => ({
-				url: 'products',
+				url: 'items',
 				params: { sort, page, limit, search, isActive, ...filters },
 			}),
-			providesTags: ['Products'],
+			providesTags: ['items'],
 		}),
+
+		getProductsByQr: builder.query<any, any>({
+			query: id => ({
+				url: `items/qr/${id}`,
+			}),
+			providesTags: ['items'],
+		}),
+
 		addProduct: builder.mutation<any, any>({
 			query: body => ({
-				url: 'products',
+				url: 'items',
 				method: 'POST',
 				body,
 			}),
-			invalidatesTags: ['products'],
+			invalidatesTags: ['items'],
 		}),
 	}),
 });
 
-export const { useGetAllProductsQuery, useAddProductMutation } = productsApi;
+export const { useGetAllProductsQuery, useAddProductMutation, useGetProductsByQrQuery } =
+	productsApi;

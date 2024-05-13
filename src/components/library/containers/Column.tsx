@@ -4,10 +4,7 @@ import React, { FC } from 'react';
 
 const Column: FC<FlexPropsType> = ({ children, ...props }) => {
 	return (
-		<Flex
-			flexDir='column'
-			gap={1}
-			{...props}>
+		<Flex flexDir='column' gap={1} {...props}>
 			{children}
 		</Flex>
 	);

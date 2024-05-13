@@ -30,7 +30,12 @@ const SelfMenu = () => {
 				variant='ghost'
 				size='md'
 				borderRadius='full'
-				icon={<Icon name='settings' size={24} />}
+				icon={
+					<Icon
+						name='settings'
+						size={24}
+					/>
+				}
 			/>
 
 			<MenuContainer>
@@ -40,10 +45,12 @@ const SelfMenu = () => {
 						flexDir='column'
 						_hover={{ bg: 'transparent' }}
 						bg='transparent'>
-						<Heading size='sm' mb={2}>
+						<Heading
+							size='sm'
+							mb={2}>
 							{data?.name}
 						</Heading>
-						<Tag>Role: {data?.role?.name}</Tag>
+						<Tag>{data?.restaurant?.name}</Tag>
 					</MenuItem>
 				</MenuGroup>
 				<MenuDivider />

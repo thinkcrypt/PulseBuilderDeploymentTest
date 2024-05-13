@@ -11,7 +11,15 @@ export type DataType = {
 	[key: string]: any;
 };
 
-const createCategoryModalModel: InputData<DataType>[] = [
+const dataFields: InputData<DataType>[] = [
+	// {
+	// 	sectionTitle: 'Category Image',
+	// 	name: 'image',
+	// 	label: 'Image',
+	// 	isRequired: false,
+	// 	type: 'image',
+	// 	endOfSection: true,
+	// },
 	{
 		sectionTitle: 'Details',
 		name: 'name',
@@ -25,6 +33,13 @@ const createCategoryModalModel: InputData<DataType>[] = [
 		isRequired: false,
 		type: 'textarea',
 	},
+	// {
+	// 	name: 'isFeatured',
+	// 	label: 'Is Featured',
+	// 	isRequired: false,
+	// 	type: 'checkbox',
+	// 	endOfSection: true,
+	// },
 ];
 
-export default createCategoryModalModel;
+export default dataFields;

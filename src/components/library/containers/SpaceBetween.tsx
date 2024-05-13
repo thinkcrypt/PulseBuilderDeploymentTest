@@ -4,12 +4,7 @@ import React from 'react';
 
 const SpaceBetween: React.FC<FlexPropsType> = ({ children, ...props }) => {
 	return (
-		<Flex
-			alignItems='center'
-			justifyContent='space-between'
-			gap={2}
-			w='full'
-			{...props}>
+		<Flex w='100%' alignItems='center' justifyContent='space-between' gap={2} {...props}>
 			{children}
 		</Flex>
 	);

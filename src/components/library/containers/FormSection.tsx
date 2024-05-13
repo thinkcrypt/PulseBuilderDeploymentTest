@@ -9,12 +9,12 @@ type FormContainerProps = ContainerProps & {
 };
 
 const W_BASE = '100%';
-const W_MD = '100%';
-const W_LG = '100%';
+const W_MD = '80%';
+const W_LG = '50%';
 
-const PADDING = 2;
+const PADDING = 12;
 
-const ModalFormSection: FC<FormContainerProps> = ({ title, children, ...props }) => {
+const FormSection: FC<FormContainerProps> = ({ title, children, ...props }) => {
 	const border = useColorModeValue('gray.200', 'gray.700');
 	return (
 		<Column
@@ -22,25 +22,24 @@ const ModalFormSection: FC<FormContainerProps> = ({ title, children, ...props })
 				borderBottom: '1px solid',
 				borderColor: border,
 			}}
+			_last={{
+				pb: 32,
+			}}
 			h='fit-content'
 			mx='auto'
 			py={PADDING}
 			w={{ base: W_BASE, md: W_MD, lg: W_LG }}
 			{...props}>
 			{Boolean(title) && (
-				<Heading
-					size='md'
-					mb={4}>
+				<Heading size='md' mb={4}>
 					{title}
 				</Heading>
 			)}
-			<Column
-				w='full'
-				gap={4}>
+			<Column w='full' gap={4}>
 				{children}
 			</Column>
 		</Column>
 	);
 };
 
-export default ModalFormSection;
+export default FormSection;

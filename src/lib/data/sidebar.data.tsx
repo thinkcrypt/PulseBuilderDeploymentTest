@@ -9,23 +9,17 @@ const sidebar: SidebarItemType[] = [
 	},
 	{
 		startOfSection: true,
-		sectionTitle: 'Employees',
-		title: 'Employees',
-		href: '/employees',
-		icon: 'user',
-		path: 'employees',
+		sectionTitle: 'Menu',
+		title: 'Items',
+		href: '/items',
+		icon: 'products',
+		path: 'items',
 	},
 	{
-		title: 'Attendance',
-		href: '/attendance',
+		title: 'Categories',
+		href: '/categories',
 		icon: 'category',
-		path: 'attendance',
-	},
-	{
-		title: 'Leave',
-		href: '/leave',
-		icon: 'leave',
-		path: 'leave',
+		path: 'categories',
 	},
 
 	{

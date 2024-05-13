@@ -24,7 +24,9 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 		},
 	};
 	return (
-		<Flex sx={styles.container} position='fixed'>
+		<Flex
+			sx={styles.container}
+			position='fixed'>
 			{children}
 		</Flex>
 	);

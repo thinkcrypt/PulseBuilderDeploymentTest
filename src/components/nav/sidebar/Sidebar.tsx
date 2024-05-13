@@ -62,7 +62,7 @@ const Sidebar: React.FC<FlexProps> = ({ ...props }) => {
 				<Heading
 					size='md'
 					fontFamily='Bebas Neue'>
-					THINKCRYPT.IO
+					MINT CAFE
 				</Heading>
 			</Flex>
 			<Flex flex={1}>{main}</Flex>

@@ -1,5 +1,4 @@
-export const TOKEN_NAME: string =
-	process.env.NEXT_PUBLIC_TOKEN_NAME || 'THINKCRYPT_ERP_TEST_TOKEN_ONE';
+export const TOKEN_NAME: string = process.env.NEXT_PUBLIC_TOKEN_NAME || 'MINT_CAFE_TOKEN_TWO';
 export const REFRESH_TOKEN: string = 'THINKCRYPT_ERP_REFRESH_TOKEN_TEST_ONE';
 export const STORE: string = process.env.NEXT_PUBLIC_STORE || '6587157f9b62eb0e74c9f2ef';
 export const CART_NAME: string =

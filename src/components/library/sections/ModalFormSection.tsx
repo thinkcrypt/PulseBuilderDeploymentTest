@@ -1,7 +1,7 @@
 'use client';
 import { ContainerProps, Flex, Heading, useColorModeValue } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import Column from './Column';
+import Column from '../containers/Column';
 
 type FormContainerProps = ContainerProps & {
 	children: React.ReactNode;

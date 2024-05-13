@@ -9,7 +9,7 @@ export const userApi = mainApi.injectEndpoints({
 		}),
 		getSelectData: builder.query<any, string>({
 			query: id => `${id}?limit=1000`,
-			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons'],
+			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons', 'Items', 'items'],
 		}),
 
 		getAllUsers: builder.query<ListType<User>, TableProps>({

@@ -2,9 +2,8 @@
 import React, { FC } from 'react';
 import Navbar from '../nav/Navbar';
 import Body from '../nav/Body';
-import { Button, Flex } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 import { useAppDispatch } from '@/hooks';
-import { logout } from '@/store/slices/authSlice';
 import AuthWrapper from '../library/wrappers/AuthWrapper';
 import Sidebar from '../nav/sidebar/Sidebar';
 import ColorMode from '../color-mode/ColorMode';
@@ -16,6 +15,7 @@ import CreateMenu from '../library/menu/CreateMenu';
 import Column from '../containers/Column';
 import SelfMenu from '../library/menu/SelfMenu';
 import SideDrawer from '../nav/sidebar/SideDrawer';
+import SpaceBetween from '../library/containers/SpaceBetween';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 const PADDING_TOP = { base: 16, md: 16, lg: 16 };
@@ -52,11 +52,13 @@ const Layout: FC<LayoutProps> = ({
 					w={sizes.HOME_NAV_MAX_WIDTH}
 					left={sizes.HOME_NAV_LEFT}
 					_dark={{ bg: 'navbar.dark' }}>
-					<Flex
-						w='full'
-						justify='space-between'>
-						{title}
-					</Flex>
+					<SpaceBetween>
+						<Heading
+							size='md'
+							fontFamily='Bebas Neue'>
+							{title}
+						</Heading>
+					</SpaceBetween>
 					<Flex
 						align='center'
 						gap={4}>

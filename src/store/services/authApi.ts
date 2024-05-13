@@ -22,6 +22,14 @@ export const authApi = mainApi.injectEndpoints({
 			}),
 			invalidatesTags: ['self'],
 		}),
+		updatePassword: builder.mutation<any, any>({
+			query: body => ({
+				url: `auth/change-password`,
+				method: 'PUT',
+				body,
+			}),
+			invalidatesTags: ['self'],
+		}),
 		getSelf: builder.query<any, any>({
 			query: () => `auth/self`,
 			providesTags: ['self'],
@@ -43,5 +51,6 @@ export const {
 	useGetSelfQuery,
 	useUpdatePreferencesMutation,
 	useRegisterMutation,
+	useUpdatePasswordMutation,
 } = authApi;
 export default authApi;
