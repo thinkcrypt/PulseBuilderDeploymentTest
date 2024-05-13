@@ -28,6 +28,20 @@ const inputFields: any = [
 		isRequired: true,
 		type: 'number',
 	},
+	{
+		sectionTitle: 'Product Collections',
+		name: 'collection',
+		label: 'Add to collections',
+		isRequired: false,
+		type: 'data-tag',
+		model: 'collections',
+	},
+	{
+		name: 'description',
+		label: 'Description',
+		isRequired: false,
+		type: 'textarea',
+	},
 ];
 
 const EditItemPage = () => {

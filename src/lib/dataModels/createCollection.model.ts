@@ -8,29 +8,29 @@ type FormDataType = {
 };
 
 const createCollection: InputData<FormDataType>[] = [
-	{
-		sectionTitle: 'Collection Image',
-		name: 'image',
-		label: 'Image',
-		isRequired: false,
-		type: 'image',
-		endOfSection: true,
-	},
+	// {
+	// 	sectionTitle: 'Collection Image',
+	// 	name: 'image',
+	// 	label: 'Image',
+	// 	isRequired: false,
+	// 	type: 'image',
+	// 	endOfSection: true,
+	// },
 	{
 		name: 'name',
 		label: 'Collection Title',
 		isRequired: true,
 		type: 'text',
 	},
+	// {
+	// 	name: 'dataKey',
+	// 	label: 'Collection Key',
+	// 	isRequired: true,
+	// 	type: 'text',
+	// },
 	{
-		name: 'dataKey',
-		label: 'Collection Key',
-		isRequired: true,
-		type: 'text',
-	},
-	{
-		name: 'precedence',
-		label: 'Collection Precedence',
+		name: 'priority',
+		label: 'Collection Priority',
 		isRequired: true,
 		type: 'number',
 	},

@@ -4,13 +4,13 @@ import React from 'react';
 import { NextPage } from 'next';
 import { TableObjectProps } from '@/components/library/types';
 import PageTable from '@/components/library/pages/page-tables/PageTable';
+import createCollection from '@/lib/dataModels/createCollection.model';
 
 const data: TableObjectProps = {
-	title: 'Items',
-	path: 'items',
+	title: 'Product Collections',
+	path: 'collections',
 	button: {
-		title: 'Add Item',
-		path: '/items/create',
+		title: 'Add Collection',
 	},
 	menu: [
 		{
@@ -28,17 +28,16 @@ const data: TableObjectProps = {
 			title: 'Name',
 			dataKey: 'name',
 			sort: 'name',
+			// type: 'image-text',
+			// imageKey: 'image',
 			default: true,
 		},
-		{ title: 'Category', dataKey: 'category.name', default: true },
-
-		{
-			title: 'Price',
-			dataKey: 'price',
-			sort: 'price',
-			default: true,
-			editable: true,
-		},
+		// {
+		// 	title: 'Key',
+		// 	dataKey: 'dataKey',
+		// 	sort: 'dataKey',
+		// 	default: true,
+		// },
 		{
 			title: 'isActive',
 			dataKey: 'isActive',
@@ -48,18 +47,10 @@ const data: TableObjectProps = {
 			editable: true,
 		},
 		{
-			title: 'Is Discount?',
-			dataKey: 'isDiscount',
-			type: 'boolean',
-			sort: 'isDiscount',
-			default: true,
-			editable: true,
-		},
-		{
-			title: 'After Discount',
-			dataKey: 'discountPrice',
-			sort: 'discountPrice',
-			default: true,
+			title: 'Priority',
+			dataKey: 'priority',
+			sort: 'priority',
+			type: 'price',
 			editable: true,
 		},
 		{ title: 'Created', dataKey: 'createdAt', type: 'date', sort: 'createdAt' },
@@ -68,7 +59,13 @@ const data: TableObjectProps = {
 };
 
 const page: NextPage = () => {
-	return <PageTable table={data} />;
+	return (
+		<PageTable
+			table={data}
+			isModal={true}
+			inputFields={createCollection}
+		/>
+	);
 };
 
 export default page;

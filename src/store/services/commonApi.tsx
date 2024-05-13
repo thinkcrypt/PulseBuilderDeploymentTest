@@ -34,7 +34,15 @@ export const userApi = mainApi.injectEndpoints({
 		}),
 		getById: builder.query<any, { path: string; id: any }>({
 			query: ({ path, id }): any => `${path}/${id}`,
-			providesTags: ['products', 'brands', 'categories', 'coupons'],
+			providesTags: [
+				'products',
+				'brands',
+				'categories',
+				'coupons',
+				'items',
+				'collection',
+				'collections',
+			],
 		}),
 		post: builder.mutation<any, { path: string; body: any }>({
 			query: ({ path, body }): any => ({

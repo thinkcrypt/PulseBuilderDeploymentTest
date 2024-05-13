@@ -55,14 +55,20 @@ const QrMenuPage = () => {
 							fontFamily='Bebas neue'>
 							{item?.category?.name}
 						</Heading>
-						<Text>{item?.description}</Text>
-						<Column py={2}>
+						<Text color='#555'>
+							<i>{item?.category?.description}</i>
+						</Text>
+						<Column
+							py={2}
+							gap={4}>
 							{item?.items?.map((menu: any, j: number) => (
 								<FoodMenuItem
 									key={j}
 									name={menu?.name}
 									price={menu?.price}
 									description={menu?.description}
+									isDiscounted={menu?.isDiscount}
+									discountedPrice={menu?.discountPrice}
 								/>
 							))}
 						</Column>

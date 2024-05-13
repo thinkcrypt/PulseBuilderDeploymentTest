@@ -27,6 +27,8 @@ import { CiMenuBurger } from 'react-icons/ci';
 import { GrSubtract } from 'react-icons/gr';
 import { SiCkeditor4 } from 'react-icons/si';
 import { FaRegEdit } from 'react-icons/fa';
+import { MdFastfood } from 'react-icons/md';
+import { BsCollectionFill } from 'react-icons/bs';
 
 type IconProps = {
 	size?: number;
@@ -61,6 +63,8 @@ const icons: any = {
 	menu: CiMenuBurger,
 	leave: SiCkeditor4,
 	edit: FaRegEdit,
+	items: MdFastfood,
+	collections: BsCollectionFill,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

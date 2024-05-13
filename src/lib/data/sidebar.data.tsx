@@ -12,7 +12,7 @@ const sidebar: SidebarItemType[] = [
 		sectionTitle: 'Menu',
 		title: 'Items',
 		href: '/items',
-		icon: 'products',
+		icon: 'items',
 		path: 'items',
 	},
 	{
@@ -20,6 +20,12 @@ const sidebar: SidebarItemType[] = [
 		href: '/categories',
 		icon: 'category',
 		path: 'categories',
+	},
+	{
+		title: 'Collections',
+		href: '/collections',
+		icon: 'collections',
+		path: 'collections',
 	},
 
 	{

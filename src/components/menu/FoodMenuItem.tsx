@@ -5,9 +5,17 @@ type FoodMenuItemProps = {
 	name: string;
 	price: number;
 	description: string;
+	isDiscounted?: boolean;
+	discountedPrice?: number;
 };
 
-const FoodMenuItem: FC<FoodMenuItemProps> = ({ name, price, description }) => {
+const FoodMenuItem: FC<FoodMenuItemProps> = ({
+	name,
+	price,
+	description,
+	isDiscounted,
+	discountedPrice,
+}) => {
 	return (
 		<Flex
 			borderBottom='2px dotted #333'
@@ -24,13 +32,32 @@ const FoodMenuItem: FC<FoodMenuItemProps> = ({ name, price, description }) => {
 					fontSize='20px'>
 					{name}
 				</Heading>
-				<Heading
-					fontFamily='Bebas neue'
-					size='md'>
-					BDT. {price}
-				</Heading>
+
+				<Flex
+					gap={3}
+					align='flex-end'>
+					{isDiscounted && (
+						<Text
+							lineHeight={1.2}
+							fontFamily='Bebas neue'
+							// fontSize='14px'
+							textDecorationLine='line-through'>
+							BDT. {price}
+						</Text>
+					)}
+
+					<Heading
+						fontFamily='Bebas neue'
+						size='md'>
+						BDT. {isDiscounted ? discountedPrice : price}
+					</Heading>
+				</Flex>
 			</Flex>
-			<Text fontSize='14px'>{description}</Text>
+			<Text
+				noOfLines={3}
+				fontSize='14px'>
+				{description}
+			</Text>
 		</Flex>
 	);
 };

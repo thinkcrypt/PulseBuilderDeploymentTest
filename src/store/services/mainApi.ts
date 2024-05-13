@@ -13,6 +13,8 @@ const tags = [
 	'products',
 	'count',
 	'scan',
+	'collection',
+	'collections',
 ];
 export const mainApi = createApi({
 	reducerPath: 'mainApi',
