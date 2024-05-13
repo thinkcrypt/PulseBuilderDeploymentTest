@@ -30,6 +30,8 @@ const data: TableObjectProps = {
 			sort: 'name',
 			default: true,
 		},
+		{ title: 'Priority', dataKey: 'priority', sort: 'priority', default: true, editable: true },
+
 		{ title: 'isActive', dataKey: 'isActive', type: 'boolean', sort: 'isActive', default: true },
 		{ title: 'Created', dataKey: 'createdAt', type: 'date', sort: 'createdAt' },
 		{ title: '...', type: 'menu' },

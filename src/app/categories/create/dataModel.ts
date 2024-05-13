@@ -33,6 +33,12 @@ const dataFields: InputData<DataType>[] = [
 		isRequired: false,
 		type: 'textarea',
 	},
+	{
+		name: 'priority',
+		label: 'Priority',
+		isRequired: false,
+		type: 'number',
+	},
 	// {
 	// 	name: 'isFeatured',
 	// 	label: 'Is Featured',

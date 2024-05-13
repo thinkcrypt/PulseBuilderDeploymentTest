@@ -12,7 +12,9 @@ const QrMenuPage = () => {
 	const { data } = useGetProductsByQrQuery(id);
 
 	return (
-		<Column gap={2}>
+		<Column
+			gap={2}
+			w='full'>
 			<Heading
 				size='3xl'
 				fontFamily='Bebas neue'>
