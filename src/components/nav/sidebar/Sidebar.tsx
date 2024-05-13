@@ -10,6 +10,8 @@ const Sidebar: React.FC<FlexProps> = ({ ...props }) => {
 	const { data } = useGetSelfQuery({});
 	const mainHeight = '82vh';
 
+	const title = data?.restaurant?.name || '--';
+
 	const main = (
 		<Stack
 			w='full'
@@ -62,7 +64,7 @@ const Sidebar: React.FC<FlexProps> = ({ ...props }) => {
 				<Heading
 					size='md'
 					fontFamily='Bebas Neue'>
-					MINT CAFE
+					{title}
 				</Heading>
 			</Flex>
 			<Flex flex={1}>{main}</Flex>

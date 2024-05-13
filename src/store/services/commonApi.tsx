@@ -9,6 +9,10 @@ export const userApi = mainApi.injectEndpoints({
 			query: id => `${id}/get/filters`,
 			providesTags: ['Filters'],
 		}),
+		getCount: builder.query<any, string>({
+			query: id => `${id}/get/count`,
+			providesTags: ['count', 'items', 'categories', 'scan'],
+		}),
 		getAll: builder.query<any, any>({
 			query: ({
 				sort = '-createdAt',
@@ -28,7 +32,7 @@ export const userApi = mainApi.injectEndpoints({
 			query: (id: ModelType) => `${id}?limit=1000&fields=name&sort=name`,
 			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons', 'collections'],
 		}),
-		getById: builder.query<any, { path: string; id: string }>({
+		getById: builder.query<any, { path: string; id: any }>({
 			query: ({ path, id }): any => `${path}/${id}`,
 			providesTags: ['products', 'brands', 'categories', 'coupons'],
 		}),
@@ -66,4 +70,5 @@ export const {
 	useGetAllQuery,
 	useDeleteByIdMutation,
 	usePostMutation,
+	useGetCountQuery,
 } = userApi;

@@ -1,22 +1,47 @@
 'use client';
 
 import { useGetProductsByQrQuery } from '@/store/services/productsApi';
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text, Image, Center } from '@chakra-ui/react';
 import React from 'react';
 import { useParams } from 'next/navigation';
 import FoodMenuItem from '@/components/menu/FoodMenuItem';
 import Column from '@/components/containers/Column';
+import { useGetByIdQuery } from '@/store/services/commonApi';
 
 const QrMenuPage = () => {
 	const { id } = useParams();
-	const { data } = useGetProductsByQrQuery(id);
+	const { data, isFetching } = useGetProductsByQrQuery(id);
+
+	const { data: restaurant, isFetching: restaurantFetching } = useGetByIdQuery(
+		{ path: 'restaurant', id: id },
+		{ skip: !id }
+	);
 
 	return (
 		<Column
 			gap={2}
 			w='full'>
+			{!restaurantFetching && restaurant && restaurant?.image && (
+				<Center
+					flexDir='column'
+					gap={4}
+					pb='44px'>
+					<Image
+						w='200px'
+						h='200px'
+						objectFit='contain'
+						src={restaurant?.image}
+					/>
+					<Heading
+						size='3xl'
+						textAlign='center'
+						fontFamily='Bebas neue'>
+						{restaurant?.name}
+					</Heading>
+				</Center>
+			)}
 			<Heading
-				size='3xl'
+				size='2xl'
 				fontFamily='Bebas neue'>
 				MENU
 			</Heading>

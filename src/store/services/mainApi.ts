@@ -11,6 +11,8 @@ const tags = [
 	'coupons',
 	'brands',
 	'products',
+	'count',
+	'scan',
 ];
 export const mainApi = createApi({
 	reducerPath: 'mainApi',

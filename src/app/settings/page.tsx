@@ -7,11 +7,15 @@ import Column from '@/components/containers/Column';
 import Details from '@/components/library/detail/Details';
 import HeadingMenu from '@/components/library/settings/heading-menu/HeadingMenu';
 import QrComponent from './_components/QrComponent';
+import VImage from '@/components/library/utils/inputs/VImage';
+import { usePostMutation, useUpdateByIdMutation } from '@/store/services/commonApi';
+import { Flex } from '@chakra-ui/react';
+import useCustomToast from '@/components/library/hooks/useCustomToast';
 
 const SettingsPage = () => {
 	const { data, isFetching } = useGetSelfQuery({});
 
-	const [trigger, result] = useRegisterMutation();
+	const [trigger, result] = useUpdateByIdMutation();
 
 	const [formData, setFormData] = useState<any>({});
 
@@ -19,7 +23,8 @@ const SettingsPage = () => {
 		setFormData({
 			name: data?.restaurant?.name || '',
 			email: data?.restaurant?.email || '',
-			template: data?.restaurant?.template || '',
+			//template: data?.restaurant?.template || '',
+			image: data?.restaurant?.image || '',
 		});
 	};
 
@@ -31,6 +36,12 @@ const SettingsPage = () => {
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
+		trigger({ body: formData, path: 'restaurant', invalidate: 'self', id: data?.restaurant?._id });
+	};
+
+	const handleImage = (e: any) => {
+		//setChangedData(prevState => ({ ...prevState, image: e }));
+		setFormData({ ...formData, image: e });
 	};
 
 	const close = () => {
@@ -51,6 +62,13 @@ const SettingsPage = () => {
 			refresh();
 		}
 	}, [result?.isLoading]);
+	useCustomToast({
+		isLoading: result?.isLoading,
+		isError: result?.isError,
+		error: result?.error,
+		isSuccess: result?.isSuccess,
+		successText: 'Updated successfully',
+	});
 
 	if (!data) return null;
 	return (
@@ -65,7 +83,16 @@ const SettingsPage = () => {
 							close={close}
 							title='Restaurant Details'
 							editing={editing}
-							isLoading={false}>
+							isLoading={result?.isLoading}>
+							<Flex pb='44px'>
+								<VImage
+									name='image'
+									value={formData.image}
+									onChange={handleImage}
+									isDisabled={!editing}
+								/>
+							</Flex>
+
 							<Details
 								editing={editing}
 								title='Name'
@@ -80,13 +107,13 @@ const SettingsPage = () => {
 								isDisabled>
 								{formData?.email}
 							</Details>
-							<Details
+							{/* <Details
 								editing={editing}
 								type='number'
 								onChange={handleChange}
 								title='Template'>
 								{formData?.template}
-							</Details>
+							</Details> */}
 						</HeadingMenu>
 					</Column>
 				</form>

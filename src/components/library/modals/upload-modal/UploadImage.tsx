@@ -35,9 +35,20 @@ const UploadImage = ({ handleSelect }: { handleSelect: any }) => {
 	}, [result?.isLoading]);
 
 	const body = result?.isLoading ? (
-		<Center gap={4} flexDir='column' flex={1} h='full' w='400px'>
+		<Center
+			gap={4}
+			flexDir='column'
+			flex={1}
+			h='full'
+			w='400px'>
 			<Heading size='md'>Uploading...</Heading>
-			<Progress colorScheme='brand' w='100%' size='sm' borderRadius='30px' isIndeterminate />
+			<Progress
+				colorScheme='brand'
+				w='100%'
+				size='sm'
+				borderRadius='30px'
+				isIndeterminate
+			/>
 		</Center>
 	) : result?.isSuccess ? (
 		<Text>Success</Text>
@@ -45,18 +56,34 @@ const UploadImage = ({ handleSelect }: { handleSelect: any }) => {
 		<Text>{JSON.stringify((result as any)?.error)}</Text>
 	) : (
 		<>
-			<input type='file' ref={inputRef} style={{ display: 'none' }} onChange={handleFileChange} />
-			<Heading size='lg' mb={2}>
+			<input
+				type='file'
+				ref={inputRef}
+				style={{ display: 'none' }}
+				onChange={handleFileChange}
+			/>
+			<Heading
+				size='lg'
+				mb={2}>
 				Upload Photo Here
 			</Heading>
-			<Button size='sm' onClick={handleUpload}>
+			<Button
+				size='sm'
+				onClick={handleUpload}>
 				Upload
 			</Button>
 		</>
 	);
 
 	return (
-		<Center flexDir='column' flex={1} h='full' py='16px' w='100%' border='2px dashed #ddd' gap={2}>
+		<Center
+			flexDir='column'
+			flex={1}
+			h='full'
+			py='16px'
+			w='100%'
+			border='2px dashed #ddd'
+			gap={2}>
 			{body}
 		</Center>
 	);
