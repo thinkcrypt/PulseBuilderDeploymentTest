@@ -6,6 +6,7 @@ import Link from 'next/link';
 import MenuContainer from '../../menu/MenuContainer';
 import MenuItem from '../../menu/CustomMenuItem';
 import DeleteItemModal from '../modals/DeleteItemModel';
+import ViewItemModal from '../modals/ViewItemModal';
 
 const TableMenu = ({
 	data,
@@ -54,6 +55,15 @@ const TableMenu = ({
 					if (item?.type == 'delete')
 						return (
 							<DeleteItemModal
+								key={i}
+								id={id}
+								title={title}
+								path={path}
+							/>
+						);
+					if (item?.type == 'view-modal')
+						return (
+							<ViewItemModal
 								key={i}
 								id={id}
 								title={title}

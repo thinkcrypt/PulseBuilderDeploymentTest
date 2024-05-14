@@ -29,6 +29,8 @@ import { SiCkeditor4 } from 'react-icons/si';
 import { FaRegEdit } from 'react-icons/fa';
 import { MdFastfood } from 'react-icons/md';
 import { BsCollectionFill } from 'react-icons/bs';
+import { FcFeedback } from 'react-icons/fc';
+import { MdFeedback } from 'react-icons/md';
 
 type IconProps = {
 	size?: number;
@@ -65,6 +67,8 @@ const icons: any = {
 	edit: FaRegEdit,
 	items: MdFastfood,
 	collections: BsCollectionFill,
+	feedback: FcFeedback,
+	feedbacks: MdFeedback,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

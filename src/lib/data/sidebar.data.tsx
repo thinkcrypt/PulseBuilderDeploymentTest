@@ -27,6 +27,14 @@ const sidebar: SidebarItemType[] = [
 		icon: 'collections',
 		path: 'collections',
 	},
+	{
+		startOfSection: true,
+		sectionTitle: 'Customer',
+		title: 'Feedback',
+		href: '/feedbacks',
+		icon: 'feedbacks',
+		path: 'feedbacks',
+	},
 
 	{
 		title: 'Settings',

@@ -7,6 +7,8 @@ import { useParams } from 'next/navigation';
 import FoodMenuItem from '@/components/menu/FoodMenuItem';
 import Column from '@/components/containers/Column';
 import { useGetByIdQuery } from '@/store/services/commonApi';
+import Icon from '@/components/library/icon/Icon';
+import Link from 'next/link';
 
 const QrMenuPage = () => {
 	const { id } = useParams();
@@ -76,6 +78,27 @@ const QrMenuPage = () => {
 						</Column>
 					</Column>
 				))}
+			<Center
+				flexDir='column'
+				mt='16px'
+				p='24px'
+				gap={4}
+				borderRadius='8px'>
+				<Heading
+					size='lg'
+					fontFamily='Bebas Neue'>
+					We'd love your feedback
+				</Heading>
+				<Icon
+					size={64}
+					name='feedback'
+				/>
+				<Link
+					href={`/user-feedback/${id}`}
+					style={{ color: 'dodgerblue', textDecorationLine: 'underline' }}>
+					<i>Send us your Feedback</i>
+				</Link>
+			</Center>
 		</Column>
 	);
 };
