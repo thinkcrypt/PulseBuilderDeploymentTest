@@ -69,6 +69,8 @@ const QrMenuPage = () => {
 									description={menu?.description}
 									isDiscounted={menu?.isDiscount}
 									discountedPrice={menu?.discountPrice}
+									longDescription={menu?.longDescription}
+									image={menu?.image}
 								/>
 							))}
 						</Column>

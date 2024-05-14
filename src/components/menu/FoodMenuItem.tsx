@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Flex, Heading, Text } from '@chakra-ui/react';
+import FoodMenuModal from './FoodMenuModal';
 
 type FoodMenuItemProps = {
 	name: string;
@@ -7,6 +8,8 @@ type FoodMenuItemProps = {
 	description: string;
 	isDiscounted?: boolean;
 	discountedPrice?: number;
+	longDescription: string;
+	image: string;
 };
 
 const FoodMenuItem: FC<FoodMenuItemProps> = ({
@@ -15,14 +18,17 @@ const FoodMenuItem: FC<FoodMenuItemProps> = ({
 	description,
 	isDiscounted,
 	discountedPrice,
+	longDescription,
+	image,
 }) => {
 	return (
-		<Flex
-			borderBottom='2px dotted #333'
-			w='full'
-			py={2}
-			gap={2}
-			flexDir='column'>
+		<FoodMenuModal
+			name={name}
+			price={price}
+			image={image}
+			description={longDescription || description}
+			isDiscounted={isDiscounted}
+			discountedPrice={discountedPrice}>
 			<Flex
 				w='full'
 				justify='space-between'
@@ -58,7 +64,7 @@ const FoodMenuItem: FC<FoodMenuItemProps> = ({
 				fontSize='14px'>
 				{description}
 			</Text>
-		</Flex>
+		</FoodMenuModal>
 	);
 };
 

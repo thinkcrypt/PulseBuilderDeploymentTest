@@ -26,8 +26,10 @@ const data: TableObjectProps = {
 	data: [
 		{
 			title: 'Name',
-			dataKey: 'name',
 			sort: 'name',
+			type: 'image-text',
+			dataKey: 'name',
+			imageKey: 'image',
 			default: true,
 		},
 		{ title: 'Category', dataKey: 'category.name', default: true },

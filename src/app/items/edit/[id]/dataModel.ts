@@ -55,6 +55,18 @@ const dataFields: InputData<DataType>[] = [
 		isRequired: false,
 		type: 'number',
 	},
+	{
+		name: 'isDiscount',
+		label: 'Discount',
+		isRequired: false,
+		type: 'switch',
+	},
+	{
+		name: 'Discounted Price',
+		label: 'discountPrice',
+		isRequired: false,
+		type: 'number',
+	},
 
 	// {
 	// 	name: 'isFeatured',
