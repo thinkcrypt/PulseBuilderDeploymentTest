@@ -67,7 +67,7 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 				onClose={onClose}>
 				<DrawerOverlay />
 				<DrawerContent
-					maxH='90vh'
+					maxH='95vh'
 					userSelect='none'
 					bg='#f8f6f3'
 					borderTopRadius='20px'>
