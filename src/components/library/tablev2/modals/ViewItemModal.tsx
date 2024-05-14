@@ -1,13 +1,15 @@
 'use client';
 
 import {
-	AlertDialog,
-	AlertDialogBody,
-	AlertDialogHeader,
-	AlertDialogContent,
-	AlertDialogOverlay,
 	useDisclosure,
 	Text,
+	Heading,
+	Modal,
+	ModalHeader,
+	ModalContent,
+	ModalBody,
+	ModalOverlay,
+	ModalCloseButton,
 } from '@chakra-ui/react';
 import React from 'react';
 import MenuItem from '../../menu/CustomMenuItem';
@@ -30,52 +32,53 @@ const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
 		id: id,
 	});
 
-	// useCustomToast({
-	// 	successText: `${title ? title : 'Item'} Deleted Successfully`,
-	// 	isSuccess: result?.isSuccess,
-	// 	isError: result?.isError,
-	// 	isLoading: result?.isLoading,
-	// 	error: result?.error,
-	// });
-
 	return (
 		<>
 			<MenuItem
 				color='red'
 				onClick={onOpen}>
-				Delete
+				View
 			</MenuItem>
 
-			<AlertDialog
+			<Modal
 				isOpen={isOpen}
-				leastDestructiveRef={cancelRef}
-				onClose={close}>
-				<AlertDialogOverlay>
-					<AlertDialogContent
-						boxShadow='lg'
-						borderRadius='xl'
-						bg='menu.light'
-						_dark={{
-							bg: 'menu.dark',
-						}}>
-						<AlertDialogHeader
-							fontSize='lg'
-							fontWeight='bold'>
-							Item Details
-						</AlertDialogHeader>
+				size='xl'
+				onClose={onClose}>
+				{/* <AlertDialogOverlay> */}
+				<ModalOverlay />
+				<ModalContent
+					boxShadow='lg'
+					borderRadius='xl'
+					bg='menu.light'
+					w='500px'
+					_dark={{
+						bg: 'menu.dark',
+					}}>
+					<ModalHeader
+						fontSize='lg'
+						fontWeight='bold'>
+						Item Details
+					</ModalHeader>
+					<ModalCloseButton />
 
-						<AlertDialogBody>
+					<ModalBody>
+						<Column gap={4}>
 							{data &&
 								Object.keys(data).map((key, index) => (
 									<Column key={index}>
-										<Text>{key}</Text>
-										<Text>{data[key]}</Text>
+										<Heading
+											size='sm'
+											fontFamily='Bebas Neue'>
+											{key}
+										</Heading>
+										<Text size='14px'> {data[key]}</Text>
 									</Column>
 								))}
-						</AlertDialogBody>
-					</AlertDialogContent>
-				</AlertDialogOverlay>
-			</AlertDialog>
+						</Column>
+					</ModalBody>
+				</ModalContent>
+				{/* </AlertDialogOverlay> */}
+			</Modal>
 		</>
 	);
 };

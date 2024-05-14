@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button, Center, Heading } from '@chakra-ui/react';
 
-const page = () => {
+const SuccessPage = () => {
 	const { id } = useParams();
 	return (
 		<Center
@@ -19,4 +19,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default SuccessPage;
