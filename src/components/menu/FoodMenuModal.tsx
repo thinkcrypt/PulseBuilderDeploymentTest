@@ -15,10 +15,13 @@ import {
 	Text,
 	Heading,
 	CloseButton,
+	Wrap,
+	Badge,
 } from '@chakra-ui/react';
 import Column from '../library/containers/Column';
 import { useSwipeable } from 'react-swipeable';
 import SpaceBetween from '../containers/SpaceBetween';
+import CookingTime from './CookingTime';
 
 type FoodMenuItemProps = {
 	name: string;
@@ -27,12 +30,13 @@ type FoodMenuItemProps = {
 	isDiscounted?: boolean;
 	discountedPrice?: number;
 	image?: string;
-	trigger?: any;
+	tags: string[];
 	children: React.ReactNode;
+	time: number;
 };
 
 const FoodMenuModal: FC<FoodMenuItemProps> = ({
-	trigger,
+	tags,
 	image,
 	name,
 	price,
@@ -40,6 +44,7 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 	discountedPrice,
 	isDiscounted,
 	children,
+	time,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -94,15 +99,32 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 					</DrawerHeader>
 
 					<DrawerBody>
-						<Column gap={8}>
+						<Column gap={2}>
 							{image && (
 								<Image
+									pb={8}
 									w='full'
 									objectFit='contain'
 									src={image}
 								/>
 							)}
+							<CookingTime>{time}</CookingTime>
 							<Text>{description}</Text>
+							{tags && tags?.length > 0 && (
+								<Wrap
+									gap={2}
+									py={2}>
+									{tags?.map((tag: string, i) => (
+										<Badge
+											key={i}
+											size='md'
+											bg='white'
+											variant='subtle'>
+											{tag}
+										</Badge>
+									))}
+								</Wrap>
+							)}
 						</Column>
 					</DrawerBody>
 

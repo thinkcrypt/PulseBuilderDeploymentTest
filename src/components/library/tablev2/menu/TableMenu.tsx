@@ -68,6 +68,7 @@ const TableMenu = ({
 								id={id}
 								title={title}
 								path={path}
+								dataModel={item?.dataModel}
 							/>
 						);
 

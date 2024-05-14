@@ -13,19 +13,20 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import MenuItem from '../../menu/CustomMenuItem';
-import { useDeleteByIdMutation, useGetByIdQuery } from '@/store/services/commonApi';
-import useCustomToast from '../../hooks/useCustomToast';
+import { useGetByIdQuery } from '@/store/services/commonApi';
+
 import Column from '@/components/containers/Column';
+import { ViewModalDataModelProps } from '../../types';
 
 type DeleteItemModalProps = {
 	title?: string;
 	id: string;
 	path: string;
+	dataModel: ViewModalDataModelProps[];
 };
 
-const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
+const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, dataModel, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef<any>();
 
 	const { data, isFetching } = useGetByIdQuery({
 		path: path,
@@ -40,7 +41,6 @@ const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
 				isOpen={isOpen}
 				size='4xl'
 				onClose={onClose}>
-				{/* <AlertDialogOverlay> */}
 				<ModalOverlay />
 				<ModalContent
 					boxShadow='lg'
@@ -57,18 +57,25 @@ const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
 					<ModalCloseButton />
 
 					<ModalBody>
-						<Column gap={4}>
+						<Column
+							gap={4}
+							pb={4}>
 							{data &&
-								Object.keys(data).map((key, index) => (
-									<Column key={index}>
-										<Heading
-											size='sm'
-											fontFamily='Bebas Neue'>
-											{key}
-										</Heading>
-										<Text size='14px'> {data[key]}</Text>
-									</Column>
-								))}
+								dataModel.map(
+									({ title, dataKey, type }: ViewModalDataModelProps, index: number) => {
+										let value = type == 'date' ? new Date(data[dataKey]) : data[dataKey];
+										return (
+											<Column key={index}>
+												<Heading
+													size='sm'
+													fontFamily='Bebas Neue'>
+													{title}
+												</Heading>
+												<Text size='14px'>{type === 'date' ? value.toLocaleString() : value}</Text>
+											</Column>
+										);
+									}
+								)}
 						</Column>
 					</ModalBody>
 				</ModalContent>

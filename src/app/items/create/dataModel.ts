@@ -28,6 +28,28 @@ const dataFields: InputData<DataType>[] = [
 		isRequired: true,
 		type: 'text',
 	},
+
+	{
+		name: 'price',
+		label: 'Price',
+		isRequired: false,
+		type: 'number',
+	},
+	{
+		name: 'time',
+		label: 'Cooking Time',
+		isRequired: false,
+		type: 'number',
+	},
+	{
+		name: 'category',
+		label: 'Product Category',
+		isRequired: true,
+		type: 'data-menu',
+		span: 1,
+		model: 'categories',
+		dataModel: createCategoryModalModel,
+	},
 	{
 		name: 'description',
 		label: 'Short Description',
@@ -41,28 +63,19 @@ const dataFields: InputData<DataType>[] = [
 		type: 'textarea',
 	},
 	{
-		name: 'category',
-		label: 'Product Category',
-		isRequired: true,
-		type: 'data-menu',
-		span: 1,
-		model: 'categories',
-		dataModel: createCategoryModalModel,
+		sectionTitle: 'Product Collections',
+		name: 'collection',
+		label: 'Add to collections',
+		isRequired: false,
+		type: 'data-tag',
+		model: 'collections',
 	},
 	{
-		name: 'price',
-		label: 'Price',
+		name: 'tags',
+		label: 'Add Tags',
 		isRequired: false,
-		type: 'number',
+		type: 'tag',
 	},
-
-	// {
-	// 	name: 'isFeatured',
-	// 	label: 'Is Featured',
-	// 	isRequired: false,
-	// 	type: 'checkbox',
-	// 	endOfSection: true,
-	// },
 ];
 
 export default dataFields;

@@ -45,13 +45,31 @@ type ButtonType = {
 	path?: string;
 };
 
+/**
+ * Data Modal for the
+ * View Modal
+ * When the user clicks on the view button
+ * on the table, if the type is view-modal
+ * this data model will be used to display
+ */
+
+export type ViewModalDataModelProps = {
+	title: string;
+	dataKey: string;
+	type?: 'date' | 'price' | 'boolean' | 'menu' | 'image-text' | 'checkbox' | 'tag' | 'string';
+};
+
 export type TableObjectProps = {
 	title: string;
 	path: string;
 	filters?: string;
 	button?: ButtonType;
 	data: TableObjectDataProps[];
-	menu?: any;
+	menu?: {
+		title: string;
+		type: 'edit' | 'delete' | 'view' | 'view-modal';
+		dataModel?: any;
+	}[];
 	preferences?: any;
 	hidePreferences?: boolean;
 };

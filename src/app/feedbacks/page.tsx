@@ -2,24 +2,31 @@
 
 import React from 'react';
 import { NextPage } from 'next';
-import { TableObjectProps } from '@/components/library/types';
+import { TableObjectProps, ViewModalDataModelProps } from '@/components/library/types';
 import PageTable from '@/components/library/pages/page-tables/PageTable';
+
+const viewDataModel: ViewModalDataModelProps[] = [
+	{
+		title: 'Customer Name',
+		dataKey: 'name',
+		type: 'string',
+	},
+	{ title: 'Customer Email', dataKey: 'email', type: 'string' },
+	{ title: 'Customer Phone', dataKey: 'phone', type: 'string' },
+	{ title: 'Rating', dataKey: 'rating', type: 'string' },
+	{ title: 'Feedback', dataKey: 'description', type: 'string' },
+	{ title: 'Created', dataKey: 'createdAt', type: 'date' },
+];
 
 const data: TableObjectProps = {
 	title: 'Feedbacks',
 	path: 'feedbacks',
-	// button: {
-	// 	title: 'Add Category',
-	// 	path: '/categories/create',
-	// },
+
 	menu: [
-		// {
-		// 	title: 'Edit',
-		// 	type: 'edit',
-		// },
 		{
 			title: 'View',
 			type: 'view-modal',
+			dataModel: viewDataModel,
 		},
 	],
 

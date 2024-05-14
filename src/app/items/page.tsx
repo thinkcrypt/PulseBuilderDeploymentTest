@@ -41,6 +41,7 @@ const data: TableObjectProps = {
 			default: true,
 			editable: true,
 		},
+
 		{
 			title: 'isActive',
 			dataKey: 'isActive',
