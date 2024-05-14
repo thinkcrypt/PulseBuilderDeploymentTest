@@ -87,7 +87,7 @@ const QrMenuPage = () => {
 				<Heading
 					size='lg'
 					fontFamily='Bebas Neue'>
-					We'd love your feedback
+					{`We'd love your feedback`}
 				</Heading>
 				<Icon
 					size={64}
