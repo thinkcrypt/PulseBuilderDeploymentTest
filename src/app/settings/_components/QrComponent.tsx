@@ -53,7 +53,6 @@ const QrComponent = ({ id }: { id: string }) => {
 					Download Qr
 				</Button>
 			</Flex>
-			;
 		</>
 	);
 };

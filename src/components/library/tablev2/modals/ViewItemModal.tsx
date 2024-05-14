@@ -34,15 +34,11 @@ const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
 
 	return (
 		<>
-			<MenuItem
-				color='red'
-				onClick={onOpen}>
-				View
-			</MenuItem>
+			<MenuItem onClick={onOpen}>View</MenuItem>
 
 			<Modal
 				isOpen={isOpen}
-				size='xl'
+				size='4xl'
 				onClose={onClose}>
 				{/* <AlertDialogOverlay> */}
 				<ModalOverlay />
@@ -50,7 +46,6 @@ const ViewItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
 					boxShadow='lg'
 					borderRadius='xl'
 					bg='menu.light'
-					w='500px'
 					_dark={{
 						bg: 'menu.dark',
 					}}>
