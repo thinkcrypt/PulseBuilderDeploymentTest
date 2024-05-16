@@ -6,6 +6,7 @@ const Count = ({ title, path }: { title: string; path: string }) => {
 	const { data, isFetching } = useGetCountQuery(path);
 	return (
 		<Stat
+			w={{ base: '100%', md: 'calc(100% / 3 - 16px)' }}
 			p={4}
 			borderWidth={2}
 			// boxShadow='md'

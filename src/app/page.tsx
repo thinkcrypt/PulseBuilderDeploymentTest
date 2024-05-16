@@ -1,13 +1,13 @@
 'use client';
 
-import { Wrap } from '@chakra-ui/react';
+import { Flex, Wrap } from '@chakra-ui/react';
 import Layout from '@/components/layout/Layout';
 import Count from '@/components/library/stat/Count';
 
 export default function Home() {
 	return (
 		<Layout title='Dashboard'>
-			<Wrap
+			<Flex
 				gap={2}
 				flexWrap='wrap'>
 				<Count
@@ -22,7 +22,7 @@ export default function Home() {
 					title='Categories'
 					path='categories'
 				/>
-			</Wrap>
+			</Flex>
 		</Layout>
 	);
 }

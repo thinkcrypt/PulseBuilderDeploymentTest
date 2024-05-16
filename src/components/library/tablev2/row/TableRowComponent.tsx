@@ -1,10 +1,13 @@
-import { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import TableRow from '../TableRow';
 import TableData from '../data/TableData';
 import TableMenu from '../menu/TableMenu';
 import EditableTableData from '../data/EditableTableData';
 import { format } from 'date-fns';
 import TableSelectItem from '../data/TableSelectItem';
+import { Heading, Stack } from '@chakra-ui/react';
+import useIsMobile from '../../hooks/useIsMobile';
+import formatDataKey from '../../functions/formatDataKey';
 
 type TableProps = {
 	item: any;
@@ -16,10 +19,11 @@ type TableProps = {
 };
 
 const TableRowComponent: FC<TableProps> = ({ item, data, menu, path, fields = [], selectable }) => {
+	const isMobile = useIsMobile();
 	return (
 		// Create a TableRow for each item
 		<TableRow
-			selectable={true}
+			selectable={!isMobile && true}
 			id={item?._id}
 			key={item?._id}
 			actions={<div></div>}>
@@ -54,33 +58,44 @@ const TableRowComponent: FC<TableProps> = ({ item, data, menu, path, fields = []
 						return null;
 					}
 
+					const Container = ({ children }: { children: ReactNode }) =>
+						isMobile ? <Stack pb={2}>{children}</Stack> : <>{children}</>;
+
 					// If the item is editable, return an EditableTableData component
 					if (editable)
 						return (
-							<EditableTableData
-								type={type}
-								dataKey={dataKey}
-								path={path}
-								value={
-									editType == 'date' ? format(new Date(item[dataKey]), 'yyyy-MM-dd') : item[dataKey]
-								}
-								id={item?._id}
-								key={dataKey}
-								editType={editType}
-								options={options}
-								style={style}
-							/>
+							<Container key={dataKey}>
+								{isMobile && <Heading size='xs'>{formatDataKey(dataKey)}</Heading>}
+								<EditableTableData
+									type={type}
+									dataKey={dataKey}
+									path={path}
+									value={
+										editType == 'date'
+											? format(new Date(item[dataKey]), 'yyyy-MM-dd')
+											: item[dataKey]
+									}
+									id={item?._id}
+									key={dataKey}
+									editType={editType}
+									options={options}
+									style={style}
+								/>
+							</Container>
 						);
 
 					// Return a TableData cell with the value
 					return (
-						<TableData
-							key={dataKey}
-							type={type}
-							tagType={tagType}
-							imageKey={item[imageKey]}>
-							{value}
-						</TableData>
+						<Container key={dataKey}>
+							{isMobile && <Heading size='xs'>{formatDataKey(dataKey)}</Heading>}
+							<TableData
+								key={dataKey}
+								type={type}
+								tagType={tagType}
+								imageKey={item[imageKey]}>
+								{value}
+							</TableData>
+						</Container>
 					);
 				}
 			)}

@@ -1,4 +1,4 @@
-import { Center, Flex, Select } from '@chakra-ui/react';
+import { Center, Flex, Select, Spacer } from '@chakra-ui/react';
 import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
@@ -7,6 +7,7 @@ import SquareButton from './SquareButton';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { updateTable } from '@/store/slices/tableSlice';
 import { BASE_LIMIT } from '@/lib/constants';
+import useIsMobile from '../hooks/useIsMobile';
 
 type PaginationProps = {
 	data: any;
@@ -36,9 +37,11 @@ const Pagination: React.FC<PaginationProps> = ({ data }) => {
 		update({ setPage: page - 1 });
 	};
 
+	const isMobile = useIsMobile();
+
 	const perpage = (
 		<>
-			<TableHeading>SHOWING RESULTS</TableHeading>
+			{!isMobile && <TableHeading>SHOWING RESULTS</TableHeading>}
 			<Select
 				cursor='pointer'
 				size='sm'
@@ -56,23 +59,43 @@ const Pagination: React.FC<PaginationProps> = ({ data }) => {
 	);
 
 	return (
-		<Flex justify='flex-end' align='center'>
+		<Flex
+			justify='flex-end'
+			align='center'>
 			<Center gap={2}> {perpage}</Center>
-			<Flex borderRadius={4} p={2} alignSelf='flex-end'>
-				<SquareButton label='To the beginning' onClick={toStart} borderLeftRadius={4}>
+
+			<Flex
+				borderRadius={4}
+				p={2}
+				alignSelf='flex-end'>
+				<SquareButton
+					label='To the beginning'
+					onClick={toStart}
+					borderLeftRadius={4}>
 					<HiArrowUturnLeft size={18} />
 				</SquareButton>
-				<SquareButton label='Previous Page' onClick={back}>
+				<SquareButton
+					label='Previous Page'
+					onClick={back}>
 					<IoIosArrowBack size={20} />
 				</SquareButton>
 
-				<Center h={8} px={2} fontSize='.9rem' userSelect='none'>
+				<Center
+					h={8}
+					px={2}
+					fontSize='.9rem'
+					userSelect='none'>
 					Page {page} of {data?.totalPages && data.totalPages}
 				</Center>
-				<SquareButton label='Next Page' onClick={next}>
+				<SquareButton
+					label='Next Page'
+					onClick={next}>
 					<IoIosArrowForward size={20} />
 				</SquareButton>
-				<SquareButton label='To the end' onClick={toLast} borderRightRadius={4}>
+				<SquareButton
+					label='To the end'
+					onClick={toLast}
+					borderRightRadius={4}>
 					<HiArrowUturnRight size={18} />
 				</SquareButton>
 			</Flex>

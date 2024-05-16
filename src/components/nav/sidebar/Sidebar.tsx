@@ -1,25 +1,21 @@
 'use client';
-import { Flex, FlexProps, Heading, Spacer, Stack, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Flex, FlexProps, Heading, Spacer, Stack } from '@chakra-ui/react';
+import React, { ReactNode } from 'react';
 import SidebarItem from './SidebarItem';
 import sidebar from '@/lib/data/sidebar.data';
-import { sizes } from '@/lib/constants';
 import { useGetSelfQuery } from '@/store/services/authApi';
+import SidebarBody from './sidebar-components/SidebarBody';
+import SidebarHeading from './sidebar-components/SidebarHeading';
+import SidebarContainer from './sidebar-components/SidebarContainer';
 
-const Sidebar: React.FC<FlexProps> = ({ ...props }) => {
+const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...props }) => {
 	const { data } = useGetSelfQuery({});
 	const mainHeight = '82vh';
 
 	const title = data?.restaurant?.name || '--';
 
 	const main = (
-		<Stack
-			w='full'
-			p={4}
-			px={3}
-			spacing={1}
-			pt={0}
-			direction='column'>
+		<SidebarBody>
 			<Stack
 				maxH={mainHeight}
 				h={mainHeight}
@@ -27,16 +23,7 @@ const Sidebar: React.FC<FlexProps> = ({ ...props }) => {
 				spacing={1}>
 				{sidebar.slice(0, -1).map((item, i) => (
 					<Stack key={i}>
-						{item.startOfSection && (
-							<Text
-								px={2}
-								pt={4}
-								fontSize='2xs'
-								fontWeight='700'
-								textTransform='uppercase'>
-								{item.sectionTitle}
-							</Text>
-						)}
+						{item.startOfSection && <SidebarHeading>{item.sectionTitle}</SidebarHeading>}
 						<SidebarItem
 							href={item?.href}
 							path={item?.path}
@@ -56,42 +43,28 @@ const Sidebar: React.FC<FlexProps> = ({ ...props }) => {
 					{sidebar[sidebar.length - 1]?.title}
 				</SidebarItem>
 			)}
-		</Stack>
+		</SidebarBody>
 	);
 	return (
-		<Flex sx={{ ...styles.container, ...props }}>
+		<SidebarContainer {...props}>
 			<Flex sx={styles.logo}>
 				<Heading
 					size='md'
 					fontFamily='Bebas Neue'>
 					{title}
 				</Heading>
+				{closeBtn && closeBtn}
 			</Flex>
 			<Flex flex={1}>{main}</Flex>
-		</Flex>
+		</SidebarContainer>
 	);
 };
 
 const styles = {
-	container: {
-		h: '100vh',
-		position: 'fixed',
-		maxH: '100vh',
-		overflow: 'none',
-		w: sizes.SIDEBAR_WIDTH,
-		minW: sizes.SIDEBAR_WIDTH,
-		borderRightWidth: 2,
-		borderRightColor: 'stroke.light',
-		flexDir: 'column',
-		bg: 'sidebar.light',
-		_dark: {
-			borderRightColor: 'stroke.dark',
-			bg: 'sidebar.dark',
-		},
-	},
 	logo: {
 		h: 16,
 		px: 5,
+		width: '100%',
 		borderBottomWidth: 2,
 		borderBottomColor: 'stroke.light',
 		alignItems: 'center',

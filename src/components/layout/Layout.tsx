@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 import Navbar from '../nav/Navbar';
 import Body from '../nav/Body';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, useMediaQuery } from '@chakra-ui/react';
 import { useAppDispatch } from '@/hooks';
 import AuthWrapper from '../library/wrappers/AuthWrapper';
 import Sidebar from '../nav/sidebar/Sidebar';
@@ -31,7 +31,7 @@ type LayoutProps = FlexPropsType & {
 const Layout: FC<LayoutProps> = ({
 	children,
 	title,
-	type = 'default',
+	//type = 'default',
 	path = '/',
 	hideColorMode = false,
 	...props
@@ -42,6 +42,10 @@ const Layout: FC<LayoutProps> = ({
 	React.useEffect(() => {
 		dispatch(refresh());
 	}, []);
+
+	const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
+
+	const type = isLargerThan800 ? 'default' : 'pos';
 
 	return (
 		<AuthWrapper>
@@ -72,7 +76,7 @@ const Layout: FC<LayoutProps> = ({
 				<Flex
 					flexDir='column'
 					w='full'
-					pl={type != 'default' ? 0 : sizes.HOME_NAV_LEFT}
+					pl={type !== 'default' ? 0 : sizes.HOME_NAV_LEFT}
 					{...props}>
 					<Flex
 						pt={type == 'pos' ? 12 : PADDING_TOP}

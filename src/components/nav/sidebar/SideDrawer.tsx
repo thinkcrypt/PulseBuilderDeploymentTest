@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import Sidebar from './Sidebar';
 import { useGetSelfQuery } from '@/store/services/authApi';
-import { sizes } from '@/lib/constants';
+import { sizes, zIndex } from '@/lib/constants';
 import Icon from '@/components/library/icon/Icon';
 
 const SideDrawer = () => {
@@ -27,7 +27,12 @@ const SideDrawer = () => {
 			<Flex sx={styles.container}>
 				<IconButton
 					aria-label='menu'
-					icon={<Icon name='menu' size={20} />}
+					icon={
+						<Icon
+							name='menu'
+							size={20}
+						/>
+					}
 					onClick={onOpen}
 					size='xs'
 					variant='ghost'
@@ -35,12 +40,17 @@ const SideDrawer = () => {
 				<Heading size='md'>{data?.store?.name}</Heading>
 			</Flex>
 
-			<Drawer isOpen={isOpen} placement='left' onClose={onClose}>
+			<Drawer
+				isOpen={isOpen}
+				placement='left'
+				onClose={onClose}>
 				<DrawerOverlay />
 
 				<DrawerContent>
-					<DrawerCloseButton />
-					<Sidebar w='100%' />
+					<Sidebar
+						w='100%'
+						closeBtn={<DrawerCloseButton />}
+					/>
 				</DrawerContent>
 			</Drawer>
 		</>
@@ -50,6 +60,7 @@ const SideDrawer = () => {
 const styles = {
 	container: {
 		gap: 2,
+		zIndex: zIndex.NAV,
 		w: sizes.SIDEBAR_WIDTH,
 		alignItems: 'center',
 		h: '64px',

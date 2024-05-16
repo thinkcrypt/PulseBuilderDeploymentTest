@@ -8,6 +8,7 @@ import { TableObjectDataProps } from '../../types';
 type TableDataPropsType = TableCellProps &
 	TableObjectDataProps & {
 		children: any;
+		key: string;
 	};
 
 type ComponentProps = TableCellProps & {
@@ -60,6 +61,7 @@ const TableData: React.FC<TableDataPropsType> = ({
 	type,
 	tagType,
 	imageKey,
+	key,
 	...props
 }) => {
 	// Determine the component to use based on the type of the content

@@ -1,87 +1,88 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Menu, MenuButton, IconButton } from '@chakra-ui/react';
-import TableData from '../data/TableData';
 import Icon from '../../icon/Icon';
 import Link from 'next/link';
 import MenuContainer from '../../menu/MenuContainer';
 import MenuItem from '../../menu/CustomMenuItem';
 import DeleteItemModal from '../modals/DeleteItemModel';
 import ViewItemModal from '../modals/ViewItemModal';
+import CustomTd from '../data/CustomTd';
+import useIsMobile from '../../hooks/useIsMobile';
 
-const TableMenu = ({
-	data,
-	id,
-	path,
-	title,
-	item: dataItem,
-}: {
-	item: any;
+type TableMenuProps = {
 	data: any;
 	id: string;
 	path: string;
 	title: any;
-}) => {
+	item: any;
+};
+
+const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }) => {
+	const isMobile = useIsMobile();
 	return (
 		<Menu>
-			<TableData>
+			<CustomTd>
 				<MenuButton
+					sx={isMobile ? { position: 'absolute', right: 4, top: 4 } : {}}
 					as={IconButton}
 					size='sm'
 					icon={<Icon name='settings' />}
 					variant='ghost'
 				/>
-			</TableData>
+			</CustomTd>
 
 			<MenuContainer>
 				{data?.map((item: any, i: number) => {
-					if (item?.type == 'edit')
-						return (
-							<Link
-								key={i}
-								href={`/${path}/edit/${id}`}>
-								<MenuItem key={i}>{item?.title}</MenuItem>
-							</Link>
-						);
+					switch (item.type) {
+						case 'edit':
+							return (
+								<Link
+									key={i}
+									href={`/${path}/edit/${id}`}>
+									<MenuItem key={i}>{item?.title}</MenuItem>
+								</Link>
+							);
 
-					if (item?.type == 'view')
-						return (
-							<Link
-								key={i}
-								href={`/${path}/${id}`}>
-								<MenuItem>{item?.title}</MenuItem>
-							</Link>
-						);
+						case 'view':
+							return (
+								<Link
+									key={i}
+									href={`/${path}/${id}`}>
+									<MenuItem>{item?.title}</MenuItem>
+								</Link>
+							);
 
-					if (item?.type == 'delete')
-						return (
-							<DeleteItemModal
-								key={i}
-								id={id}
-								title={title}
-								path={path}
-							/>
-						);
-					if (item?.type == 'view-modal')
-						return (
-							<ViewItemModal
-								key={i}
-								id={id}
-								title={title}
-								path={path}
-								dataModel={item?.dataModel}
-							/>
-						);
+						case 'delete':
+							return (
+								<DeleteItemModal
+									key={i}
+									id={id}
+									title={title}
+									path={path}
+								/>
+							);
+						case 'view-modal':
+							return (
+								<ViewItemModal
+									key={i}
+									id={id}
+									title={title}
+									path={path}
+									dataModel={item?.dataModel}
+								/>
+							);
 
-					if (item?.type == 'custom')
-						return (
-							<item.modal
-								key={i}
-								id={id}
-								data={dataItem}
-							/>
-						);
-
-					return <MenuItem key={i}>{item?.title}</MenuItem>;
+						case 'custom':
+							return (
+								<item.modal
+									key={i}
+									id={id}
+									data={dataItem}
+								/>
+							);
+						default:
+							return <MenuItem key={i}>{item?.title}</MenuItem>;
+					}
 				})}
 			</MenuContainer>
 		</Menu>

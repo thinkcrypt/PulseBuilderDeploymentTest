@@ -1,7 +1,8 @@
 import React from 'react';
-import { Center, TextProps, Tr } from '@chakra-ui/react';
+import { Center, TextProps, Tr, Stack } from '@chakra-ui/react';
 import TableData from './data/TableData';
 import TableSelectItem from './data/TableSelectItem';
+import useIsMobile from '../hooks/useIsMobile';
 
 type TableRowProps = TextProps & {
 	children: React.ReactNode;
@@ -18,17 +19,34 @@ const TableRow: React.FC<TableRowProps> = ({ children, actions, selectable, id, 
 	const handleMouseLeave = () => {
 		setBg('transparent');
 	};
+
+	const isMobile = useIsMobile();
+
+	if (isMobile) {
+		return (
+			<Stack
+				position='relative'
+				width='100%'
+				borderWidth={1}
+				borderRadius='16px'
+				mb={2}
+				p={4}
+				direction='column'
+				{...props}>
+				{selectable && <TableSelectItem id={id} />}
+				{children}
+			</Stack>
+		);
+	}
+
 	return (
-		<Tr h='2.5rem' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} {...props}>
+		<Tr
+			h='2.5rem'
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+			{...props}>
 			{selectable && <TableSelectItem id={id} />}
 			{children}
-			{/* {actions && (
-				<TableData>
-					<Center border={`1px solid ${bg}`} p={1} px={2}>
-						...
-					</Center>
-				</TableData>
-			)} */}
 		</Tr>
 	);
 };

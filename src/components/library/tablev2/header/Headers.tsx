@@ -4,6 +4,7 @@ import { TableObjectDataProps } from '../../types';
 import { Checkbox, Text } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { selectAll } from '@/store/slices/tableSlice';
+import useIsMobile from '../../hooks/useIsMobile';
 
 type HeadersProps = {
 	tableData: TableObjectDataProps[];
@@ -29,6 +30,10 @@ const Headers = ({ tableData, fields, selectable, isLoading, data }: HeadersProp
 		const isSelected = ids?.every((id: any) => selectedItems.includes(id));
 		setChecked(isSelected);
 	}, [selectedItems, data]);
+
+	const isMobile = useIsMobile();
+
+	if (isMobile) return null;
 
 	return (
 		<>
