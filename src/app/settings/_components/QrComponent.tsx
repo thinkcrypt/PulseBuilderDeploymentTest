@@ -38,7 +38,9 @@ const QrComponent = ({ id }: { id: string }) => {
 					viewBox={`0 0 256 256`}
 				/>
 			</Flex>
-			<Flex gap={2}>
+			<Flex
+				gap={2}
+				pb={8}>
 				<Button
 					size='sm'
 					colorScheme='gray'

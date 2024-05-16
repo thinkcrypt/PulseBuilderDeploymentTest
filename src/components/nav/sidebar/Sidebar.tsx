@@ -7,12 +7,15 @@ import { useGetSelfQuery } from '@/store/services/authApi';
 import SidebarBody from './sidebar-components/SidebarBody';
 import SidebarHeading from './sidebar-components/SidebarHeading';
 import SidebarContainer from './sidebar-components/SidebarContainer';
+import useIsMobile from '@/components/library/hooks/useIsMobile';
 
 const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...props }) => {
 	const { data } = useGetSelfQuery({});
 	const mainHeight = '82vh';
 
 	const title = data?.restaurant?.name || '--';
+
+	const isMobile = useIsMobile();
 
 	const main = (
 		<SidebarBody>
@@ -36,6 +39,7 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 			<Spacer />
 			{sidebar.length > 0 && (
 				<SidebarItem
+					sx={isMobile ? { mb: 8 } : {}}
 					key={sidebar.length - 1}
 					href={sidebar[sidebar.length - 1]?.href}
 					path={sidebar[sidebar.length - 1]?.path}

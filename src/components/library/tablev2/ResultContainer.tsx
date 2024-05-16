@@ -24,6 +24,7 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 				left: isMobile ? 0 : sizes.HOME_NAV_LEFT,
 				w: isMobile ? '100vw' : sizes.HOME_NAV_MAX_WIDTH,
 				px: isMobile ? 3 : 4,
+				pb: isMobile ? 8 : 0,
 				...props,
 			}}>
 			{!isMobile && (

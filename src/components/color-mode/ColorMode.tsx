@@ -12,7 +12,9 @@ const ColorMode = () => {
 		colorMode === 'light' ? <IoMoonOutline size={SIZE} /> : <IoSunnyOutline size={SIZE} />;
 
 	return (
-		<Center sx={styles.container} onClick={toggleColorMode}>
+		<Center
+			sx={styles.container}
+			onClick={toggleColorMode}>
 			{icon}
 		</Center>
 	);

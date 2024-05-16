@@ -10,9 +10,10 @@ type SidebarItemProps = {
 	href: string;
 	path: string;
 	icon: string;
+	sx?: any;
 };
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon }) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, sx }) => {
 	const { selected } = useAppSelector((state: any) => state.route);
 	const dispatch = useAppDispatch();
 	const color = useColorModeValue('#4a4a4a', '#fff');
@@ -30,8 +31,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon })
 			as={Link}
 			href={href}
 			bg={selected == path ? bg : 'transparent'}
-			sx={styles.container}>
-			<Icon color={color} name={icon} />
+			sx={{ ...styles.container, ...sx }}>
+			<Icon
+				color={color}
+				name={icon}
+			/>
 			<Text sx={styles.text}>{children} </Text>
 		</Flex>
 	);
