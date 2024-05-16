@@ -15,6 +15,7 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 			bg: 'container.light',
 			borderBottomWidth: 2,
 			borderBottomColor: 'stroke.light',
+			maxW: '100vw',
 			zIndex: zIndex.NAV,
 			_dark: {
 				bg: 'container.dark',
