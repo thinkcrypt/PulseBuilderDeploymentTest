@@ -1,24 +1,20 @@
 'use client';
 import React, { useState, ChangeEvent, FC } from 'react';
 
-import {
-	Button,
-	Flex,
-	Popover,
-	PopoverArrow,
-	PopoverBody,
-	PopoverTrigger,
-	useColorModeValue,
-	useDisclosure,
-} from '@chakra-ui/react';
+import { Button, Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
 import Column from '../../../../containers/Column';
-import PopoverContainer, { PopoverHeader } from '@/app/_popover/PopoverContainer';
+import PopModalCloseButton from '@/components/library/tablev2/table-components/pop-modals/PopModalCloseButton';
 import FilterSelect from '../../../utils/inputs/FilterSelect';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
 import Filter from '../Filter';
 import FilterInput from '@/components/library/utils/inputs/FilterInput';
 import BetweenValues from './BetweenValues';
+import useIsMobile from '@/components/library/hooks/useIsMobile';
+import PopModal from '@/components/library/tablev2/table-components/pop-modals/PopModal';
+import PopModalHeader from '@/components/library/tablev2/table-components/pop-modals/PopModalHeader';
+import PopModalBody from '@/components/library/tablev2/table-components/pop-modals/PopModalBody';
+import PopModalFooter from '@/components/library/tablev2/table-components/pop-modals/PopModalFooter';
 
 type DateFilterProps = {
 	field: string;
@@ -65,7 +61,7 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 		onOpen();
 	};
 
-	const close = (): void => {
+	const popClose = (): void => {
 		reset();
 		onClose();
 	};
@@ -84,45 +80,75 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 		onClose();
 	};
 
+	const isMobile = useIsMobile();
+
+	const button = (
+		<span>
+			<Filter>
+				{label} {ifFieldExists() && <span>| {filters[field]}</span>}
+			</Filter>
+		</span>
+	);
+
 	return (
-		<Popover onOpen={open} onClose={close} isOpen={isOpen}>
-			<PopoverTrigger>
-				<Flex>
-					<Filter>
-						{label} {ifFieldExists() && display}
-					</Filter>
-				</Flex>
-			</PopoverTrigger>
-			<PopoverContainer>
-				<PopoverArrow bg={arrow} />
-				<PopoverHeader>{title}</PopoverHeader>
-				<PopoverBody>
-					<Column gap={3} pb={1}>
-						<FilterSelect value={operator} onChange={handleOperatorChange}>
-							<option value='eq'>is equal to</option>
-							<option value='btwn'>is between</option>
-							<option value='gte'>is greater than</option>
-							<option value='lte'>is less than</option>
-						</FilterSelect>
+		<PopModal
+			isMobile={isMobile}
+			onOpen={open}
+			onClose={popClose}
+			isOpen={isOpen}
+			trigger={
+				isMobile ? (
+					<Flex onClick={onOpen}>{button}</Flex>
+				) : (
+					<PopoverTrigger>{button}</PopoverTrigger>
+				)
+			}>
+			<PopModalHeader isMobile={isMobile}>{title}</PopModalHeader>
+			<PopModalCloseButton isMobile={isMobile} />
+			<PopModalBody isMobile={isMobile}>
+				<Column
+					gap={3}
+					pb={1}>
+					<FilterSelect
+						value={operator}
+						onChange={handleOperatorChange}>
+						<option value='eq'>is equal to</option>
+						<option value='btwn'>is between</option>
+						<option value='gte'>is greater than</option>
+						<option value='lte'>is less than</option>
+					</FilterSelect>
 
-						{operator === 'eq' && (
-							<FilterInput type='number' value={value} onChange={e => setValue(e.target.value)} />
-						)}
-						{operator === 'btwn' && <BetweenValues setVal={setValue} />}
-						{operator === 'gte' && (
-							<FilterInput type='number' value={value} onChange={e => setValue(e.target.value)} />
-						)}
-						{operator === 'lte' && (
-							<FilterInput type='number' value={value} onChange={e => setValue(e.target.value)} />
-						)}
+					{operator === 'eq' && (
+						<FilterInput
+							type='number'
+							value={value}
+							onChange={e => setValue(e.target.value)}
+						/>
+					)}
+					{operator === 'btwn' && <BetweenValues setVal={setValue} />}
+					{operator === 'gte' && (
+						<FilterInput
+							type='number'
+							value={value}
+							onChange={e => setValue(e.target.value)}
+						/>
+					)}
+					{operator === 'lte' && (
+						<FilterInput
+							type='number'
+							value={value}
+							onChange={e => setValue(e.target.value)}
+						/>
+					)}
 
-						<Button size='sm' onClick={handleClick}>
-							Apply
-						</Button>
-					</Column>
-				</PopoverBody>
-			</PopoverContainer>
-		</Popover>
+					<Button
+						size='sm'
+						onClick={handleClick}>
+						Apply
+					</Button>
+				</Column>
+			</PopModalBody>
+		</PopModal>
 	);
 };
 

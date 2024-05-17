@@ -1,13 +1,15 @@
+'use client';
 import { zIndex } from '@/lib/constants';
 import { FlexPropsType } from '@/types';
 import { Flex } from '@chakra-ui/react';
 import React, { FC } from 'react';
+import SideDrawer from './sidebar/SideDrawer';
+import useIsMobile from '../library/hooks/useIsMobile';
 
 const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 	const styles = {
 		container: {
 			h: 16,
-			w: '100vw',
 			poistion: 'fixed',
 			top: 0,
 			left: 0,
@@ -24,10 +26,14 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 			...props,
 		},
 	};
+
+	const isMobile = useIsMobile();
+
 	return (
 		<Flex
 			sx={styles.container}
 			position='fixed'>
+			{isMobile && <SideDrawer />}
 			{children}
 		</Flex>
 	);

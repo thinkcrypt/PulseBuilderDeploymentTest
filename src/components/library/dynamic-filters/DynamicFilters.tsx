@@ -15,11 +15,18 @@ const DynamicFilters = ({ path }: { path: any }) => {
 
 	if (isFetching) return null;
 	return (
-		<Flex gap={2} flexWrap='wrap'>
+		<Flex
+			gap={2}
+			flexWrap='wrap'>
 			{data?.map((item: any, i: number) => {
 				if (item.type === 'boolean') {
 					return (
-						<BooleanFilter key={i} field={item?.field} label={item?.label} title={item?.title} />
+						<BooleanFilter
+							key={i}
+							field={item?.field}
+							label={item?.label}
+							title={item?.title}
+						/>
 					);
 				}
 				if (item.type === 'multi-select') {
@@ -34,15 +41,30 @@ const DynamicFilters = ({ path }: { path: any }) => {
 					);
 				}
 				if (item.type === 'date') {
-					return <DateFilter key={i} field={item?.field} label={item?.label} title={item?.title} />;
+					return (
+						<DateFilter
+							key={i}
+							field={item?.field}
+							label={item?.label}
+							title={item?.title}
+						/>
+					);
 				}
 				if (item.type === 'range') {
 					return (
-						<RangeFilter key={i} field={item?.field} label={item?.label} title={item?.title} />
+						<RangeFilter
+							key={i}
+							field={item?.field}
+							label={item?.label}
+							title={item?.title}
+						/>
 					);
 				}
 			})}
-			<Button onClick={() => dispatch(clearFilters())} variant='link' size='xs'>
+			<Button
+				onClick={() => dispatch(clearFilters())}
+				variant='link'
+				size='xs'>
 				Clear filters
 			</Button>
 		</Flex>

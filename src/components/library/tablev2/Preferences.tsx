@@ -1,22 +1,16 @@
 import { useAppSelector } from '@/hooks';
 import { useUpdatePreferencesMutation } from '@/store/services/authApi';
-import {
-	Button,
-	Modal,
-	ModalOverlay,
-	ModalHeader,
-	ModalBody,
-	ModalCloseButton,
-	useDisclosure,
-	Text,
-	Checkbox,
-	Grid,
-	ModalFooter,
-	IconButton,
-} from '@chakra-ui/react';
+import { Button, useDisclosure, Text, Checkbox, Grid, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useState, useCallback } from 'react';
 import Icon from '../icon/Icon';
-import ModalContainer from '@/components/library/menu/ModalContainer';
+import useIsMobile from '../hooks/useIsMobile';
+import MenuModal from './table-components/menu-modals/MenuModal';
+import MenuModalOverlay from './table-components/menu-modals/MenuModalOverlay';
+import MenuModalContent from './table-components/menu-modals/MenuModalContent';
+import MenuModalHeader from './table-components/menu-modals/MenuModalHeader';
+import MenuModalBody from './table-components/menu-modals/MenuModalBody';
+import MenuModalCloseButton from './table-components/menu-modals/MenuModalCloseButton';
+import MenuModalFooter from './table-components/menu-modals/MenuModalFooter';
 
 const Preferences = ({ path }: { path: string }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,20 +53,18 @@ const Preferences = ({ path }: { path: string }) => {
 		}
 	}, []);
 
-	const checkboxes = React.useMemo(
-		() =>
-			fields.map((field: string, i: number) => (
-				<Checkbox
-					fontWeight='600'
-					colorScheme='brand'
-					key={i}
-					isChecked={selected?.includes(field)}
-					onChange={e => handleCheckboxChange(e, field)}>
-					{field}
-				</Checkbox>
-			)),
-		[fields, selected, handleCheckboxChange]
-	);
+	const checkboxes = fields.map((field: string, i: number) => (
+		<Checkbox
+			fontWeight='600'
+			colorScheme='brand'
+			key={i}
+			isChecked={selected?.includes(field)}
+			onChange={e => handleCheckboxChange(e, field)}>
+			{field}
+		</Checkbox>
+	));
+
+	const isMobile = useIsMobile();
 
 	return (
 		<>
@@ -88,32 +80,45 @@ const Preferences = ({ path }: { path: string }) => {
 			{/* </span>
 			</Tooltip> */}
 
-			<Modal isOpen={isOpen} onClose={close}>
-				<ModalOverlay />
-				<ModalContainer>
-					<ModalHeader>Select Preferences</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						<Grid gridTemplateColumns={'1fr 1fr 1fr'} gap={3} rowGap={4}>
-							{checkboxes}
-						</Grid>
-					</ModalBody>
-					<ModalFooter>
-						{selected?.length < 2 ? (
-							<Text color='red'>Please select at least 2 fields</Text>
-						) : (
-							<>
-								<Button size='xs' colorScheme='gray' mr={2} onClick={close}>
-									Discard
-								</Button>
-								<Button size='xs' onClick={handleSubmit} isLoading={result?.isLoading}>
-									Apply
-								</Button>
-							</>
-						)}
-					</ModalFooter>
-				</ModalContainer>
-			</Modal>
+			<MenuModal
+				isOpen={isOpen}
+				onClose={close}>
+				{/* <MenuModalOverlay />
+				<MenuModalContent> */}
+
+				<MenuModalHeader>Select Preferences</MenuModalHeader>
+				<MenuModalCloseButton />
+				<MenuModalBody>
+					<Grid
+						gridTemplateColumns={{ base: '1fr 1fr', md: '1fr 1fr 1fr' }}
+						gap={3}
+						rowGap={4}>
+						{checkboxes}
+					</Grid>
+				</MenuModalBody>
+				<MenuModalFooter>
+					{selected?.length < 2 ? (
+						<Text color='red'>Please select at least 2 fields</Text>
+					) : (
+						<>
+							<Button
+								size='xs'
+								colorScheme='gray'
+								mr={2}
+								onClick={close}>
+								Discard
+							</Button>
+							<Button
+								size='xs'
+								onClick={handleSubmit}
+								isLoading={result?.isLoading}>
+								Apply
+							</Button>
+						</>
+					)}
+				</MenuModalFooter>
+				{/* </MenuModalContent> */}
+			</MenuModal>
 		</>
 	);
 };

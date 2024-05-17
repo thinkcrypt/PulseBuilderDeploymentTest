@@ -13,13 +13,16 @@ import React from 'react';
 import TableSkeleton from './TableSkeleton';
 import TableSearch from './TableSearch';
 import ResultContainer from './ResultContainer';
-import SpaceBetween from '../../containers/SpaceBetween';
 import TableRefresh from './TableRefresh';
 import DynamicFilters from '../dynamic-filters/DynamicFilters';
 import { CustomTableProps } from '../types/components.types';
 import Preferences from './Preferences';
-import { useAppSelector, useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks';
 import { selectAll } from '@/store/slices/tableSlice';
+import SelectedItemsContainer from './table-components/containers/SelectedItemsContainer';
+import FIlterContainer from './table-components/containers/FIlterContainer';
+import TableSettingsMenuContainer from './table-components/containers/TableSettingsMenuContainer';
+import TableSearchContainer from './table-components/containers/TableSearchContainer';
 
 const CustomTable: React.FC<CustomTableProps> = ({
 	children,
@@ -51,63 +54,35 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	return (
 		<>
 			{selectedItems?.length > 0 ? (
-				<Flex
-					p={2}
-					w='full'
-					py={2}>
-					<SpaceBetween
-						px={1}
-						w='full'
-						borderRadius='full'
-						border='1px dashed'
-						borderColor='gray.400'
-						color='gray.600'
-						fontWeight='600'
-						_dark={{
-							borderColor: 'gray.400',
-							color: 'gray.200',
-						}}>
-						<Flex>
-							<Flex
-								align='center'
-								gap={2}>
-								<CloseButton
-									size='md'
-									borderRadius='full'
-									onClick={onUnselect}
-								/>
-								<Text>{selectedItems?.length} selected</Text>
-							</Flex>
-						</Flex>
-						<Text>...</Text>
-					</SpaceBetween>
-				</Flex>
-			) : (
-				<SpaceBetween
-					p={2}
-					border='1px solid transparent'>
-					<Flex
-						align='center'
-						gap={1}
-						justify='space-between'
-						w='100%'>
-						{Boolean(filters) && (
-							<Flex
-								gap={2}
-								align='center'>
-								<DynamicFilters path={filters} />
-							</Flex>
-						)}
-
+				<SelectedItemsContainer>
+					<Flex>
 						<Flex
 							align='center'
 							gap={2}>
-							{!hidePreferences && <Preferences path={path} />}
-							<TableSearch />
-							<TableRefresh />
+							<CloseButton
+								size='md'
+								borderRadius='full'
+								onClick={onUnselect}
+							/>
+							<Text>{selectedItems?.length} selected</Text>
 						</Flex>
 					</Flex>
-				</SpaceBetween>
+					<Text>...</Text>
+				</SelectedItemsContainer>
+			) : (
+				<TableSettingsMenuContainer>
+					{Boolean(filters) && (
+						<FIlterContainer>
+							<DynamicFilters path={filters} />
+						</FIlterContainer>
+					)}
+
+					<TableSearchContainer>
+						{!hidePreferences && <Preferences path={path} />}
+						<TableSearch />
+						<TableRefresh />
+					</TableSearchContainer>
+				</TableSettingsMenuContainer>
 			)}
 
 			<TableContainer

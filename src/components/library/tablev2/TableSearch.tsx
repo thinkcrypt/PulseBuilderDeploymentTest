@@ -12,14 +12,21 @@ const TableSearch = () => {
 	};
 
 	return (
-		<InputGroup size='sm' w={300}>
+		<InputGroup
+			flex={1}
+			size='sm'
+			w={{ base: 'full', md: 300 }}>
 			<Input
 				borderRadius='lg'
 				placeholder='Search'
 				value={value}
 				onChange={e => setValue(e.target.value)}
 			/>
-			<InputRightAddon as={Button} onClick={handleSearch} colorScheme='gray' borderRightRadius='lg'>
+			<InputRightAddon
+				as={Button}
+				onClick={handleSearch}
+				colorScheme='gray'
+				borderRightRadius='lg'>
 				<TbSearch />
 			</InputRightAddon>
 		</InputGroup>

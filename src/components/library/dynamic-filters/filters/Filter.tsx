@@ -25,7 +25,10 @@ const Filter: React.FC<FilterProps> = ({ children, ...props }) => {
 			pl={1}
 			py={1}
 			{...props}>
-			<Icon name='add-tag' size={16} />
+			<Icon
+				name='add-tag'
+				size={16}
+			/>
 			<TagLabel ml={1}>{children}</TagLabel>
 		</Tag>
 	);

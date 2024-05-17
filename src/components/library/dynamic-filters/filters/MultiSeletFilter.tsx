@@ -4,19 +4,20 @@ import {
 	Button,
 	Checkbox,
 	Flex,
-	Popover,
-	PopoverArrow,
-	PopoverBody,
 	PopoverTrigger,
 	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
 import Column from '../../../containers/Column';
-import PopoverContainer, { PopoverHeader } from '@/app/_popover/PopoverContainer';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
 import Filter from './Filter';
 import FilterInput from '../../utils/inputs/FilterInput';
+import useIsMobile from '../../hooks/useIsMobile';
+import PopModal from '../../tablev2/table-components/pop-modals/PopModal';
+import PopModalBody from '../../tablev2/table-components/pop-modals/PopModalBody';
+import PopModalHeader from '../../tablev2/table-components/pop-modals/PopModalHeader';
+import PopModalCloseButton from '../../tablev2/table-components/pop-modals/PopModalCloseButton';
 
 type FilterProps = {
 	title: string;
@@ -59,7 +60,7 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 		setVal(filters[field] ? filters[field].split(',') : []);
 		onOpen();
 	};
-	const close = () => {
+	const popClose = () => {
 		setVal(filters[field] ? filters[field].split(',') : []);
 		setSearch('');
 		onClose();
@@ -74,48 +75,70 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 		);
 		close();
 	};
+	const isMobile = useIsMobile();
+
+	const button = (
+		<span>
+			<Filter>
+				{label} {ifFieldExists() && <span>| {filters[field]}</span>}
+			</Filter>
+		</span>
+	);
 	return (
-		<Popover onOpen={open} onClose={close} isOpen={isOpen}>
-			<PopoverTrigger>
-				<Flex>
-					<Filter>
-						{label || field} {ifFieldExists() && <span>| {filters[field]}</span>}
-					</Filter>
-				</Flex>
-			</PopoverTrigger>
-			<PopoverContainer>
-				<PopoverArrow bg={arrow} />
-				<PopoverHeader>{title}</PopoverHeader>
-				<PopoverBody>
-					<Column gap={3} pb={1}>
-						<FilterInput type='text' value={search} onChange={handleSearch} />
+		<PopModal
+			isMobile={isMobile}
+			onOpen={open}
+			onClose={popClose}
+			isOpen={isOpen}
+			trigger={
+				isMobile ? (
+					<Flex onClick={onOpen}>{button}</Flex>
+				) : (
+					<PopoverTrigger>{button}</PopoverTrigger>
+				)
+			}>
+			<PopModalHeader isMobile={isMobile}>{title}</PopModalHeader>
+			<PopModalCloseButton isMobile={isMobile} />
+			<PopModalBody isMobile={isMobile}>
+				<Column
+					gap={3}
+					pb={1}>
+					<FilterInput
+						type='text'
+						value={search}
+						onChange={handleSearch}
+					/>
 
-						<Column maxH='180px' overflowY='scroll' gap={2}>
-							{options
-								.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
-								.map((option, i) => (
-									<Checkbox
-										isChecked={val.includes(option.value) ? true : false}
-										onChange={handleChange}
-										name={option.value}
-										borderRadius='md'
-										size='sm'
-										iconSize={20}
-										fontSize='10px'
-										colorScheme='brand'
-										key={i}>
-										{option.label}
-									</Checkbox>
-								))}
-						</Column>
-
-						<Button size='sm' onClick={handleClick}>
-							Apply
-						</Button>
+					<Column
+						maxH='180px'
+						overflowY='scroll'
+						gap={2}>
+						{options
+							.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
+							.map((option, i) => (
+								<Checkbox
+									isChecked={val.includes(option.value) ? true : false}
+									onChange={handleChange}
+									name={option.value}
+									borderRadius='md'
+									size='sm'
+									iconSize={20}
+									fontSize='10px'
+									colorScheme='brand'
+									key={i}>
+									{option.label}
+								</Checkbox>
+							))}
 					</Column>
-				</PopoverBody>
-			</PopoverContainer>
-		</Popover>
+
+					<Button
+						size='sm'
+						onClick={handleClick}>
+						Apply
+					</Button>
+				</Column>
+			</PopModalBody>
+		</PopModal>
 	);
 };
 

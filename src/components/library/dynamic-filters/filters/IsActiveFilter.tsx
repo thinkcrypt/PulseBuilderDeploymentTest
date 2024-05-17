@@ -41,18 +41,27 @@ const IsActiveFilter: React.FC<IsActiveFilterProps> = ({ trigger, value, onChang
 		close();
 	};
 	return (
-		<Popover onOpen={open} onClose={close} isOpen={isOpen}>
+		<Popover
+			onOpen={open}
+			onClose={close}
+			isOpen={isOpen}>
 			<PopoverTrigger>{trigger}</PopoverTrigger>
 			<PopoverContainer>
 				<PopoverArrow bg={arrow} />
 				<PopoverHeader>Filter by status</PopoverHeader>
 				<PopoverBody>
-					<Column gap={3} pb={1}>
-						<FilterSelect value={val} onChange={handleChange}>
+					<Column
+						gap={3}
+						pb={1}>
+						<FilterSelect
+							value={val}
+							onChange={handleChange}>
 							<option value='true'>True</option>
 							<option value='false'>False</option>
 						</FilterSelect>
-						<Button size='sm' onClick={handleClick}>
+						<Button
+							size='sm'
+							onClick={handleClick}>
 							Apply
 						</Button>
 					</Column>

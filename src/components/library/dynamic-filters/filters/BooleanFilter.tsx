@@ -1,21 +1,17 @@
 'use client';
 import React from 'react';
-import {
-	Button,
-	Flex,
-	Popover,
-	PopoverArrow,
-	PopoverBody,
-	PopoverTrigger,
-	useColorModeValue,
-	useDisclosure,
-} from '@chakra-ui/react';
+import { Button, Flex, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import Column from '../../../containers/Column';
-import PopoverContainer, { PopoverHeader } from '@/app/_popover/PopoverContainer';
 import FilterSelect from '../../utils/inputs/FilterSelect';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
 import Filter from './Filter';
+import PopModal from '../../tablev2/table-components/pop-modals/PopModal';
+import PopModalHeader from '../../tablev2/table-components/pop-modals/PopModalHeader';
+import PopModalBody from '../../tablev2/table-components/pop-modals/PopModalBody';
+import PopModalCloseButton from '../../tablev2/table-components/pop-modals/PopModalCloseButton';
+import PopModalFooter from '../../tablev2/table-components/pop-modals/PopModalFooter';
+import useIsMobile from '../../hooks/useIsMobile';
 
 type IsActiveFilterProps = {
 	title: string;
@@ -24,7 +20,6 @@ type IsActiveFilterProps = {
 };
 
 const BooleanFilter: React.FC<IsActiveFilterProps> = ({ title, field, label }) => {
-	const arrow = useColorModeValue('menu.light', 'menu.dark');
 	const { onOpen, onClose, isOpen } = useDisclosure();
 	const dispatch = useAppDispatch();
 	const { filters } = useAppSelector((state: any) => state.table);
@@ -37,7 +32,7 @@ const BooleanFilter: React.FC<IsActiveFilterProps> = ({ title, field, label }) =
 		setVal(filters[field] || '');
 		onOpen();
 	};
-	const close = () => {
+	const popClose = () => {
 		setVal('');
 		onClose();
 	};
@@ -55,34 +50,59 @@ const BooleanFilter: React.FC<IsActiveFilterProps> = ({ title, field, label }) =
 		return Object.keys(filters).some(key => key.startsWith(field));
 	};
 
+	const isMobile = useIsMobile();
+
+	const button = (
+		<span>
+			<Filter>
+				{label} {ifFieldExists() && <span>| {filters[field]}</span>}
+			</Filter>
+		</span>
+	);
+
 	return (
-		<Popover onOpen={open} onClose={close} isOpen={isOpen}>
-			<PopoverTrigger>
-				<Flex>
-					<Filter>
-						{label} {ifFieldExists() && <span>| {filters[field]}</span>}
-					</Filter>
-				</Flex>
-			</PopoverTrigger>
-			<PopoverContainer>
-				<PopoverArrow bg={arrow} />
-				<PopoverHeader>{title}</PopoverHeader>
-				<PopoverBody>
-					<Column gap={3} pb={1}>
-						<FilterSelect value={val} onChange={handleChange}>
-							<option value='' disabled>
-								Select an option
-							</option>
-							<option value='true'>True</option>
-							<option value='false'>False</option>
-						</FilterSelect>
-						<Button size='sm' onClick={handleClick}>
+		<PopModal
+			isMobile={isMobile}
+			onOpen={open}
+			onClose={popClose}
+			isOpen={isOpen}
+			trigger={
+				isMobile ? (
+					<Flex onClick={onOpen}>{button}</Flex>
+				) : (
+					<PopoverTrigger>{button}</PopoverTrigger>
+				)
+			}>
+			<PopModalHeader isMobile={isMobile}>{title}</PopModalHeader>
+
+			<PopModalCloseButton isMobile={isMobile} />
+			<PopModalBody isMobile={isMobile}>
+				<Column
+					gap={3}
+					pb={1}>
+					<FilterSelect
+						value={val}
+						onChange={handleChange}>
+						<option
+							value=''
+							disabled>
+							Select an option
+						</option>
+						<option value='true'>True</option>
+						<option value='false'>False</option>
+					</FilterSelect>
+					<PopModalFooter isMobile={isMobile}>
+						<Button
+							alignSelf='flex-end'
+							w='full'
+							size='sm'
+							onClick={handleClick}>
 							Apply
 						</Button>
-					</Column>
-				</PopoverBody>
-			</PopoverContainer>
-		</Popover>
+					</PopModalFooter>
+				</Column>
+			</PopModalBody>
+		</PopModal>
 	);
 };
 

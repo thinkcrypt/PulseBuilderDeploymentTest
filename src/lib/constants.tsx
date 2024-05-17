@@ -18,10 +18,12 @@ export const currency = {
 };
 
 const BASE_SIDEBAR_WIDTH = '240px';
+const BASE_SIDEBAR_WIDTH_SMALL = '20PX';
 
 export const sizes = {
 	SIDEBAR_WIDTH: BASE_SIDEBAR_WIDTH,
 	HOME_NAV_MAX_WIDTH: `calc(100vw - ${BASE_SIDEBAR_WIDTH})`,
+	HOME_NAV_SMALL_SCREEN_WIDTH: `calc(100vw - ${'20px + 32px'})`,
 	HOME_NAV_LEFT: BASE_SIDEBAR_WIDTH,
 	PADDING_X_BASE: 4,
 	PADDING_X_MD: 6,

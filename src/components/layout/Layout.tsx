@@ -16,6 +16,7 @@ import Column from '../containers/Column';
 import SelfMenu from '../library/menu/SelfMenu';
 import SideDrawer from '../nav/sidebar/SideDrawer';
 import SpaceBetween from '../library/containers/SpaceBetween';
+import useIsMobile from '../library/hooks/useIsMobile';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 const PADDING_TOP = { base: 16, md: 16, lg: 16 };
@@ -47,14 +48,17 @@ const Layout: FC<LayoutProps> = ({
 
 	const type = isLargerThan800 ? 'default' : 'pos';
 
+	const isMobile = useIsMobile();
+
 	return (
 		<AuthWrapper>
-			<Flex w='100%'>
-				{type !== 'default' && <SideDrawer />}
+			<Flex
+				w='100%'
+				gap={0}>
 				<Navbar
 					px={PX}
-					w={sizes.HOME_NAV_MAX_WIDTH}
-					left={sizes.HOME_NAV_LEFT}
+					w={isMobile ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
+					left={isMobile ? 0 : sizes.HOME_NAV_LEFT}
 					_dark={{ bg: 'navbar.dark' }}>
 					<SpaceBetween>
 						<Heading
@@ -71,7 +75,7 @@ const Layout: FC<LayoutProps> = ({
 					</Flex>
 				</Navbar>
 			</Flex>
-			<Body scrollBehavior='smooth'>
+			<Body>
 				{type == 'default' && <Sidebar />}
 				<Flex
 					flexDir='column'
