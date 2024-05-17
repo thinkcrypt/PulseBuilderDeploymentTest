@@ -12,7 +12,7 @@ const PopModalFooter: FC<MenuModalBodyProps> = ({ children, isMobile }) => {
 		return (
 			<DrawerFooter
 				mx={0}
-				px={0}>
+				px={4}>
 				{children}
 			</DrawerFooter>
 		);

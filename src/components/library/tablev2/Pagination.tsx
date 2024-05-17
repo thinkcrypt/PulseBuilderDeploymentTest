@@ -85,7 +85,7 @@ const Pagination: React.FC<PaginationProps> = ({ data }) => {
 					px={2}
 					fontSize='.9rem'
 					userSelect='none'>
-					Page {page} of {data?.totalPages && data.totalPages}
+					{!isMobile ? `Page ${page} of ${data?.totalPages}` : `${page}/${data?.totalPages}`}
 				</Center>
 				<SquareButton
 					label='Next Page'

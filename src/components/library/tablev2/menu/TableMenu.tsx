@@ -23,10 +23,15 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 		<Menu>
 			<CustomTd>
 				<MenuButton
-					sx={isMobile ? { position: 'absolute', right: 4, top: 4 } : {}}
+					sx={isMobile ? { position: 'absolute', right: 2, top: 2 } : {}}
 					as={IconButton}
-					size='sm'
-					icon={<Icon name='settings' />}
+					size={isMobile ? 'md' : 'sm'}
+					icon={
+						<Icon
+							name={isMobile ? 'dots' : 'settings'}
+							size={isMobile ? 20 : 12}
+						/>
+					}
 					variant='ghost'
 				/>
 			</CustomTd>

@@ -86,6 +86,7 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 	);
 	return (
 		<PopModal
+			handleClick={handleClick}
 			isMobile={isMobile}
 			onOpen={open}
 			onClose={popClose}
@@ -100,42 +101,32 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 			<PopModalHeader isMobile={isMobile}>{title}</PopModalHeader>
 			<PopModalCloseButton isMobile={isMobile} />
 			<PopModalBody isMobile={isMobile}>
+				<FilterInput
+					type='text'
+					value={search}
+					onChange={handleSearch}
+				/>
+
 				<Column
-					gap={3}
-					pb={1}>
-					<FilterInput
-						type='text'
-						value={search}
-						onChange={handleSearch}
-					/>
-
-					<Column
-						maxH='180px'
-						overflowY='scroll'
-						gap={2}>
-						{options
-							.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
-							.map((option, i) => (
-								<Checkbox
-									isChecked={val.includes(option.value) ? true : false}
-									onChange={handleChange}
-									name={option.value}
-									borderRadius='md'
-									size='sm'
-									iconSize={20}
-									fontSize='10px'
-									colorScheme='brand'
-									key={i}>
-									{option.label}
-								</Checkbox>
-							))}
-					</Column>
-
-					<Button
-						size='sm'
-						onClick={handleClick}>
-						Apply
-					</Button>
+					maxH={{ base: 'auto', md: '180px' }}
+					overflowY='scroll'
+					gap={2}>
+					{options
+						.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
+						.map((option, i) => (
+							<Checkbox
+								isChecked={val.includes(option.value) ? true : false}
+								onChange={handleChange}
+								name={option.value}
+								borderRadius='md'
+								size={{ base: 'lg', md: 'sm' }}
+								iconSize={20}
+								fontSize='10px'
+								colorScheme='brand'
+								key={i}>
+								{option.label}
+							</Checkbox>
+						))}
 				</Column>
 			</PopModalBody>
 		</PopModal>

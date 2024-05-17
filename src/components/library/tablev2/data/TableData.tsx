@@ -20,21 +20,21 @@ const typeToComponent: any = {
 	// If the type is 'date', format the content as a date
 	date: ({ children, ...props }: ComponentProps): any => (
 		<CustomTd
-			fontSize='.7rem'
+			fontSize={{ base: '1rem', md: '.7rem' }}
 			{...props}>
 			{children ? moment(children).calendar() : '--'}
 		</CustomTd>
 	),
 	'date-only': ({ children, ...props }: ComponentProps): any => (
 		<CustomTd
-			fontSize='.7rem'
+			fontSize={{ base: '1rem', md: '.7rem' }}
 			{...props}>
 			{children ? moment(children).format('YYYY-MM-DD') : '--'}
 		</CustomTd>
 	),
 	time: ({ children, ...props }: ComponentProps): any => (
 		<CustomTd
-			fontSize='.7rem'
+			fontSize={{ base: '1rem', md: '.7rem' }}
 			{...props}>
 			{children ? moment(children).format('hh:mm A') : '--'}
 		</CustomTd>

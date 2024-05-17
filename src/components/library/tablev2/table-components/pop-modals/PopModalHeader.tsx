@@ -10,6 +10,7 @@ const PopModalHeader: FC<MenuModalBodyProps> = ({ children, isMobile }) => {
 	if (isMobile) {
 		return (
 			<DrawerHeader
+				px={4}
 				color='header.500'
 				_dark={{ color: 'header.200' }}
 				fontSize='.875rem'

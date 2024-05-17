@@ -60,7 +60,10 @@ const SelectFilter: FC<FilterProps> = ({ title, field, options, label }) => {
 		close();
 	};
 	return (
-		<Popover onOpen={open} onClose={close} isOpen={isOpen}>
+		<Popover
+			onOpen={open}
+			onClose={close}
+			isOpen={isOpen}>
 			<PopoverTrigger>
 				<Flex>
 					<Filter>
@@ -72,18 +75,28 @@ const SelectFilter: FC<FilterProps> = ({ title, field, options, label }) => {
 				<PopoverArrow bg={arrow} />
 				<PopoverHeader>{title}</PopoverHeader>
 				<PopoverBody>
-					<Column gap={3} pb={1}>
-						<FilterSelect value={val} onChange={handleChange}>
-							<option value='' disabled>
+					<Column
+						gap={3}
+						pb={1}>
+						<FilterSelect
+							value={val}
+							onChange={handleChange}>
+							<option
+								value=''
+								disabled>
 								Select an option
 							</option>
 							{options.map((option, i) => (
-								<option key={i} value={option.value}>
+								<option
+									key={i}
+									value={option.value}>
 									{option.label}
 								</option>
 							))}
 						</FilterSelect>
-						<Button size='sm' onClick={handleClick}>
+						<Button
+							size='sm'
+							onClick={handleClick}>
 							Apply
 						</Button>
 					</Column>

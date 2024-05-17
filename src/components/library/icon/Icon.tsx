@@ -32,6 +32,7 @@ import { BsCollectionFill } from 'react-icons/bs';
 import { FcFeedback } from 'react-icons/fc';
 import { MdFeedback } from 'react-icons/md';
 import { FaRegClock } from 'react-icons/fa6';
+import { BsThreeDots } from 'react-icons/bs';
 
 type IconProps = {
 	size?: number;
@@ -71,6 +72,7 @@ const icons: any = {
 	feedback: FcFeedback,
 	feedbacks: MdFeedback,
 	'clock-outline': FaRegClock,
+	dots: BsThreeDots,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

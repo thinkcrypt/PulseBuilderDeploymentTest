@@ -5,7 +5,7 @@ import TableMenu from '../menu/TableMenu';
 import EditableTableData from '../data/EditableTableData';
 import { format } from 'date-fns';
 import TableSelectItem from '../data/TableSelectItem';
-import { Heading, Stack } from '@chakra-ui/react';
+import { Flex, Grid, Heading, Stack } from '@chakra-ui/react';
 import useIsMobile from '../../hooks/useIsMobile';
 import formatDataKey from '../../functions/formatDataKey';
 
@@ -59,7 +59,17 @@ const TableRowComponent: FC<TableProps> = ({ item, data, menu, path, fields = []
 					}
 
 					const Container = ({ children }: { children: ReactNode }) =>
-						isMobile ? <Stack pb={2}>{children}</Stack> : <>{children}</>;
+						isMobile && type !== 'image-text' ? (
+							<Grid
+								gridTemplateColumns='1fr 1fr'
+								gap={2}
+								alignItems='center'
+								_notLast={{ pb: 2 }}>
+								{children}
+							</Grid>
+						) : (
+							<>{children}</>
+						);
 
 					// If the item is editable, return an EditableTableData component
 					if (editable)
@@ -87,7 +97,9 @@ const TableRowComponent: FC<TableProps> = ({ item, data, menu, path, fields = []
 					// Return a TableData cell with the value
 					return (
 						<Container key={dataKey}>
-							{isMobile && <Heading size='xs'>{formatDataKey(dataKey)}</Heading>}
+							{isMobile && type !== 'image-text' && (
+								<Heading size='xs'>{formatDataKey(dataKey)}</Heading>
+							)}
 							<TableData
 								key={dataKey}
 								type={type}

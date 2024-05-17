@@ -7,9 +7,9 @@ type FilterInputProps = InputProps & {
 
 const FilterInput: FC<FilterInputProps> = ({ date, ...props }) => {
 	const style = {
-		size: 'xs',
+		size: { base: '42px', md: 'xs' },
 		borderRadius: 'md',
-		h: '28px',
+		h: { base: '42px', md: '28px' },
 		borderColor: 'gray.200',
 		px: 2,
 		fontSize: '12px',
@@ -19,8 +19,20 @@ const FilterInput: FC<FilterInputProps> = ({ date, ...props }) => {
 		...(date && { w: '100px' }),
 	};
 
-	if (date) return <Input sx={style} type='date' {...props} />;
-	return <Input sx={style} {...props} />;
+	if (date)
+		return (
+			<Input
+				sx={style}
+				type='date'
+				{...props}
+			/>
+		);
+	return (
+		<Input
+			sx={style}
+			{...props}
+		/>
+	);
 };
 
 export default FilterInput;

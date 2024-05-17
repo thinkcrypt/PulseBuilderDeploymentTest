@@ -31,6 +31,8 @@ const TableRow: React.FC<TableRowProps> = ({ children, actions, selectable, id, 
 				borderRadius='16px'
 				mb={2}
 				p={4}
+				pb={0}
+				_last={{ mb: 12 }}
 				direction='column'
 				{...props}>
 				{selectable && <TableSelectItem id={id} />}

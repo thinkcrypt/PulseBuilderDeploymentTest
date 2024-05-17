@@ -23,14 +23,14 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 				maxH={mainHeight}
 				h={mainHeight}
 				overflowY='scroll'
-				spacing={1}>
+				spacing={{ base: 2, md: 1 }}>
 				{sidebar.slice(0, -1).map((item, i) => (
 					<Stack key={i}>
-						{item.startOfSection && <SidebarHeading>{item.sectionTitle}</SidebarHeading>}
+						{item?.startOfSection && <SidebarHeading>{item?.sectionTitle}</SidebarHeading>}
 						<SidebarItem
 							href={item?.href}
 							path={item?.path}
-							icon={item.icon}>
+							icon={item?.icon}>
 							{item?.title}
 						</SidebarItem>
 					</Stack>
@@ -39,7 +39,7 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 			<Spacer />
 			{sidebar.length > 0 && (
 				<SidebarItem
-					sx={isMobile ? { mb: 8 } : {}}
+					sx={isMobile ? { mb: 12 } : {}}
 					key={sidebar.length - 1}
 					href={sidebar[sidebar.length - 1]?.href}
 					path={sidebar[sidebar.length - 1]?.path}

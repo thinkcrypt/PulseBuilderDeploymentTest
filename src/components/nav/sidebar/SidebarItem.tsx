@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { navigate } from '@/store/slices/routeSlice';
 import Icon from '@/components/library/icon/Icon';
+import useIsMobile from '@/components/library/hooks/useIsMobile';
 
 type SidebarItemProps = {
 	children: string;
@@ -24,19 +25,27 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 		dispatch(navigate({ selected: path }));
 	};
 
+	const isMobile = useIsMobile();
+
 	return (
 		<Flex
 			_hover={selected !== path ? { bg: hover } : {}}
 			onClick={changeRoute}
 			as={Link}
 			href={href}
+			h={{ base: 10, md: 7 }}
 			bg={selected == path ? bg : 'transparent'}
 			sx={{ ...styles.container, ...sx }}>
 			<Icon
 				color={color}
 				name={icon}
+				size={isMobile ? 20 : undefined}
 			/>
-			<Text sx={styles.text}>{children} </Text>
+			<Text
+				fontSize={{ base: '16px', md: '14px' }}
+				fontWeight='600'>
+				{children}
+			</Text>
 		</Flex>
 	);
 };
@@ -47,15 +56,11 @@ const styles = {
 		alignItems: 'center',
 		gap: 3,
 		px: 2.5,
-		h: 7,
+
 		transition: 'all .2s ease-in-out',
 		fontWeight: '600',
 		cursor: 'pointer',
 		fontSize: '.9rem',
-	},
-	text: {
-		fontSize: 14,
-		fontWeight: 600,
 	},
 };
 

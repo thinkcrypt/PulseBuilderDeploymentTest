@@ -96,6 +96,7 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 			onOpen={open}
 			onClose={popClose}
 			isOpen={isOpen}
+			handleClick={handleClick}
 			trigger={
 				isMobile ? (
 					<Flex onClick={onOpen}>{button}</Flex>
@@ -106,47 +107,37 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 			<PopModalHeader isMobile={isMobile}>{title}</PopModalHeader>
 			<PopModalCloseButton isMobile={isMobile} />
 			<PopModalBody isMobile={isMobile}>
-				<Column
-					gap={3}
-					pb={1}>
-					<FilterSelect
-						value={operator}
-						onChange={handleOperatorChange}>
-						<option value='eq'>is equal to</option>
-						<option value='btwn'>is between</option>
-						<option value='gte'>is greater than</option>
-						<option value='lte'>is less than</option>
-					</FilterSelect>
+				<FilterSelect
+					value={operator}
+					onChange={handleOperatorChange}>
+					<option value='eq'>is equal to</option>
+					<option value='btwn'>is between</option>
+					<option value='gte'>is greater than</option>
+					<option value='lte'>is less than</option>
+				</FilterSelect>
 
-					{operator === 'eq' && (
-						<FilterInput
-							type='number'
-							value={value}
-							onChange={e => setValue(e.target.value)}
-						/>
-					)}
-					{operator === 'btwn' && <BetweenValues setVal={setValue} />}
-					{operator === 'gte' && (
-						<FilterInput
-							type='number'
-							value={value}
-							onChange={e => setValue(e.target.value)}
-						/>
-					)}
-					{operator === 'lte' && (
-						<FilterInput
-							type='number'
-							value={value}
-							onChange={e => setValue(e.target.value)}
-						/>
-					)}
-
-					<Button
-						size='sm'
-						onClick={handleClick}>
-						Apply
-					</Button>
-				</Column>
+				{operator === 'eq' && (
+					<FilterInput
+						type='number'
+						value={value}
+						onChange={e => setValue(e.target.value)}
+					/>
+				)}
+				{operator === 'btwn' && <BetweenValues setVal={setValue} />}
+				{operator === 'gte' && (
+					<FilterInput
+						type='number'
+						value={value}
+						onChange={e => setValue(e.target.value)}
+					/>
+				)}
+				{operator === 'lte' && (
+					<FilterInput
+						type='number'
+						value={value}
+						onChange={e => setValue(e.target.value)}
+					/>
+				)}
 			</PopModalBody>
 		</PopModal>
 	);

@@ -10,7 +10,7 @@ const SidebarHeading: FC<SidebarHeadingProps> = ({ children, ...props }) => {
 		<Text
 			px={2}
 			pt={4}
-			fontSize='2xs'
+			fontSize={{ base: 'md', md: '2xs' }}
 			fontWeight='700'
 			textTransform='uppercase'
 			{...props}>

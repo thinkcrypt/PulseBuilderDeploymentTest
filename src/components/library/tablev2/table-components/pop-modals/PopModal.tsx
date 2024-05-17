@@ -9,9 +9,12 @@ import {
 	useColorModeValue,
 	PopoverArrow,
 	PopoverContent,
+	Button,
+	DrawerFooter,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { shadow, sizes } from '@/lib/constants';
+import Column from '@/components/library/containers/Column';
 
 type MenuModalProps = {
 	children: React.ReactNode;
@@ -20,9 +23,18 @@ type MenuModalProps = {
 	onClose: any;
 	isOpen: any;
 	isMobile: boolean;
+	handleClick: any;
 };
 
-const PopModal: FC<MenuModalProps> = ({ children, trigger, onClose, isOpen, onOpen, isMobile }) => {
+const PopModal: FC<MenuModalProps> = ({
+	children,
+	trigger,
+	onClose,
+	isOpen,
+	onOpen,
+	isMobile,
+	handleClick,
+}) => {
 	const arrow = useColorModeValue('menu.light', 'menu.dark');
 
 	if (isMobile) {
@@ -40,10 +52,23 @@ const PopModal: FC<MenuModalProps> = ({ children, trigger, onClose, isOpen, onOp
 						_dark={{
 							bg: 'menu.dark',
 						}}
+						w='100%'
 						maxH='85vh'
+						minH='20vh'
 						userSelect='none'
 						borderTopRadius='20px'>
 						{children}
+
+						<DrawerFooter
+							pt={2}
+							px={4}>
+							<Button
+								w='full'
+								size='md'
+								onClick={handleClick}>
+								Apply
+							</Button>
+						</DrawerFooter>
 					</DrawerContent>
 				</Drawer>
 			</>
@@ -69,7 +94,16 @@ const PopModal: FC<MenuModalProps> = ({ children, trigger, onClose, isOpen, onOp
 				}}
 				maxW={sizes.POPOVER_WIDTH}>
 				<PopoverArrow bg={arrow} />
-				{children}
+				<Column
+					gap={1}
+					pb={1}>
+					{children}
+					<Button
+						size='sm'
+						onClick={handleClick}>
+						Apply
+					</Button>
+				</Column>
 			</PopoverContent>
 		</Popover>
 	);

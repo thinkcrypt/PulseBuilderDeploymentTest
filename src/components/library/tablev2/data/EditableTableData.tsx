@@ -1,26 +1,27 @@
 'use client';
 import React, { FC, useState } from 'react';
 import CustomTd from './CustomTd';
-import { Input, Switch, Text, useColorModeValue } from '@chakra-ui/react';
+import { Switch, useColorModeValue } from '@chakra-ui/react';
 import { useUpdateByIdMutation } from '@/store/services/commonApi';
-import SelectContainer from '../../utils/inputs/containers/SelectContainer';
 import useCustomToast from '../../hooks/useCustomToast';
+import RowInput from '../table-components/row-components/RowInput';
+import RowSelect from '../table-components/row-components/RowSelect';
 
-type Option = {
-	label: string;
-	value: string;
-};
-
-const EditableTableData: FC<{
+// Define the props type for better readability
+type EditableTableDataProps = {
 	path: string;
 	value: any;
 	type?: string;
 	id: string;
 	dataKey: string;
 	editType?: string;
-	options?: Option[];
-	style?: any;
-}> = ({ path, value, id, dataKey, type, editType, options, style }) => {
+	options?: { label: string; value: string }[];
+	style?: React.CSSProperties; // Use React.CSSProperties for style prop type
+};
+
+const EditableTableData: FC<EditableTableDataProps> = props => {
+	const { path, value, id, dataKey, type, editType, options, style } = props;
+
 	const [val, setVal] = useState(value);
 	const [trigger, result] = useUpdateByIdMutation();
 	const borderColor = useColorModeValue('brand.200', 'brand.200');
@@ -46,7 +47,12 @@ const EditableTableData: FC<{
 	if (type == 'boolean') {
 		return (
 			<CustomTd>
-				<Switch isChecked={val} colorScheme='brand' size='sm' onChange={handleSwitch} />
+				<Switch
+					isChecked={val}
+					colorScheme='brand'
+					size={{ base: 'lg', md: 'sm' }}
+					onChange={handleSwitch}
+				/>
 			</CustomTd>
 		);
 	}
@@ -54,34 +60,27 @@ const EditableTableData: FC<{
 	if (editType == 'select') {
 		return (
 			<CustomTd>
-				<SelectContainer size='xs' minW='100px' value={val} onChange={handleChange}>
-					{options?.map((option: Option, i: number) => (
-						<option key={i} value={option?.value}>
-							{option?.label}
+				<RowSelect
+					value={val}
+					onChange={handleChange}>
+					{options?.map(({ label, value }: { label: string; value: string }, i: number) => (
+						<option
+							key={i}
+							value={value}>
+							{label}
 						</option>
 					))}
-				</SelectContainer>
+				</RowSelect>
 			</CustomTd>
 		);
 	}
 
 	return (
 		<CustomTd>
-			<Input
+			<RowInput
 				type={editType || 'text'}
-				size='xs'
-				borderRadius='lg'
 				focusBorderColor={borderColor}
-				color='text.500'
-				fontWeight='600'
-				borderColor='selectBorder.light'
-				_dark={{
-					color: 'gray.300',
-					borderColor: 'selectBorder.dark',
-				}}
-				boxShadow='sm'
 				value={val}
-				w='100px'
 				sx={style}
 				onChange={handleChange}
 			/>

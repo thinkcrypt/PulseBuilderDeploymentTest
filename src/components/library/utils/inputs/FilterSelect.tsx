@@ -12,7 +12,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({ children, ...props }) => {
 			icon={<Icon name='select' />}
 			size='xs'
 			borderRadius='md'
-			h='28px'
+			h={{ base: '42px', md: '28px' }}
 			boxShadow='md'
 			borderColor='selectBorder.light'
 			_dark={{

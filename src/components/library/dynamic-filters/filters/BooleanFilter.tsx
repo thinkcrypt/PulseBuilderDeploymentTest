@@ -62,6 +62,7 @@ const BooleanFilter: React.FC<IsActiveFilterProps> = ({ title, field, label }) =
 
 	return (
 		<PopModal
+			handleClick={handleClick}
 			isMobile={isMobile}
 			onOpen={open}
 			onClose={popClose}
@@ -77,30 +78,17 @@ const BooleanFilter: React.FC<IsActiveFilterProps> = ({ title, field, label }) =
 
 			<PopModalCloseButton isMobile={isMobile} />
 			<PopModalBody isMobile={isMobile}>
-				<Column
-					gap={3}
-					pb={1}>
-					<FilterSelect
-						value={val}
-						onChange={handleChange}>
-						<option
-							value=''
-							disabled>
-							Select an option
-						</option>
-						<option value='true'>True</option>
-						<option value='false'>False</option>
-					</FilterSelect>
-					<PopModalFooter isMobile={isMobile}>
-						<Button
-							alignSelf='flex-end'
-							w='full'
-							size='sm'
-							onClick={handleClick}>
-							Apply
-						</Button>
-					</PopModalFooter>
-				</Column>
+				<FilterSelect
+					value={val}
+					onChange={handleChange}>
+					<option
+						value=''
+						disabled>
+						Select an option
+					</option>
+					<option value='true'>True</option>
+					<option value='false'>False</option>
+				</FilterSelect>
 			</PopModalBody>
 		</PopModal>
 	);

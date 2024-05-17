@@ -23,7 +23,7 @@ const CustomTd: FC<TableDataProps> = ({ children, src, type, ...props }) => {
 	return (
 		<Container
 			wordBreak='break-word'
-			fontSize={isMobile && type == 'image-text' ? '1.5rem' : '.82rem'}
+			fontSize={isMobile && type == 'image-text' ? '1.5rem' : isMobile ? '1rem' : '.82rem'}
 			py={PADDING_Y}
 			px={isMobile ? 0 : PADDING_X}
 			fontWeight='500'
