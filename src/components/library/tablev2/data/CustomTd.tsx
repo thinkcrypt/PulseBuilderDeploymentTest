@@ -23,7 +23,7 @@ const CustomTd: FC<TableDataProps> = ({ children, src, type, ...props }) => {
 	return (
 		<Container
 			wordBreak='break-word'
-			fontSize={isMobile && type == 'image-text' ? '1.5rem' : isMobile ? '1rem' : '.82rem'}
+			fontSize={isMobile && type == 'image-text' ? '1.3rem' : isMobile ? '1rem' : '.82rem'}
 			py={PADDING_Y}
 			px={isMobile ? 0 : PADDING_X}
 			fontWeight='500'
@@ -35,8 +35,8 @@ const CustomTd: FC<TableDataProps> = ({ children, src, type, ...props }) => {
 						bg: '#2d2d2d',
 					}}
 					objectFit='contain'
-					h={isMobile ? '200px' : '40px'}
-					w={isMobile ? '200px' : '40px'}
+					h={isMobile ? '120px' : '40px'}
+					w={isMobile ? '120px' : '40px'}
 					src={src || PLACEHOLDER_IMAGE}
 					alt='img'
 				/>

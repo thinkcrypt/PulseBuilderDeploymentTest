@@ -27,8 +27,9 @@ const TableRow: React.FC<TableRowProps> = ({ children, actions, selectable, id, 
 			<Stack
 				position='relative'
 				width='100%'
-				borderWidth={1}
-				borderRadius='16px'
+				//borderWidth={1}
+				borderRadius='8px'
+				boxShadow='2px 2px 10px rgba(0,0,0,.1)'
 				mb={2}
 				p={4}
 				pb={0}
