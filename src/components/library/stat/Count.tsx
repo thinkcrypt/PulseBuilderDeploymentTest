@@ -13,6 +13,7 @@ const Count: FC<CountProps> = ({ title, path }) => {
 		<Stat
 			w='full'
 			p={4}
+			bg='white'
 			boxShadow='0 2px 20px rgba(0,0,0,.07)'
 			_dark={{ bg: 'menu.dark' }}
 			borderRadius={16}>
