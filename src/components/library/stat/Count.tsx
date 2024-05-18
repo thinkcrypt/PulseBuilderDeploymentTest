@@ -1,19 +1,28 @@
-import React from 'react';
-import { Stat, StatLabel, StatNumber } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { Skeleton, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { useGetCountQuery } from '@/store/services/commonApi';
 
-const Count = ({ title, path }: { title: string; path: string }) => {
+type CountProps = {
+	title: string;
+	path: string;
+};
+
+const Count: FC<CountProps> = ({ title, path }) => {
 	const { data, isFetching } = useGetCountQuery(path);
 	return (
 		<Stat
-			w={{ base: '100%', md: 'calc(100% / 3 - 16px)' }}
+			w='full'
 			p={4}
-			borderWidth={2}
-			// boxShadow='md'
+			boxShadow='0 2px 20px rgba(0,0,0,.07)'
+			_dark={{ bg: 'menu.dark' }}
 			borderRadius={16}>
-			<StatLabel fontSize='20px'>{title}</StatLabel>
-			<StatNumber fontSize='32px'>{isFetching ? '--' : data}</StatNumber>
-			{/* <StatHelpText>Feb 12 - Feb 28</StatHelpText> */}
+			<StatLabel fontSize='1.25rem'>{title}</StatLabel>
+
+			<Skeleton
+				isLoaded={!isFetching}
+				w='100px'>
+				<StatNumber fontSize='2rem'>{isFetching ? '--' : data}</StatNumber>
+			</Skeleton>
 		</Stat>
 	);
 };

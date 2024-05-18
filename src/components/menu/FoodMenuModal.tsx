@@ -6,22 +6,25 @@ import {
 	DrawerFooter,
 	DrawerHeader,
 	DrawerOverlay,
-	DrawerContent,
-	DrawerCloseButton,
-	Button,
 	useDisclosure,
 	Flex,
-	Image,
 	Text,
 	Heading,
 	CloseButton,
-	Wrap,
-	Badge,
 } from '@chakra-ui/react';
 import Column from '../library/containers/Column';
 import { useSwipeable } from 'react-swipeable';
 import SpaceBetween from '../containers/SpaceBetween';
 import CookingTime from './CookingTime';
+import {
+	FoodMenuBadge,
+	FoodMenuBadgeContainer,
+	FoodMenuDiscountText,
+	FoodMenuDrawerContent,
+	FoodMenuImage,
+	FoodMenuTopBar,
+	FoodMenuTrigger,
+} from './menu-components';
 
 type FoodMenuItemProps = {
 	name: string;
@@ -35,17 +38,10 @@ type FoodMenuItemProps = {
 	time: number;
 };
 
-const FoodMenuModal: FC<FoodMenuItemProps> = ({
-	tags,
-	image,
-	name,
-	price,
-	description,
-	discountedPrice,
-	isDiscounted,
-	children,
-	time,
-}) => {
+const FoodMenuModal: FC<FoodMenuItemProps> = props => {
+	const { tags, image, name, price, description, discountedPrice, isDiscounted, children, time } =
+		props;
+
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const handlers = useSwipeable({
@@ -53,17 +49,10 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 			onClose();
 		},
 	});
+
 	return (
 		<>
-			<Flex
-				borderBottom='2px dotted #333'
-				w='full'
-				py={2}
-				gap={2}
-				flexDir='column'
-				onClick={onOpen}>
-				{children}
-			</Flex>
+			<FoodMenuTrigger onClick={onOpen}>{children}</FoodMenuTrigger>
 
 			<Drawer
 				isFullHeight={false}
@@ -71,21 +60,11 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 				isOpen={isOpen}
 				onClose={onClose}>
 				<DrawerOverlay />
-				<DrawerContent
-					maxH='85vh'
-					userSelect='none'
-					bg='#f8f6f3'
-					borderTopRadius='20px'>
+				<FoodMenuDrawerContent>
 					<DrawerHeader
 						fontFamily='Bebas Neue'
 						{...handlers}>
-						<Flex
-							bg='#555'
-							h='4px'
-							w='100px'
-							mx='auto'
-							borderRadius='30px'
-						/>
+						<FoodMenuTopBar />
 						<SpaceBetween>
 							<Heading
 								size='lg'
@@ -94,36 +73,19 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 							</Heading>
 							<CloseButton onClick={onClose} />
 						</SpaceBetween>
-
-						{/* <DrawerCloseButton /> */}
 					</DrawerHeader>
 
 					<DrawerBody>
 						<Column gap={2}>
-							{image && (
-								<Image
-									pb={8}
-									w='full'
-									objectFit='contain'
-									src={image}
-								/>
-							)}
+							<FoodMenuImage src={image} />
 							<CookingTime>{time}</CookingTime>
 							<Text>{description}</Text>
 							{tags && tags?.length > 0 && (
-								<Wrap
-									gap={2}
-									py={2}>
+								<FoodMenuBadgeContainer>
 									{tags?.map((tag: string, i) => (
-										<Badge
-											key={i}
-											size='md'
-											bg='white'
-											variant='subtle'>
-											{tag}
-										</Badge>
+										<FoodMenuBadge key={i}>{tag}</FoodMenuBadge>
 									))}
-								</Wrap>
+								</FoodMenuBadgeContainer>
 							)}
 						</Column>
 					</DrawerBody>
@@ -132,16 +94,7 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 						<Flex
 							gap={3}
 							align='flex-end'>
-							{isDiscounted && (
-								<Text
-									lineHeight={1.2}
-									fontFamily='Bebas neue'
-									// fontSize='14px'
-									textDecorationLine='line-through'>
-									BDT. {price}
-								</Text>
-							)}
-
+							<FoodMenuDiscountText show={isDiscounted}>BDT. {price}</FoodMenuDiscountText>
 							<Heading
 								fontFamily='Bebas neue'
 								size='md'>
@@ -149,7 +102,7 @@ const FoodMenuModal: FC<FoodMenuItemProps> = ({
 							</Heading>
 						</Flex>
 					</DrawerFooter>
-				</DrawerContent>
+				</FoodMenuDrawerContent>
 			</Drawer>
 		</>
 	);

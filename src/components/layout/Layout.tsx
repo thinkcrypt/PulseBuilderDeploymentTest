@@ -33,7 +33,7 @@ const Layout: FC<LayoutProps> = ({
 	children,
 	title,
 	//type = 'default',
-	path = '/',
+	path = '/dashboard',
 	hideColorMode = false,
 	...props
 }) => {

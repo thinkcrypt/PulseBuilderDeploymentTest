@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetProductsByQrQuery } from '@/store/services/productsApi';
-import { Flex, Heading, Text, Image, Center } from '@chakra-ui/react';
+import { Flex, Heading, Text, Center, Skeleton, Image } from '@chakra-ui/react';
 import React from 'react';
 import { useParams } from 'next/navigation';
 import FoodMenuItem from '@/components/menu/FoodMenuItem';
@@ -23,30 +23,43 @@ const QrMenuPage = () => {
 		<Column
 			gap={2}
 			w='full'>
-			{!restaurantFetching && restaurant && restaurant?.image && (
-				<Center
-					flexDir='column'
-					gap={4}
-					pb='44px'>
-					<Image
+			<Center
+				flexDir='column'
+				gap={4}
+				pb='44px'>
+				{restaurantFetching && !restaurant?.image ? (
+					<Skeleton
 						w='200px'
 						h='200px'
+						borderRadius='full'
+					/>
+				) : (
+					<Image
+						alt='Logo'
+						width={200}
+						height={200}
 						objectFit='contain'
 						src={restaurant?.image}
 					/>
+				)}
+				<Skeleton isLoaded={!restaurantFetching}>
 					<Heading
 						size='3xl'
 						textAlign='center'
 						fontFamily='Bebas neue'>
-						{restaurant?.name}
+						{restaurant?.name || 'Restaurant'}
 					</Heading>
-				</Center>
-			)}
-			<Heading
-				size='2xl'
-				fontFamily='Bebas neue'>
-				MENU
-			</Heading>
+				</Skeleton>
+			</Center>
+
+			<Skeleton isLoaded={!isFetching}>
+				<Heading
+					size='2xl'
+					fontFamily='Bebas neue'>
+					MENU
+				</Heading>
+			</Skeleton>
+
 			{data &&
 				data.map((item: any, i: number) => (
 					<Column
@@ -80,27 +93,29 @@ const QrMenuPage = () => {
 						</Column>
 					</Column>
 				))}
-			<Center
-				flexDir='column'
-				mt='16px'
-				p='24px'
-				gap={4}
-				borderRadius='8px'>
-				<Heading
-					size='lg'
-					fontFamily='Bebas Neue'>
-					{`We'd love your feedback`}
-				</Heading>
-				<Icon
-					size={64}
-					name='feedback'
-				/>
-				<Link
-					href={`/user-feedback/${id}`}
-					style={{ color: 'dodgerblue', textDecorationLine: 'underline' }}>
-					<i>Send us your Feedback</i>
-				</Link>
-			</Center>
+			{!isFetching && (
+				<Center
+					flexDir='column'
+					mt='16px'
+					p='24px'
+					gap={4}
+					borderRadius='8px'>
+					<Heading
+						size='lg'
+						fontFamily='Bebas Neue'>
+						{`We'd love your feedback`}
+					</Heading>
+					<Icon
+						size={64}
+						name='feedback'
+					/>
+					<Link
+						href={`/user-feedback/${id}`}
+						style={{ color: 'dodgerblue', textDecorationLine: 'underline' }}>
+						<i>Send us your Feedback</i>
+					</Link>
+				</Center>
+			)}
 		</Column>
 	);
 };

@@ -56,7 +56,6 @@ const styles = {
 		alignItems: 'center',
 		gap: 3,
 		px: 2.5,
-
 		transition: 'all .2s ease-in-out',
 		fontWeight: '600',
 		cursor: 'pointer',

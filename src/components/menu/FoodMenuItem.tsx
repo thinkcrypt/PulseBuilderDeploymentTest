@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { Badge, Flex, Heading, Text, Wrap } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import FoodMenuModal from './FoodMenuModal';
-import Icon from '../library/icon/Icon';
 import CookingTime from './CookingTime';
+import { FoodMenuBadge, FoodMenuBadgeContainer, FoodMenuDiscountText } from './menu-components';
 
 type FoodMenuItemProps = {
 	name: string;
@@ -50,15 +50,7 @@ const FoodMenuItem: FC<FoodMenuItemProps> = ({
 				<Flex
 					gap={3}
 					align='flex-end'>
-					{isDiscounted && (
-						<Text
-							lineHeight={1.2}
-							fontFamily='Bebas neue'
-							// fontSize='14px'
-							textDecorationLine='line-through'>
-							BDT. {price}
-						</Text>
-					)}
+					<FoodMenuDiscountText show={isDiscounted}>BDT. {price}</FoodMenuDiscountText>
 
 					<Heading
 						fontFamily='Bebas neue'
@@ -74,19 +66,11 @@ const FoodMenuItem: FC<FoodMenuItemProps> = ({
 				{description}
 			</Text>
 			{tags && tags?.length > 0 && (
-				<Wrap
-					gap={2}
-					py={2}>
-					{tags?.map((tag: string, i) => (
-						<Badge
-							key={i}
-							size='md'
-							bg='white'
-							variant='subtle'>
-							{tag}
-						</Badge>
+				<FoodMenuBadgeContainer>
+					{tags?.map((tag: string, i: number) => (
+						<FoodMenuBadge key={i}>{tag}</FoodMenuBadge>
 					))}
-				</Wrap>
+				</FoodMenuBadgeContainer>
 			)}
 		</FoodMenuModal>
 	);

@@ -1,23 +1,18 @@
 'use client';
 import React, { FC, useState } from 'react';
 import {
-	Button,
-	Checkbox,
-	Flex,
-	PopoverTrigger,
-	useColorModeValue,
-	useDisclosure,
-} from '@chakra-ui/react';
+	PopModal,
+	PopModalHeader,
+	PopModalBody,
+	PopModalCloseButton,
+} from '../../tablev2/table-components/pop-modals';
+import { Checkbox, Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
 import Column from '../../../containers/Column';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
 import Filter from './Filter';
 import FilterInput from '../../utils/inputs/FilterInput';
 import useIsMobile from '../../hooks/useIsMobile';
-import PopModal from '../../tablev2/table-components/pop-modals/PopModal';
-import PopModalBody from '../../tablev2/table-components/pop-modals/PopModalBody';
-import PopModalHeader from '../../tablev2/table-components/pop-modals/PopModalHeader';
-import PopModalCloseButton from '../../tablev2/table-components/pop-modals/PopModalCloseButton';
 
 type FilterProps = {
 	title: string;

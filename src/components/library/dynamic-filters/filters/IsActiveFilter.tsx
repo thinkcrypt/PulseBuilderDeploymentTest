@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import {
-	Box,
 	Button,
 	Popover,
 	PopoverArrow,
@@ -25,6 +24,7 @@ const IsActiveFilter: React.FC<IsActiveFilterProps> = ({ trigger, value, onChang
 	const { onOpen, onClose, isOpen } = useDisclosure();
 
 	const [val, setVal] = React.useState<string | undefined>(value);
+
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setVal(e.target.value);
 	};
@@ -32,10 +32,12 @@ const IsActiveFilter: React.FC<IsActiveFilterProps> = ({ trigger, value, onChang
 		setVal(value);
 		onOpen();
 	};
+
 	const close = () => {
 		setVal('');
 		onClose();
 	};
+
 	const handleClick = () => {
 		onChange(val);
 		close();

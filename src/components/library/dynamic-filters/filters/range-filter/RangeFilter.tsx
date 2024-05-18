@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, ChangeEvent, FC } from 'react';
 
-import { Button, Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
-import Column from '../../../../containers/Column';
+import { Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
 import PopModalCloseButton from '@/components/library/tablev2/table-components/pop-modals/PopModalCloseButton';
 import FilterSelect from '../../../utils/inputs/FilterSelect';
 import { useAppDispatch, useAppSelector } from '@/hooks';
@@ -11,10 +10,12 @@ import Filter from '../Filter';
 import FilterInput from '@/components/library/utils/inputs/FilterInput';
 import BetweenValues from './BetweenValues';
 import useIsMobile from '@/components/library/hooks/useIsMobile';
-import PopModal from '@/components/library/tablev2/table-components/pop-modals/PopModal';
-import PopModalHeader from '@/components/library/tablev2/table-components/pop-modals/PopModalHeader';
-import PopModalBody from '@/components/library/tablev2/table-components/pop-modals/PopModalBody';
-import PopModalFooter from '@/components/library/tablev2/table-components/pop-modals/PopModalFooter';
+
+import {
+	PopModal,
+	PopModalHeader,
+	PopModalBody,
+} from '../../../tablev2/table-components/pop-modals';
 
 type DateFilterProps = {
 	field: string;
@@ -123,6 +124,7 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 						onChange={e => setValue(e.target.value)}
 					/>
 				)}
+
 				{operator === 'btwn' && <BetweenValues setVal={setValue} />}
 				{operator === 'gte' && (
 					<FilterInput
