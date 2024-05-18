@@ -1,5 +1,5 @@
-import React, { FC, Fragment, ReactNode } from 'react';
-import { Td, Image, Text, Stack, Flex } from '@chakra-ui/react';
+import React, { FC, Fragment } from 'react';
+import { Td, Image, Text } from '@chakra-ui/react';
 import { TableDataProps } from '../types';
 import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 import useIsMobile from '../../hooks/useIsMobile';

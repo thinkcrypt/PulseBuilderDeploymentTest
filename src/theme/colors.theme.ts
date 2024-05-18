@@ -77,6 +77,7 @@ export const colors: Colors = {
 		dark: BLACK,
 	},
 	background: {
+		400: '#f8f6f3',
 		500: '#fff',
 		200: BLACK,
 		light: '#fff',

@@ -64,8 +64,6 @@ const styles = {
 		h: '64px',
 		px: 0,
 		mr: 2,
-		bg: 'background.light',
-		_dark: { bg: 'background.dark' },
 	},
 };
 

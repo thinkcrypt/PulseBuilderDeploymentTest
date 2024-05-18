@@ -10,8 +10,13 @@ const TableSkeleton: FC<TableSkeletonProps> = ({ row, col }) => {
 	return [...Array(row)].map((x, i) => (
 		<Tr key={i}>
 			{[...Array(col)].map((y, j) => (
-				<Td key={j} py={4}>
-					<Skeleton w='100%' h={5} />
+				<Td
+					key={j}
+					py={4}>
+					<Skeleton
+						w='100%'
+						h={5}
+					/>
 				</Td>
 			))}
 		</Tr>

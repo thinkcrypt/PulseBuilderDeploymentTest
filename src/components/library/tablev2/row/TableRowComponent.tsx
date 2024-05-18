@@ -4,10 +4,8 @@ import TableData from '../data/TableData';
 import TableMenu from '../menu/TableMenu';
 import EditableTableData from '../data/EditableTableData';
 import { format } from 'date-fns';
-import TableSelectItem from '../data/TableSelectItem';
-import { Flex, Grid, Heading, Stack } from '@chakra-ui/react';
-import useIsMobile from '../../hooks/useIsMobile';
-import formatDataKey from '../../functions/formatDataKey';
+import { Grid, Heading } from '@chakra-ui/react';
+import { useIsMobile, formatDataKey } from '../../';
 
 type TableProps = {
 	item: any;

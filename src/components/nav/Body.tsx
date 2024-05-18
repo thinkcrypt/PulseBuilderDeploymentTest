@@ -4,7 +4,12 @@ import React, { FC } from 'react';
 
 const Body: FC<FlexPropsType> = ({ children, ...props }) => {
 	return (
-		<Flex w='100%' minH='100vh' bg='background.light' _dark={{ bg: 'background.dark' }} {...props}>
+		<Flex
+			w='100%'
+			minH='100vh'
+			bg={{ base: 'background.400', md: 'background.light' }}
+			_dark={{ bg: 'background.dark' }}
+			{...props}>
 			{children}
 		</Flex>
 	);

@@ -1,16 +1,5 @@
-import {
-	TableContainer,
-	Table,
-	Thead,
-	Tr,
-	Tbody,
-	Flex,
-	Center,
-	Text,
-	CloseButton,
-} from '@chakra-ui/react';
+import { Table, Thead, Tr, Tbody, Flex, Center, Text, CloseButton } from '@chakra-ui/react';
 import React from 'react';
-import TableSkeleton from './TableSkeleton';
 import TableSearch from './TableSearch';
 import ResultContainer from './ResultContainer';
 import TableRefresh from './TableRefresh';
@@ -23,6 +12,7 @@ import SelectedItemsContainer from './table-components/containers/SelectedItemsC
 import FIlterContainer from './table-components/containers/FIlterContainer';
 import TableSettingsMenuContainer from './table-components/containers/TableSettingsMenuContainer';
 import TableSearchContainer from './table-components/containers/TableSearchContainer';
+import { TableContainer, TableSkeleton } from '../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
 	children,
@@ -85,9 +75,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 				</TableSettingsMenuContainer>
 			)}
 
-			<TableContainer
-				sx={styles.table}
-				pb={6}>
+			<TableContainer>
 				<Table size='sm'>
 					<Thead>
 						<Tr>{header}</Tr>
@@ -106,20 +94,6 @@ const CustomTable: React.FC<CustomTableProps> = ({
 			<ResultContainer data={data} />
 		</>
 	);
-};
-
-const styles = {
-	table: {
-		w: '100%',
-		borderRadius: 8,
-		borderWidth: 2,
-		bg: 'table.light',
-		borderColor: 'stroke.light',
-		_dark: {
-			bg: 'table.dark',
-			borderColor: 'stroke.dark',
-		},
-	},
 };
 
 export default CustomTable;

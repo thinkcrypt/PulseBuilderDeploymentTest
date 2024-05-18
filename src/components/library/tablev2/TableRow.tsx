@@ -1,56 +1,23 @@
-import React from 'react';
-import { Center, TextProps, Tr, Stack } from '@chakra-ui/react';
-import TableData from './data/TableData';
+import React, { ReactNode, FC } from 'react';
 import TableSelectItem from './data/TableSelectItem';
-import useIsMobile from '../hooks/useIsMobile';
+import { RowContainerBase, RowContainerMd, useIsMobile } from '../';
 
-type TableRowProps = TextProps & {
-	children: React.ReactNode;
-	actions?: React.ReactNode;
+type TableRowProps = {
+	children: ReactNode;
+	actions?: ReactNode;
 	selectable?: boolean;
 	id: string;
 };
 
-const TableRow: React.FC<TableRowProps> = ({ children, actions, selectable, id, ...props }) => {
-	const [bg, setBg] = React.useState('transparent');
-	const handleMouseEnter = () => {
-		setBg('#ddd');
-	};
-	const handleMouseLeave = () => {
-		setBg('transparent');
-	};
-
+const TableRow: FC<TableRowProps> = ({ children, actions, selectable, id, ...props }) => {
 	const isMobile = useIsMobile();
-
-	if (isMobile) {
-		return (
-			<Stack
-				position='relative'
-				width='100%'
-				//borderWidth={1}
-				borderRadius='8px'
-				boxShadow='2px 2px 10px rgba(0,0,0,.1)'
-				mb={2}
-				p={4}
-				pb={0}
-				_last={{ mb: 12 }}
-				direction='column'
-				{...props}>
-				{selectable && <TableSelectItem id={id} />}
-				{children}
-			</Stack>
-		);
-	}
+	const Container = isMobile ? RowContainerBase : RowContainerMd;
 
 	return (
-		<Tr
-			h='2.5rem'
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-			{...props}>
+		<Container {...props}>
 			{selectable && <TableSelectItem id={id} />}
 			{children}
-		</Tr>
+		</Container>
 	);
 };
 

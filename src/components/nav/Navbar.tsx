@@ -14,7 +14,7 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 			top: 0,
 			left: 0,
 			alignItems: 'center',
-			bg: 'container.light',
+			bg: { base: 'background.400', md: 'container.light' },
 			borderBottomWidth: 2,
 			borderBottomColor: 'stroke.light',
 			maxW: '100vw',
