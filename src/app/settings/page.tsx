@@ -8,9 +8,10 @@ import Details from '@/components/library/detail/Details';
 import HeadingMenu from '@/components/library/settings/heading-menu/HeadingMenu';
 import QrComponent from './_components/QrComponent';
 import VImage from '@/components/library/utils/inputs/VImage';
-import { usePostMutation, useUpdateByIdMutation } from '@/store/services/commonApi';
-import { Flex } from '@chakra-ui/react';
+import { useUpdateByIdMutation } from '@/store/services/commonApi';
+import { Button, Flex } from '@chakra-ui/react';
 import useCustomToast from '@/components/library/hooks/useCustomToast';
+import Link from 'next/link';
 
 const SettingsPage = () => {
 	const { data, isFetching } = useGetSelfQuery({});
@@ -23,7 +24,6 @@ const SettingsPage = () => {
 		setFormData({
 			name: data?.restaurant?.name || '',
 			email: data?.restaurant?.email || '',
-			//template: data?.restaurant?.template || '',
 			image: data?.restaurant?.image || '',
 		});
 	};
@@ -107,13 +107,9 @@ const SettingsPage = () => {
 								isDisabled>
 								{formData?.email}
 							</Details>
-							{/* <Details
-								editing={editing}
-								type='number'
-								onChange={handleChange}
-								title='Template'>
-								{formData?.template}
-							</Details> */}
+							<Link href='/editor'>
+								<Button size='xs'>Customize QR Code</Button>
+							</Link>
 						</HeadingMenu>
 					</Column>
 				</form>

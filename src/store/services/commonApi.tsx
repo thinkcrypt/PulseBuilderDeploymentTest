@@ -44,13 +44,13 @@ export const userApi = mainApi.injectEndpoints({
 				'collections',
 			],
 		}),
-		post: builder.mutation<any, { path: string; body: any }>({
-			query: ({ path, body }): any => ({
+		post: builder.mutation<any, { path: string; body: any; invalidate?: string }>({
+			query: ({ path, body, invalidate }): any => ({
 				url: path,
 				method: 'POST',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path }) => [path],
+			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
 		}),
 		updateById: builder.mutation<any, { path: string; id: string; body: any; invalidate?: any }>({
 			query: ({ path, id, body }): any => ({

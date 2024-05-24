@@ -13,3 +13,5 @@ export { default as RowContainerMd } from './tablev2/table-components/row-compon
 //table
 export { default as TableContainer } from './tablev2/table-components/containers/TableContainer';
 export { default as TableSkeleton } from './tablev2/TableSkeleton';
+export { default as StickyBottomContainer } from './tablev2/table-components/containers/StickyBottomContainer';
+export { default as useCustomToast } from './hooks/useCustomToast';

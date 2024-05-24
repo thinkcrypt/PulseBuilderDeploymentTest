@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import CustomTd from './CustomTd';
 import { Switch, useColorModeValue } from '@chakra-ui/react';
 import { useUpdateByIdMutation } from '@/store/services/commonApi';
@@ -31,59 +31,55 @@ const EditableTableData: FC<EditableTableDataProps> = props => {
 		isSuccess: result?.isSuccess,
 		error: result?.error,
 		successText: 'Information Updated',
-		successTitle: 'Success',
 		isLoading: result?.isLoading,
 	});
 
-	const handleSwitch = (e: any) => {
+	const handleSwitch = (e: ChangeEvent<HTMLInputElement>) => {
 		setVal(e.target.checked);
 		trigger({ path, id, body: { [dataKey]: e.target.checked } });
 	};
 
-	const handleChange = (e: any) => {
+	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		setVal(e.target.value);
 		trigger({ path, id, body: { [dataKey]: e.target.value } });
 	};
-	if (type == 'boolean') {
-		return (
-			<CustomTd>
-				<Switch
-					isChecked={val}
-					colorScheme='brand'
-					size={{ base: 'lg', md: 'sm' }}
-					onChange={handleSwitch}
-				/>
-			</CustomTd>
-		);
-	}
 
-	if (editType == 'select') {
-		return (
-			<CustomTd>
-				<RowSelect
-					value={val}
-					onChange={handleChange}>
-					{options?.map(({ label, value }: { label: string; value: string }, i: number) => (
-						<option
-							key={i}
-							value={value}>
-							{label}
-						</option>
-					))}
-				</RowSelect>
-			</CustomTd>
-		);
-	}
+	const renderSwitch = () => (
+		<Switch
+			isChecked={val}
+			colorScheme='brand'
+			size={{ base: 'lg', md: 'sm' }}
+			onChange={handleSwitch}
+		/>
+	);
+
+	const renderSelect = () => (
+		<RowSelect
+			value={val}
+			onChange={handleChange}>
+			{options?.map(({ label, value }) => (
+				<option
+					key={value}
+					value={value}>
+					{label}
+				</option>
+			))}
+		</RowSelect>
+	);
+
+	const renderInput = () => (
+		<RowInput
+			type={editType || 'text'}
+			focusBorderColor={borderColor}
+			value={val}
+			sx={style}
+			onChange={handleChange}
+		/>
+	);
 
 	return (
 		<CustomTd>
-			<RowInput
-				type={editType || 'text'}
-				focusBorderColor={borderColor}
-				value={val}
-				sx={style}
-				onChange={handleChange}
-			/>
+			{type === 'boolean' ? renderSwitch() : editType === 'select' ? renderSelect() : renderInput()}
 		</CustomTd>
 	);
 };
