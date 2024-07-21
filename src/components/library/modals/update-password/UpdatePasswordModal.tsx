@@ -11,11 +11,9 @@ import {
 	Button,
 } from '@chakra-ui/react';
 import ModalContainer from '../../menu/ModalContainer';
-import ModalFormSection from '../../containers/ModalFormSection';
-import VInput from '../../utils/inputs/VInput';
-import VSelect from '../../utils/inputs/VSelect';
 import { useUpdatePasswordMutation } from '@/store/services/authApi';
-import useCustomToast from '@/hooks/useCustomToast';
+
+import { useCustomToast, ModalFormSection, VInput } from '../../';
 
 const UpdatePasswordModal = ({ trigger, path }: { trigger?: any; path?: any }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();

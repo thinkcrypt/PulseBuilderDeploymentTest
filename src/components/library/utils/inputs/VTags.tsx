@@ -14,11 +14,9 @@ import {
 	WrapItem,
 	TagLabel,
 	TagCloseButton,
-	Text,
 } from '@chakra-ui/react';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
-import Icon from '../../icon/Icon';
+
+import { Label, Icon, HelperText } from '../../';
 
 type InputContainerProps = InputProps & {
 	label: string;

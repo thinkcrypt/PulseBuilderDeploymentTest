@@ -1,3 +1,29 @@
+import { TableCellProps } from '@chakra-ui/react';
+export type { CustomTableProps } from './components.types';
+
+export type SidebarItemType = {
+	title: string;
+	href: string;
+	icon: string;
+	path: string;
+	startOfSection?: boolean;
+	sectionTitle?: string;
+};
+
+export type TableItemProps = {
+	title: string;
+	sort?: string;
+	dataKey?: any;
+};
+
+export type TableDataProps = TableCellProps & {
+	children: any;
+	date?: boolean;
+	price?: boolean;
+	src?: string;
+	type?: string;
+};
+
 type EditType = 'text' | 'number' | 'select' | 'boolean' | 'date';
 
 type Options = {
@@ -64,6 +90,8 @@ export type TableObjectProps = {
 	path: string;
 	filters?: string;
 	button?: ButtonType;
+	clickable?: boolean;
+	toPath?: string;
 	data: TableObjectDataProps[];
 	menu?: {
 		title: string;

@@ -14,11 +14,10 @@ import {
 	SelectProps,
 	Flex,
 } from '@chakra-ui/react';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
-import Icon from '../../icon/Icon';
+
 import { useGetSelectDataQuery } from '@/store/services/usersApi';
-import SelectContainer from './containers/SelectContainer';
+
+import { Label, SelectContainer, HelperText, Icon } from '../../';
 
 type InputContainerProps = InputProps &
 	SelectProps & {

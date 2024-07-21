@@ -12,4 +12,5 @@ export type CustomTableProps = TableProps & {
 	hidePreferences?: boolean;
 	selectable?: boolean;
 	selectedItems?: any;
+	isError?: boolean;
 };

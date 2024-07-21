@@ -1,29 +1,29 @@
 'use client';
-import { FlexProps, Heading, Spacer, Stack } from '@chakra-ui/react';
+import { FlexProps, Heading, Stack } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 import SidebarItem from './SidebarItem';
 import sidebar from '@/lib/data/sidebar.data';
 import { useGetSelfQuery } from '@/store/services/authApi';
-import { SidebarContainer, SidebarBody, SidebarHeading, SidebarLogo } from './sidebar-components';
-import useIsMobile from '@/components/library/hooks/useIsMobile';
+import {
+	SidebarBody,
+	SidebarContainer,
+	SidebarContent,
+	SidebarFooter,
+	SidebarHeading,
+	SidebarLogo,
+} from './sidebar-components';
 
 const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...props }) => {
 	const { data } = useGetSelfQuery({});
-	const mainHeight = '82vh';
 
 	const title = data?.restaurant?.name || '--';
-	const isMobile = useIsMobile();
 
 	const main = (
 		<>
-			<Stack
-				maxH={mainHeight}
-				h={mainHeight}
-				overflowY='scroll'
-				spacing={{ base: 2, md: 1 }}>
+			<SidebarBody>
 				{sidebar.slice(0, -1).map((item, i) => (
 					<Stack key={i}>
-						{item?.startOfSection && <SidebarHeading>{item?.sectionTitle}</SidebarHeading>}
+						<SidebarHeading show={item?.startOfSection}>{item?.sectionTitle}</SidebarHeading>
 						<SidebarItem
 							href={item?.href}
 							path={item?.path}
@@ -32,18 +32,17 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 						</SidebarItem>
 					</Stack>
 				))}
-			</Stack>
-			<Spacer />
-			{sidebar.length > 0 && (
-				<SidebarItem
-					sx={isMobile ? { mb: 12 } : {}}
-					key={sidebar.length - 1}
-					href={sidebar[sidebar.length - 1]?.href}
-					path={sidebar[sidebar.length - 1]?.path}
-					icon={sidebar[sidebar.length - 1].icon}>
-					{sidebar[sidebar.length - 1]?.title}
-				</SidebarItem>
-			)}
+			</SidebarBody>
+			<SidebarFooter>
+				{sidebar?.length > 0 && (
+					<SidebarItem
+						href={sidebar[sidebar.length - 1]?.href}
+						path={sidebar[sidebar.length - 1]?.path}
+						icon={sidebar[sidebar.length - 1].icon}>
+						{sidebar[sidebar.length - 1]?.title}
+					</SidebarItem>
+				)}
+			</SidebarFooter>
 		</>
 	);
 	return (
@@ -56,7 +55,7 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 				</Heading>
 				{closeBtn && closeBtn}
 			</SidebarLogo>
-			<SidebarBody>{main}</SidebarBody>
+			<SidebarContent>{main}</SidebarContent>
 		</SidebarContainer>
 	);
 };

@@ -15,7 +15,11 @@ const FormDivision: FC<FormDivisionProps> = ({ children, ...props }) => {
 			p={4}
 			borderRadius='12px'
 			{...props}>
-			<Grid templateColumns='repeat(2, 1fr)' gap={8} w='full' columnGap={4}>
+			<Grid
+				templateColumns='repeat(2, 1fr)'
+				gap={8}
+				w='full'
+				columnGap={4}>
 				{children}
 			</Grid>
 		</Flex>

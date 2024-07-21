@@ -10,12 +10,12 @@ import {
 	MenuItem,
 	MenuDivider,
 } from '@chakra-ui/react';
-import Icon from '../icon/Icon';
 import CustomMenuItem from './CustomMenuItem';
-import MenuContainer from './MenuContainer';
+
 import { useGetSelfQuery } from '@/store/services/authApi';
-import { useAppDispatch } from '@/hooks';
 import { logout } from '@/store/slices/authSlice';
+
+import { Icon, useAppDispatch, MenuContainer } from '../';
 
 const SelfMenu = () => {
 	const { data, isFetching, isError, error, isSuccess } = useGetSelfQuery({});

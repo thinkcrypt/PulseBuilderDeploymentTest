@@ -9,7 +9,9 @@ const MyPhotos = ({ handleSelect }: { handleSelect: any }) => {
 	const borderColor = useColorModeValue('brand.500', 'brand.200');
 
 	return (
-		<Flex gap={2} flexWrap='wrap'>
+		<Flex
+			gap={2}
+			flexWrap='wrap'>
 			{data?.doc?.map((item: any) => (
 				<Flex
 					borderRadius='4px'
@@ -24,7 +26,11 @@ const MyPhotos = ({ handleSelect }: { handleSelect: any }) => {
 					border='2px solid'
 					borderColor={selected === item?.url ? borderColor : '#ddd'}
 					bg='whitesmoke'>
-					<Image objectFit='contain' src={item?.url} alt={item?.name} />
+					<Image
+						objectFit='contain'
+						src={item?.url}
+						alt={item?.name}
+					/>
 				</Flex>
 			))}
 		</Flex>

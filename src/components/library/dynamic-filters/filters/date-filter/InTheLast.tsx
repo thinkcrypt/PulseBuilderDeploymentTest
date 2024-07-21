@@ -1,8 +1,7 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { Grid } from '@chakra-ui/react';
-import FilterInput from '../../../utils/inputs/FilterInput';
-import FilterSelect from '../../../utils/inputs/FilterSelect';
-import Icon from '@/components/library/icon/Icon';
+
+import { Icon, FilterSelect, FilterInput } from '../../../';
 
 const InTheLast = ({ setVal }: { setVal: (val: string) => void }) => {
 	const [value, setValue] = useState<number>(1);
@@ -23,10 +22,19 @@ const InTheLast = ({ setVal }: { setVal: (val: string) => void }) => {
 	}, [value, condition]);
 
 	return (
-		<Grid gap={2} px={1} gridTemplateColumns='.6fr 2fr 4fr 2fr'>
+		<Grid
+			gap={2}
+			px={1}
+			gridTemplateColumns='.6fr 2fr 4fr 2fr'>
 			<Icon name='arrow' />
-			<FilterInput type='number' value={value} onChange={handleValue} />
-			<FilterSelect value={condition} onChange={handleCondition}>
+			<FilterInput
+				type='number'
+				value={value}
+				onChange={handleValue}
+			/>
+			<FilterSelect
+				value={condition}
+				onChange={handleCondition}>
 				<option value='days'>days</option>
 				<option value='months'>months</option>
 			</FilterSelect>

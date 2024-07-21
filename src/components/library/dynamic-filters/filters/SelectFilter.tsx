@@ -1,7 +1,7 @@
 'use client';
 import React, { ChangeEvent, FC, useState } from 'react';
+
 import {
-	Button,
 	Flex,
 	Popover,
 	PopoverArrow,
@@ -10,12 +10,19 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
-import Column from '../../../containers/Column';
-import PopoverContainer, { PopoverHeader } from '@/app/_popover/PopoverContainer';
+
 import FilterSelect from '../../utils/inputs/FilterSelect';
-import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
-import Filter from './Filter';
+
+import {
+	Filter,
+	Column,
+	PopoverContainer,
+	PopoverHeader,
+	useAppDispatch,
+	useAppSelector,
+	FilterButton,
+} from '../../';
 
 type FilterProps = {
 	title: string;
@@ -94,11 +101,7 @@ const SelectFilter: FC<FilterProps> = ({ title, field, options, label }) => {
 								</option>
 							))}
 						</FilterSelect>
-						<Button
-							size='sm'
-							onClick={handleClick}>
-							Apply
-						</Button>
+						<FilterButton onClick={handleClick}>Apply</FilterButton>
 					</Column>
 				</PopoverBody>
 			</PopoverContainer>

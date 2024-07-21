@@ -1,6 +1,5 @@
 'use client';
 
-import { useAppDispatch } from '@/hooks';
 import {
 	Menu,
 	MenuGroup,
@@ -16,15 +15,22 @@ import {
 	Stack,
 	InputProps,
 } from '@chakra-ui/react';
+
 import React, { useState } from 'react';
-import MenuContainer from '../../menu/MenuContainer';
-import MenuItem from '../../menu/CustomMenuItem';
-import Icon from '../../icon/Icon';
-import HelperText from '../../form/label/HelperText';
-import Label from '../../form/label/Label';
+
+import {
+	shadow,
+	sizes,
+	Label,
+	CreateModal,
+	HelperText,
+	Icon,
+	useAppDispatch,
+	MenuContainer,
+	CustomMenuitem as MenuItem,
+} from '../../';
+
 import { useGetAllQuery } from '@/store/services/commonApi';
-import CreateModal from '../../modals/CreateModal';
-import { shadow, sizes } from '@/lib/constants';
 
 const WIDTH = '300px';
 const MAX_H = '200px';
@@ -131,7 +137,11 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	};
 
 	const renderMenuItems = data?.doc?.map((item: any, i: number) => (
-		<ItemOfMenu cursor='pointer' id={item?._id} key={i} onClick={() => handleChange(item)}>
+		<ItemOfMenu
+			cursor='pointer'
+			id={item?._id}
+			key={i}
+			onClick={() => handleChange(item)}>
 			{item?.name}
 		</ItemOfMenu>
 	));
@@ -152,7 +162,9 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 				data={dataModel}
 				path={model}
 				trigger={
-					<Button display='none' ref={btnRef}>
+					<Button
+						display='none'
+						ref={btnRef}>
 						Add new {model}
 					</Button>
 				}
@@ -161,10 +173,16 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 			<Menu onClose={close}>
 				{({ isOpen }) => (
 					<>
-						<FormControl isRequired={isRequired} gap={4}>
-							<Stack spacing={2} w='full'>
+						<FormControl
+							isRequired={isRequired}
+							gap={4}>
+							<Stack
+								spacing={2}
+								w='full'>
 								<Label>{label}</Label>
-								<Stack spacing={1} w='full'>
+								<Stack
+									spacing={1}
+									w='full'>
 									<MenuButton
 										isActive={isOpen}
 										as={Button}
@@ -195,7 +213,9 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 
 						<MenuContainer w={WIDTH}>
 							<MenuGroup>
-								<Flex p={2} py={0.5}>
+								<Flex
+									p={2}
+									py={0.5}>
 									<Input
 										borderRadius={6}
 										size='sm'
@@ -207,9 +227,18 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 							</MenuGroup>
 							<MenuDivider mb={1} />
 							<MenuItem onClick={() => btnRef.current.click()}>Add new {model}</MenuItem>
-							<MenuDivider mt={1} mb={0} />
-							<Flex flexDir='column' w='100%' maxH={MAX_H} overflowY='scroll'>
-								<MenuItem w={WIDTH} onClick={() => handleChange({ name: ``, _id: undefined })}>
+							<MenuDivider
+								mt={1}
+								mb={0}
+							/>
+							<Flex
+								flexDir='column'
+								w='100%'
+								maxH={MAX_H}
+								overflowY='scroll'>
+								<MenuItem
+									w={WIDTH}
+									onClick={() => handleChange({ name: ``, _id: undefined })}>
 									Unselect
 								</MenuItem>
 								{renderMenuItems}

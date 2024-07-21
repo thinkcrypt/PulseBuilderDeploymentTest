@@ -1,6 +1,6 @@
-import Column from '@/components/containers/Column';
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Heading, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import { Column } from '../';
 
 const DetailItem = ({ title, children }: { title: string; children: ReactNode }) => {
 	return (

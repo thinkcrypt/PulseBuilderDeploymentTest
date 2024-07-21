@@ -1,24 +1,33 @@
 'use client';
+
 import { useGetFiltersQuery } from '@/store/services/usersApi';
-import { Button, Flex, Text } from '@chakra-ui/react';
-import React from 'react';
-import BooleanFilter from './filters/BooleanFilter';
-import MultiSelectFilter from './filters/MultiSeletFilter';
-import DateFilter from './filters/date-filter/DateFilter';
-import { useAppDispatch } from '@/hooks';
+import { Button } from '@chakra-ui/react';
+
 import { clearFilters } from '@/store/slices/tableSlice';
-import RangeFilter from './filters/range-filter/RangeFilter';
+
+import { BooleanFilter, DateFilter, MultiSelectFilter, RangeFilter, useAppDispatch } from '../';
+import { FilterSectionContainer } from './filter-components';
+
+type FilterItemType = {
+	field: any;
+	label: any;
+	title: any;
+	type: 'boolean' | 'multi-select' | 'date' | 'range';
+	options?: any;
+};
 
 const DynamicFilters = ({ path }: { path: any }) => {
-	const { data, isFetching, isError, error, isSuccess } = useGetFiltersQuery(path);
 	const dispatch = useAppDispatch();
 
-	if (isFetching) return null;
+	const { data, isFetching, isError } = useGetFiltersQuery(path);
+
+	const handleClearFilter = () => dispatch(clearFilters());
+
+	if (isFetching || isError) return null;
+
 	return (
-		<Flex
-			gap={2}
-			flexWrap='wrap'>
-			{data?.map((item: any, i: number) => {
+		<FilterSectionContainer>
+			{data?.map((item: FilterItemType, i: number) => {
 				if (item.type === 'boolean') {
 					return (
 						<BooleanFilter
@@ -62,12 +71,12 @@ const DynamicFilters = ({ path }: { path: any }) => {
 				}
 			})}
 			<Button
-				onClick={() => dispatch(clearFilters())}
+				onClick={handleClearFilter}
 				variant='link'
 				size='xs'>
 				Clear filters
 			</Button>
-		</Flex>
+		</FilterSectionContainer>
 	);
 };
 

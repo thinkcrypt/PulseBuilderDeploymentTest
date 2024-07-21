@@ -11,6 +11,8 @@ type FormProps = ButtonProps &
 		error?: any;
 		isSuccess?: boolean;
 		success?: string;
+		isLoading?: boolean;
+		button?: React.ReactNode;
 	};
 
 const Form: FC<FormProps> = ({
@@ -22,9 +24,11 @@ const Form: FC<FormProps> = ({
 	onSubmit,
 	success,
 	isSuccess,
+	button,
 	...props
 }) => {
 	const toast = useToast();
+
 	useEffect(() => {
 		if (isLoading) return;
 		const title = isError ? 'An error occurred.' : 'Success';
@@ -45,13 +49,24 @@ const Form: FC<FormProps> = ({
 	}, [isLoading]);
 
 	return (
-		<Flex flexDir='column' w='full' as='form' onSubmit={onSubmit}>
+		<Flex
+			flexDir='column'
+			w='full'
+			as='form'
+			onSubmit={onSubmit}>
 			{children}
 
 			<Box pt={4}>
-				<Button type='submit' isLoading={isLoading} {...props}>
-					{buttonText}
-				</Button>
+				{button ? (
+					button
+				) : (
+					<Button
+						type='submit'
+						isLoading={isLoading}
+						{...props}>
+						{buttonText}
+					</Button>
+				)}
 			</Box>
 		</Flex>
 	);

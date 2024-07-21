@@ -1,17 +1,8 @@
 import React, { FC } from 'react';
-import {
-	Center,
-	FormControl,
-	Image,
-	Stack,
-	FormHelperText,
-	InputProps,
-	GridProps,
-	Flex,
-} from '@chakra-ui/react';
-import UploadModal from '@/components/library/modals/upload-modal/UploadModal';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
+
+import { Center, FormControl, Image, Stack, InputProps, GridProps, Flex } from '@chakra-ui/react';
+
+import { UploadModal, HelperText, Label } from '../../';
 
 type FormDataType = InputProps &
 	GridProps & {

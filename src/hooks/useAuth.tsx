@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { TOKEN_NAME } from '../lib/constants';
 

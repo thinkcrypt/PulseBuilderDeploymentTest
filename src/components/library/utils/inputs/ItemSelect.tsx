@@ -1,9 +1,8 @@
 'use client';
 import React from 'react';
 import { FormControl, Stack, SelectProps } from '@chakra-ui/react';
-import SelectContainer from './containers/SelectContainer';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
+
+import { Label, HelperText, SelectContainer } from '../../';
 
 type Option = {
 	label: string;
@@ -28,13 +27,23 @@ const ItemSelect: React.FC<InputContainerProps> = ({
 	...props
 }) => {
 	return (
-		<FormControl isRequired={isRequired} gap={4}>
-			<Stack spacing={2} w='full'>
+		<FormControl
+			isRequired={isRequired}
+			gap={4}>
+			<Stack
+				spacing={2}
+				w='full'>
 				<Label>{label}</Label>
-				<Stack spacing={1} w='full'>
-					<SelectContainer value={value} {...props}>
+				<Stack
+					spacing={1}
+					w='full'>
+					<SelectContainer
+						value={value}
+						{...props}>
 						{options?.map((item: Option, i: number) => (
-							<option key={i} value={item?.value}>
+							<option
+								key={i}
+								value={item?.value}>
 								{item?.label}
 							</option>
 						))}

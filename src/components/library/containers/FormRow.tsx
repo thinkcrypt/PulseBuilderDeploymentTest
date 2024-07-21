@@ -7,7 +7,10 @@ type FormRowProps = FlexProps & {
 
 const FormRow: FC<FormRowProps> = ({ children, ...props }) => {
 	return (
-		<Flex gap={4} alignItems='center' {...props}>
+		<Flex
+			gap={4}
+			alignItems='center'
+			{...props}>
 			{children}
 		</Flex>
 	);

@@ -2,20 +2,21 @@
 import React, { useState, ChangeEvent, FC } from 'react';
 
 import { Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
-import PopModalCloseButton from '@/components/library/tablev2/table-components/pop-modals/PopModalCloseButton';
-import FilterSelect from '../../../utils/inputs/FilterSelect';
-import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
-import Filter from '../Filter';
-import FilterInput from '@/components/library/utils/inputs/FilterInput';
 import BetweenValues from './BetweenValues';
-import useIsMobile from '@/components/library/hooks/useIsMobile';
 
 import {
+	useIsMobile,
+	FilterInput,
+	PopModalCloseButton,
+	FilterSelect,
+	useAppDispatch,
+	useAppSelector,
+	Filter,
 	PopModal,
 	PopModalHeader,
 	PopModalBody,
-} from '../../../tablev2/table-components/pop-modals';
+} from '../../../';
 
 type DateFilterProps = {
 	field: string;

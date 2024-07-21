@@ -18,11 +18,12 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
+
 import InsertUrl from './InsertUrl';
 import MyPhotos from './MyPhotos';
 import UploadImage from './UploadImage';
-import AddImageButton from '@/components/library/utils/buttons/AddImageButton';
-import EditImageButton from '@/components/library/utils/buttons/EditImageButton';
+
+import { AddImageButton, EditImageButton } from '../../';
 
 const PADDING_X = 4;
 
@@ -66,19 +67,29 @@ const UploadModal = ({
 	return (
 		<>
 			<Flex onClick={onOpen}>{triggerButton}</Flex>
-			<Modal isOpen={isOpen} onClose={onClose} size='6xl' isCentered>
+			<Modal
+				isOpen={isOpen}
+				onClose={onClose}
+				size='6xl'
+				isCentered>
 				<ModalOverlay />
 				<ModalContent bg={bg}>
 					<ModalHeader>Insert Photo/File</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody minH='70vh'>
-						<Tabs h='60vh' colorScheme='brand' flex={1}>
+						<Tabs
+							h='60vh'
+							colorScheme='brand'
+							flex={1}>
 							<TabList>
 								<Tab>Photos</Tab>
 								<Tab>Upload</Tab>
 								<Tab>Web Address (URL)</Tab>
 							</TabList>
-							<TabPanels h='full' px={0} overflowY='scroll'>
+							<TabPanels
+								h='full'
+								px={0}
+								overflowY='scroll'>
 								<TabPanel sx={styles.panel}>
 									<MyPhotos handleSelect={handleImageSelect} />
 								</TabPanel>
@@ -93,11 +104,19 @@ const UploadModal = ({
 					</ModalBody>
 
 					<ModalFooter>
-						<Flex gap={2} flex={1}>
-							<Button size='sm' isDisabled={!img} onClick={handleInsert}>
+						<Flex
+							gap={2}
+							flex={1}>
+							<Button
+								size='sm'
+								isDisabled={!img}
+								onClick={handleInsert}>
 								Insert
 							</Button>
-							<Button colorScheme='gray' size='sm' onClick={onClose}>
+							<Button
+								colorScheme='gray'
+								size='sm'
+								onClick={onClose}>
 								Cancel
 							</Button>
 						</Flex>

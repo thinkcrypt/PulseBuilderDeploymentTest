@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
+
 import {
-	Button,
 	Popover,
 	PopoverArrow,
 	PopoverBody,
@@ -9,9 +9,8 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
-import Column from '../../../containers/Column';
-import PopoverContainer, { PopoverHeader } from '@/app/_popover/PopoverContainer';
-import FilterSelect from '../../utils/inputs/FilterSelect';
+
+import { FilterButton, PopoverContainer, PopoverHeader, Column, FilterSelect } from '../../';
 
 type IsActiveFilterProps = {
 	trigger: React.ReactNode;
@@ -61,11 +60,7 @@ const IsActiveFilter: React.FC<IsActiveFilterProps> = ({ trigger, value, onChang
 							<option value='true'>True</option>
 							<option value='false'>False</option>
 						</FilterSelect>
-						<Button
-							size='sm'
-							onClick={handleClick}>
-							Apply
-						</Button>
+						<FilterButton onClick={handleClick}>Apply</FilterButton>
 					</Column>
 				</PopoverBody>
 			</PopoverContainer>

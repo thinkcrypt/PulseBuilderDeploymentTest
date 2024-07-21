@@ -1,18 +1,23 @@
 'use client';
 
 import React, { FC, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import CustomTable from '@/components/library/tablev2/CustomTable';
-import Toast from '@/components/toast/Toast';
-import Layout from '@/components/layout/Layout';
-import PageHeading from '@/components/library/tablev2/PageHeading';
-import Headers from '@/components/library/tablev2/header/Headers';
-import { TableObjectProps } from '../../types';
+import { useRouter } from 'next/navigation';
+
 import { setFields, setPreferences } from '@/store/slices/tableSlice';
 import { useGetSelfQuery } from '@/store/services/authApi';
 import { useGetAllQuery } from '@/store/services/commonApi';
-import TableRowComponent from '../../tablev2/row/TableRowComponent';
-import { Text } from '@chakra-ui/react';
+
+import {
+	TableObjectProps,
+	useAppDispatch,
+	useAppSelector,
+	CustomTable,
+	PageHeading,
+	Layout,
+	Toast,
+	Headers,
+	TableRowComponent,
+} from '../../';
 
 const selectable = true;
 
@@ -28,6 +33,7 @@ const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
 		useAppSelector((state: any) => state.table);
 	const dispatch = useAppDispatch();
 	const [col, setCol] = useState<number>(table?.data?.length + 1);
+	const router = useRouter();
 
 	// Get the table state from the redux store
 	const { data, isLoading, isError, error, isSuccess } = useGetAllQuery({
@@ -73,13 +79,15 @@ const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
 	// Create the table body by mapping over the data and creating a TableRowComponent for each item
 	const body = data?.doc?.map((item: any) => (
 		<TableRowComponent
+			onClick={() => table?.clickable && router.push(`${table?.toPath}/${item?._id}`)}
 			selectable={selectable}
 			fields={preferences}
 			item={item}
 			data={table?.data}
 			menu={table?.menu}
 			path={table?.path}
-			key={item._id}
+			key={item?._id}
+			clickable={table?.clickable}
 		/>
 	));
 
@@ -108,6 +116,7 @@ const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
 					path={table?.path} //Path of the table
 					hidePreferences={table?.hidePreferences} //Hide preferences
 					selectedItems={selectedItems} //Selected items
+					isError={isError} //If error while fetching data
 				>
 					<>{body}</>
 				</CustomTable>

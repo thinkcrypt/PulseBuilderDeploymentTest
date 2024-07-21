@@ -83,16 +83,28 @@ const OrderModal = () => {
 
 	const renderLeftSection = (
 		<>
-			<Grid gridTemplateColumns='1fr 1fr 1fr' rowGap={4} pb={4} w='100%'>
+			<Grid
+				gridTemplateColumns='1fr 1fr 1fr'
+				rowGap={4}
+				pb={4}
+				w='100%'>
 				<GridItem fontWeight='600'>Product Detail</GridItem>
-				<GridItem fontWeight='600' textAlign='center'>
+				<GridItem
+					fontWeight='600'
+					textAlign='center'>
 					Quantity
 				</GridItem>
-				<GridItem fontWeight='600' textAlign='right'>
+				<GridItem
+					fontWeight='600'
+					textAlign='right'>
 					Price
 				</GridItem>
 			</Grid>
-			<Grid gridTemplateColumns='1fr 1fr 1fr' rowGap={4} maxH='300px' overflowY='scroll'>
+			<Grid
+				gridTemplateColumns='1fr 1fr 1fr'
+				rowGap={4}
+				maxH='300px'
+				overflowY='scroll'>
 				{result?.data?.items?.map((item: any) => (
 					<>
 						<GridItem>{item?.name}</GridItem>
@@ -104,7 +116,10 @@ const OrderModal = () => {
 					</>
 				))}
 			</Grid>
-			<Flex flex={1} align='flex-end' w='full'>
+			<Flex
+				flex={1}
+				align='flex-end'
+				w='full'>
 				<OrderPriceDetails
 					total={result?.data?.total}
 					subTotal={result?.data?.subTotal}
@@ -118,14 +133,22 @@ const OrderModal = () => {
 
 	const renderRightSection = (
 		<>
-			<Flex align='center' justify='space-between'>
+			<Flex
+				align='center'
+				justify='space-between'>
 				<Heading size='sm'>Billing Details</Heading>
-				<Button size='xs' onClick={handlePaid}>
+				<Button
+					size='xs'
+					onClick={handlePaid}>
 					Paid
 				</Button>
 			</Flex>
 
-			<PosInput valueType='text' value={total?.toLocaleString()} label='Total Due' />
+			<PosInput
+				valueType='text'
+				value={total?.toLocaleString()}
+				label='Total Due'
+			/>
 			<PosInput
 				value={paidAmount}
 				type='number'
@@ -139,23 +162,36 @@ const OrderModal = () => {
 				label='Payment Method'
 				options={['cash', 'credit card', 'bkash', 'nagad', 'other']}
 			/>
-			<VTextarea value={note} onChange={(e: any) => setNote(e.target.value)} label='Note' />
+			<VTextarea
+				value={note}
+				onChange={(e: any) => setNote(e.target.value)}
+				label='Note'
+			/>
 		</>
 	);
 
 	return (
 		<>
-			<Button w='156px' h='100%' borderRadius={0} onClick={onOpen}>
+			<Button
+				w='156px'
+				h='100%'
+				borderRadius={0}
+				onClick={onOpen}>
 				Confirm Order
 			</Button>
 
-			<Modal size='5xl' isOpen={isOpen} onClose={onModalClose}>
+			<Modal
+				size='5xl'
+				isOpen={isOpen}
+				onClose={onModalClose}>
 				<ModalOverlay />
 				<ModalContainer>
 					<ModalHeader>
 						Order Details
 						{isAddressSet && (
-							<Text fontSize='.9rem' fontWeight='500'>
+							<Text
+								fontSize='.9rem'
+								fontWeight='500'>
 								<b>Delivery Address:</b> {address?.street}, {address?.city}, {address?.postalCode},{' '}
 								{address?.country}
 							</Text>
@@ -163,12 +199,21 @@ const OrderModal = () => {
 					</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<Grid gridTemplateColumns='3fr 2fr' gap={10}>
+						<Grid
+							gridTemplateColumns='3fr 2fr'
+							gap={10}>
 							<Flex flexDirection='column'>{renderLeftSection}</Flex>
-							<Column flex={1} gap={4}>
+							<Column
+								flex={1}
+								gap={4}>
 								{renderRightSection}
-								<Flex flex={1} align='flex-end' justify='flex-end'>
-									<Button onClick={handleCreateOrder} isLoading={createOrderResult?.isLoading}>
+								<Flex
+									flex={1}
+									align='flex-end'
+									justify='flex-end'>
+									<Button
+										onClick={handleCreateOrder}
+										isLoading={createOrderResult?.isLoading}>
 										Confirm & Pay
 									</Button>
 								</Flex>

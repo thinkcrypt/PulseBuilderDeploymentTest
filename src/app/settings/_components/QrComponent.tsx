@@ -1,10 +1,11 @@
 'use client';
+
 import React from 'react';
 import { Button, Flex } from '@chakra-ui/react';
-import QRCode from 'react-qr-code';
 import { useClipboard } from '@chakra-ui/react';
 import * as htmlToImage from 'html-to-image';
 import { useGetByIdQuery } from '@/store/services/commonApi';
+
 import Qr from '@/components/library/qr/Qr';
 
 const QrComponent = ({ id }: { id: string }) => {

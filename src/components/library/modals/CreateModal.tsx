@@ -10,17 +10,14 @@ import {
 	ModalOverlay,
 	useDisclosure,
 } from '@chakra-ui/react';
+
 import ModalContainer from '../menu/ModalContainer';
 import useFormData from '../utils/functions/useFormData';
 import { InputData } from '../types';
 import { usePostMutation } from '@/store/services/commonApi';
 import { useEffect, useState } from 'react';
-import useRedirect from '@/hooks/useRedirect';
-import useCustomToast from '@/hooks/useCustomToast';
-import FormDivision from '../create-page/form-section/FormDivision';
-import FormItem from '../create-page/form-section/FormItem';
-import FormInput from '../create-page/inputs/form-input/FormInput';
-import ModalFormSection from '@/components/containers/ModalFormSectionn';
+
+import { FormItem, FormInput, ModalFormSection, FormDivision, useCustomToast } from '../';
 
 type CreateModalProps = {
 	data: InputData<any>[];

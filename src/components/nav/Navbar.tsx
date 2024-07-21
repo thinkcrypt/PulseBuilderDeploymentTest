@@ -14,10 +14,10 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 			top: 0,
 			left: 0,
 			alignItems: 'center',
-			bg: { base: 'background.400', md: 'container.light' },
+			bg: { base: 'container.light', md: 'container.light' },
 			borderBottomWidth: 2,
 			borderBottomColor: 'stroke.light',
-			maxW: '100vw',
+			w: '100vw',
 			zIndex: zIndex.NAV,
 			_dark: {
 				bg: 'container.dark',

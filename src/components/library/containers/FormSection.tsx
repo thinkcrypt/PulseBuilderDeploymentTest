@@ -1,7 +1,7 @@
 'use client';
-import { ContainerProps, Flex, Heading, useColorModeValue } from '@chakra-ui/react';
+import { ContainerProps, Heading, useColorModeValue } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import Column from './Column';
+import { Column } from '../';
 
 type FormContainerProps = ContainerProps & {
 	children: React.ReactNode;
@@ -31,11 +31,15 @@ const FormSection: FC<FormContainerProps> = ({ title, children, ...props }) => {
 			w={{ base: W_BASE, md: W_MD, lg: W_LG }}
 			{...props}>
 			{Boolean(title) && (
-				<Heading size='md' mb={4}>
+				<Heading
+					size='md'
+					mb={4}>
 					{title}
 				</Heading>
 			)}
-			<Column w='full' gap={4}>
+			<Column
+				w='full'
+				gap={4}>
 				{children}
 			</Column>
 		</Column>

@@ -11,15 +11,21 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
-import Column from '../../../../containers/Column';
-import PopoverContainer, { PopoverHeader } from '@/app/_popover/PopoverContainer';
-import FilterSelect from '../../../utils/inputs/FilterSelect';
-import { useAppDispatch, useAppSelector } from '@/hooks';
 import { applyFilters } from '@/store/slices/tableSlice';
+
 import InTheLast from './InTheLast';
 import DatePicker from './DatePicker';
 import BetweenDates from './BetweenDates';
-import Filter from '../Filter';
+
+import {
+	Filter,
+	useAppDispatch,
+	useAppSelector,
+	FilterSelect,
+	PopoverContainer,
+	PopoverHeader,
+	Column,
+} from '../../../';
 
 type DateFilterProps = {
 	field: string;
@@ -86,7 +92,10 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 	};
 
 	return (
-		<Popover onOpen={open} onClose={close} isOpen={isOpen}>
+		<Popover
+			onOpen={open}
+			onClose={close}
+			isOpen={isOpen}>
 			<PopoverTrigger>
 				<Flex>
 					<Filter>
@@ -98,8 +107,12 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 				<PopoverArrow bg={arrow} />
 				<PopoverHeader>{title}</PopoverHeader>
 				<PopoverBody>
-					<Column gap={3} pb={1}>
-						<FilterSelect value={operator} onChange={handleOperatorChange}>
+					<Column
+						gap={3}
+						pb={1}>
+						<FilterSelect
+							value={operator}
+							onChange={handleOperatorChange}>
 							<option value='last'>in the last</option>
 							<option value='eq'>is equal to</option>
 							<option value='btwn'>is between</option>
@@ -112,7 +125,9 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 						{operator === 'gte' && <DatePicker setVal={setValue} />}
 						{operator === 'lte' && <DatePicker setVal={setValue} />}
 
-						<Button size='sm' onClick={handleClick}>
+						<Button
+							size='sm'
+							onClick={handleClick}>
 							Apply
 						</Button>
 					</Column>

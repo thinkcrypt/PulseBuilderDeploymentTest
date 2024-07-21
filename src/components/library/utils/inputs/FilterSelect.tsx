@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select, SelectProps } from '@chakra-ui/react';
-import Icon from '../../icon/Icon';
+
+import { Icon } from '../../';
 
 type FilterSelectProps = SelectProps & {
 	children: React.ReactNode;

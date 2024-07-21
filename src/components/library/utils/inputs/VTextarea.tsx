@@ -1,16 +1,8 @@
 'use client';
 import React from 'react';
-import {
-	FormControl,
-	FormLabel,
-	FormHelperText,
-	Stack,
-	useColorModeValue,
-	Textarea,
-	TextareaProps,
-} from '@chakra-ui/react';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
+import { FormControl, Stack, useColorModeValue, Textarea, TextareaProps } from '@chakra-ui/react';
+
+import { Label, HelperText } from '../../';
 
 type InputContainerProps = TextareaProps & {
 	label: string;

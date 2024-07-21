@@ -3,11 +3,13 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { TableObjectProps } from '@/components/library/types';
-import PageTable from '@/components/library/pages/page-tables/PageTable';
+import { PageTable } from '@/components/library';
 
 const data: TableObjectProps = {
 	title: 'Items',
 	path: 'items',
+	clickable: true,
+	toPath: '/items/edit',
 	button: {
 		title: 'Add Item',
 		path: '/items/create',

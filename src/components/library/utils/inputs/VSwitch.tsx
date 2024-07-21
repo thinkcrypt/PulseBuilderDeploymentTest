@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import { FormControl, Switch, SwitchProps } from '@chakra-ui/react';
-import Label from '../../form/label/Label';
+
+import { Label } from '../../';
 
 type InputContainerProps = SwitchProps & {
 	label: string;

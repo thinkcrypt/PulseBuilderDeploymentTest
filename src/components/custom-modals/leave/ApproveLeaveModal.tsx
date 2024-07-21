@@ -13,10 +13,9 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-import { useDeleteByIdMutation, useUpdateByIdMutation } from '@/store/services/commonApi';
-import useCustomToast from '@/hooks/useCustomToast';
+import { useUpdateByIdMutation } from '@/store/services/commonApi';
 import CustomMenuItem from '@/components/library/menu/CustomMenuItem';
-import ViewOnly from '@/components/library/utils/inputs/ViewOnly';
+import { ViewOnly, useCustomToast } from '@/components/library';
 
 type DeleteItemModalProps = {
 	title?: string;

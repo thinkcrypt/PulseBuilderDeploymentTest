@@ -63,9 +63,9 @@ const Qr: FC<QrProps> = ({
 					}}
 					ecLevel='H'
 					// logoImage={uri}
+					//logoPadding={30}
 					logoWidth={100}
 					removeQrCodeBehindLogo={true}
-					//logoPadding={30}
 					logoPaddingStyle='circle'
 					quietZone={quietZone}
 					size={size - quietZone * 2}

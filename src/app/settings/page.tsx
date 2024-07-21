@@ -1,17 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Layout from '@/components/layout/Layout';
-import { useGetSelfQuery, useRegisterMutation } from '@/store/services/authApi';
-import Column from '@/components/containers/Column';
-import Details from '@/components/library/detail/Details';
-import HeadingMenu from '@/components/library/settings/heading-menu/HeadingMenu';
-import QrComponent from './_components/QrComponent';
-import VImage from '@/components/library/utils/inputs/VImage';
-import { useUpdateByIdMutation } from '@/store/services/commonApi';
-import { Button, Flex } from '@chakra-ui/react';
-import useCustomToast from '@/components/library/hooks/useCustomToast';
 import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { Button, Flex } from '@chakra-ui/react';
+
+import { useUpdateByIdMutation } from '@/store/services/commonApi';
+import { useGetSelfQuery } from '@/store/services/authApi';
+
+import QrComponent from './_components/QrComponent';
+
+import { Layout, Column, VImage, Details, HeadingMenu, useCustomToast } from '@/components/library';
 
 const SettingsPage = () => {
 	const { data, isFetching } = useGetSelfQuery({});

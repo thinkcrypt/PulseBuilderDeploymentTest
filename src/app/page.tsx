@@ -1,8 +1,8 @@
 'use client';
 
-import { Flex, Grid, Wrap } from '@chakra-ui/react';
-import Layout from '@/components/layout/Layout';
-import Count from '@/components/library/stat/Count';
+import { Grid } from '@chakra-ui/react';
+
+import { Layout, Count } from '@/components/library';
 
 export default function Home() {
 	return (

@@ -9,7 +9,8 @@ import {
 	Text,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import Column from '@/components/containers/Column';
+
+import { Column } from '../../';
 
 const InsertUrl = ({ handleSelect }: { handleSelect: any }) => {
 	const borderColor = useColorModeValue('brand.500', 'brand.200');

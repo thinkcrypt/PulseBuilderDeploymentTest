@@ -1,10 +1,14 @@
 'use client';
-import { useAppDispatch } from '@/hooks';
-import { useAuth } from '@/hooks/useAuth';
 import { clearFilters } from '@/store/slices/tableSlice';
-import { FlexPropsType } from '@/types';
+import { FlexProps } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
+
+import { useAppDispatch, useAuth } from '../';
+
+export type FlexPropsType = FlexProps & {
+	children?: React.ReactNode;
+};
 
 const AuthWrapper: FC<FlexPropsType> = ({ children }) => {
 	const { isLoading, isLoggedIn } = useAuth();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuList, MenuListProps, ModalContent } from '@chakra-ui/react';
+import { MenuListProps, ModalContent } from '@chakra-ui/react';
 
 type MenuContainerProps = MenuListProps & {
 	children: React.ReactNode;

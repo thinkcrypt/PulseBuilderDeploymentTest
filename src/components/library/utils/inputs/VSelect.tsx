@@ -1,9 +1,8 @@
 'use client';
 import React from 'react';
 import { FormControl, Stack, SelectProps } from '@chakra-ui/react';
-import SelectContainer from './containers/SelectContainer';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
+
+import { Label, HelperText, SelectContainer } from '../../';
 
 type InputContainerProps = SelectProps & {
 	label: string;

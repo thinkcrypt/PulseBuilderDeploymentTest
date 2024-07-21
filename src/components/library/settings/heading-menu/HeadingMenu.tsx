@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Flex, Heading } from '@chakra-ui/react';
-import Icon from '../../icon/Icon';
-import Column from '../../containers/Column';
+import { Column, Icon } from '../../';
 
 const HeadingMenu = ({
 	editing,

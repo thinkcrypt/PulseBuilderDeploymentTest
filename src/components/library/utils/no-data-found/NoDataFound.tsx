@@ -17,7 +17,11 @@ const NoDataFound: FC<NoDataFoundProps> = ({
 	...props
 }) => {
 	return (
-		<Center flexDir='column' h='400px' w='100%' {...props}>
+		<Center
+			flexDir='column'
+			h='400px'
+			w='100%'
+			{...props}>
 			<Text>{title}</Text>
 			<Text>{description}</Text>
 		</Center>

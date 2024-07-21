@@ -1,12 +1,8 @@
 'use client';
 
-import React, { FC, FormEvent, useState } from 'react';
-import FormSection from '@/components/containers/FormSection';
-import useRedirect from '@/hooks/useRedirect';
-import useCustomToast from '@/hooks/useCustomToast';
-import FormInput from '@/components/library/create-page/inputs/form-input/FormInput';
-import FormItem from '@/components/library/create-page/form-section/FormItem';
-import FormDivision from '../form-section/FormDivision';
+import React, { FC, useState } from 'react';
+
+import { FormInput, FormItem, FormDivision } from '../../';
 
 type FormPageType = {
 	formData: any;

@@ -1,17 +1,20 @@
 import { InputProps, SelectProps, SwitchProps, TextareaProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import VInput from '../../../utils/inputs/VInput';
-import VSelect from '../../../utils/inputs/VSelect';
-import VSwitch from '../../../utils/inputs/VSwitch';
-import VImage from '../../../utils/inputs/VImage';
-import VTextarea from '@/components/library/utils/inputs/VTextarea';
-import { InputDataType } from '@/components/library/types';
-import VDataSelect from '@/components/library/utils/inputs/VDataSelect';
-import VCheckbox from '@/components/library/utils/inputs/VCheckbox';
-import ViewOnly from '@/components/library/utils/inputs/ViewOnly';
-import VTags from '@/components/library/utils/inputs/VTags';
-import VDataTags from '@/components/library/utils/inputs/VDataTags';
-import VDataMenu from '@/components/library/utils/inputs/VDataMenu';
+
+import {
+	VInput,
+	VSelect,
+	VSwitch,
+	VImage,
+	VTextarea,
+	VDataSelect,
+	VCheckbox,
+	ViewOnly,
+	VTags,
+	VDataTags,
+	VDataMenu,
+	InputDataType,
+} from '../../../';
 
 type Option = {
 	label: string;

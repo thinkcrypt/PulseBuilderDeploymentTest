@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { FormControl, Stack, Checkbox, CheckboxProps, Text } from '@chakra-ui/react';
-import Label from '../../form/label/Label';
-import HelperText from '../../form/label/HelperText';
+import { FormControl, Stack, Checkbox, CheckboxProps } from '@chakra-ui/react';
+
+import { Label, HelperText } from '../../';
 
 type InputContainerProps = CheckboxProps & {
 	label: string;

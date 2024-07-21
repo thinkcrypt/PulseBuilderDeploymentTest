@@ -11,7 +11,12 @@ type LabelProps = FormLabelProps & {
 
 const Label: FC<LabelProps> = ({ children, ...props }) => {
 	return (
-		<FormLabel userSelect='none' m={M} fontSize={FONT_SIZE} fontWeight={FONT_WEIGHT} {...props}>
+		<FormLabel
+			userSelect='none'
+			m={M}
+			fontSize={FONT_SIZE}
+			fontWeight={FONT_WEIGHT}
+			{...props}>
 			{children}
 		</FormLabel>
 	);

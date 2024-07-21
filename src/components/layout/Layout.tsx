@@ -1,25 +1,33 @@
 'use client';
+
 import React, { FC } from 'react';
-import Navbar from '../nav/Navbar';
-import Body from '../nav/Body';
-import { Flex, Heading, useMediaQuery } from '@chakra-ui/react';
-import { useAppDispatch } from '@/hooks';
-import AuthWrapper from '../library/wrappers/AuthWrapper';
-import Sidebar from '../nav/sidebar/Sidebar';
-import ColorMode from '../color-mode/ColorMode';
-import { padding, sizes } from '@/lib/constants';
-import { FlexPropsType } from '@/types';
+import { Flex, Heading, useMediaQuery, FlexProps } from '@chakra-ui/react';
+
 import { refresh } from '@/store/slices/tableSlice';
 import { navigate } from '@/store/slices/routeSlice';
-import CreateMenu from '../library/menu/CreateMenu';
-import Column from '../containers/Column';
-import SelfMenu from '../library/menu/SelfMenu';
-import SideDrawer from '../nav/sidebar/SideDrawer';
-import SpaceBetween from '../library/containers/SpaceBetween';
-import useIsMobile from '../library/hooks/useIsMobile';
+
+import {
+	useIsMobile,
+	AuthWrapper,
+	SelfMenu,
+	SpaceBetween,
+	CreateMenu,
+	padding,
+	sizes,
+	useAppDispatch,
+	ColorMode,
+	Body,
+	Navbar,
+	Sidebar,
+	Column,
+} from '../library';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 const PADDING_TOP = { base: 16, md: 16, lg: 16 };
+
+export type FlexPropsType = FlexProps & {
+	children?: React.ReactNode;
+};
 
 type LayoutProps = FlexPropsType & {
 	children: React.ReactNode;

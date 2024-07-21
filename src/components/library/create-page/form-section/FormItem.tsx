@@ -19,9 +19,20 @@ const FormItem: FC<FormItemProps> = ({
 	const clr = useColorModeValue('gray.200', 'gray.700');
 	return (
 		<>
-			{startOfSection && <GridItem colSpan={2} borderTop='1px solid' borderColor={clr} my={2} />}
+			{startOfSection && (
+				<GridItem
+					colSpan={2}
+					borderTop='1px solid'
+					borderColor={clr}
+					my={2}
+				/>
+			)}
 			{sectionTitle && (
-				<GridItem colSpan={2} fontSize='18px' fontWeight='700' mb={-2}>
+				<GridItem
+					colSpan={2}
+					fontSize='18px'
+					fontWeight='700'
+					mb={-2}>
 					{sectionTitle}
 				</GridItem>
 			)}
