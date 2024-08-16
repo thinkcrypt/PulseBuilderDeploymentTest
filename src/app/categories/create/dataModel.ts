@@ -39,13 +39,13 @@ const dataFields: InputData<DataType>[] = [
 		isRequired: false,
 		type: 'number',
 	},
-	// {
-	// 	name: 'isFeatured',
-	// 	label: 'Is Featured',
-	// 	isRequired: false,
-	// 	type: 'checkbox',
-	// 	endOfSection: true,
-	// },
+	{
+		name: 'isActive',
+		label: 'Is Active',
+		isRequired: false,
+		type: 'checkbox',
+		endOfSection: true,
+	},
 ];
 
 export default dataFields;

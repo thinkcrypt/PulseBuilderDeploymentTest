@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Menu, MenuButton, IconButton } from '@chakra-ui/react';
-import { Icon, useIsMobile, CustomTd } from '../../../../';
+import { Icon, useIsMobile, CustomTd, CreateModal } from '../../../../';
 import Link from 'next/link';
 
 import MenuContainer from '../../../../menu/MenuContainer';
@@ -73,6 +73,18 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 									title={title}
 									path={path}
 									dataModel={item?.dataModel}
+								/>
+							);
+
+						case 'edit-modal':
+							return (
+								<CreateModal
+									key={i}
+									id={id}
+									path={path}
+									data={item?.dataModel}
+									trigger={<MenuItem>Edit</MenuItem>}
+									type='update'
 								/>
 							);
 

@@ -1,16 +1,9 @@
 'use client';
 import Attendance from '@/components/attendance/Attendance';
-import useCustomToast from '@/components/library/hooks/useCustomToast';
-import VInput from '@/components/library/utils/inputs/VInput';
-import { useAppDispatch } from '@/hooks';
-import { useLgoinMutation, useRegisterMutation } from '@/store/services/authApi';
+import { VInput, useCustomToast, useAppDispatch } from '@/components/library';
+import { useRegisterMutation } from '@/store/services/authApi';
 import { login } from '@/store/slices/authSlice';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
-
-type FormDataType = {
-	email: string;
-	password: string;
-};
 
 const LoginPage: FC<{}> = () => {
 	const [formData, setFormData] = useState<any>({

@@ -1,9 +1,7 @@
 'use client';
 
 import React from 'react';
-import { InputData } from '@/components/library/types';
-import FormPage from '@/components/library/create-page/page/FormPage';
-import useFormData from '@/components/library/utils/functions/useFormData';
+import { useFormData, FormPage } from '@/components/library';
 import { useParams } from 'next/navigation';
 import { useGetByIdQuery, useUpdateByIdMutation } from '@/store/services/commonApi';
 

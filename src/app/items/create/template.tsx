@@ -1,4 +1,4 @@
-import ColorMode from '@/components/color-mode/ColorMode';
+import { ColorMode } from '@/components/library';
 import { TemplateProps } from '@/types';
 import React, { FC } from 'react';
 

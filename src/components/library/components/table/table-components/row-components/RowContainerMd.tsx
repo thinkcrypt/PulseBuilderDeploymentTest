@@ -6,18 +6,18 @@ type RowContainerMdProps = TextProps & {
 };
 
 const RowContainerMd: FC<RowContainerMdProps> = ({ children, ...props }) => {
-	const [bg, setBg] = useState('transparent');
-	const handleMouseEnter = () => {
-		setBg('#ddd');
-	};
-	const handleMouseLeave = () => {
-		setBg('transparent');
-	};
+	// const [bg, setBg] = useState('transparent');
+	// const handleMouseEnter = () => {
+	// 	setBg('#ddd');
+	// };
+	// const handleMouseLeave = () => {
+	// 	setBg('transparent');
+	// };
 	return (
 		<Tr
 			h='2.5rem'
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
+			// onMouseEnter={handleMouseEnter}
+			// onMouseLeave={handleMouseLeave}
 			{...props}>
 			{children}
 		</Tr>

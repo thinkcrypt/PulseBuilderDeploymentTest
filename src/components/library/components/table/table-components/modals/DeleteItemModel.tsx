@@ -11,9 +11,9 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
-import MenuItem from '../../menu/CustomMenuItem';
+
 import { useDeleteByIdMutation } from '@/store/services/commonApi';
-import useCustomToast from '../../hooks/useCustomToast';
+import { useCustomToast, CustomMenuitem as MenuItem } from '../../../../';
 
 type DeleteItemModalProps = {
 	title?: string;

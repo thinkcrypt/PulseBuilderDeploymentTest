@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ReactNode, FC } from 'react';
 import { RowContainerBase, RowContainerMd, useIsMobile, TableSelectItem } from '../../';
 

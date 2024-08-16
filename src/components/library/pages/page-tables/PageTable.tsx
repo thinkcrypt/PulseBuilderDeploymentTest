@@ -28,7 +28,7 @@ type TableProps = {
 };
 
 // Define the PageTable component
-const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
+const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	const { page, limit, search, sort, filters, fields, preferences, selectedItems }: any =
 		useAppSelector((state: any) => state.table);
 	const dispatch = useAppDispatch();
@@ -101,9 +101,9 @@ const PageTable: FC<TableProps> = ({ table, isModal = false, inputFields }) => {
 					title={table?.title} //Heading of the page
 					button={table?.button?.title} //Button Title
 					href={table?.button?.path} //Page where button would redirect to
-					isModal={isModal} //If create page should be modal
+					isModal={table?.isModal} //If create page should be modal
 					path={table?.path} //Path of the table
-					data={inputFields} //Input fields for the create page
+					data={table?.createModel} //Input fields for the create page
 				/>
 
 				<CustomTable

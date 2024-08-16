@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { useIsMobile } from '../../../../';
-import { DrawerHeader, ModalHeader } from '@chakra-ui/react';
+import { useIsMobile, ModalHeader } from '../../../../';
+import { DrawerHeader } from '@chakra-ui/react';
 
 type MenuModalBodyProps = {
 	children: React.ReactNode;

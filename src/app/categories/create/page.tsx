@@ -3,8 +3,7 @@
 import React from 'react';
 import { useAddCategoryMutation } from '@/store/services/categoriesApi';
 import fields from './dataModel';
-import FormPage from '@/components/library/create-page/page/FormPage';
-import useFormData from '@/components/library/utils/functions/useFormData';
+import { useFormData, FormPage } from '@/components/library';
 
 const CreateCategoryPage = () => {
 	const [trigger, result] = useAddCategoryMutation();

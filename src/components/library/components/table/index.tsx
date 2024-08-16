@@ -14,6 +14,9 @@ export { default as Preferences } from './Preferences';
 export { default as PosResultContainer } from './PosResultContainer';
 
 export type { TableItemProps, TableDataProps } from './types';
+export { TableErrorMessage } from './table-components/error';
+
+export { ViewItemModal, DeleteItemModal } from './table-components/modals';
 
 export {
 	StickyBottomContainer,

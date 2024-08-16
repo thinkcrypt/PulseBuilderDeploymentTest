@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { NextPage } from 'next';
-import { TableObjectProps } from '@/components/library/types';
-import PageTable from '@/components/library/pages/page-tables/PageTable';
+import { PageTable, TableObjectProps } from '@/components/library';
 import createCollection from '@/lib/dataModels/createCollection.model';
 
 const data: TableObjectProps = {

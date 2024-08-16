@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { CloseButton, Flex, FlexProps, Heading } from '@chakra-ui/react';
 import Link from 'next/link';

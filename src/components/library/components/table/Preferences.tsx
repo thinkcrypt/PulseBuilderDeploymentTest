@@ -1,15 +1,18 @@
+'use client';
+
 import { useUpdatePreferencesMutation } from '@/store/services/authApi';
 import { Button, useDisclosure, Text, Checkbox, Grid, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useState, useCallback } from 'react';
 
-import { Icon, useIsMobile, useAppSelector } from '../../';
-
-import MenuModal from './table-components/menu-modals/MenuModal';
-
-import MenuModalHeader from './table-components/menu-modals/MenuModalHeader';
-import MenuModalBody from './table-components/menu-modals/MenuModalBody';
-import MenuModalCloseButton from './table-components/menu-modals/MenuModalCloseButton';
-import MenuModalFooter from './table-components/menu-modals/MenuModalFooter';
+import {
+	Icon,
+	useAppSelector,
+	MenuModal,
+	MenuModalHeader,
+	MenuModalBody,
+	MenuModalCloseButton,
+	MenuModalFooter,
+} from '../../';
 
 const Preferences = ({ path }: { path: string }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -52,18 +55,29 @@ const Preferences = ({ path }: { path: string }) => {
 		}
 	}, []);
 
+	const formatFieldName = (field: string): string => {
+		return field
+			.split('.')
+			.map(
+				part =>
+					part
+						.replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before capital letters
+						.replace(/^./, str => str.toUpperCase()) // Capitalize the first letter
+			)
+			.join(' ');
+	};
+
 	const checkboxes = fields.map((field: string, i: number) => (
 		<Checkbox
-			fontWeight='600'
+			size='md'
+			fontWeight='500'
 			colorScheme='brand'
 			key={i}
 			isChecked={selected?.includes(field)}
 			onChange={e => handleCheckboxChange(e, field)}>
-			{field}
+			{formatFieldName(field)}
 		</Checkbox>
 	));
-
-	const isMobile = useIsMobile();
 
 	return (
 		<>
@@ -89,8 +103,9 @@ const Preferences = ({ path }: { path: string }) => {
 				<MenuModalCloseButton />
 				<MenuModalBody>
 					<Grid
-						gridTemplateColumns={{ base: '1fr 1fr', md: '1fr 1fr 1fr' }}
-						gap={3}
+						py={2}
+						gridTemplateColumns={{ base: '1fr 1fr', md: '1fr 1fr' }}
+						gap={4}
 						rowGap={4}>
 						{checkboxes}
 					</Grid>
@@ -116,7 +131,6 @@ const Preferences = ({ path }: { path: string }) => {
 						</>
 					)}
 				</MenuModalFooter>
-				{/* </MenuModalContent> */}
 			</MenuModal>
 		</>
 	);

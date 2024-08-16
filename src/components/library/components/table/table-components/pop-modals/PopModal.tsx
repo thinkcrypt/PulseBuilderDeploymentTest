@@ -1,17 +1,17 @@
 import {
 	Drawer,
 	DrawerOverlay,
-	DrawerContent,
 	Popover,
 	useColorModeValue,
 	PopoverArrow,
-	PopoverContent,
 	Button,
 	DrawerFooter,
+	Flex,
 } from '@chakra-ui/react';
 
 import React, { FC } from 'react';
-import { Column, FilterButton, sizes } from '../../../../';
+import { Column, FilterButton } from '../../../../';
+import { DrawerContentContainer, PopoverContentContainer } from './';
 
 type MenuModalProps = {
 	children: React.ReactNode;
@@ -44,18 +44,8 @@ const PopModal: FC<MenuModalProps> = ({
 					onClose={onClose}
 					isOpen={isOpen}>
 					<DrawerOverlay />
-					<DrawerContent
-						bg='menu.light'
-						_dark={{
-							bg: 'menu.dark',
-						}}
-						w='100%'
-						maxH='85vh'
-						minH='20vh'
-						userSelect='none'
-						borderTopRadius='20px'>
+					<DrawerContentContainer>
 						{children}
-
 						<DrawerFooter
 							pt={2}
 							px={4}>
@@ -66,7 +56,7 @@ const PopModal: FC<MenuModalProps> = ({
 								Apply
 							</Button>
 						</DrawerFooter>
-					</DrawerContent>
+					</DrawerContentContainer>
 				</Drawer>
 			</>
 		);
@@ -78,26 +68,22 @@ const PopModal: FC<MenuModalProps> = ({
 			onClose={onClose}
 			isOpen={isOpen}>
 			<span> {trigger}</span>
-
-			<PopoverContent
-				boxShadow='lg'
-				borderRadius='2xl'
-				bg='menu.light'
-				_focusVisible={{
-					outline: 'none',
-				}}
-				_dark={{
-					bg: 'menu.dark',
-				}}
-				maxW={sizes.POPOVER_WIDTH}>
+			<PopoverContentContainer>
 				<PopoverArrow bg={arrow} />
-				<Column
-					gap={1}
-					pb={1}>
+				<Column gap={1}>
 					{children}
-					<FilterButton onClick={handleClick}>Apply</FilterButton>
+					<Flex
+						px={3}
+						pb={3}
+						w='full'>
+						<FilterButton
+							w='full'
+							onClick={handleClick}>
+							Apply
+						</FilterButton>
+					</Flex>
 				</Column>
-			</PopoverContent>
+			</PopoverContentContainer>
 		</Popover>
 	);
 };

@@ -5,19 +5,30 @@ import {
 	Modal,
 	ModalBody,
 	ModalCloseButton,
-	ModalFooter,
-	ModalHeader,
 	ModalOverlay,
 	useDisclosure,
 } from '@chakra-ui/react';
 
-import ModalContainer from '../menu/ModalContainer';
-import useFormData from '../utils/functions/useFormData';
-import { InputData } from '../types';
-import { usePostMutation } from '@/store/services/commonApi';
+import {
+	useGetByIdQuery,
+	usePostMutation,
+	useUpdateByIdMutation,
+} from '@/store/services/commonApi';
 import { useEffect, useState } from 'react';
 
-import { FormItem, FormInput, ModalFormSection, FormDivision, useCustomToast } from '../';
+import {
+	FormItem,
+	FormInput,
+	ModalFormSection,
+	FormDivision,
+	useCustomToast,
+	ModalContainer,
+	useFormData,
+	InputData,
+	ModalHeader,
+	ModalFooter,
+	getFieldValue,
+} from '../';
 
 type CreateModalProps = {
 	data: InputData<any>[];
@@ -30,10 +41,22 @@ type CreateModalProps = {
 const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const [formData, setFormData] = useFormData<any>(data);
-	const [callApi, result] = usePostMutation();
+	const { data: prevData, isFetching, refetch } = useGetByIdQuery({ path, id }, { skip: !id });
 
-	const { isSuccess, isLoading, isError, error } = result;
+	const onModalOpen = () => {
+		onOpen();
+		if (type == 'update') {
+			refetch();
+		}
+	};
+
+	const [formData, setFormData] = useFormData<any>(data, prevData);
+
+	const [callApi, result] = usePostMutation();
+	const [updateApi, updateResult] = useUpdateByIdMutation();
+
+	const { isSuccess, isLoading, isError, error } = type === 'update' ? updateResult : result;
+
 	const [changedData, setChangedData] = useState({});
 
 	const sections = React.useMemo(() => {
@@ -98,22 +121,10 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 		e.stopPropagation();
 
 		if (type === 'update') {
-			//callApi({ path, id: id || 'id', body: changedData });
-			return;
+			updateApi({ path, id: id || 'id', body: changedData });
 		} else {
 			callApi({ path, body: formData });
 		}
-	};
-
-	const getFieldValue = (name: string) => {
-		const parentProperty = name?.split('.')[0];
-		const childProperty = name?.split('.')[1];
-		const value =
-			name?.includes('.') && formData[parentProperty]
-				? formData[parentProperty][childProperty]
-				: formData[name];
-
-		return value;
 	};
 
 	const getOnChangeHandler = (type: string) => {
@@ -141,11 +152,15 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 		}
 	}, [isLoading]);
 
-	// useRedirect({ isSuccess, isLoading, path: `/${path}` });
+	useEffect(() => {
+		if (prevData) {
+			setFormData(prevData);
+		}
+	}, [prevData, isFetching]);
 
 	return (
 		<>
-			<Flex onClick={onOpen}>{trigger || path}</Flex>
+			<Flex onClick={onModalOpen}>{trigger || path}</Flex>
 
 			<Modal
 				size='2xl'
@@ -157,10 +172,15 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 					<ModalHeader>{`${type === 'update' ? 'Update' : 'Create'} ${path}`}</ModalHeader>
 					<ModalCloseButton />
 					<form onSubmit={handleSubmit}>
-						<ModalBody>
+						<ModalBody px={6}>
 							<ModalFormSection>
 								{sections.map((section: any, i: number) => (
-									<FormDivision key={i}>
+									<FormDivision
+										key={i}
+										borderWidth={1}
+										boxShadow='none'
+										bg='menu.light'
+										_dark={{ bg: 'menu.dark' }}>
 										{section?.map((item: any, i: number) => (
 											<FormItem
 												item={item}
@@ -171,7 +191,7 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 														name={item?.name}
 														label={item?.label}
 														type={item?.type}
-														value={getFieldValue(item?.name)}
+														value={getFieldValue({ name: item?.name, formData })}
 														onChange={getOnChangeHandler(item?.type)}
 														model={item?.model}
 														placeholder={item?.placeholder}
@@ -184,7 +204,7 @@ const CreateModal = ({ data, trigger, path, type, id }: CreateModalProps) => {
 								))}
 							</ModalFormSection>
 						</ModalBody>
-						<ModalFooter py={4}>
+						<ModalFooter>
 							<Button
 								mr={2}
 								size='xs'

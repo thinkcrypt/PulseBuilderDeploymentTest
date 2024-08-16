@@ -1,3 +1,4 @@
+'use client';
 import { TableCellProps, Checkbox } from '@chakra-ui/react';
 import React, { useState, FC, useEffect, ChangeEvent } from 'react';
 import { CustomTd } from './';

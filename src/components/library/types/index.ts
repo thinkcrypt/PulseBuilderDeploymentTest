@@ -83,6 +83,7 @@ export type ViewModalDataModelProps = {
 	title: string;
 	dataKey: string;
 	type?: 'date' | 'price' | 'boolean' | 'menu' | 'image-text' | 'checkbox' | 'tag' | 'string';
+	colorScheme?: any;
 };
 
 export type TableObjectProps = {
@@ -92,10 +93,12 @@ export type TableObjectProps = {
 	button?: ButtonType;
 	clickable?: boolean;
 	toPath?: string;
+	isModal?: boolean;
+	createModel?: any;
 	data: TableObjectDataProps[];
 	menu?: {
 		title: string;
-		type: 'edit' | 'delete' | 'view' | 'view-modal';
+		type: 'edit' | 'delete' | 'view' | 'view-modal' | 'edit-modal';
 		dataModel?: any;
 	}[];
 	preferences?: any;

@@ -1,8 +1,5 @@
-import { Table, Thead, Tr, Tbody, Flex, Center, Text, CloseButton } from '@chakra-ui/react';
+import { Table, Thead, Tr, Tbody, Flex, Text, CloseButton } from '@chakra-ui/react';
 import React from 'react';
-
-import DynamicFilters from '../../dynamic-filters/DynamicFilters';
-import { CustomTableProps } from '../../types/components.types';
 
 import { selectAll } from '@/store/slices/tableSlice';
 
@@ -15,9 +12,12 @@ import {
 	TableRefresh,
 	Preferences,
 	SelectedItemsContainer,
-	FilterContainer as FIlterContainer,
+	FilterContainer,
 	TableSettingsMenuContainer,
 	TableSearchContainer,
+	TableErrorMessage,
+	DynamicFilters,
+	CustomTableProps,
 } from '../../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
@@ -69,9 +69,9 @@ const CustomTable: React.FC<CustomTableProps> = ({
 			) : (
 				<TableSettingsMenuContainer>
 					{Boolean(filters) && (
-						<FIlterContainer>
+						<FilterContainer>
 							<DynamicFilters path={filters} />
-						</FIlterContainer>
+						</FilterContainer>
 					)}
 
 					<TableSearchContainer>
@@ -91,20 +91,14 @@ const CustomTable: React.FC<CustomTableProps> = ({
 				</Table>
 			</TableContainer>
 			{data?.docsInPage == 0 && (
-				<Center
-					flexDir='column'
-					h='200px'>
-					<Text>No results found.</Text>
-					<Text>There {`aren't`} any results for that query. Try using different filters.</Text>
-				</Center>
+				<TableErrorMessage title='>No results found.'>
+					There {`aren't`} any results for that query. Try using different filters.
+				</TableErrorMessage>
 			)}
 			{isError && (
-				<Center
-					flexDir='column'
-					h='200px'>
-					<Text>Error Fetching Data.</Text>
-					<Text>There has been an error while fetching data. Please try refreshing the page.</Text>
-				</Center>
+				<TableErrorMessage title='Error Fetching Data.'>
+					There has been an error while fetching data. Please try refreshing the page.
+				</TableErrorMessage>
 			)}
 			<ResultContainer data={data} />
 		</>

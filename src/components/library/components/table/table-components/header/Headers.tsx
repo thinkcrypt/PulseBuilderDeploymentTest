@@ -1,7 +1,15 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 
 import { Checkbox } from '@chakra-ui/react';
-import { useAppDispatch, useAppSelector, useIsMobile, TableObjectDataProps, Title } from '../..';
+import {
+	useAppDispatch,
+	useAppSelector,
+	useIsMobile,
+	TableObjectDataProps,
+	Title,
+} from '../../../../';
 import { selectAll } from '@/store/slices/tableSlice';
 
 type HeadersProps = {

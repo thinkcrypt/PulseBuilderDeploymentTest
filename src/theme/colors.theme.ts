@@ -39,6 +39,7 @@ type Colors = {
 
 const RICH_BLACK = '#0E131F';
 const DARK = '#0E0E0E';
+
 const SAGE = '#B5BD89';
 const THIRSTLE = '#D0C4DF';
 
@@ -120,8 +121,9 @@ export const colors: Colors = {
 		dark: BLACK,
 	},
 	border: {
-		light: '#F3F3EF',
-		dark: DARK,
+		//light: '#F3F3EF',
+		light: '#e3e3e3',
+		dark: '#2D2D2D',
 	},
 	container: {
 		light: '#fff',

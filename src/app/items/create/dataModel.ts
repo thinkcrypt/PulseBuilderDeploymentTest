@@ -1,4 +1,4 @@
-import { InputData } from '@/components/library/types';
+import { InputData } from '@/components/library';
 import createCategoryModalModel from '@/lib/dataModels/createCategory.model';
 
 export type DataType = {

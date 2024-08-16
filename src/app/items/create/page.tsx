@@ -2,8 +2,7 @@
 
 import React from 'react';
 import fields from './dataModel';
-import FormPage from '@/components/library/create-page/page/FormPage';
-import useFormData from '@/components/library/utils/functions/useFormData';
+import { useFormData, FormPage } from '@/components/library';
 import { useAddProductMutation } from '@/store/services/productsApi';
 
 const CreateItemsPage = () => {
