@@ -32,6 +32,7 @@ const SelfMenu = () => {
 				borderRadius='full'
 				icon={
 					<Icon
+						color='white'
 						name='settings'
 						size={24}
 					/>

@@ -6,12 +6,13 @@ const style = {
 	w: '100%',
 	borderRadius: 8,
 	borderWidth: 2,
+	bg: 'white',
 
 	pb: 6,
 	borderColor: 'stroke.light',
 
 	_dark: {
-		bg: 'table.dark',
+		bg: 'sidebar.dark',
 		borderColor: 'stroke.dark',
 	},
 };

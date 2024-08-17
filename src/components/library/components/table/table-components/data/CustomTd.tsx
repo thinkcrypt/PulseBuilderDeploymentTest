@@ -21,6 +21,10 @@ const CustomTd: FC<TableDataProps> = ({ children, src, type, ...props }) => {
 
 	return (
 		<Container
+			// borderBottom='1px solid red'
+			_dark={{
+				borderColor: 'stroke.deepD',
+			}}
 			wordBreak='break-word'
 			fontSize={isMobile && type == 'image-text' ? '1.3rem' : isMobile ? '1rem' : '.82rem'}
 			py={PADDING_Y}

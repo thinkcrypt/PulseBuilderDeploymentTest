@@ -40,7 +40,6 @@ type LayoutProps = FlexPropsType & {
 const Layout: FC<LayoutProps> = ({
 	children,
 	title,
-	//type = 'default',
 	path = '/dashboard',
 	hideColorMode = false,
 	...props
@@ -61,15 +60,17 @@ const Layout: FC<LayoutProps> = ({
 	return (
 		<AuthWrapper>
 			<Flex
+				bg='navbar.light'
 				w='100%'
-				gap={0}>
+				flex={1}>
 				<Navbar
+					bg='inherit'
 					px={PX}
 					w={isMobile ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
-					left={isMobile ? 0 : sizes.HOME_NAV_LEFT}
-					_dark={{ bg: 'navbar.dark' }}>
+					left={isMobile ? 0 : sizes.HOME_NAV_LEFT}>
 					<SpaceBetween>
 						<Heading
+							color='white'
 							size='md'
 							fontFamily='Bebas Neue'>
 							{title}
@@ -82,32 +83,39 @@ const Layout: FC<LayoutProps> = ({
 						<CreateMenu />
 					</Flex>
 				</Navbar>
-			</Flex>
-			<Body>
-				{type == 'default' && <Sidebar />}
-				<Flex
-					flexDir='column'
-					w='full'
-					pl={type !== 'default' ? 0 : sizes.HOME_NAV_LEFT}
-					{...props}>
+
+				<Body>
+					{type == 'default' && <Sidebar />}
 					<Flex
-						pt={type == 'pos' ? 12 : PADDING_TOP}
-						flex={1}
-						w='full'>
+						flexDir='column'
+						w='full'
+						pl={type !== 'default' ? 0 : sizes.HOME_NAV_LEFT}
+						{...props}>
 						<Flex
-							p={PX}
-							pb={0}
+							pt={type == 'pos' ? 12 : sizes.NAV_HEIGHT}
+							flex={1}
 							w='full'>
-							<Column
-								w='full'
-								gap={4}>
-								{children}
-							</Column>
+							<Flex
+								overflowY='hidden'
+								h={`calc(100vh - ${sizes.NAV_HEIGHT})`}
+								borderTopRightRadius={{ base: `0`, md: 'xl' }}
+								bg={{ base: 'background.400', md: 'background.light' }}
+								_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
+								p={PX}
+								pb={0}
+								w='full'>
+								<Column
+									pl={{ base: 0, md: 2 }}
+									w='full'
+									gap={4}>
+									{children}
+								</Column>
+							</Flex>
 						</Flex>
 					</Flex>
-				</Flex>
-			</Body>
-			{!hideColorMode && <ColorMode />}
+				</Body>
+				{!hideColorMode && <ColorMode />}
+			</Flex>
 		</AuthWrapper>
 	);
 };

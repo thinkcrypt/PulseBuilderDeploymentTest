@@ -17,39 +17,46 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 
 	return (
 		<Flex
+			bg='sidebar.light'
+			_dark={{ bg: 'sidebar.dark' }}
+			pl={{ base: 0, md: 4 }}
 			sx={{
 				...styles.container,
 				left: isMobile ? 0 : sizes.HOME_NAV_LEFT,
 				w: isMobile ? '100vw' : sizes.HOME_NAV_MAX_WIDTH,
-				px: isMobile ? 4 : 4,
 				pb: isMobile ? 4 : 0,
 				...props,
 			}}>
-			<Text>
-				<b>{data?.totalDocs || '--'}</b> results
-			</Text>
+			<Flex
+				px={4}
+				align='center'
+				justify='space-between'
+				gap={4}
+				w='100%'
+				bg='container.light'
+				borderTop='1px solid'
+				borderTopColor='stroke.deepL'
+				_dark={{ bg: 'container.dark', borderTopColor: 'stroke.deepD' }}>
+				<Text>
+					<b>{data?.totalDocs || '--'}</b> results
+				</Text>
 
-			<Pagination data={data && data} />
+				<Pagination data={data && data} />
+			</Flex>
 		</Flex>
 	);
 };
 
 const styles = {
 	container: {
-		borderTop: '1px solid',
-		borderTopColor: 'stroke.deepL',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		zIndex: 10,
-		gap: 4,
+		//borderTop: '1px solid',
+		//borderTopColor: 'stroke.deepL',
 		position: 'fixed',
 		bottom: 0,
-		bg: 'container.light',
-
-		_dark: { bg: 'container.dark', borderTopColor: 'stroke.deepD' },
+		// bg: 'container.light',
+		// _dark: { bg: 'container.dark', borderTopColor: 'stroke.deepD' },
 		overflow: 'scroll',
 		maxW: '100%',
-
 		fontSize: '.9rem',
 	},
 };

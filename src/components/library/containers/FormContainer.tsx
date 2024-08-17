@@ -13,7 +13,9 @@ const PADDING = 8;
 
 const FormContainer: FC<FormContainerProps> = ({ children, ...props }) => {
 	return (
-		<Flex sx={styles.container} {...props}>
+		<Flex
+			sx={styles.container}
+			{...props}>
 			{children}
 		</Flex>
 	);
@@ -23,8 +25,8 @@ const styles = {
 	container: {
 		h: 'fit-content',
 		p: PADDING,
-		bg: 'container.light',
-		_dark: { bg: 'container.dark' },
+		bg: 'white',
+		_dark: { bg: 'sidebar.dark' },
 		flexDirection: 'column',
 		mx: 'auto',
 		borderRadius: 'lg',

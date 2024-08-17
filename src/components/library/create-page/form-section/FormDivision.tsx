@@ -8,7 +8,7 @@ type FormDivisionProps = FlexProps & {
 const FormDivision: FC<FormDivisionProps> = ({ children, ...props }) => {
 	return (
 		<Flex
-			bg='background.light'
+			bg='white'
 			boxShadow='sm'
 			borderWidth={1}
 			_dark={{ bg: 'background.dark' }}

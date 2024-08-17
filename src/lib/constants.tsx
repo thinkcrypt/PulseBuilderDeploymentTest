@@ -32,6 +32,7 @@ export const sizes = {
 	RADIUS_MENU: 'lg',
 	POS_MAX_HEIGHT: '75vh',
 	POS_RATIO: '6fr 2fr',
+	NAV_HEIGHT: 12,
 };
 
 export const shadow = {

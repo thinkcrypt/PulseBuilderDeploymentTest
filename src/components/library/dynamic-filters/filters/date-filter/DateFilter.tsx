@@ -72,7 +72,7 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 		onOpen();
 	};
 
-	const close = (): void => {
+	const popClose = (): void => {
 		reset();
 		onClose();
 	};

@@ -10,11 +10,7 @@ const style = {
 	px: 5,
 	width: '100%',
 	borderBottomWidth: 2,
-	borderBottomColor: 'stroke.light',
 	alignItems: 'center',
-	_dark: {
-		borderBottomColor: 'stroke.dark',
-	},
 };
 
 const SidebarLogo: FC<SidebarLogoProps> = ({ children }) => {

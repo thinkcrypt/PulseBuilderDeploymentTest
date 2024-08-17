@@ -1,19 +1,21 @@
 import React, { FC, ReactNode } from 'react';
 import { Flex } from '@chakra-ui/react';
+import { sizes } from '../../../';
 
 type SidebarLogoProps = {
 	children: ReactNode;
 };
 
 const style = {
-	h: 16,
+	h: sizes.NAV_HEIGHT || 12,
 	px: 5,
 	width: '100%',
-	borderBottomWidth: 2,
-	borderBottomColor: 'stroke.light',
+	bg: 'navbar.light',
+	borderBottomColor: 'navbar.light',
 	alignItems: 'center',
 	_dark: {
-		borderBottomColor: 'stroke.dark',
+		bg: 'navbar.light',
+		borderBottomColor: 'sidebar.dark',
 	},
 };
 

@@ -72,7 +72,7 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 				value: val?.length > 0 ? arr.join(',') : '',
 			})
 		);
-		close();
+		popClose();
 	};
 	const isMobile = useIsMobile();
 

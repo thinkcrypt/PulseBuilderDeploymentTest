@@ -10,14 +10,13 @@ const styles = {
 	container: {
 		h: '100vh',
 		position: 'fixed',
-		maxH: '100vh',
 		overflow: 'none',
 		w: sizes.SIDEBAR_WIDTH,
 		minW: sizes.SIDEBAR_WIDTH,
-		borderRightWidth: 2,
+		borderRightWidth: 0,
 		borderRightColor: 'stroke.light',
 		flexDir: 'column',
-		bg: 'sidebar.light',
+		bg: 'navbar.light',
 		_dark: {
 			borderRightColor: 'stroke.dark',
 			bg: 'sidebar.dark',

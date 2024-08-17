@@ -28,46 +28,28 @@ const DynamicFilters = ({ path }: { path: any }) => {
 	return (
 		<FilterSectionContainer>
 			{data?.map((item: FilterItemType, i: number) => {
+				const commonProps = {
+					key: i,
+					field: item?.field,
+					label: item?.label,
+					title: item?.title,
+				};
 				if (item.type === 'boolean') {
-					return (
-						<BooleanFilter
-							key={i}
-							field={item?.field}
-							label={item?.label}
-							title={item?.title}
-						/>
-					);
+					return <BooleanFilter {...commonProps} />;
 				}
 				if (item.type === 'multi-select') {
 					return (
 						<MultiSelectFilter
-							key={i}
-							field={item?.field}
-							label={item?.label}
-							title={item?.title}
+							{...commonProps}
 							options={item?.options}
 						/>
 					);
 				}
 				if (item.type === 'date') {
-					return (
-						<DateFilter
-							key={i}
-							field={item?.field}
-							label={item?.label}
-							title={item?.title}
-						/>
-					);
+					return <DateFilter {...commonProps} />;
 				}
 				if (item.type === 'range') {
-					return (
-						<RangeFilter
-							key={i}
-							field={item?.field}
-							label={item?.label}
-							title={item?.title}
-						/>
-					);
+					return <RangeFilter {...commonProps} />;
 				}
 			})}
 			<Button

@@ -47,7 +47,7 @@ const BooleanFilter: FC<IsActiveFilterProps> = ({ title, field, label }) => {
 				value: val,
 			})
 		);
-		close();
+		popClose();
 	};
 
 	const ifFieldExists = (): boolean => {

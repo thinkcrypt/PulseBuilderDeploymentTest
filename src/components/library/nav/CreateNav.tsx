@@ -18,20 +18,27 @@ const CreateNav: React.FC<CreateNavProps> = ({ title, path, isLoading }) => {
 	};
 	return (
 		<Navbar
+			bg='navbar.light'
 			px={6}
-			borderBottom='1px solid'
-			borderColor='gray.200'
 			justify='space-between'>
 			<Flex
 				gap={3}
 				align='center'
 				flex={1}>
-				<CloseButton onClick={handleBackClick} />
+				<CloseButton
+					colorScheme='brand'
+					color='white'
+					onClick={handleBackClick}
+				/>
 				<Divider
 					h={6}
 					orientation='vertical'
 				/>
-				<Heading size='xs'>{title}</Heading>
+				<Heading
+					color='white'
+					size='xs'>
+					{title}
+				</Heading>
 			</Flex>
 			<Center
 				flex={1}

@@ -26,7 +26,7 @@ const styles = {
 		h: '44px',
 		w: '44px',
 		bg: 'container.light',
-		_dark: { bg: 'container.dark' },
+		_dark: { bg: 'sidebar.dark' },
 		position: 'fixed',
 		cursor: 'pointer',
 		borderLeftRadius: '8px',

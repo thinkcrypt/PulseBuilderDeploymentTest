@@ -53,7 +53,7 @@ const SelectFilter: FC<FilterProps> = ({ title, field, options, label }) => {
 		setVal(filters[field] || '');
 		onOpen();
 	};
-	const close = () => {
+	const popClose = () => {
 		setVal('');
 		onClose();
 	};
@@ -64,7 +64,7 @@ const SelectFilter: FC<FilterProps> = ({ title, field, options, label }) => {
 				value: val,
 			})
 		);
-		close();
+		popClose();
 	};
 	return (
 		<Popover

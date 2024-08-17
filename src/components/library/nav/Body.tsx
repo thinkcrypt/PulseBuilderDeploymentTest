@@ -10,8 +10,6 @@ const Body: FC<FlexPropsType> = ({ children, ...props }) => {
 		<Flex
 			w='100%'
 			minH='100vh'
-			bg={{ base: 'background.400', md: 'background.light' }}
-			_dark={{ bg: 'background.dark' }}
 			{...props}>
 			{children}
 		</Flex>

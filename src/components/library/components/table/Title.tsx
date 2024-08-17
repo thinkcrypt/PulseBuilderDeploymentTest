@@ -58,10 +58,12 @@ export const Title: React.FC<TitleProps> = ({
 
 	return (
 		<Th
+			_dark={{ borderBottomColor: 'stroke.deepD' }}
 			cursor={Boolean(sort) ? 'pointer' : 'default'}
 			onClick={handleSort}
 			userSelect='none'>
 			<Flex
+				py={1}
 				align='center'
 				gap={2}
 				fontWeight='700'

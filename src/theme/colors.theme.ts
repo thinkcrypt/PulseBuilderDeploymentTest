@@ -81,12 +81,12 @@ export const colors: Colors = {
 		400: '#f8f6f3',
 		500: '#fff',
 		200: BLACK,
-		light: '#fff',
+		light: '#f1f1f1',
 		dark: BLACK,
 	},
 	text: {
 		light: '#30313D',
-		dark: '#fff',
+		dark: '#f1f1f1',
 		200: '#fff',
 		400: '#4a4a4a',
 		500: '#30313D',
@@ -109,7 +109,7 @@ export const colors: Colors = {
 	},
 	sidebar: {
 		//light: '#F3F3EF',
-		light: '#F1F1F1',
+		light: '#ebebeb',
 		dark: DARK,
 	},
 	menu: {
@@ -117,7 +117,7 @@ export const colors: Colors = {
 		dark: DARK,
 	},
 	navbar: {
-		light: '#fff',
+		light: BLACK,
 		dark: BLACK,
 	},
 	border: {

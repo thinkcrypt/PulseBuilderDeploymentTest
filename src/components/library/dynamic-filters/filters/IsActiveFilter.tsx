@@ -32,14 +32,14 @@ const IsActiveFilter: React.FC<IsActiveFilterProps> = ({ trigger, value, onChang
 		onOpen();
 	};
 
-	const close = () => {
+	const popClose = () => {
 		setVal('');
 		onClose();
 	};
 
 	const handleClick = () => {
 		onChange(val);
-		close();
+		popClose();
 	};
 	return (
 		<Popover
