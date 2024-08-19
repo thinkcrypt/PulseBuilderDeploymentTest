@@ -1,3 +1,5 @@
+import { THEME } from '../components/library';
+
 type ColorMode = {
 	light?: string;
 	dark?: string;
@@ -13,6 +15,7 @@ type ColorMode = {
 	900?: string;
 	selected?: string;
 	selectedDark?: string;
+	darker?: string;
 };
 
 type Colors = {
@@ -43,7 +46,8 @@ const DARK = '#0E0E0E';
 const SAGE = '#B5BD89';
 const THIRSTLE = '#D0C4DF';
 
-const BLACK = '#1f1f1f';
+//const BLACK = '#1f1f1f';
+const BLACK = '#171717';
 
 const test = {
 	100: 'red',
@@ -78,11 +82,13 @@ export const colors: Colors = {
 		dark: BLACK,
 	},
 	background: {
+		100: '#f1f1f1',
 		400: '#f8f6f3',
 		500: '#fff',
 		200: BLACK,
-		light: '#f1f1f1',
-		dark: BLACK,
+		light: THEME == 'basic' ? '#fff' : '#f1f1f1',
+		//dark: BLACK,
+		dark: THEME == 'basic' ? BLACK : '#121212',
 	},
 	text: {
 		light: '#30313D',
@@ -111,14 +117,17 @@ export const colors: Colors = {
 		//light: '#F3F3EF',
 		light: '#ebebeb',
 		dark: DARK,
+		darker: '#121212',
 	},
 	menu: {
 		light: '#fff',
 		dark: DARK,
 	},
 	navbar: {
-		light: BLACK,
+		400: BLACK,
+		light: THEME == 'basic' ? '#fff' : BLACK,
 		dark: BLACK,
+		800: BLACK,
 	},
 	border: {
 		//light: '#F3F3EF',
@@ -144,8 +153,8 @@ export const colors: Colors = {
 	},
 
 	table: {
-		light: '#fff',
-		dark: BLACK,
+		light: THEME == 'basic' ? 'transparent' : '#fff',
+		dark: THEME == 'basic' ? 'transparent' : DARK,
 	},
 	selectBorder: {
 		light: '#d1d3d3',

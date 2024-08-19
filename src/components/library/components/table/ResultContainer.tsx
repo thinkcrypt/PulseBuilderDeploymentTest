@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Flex, FlexProps, Text } from '@chakra-ui/react';
 
-import { useIsMobile, useAppSelector, sizes, Pagination } from '../../';
+import { useIsMobile, useAppSelector, sizes, Pagination, THEME } from '../../';
 
 type ResultContainerProps = FlexProps & {
 	data: any;
@@ -19,7 +19,7 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 		<Flex
 			bg='sidebar.light'
 			_dark={{ bg: 'sidebar.dark' }}
-			pl={{ base: 0, md: 4 }}
+			pl={{ base: 0, md: THEME == 'basic' ? 0 : 4 }}
 			sx={{
 				...styles.container,
 				left: isMobile ? 0 : sizes.HOME_NAV_LEFT,

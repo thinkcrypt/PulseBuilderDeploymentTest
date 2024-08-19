@@ -1,4 +1,4 @@
-import { Column, sizes } from '../../../';
+import { Column, sizes, THEME } from '../../../';
 import { Stack, StackProps } from '@chakra-ui/react';
 import React from 'react';
 
@@ -12,11 +12,11 @@ const SidebarContent: React.FC<SidebarContainerProps> = ({ children, ...props })
 			flex={1}
 			bg='sidebar.light'
 			_dark={{ bg: 'sidebar.dark' }}
-			borderTopRadius={{ base: '0', md: 'xl' }}
+			borderTopRadius={{ base: '0', md: THEME == 'basic' ? 0 : 'xl' }}
 			w='full'
 			px={3}
 			pt={4}
-			m={'16px'}
+			m={THEME == 'basic' ? 0 : '16px'}
 			my='0'
 			zIndex='9999'
 			{...props}>

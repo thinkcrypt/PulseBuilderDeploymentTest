@@ -34,7 +34,14 @@ const data: TableObjectProps = {
 		},
 		{ title: 'Priority', dataKey: 'priority', sort: 'priority', default: true, editable: true },
 
-		{ title: 'isActive', dataKey: 'isActive', type: 'boolean', sort: 'isActive', default: true },
+		{
+			title: 'isActive',
+			dataKey: 'isActive',
+			type: 'tag',
+			sort: 'isActive',
+			default: true,
+			colorScheme: (data: boolean) => (data ? 'green' : 'red'),
+		},
 		{ title: 'Created', dataKey: 'createdAt', type: 'date', sort: 'createdAt' },
 		{ title: '...', type: 'menu' },
 	],

@@ -3,11 +3,13 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, ReactNode } from 'react';
 import SideDrawer from './sidebar/SideDrawer';
-import { useIsMobile, sizes, zIndex } from '../';
+import { useIsMobile, sizes, zIndex, padding } from '../';
 
 type FlexPropsType = FlexProps & {
 	children: ReactNode;
 };
+
+const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 
 const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 	const styles = {
@@ -17,14 +19,14 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 			top: 0,
 			left: 0,
 			alignItems: 'center',
-			bg: 'transparent',
-			// bg: 'navbar.light',
+			bg: 'navbar.light',
 			borderBottomWidth: 2,
 			borderBottomColor: 'stroke.light',
+			px: PX,
 			w: '100vw',
 			zIndex: zIndex.NAV || 999,
 			_dark: {
-				//bg: 'navbar.dark',
+				bg: 'navbar.dark',
 				borderBottomColor: 'stroke.dark',
 			},
 			...props,

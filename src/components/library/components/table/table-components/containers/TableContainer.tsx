@@ -1,19 +1,19 @@
 import React, { ReactNode } from 'react';
 import { TableContainer as ChakraTableContainer, Flex } from '@chakra-ui/react';
-import { useIsMobile } from '../../../../';
+import { useIsMobile, theme } from '../../../../';
+
+const { TABLE } = theme;
 
 const style = {
 	w: '100%',
-	borderRadius: 8,
-	borderWidth: 2,
-	bg: 'white',
-
-	pb: 6,
-	borderColor: 'stroke.light',
-
+	borderRadius: TABLE.border.radius,
+	borderWidth: TABLE.border.width,
+	bg: TABLE.bg.light,
+	pb: TABLE.padding.bottom,
+	borderColor: TABLE.border.color.light,
 	_dark: {
-		bg: 'sidebar.dark',
-		borderColor: 'stroke.dark',
+		bg: TABLE.bg.dark,
+		borderColor: TABLE.border.color.dark,
 	},
 };
 

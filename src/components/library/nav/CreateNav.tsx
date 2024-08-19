@@ -3,7 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import { Button, Center, CloseButton, Divider, Flex, Heading } from '@chakra-ui/react';
-import Navbar from '../nav/Navbar';
+import { Navbar, THEME } from '../index';
 
 type CreateNavProps = {
 	title: string;
@@ -18,7 +18,7 @@ const CreateNav: React.FC<CreateNavProps> = ({ title, path, isLoading }) => {
 	};
 	return (
 		<Navbar
-			bg='navbar.light'
+			bg={THEME == 'basic' ? 'navbar.400' : 'navbar.light'}
 			px={6}
 			justify='space-between'>
 			<Flex

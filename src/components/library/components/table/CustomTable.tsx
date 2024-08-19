@@ -18,6 +18,7 @@ import {
 	TableErrorMessage,
 	DynamicFilters,
 	CustomTableProps,
+	Icon,
 } from '../../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
@@ -64,7 +65,8 @@ const CustomTable: React.FC<CustomTableProps> = ({
 							<Text>{selectedItems?.length} selected</Text>
 						</Flex>
 					</Flex>
-					<Text>...</Text>
+					<Icon name='settings' />
+					{/* <Text>...</Text> */}
 				</SelectedItemsContainer>
 			) : (
 				<TableSettingsMenuContainer>
@@ -91,7 +93,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 				</Table>
 			</TableContainer>
 			{data?.docsInPage == 0 && (
-				<TableErrorMessage title='>No results found.'>
+				<TableErrorMessage title='No results found.'>
 					There {`aren't`} any results for that query. Try using different filters.
 				</TableErrorMessage>
 			)}

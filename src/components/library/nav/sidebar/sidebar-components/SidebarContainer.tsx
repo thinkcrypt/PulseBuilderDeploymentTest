@@ -19,7 +19,7 @@ const styles = {
 		bg: 'navbar.light',
 		_dark: {
 			borderRightColor: 'stroke.dark',
-			bg: 'sidebar.dark',
+			bg: 'navbar.dark',
 		},
 	},
 };

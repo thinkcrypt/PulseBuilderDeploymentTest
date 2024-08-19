@@ -15,7 +15,7 @@ import CustomMenuItem from './CustomMenuItem';
 import { useGetSelfQuery } from '@/store/services/authApi';
 import { logout } from '@/store/slices/authSlice';
 
-import { Icon, useAppDispatch, MenuContainer } from '../';
+import { Icon, useAppDispatch, MenuContainer, THEME } from '../';
 
 const SelfMenu = () => {
 	const { data, isFetching, isError, error, isSuccess } = useGetSelfQuery({});
@@ -32,7 +32,7 @@ const SelfMenu = () => {
 				borderRadius='full'
 				icon={
 					<Icon
-						color='white'
+						color={THEME == 'basic' ? 'inherit' : 'white'}
 						name='settings'
 						size={24}
 					/>

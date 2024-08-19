@@ -3,7 +3,7 @@ import { FlexProps, Heading, Stack } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 import SidebarItem from './SidebarItem';
 
-import { sidebarData as sidebar } from '../../';
+import { sidebarData as sidebar, THEME } from '../../';
 
 import { useGetSelfQuery } from '@/store/services/authApi';
 
@@ -52,7 +52,7 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 		<SidebarContainer {...props}>
 			<SidebarLogo>
 				<Heading
-					color='text.dark'
+					color={THEME == 'basic' ? 'inherit' : 'text.dark'}
 					size='md'
 					fontFamily='Bebas Neue'>
 					{title}

@@ -13,8 +13,8 @@ export const PLACEHOLDER_IMAGE =
 	'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1704931200&semt=ais';
 
 export const URL = {
-	backend: process.env.NEXT_PUBLIC_BACKEND,
-	api: process.env.NEXT_PUBLIC_BACKEND,
+	backend: process.env.NEXT_PUBLIC_BACKEND || 'http://localhost:5000',
+	api: process.env.NEXT_PUBLIC_BACKEND || 'http://localhost:5000',
 };
 
 export const currency = {
@@ -56,3 +56,5 @@ export const zIndex = {
 };
 
 export const BASE_LIMIT = 16;
+
+export const THEME: 'basic' | 'fancy' = 'basic';

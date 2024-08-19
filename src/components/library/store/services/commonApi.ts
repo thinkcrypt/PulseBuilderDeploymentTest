@@ -1,6 +1,5 @@
-import { BASE_LIMIT } from '@/lib/constants';
-import { ModelType } from '../../components/library/types';
-import { mainApi } from '@/components/library/store';
+import { BASE_LIMIT } from '../../';
+import mainApi from './mainApi';
 
 export const userApi = mainApi.injectEndpoints({
 	overrideExisting: true,
@@ -29,7 +28,7 @@ export const userApi = mainApi.injectEndpoints({
 			providesTags: (result, error, { path }) => [path],
 		}),
 		getSelectData: builder.query<any, string>({
-			query: (id: ModelType) => `${id}?limit=1000&fields=name&sort=name`,
+			query: (id: any) => `${id}?limit=1000&fields=name&sort=name`,
 			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons', 'collections'],
 		}),
 		getById: builder.query<any, { path: string; id: any }>({

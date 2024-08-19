@@ -1,11 +1,12 @@
 import React, { FC, ReactNode } from 'react';
 import { Stack, StackProps } from '@chakra-ui/react';
+import { theme } from '../../../';
 
 type SidebarBodyProps = StackProps & {
 	children: ReactNode;
 };
 
-const BODY_HEIGHT = '82vh';
+const BODY_HEIGHT = theme.SIDEBAR.body.heigth;
 
 const SidebarBody: FC<SidebarBodyProps> = ({ children }) => {
 	return (

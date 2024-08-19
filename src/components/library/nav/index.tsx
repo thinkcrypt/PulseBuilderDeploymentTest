@@ -6,3 +6,4 @@ export { default as Sidebar } from './sidebar/Sidebar';
 export { default as SidebarItem } from './sidebar/SidebarItem';
 export { default as SideDrawer } from './sidebar/SideDrawer';
 export { default as Layout } from './Layout';
+export { default as LayoutWrapper } from './nav-components/LayoutWrapper';

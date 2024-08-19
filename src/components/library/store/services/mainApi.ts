@@ -1,4 +1,4 @@
-import { STORE, URL } from '@/lib/constants';
+import { URL } from '../../';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const tags = [
@@ -29,25 +29,7 @@ export const mainApi = createApi({
 		},
 	}),
 	tagTypes: tags,
-	endpoints: builder => ({
-		startSession: builder.mutation({
-			query: body => ({
-				url: `attendances/start-session`,
-				method: 'POST',
-				body,
-			}),
-			invalidatesTags: ['sessions'],
-		}),
-		terminateSession: builder.mutation({
-			query: body => ({
-				url: `attendances/end-session`,
-				method: 'POST',
-				body,
-			}),
-			invalidatesTags: ['sessions'],
-		}),
-	}),
+	endpoints: builder => ({}),
 });
 
-export const { useStartSessionMutation, useTerminateSessionMutation } = mainApi;
 export default mainApi;

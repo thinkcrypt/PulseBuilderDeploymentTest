@@ -5,9 +5,10 @@ import { Icon } from '../../';
 
 type FilterProps = TagProps & {
 	children: React.ReactNode;
+	isActive?: boolean;
 };
 
-const Filter: React.FC<FilterProps> = ({ children, ...props }) => {
+const Filter: React.FC<FilterProps> = ({ children, isActive, ...props }) => {
 	return (
 		<Tag
 			userSelect='none'
@@ -31,6 +32,10 @@ const Filter: React.FC<FilterProps> = ({ children, ...props }) => {
 				size={16}
 			/>
 			<TagLabel ml={1}>{children}</TagLabel>
+			{/* <Icon
+				name='close'
+				size={16}
+			/> */}
 		</Tag>
 	);
 };

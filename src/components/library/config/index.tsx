@@ -11,6 +11,9 @@ export {
 	padding,
 	zIndex,
 	BASE_LIMIT,
+	THEME,
 } from './lib/constants/constants';
+
+export * from './lib/constants/theme';
 
 export { default as sidebarData } from './lib/sidebar/sidebar.data';

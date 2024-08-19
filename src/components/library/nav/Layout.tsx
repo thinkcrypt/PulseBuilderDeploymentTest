@@ -20,10 +20,11 @@ import {
 	Navbar,
 	Sidebar,
 	Column,
+	LayoutWrapper,
+	THEME,
 } from '../';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
-const PADDING_TOP = { base: 16, md: 16, lg: 16 };
 
 export type FlexPropsType = FlexProps & {
 	children?: React.ReactNode;
@@ -59,18 +60,14 @@ const Layout: FC<LayoutProps> = ({
 
 	return (
 		<AuthWrapper>
-			<Flex
-				bg='navbar.light'
-				w='100%'
-				flex={1}>
+			<LayoutWrapper>
 				<Navbar
-					bg='inherit'
 					px={PX}
 					w={isMobile ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
 					left={isMobile ? 0 : sizes.HOME_NAV_LEFT}>
 					<SpaceBetween>
 						<Heading
-							color='white'
+							color={THEME == 'basic' ? 'inherit' : 'white'}
 							size='md'
 							fontFamily='Bebas Neue'>
 							{title}
@@ -98,7 +95,7 @@ const Layout: FC<LayoutProps> = ({
 							<Flex
 								overflowY='hidden'
 								h={`calc(100vh - ${sizes.NAV_HEIGHT})`}
-								borderTopRightRadius={{ base: `0`, md: 'xl' }}
+								borderTopRightRadius={{ base: `0`, md: THEME == 'basic' ? 0 : 'xl' }}
 								bg={{ base: 'background.400', md: 'background.light' }}
 								_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
 								p={PX}
@@ -115,7 +112,7 @@ const Layout: FC<LayoutProps> = ({
 					</Flex>
 				</Body>
 				{!hideColorMode && <ColorMode />}
-			</Flex>
+			</LayoutWrapper>
 		</AuthWrapper>
 	);
 };

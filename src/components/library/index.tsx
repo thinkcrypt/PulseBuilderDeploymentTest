@@ -27,7 +27,15 @@ export {
 	zIndex,
 	BASE_LIMIT,
 	sidebarData,
+	THEME,
 } from './config';
+
+export * as theme from './config';
+
+export type ThemeProps = {
+	TABLE: any;
+	SIDEBAR: any;
+};
 
 //components
 export {
@@ -56,6 +64,7 @@ export {
 	SidebarItem,
 	SideDrawer,
 	Layout,
+	LayoutWrapper,
 } from './nav';
 
 export {

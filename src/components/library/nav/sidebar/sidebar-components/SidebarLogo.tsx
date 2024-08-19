@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { Flex } from '@chakra-ui/react';
-import { sizes } from '../../../';
+import { sizes, THEME } from '../../../';
 
 type SidebarLogoProps = {
 	children: ReactNode;
@@ -10,11 +10,11 @@ const style = {
 	h: sizes.NAV_HEIGHT || 12,
 	px: 5,
 	width: '100%',
-	bg: 'navbar.light',
+	bg: THEME == 'basic' ? 'sidebar.light' : 'navbar.light',
 	borderBottomColor: 'navbar.light',
 	alignItems: 'center',
 	_dark: {
-		bg: 'navbar.light',
+		bg: THEME == 'basic' ? 'sidebar.dark' : 'navbar.light',
 		borderBottomColor: 'sidebar.dark',
 	},
 };

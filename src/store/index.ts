@@ -1,11 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import mainApi from './services/mainApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import authSlice from './slices/authSlice';
-import { TOKEN_NAME } from '@/lib/constants';
-import routeSlice from './slices/routeSlice';
-import tableSlice from './slices/tableSlice';
-import cartSlice from './slices/cartSlice';
+import { TOKEN_NAME } from '@/components/library';
+import { routeSlice, tableSlice, cartSlice, mainApi, authSlice } from '@/components/library/store';
 
 export const store = configureStore({
 	reducer: {

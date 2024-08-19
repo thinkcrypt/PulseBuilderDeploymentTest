@@ -9,7 +9,7 @@ const SelectedItemsContainer = ({ children }: { children: ReactNode }) => {
 			w='full'
 			py={2}>
 			<SpaceBetween
-				px={1}
+				px={2}
 				w='full'
 				borderRadius='full'
 				border='1px dashed'

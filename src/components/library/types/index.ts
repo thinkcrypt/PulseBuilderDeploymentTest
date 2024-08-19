@@ -53,6 +53,7 @@ type CommonProps = {
 	default?: boolean;
 	style?: any;
 	tagType?: { value?: string; color?: string }[];
+	colorScheme?: any;
 };
 
 type SelectProps = CommonProps & {

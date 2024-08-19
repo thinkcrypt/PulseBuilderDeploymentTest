@@ -10,6 +10,7 @@ type TableDataPropsType = TableCellProps &
 	TableObjectDataProps & {
 		children: any;
 		key: string;
+		colorScheme?: any;
 	};
 
 type ComponentProps = TableCellProps & {
@@ -60,6 +61,7 @@ const TableData: React.FC<TableDataPropsType> = ({
 	children,
 	id,
 	type,
+	colorScheme,
 	tagType,
 	imageKey,
 	key,
@@ -77,10 +79,10 @@ const TableData: React.FC<TableDataPropsType> = ({
 		return (
 			<CustomTd>
 				<Badge
-					colorScheme={getColor(children)}
+					colorScheme={colorScheme(children)}
 					size='2xs'
 					fontSize='12px'>
-					{children}
+					{JSON.stringify(children)}
 				</Badge>
 			</CustomTd>
 		);

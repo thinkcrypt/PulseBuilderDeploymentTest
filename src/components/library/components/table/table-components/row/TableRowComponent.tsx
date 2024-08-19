@@ -43,7 +43,18 @@ const TableRowComponent: FC<TableProps> = ({
 
 			{/* Map over the data keys and create a TableData cell for each */}
 			{data.map(
-				({ dataKey, type, image, imageKey, editable, editType, options, style, tagType }) => {
+				({
+					dataKey,
+					type,
+					image,
+					imageKey,
+					editable,
+					editType,
+					options,
+					style,
+					tagType,
+					colorScheme,
+				}) => {
 					// Split the dataKey into keys
 					const keys = dataKey?.split('.');
 					// Use the keys to get the value from the item
@@ -113,6 +124,7 @@ const TableRowComponent: FC<TableProps> = ({
 								<Heading size='xs'>{formatDataKey(dataKey)}</Heading>
 							)}
 							<TableData
+								colorScheme={colorScheme}
 								key={dataKey}
 								type={type}
 								tagType={tagType}

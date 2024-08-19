@@ -1,4 +1,4 @@
-import mainApi from './mainApi';
+import { mainApi } from '@/components/library/store';
 import { User, ListType, TableProps, Organization } from '../store.types';
 import { BASE_LIMIT } from '@/lib/constants';
 
