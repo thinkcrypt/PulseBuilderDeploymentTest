@@ -7,17 +7,16 @@ import {
 	Input,
 	useDisclosure,
 	MenuDivider,
-	Button,
 	FormControl,
 	Stack,
 	InputProps,
+	Button,
 } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
 
 import {
 	DataMenuButton,
-	Label,
 	CreateModal,
 	HelperText,
 	MenuContainer,
@@ -31,22 +30,20 @@ const WIDTH = '300px';
 const MAX_H = '200px';
 
 type VDataMenuProps = InputProps & {
-	label: string;
 	isRequired?: boolean;
 	placeholder?: string;
 	value: any;
 	helper?: string;
-	model: string;
-	dataModel: any;
+	dataPath: string;
+	dataModel?: any;
 };
 
-const VDataMenu: React.FC<VDataMenuProps> = ({
-	label,
+const EditDataSelect: React.FC<VDataMenuProps> = ({
 	isRequired,
 	placeholder,
 	value,
 	helper,
-	model,
+	dataPath: model,
 	dataModel,
 	...props
 }) => {
@@ -57,7 +54,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 		onClose();
 	};
 
-	const [title, setTitle] = useState<string>(`Select ${label}`);
+	const [title, setTitle] = useState<string>(`Select option`);
 	const [search, setSearch] = useState<string>('');
 
 	const { data, isFetching, isError, error, isSuccess } = useGetAllQuery({
@@ -85,7 +82,6 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 			}
 		}
 		setTitle(e?.name);
-
 		onClose();
 	};
 
@@ -109,18 +105,20 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 
 	return (
 		<>
-			<CreateModal
-				data={dataModel}
-				path={model}
-				trigger={
-					<Button
-						display='none'
-						ref={btnRef}>
-						Add new {model}
-					</Button>
-				}
-				type='post'
-			/>
+			{dataModel && (
+				<CreateModal
+					data={dataModel}
+					path={model}
+					trigger={
+						<Button
+							display='none'
+							ref={btnRef}>
+							Add new {model}
+						</Button>
+					}
+					type='post'
+				/>
+			)}
 			<Menu onClose={close}>
 				{({ isOpen }) => (
 					<>
@@ -130,14 +128,13 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 							<Stack
 								spacing={2}
 								w='full'>
-								<Label>{label}</Label>
 								<Stack
 									spacing={1}
 									w='full'>
 									<DataMenuButton
 										value={value}
 										isActive={isOpen}>
-										{value ? getNameById(value) : `Select ${label}`}
+										{value ? getNameById(value) : `Select option`}
 									</DataMenuButton>
 									<Input
 										ref={inputRef}
@@ -171,11 +168,15 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 								</Flex>
 							</MenuGroup>
 							<MenuDivider mb={1} />
-							<MenuItem onClick={() => btnRef.current.click()}>Add new {model}</MenuItem>
-							<MenuDivider
-								mt={1}
-								mb={0}
-							/>
+							{dataModel && (
+								<>
+									<MenuItem onClick={() => btnRef.current.click()}>Add new {model}</MenuItem>
+									<MenuDivider
+										mt={1}
+										mb={0}
+									/>
+								</>
+							)}
 							<Flex
 								flexDir='column'
 								w='100%'
@@ -196,4 +197,4 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	);
 };
 
-export default VDataMenu;
+export default EditDataSelect;

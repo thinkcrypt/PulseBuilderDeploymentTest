@@ -18,6 +18,10 @@ export { default as SelectContainer } from './containers/SelectContainer';
 export { default as VInput } from './VInput';
 export { default as NoDataFound } from '../no-data-found/NoDataFound';
 
+export { default as ItemOfDataMenu } from './input-components/ItemOfDataMenu';
+export { default as DataMenuButton } from './input-components/DataMenuButton';
+export { default as EditDataSelect } from './EditDataSelect';
+
 // export {
 // 	FilterInput,
 // 	FilterSelect,

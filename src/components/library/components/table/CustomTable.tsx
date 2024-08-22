@@ -19,6 +19,7 @@ import {
 	DynamicFilters,
 	CustomTableProps,
 	Icon,
+	SelectedMenu,
 } from '../../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
@@ -33,6 +34,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	hidePreferences,
 	selectedItems,
 	isError = false,
+	select,
 }) => {
 	const tbody = isLoading ? (
 		<TableSkeleton
@@ -65,8 +67,14 @@ const CustomTable: React.FC<CustomTableProps> = ({
 							<Text>{selectedItems?.length} selected</Text>
 						</Flex>
 					</Flex>
-					<Icon name='settings' />
-					{/* <Text>...</Text> */}
+					{/* <Icon name='settings' /> */}
+
+					<SelectedMenu
+						items={selectedItems}
+						hide={!select || !select?.show}
+						path={path}
+						data={select?.menu}
+					/>
 				</SelectedItemsContainer>
 			) : (
 				<TableSettingsMenuContainer>

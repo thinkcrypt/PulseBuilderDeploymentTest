@@ -104,6 +104,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 					isModal={table?.isModal} //If create page should be modal
 					path={table?.path} //Path of the table
 					data={table?.createModel} //Input fields for the create page
+					export={table?.export} //If export button should be displayed
 				/>
 
 				<CustomTable
@@ -117,6 +118,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 					hidePreferences={table?.hidePreferences} //Hide preferences
 					selectedItems={selectedItems} //Selected items
 					isError={isError} //If error while fetching data
+					select={table?.select} //Select menu
 				>
 					<>{body}</>
 				</CustomTable>

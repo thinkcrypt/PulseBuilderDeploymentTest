@@ -3,3 +3,6 @@ export { default as authSlice } from './slices/authSlice';
 export { default as cartSlice } from './slices/cartSlice';
 export { default as routeSlice } from './slices/routeSlice';
 export { default as tableSlice } from './slices/tableSlice';
+
+export * from './services/mainApi';
+export * from './services/commonApi';

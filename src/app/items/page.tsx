@@ -3,12 +3,64 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { TableObjectProps, PageTable } from '@/components/library';
+import viewDataModel from './viewDataModel';
+import createCategoryModalModel from '@/lib/dataModels/createCategory.model';
 
 const data: TableObjectProps = {
 	title: 'Items',
 	path: 'items',
-	clickable: true,
-	toPath: '/items/edit',
+	// clickable: true,
+	//toPath: '/items/edit',
+	export: true,
+	select: {
+		show: true,
+		menu: [
+			{
+				title: 'Mark as Active',
+				type: 'edit',
+				key: 'isActive',
+				value: true,
+				prompt: {
+					title: 'Mark as Active',
+					body: 'Are you sure you want to mark these items as active?',
+				},
+			},
+			{
+				title: 'Mark as Inactive',
+				type: 'edit',
+				key: 'isActive',
+				value: false,
+				prompt: {
+					title: 'Mark as InActive',
+					body: 'Are you sure you want to mark these items as in-active?',
+				},
+			},
+			{
+				title: 'Update Active Status',
+				type: 'edit-select',
+				key: 'isActive',
+				options: [
+					{ label: 'Active', value: true },
+					{ label: 'InActive', value: false },
+				],
+				prompt: {
+					title: 'Change Active status',
+					body: 'Choose active status',
+				},
+			},
+			{
+				title: 'Update Category',
+				type: 'edit-data-select',
+				key: 'category',
+				dataPath: 'categories',
+				dataModel: createCategoryModalModel,
+				prompt: {
+					title: 'Update Category',
+					body: 'Choose item category to update',
+				},
+			},
+		],
+	},
 	button: {
 		title: 'Add Item',
 		path: '/items/create',
@@ -18,10 +70,21 @@ const data: TableObjectProps = {
 			title: 'Edit',
 			type: 'edit',
 		},
+		// {
+		// 	title: 'Details',
+		// 	type: 'redirect',
+		// 	href: '/go/details',
+		// },
 		{
 			title: 'View',
-			type: 'view',
+			type: 'view-modal',
+			dataModel: viewDataModel,
 		},
+		// {
+		// 	title: 'Custom',
+		// 	type: 'custom-modal',
+		// 	modal: CustomModal,
+		// },
 	],
 
 	data: [
@@ -46,18 +109,20 @@ const data: TableObjectProps = {
 		{
 			title: 'isActive',
 			dataKey: 'isActive',
-			type: 'boolean',
+			type: 'tag',
 			sort: 'isActive',
 			default: true,
-			editable: true,
+			// editable: true,
+			colorScheme: (data: boolean) => (data ? 'green' : 'red'),
 		},
 		{
 			title: 'Is Discount?',
 			dataKey: 'isDiscount',
-			type: 'boolean',
+			type: 'tag',
 			sort: 'isDiscount',
 			default: true,
 			editable: true,
+			colorScheme: (data: boolean) => (data ? 'green' : 'red'),
 		},
 		{
 			title: 'After Discount',

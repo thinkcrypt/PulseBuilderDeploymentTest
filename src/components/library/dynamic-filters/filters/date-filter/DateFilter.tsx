@@ -11,7 +11,8 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
-import { applyFilters } from '@/store/slices/tableSlice';
+
+import { applyFilters } from '../../../store/slices/tableSlice';
 
 import InTheLast from './InTheLast';
 import DatePicker from './DatePicker';
@@ -94,7 +95,7 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 	return (
 		<Popover
 			onOpen={open}
-			onClose={close}
+			onClose={popClose}
 			isOpen={isOpen}>
 			<PopoverTrigger>
 				<Flex>

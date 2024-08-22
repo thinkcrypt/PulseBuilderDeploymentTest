@@ -1,5 +1,6 @@
 import { TableCellProps } from '@chakra-ui/react';
 export type { CustomTableProps } from './components.types';
+import { MenuItem, SelectmenuItem } from './table';
 
 export type SidebarItemType = {
 	title: string;
@@ -83,8 +84,19 @@ type ButtonType = {
 export type ViewModalDataModelProps = {
 	title: string;
 	dataKey: string;
-	type?: 'date' | 'price' | 'boolean' | 'menu' | 'image-text' | 'checkbox' | 'tag' | 'string';
+	type?:
+		| 'date'
+		| 'price'
+		| 'boolean'
+		| 'menu'
+		| 'image-text'
+		| 'checkbox'
+		| 'tag'
+		| 'string'
+		| 'image'
+		| 'data-array-tag';
 	colorScheme?: any;
+	path?: string;
 };
 
 export type TableObjectProps = {
@@ -97,11 +109,12 @@ export type TableObjectProps = {
 	isModal?: boolean;
 	createModel?: any;
 	data: TableObjectDataProps[];
-	menu?: {
-		title: string;
-		type: 'edit' | 'delete' | 'view' | 'view-modal' | 'edit-modal';
-		dataModel?: any;
-	}[];
+	export?: boolean;
+	menu?: MenuItem[];
+	select?: {
+		show: boolean;
+		menu: SelectmenuItem[];
+	};
 	preferences?: any;
 	hidePreferences?: boolean;
 };

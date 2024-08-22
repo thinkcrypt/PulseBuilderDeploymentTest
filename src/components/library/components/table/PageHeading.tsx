@@ -2,6 +2,7 @@ import { Flex, FlexProps, Heading, Button } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 import { CreateModal } from '../../';
+import ExportModal from '../modals/export/ExportModal';
 
 type PageHeadingProps = FlexProps & {
 	title: string;
@@ -10,6 +11,7 @@ type PageHeadingProps = FlexProps & {
 	isModal?: boolean;
 	path: string;
 	data?: any;
+	export?: boolean;
 };
 
 const PageHeading: React.FC<PageHeadingProps> = ({
@@ -19,9 +21,11 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 	isModal = false,
 	path,
 	data,
+	export: exportData,
 	...props
 }) => {
 	const btn = <Button size='sm'>{button}</Button>;
+	const exportButton = <ExportModal path={path} />;
 	const toButton = isModal ? (
 		<CreateModal
 			trigger={btn}
@@ -42,6 +46,7 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 			align='center'>
 			<Heading fontSize='1.75rem'>{title}</Heading>
 			<Flex gap={2}>
+				<>{Boolean(exportData) && exportButton}</>
 				<>{(Boolean(button) || isModal) && toButton}</>
 			</Flex>
 		</Flex>

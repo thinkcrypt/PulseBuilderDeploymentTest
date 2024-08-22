@@ -38,6 +38,14 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 			<MenuContainer>
 				{data?.map((item: any, i: number) => {
 					switch (item.type) {
+						case 'redirect':
+							return (
+								<Link
+									key={i}
+									href={item?.href || '#'}>
+									<MenuItem key={i}>{item?.title}</MenuItem>
+								</Link>
+							);
 						case 'edit':
 							return (
 								<Link
@@ -94,6 +102,17 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 									key={i}
 									id={id}
 									data={dataItem}
+									path={path}
+								/>
+							);
+						case 'custom-modal':
+							return (
+								<item.modal
+									key={i}
+									id={id}
+									data={dataItem}
+									path={path}
+									title={item?.title}
 								/>
 							);
 						default:

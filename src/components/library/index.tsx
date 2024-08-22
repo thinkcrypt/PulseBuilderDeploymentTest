@@ -52,7 +52,14 @@ export { default as Icon } from './icon/Icon';
 
 export { AuthWrapper, NotLoggedIn } from './wrappers';
 
-export { SelfMenu, CreateMenu, MenuContainer, ModalContainer, CustomMenuitem } from './menu';
+export {
+	SelfMenu,
+	CreateMenu,
+	MenuContainer,
+	ModalContainer,
+	CustomMenuitem,
+	MenuItem,
+} from './menu';
 export { ColorMode, Toast, PopoverHeader, PopoverContainer, Pagination } from './components';
 
 export {
@@ -67,27 +74,7 @@ export {
 	LayoutWrapper,
 } from './nav';
 
-export {
-	FilterInput,
-	FilterSelect,
-	HInput,
-	HPassword,
-	InputContainer,
-	ItemSelect,
-	VCheckbox,
-	VDataMenu,
-	VDataSelect,
-	VDataTags,
-	VImage,
-	VSelect,
-	VTags,
-	VTextarea,
-	VSwitch,
-	ViewOnly,
-	SelectContainer,
-	VInput,
-	NoDataFound,
-} from './utils/inputs';
+export * from './utils/inputs';
 
 export { default as Count } from './stat/Count';
 
@@ -154,7 +141,11 @@ export {
 	RowSelect,
 	ViewItemModal,
 	DeleteItemModal,
+	EditManyModal,
+	EditManySelectModal,
 	TableErrorMessage,
+	EditDataSelectModal,
+	SelectedMenu,
 } from './components/table';
 
 export {
@@ -179,14 +170,7 @@ export {
 	DiscardButton,
 } from './components/buttons';
 
-export {
-	UploadModal,
-	CreateModal,
-	UpdatePasswordModal,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-} from './modals';
+export * from './modals';
 
 export { Label, HelperText } from './form';
 export { OrderModal } from './pos';

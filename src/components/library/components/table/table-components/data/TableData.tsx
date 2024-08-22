@@ -72,10 +72,6 @@ const TableData: React.FC<TableDataPropsType> = ({
 	// Render the component with the given props and content
 
 	if (type == 'tag') {
-		const getColor = (value: string) => {
-			const tag = tagType?.find(tag => tag.value === value);
-			return tag ? tag.color : 'gray';
-		};
 		return (
 			<CustomTd>
 				<Badge

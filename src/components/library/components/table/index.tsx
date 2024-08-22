@@ -16,7 +16,7 @@ export { default as PosResultContainer } from './PosResultContainer';
 export type { TableItemProps, TableDataProps } from './types';
 export { TableErrorMessage } from './table-components/error';
 
-export { ViewItemModal, DeleteItemModal } from './table-components/modals';
+export * from './table-components/modals';
 
 export {
 	StickyBottomContainer,
@@ -35,7 +35,7 @@ export {
 	EditableTableData,
 } from './table-components/data';
 
-export { TableMenu } from './table-components/menu';
+export * from './table-components/menu';
 export {
 	MenuModalHeader,
 	MenuModalBody,

@@ -7,6 +7,33 @@ const data: TableObjectProps = {
 	path: 'categories',
 	isModal: true,
 	createModel: editModel,
+	export: true,
+
+	select: {
+		show: true,
+		menu: [
+			{
+				title: 'Mark as featured',
+				type: 'edit',
+				key: 'isFeatured',
+				value: true,
+				prompt: {
+					title: 'Mark as featured',
+					body: 'Are you sure you want to mark these items as featured?',
+				},
+			},
+			{
+				title: 'Un-feature selected',
+				type: 'edit',
+				key: 'isFeatured',
+				value: false,
+				prompt: {
+					title: 'Un-feature selected',
+					body: 'Are you sure you want to un-feature these items?',
+				},
+			},
+		],
+	},
 
 	button: {
 		title: 'Add Category',
@@ -39,6 +66,14 @@ const data: TableObjectProps = {
 			dataKey: 'isActive',
 			type: 'tag',
 			sort: 'isActive',
+			default: true,
+			colorScheme: (data: boolean) => (data ? 'green' : 'red'),
+		},
+		{
+			title: 'Featured',
+			dataKey: 'isFeatured',
+			type: 'tag',
+			sort: 'isFeatured',
 			default: true,
 			colorScheme: (data: boolean) => (data ? 'green' : 'red'),
 		},

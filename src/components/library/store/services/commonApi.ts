@@ -43,13 +43,39 @@ export const userApi = mainApi.injectEndpoints({
 				'collections',
 			],
 		}),
-		post: builder.mutation<any, { path: string; body: any; invalidate?: string }>({
+		post: builder.mutation<any, { path: string; body: any; invalidate?: string; type?: string }>({
 			query: ({ path, body, invalidate }): any => ({
 				url: path,
 				method: 'POST',
 				body: body,
 			}),
 			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
+		}),
+		export: builder.mutation<any, { path: string; body: any; invalidate?: string; type?: string }>({
+			query: ({ path, body, invalidate, type = 'csv' }): any => ({
+				url: `${path}/export/${type}`,
+				method: 'POST',
+				body: { fields: body },
+				responseHandler: (response: any) => response.blob(),
+			}),
+			onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+				try {
+					const result = await queryFulfilled;
+
+					const url = window.URL.createObjectURL(result.data);
+					const link = document.createElement('a');
+					link.href = url;
+					const date = new Date();
+					const timestamp = date.toISOString().replace(/[:.]/g, '-');
+					link.setAttribute('download', `data_${timestamp}.csv`);
+
+					document.body.appendChild(link);
+					link.click();
+					link.remove();
+				} catch (e: any) {
+					//throw new Error(e.message);
+				}
+			},
 		}),
 		updateById: builder.mutation<any, { path: string; id: string; body: any; invalidate?: any }>({
 			query: ({ path, id, body }): any => ({
@@ -58,6 +84,14 @@ export const userApi = mainApi.injectEndpoints({
 				body: body,
 			}),
 			invalidatesTags: (result, error, { path, id, invalidate = '' }) => [path, invalidate],
+		}),
+		updateMany: builder.mutation<any, { path: string; body: any; invalidate?: any }>({
+			query: ({ path, body }): any => ({
+				url: `${path}/update/many`,
+				method: 'PUT',
+				body: body,
+			}),
+			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
 		}),
 		deleteById: builder.mutation<any, { path: string; id: string }>({
 			query: ({ path, id }): any => ({
@@ -78,4 +112,6 @@ export const {
 	useDeleteByIdMutation,
 	usePostMutation,
 	useGetCountQuery,
+	useExportMutation,
+	useUpdateManyMutation,
 } = userApi;

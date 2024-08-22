@@ -13,6 +13,8 @@ import {
 	DrawerContent,
 	DrawerCloseButton,
 	DrawerBody,
+	ModalProps,
+	DrawerProps,
 } from '@chakra-ui/react';
 import {
 	CustomMenuitem as MenuItem,
@@ -23,19 +25,18 @@ import {
 	useIsMobile,
 	DrawerHeader,
 	sizes,
-} from '../../../../';
+} from '@/components/library';
 import { useGetByIdQuery } from '@/store/services/commonApi';
-import { ViewItem } from './';
-import { DrawerContentContainer } from '../pop-modals';
 
-type DeleteItemModalProps = {
-	title?: string;
-	id: string;
-	path: string;
-	dataModel: ViewModalDataModelProps[];
-};
+type DeleteItemModalProps = ModalProps &
+	DrawerProps & {
+		title?: string;
+		id: string;
+		path: string;
+		dataModel?: ViewModalDataModelProps[];
+	};
 
-const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id }) => {
+const CustomItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id, ...props }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const { data, isFetching, isError } = useGetByIdQuery(
@@ -66,14 +67,14 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id })
 
 	const Container = isMobile ? Drawer : Modal;
 	const Overlay = isMobile ? DrawerOverlay : ModalOverlay;
-	const Content = isMobile ? DrawerContentContainer : ModalContent;
+	const Content = isMobile ? ModalContent : ModalContent;
 	const Header = isMobile ? DrawerHeader : ModalHeader;
 	const CloseButton = isMobile ? DrawerCloseButton : ModalCloseButton;
 	const Body = isMobile ? DrawerBody : ModalBody;
 
 	return (
 		<>
-			<MenuItem onClick={onOpen}>View</MenuItem>
+			<MenuItem onClick={onOpen}>{title}</MenuItem>
 
 			<Container
 				isCentered
@@ -84,27 +85,16 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id })
 				onClose={onClose}>
 				<Overlay />
 				<Content>
-					<Header>{title || 'Item Details'}</Header>
+					<Header>{path}</Header>
 					<CloseButton />
 
 					<Body px={0}>
 						<Column
 							gap={4}
 							pt={2}>
-							{data &&
-								dataModel.map((item: ViewModalDataModelProps, i: number) => {
-									const { title, dataKey, type, colorScheme } = item;
-									return (
-										<ViewItem
-											title={title}
-											type={type}
-											colorScheme={colorScheme}
-											path={item?.path}
-											key={i}>
-											{getValue(dataKey, type)}
-										</ViewItem>
-									);
-								})}
+							<Text>This is a custom modal</Text>
+							<Text>id: {id}</Text>
+							<Text>path: {path}</Text>
 						</Column>
 					</Body>
 				</Content>
@@ -114,4 +104,4 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id })
 	);
 };
 
-export default ViewItemModal;
+export default CustomItemModal;
