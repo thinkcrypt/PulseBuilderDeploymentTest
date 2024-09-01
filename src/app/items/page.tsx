@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 import { TableObjectProps, PageTable } from '@/components/library';
 import viewDataModel from './viewDataModel';
 import createCategoryModalModel from '@/lib/dataModels/createCategory.model';
+import createCollection from '@/models/collection/createCollection.model';
 
 const data: TableObjectProps = {
 	title: 'Items',
@@ -59,6 +60,22 @@ const data: TableObjectProps = {
 					body: 'Choose item category to update',
 				},
 			},
+			{
+				title: 'Add to collection',
+				type: 'edit-data-select',
+				key: 'collection',
+				keyType: 'array',
+				dataPath: 'collections',
+				dataModel: createCollection,
+				prompt: {
+					title: 'Add to collection',
+					body: 'Add Items to collection',
+				},
+			},
+			{
+				title: 'Export selected',
+				type: 'export',
+			},
 		],
 	},
 	button: {
@@ -79,6 +96,10 @@ const data: TableObjectProps = {
 			title: 'View',
 			type: 'view-modal',
 			dataModel: viewDataModel,
+		},
+		{
+			title: 'Duplicate Entry',
+			type: 'duplicate',
 		},
 		// {
 		// 	title: 'Custom',
@@ -105,6 +126,13 @@ const data: TableObjectProps = {
 			default: true,
 			editable: true,
 		},
+
+		// {
+		// 	title: 'Collections',
+		// 	dataKey: 'collection',
+		// 	type: 'data-array-count',
+		// 	default: true,
+		// },
 
 		{
 			title: 'isActive',

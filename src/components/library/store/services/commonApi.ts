@@ -43,6 +43,18 @@ export const userApi = mainApi.injectEndpoints({
 				'collections',
 			],
 		}),
+		getByIdToEdit: builder.query<any, { path: string; id: any }>({
+			query: ({ path, id }): any => `${path}/edit/${id}`,
+			providesTags: [
+				'products',
+				'brands',
+				'categories',
+				'coupons',
+				'items',
+				'collection',
+				'collections',
+			],
+		}),
 		post: builder.mutation<any, { path: string; body: any; invalidate?: string; type?: string }>({
 			query: ({ path, body, invalidate }): any => ({
 				url: path,
@@ -56,6 +68,35 @@ export const userApi = mainApi.injectEndpoints({
 				url: `${path}/export/${type}`,
 				method: 'POST',
 				body: { fields: body },
+				responseHandler: (response: any) => response.blob(),
+			}),
+			onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+				try {
+					const result = await queryFulfilled;
+
+					const url = window.URL.createObjectURL(result.data);
+					const link = document.createElement('a');
+					link.href = url;
+					const date = new Date();
+					const timestamp = date.toISOString().replace(/[:.]/g, '-');
+					link.setAttribute('download', `data_${timestamp}.csv`);
+
+					document.body.appendChild(link);
+					link.click();
+					link.remove();
+				} catch (e: any) {
+					//throw new Error(e.message);
+				}
+			},
+		}),
+		exportMany: builder.mutation<
+			any,
+			{ path: string; body: any; invalidate?: string; type?: string }
+		>({
+			query: ({ path, body, invalidate, type = 'csv' }): any => ({
+				url: `${path}/export/${type}`,
+				method: 'POST',
+				body: { fields: body?.fields, ids: body?.ids },
 				responseHandler: (response: any) => response.blob(),
 			}),
 			onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
@@ -93,6 +134,14 @@ export const userApi = mainApi.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
 		}),
+		copyItem: builder.mutation<any, { path: string; body: any; invalidate?: any }>({
+			query: ({ path, body }): any => ({
+				url: `${path}/copy/${body.id}`,
+				method: 'PUT',
+				body: body,
+			}),
+			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
+		}),
 		deleteById: builder.mutation<any, { path: string; id: string }>({
 			query: ({ path, id }): any => ({
 				url: `${path}/${id}`,
@@ -114,4 +163,8 @@ export const {
 	useGetCountQuery,
 	useExportMutation,
 	useUpdateManyMutation,
+	useCopyItemMutation,
+	useGetByIdToEditQuery,
+	useLazyGetByIdToEditQuery,
+	useExportManyMutation,
 } = userApi;

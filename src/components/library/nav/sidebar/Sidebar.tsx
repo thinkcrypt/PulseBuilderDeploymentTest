@@ -19,7 +19,7 @@ import {
 const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...props }) => {
 	const { data } = useGetSelfQuery({});
 
-	const title = data?.restaurant?.name || '--';
+	const title = data?.store?.name || process.env.NEXT_PUBLIC_STORE_NAME || '--';
 
 	const main = (
 		<>

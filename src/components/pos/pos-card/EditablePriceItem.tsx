@@ -7,9 +7,25 @@ type EditablePriceItemProps = InputProps & {
 
 const EditablePriceItem = ({ title, ...props }: EditablePriceItemProps) => {
 	return (
-		<Flex justify='space-between' gap={2}>
-			<Text fontSize='.95rem'>{title}</Text>
-			<Input w='72px' size='xs' type='number' {...props} />
+		<Flex
+			justify='space-between'
+			gap={2}>
+			<Text
+				fontSize='.8rem'
+				fontWeight='600'>
+				{title}
+			</Text>
+			<Input
+				w='54px'
+				size='xs'
+				borderRadius='md'
+				type='number'
+				bg='white'
+				_dark={{
+					bg: 'background.dark',
+				}}
+				{...props}
+			/>
 		</Flex>
 	);
 };

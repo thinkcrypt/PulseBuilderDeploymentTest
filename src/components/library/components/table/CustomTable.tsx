@@ -1,8 +1,6 @@
 import { Table, Thead, Tr, Tbody, Flex, Text, CloseButton } from '@chakra-ui/react';
 import React from 'react';
 
-import { selectAll } from '@/store/slices/tableSlice';
-
 import {
 	useAppDispatch,
 	TableContainer,
@@ -18,8 +16,8 @@ import {
 	TableErrorMessage,
 	DynamicFilters,
 	CustomTableProps,
-	Icon,
 	SelectedMenu,
+	selectAll,
 } from '../../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
@@ -35,6 +33,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	selectedItems,
 	isError = false,
 	select,
+	showFilters = true,
 }) => {
 	const tbody = isLoading ? (
 		<TableSkeleton
@@ -55,19 +54,16 @@ const CustomTable: React.FC<CustomTableProps> = ({
 		<>
 			{selectedItems?.length > 0 ? (
 				<SelectedItemsContainer>
-					<Flex>
-						<Flex
-							align='center'
-							gap={2}>
-							<CloseButton
-								size='md'
-								borderRadius='full'
-								onClick={onUnselect}
-							/>
-							<Text>{selectedItems?.length} selected</Text>
-						</Flex>
+					<Flex
+						align='center'
+						gap={2}>
+						<CloseButton
+							size='md'
+							borderRadius='full'
+							onClick={onUnselect}
+						/>
+						<Text>{selectedItems?.length} selected</Text>
 					</Flex>
-					{/* <Icon name='settings' /> */}
 
 					<SelectedMenu
 						items={selectedItems}
@@ -78,7 +74,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 				</SelectedItemsContainer>
 			) : (
 				<TableSettingsMenuContainer>
-					{Boolean(filters) && (
+					{showFilters && Boolean(filters) && (
 						<FilterContainer>
 							<DynamicFilters path={filters} />
 						</FilterContainer>

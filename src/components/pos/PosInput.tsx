@@ -16,6 +16,7 @@ import {
 	Select,
 	Grid,
 } from '@chakra-ui/react';
+import { Price } from '@/components/library';
 
 type InputContainerProps = InputProps &
 	TextareaProps &
@@ -24,8 +25,8 @@ type InputContainerProps = InputProps &
 		label: string;
 		isRequired?: boolean;
 		helper?: string;
-		value: string;
-		valueType?: 'input' | 'textarea' | 'select' | 'text';
+		value: any;
+		valueType?: 'input' | 'textarea' | 'select' | 'text' | 'price';
 		options?: any;
 	};
 
@@ -72,6 +73,16 @@ const PosInput: React.FC<InputContainerProps> = ({
 							align='center'
 							justifyContent='flex-end'>
 							<Text fontWeight='600'>{value}</Text>
+						</Flex>
+					) : valueType == 'price' ? (
+						<Flex
+							justify='space-between'
+							w='full'
+							align='center'
+							justifyContent='flex-end'>
+							<Text fontWeight='600'>
+								<Price>{value}</Price>
+							</Text>
 						</Flex>
 					) : valueType == 'textarea' ? (
 						<Textarea

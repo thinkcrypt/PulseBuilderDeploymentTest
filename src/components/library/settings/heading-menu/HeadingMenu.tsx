@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, Flex, Heading } from '@chakra-ui/react';
 import { Column, Icon } from '../../';
 
-const HeadingMenu = ({
-	editing,
-	close,
-	open,
-	isLoading,
-	title,
-	children,
-}: {
+type HeadingMenuProps = {
 	editing: boolean;
 	close: any;
 	open: any;
 	isLoading: boolean;
 	title: string;
 	children: any;
+};
+
+const HeadingMenu: FC<HeadingMenuProps> = ({
+	editing,
+	close,
+	open,
+	isLoading,
+	title,
+	children,
 }) => {
 	return (
 		<Column>

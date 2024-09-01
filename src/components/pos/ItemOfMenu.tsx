@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import MenuItem from '../library/menu/CustomMenuItem';
+
 import { MenuItemProps, useColorModeValue } from '@chakra-ui/react';
-import { useAppSelector } from '@/hooks';
+import { useAppSelector, MenuItem } from '@/components/library';
 
 const WIDTH = '300px';
 const MAX_H = '300px';

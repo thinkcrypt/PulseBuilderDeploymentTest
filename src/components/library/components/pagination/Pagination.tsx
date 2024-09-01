@@ -4,8 +4,6 @@ import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
 
-import { updateTable } from '@/store/slices/tableSlice';
-
 import {
 	useIsMobile,
 	BASE_LIMIT,
@@ -13,6 +11,7 @@ import {
 	useAppSelector,
 	SquareButton,
 	TableHeading,
+	updateTable,
 } from '../../';
 
 type PaginationProps = {

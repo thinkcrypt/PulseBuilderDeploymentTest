@@ -23,6 +23,7 @@ type EditManyModalType = {
 		label: string;
 		value: string | number | boolean;
 	}[];
+	keyType?: string;
 	prompt?: {
 		title?: string;
 		body?: string;
@@ -36,6 +37,7 @@ const EditManySelectModal: FC<EditManyModalType> = ({
 	prompt,
 	keys,
 	options,
+	keyType = 'string',
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = useRef<any>();
@@ -56,6 +58,7 @@ const EditManySelectModal: FC<EditManyModalType> = ({
 			path,
 			body: {
 				ids: items,
+				type: keyType,
 				updates: {
 					[keys]: value,
 				},

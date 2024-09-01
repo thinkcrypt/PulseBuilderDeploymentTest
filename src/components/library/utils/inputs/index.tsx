@@ -1,5 +1,3 @@
-export { default as FilterInput } from './FilterInput';
-export { default as FilterSelect } from './FilterSelect';
 export { default as HInput } from './HInput';
 export { default as HPassword } from './HPassword';
 export { default as InputContainer } from './InputContainer';
@@ -14,30 +12,24 @@ export { default as VSwitch } from './VSwitch';
 export { default as VTags } from './VTags';
 export { default as VTextarea } from './VTextarea';
 export { default as ViewOnly } from './ViewOnly';
+export { default as VImageArray } from './VImageArray';
 export { default as SelectContainer } from './containers/SelectContainer';
 export { default as VInput } from './VInput';
 export { default as NoDataFound } from '../no-data-found/NoDataFound';
+export { default as VCustomAttributes } from './VCustomAttributes';
+export { default as VSlug } from './VSlug';
 
 export { default as ItemOfDataMenu } from './input-components/ItemOfDataMenu';
 export { default as DataMenuButton } from './input-components/DataMenuButton';
 export { default as EditDataSelect } from './EditDataSelect';
+export { default as VSection } from './section/VSection';
 
-// export {
-// 	FilterInput,
-// 	FilterSelect,
-// 	HInput,
-// 	HPassword,
-// 	InputContainer,
-// 	ItemSelect,
-// 	VCheckbox,
-// 	VDataMenu,
-// 	VDataSelect,
-// 	VDataTags,
-// 	VImage,
-// 	VSelect,
-// 	VTags,
-// 	VTextarea,
-// 	VSwitch,
-// 	ViewOnly,
-// 	SelectContainer,
-// };
+//Filter-input components
+export { default as FilterInput } from './filter-inputs/FilterInput';
+export { default as FilterSelect } from './filter-inputs/FilterSelect';
+export { default as FilterCheckbox } from './filter-inputs/FilterCheckbox';
+
+//elements
+export { default as Input } from './input-components/InputElement';
+
+export * from './input-components';

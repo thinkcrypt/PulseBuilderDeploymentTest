@@ -33,6 +33,9 @@ import { FcFeedback } from 'react-icons/fc';
 import { MdFeedback } from 'react-icons/md';
 import { FaRegClock } from 'react-icons/fa6';
 import { BsThreeDots } from 'react-icons/bs';
+import { MdOutlineCancel } from 'react-icons/md';
+import { MdOutlineEdit } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 
 type IconProps = {
 	size?: number;
@@ -66,13 +69,15 @@ const icons: any = {
 	barcode: IoMdBarcode,
 	menu: CiMenuBurger,
 	leave: SiCkeditor4,
-	edit: FaRegEdit,
+	edit: MdOutlineEdit,
 	items: MdFastfood,
 	collections: BsCollectionFill,
 	feedback: FcFeedback,
 	feedbacks: MdFeedback,
 	'clock-outline': FaRegClock,
 	dots: BsThreeDots,
+	close: MdOutlineCancel,
+	delete: MdDelete,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

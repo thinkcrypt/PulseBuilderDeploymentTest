@@ -19,17 +19,25 @@ const dataFields: InputData<DataType>[] = [
 		label: 'Image',
 		isRequired: false,
 		type: 'image',
-		endOfSection: true,
 	},
 	{
-		sectionTitle: 'Details',
 		name: 'name',
 		label: 'Item Name',
 		isRequired: true,
 		type: 'text',
+		endOfSection: true,
+	},
+	{
+		sectionTitle: 'Product Images',
+		name: 'images',
+		label: 'Images',
+		isRequired: false,
+		type: 'image-array',
+		endOfSection: true,
 	},
 
 	{
+		sectionTitle: 'Product Information',
 		name: 'price',
 		label: 'Price',
 		isRequired: false,
@@ -61,6 +69,7 @@ const dataFields: InputData<DataType>[] = [
 		label: 'Description',
 		isRequired: false,
 		type: 'textarea',
+		endOfSection: true,
 	},
 	{
 		sectionTitle: 'Product Collections',
@@ -75,7 +84,36 @@ const dataFields: InputData<DataType>[] = [
 		label: 'Add Tags',
 		isRequired: false,
 		type: 'tag',
+		endOfSection: true,
+	},
+	{
+		sectionTitle: 'Custom Attributes',
+		name: 'customAttributes',
+		label: 'Add Custom Attributes',
+		isRequired: false,
+		type: 'custom-attribute',
+	},
+	{
+		label: 'Custom Sections',
+		name: 'customSections',
+		type: 'custom-section-array',
+		isRequired: false,
+		endOfSection: true,
+	},
+	{
+		label: 'Frequently Asked Questions',
+		name: 'faq',
+		type: 'custom-section-array',
+		isRequired: false,
+		endOfSection: true,
 	},
 ];
+
+export const table = {
+	type: 'add',
+	title: 'Add New Item',
+	path: 'items',
+	fields: dataFields,
+};
 
 export default dataFields;

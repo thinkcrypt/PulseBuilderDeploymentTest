@@ -27,6 +27,7 @@ type EditManyModalType = {
 	items: any[];
 	dataPath: string;
 	dataModel?: any;
+	keyType?: string;
 	prompt?: {
 		title?: string;
 		body?: string;
@@ -41,6 +42,7 @@ const EditManySelectModal: FC<EditManyModalType> = ({
 	items,
 	dataPath,
 	dataModel,
+	keyType = 'string',
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = useRef<any>();
@@ -61,6 +63,7 @@ const EditManySelectModal: FC<EditManyModalType> = ({
 			path,
 			body: {
 				ids: items,
+				type: keyType,
 				updates: {
 					[keys]: value,
 				},
@@ -99,6 +102,7 @@ const EditManySelectModal: FC<EditManyModalType> = ({
 								pt={4}
 								gap={4}>
 								<Text mb={2}>{prompt?.body || 'Please select an option'}</Text>
+
 								<EditDataSelect
 									dataModel={dataModel}
 									isRequired={true}

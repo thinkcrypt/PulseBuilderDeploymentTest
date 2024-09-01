@@ -43,7 +43,7 @@ const VTags: React.FC<InputContainerProps> = ({
 	}, []);
 
 	const addTag = useCallback(() => {
-		if (tag && tag.length > 0 && !value.includes(tag)) {
+		if (tag && tag.length > 0 && !value?.includes(tag)) {
 			const newArr = [...value, tag];
 
 			if (props.onChange) {

@@ -13,13 +13,13 @@ export default function Home() {
 				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
 				gap={2}>
 				<Count
-					title='Total Scans'
-					path='scans'
+					title='Total Products'
+					path='products'
 				/>
-				<Count
+				{/* <Count
 					title='Total Items'
 					path='items'
-				/>
+				/> */}
 				<Count
 					title='Categories'
 					path='categories'

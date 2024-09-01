@@ -1,9 +1,8 @@
 'use client';
 import React, { FC, useState } from 'react';
 
-import { Checkbox, Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
-
-import { applyFilters } from '@/store/slices/tableSlice';
+import { Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
+import { applyFilters } from '../../';
 
 import {
 	useIsMobile,
@@ -16,30 +15,28 @@ import {
 	PopModalHeader,
 	PopModalBody,
 	PopModalCloseButton,
+	FilterCheckbox,
 } from '../../';
+
+type OptionType = {
+	value: string;
+	label: string;
+};
 
 type FilterProps = {
 	title: string;
 	field: string;
 	label?: string;
-	options: {
-		value: string;
-		label: string;
-	}[];
+	options: OptionType[];
 };
 
 const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) => {
-	const arrow = useColorModeValue('menu.light', 'menu.dark');
 	const { onOpen, onClose, isOpen } = useDisclosure();
-	const dispatch = useAppDispatch();
+	const dispatch: any = useAppDispatch();
 	const { filters } = useAppSelector((state: any) => state.table);
 
 	const [val, setVal] = useState<string[]>([]);
 	const [search, setSearch] = useState<string>('');
-
-	const ifFieldExists = (): boolean => {
-		return Object.keys(filters).some(key => key.startsWith(field));
-	};
 
 	const handleSearch = (e: any) => {
 		setSearch(e.target.value);
@@ -76,10 +73,46 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 	};
 	const isMobile = useIsMobile();
 
+	const ifFieldExists = (): boolean => {
+		return Object.keys(filters).some(
+			key => key.startsWith(field) && filters[key] !== null && filters[key] !== ''
+		);
+	};
+
+	const getLabelsFromFilters = (): string => {
+		const filterValue = filters[field];
+		// Split the filter value into an array of strings
+		const valuesArray = filterValue.split(',');
+
+		// Map the values to their corresponding labels
+		const labelsArray = valuesArray
+			.map((value: any) => {
+				const option = options.find(option => option?.value === value?.trim());
+				return option ? option?.label : '';
+			})
+			.filter((label: any) => label !== ''); // Filter out any empty labels
+
+		// Join the labels into a comma-separated string
+		return labelsArray.join(', ');
+	};
+
+	const onFilterReset = (e: any) => {
+		e.stopPropagation();
+		e.preventDefault();
+		dispatch(
+			applyFilters({
+				key: field,
+				value: '',
+			})
+		);
+	};
+
 	const button = (
 		<span>
-			<Filter>
-				{label} {ifFieldExists() && <span>| {filters[field]}</span>}
+			<Filter
+				isActive={ifFieldExists()}
+				onCancel={onFilterReset}>
+				{label} {ifFieldExists() && <span> | {getLabelsFromFilters()}</span>}
 			</Filter>
 		</span>
 	);
@@ -111,20 +144,15 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 					overflowY='scroll'
 					gap={2}>
 					{options
-						.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
-						.map((option, i) => (
-							<Checkbox
-								isChecked={val.includes(option.value) ? true : false}
+						.filter(option => option?.label?.toLowerCase().includes(search.toLowerCase()))
+						.map((option: any, i: number) => (
+							<FilterCheckbox
+								isChecked={val.includes(option?.value) ? true : false}
 								onChange={handleChange}
-								name={option.value}
-								borderRadius='md'
-								size={{ base: 'lg', md: 'sm' }}
-								iconSize={20}
-								fontSize='10px'
-								colorScheme='brand'
+								name={option?.value}
 								key={i}>
-								{option.label}
-							</Checkbox>
+								{option?.label}
+							</FilterCheckbox>
 						))}
 				</Column>
 			</PopModalBody>

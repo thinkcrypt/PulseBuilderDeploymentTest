@@ -1,4 +1,4 @@
-import { InputProps, SelectProps, SwitchProps, TextareaProps } from '@chakra-ui/react';
+import { InputProps, MenuProps, SelectProps, SwitchProps, TextareaProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
 import {
@@ -14,6 +14,10 @@ import {
 	VDataTags,
 	VDataMenu,
 	InputDataType,
+	VImageArray,
+	VCustomAttributes,
+	VSection,
+	VSlug,
 } from '../../../';
 
 type Option = {
@@ -50,6 +54,15 @@ const FormInput: FC<FormInputProps> = ({
 					{...props}
 				/>
 			);
+		case 'image-array':
+			return (
+				<VImageArray
+					isRequired={isRequired}
+					onChange={props.onChange}
+					{...props}
+				/>
+			);
+
 		case 'select':
 			return (
 				<VSelect
@@ -64,8 +77,8 @@ const FormInput: FC<FormInputProps> = ({
 					{options?.map((option: any, i: number) => (
 						<option
 							key={i}
-							value={option.value}>
-							{option.label}
+							value={option?.value}>
+							{option?.label}
 						</option>
 					))}
 				</VSelect>
@@ -118,12 +131,57 @@ const FormInput: FC<FormInputProps> = ({
 					{...props}
 				/>
 			);
+		case 'custom-attribute':
+			return (
+				<VCustomAttributes
+					type={type}
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
+		case 'custom-section-array':
+			return (
+				<VSection
+					onChange={props.onChange}
+					isRequired={isRequired}
+					name={props.name}
+					{...props}
+				/>
+			);
+
 		case 'data-tag':
 			return (
 				<VDataTags
 					type={type}
 					model={props?.model || ''}
 					isRequired={isRequired}
+					{...props}
+				/>
+			);
+		case 'slug':
+			return (
+				<VSlug
+					type={type}
+					isRequired={isRequired}
+					onChange={props.onChange}
+					{...props}
+				/>
+			);
+		case 'read-only':
+			return (
+				<VInput
+					type={type}
+					isRequired={isRequired}
+					isDisabled={true}
+					{...props}
+				/>
+			);
+		case 'string':
+			return (
+				<VInput
+					type={type}
+					isRequired={isRequired}
+					isDisabled={true}
 					{...props}
 				/>
 			);

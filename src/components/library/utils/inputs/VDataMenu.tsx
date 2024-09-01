@@ -37,7 +37,7 @@ type VDataMenuProps = InputProps & {
 	value: any;
 	helper?: string;
 	model: string;
-	dataModel: any;
+	dataModel?: any;
 };
 
 const VDataMenu: React.FC<VDataMenuProps> = ({
@@ -109,18 +109,20 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 
 	return (
 		<>
-			<CreateModal
-				data={dataModel}
-				path={model}
-				trigger={
-					<Button
-						display='none'
-						ref={btnRef}>
-						Add new {model}
-					</Button>
-				}
-				type='post'
-			/>
+			{dataModel && (
+				<CreateModal
+					data={dataModel}
+					path={model}
+					trigger={
+						<Button
+							display='none'
+							ref={btnRef}>
+							Add new {model}
+						</Button>
+					}
+					type='post'
+				/>
+			)}
 			<Menu onClose={close}>
 				{({ isOpen }) => (
 					<>

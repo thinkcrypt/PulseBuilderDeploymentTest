@@ -3,10 +3,12 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { PageTable } from '@/components/library';
-import data from './dataModel';
+import { categories } from '@/models';
+
+const { getAll } = categories;
 
 const page: NextPage = () => {
-	return <PageTable table={data} />;
+	return <PageTable table={getAll} />;
 };
 
 export default page;

@@ -1,22 +1,12 @@
 'use client';
 
-import { useGetAllQuery } from '@/store/services/commonApi';
-import {
-	Menu,
-	MenuGroup,
-	Flex,
-	Input,
-	useDisclosure,
-	MenuDivider,
-	Button,
-	Text,
-} from '@chakra-ui/react';
+import { Menu, MenuGroup, Flex, Input, useDisclosure, MenuDivider, Button } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import MenuContainer from '../library/menu/MenuContainer';
-import MenuItem from '../library/menu/CustomMenuItem';
+
 import ItemOfMenu from './ItemOfMenu';
 import ButtonOfMenu from './ButtonOfMenu';
-import CreateModal from '../library/modals/CreateModal';
+
+import { MenuContainer, MenuItem, CreateModal, useGetAllQuery } from '@/components/library';
 
 const WIDTH = '300px';
 const MAX_H = '300px';
@@ -68,7 +58,11 @@ const PosSelect = ({
 	};
 
 	const renderMenuItems = data?.doc?.map((item: any, i: number) => (
-		<ItemOfMenu filter={path} id={item?._id} key={i} onClick={() => handleChange(item)}>
+		<ItemOfMenu
+			filter={path}
+			id={item?._id}
+			key={i}
+			onClick={() => handleChange(item)}>
 			{item?.name}
 		</ItemOfMenu>
 	));
@@ -80,21 +74,31 @@ const PosSelect = ({
 				data={dataModel}
 				path={path}
 				trigger={
-					<Button display='none' ref={btnRef}>
+					<Button
+						display='none'
+						ref={btnRef}>
 						Add {path}
 					</Button>
 				}
 				type='post'
 			/>
-			<Menu isLazy onClose={close}>
+			<Menu
+				isLazy
+				onClose={close}>
 				{() => (
 					<>
 						<ButtonOfMenu isActive={isOpen}>{title}</ButtonOfMenu>
 
 						<MenuContainer w={WIDTH}>
 							<MenuGroup>
-								<Flex p={2} py={1}>
-									<Input placeholder='Search' value={search} onChange={handleSearch} />
+								<Flex
+									p={2}
+									py={1}>
+									<Input
+										placeholder='Search'
+										value={search}
+										onChange={handleSearch}
+									/>
 								</Flex>
 							</MenuGroup>
 
@@ -102,8 +106,14 @@ const PosSelect = ({
 							{insert && <MenuItem onClick={() => btnRef.current.click()}>Add {path}</MenuItem>}
 
 							<MenuDivider />
-							<Flex flexDir='column' w='100%' maxH={MAX_H} overflowY='scroll'>
-								<MenuItem w={WIDTH} onClick={() => handleChange(defaultValue)}>
+							<Flex
+								flexDir='column'
+								w='100%'
+								maxH={MAX_H}
+								overflowY='scroll'>
+								<MenuItem
+									w={WIDTH}
+									onClick={() => handleChange(defaultValue)}>
 									{defaultValue?.name || `Select`}
 								</MenuItem>
 								{renderMenuItems}

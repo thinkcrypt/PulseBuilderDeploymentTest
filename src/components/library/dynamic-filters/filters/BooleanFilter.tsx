@@ -1,9 +1,7 @@
 'use client';
 
 import { useState, ChangeEvent, FC } from 'react';
-
 import { Flex, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
-import { applyFilters } from '@/store/slices/tableSlice';
 
 import {
 	PopModal,
@@ -15,6 +13,7 @@ import {
 	useAppSelector,
 	Filter,
 	FilterSelect,
+	applyFilters,
 } from '../../';
 
 type IsActiveFilterProps = {
@@ -25,6 +24,8 @@ type IsActiveFilterProps = {
 
 const BooleanFilter: FC<IsActiveFilterProps> = ({ title, field, label }) => {
 	const { onOpen, onClose, isOpen } = useDisclosure();
+	const isMobile = useIsMobile();
+
 	const dispatch = useAppDispatch();
 	const { filters } = useAppSelector((state: any) => state.table);
 
@@ -51,15 +52,28 @@ const BooleanFilter: FC<IsActiveFilterProps> = ({ title, field, label }) => {
 	};
 
 	const ifFieldExists = (): boolean => {
-		return Object.keys(filters).some(key => key.startsWith(field));
+		return Object.keys(filters).some(
+			key => key.startsWith(field) && filters[key] !== null && filters[key] !== ''
+		);
 	};
 
-	const isMobile = useIsMobile();
+	const onFilterReset = (e: any) => {
+		e.stopPropagation();
+		e.preventDefault();
+		dispatch(
+			applyFilters({
+				key: field,
+				value: '',
+			})
+		);
+	};
 
 	const button = (
 		<span>
-			<Filter>
-				{label} {ifFieldExists() && <span>| {filters[field]}</span>}
+			<Filter
+				isActive={ifFieldExists()}
+				onCancel={onFilterReset}>
+				{label} {ifFieldExists() && <span> | {filters[field]}</span>}
 			</Filter>
 		</span>
 	);

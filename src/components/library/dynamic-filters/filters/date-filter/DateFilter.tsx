@@ -1,18 +1,7 @@
 'use client';
 import React, { useState, ChangeEvent, FC } from 'react';
 
-import {
-	Button,
-	Flex,
-	Popover,
-	PopoverArrow,
-	PopoverBody,
-	PopoverTrigger,
-	useColorModeValue,
-	useDisclosure,
-} from '@chakra-ui/react';
-
-import { applyFilters } from '../../../store/slices/tableSlice';
+import { Button, Flex, useDisclosure, PopoverTrigger } from '@chakra-ui/react';
 
 import InTheLast from './InTheLast';
 import DatePicker from './DatePicker';
@@ -23,9 +12,13 @@ import {
 	useAppDispatch,
 	useAppSelector,
 	FilterSelect,
-	PopoverContainer,
-	PopoverHeader,
+	applyFilters,
 	Column,
+	useIsMobile,
+	PopModal,
+	PopModalHeader,
+	PopModalCloseButton,
+	PopModalBody,
 } from '../../../';
 
 type DateFilterProps = {
@@ -35,7 +28,6 @@ type DateFilterProps = {
 };
 
 const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
-	const arrow = useColorModeValue('menu.light', 'menu.dark');
 	const { onOpen, onClose, isOpen } = useDisclosure();
 	const dispatch = useAppDispatch();
 	const { filters } = useAppSelector((state: any) => state.table);
@@ -44,10 +36,6 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 	const [value, setValue] = useState<string>('');
 	const [operator, setOperator] = useState<string>('last');
 	const [persistOperator, setPersistOperator] = useState<string>('last');
-
-	const ifFieldExists = (): boolean => {
-		return Object.keys(filters).some(key => key.startsWith(field));
-	};
 
 	const handleOperatorChange = (e: ChangeEvent<HTMLSelectElement>): void => {
 		setOperator(e.target.value);
@@ -58,15 +46,15 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 		setOperator(persistOperator);
 	};
 
-	const open = (): void => {
-		const displayValues: any = {
-			last: `last ${value}`,
-			eq: `${value}`,
-			btwn: `between ${value}`,
-			gte: `on or after ${value}`,
-			lte: `before ${value}`,
-		};
+	const displayValues: any = {
+		last: `last ${value}`,
+		eq: `${value}`,
+		btwn: `between ${value}`,
+		gte: `on or after ${value}`,
+		lte: `before ${value}`,
+	};
 
+	const open = (): void => {
 		if (value !== '' || operator !== 'last') setDisplay(displayValues[operator]);
 		else setDisplay(undefined);
 
@@ -89,52 +77,79 @@ const DateFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 			})
 		);
 
+		if (value !== '' || operator !== 'last') setDisplay(displayValues[operator]);
+		else setDisplay(undefined);
+
 		onClose();
 	};
 
+	const ifFieldExists = (): boolean => {
+		return Object.keys(filters).some(
+			key => key.startsWith(field) && filters[key] !== null && filters[key] !== ''
+		);
+	};
+
+	const onFilterReset = (e: any) => {
+		e.stopPropagation();
+		e.preventDefault();
+		dispatch(
+			applyFilters({
+				key: field,
+				value: '',
+			})
+		);
+	};
+
+	const button = (
+		<span>
+			<Filter
+				isActive={ifFieldExists()}
+				onCancel={onFilterReset}>
+				{label} {ifFieldExists() && <span> | {display}</span>}
+			</Filter>
+		</span>
+	);
+
+	const isMobile = useIsMobile();
+
 	return (
-		<Popover
+		<PopModal
+			handleClick={handleClick}
+			isMobile={isMobile}
 			onOpen={open}
 			onClose={popClose}
-			isOpen={isOpen}>
-			<PopoverTrigger>
-				<Flex>
-					<Filter>
-						{label} {ifFieldExists() && display}
-					</Filter>
-				</Flex>
-			</PopoverTrigger>
-			<PopoverContainer>
-				<PopoverArrow bg={arrow} />
-				<PopoverHeader>{title}</PopoverHeader>
-				<PopoverBody>
-					<Column
-						gap={3}
-						pb={1}>
-						<FilterSelect
-							value={operator}
-							onChange={handleOperatorChange}>
-							<option value='last'>in the last</option>
-							<option value='eq'>is equal to</option>
-							<option value='btwn'>is between</option>
-							<option value='gte'>is on or after</option>
-							<option value='lte'>is before</option>
-						</FilterSelect>
-						{operator === 'last' && <InTheLast setVal={setValue} />}
-						{operator === 'eq' && <DatePicker setVal={setValue} />}
-						{operator === 'btwn' && <BetweenDates setVal={setValue} />}
-						{operator === 'gte' && <DatePicker setVal={setValue} />}
-						{operator === 'lte' && <DatePicker setVal={setValue} />}
+			isOpen={isOpen}
+			trigger={
+				isMobile ? (
+					<Flex onClick={onOpen}>{button}</Flex>
+				) : (
+					<PopoverTrigger>{button}</PopoverTrigger>
+				)
+			}>
+			<PopModalHeader isMobile={isMobile}>{title}</PopModalHeader>
+			<PopModalCloseButton isMobile={isMobile} />
 
-						<Button
-							size='sm'
-							onClick={handleClick}>
-							Apply
-						</Button>
-					</Column>
-				</PopoverBody>
-			</PopoverContainer>
-		</Popover>
+			<PopModalBody isMobile={isMobile}>
+				<Column
+					gap={3}
+					pb={1}>
+					<FilterSelect
+						value={operator}
+						onChange={handleOperatorChange}>
+						<option value='last'>in the last</option>
+						<option value='eq'>is equal to</option>
+						<option value='btwn'>is between</option>
+						<option value='gte'>is on or after</option>
+						<option value='lte'>is before</option>
+					</FilterSelect>
+					{operator === 'last' && <InTheLast setVal={setValue} />}
+					{operator === 'eq' && <DatePicker setVal={setValue} />}
+					{operator === 'btwn' && <BetweenDates setVal={setValue} />}
+					{operator === 'gte' && <DatePicker setVal={setValue} />}
+					{operator === 'lte' && <DatePicker setVal={setValue} />}
+				</Column>
+			</PopModalBody>
+		</PopModal>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { Tag, TagLabel, TagProps } from '@chakra-ui/react';
+import { Flex, Tag, TagLabel, TagProps } from '@chakra-ui/react';
 import React from 'react';
 
 import { Icon } from '../../';
@@ -6,9 +6,10 @@ import { Icon } from '../../';
 type FilterProps = TagProps & {
 	children: React.ReactNode;
 	isActive?: boolean;
+	onCancel?: any;
 };
 
-const Filter: React.FC<FilterProps> = ({ children, isActive, ...props }) => {
+const Filter: React.FC<FilterProps> = ({ children, isActive = false, onCancel, ...props }) => {
 	return (
 		<Tag
 			userSelect='none'
@@ -27,15 +28,21 @@ const Filter: React.FC<FilterProps> = ({ children, isActive, ...props }) => {
 			pl={1}
 			py={1}
 			{...props}>
-			<Icon
-				name='add-tag'
-				size={16}
-			/>
-			<TagLabel ml={1}>{children}</TagLabel>
-			{/* <Icon
-				name='close'
-				size={16}
-			/> */}
+			{!isActive && (
+				<Icon
+					name='add-tag'
+					size={16}
+				/>
+			)}
+			<TagLabel mx={1}>{children}</TagLabel>
+			{isActive && (
+				<Flex onClick={onCancel}>
+					<Icon
+						name='close'
+						size={16}
+					/>
+				</Flex>
+			)}
 		</Tag>
 	);
 };

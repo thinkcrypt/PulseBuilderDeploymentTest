@@ -1,10 +1,9 @@
 'use client';
-import { clearFilters } from '@/store/slices/tableSlice';
 import { FlexProps } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { FC, useEffect } from 'react';
 
-import { useAppDispatch, useAuth } from '../';
+import { useAppDispatch, useAuth, clearFilters } from '../';
 
 export type FlexPropsType = FlexProps & {
 	children?: React.ReactNode;

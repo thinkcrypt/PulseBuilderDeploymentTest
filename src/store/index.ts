@@ -5,10 +5,10 @@ import { routeSlice, tableSlice, cartSlice, mainApi, authSlice } from '@/compone
 
 export const store = configureStore({
 	reducer: {
-		auth: authSlice,
-		route: routeSlice,
-		table: tableSlice,
-		cart: cartSlice,
+		auth: authSlice.reducer,
+		route: routeSlice.reducer,
+		table: tableSlice.reducer,
+		cart: cartSlice.reducer,
 		[mainApi.reducerPath]: mainApi.reducer,
 	},
 	middleware: getDefaultMiddleware => getDefaultMiddleware().concat(mainApi.middleware),

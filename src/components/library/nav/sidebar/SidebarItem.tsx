@@ -2,9 +2,7 @@ import React from 'react';
 import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { navigate } from '@/store/slices/routeSlice';
-
-import { useIsMobile, Icon, useAppDispatch, useAppSelector } from '../../';
+import { useIsMobile, Icon, useAppDispatch, useAppSelector, navigate } from '../../';
 
 type SidebarItemProps = {
 	children: string;
@@ -29,6 +27,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 
 	return (
 		<Flex
+			userSelect='none'
 			_hover={selected !== path ? { bg: hover } : {}}
 			onClick={changeRoute}
 			as={Link}

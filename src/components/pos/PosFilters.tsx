@@ -1,12 +1,15 @@
 'use client';
 
-import { useAppDispatch } from '@/hooks';
-import { useGetAllQuery } from '@/store/services/commonApi';
-import { applyFilters } from '@/store/slices/tableSlice';
+import {
+	useGetAllQuery,
+	useAppDispatch,
+	MenuContainer,
+	MenuItem,
+	applyFilters,
+} from '@/components/library';
 import { Menu, MenuGroup, Flex, Input, useDisclosure, MenuDivider } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import MenuContainer from '../library/menu/MenuContainer';
-import MenuItem from '../library/menu/CustomMenuItem';
+
 import ItemOfMenu from './ItemOfMenu';
 import ButtonOfMenu from './ButtonOfMenu';
 
@@ -49,25 +52,48 @@ const PosFilters = ({ path, filter }: { path: string; filter: string }) => {
 	};
 
 	const renderMenuItems = data?.doc?.map((item: any, i: number) => (
-		<ItemOfMenu filter={filter} id={item?._id} key={i} onClick={() => handleChange(item)}>
+		<ItemOfMenu
+			filter={filter}
+			id={item?._id}
+			key={i}
+			onClick={() => handleChange(item)}>
 			{item?.name}
 		</ItemOfMenu>
 	));
 
 	return (
-		<Menu isLazy onClose={close}>
+		<Menu
+			isLazy
+			onClose={close}>
 			{({ isOpen }) => (
 				<>
-					<ButtonOfMenu isActive={isOpen}>{title}</ButtonOfMenu>
+					<ButtonOfMenu
+						bg='white'
+						_dark={{ bg: 'sidebar.dark' }}
+						isActive={isOpen}>
+						{title}
+					</ButtonOfMenu>
 					<MenuContainer w={WIDTH}>
 						<MenuGroup>
-							<Flex p={2} py={1}>
-								<Input placeholder='Search' value={search} onChange={handleSearch} />
+							<Flex
+								p={2}
+								py={1}>
+								<Input
+									placeholder='Search'
+									value={search}
+									onChange={handleSearch}
+								/>
 							</Flex>
 						</MenuGroup>
 						<MenuDivider />
-						<Flex flexDir='column' w='100%' maxH={MAX_H} overflowY='scroll'>
-							<MenuItem w={WIDTH} onClick={() => handleChange({ name: `All ${path}`, _id: '' })}>
+						<Flex
+							flexDir='column'
+							w='100%'
+							maxH={MAX_H}
+							overflowY='scroll'>
+							<MenuItem
+								w={WIDTH}
+								onClick={() => handleChange({ name: `All ${path}`, _id: '' })}>
 								All {path}
 							</MenuItem>
 							{renderMenuItems}

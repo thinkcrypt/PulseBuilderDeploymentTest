@@ -19,6 +19,7 @@ type EditManyModalType = {
 	path: string;
 	keys: string;
 	value: any;
+	keyType: string;
 
 	prompt?: {
 		title?: string;
@@ -26,7 +27,15 @@ type EditManyModalType = {
 	};
 };
 
-const EditManyModal: FC<EditManyModalType> = ({ title, path, items, prompt, keys, value }) => {
+const EditManyModal: FC<EditManyModalType> = ({
+	title,
+	path,
+	items,
+	prompt,
+	keys,
+	keyType = 'string',
+	value,
+}) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = useRef<any>();
 
@@ -44,6 +53,7 @@ const EditManyModal: FC<EditManyModalType> = ({ title, path, items, prompt, keys
 			path,
 			body: {
 				ids: items,
+				type: keyType,
 				updates: {
 					[keys]: value,
 				},

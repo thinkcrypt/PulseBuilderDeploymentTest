@@ -9,8 +9,8 @@ import {
 	useIsMobile,
 	TableObjectDataProps,
 	Title,
+	selectAll,
 } from '../../../../';
-import { selectAll } from '@/store/slices/tableSlice';
 
 type HeadersProps = {
 	tableData: TableObjectDataProps[];

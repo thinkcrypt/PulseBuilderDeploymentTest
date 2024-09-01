@@ -11,9 +11,6 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 
-import FilterSelect from '../../utils/inputs/FilterSelect';
-import { applyFilters } from '@/store/slices/tableSlice';
-
 import {
 	Filter,
 	Column,
@@ -22,6 +19,8 @@ import {
 	useAppDispatch,
 	useAppSelector,
 	FilterButton,
+	applyFilters,
+	FilterSelect,
 } from '../../';
 
 type FilterProps = {

@@ -1,8 +1,7 @@
-import Column from '@/components/containers/Column';
 import { Grid, Flex, FlexProps, FormControl, FormHelperText } from '@chakra-ui/react';
 import React from 'react';
 
-import { Label } from '../../';
+import { Label, Column } from '../../';
 
 type InputContainerProps = FlexProps & {
 	children: React.ReactNode;

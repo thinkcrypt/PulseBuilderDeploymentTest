@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as lib from '../../';
+import { CART_NAME } from '../../';
 
 export type CartItem = {
 	id: string;
@@ -8,6 +8,7 @@ export type CartItem = {
 	price: number;
 	qty: number;
 	note?: string;
+	vat?: number;
 };
 
 export type Address = {
@@ -55,14 +56,31 @@ const initialState: State = {
 
 // Helper function to save state to local storage
 const saveStateToLocalStorage = (state: typeof initialState) => {
-	typeof window !== 'undefined' && localStorage.setItem(lib.CART_NAME, JSON.stringify(state));
+	typeof window !== 'undefined' && localStorage.setItem(CART_NAME, JSON.stringify(state));
+};
+
+// Helper function to calculate totals
+const calculateTotals = (state: State) => {
+	state.subTotal = state.cartItems.reduce((total: number, cartItem: CartItem) => {
+		return total + cartItem.price * cartItem.qty;
+	}, 0);
+
+	state.vat = state.cartItems.reduce((total: number, cartItem: CartItem) => {
+		if (cartItem.vat) {
+			return total + ((cartItem.price * cartItem.vat) / 100) * cartItem.qty;
+		} else {
+			return total;
+		}
+	}, 0);
+
+	state.total = state.subTotal + state.vat + state.shipping - state.discount;
 };
 
 export const cartSlice = createSlice({
 	name: 'cart',
 	initialState:
-		typeof window !== 'undefined' && localStorage.getItem(lib.CART_NAME)
-			? JSON.parse(localStorage.getItem(lib.CART_NAME)!)
+		typeof window !== 'undefined' && localStorage.getItem(CART_NAME)
+			? JSON.parse(localStorage.getItem(CART_NAME)!)
 			: initialState,
 	reducers: {
 		calculateCartTotals: (state, action) => {
@@ -78,14 +96,14 @@ export const cartSlice = createSlice({
 		},
 
 		addToCart: (state, action) => {
-			const item = action.payload;
+			const { item, qty = 1 } = action.payload;
 			const existItem = state.cartItems.find((stateItem: CartItem) => stateItem.id === item.id);
 			if (existItem) {
 				state.cartItems = state.cartItems.map((stateItem: CartItem) =>
 					stateItem.id === item.id
 						? {
 								...stateItem,
-								qty: stateItem.qty + 1,
+								qty: stateItem.qty + qty,
 						  }
 						: stateItem
 				);
@@ -96,10 +114,14 @@ export const cartSlice = createSlice({
 					name: item?.name,
 					price: item?.price,
 					note: item?.note,
-					qty: 1,
+					vat: item?.vat,
+					qty: qty,
 				};
 				state.cartItems = [...state.cartItems, newItem];
 			}
+
+			// Calculate total amount
+			calculateTotals(state);
 
 			saveStateToLocalStorage(state);
 		},
@@ -140,6 +162,8 @@ export const cartSlice = createSlice({
 				}
 			}
 
+			calculateTotals(state);
+
 			saveStateToLocalStorage(state);
 		},
 
@@ -158,6 +182,8 @@ export const cartSlice = createSlice({
 				state.shipping = 0;
 				state.discount = 0;
 			}
+			calculateTotals(state);
+
 			saveStateToLocalStorage(state);
 		},
 

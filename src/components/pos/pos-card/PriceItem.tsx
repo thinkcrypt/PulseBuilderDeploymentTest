@@ -11,11 +11,23 @@ type PriceItemProps = {
 const PriceItem: FC<PriceItemProps> = ({ title, children, heading }) => {
 	const Component = heading ? Heading : Text;
 	return (
-		<Flex justify='space-between' gap={2} fontSize={!heading ? '.95rem' : '1rem'}>
-			<Component size='sm'>{title}</Component>
-			<Component textAlign='right' size='sm'>
+		<Flex
+			align='center'
+			justify='space-between'
+			gap={2}
+			fontSize={!heading ? '.95rem' : '1rem'}>
+			<Component
+				fontWeight='600'
+				textAlign='right'
+				fontSize='.8rem'>
+				{title}
+			</Component>
+			<Component
+				fontWeight='600'
+				textAlign='right'
+				size='xs'>
 				{currency.symbol}
-				{children?.toLocaleString() || 0}
+				{children?.toFixed(2).toLocaleString() || `0.00`}
 			</Component>
 		</Flex>
 	);

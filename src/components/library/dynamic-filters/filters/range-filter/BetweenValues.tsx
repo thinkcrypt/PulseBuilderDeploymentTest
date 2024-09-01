@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Text } from '@chakra-ui/react';
-import FilterInput from '../../../utils/inputs/FilterInput';
+import FilterInput from '../../../utils/inputs/filter-inputs/FilterInput';
 
 const BetweenValues = ({ setVal }: { setVal: (val: string) => void }) => {
 	const [start, setStart] = React.useState<any>();
@@ -19,10 +19,22 @@ const BetweenValues = ({ setVal }: { setVal: (val: string) => void }) => {
 	};
 
 	return (
-		<Flex alignItems='center' gap={1} justifyContent='space-between'>
-			<FilterInput type='number' value={start} onChange={handleStart} w='100%' />
+		<Flex
+			alignItems='center'
+			gap={1}
+			justifyContent='space-between'>
+			<FilterInput
+				type='number'
+				value={start}
+				onChange={handleStart}
+				w='100%'
+			/>
 			<Text>{`&`}</Text>
-			<FilterInput type='number' value={end} onChange={handleEnd} />
+			<FilterInput
+				type='number'
+				value={end}
+				onChange={handleEnd}
+			/>
 		</Flex>
 	);
 };

@@ -10,23 +10,21 @@ import {
 	Text,
 	Drawer,
 	DrawerOverlay,
-	DrawerContent,
 	DrawerCloseButton,
 	DrawerBody,
 	ModalProps,
 	DrawerProps,
 } from '@chakra-ui/react';
 import {
-	CustomMenuitem as MenuItem,
+	MenuItem,
 	ViewModalDataModelProps,
 	Column,
 	ModalContent,
 	ModalHeader,
 	useIsMobile,
 	DrawerHeader,
-	sizes,
+	useGetByIdQuery,
 } from '@/components/library';
-import { useGetByIdQuery } from '@/store/services/commonApi';
 
 type DeleteItemModalProps = ModalProps &
 	DrawerProps & {

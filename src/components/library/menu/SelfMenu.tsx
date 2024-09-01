@@ -13,9 +13,8 @@ import {
 import CustomMenuItem from './CustomMenuItem';
 
 import { useGetSelfQuery } from '@/store/services/authApi';
-import { logout } from '@/store/slices/authSlice';
 
-import { Icon, useAppDispatch, MenuContainer, THEME } from '../';
+import { Icon, useAppDispatch, MenuContainer, THEME, logout } from '../';
 
 const SelfMenu = () => {
 	const { data, isFetching, isError, error, isSuccess } = useGetSelfQuery({});

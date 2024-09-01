@@ -13,17 +13,31 @@ import {
 	Flex,
 	Heading,
 	Text,
+	useColorModeValue,
 } from '@chakra-ui/react';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { currency } from '@/lib/constants';
-import Column from '../containers/Column';
+
 import PosInput from './PosInput';
-import VTextarea from '../library/utils/inputs/VTextarea';
-import OrderPriceDetails from './pos-card/OrderPriceDetails';
+import OrderPriceDetails from './pos-card/OrderPriceDetails/OrderPriceDetails';
 import { useAddOrderMutation, useGetCartTotalMutation } from '@/store/services/ordersApi';
-import ModalContainer from '../library/menu/ModalContainer';
-import useCustomToast from '../library/hooks/useCustomToast';
-import { resetCart } from '@/store/slices/cartSlice';
+
+import {
+	resetCart,
+	useCustomToast,
+	ModalContainer,
+	Column,
+	currency,
+	VTextarea,
+	useAppDispatch,
+	useAppSelector,
+} from '@/components/library';
+import {
+	OrderAddress,
+	OrderButton,
+	OrderItemHeading,
+	OrderItemsContainer,
+	OrderItemText,
+	OrderRightSectionContainer,
+} from './pos-card/odder';
 
 const OrderModal = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,15 +46,22 @@ const OrderModal = () => {
 	const dispatch = useAppDispatch();
 
 	const [trigger, result] = useGetCartTotalMutation();
+
 	const [paidAmount, setPaidAmount] = useState<any>();
 	const [paymentMethod, setPaymentMethod] = useState('cash');
 	const [note, setNote] = useState('');
+	const [status, setStatus] = useState('pending');
 
 	const [createOrder, createOrderResult] = useAddOrderMutation();
 
 	useEffect(() => {
 		trigger({ items: cartItems, discount, shipping });
 	}, [cartItems, discount, shipping, trigger]);
+
+	const onModalOpen = () => {
+		onOpen();
+		trigger({ items: cartItems, discount, shipping });
+	};
 
 	const handlePaid = () => {
 		setPaidAmount(total);
@@ -68,54 +89,48 @@ const OrderModal = () => {
 			paymentAmount: paidAmount,
 			paidAmount,
 			note,
+			status,
 			address,
-			user,
+			customer: user,
 		});
 	};
 
 	useEffect(() => {
-		if (!createOrderResult?.isLoading)
-			if (createOrderResult?.isSuccess) {
-				dispatch(resetCart());
-				onModalClose();
-			}
-	}, [createOrderResult]);
+		if (!createOrderResult?.isLoading && createOrderResult?.isSuccess) {
+			dispatch(resetCart());
+			onModalClose();
+		}
+	}, [createOrderResult?.isLoading]);
+
+	const borderColor = useColorModeValue('#bbb', 'stroke.deepD');
 
 	const renderLeftSection = (
 		<>
-			<Grid
-				gridTemplateColumns='1fr 1fr 1fr'
-				rowGap={4}
-				pb={4}
-				w='100%'>
-				<GridItem fontWeight='600'>Product Detail</GridItem>
-				<GridItem
-					fontWeight='600'
-					textAlign='center'>
-					Quantity
-				</GridItem>
-				<GridItem
-					fontWeight='600'
-					textAlign='right'>
-					Price
-				</GridItem>
-			</Grid>
-			<Grid
-				gridTemplateColumns='1fr 1fr 1fr'
-				rowGap={4}
-				maxH='300px'
-				overflowY='scroll'>
-				{result?.data?.items?.map((item: any) => (
-					<>
-						<GridItem>{item?.name}</GridItem>
-						<GridItem textAlign='center'>{item?.qty}</GridItem>
-						<GridItem textAlign='right'>
+			<OrderRightSectionContainer>
+				<OrderItemHeading>Description</OrderItemHeading>
+				<OrderItemHeading textAlign='center'>Price</OrderItemHeading>
+				<OrderItemHeading textAlign='center'>Qty</OrderItemHeading>
+				<OrderItemHeading textAlign='right'>Amount</OrderItemHeading>
+			</OrderRightSectionContainer>
+			<OrderItemsContainer>
+				{result?.data?.items?.map((item: any, i: number) => (
+					<Grid
+						gridTemplateColumns='2fr 1fr 1fr 1fr'
+						key={i}>
+						<OrderItemText fontWeight='600'>
+							{i + 1}. {item?.name}
+						</OrderItemText>
+						<OrderItemText textAlign='center'>
+							{item?.unitPrice?.toFixed(2)?.toLocaleString()}
+						</OrderItemText>
+						<OrderItemText textAlign='center'>{item?.qty}</OrderItemText>
+						<OrderItemText textAlign='right'>
 							{currency.symbol}
-							{item?.totalPrice?.toLocaleString()}
-						</GridItem>
-					</>
+							{item?.totalPrice?.toFixed(2)?.toLocaleString()}
+						</OrderItemText>
+					</Grid>
 				))}
-			</Grid>
+			</OrderItemsContainer>
 			<Flex
 				flex={1}
 				align='flex-end'
@@ -135,6 +150,10 @@ const OrderModal = () => {
 		<>
 			<Flex
 				align='center'
+				py={3}
+				borderBottom='1px dashed'
+				borderTop='1px dashed'
+				borderColor={borderColor}
 				justify='space-between'>
 				<Heading size='sm'>Billing Details</Heading>
 				<Button
@@ -162,6 +181,21 @@ const OrderModal = () => {
 				label='Payment Method'
 				options={['cash', 'credit card', 'bkash', 'nagad', 'other']}
 			/>
+			<PosInput
+				value={status}
+				onChange={(e: any) => setStatus(e.target.value)}
+				valueType='select'
+				label='Order Status'
+				options={[
+					'pending',
+					'order-placed',
+					'confirmed',
+					'out-for-delivery',
+					'delivered',
+					'completed',
+					'cancelled',
+				]}
+			/>
 			<VTextarea
 				value={note}
 				onChange={(e: any) => setNote(e.target.value)}
@@ -176,11 +210,12 @@ const OrderModal = () => {
 				w='156px'
 				h='100%'
 				borderRadius={0}
-				onClick={onOpen}>
+				onClick={onModalOpen}>
 				Confirm Order
 			</Button>
 
 			<Modal
+				closeOnOverlayClick={false}
 				size='5xl'
 				isOpen={isOpen}
 				onClose={onModalClose}>
@@ -188,14 +223,7 @@ const OrderModal = () => {
 				<ModalContainer>
 					<ModalHeader>
 						Order Details
-						{isAddressSet && (
-							<Text
-								fontSize='.9rem'
-								fontWeight='500'>
-								<b>Delivery Address:</b> {address?.street}, {address?.city}, {address?.postalCode},{' '}
-								{address?.country}
-							</Text>
-						)}
+						{isAddressSet && <OrderAddress address={{ ...address }} />}
 					</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
@@ -206,17 +234,17 @@ const OrderModal = () => {
 							<Column
 								flex={1}
 								gap={4}>
-								{renderRightSection}
-								<Flex
+								<Column
 									flex={1}
-									align='flex-end'
-									justify='flex-end'>
-									<Button
-										onClick={handleCreateOrder}
-										isLoading={createOrderResult?.isLoading}>
-										Confirm & Pay
-									</Button>
-								</Flex>
+									gap={1}>
+									{renderRightSection}
+								</Column>
+
+								<OrderButton
+									onClick={handleCreateOrder}
+									isLoading={createOrderResult?.isLoading}>
+									Confirm & Pay
+								</OrderButton>
 							</Column>
 						</Grid>
 					</ModalBody>

@@ -12,13 +12,21 @@ import {
 	ModalFooter,
 	Text,
 } from '@chakra-ui/react';
-import ModalContainer from '@/components/library/menu/ModalContainer';
-import { InputData } from '@/components/library/types';
-import useFormData from '@/components/library/utils/functions/useFormData';
-import FormContent from '@/components/library/create-page/page/FormContent';
-import { Address, removeAddress, setAddress } from '@/store/slices/cartSlice';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import Column from '@/components/containers/Column';
+
+import {
+	useFormData,
+	FormContent,
+	ModalContainer,
+	Column,
+	InputData,
+	useAppDispatch,
+	useAppSelector,
+	useGetByIdQuery,
+	DiscardButton,
+	Address,
+	removeAddress,
+	setAddress,
+} from '@/components/library';
 
 const inputFields: InputData<Address>[] = [
 	{
@@ -77,13 +85,29 @@ const inputFields: InputData<Address>[] = [
 	},
 ];
 
-const AddressWidget = () => {
+const AddressWidget = ({ id }: { id?: string }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const dispatch = useAppDispatch();
-	const { isAddressSet, address } = useAppSelector(state => state.cart);
-	const [formData, setFormData] = useFormData<Address>(inputFields);
+	const { isAddressSet, address, user }: any = useAppSelector(state => state.cart);
+
+	const { data, isFetching } = useGetByIdQuery(
+		{
+			path: 'customers',
+			id: user,
+		},
+		{
+			skip: !user,
+		}
+	);
+
+	const [formData, setFormData] = useFormData<any>(inputFields, {
+		name: data?.name,
+		email: data?.email,
+		phone: data?.phone,
+	});
 
 	const onModalClose = () => {
+		setFormData({});
 		onClose();
 	};
 
@@ -99,27 +123,43 @@ const AddressWidget = () => {
 
 	return (
 		<>
-			<Flex w='100%' py={2}>
+			<Flex
+				w='100%'
+				py={1}
+				pl={3}>
 				{isAddressSet ? (
-					<Flex>
+					<Flex
+						justify='space-between'
+						flex={1}>
 						<Column gap={0}>
-							<Text fontSize='.8rem' fontWeight='600'>
+							<Text
+								fontSize='.8rem'
+								fontWeight='600'>
 								{`${address?.street}, ${address?.city},`}{' '}
 								{`${address?.postalCode}, ${address?.country}`}
 							</Text>
 						</Column>
-						<Button size='xs' onClick={deleteAddress}>
+						<Button
+							size='xs'
+							onClick={deleteAddress}>
 							Delete
 						</Button>
 					</Flex>
 				) : (
-					<Button variant='link' onClick={onOpen}>
+					<Button
+						size='sm'
+						fontWeight='700'
+						variant='link'
+						onClick={onOpen}>
 						Add Delivery Address
 					</Button>
 				)}
 			</Flex>
 
-			<Modal size='4xl' isOpen={isOpen} onClose={onModalClose}>
+			<Modal
+				size='4xl'
+				isOpen={isOpen}
+				onClose={onModalClose}>
 				<ModalOverlay />
 
 				<ModalContainer>
@@ -127,13 +167,21 @@ const AddressWidget = () => {
 					<ModalHeader>Delivery Address</ModalHeader>
 					<form onSubmit={handleSubmit}>
 						<ModalBody>
-							<FormContent formData={formData} setFormData={setFormData} data={inputFields} />
+							<FormContent
+								formData={formData}
+								setFormData={setFormData}
+								data={inputFields}
+							/>
 						</ModalBody>
 						<ModalFooter>
-							<Button colorScheme='gray' mr={2} size='sm' onClick={onModalClose}>
+							<DiscardButton
+								mr={2}
+								onClick={onModalClose}>
 								Discard
-							</Button>
-							<Button size='sm' type='submit'>
+							</DiscardButton>
+							<Button
+								size='sm'
+								type='submit'>
 								Submit
 							</Button>
 						</ModalFooter>

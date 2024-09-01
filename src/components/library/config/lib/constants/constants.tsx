@@ -36,7 +36,7 @@ export const sizes = {
 	POPOVER_WIDTH: '260px',
 	RADIUS_MENU: 'lg',
 	POS_MAX_HEIGHT: '75vh',
-	POS_RATIO: '6fr 2fr',
+	POS_RATIO: '8fr 2fr',
 	NAV_HEIGHT: 14,
 };
 

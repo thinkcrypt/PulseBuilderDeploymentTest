@@ -3,7 +3,12 @@ import { useState, useCallback, useEffect } from 'react';
 const useFormData = <T extends {}>(data: any[], updatedData?: any) => {
 	const initialFormData = useCallback(() => {
 		return data.reduce((acc: Partial<T>, curr: any) => {
-			if (curr.type === 'tag' || curr.type === 'array' || curr.type === 'data-tag') {
+			if (
+				curr.type === 'tag' ||
+				curr.type === 'array' ||
+				curr.type === 'data-tag' ||
+				curr.type == 'image-array'
+			) {
 				return { ...acc, [curr.name]: [] };
 			} else {
 				return { ...acc, [curr.name]: curr.type === 'switch' ? false : undefined };

@@ -38,6 +38,8 @@ type Colors = {
 	hover: ColorMode;
 	selectBorder: ColorMode;
 	gray?: ColorMode;
+	card: ColorMode;
+	pos: ColorMode;
 };
 
 const RICH_BLACK = '#0E131F';
@@ -105,6 +107,15 @@ export const colors: Colors = {
 		dark: 'transparent',
 		deepL: '#ECECE8',
 		deepD: '#2D2D2D',
+	},
+	pos: {
+		light: '#ebebeb',
+		dark: DARK,
+	},
+
+	card: {
+		light: 'white',
+		dark: BLACK,
 	},
 
 	header: {

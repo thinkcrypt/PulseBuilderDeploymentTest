@@ -2,9 +2,7 @@
 
 import React, { FC } from 'react';
 import { Input, InputGroup, InputGroupProps, InputLeftAddon } from '@chakra-ui/react';
-import { useAppDispatch } from '@/hooks';
-import { updateSearch } from '@/store/slices/tableSlice';
-import Icon from '../library/icon/Icon';
+import { useAppDispatch, Icon, updateSearch } from '@/components/library';
 
 type PosSearchProps = InputGroupProps & {};
 
@@ -23,6 +21,8 @@ const PosSearch: FC<PosSearchProps> = ({ ...props }) => {
 				<Icon name='barcode' />
 			</InputLeftAddon>
 			<Input
+				bg='white'
+				_dark={{ bg: 'sidebar.dark' }}
 				borderRadius='lg'
 				placeholder='Search By Barcode/Product Name'
 				value={value}

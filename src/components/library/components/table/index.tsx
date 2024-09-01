@@ -7,9 +7,9 @@ export { default as TableHead } from './TableHead';
 export { default as TableHeading } from './TableHeading';
 export { default as Title } from './Title';
 export { default as TableSkeleton } from './TableSkeleton';
-export { default as TableSearch } from './TableSearch';
+export { default as TableSearch } from './table-components/tool-bar/table-toolbar/TableSearch';
 export { default as TableRow } from './TableRow';
-export { default as TableRefresh } from './TableRefresh';
+export { default as TableRefresh } from './table-components/tool-bar/table-toolbar/TableRefresh';
 export { default as Preferences } from './Preferences';
 export { default as PosResultContainer } from './PosResultContainer';
 
@@ -33,6 +33,7 @@ export {
 	TableDateData,
 	TableSelectItem,
 	EditableTableData,
+	RenderTag,
 } from './table-components/data';
 
 export * from './table-components/menu';

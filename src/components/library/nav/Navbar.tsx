@@ -3,15 +3,16 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, ReactNode } from 'react';
 import SideDrawer from './sidebar/SideDrawer';
-import { useIsMobile, sizes, zIndex, padding } from '../';
+import { sizes, zIndex, padding } from '../';
 
 type FlexPropsType = FlexProps & {
 	children: ReactNode;
+	showMenu?: boolean;
 };
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 
-const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
+const Navbar: FC<FlexPropsType> = ({ children, showMenu, ...props }) => {
 	const styles = {
 		container: {
 			h: sizes.NAV_HEIGHT || 12,
@@ -33,13 +34,11 @@ const Navbar: FC<FlexPropsType> = ({ children, ...props }) => {
 		},
 	};
 
-	const isMobile = useIsMobile();
-
 	return (
 		<Flex
 			sx={styles.container}
 			position='fixed'>
-			{isMobile && <SideDrawer />}
+			{showMenu && <SideDrawer />}
 			{children}
 		</Flex>
 	);

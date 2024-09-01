@@ -1,20 +1,21 @@
 'use client';
 
-import { Button, useDisclosure, Text, Checkbox, Grid, IconButton } from '@chakra-ui/react';
+import { Button, useDisclosure, Text, Checkbox, Grid } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 import {
-	Icon,
+	formatFieldName,
 	useAppSelector,
 	MenuModal,
 	MenuModalHeader,
 	MenuModalBody,
 	MenuModalCloseButton,
 	MenuModalFooter,
+	DiscardButton,
 } from '../../../';
 import { useExportMutation } from '@/components/library/store/services/commonApi';
 
-const ExportModal = ({ path }: { path: string }) => {
+const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { fields = [], preferences = [] } = useAppSelector(state => state.table);
 	const [selected, setSelected] = useState<string[]>([]);
@@ -52,18 +53,6 @@ const ExportModal = ({ path }: { path: string }) => {
 			setSelected(prevSelected => prevSelected.filter(item => item !== field));
 		}
 	}, []);
-
-	const formatFieldName = (field: string): string => {
-		return field
-			.split('.')
-			.map(
-				part =>
-					part
-						.replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before capital letters
-						.replace(/^./, str => str.toUpperCase()) // Capitalize the first letter
-			)
-			.join(' ');
-	};
 
 	const checkboxes = fields.map((field: string, i: number) => (
 		<Checkbox
@@ -105,13 +94,11 @@ const ExportModal = ({ path }: { path: string }) => {
 						<Text color='red'>Please select at least 2 fields</Text>
 					) : (
 						<>
-							<Button
-								size='xs'
-								colorScheme='gray'
+							<DiscardButton
 								mr={2}
 								onClick={close}>
 								Discard
-							</Button>
+							</DiscardButton>
 							<Button
 								size='xs'
 								onClick={handleSubmit}

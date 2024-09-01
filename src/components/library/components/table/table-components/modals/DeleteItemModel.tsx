@@ -4,16 +4,19 @@ import {
 	AlertDialog,
 	AlertDialogBody,
 	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogContent,
 	AlertDialogOverlay,
 	Button,
 	useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
 
-import { useDeleteByIdMutation } from '@/store/services/commonApi';
-import { useCustomToast, CustomMenuitem as MenuItem } from '../../../../';
+import {
+	useCustomToast,
+	AlertDialogHeader,
+	MenuItem,
+	AlertDialogContent,
+	useDeleteByIdMutation,
+} from '../../../../';
 
 type DeleteItemModalProps = {
 	title?: string;
@@ -27,7 +30,7 @@ const DeleteItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) =>
 
 	const [trigger, result] = useDeleteByIdMutation();
 
-	const close = () => {
+	const closeItem = () => {
 		result?.reset();
 		onClose();
 	};
@@ -56,20 +59,10 @@ const DeleteItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) =>
 			<AlertDialog
 				isOpen={isOpen}
 				leastDestructiveRef={cancelRef}
-				onClose={close}>
+				onClose={closeItem}>
 				<AlertDialogOverlay>
-					<AlertDialogContent
-						boxShadow='lg'
-						borderRadius='xl'
-						bg='menu.light'
-						_dark={{
-							bg: 'menu.dark',
-						}}>
-						<AlertDialogHeader
-							fontSize='lg'
-							fontWeight='bold'>
-							Delete {title}
-						</AlertDialogHeader>
+					<AlertDialogContent>
+						<AlertDialogHeader>Delete {title}</AlertDialogHeader>
 
 						<AlertDialogBody>
 							Are you sure? You {`can't`} undo this action afterwards.
@@ -79,7 +72,7 @@ const DeleteItemModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) =>
 							{!result?.isLoading && (
 								<Button
 									ref={cancelRef}
-									onClick={close}
+									onClick={closeItem}
 									size='sm'
 									colorScheme='gray'>
 									Discard

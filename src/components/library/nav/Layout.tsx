@@ -3,8 +3,7 @@
 import React, { FC } from 'react';
 import { Flex, Heading, useMediaQuery, FlexProps } from '@chakra-ui/react';
 
-import { refresh } from '@/store/slices/tableSlice';
-import { navigate } from '@/store/slices/routeSlice';
+import { refresh, navigate } from '../';
 
 import {
 	useIsMobile,
@@ -43,6 +42,7 @@ const Layout: FC<LayoutProps> = ({
 	title,
 	path = '/dashboard',
 	hideColorMode = false,
+
 	...props
 }) => {
 	const dispatch = useAppDispatch();
@@ -54,32 +54,36 @@ const Layout: FC<LayoutProps> = ({
 
 	const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 
-	const type = isLargerThan800 ? 'default' : 'pos';
+	const type = isLargerThan800 ? (props?.type == 'pos' ? 'pos' : 'default') : 'pos';
 
 	const isMobile = useIsMobile();
+	const showMenu = isMobile || props?.type == 'pos';
 
 	return (
 		<AuthWrapper>
 			<LayoutWrapper>
-				<Navbar
-					px={PX}
-					w={isMobile ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
-					left={isMobile ? 0 : sizes.HOME_NAV_LEFT}>
-					<SpaceBetween>
-						<Heading
-							color={THEME == 'basic' ? 'inherit' : 'white'}
-							size='md'
-							fontFamily='Bebas Neue'>
-							{title}
-						</Heading>
-					</SpaceBetween>
-					<Flex
-						align='center'
-						gap={4}>
-						<SelfMenu />
-						<CreateMenu />
-					</Flex>
-				</Navbar>
+				{props?.type !== 'pos' && (
+					<Navbar
+						showMenu={showMenu}
+						px={PX}
+						w={showMenu ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
+						left={showMenu ? 0 : sizes.HOME_NAV_LEFT}>
+						<SpaceBetween>
+							<Heading
+								color={THEME == 'basic' ? 'inherit' : 'white'}
+								size='md'
+								fontFamily='Bebas Neue'>
+								{title}
+							</Heading>
+						</SpaceBetween>
+						<Flex
+							align='center'
+							gap={4}>
+							<SelfMenu />
+							<CreateMenu />
+						</Flex>
+					</Navbar>
+				)}
 
 				<Body>
 					{type == 'default' && <Sidebar />}
@@ -89,7 +93,7 @@ const Layout: FC<LayoutProps> = ({
 						pl={type !== 'default' ? 0 : sizes.HOME_NAV_LEFT}
 						{...props}>
 						<Flex
-							pt={type == 'pos' ? 12 : sizes.NAV_HEIGHT}
+							pt={props?.type == 'pos' ? 0 : type == 'pos' ? 12 : sizes.NAV_HEIGHT}
 							flex={1}
 							w='full'>
 							<Flex

@@ -8,7 +8,8 @@ type Item =
 	| 'edit-modal'
 	| 'redirect'
 	| 'custom'
-	| 'custom-modal';
+	| 'custom-modal'
+	| 'duplicate';
 
 type BaseMenuItem = {
 	title: string;

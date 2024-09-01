@@ -3,9 +3,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { setFields, setPreferences } from '@/store/slices/tableSlice';
 import { useGetSelfQuery } from '@/store/services/authApi';
-import { useGetAllQuery } from '@/store/services/commonApi';
 
 import {
 	TableObjectProps,
@@ -17,6 +15,9 @@ import {
 	Toast,
 	Headers,
 	TableRowComponent,
+	setFields,
+	setPreferences,
+	useGetAllQuery,
 } from '../../';
 
 const selectable = true;
@@ -108,6 +109,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 				/>
 
 				<CustomTable
+					showFilters={table?.filters} //Hide filters
 					filters={table?.path} //Name of the filters
 					col={col} //No of columns for skeleton
 					isLoading={isLoading} //Loading state

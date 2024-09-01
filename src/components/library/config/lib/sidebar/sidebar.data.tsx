@@ -8,12 +8,25 @@ const sidebar: SidebarItemType[] = [
 		path: 'dashboard',
 	},
 	{
+		title: 'POS',
+		href: '/pos',
+		icon: 'pos',
+		path: 'pos',
+	},
+	{
+		title: 'Order',
+		href: '/orders',
+		icon: 'order',
+		path: 'orders',
+	},
+
+	{
 		startOfSection: true,
-		sectionTitle: 'Menu',
-		title: 'Items',
-		href: '/items',
+		sectionTitle: 'Product Management',
+		title: 'Products',
+		href: '/products',
 		icon: 'items',
-		path: 'items',
+		path: 'products',
 	},
 	{
 		title: 'Categories',
@@ -29,6 +42,13 @@ const sidebar: SidebarItemType[] = [
 	},
 	{
 		startOfSection: true,
+		sectionTitle: 'Customer Management',
+		title: 'Customers',
+		href: '/customers',
+		icon: 'customers',
+		path: 'customers',
+	},
+	{
 		sectionTitle: 'Customer',
 		title: 'Feedback',
 		href: '/feedbacks',

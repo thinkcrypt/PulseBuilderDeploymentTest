@@ -2,6 +2,14 @@ import { TableCellProps } from '@chakra-ui/react';
 export type { CustomTableProps } from './components.types';
 import { MenuItem, SelectmenuItem } from './table';
 
+export type { MenuItem as MenuItemProps, SelectmenuItem as SelectmenuItemProps } from './table';
+
+import { InputDataType } from './data-types';
+export type { InputDataType } from './data-types';
+
+import { ViewDataType, TableDataFieldType } from './data-types';
+export type { ViewDataType, TableDataFieldType } from './data-types';
+
 export type SidebarItemType = {
 	title: string;
 	href: string;
@@ -35,16 +43,7 @@ type Options = {
 type CommonProps = {
 	date?: boolean;
 	price?: boolean;
-	type?:
-		| 'date'
-		| 'time'
-		| 'date-only'
-		| 'price'
-		| 'boolean'
-		| 'menu'
-		| 'image-text'
-		| 'checkbox'
-		| 'tag';
+	type?: TableDataFieldType;
 	title?: string;
 	sort?: string;
 	dataKey?: string;
@@ -55,6 +54,7 @@ type CommonProps = {
 	style?: any;
 	tagType?: { value?: string; color?: string }[];
 	colorScheme?: any;
+	helperText?: string;
 };
 
 type SelectProps = CommonProps & {
@@ -84,25 +84,20 @@ type ButtonType = {
 export type ViewModalDataModelProps = {
 	title: string;
 	dataKey: string;
-	type?:
-		| 'date'
-		| 'price'
-		| 'boolean'
-		| 'menu'
-		| 'image-text'
-		| 'checkbox'
-		| 'tag'
-		| 'string'
-		| 'image'
-		| 'data-array-tag';
+	type?: ViewDataType;
 	colorScheme?: any;
 	path?: string;
+};
+
+export type SelectDataType = {
+	show: boolean;
+	menu: SelectmenuItem[];
 };
 
 export type TableObjectProps = {
 	title: string;
 	path: string;
-	filters?: string;
+	filters?: boolean;
 	button?: ButtonType;
 	clickable?: boolean;
 	toPath?: string;
@@ -111,34 +106,10 @@ export type TableObjectProps = {
 	data: TableObjectDataProps[];
 	export?: boolean;
 	menu?: MenuItem[];
-	select?: {
-		show: boolean;
-		menu: SelectmenuItem[];
-	};
+	select?: SelectDataType;
 	preferences?: any;
 	hidePreferences?: boolean;
 };
-
-export type InputDataType =
-	| 'text'
-	| 'number'
-	| 'switch'
-	| 'image'
-	| 'date'
-	| 'tag'
-	| 'textarea'
-	| 'select'
-	| 'data-select'
-	| 'data-menu'
-	| 'checkbox'
-	| 'multi-select'
-	| 'radio'
-	| 'nested-text'
-	| 'nested-textarea'
-	| 'view-only'
-	| 'data-tag'
-	| 'menu'
-	| 'checkbox';
 
 export type ModelType =
 	| 'products'
@@ -147,6 +118,7 @@ export type ModelType =
 	| 'users'
 	| 'orders'
 	| 'coupons'
+	| 'customers'
 	| 'collections';
 
 type BaseInputData<T> = {

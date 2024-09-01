@@ -3,9 +3,14 @@
 import { useGetFiltersQuery } from '@/store/services/usersApi';
 import { Button } from '@chakra-ui/react';
 
-import { clearFilters } from '@/store/slices/tableSlice';
-
-import { BooleanFilter, DateFilter, MultiSelectFilter, RangeFilter, useAppDispatch } from '../';
+import {
+	BooleanFilter,
+	DateFilter,
+	MultiSelectFilter,
+	RangeFilter,
+	useAppDispatch,
+	clearFilters,
+} from '../';
 import { FilterSectionContainer } from './filter-components';
 
 type FilterItemType = {

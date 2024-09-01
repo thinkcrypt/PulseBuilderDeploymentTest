@@ -7,24 +7,22 @@ import {
 	ModalBody,
 	ModalOverlay,
 	ModalCloseButton,
-	Text,
 	Drawer,
 	DrawerOverlay,
-	DrawerContent,
 	DrawerCloseButton,
 	DrawerBody,
+	Flex,
 } from '@chakra-ui/react';
 import {
-	CustomMenuitem as MenuItem,
 	ViewModalDataModelProps,
 	Column,
 	ModalContent,
 	ModalHeader,
 	useIsMobile,
 	DrawerHeader,
-	sizes,
+	useGetByIdQuery,
+	MenuItem,
 } from '../../../../';
-import { useGetByIdQuery } from '@/store/services/commonApi';
 import { ViewItem } from './';
 import { DrawerContentContainer } from '../pop-modals';
 
@@ -33,9 +31,10 @@ type DeleteItemModalProps = {
 	id: string;
 	path: string;
 	dataModel: ViewModalDataModelProps[];
+	trigger?: any;
 };
 
-const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id }) => {
+const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigger, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const { data, isFetching, isError } = useGetByIdQuery(
@@ -43,18 +42,19 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id })
 			path: path,
 			id: id,
 		},
-		{ skip: !id }
+		{ skip: !id || !isOpen }
 	);
 
 	const getValue = (dataKey: string, type: any): any => {
+		if (!data) return;
 		// Split the dataKey by '.' to determine if it's nested
-		const keys = dataKey.split('.');
+		const keys = dataKey?.split('.');
 		// Determine the appropriate value based on whether the key is nested
 		let value = 'n/a';
-		if (keys.length === 1) {
+		if (keys?.length === 1) {
 			// Single level key, directly access the value
 			value = type === 'date' ? new Date(data[dataKey]) : data[dataKey];
-		} else if (keys.length === 2) {
+		} else if (keys?.length === 2) {
 			// Nested key, access the nested value
 			const [parentKey, childKey] = keys;
 			value = type === 'date' ? new Date(data[parentKey]?.[childKey]) : data[parentKey]?.[childKey];
@@ -71,10 +71,17 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id })
 	const CloseButton = isMobile ? DrawerCloseButton : ModalCloseButton;
 	const Body = isMobile ? DrawerBody : ModalBody;
 
+	const renderTrigger = () => {
+		if (trigger) {
+			return <Flex onClick={onOpen}>{trigger}</Flex>;
+		} else {
+			return <MenuItem onClick={onOpen}>View</MenuItem>;
+		}
+	};
+
 	return (
 		<>
-			<MenuItem onClick={onOpen}>View</MenuItem>
-
+			{renderTrigger()}
 			<Container
 				isCentered
 				{...(isMobile && { placement: 'bottom' })}
@@ -91,20 +98,21 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, id })
 						<Column
 							gap={4}
 							pt={2}>
-							{data &&
-								dataModel.map((item: ViewModalDataModelProps, i: number) => {
-									const { title, dataKey, type, colorScheme } = item;
-									return (
-										<ViewItem
-											title={title}
-											type={type}
-											colorScheme={colorScheme}
-											path={item?.path}
-											key={i}>
-											{getValue(dataKey, type)}
-										</ViewItem>
-									);
-								})}
+							{dataModel.map((item: ViewModalDataModelProps, i: number) => {
+								const { title, dataKey, type, colorScheme, path } = item;
+
+								return (
+									<ViewItem
+										isLoading={isFetching}
+										title={title}
+										type={type}
+										colorScheme={colorScheme}
+										path={path}
+										key={i}>
+										{data && getValue(dataKey, type)}
+									</ViewItem>
+								);
+							})}
 						</Column>
 					</Body>
 				</Content>

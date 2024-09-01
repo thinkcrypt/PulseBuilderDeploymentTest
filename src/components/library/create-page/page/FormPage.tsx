@@ -11,6 +11,10 @@ import {
 	FormSection,
 	CreateNav,
 	CreateBody,
+	handleChange,
+	handleImage,
+	handleSwitch,
+	getFieldValue,
 } from '../../';
 
 type FormPageType = {
@@ -66,42 +70,8 @@ const FormPage: FC<FormPageType> = ({
 		error: error,
 	});
 
-	const handleChange = (e: any) => {
-		if (e.target.name.includes('.')) {
-			const [parent, child] = e.target.name.split('.');
-			setFormData((prevState: any) => ({
-				...prevState,
-				[parent]: {
-					...prevState[parent],
-					[child]: e.target.value,
-				},
-			}));
-			setChangedData((prevState: any) => ({
-				...prevState,
-				[parent]: {
-					...formData[parent],
-					[child]: e.target.value,
-				},
-			}));
-		} else {
-			setFormData({ ...formData, [e.target.name]: e.target.value });
-			setChangedData(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
-		}
-	};
-
-	const handleSwitch = (e: any) => {
-		setFormData({ ...formData, [e.target.name]: e.target.checked });
-		setChangedData(prevState => ({ ...prevState, [e.target.name]: e.target.checked }));
-	};
-
-	const handleImage = (e: any) => {
-		setChangedData(prevState => ({ ...prevState, image: e }));
-		setFormData({ ...formData, image: e });
-	};
-
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
-
 		if (type === 'update') {
 			trigger({ path, id, body: changedData });
 			return;
@@ -114,28 +84,17 @@ const FormPage: FC<FormPageType> = ({
 		}
 	};
 
-	const getFieldValue = (name: string) => {
-		const parentProperty = name?.split('.')[0];
-		const childProperty = name?.split('.')[1];
-		const value =
-			name?.includes('.') && formData[parentProperty]
-				? formData[parentProperty][childProperty]
-				: formData[name];
-
-		return value;
-	};
-
 	const getOnChangeHandler = (type: string) => {
+		const params = { formData, setFormData, setChangedData };
+
 		switch (type) {
 			case 'image':
-				return handleImage;
+				return (e: any) => handleImage({ e, ...params });
 			case 'switch':
-				return handleSwitch;
 			case 'checkbox':
-				return handleSwitch;
-
+				return (e: any) => handleSwitch({ e, ...params });
 			default:
-				return handleChange;
+				return (e: any) => handleChange({ e, ...params });
 		}
 	};
 
@@ -160,7 +119,7 @@ const FormPage: FC<FormPageType> = ({
 											name={item?.name}
 											label={item?.label}
 											type={item?.type}
-											value={getFieldValue(item?.name)}
+											value={getFieldValue({ name: item?.name, formData })}
 											onChange={getOnChangeHandler(item?.type)}
 											model={item?.model}
 											placeholder={item?.placeholder}

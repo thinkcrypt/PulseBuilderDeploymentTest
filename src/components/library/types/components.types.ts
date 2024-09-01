@@ -13,6 +13,7 @@ export type CustomTableProps = TableProps & {
 	selectable?: boolean;
 	selectedItems?: any;
 	isError?: boolean;
+	showFilters?: any;
 	select?: {
 		show: boolean;
 		menu: any[];

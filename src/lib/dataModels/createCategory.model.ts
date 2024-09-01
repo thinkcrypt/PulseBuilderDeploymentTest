@@ -12,6 +12,14 @@ export type DataType = {
 };
 
 const createCategoryModalModel: InputData<DataType>[] = [
+	// {
+	// 	sectionTitle: 'Category Image',
+	// 	name: 'image',
+	// 	label: 'Image',
+	// 	isRequired: false,
+	// 	type: 'image',
+	// 	endOfSection: true,
+	// },
 	{
 		sectionTitle: 'Details',
 		name: 'name',
@@ -24,6 +32,19 @@ const createCategoryModalModel: InputData<DataType>[] = [
 		label: 'Description',
 		isRequired: false,
 		type: 'textarea',
+	},
+	{
+		name: 'priority',
+		label: 'Priority',
+		isRequired: false,
+		type: 'number',
+	},
+	{
+		name: 'isActive',
+		label: 'Is Active',
+		isRequired: false,
+		type: 'checkbox',
+		endOfSection: true,
 	},
 ];
 

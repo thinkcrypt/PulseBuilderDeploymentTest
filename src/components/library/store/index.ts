@@ -1,8 +1,11 @@
 export { default as mainApi } from './services/mainApi';
-export { default as authSlice } from './slices/authSlice';
-export { default as cartSlice } from './slices/cartSlice';
-export { default as routeSlice } from './slices/routeSlice';
-export { default as tableSlice } from './slices/tableSlice';
+export * from './slices/authSlice';
+export * from './slices/cartSlice';
+// export * from './slices/cartSlice';
+export * from './slices/routeSlice';
+export * from './slices/tableSlice';
+// export * from './slices/tableSlice';
+//export * from './slices/authSlice';
 
 export * from './services/mainApi';
 export * from './services/commonApi';

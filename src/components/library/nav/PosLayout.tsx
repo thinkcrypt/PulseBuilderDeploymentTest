@@ -1,0 +1,71 @@
+'use client';
+
+import React, { FC } from 'react';
+import { Flex, FlexProps } from '@chakra-ui/react';
+
+import { refresh, navigate } from '../';
+
+import { AuthWrapper, padding, useAppDispatch, ColorMode, Body, Column, LayoutWrapper } from '../';
+
+const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
+
+export type FlexPropsType = FlexProps & {
+	children?: React.ReactNode;
+};
+
+type LayoutProps = FlexPropsType & {
+	children: React.ReactNode;
+	title: string;
+	path?: string;
+	type?: 'default' | 'pos';
+	hideColorMode?: boolean;
+};
+
+const Layout: FC<LayoutProps> = ({
+	children,
+	title,
+	path = '/dashboard',
+	hideColorMode = false,
+
+	...props
+}) => {
+	const dispatch = useAppDispatch();
+	dispatch(navigate({ selected: path }));
+
+	React.useEffect(() => {
+		dispatch(refresh());
+	}, []);
+
+	return (
+		<AuthWrapper>
+			<LayoutWrapper>
+				<Body>
+					<Flex
+						flexDir='column'
+						w='full'
+						bg='blue'
+						{...props}>
+						<Flex
+							flex={1}
+							w='full'>
+							<Flex
+								overflowY='hidden'
+								bg='pos.light'
+								_dark={{ bg: 'pos.dark' }}
+								w='full'>
+								<Column
+									w='full'
+									gap={4}>
+									{children}
+								</Column>
+							</Flex>
+						</Flex>
+					</Flex>
+				</Body>
+				{/* {!hideColorMode && <ColorMode />} */}
+			</LayoutWrapper>
+		</AuthWrapper>
+	);
+};
+
+export default Layout;

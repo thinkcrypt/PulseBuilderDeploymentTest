@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, ChangeEvent, FC } from 'react';
 
-import { Flex, PopoverTrigger, useColorModeValue, useDisclosure } from '@chakra-ui/react';
-import { applyFilters } from '@/store/slices/tableSlice';
+import { Flex, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import BetweenValues from './BetweenValues';
 
 import {
@@ -16,6 +15,7 @@ import {
 	PopModal,
 	PopModalHeader,
 	PopModalBody,
+	applyFilters,
 } from '../../../';
 
 type DateFilterProps = {
@@ -25,7 +25,6 @@ type DateFilterProps = {
 };
 
 const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
-	const arrow = useColorModeValue('menu.light', 'menu.dark');
 	const { onOpen, onClose, isOpen } = useDisclosure();
 	const dispatch = useAppDispatch();
 	const { filters } = useAppSelector((state: any) => state.table);
@@ -34,10 +33,6 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 	const [value, setValue] = useState<number | undefined | string>();
 	const [operator, setOperator] = useState<string>('eq');
 	const [persistOperator, setPersistOperator] = useState<string>('eq');
-
-	const ifFieldExists = (): boolean => {
-		return Object.keys(filters).some(key => key.startsWith(field));
-	};
 
 	const handleOperatorChange = (e: ChangeEvent<HTMLSelectElement>): void => {
 		setOperator(e.target.value);
@@ -84,10 +79,29 @@ const RangeFilter: FC<DateFilterProps> = ({ title, field, label }) => {
 
 	const isMobile = useIsMobile();
 
+	const ifFieldExists = (): boolean => {
+		return Object.keys(filters).some(
+			key => key.startsWith(field) && filters[key] !== null && filters[key] !== ''
+		);
+	};
+
+	const onFilterReset = (e: any) => {
+		e.stopPropagation();
+		e.preventDefault();
+		dispatch(
+			applyFilters({
+				key: field,
+				value: '',
+			})
+		);
+	};
+
 	const button = (
 		<span>
-			<Filter>
-				{label} {ifFieldExists() && <span>| {filters[field]}</span>}
+			<Filter
+				isActive={ifFieldExists()}
+				onCancel={onFilterReset}>
+				{label} {ifFieldExists() && <span> | {filters[field]}</span>}
 			</Filter>
 		</span>
 	);

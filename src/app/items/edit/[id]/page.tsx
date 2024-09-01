@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { useFormData, FormPage } from '@/components/library';
+import { useFormData, EditItemPage } from '@/components/library';
 import { useParams } from 'next/navigation';
 import { useGetByIdQuery, useUpdateByIdMutation } from '@/store/services/commonApi';
+import { table } from '../../create/dataModel';
 
 const inputFields: any = [
 	{
@@ -68,16 +69,11 @@ const inputFields: any = [
 	},
 ];
 
-const EditItemPage = () => {
-	const { id } = useParams<{ id: string }>();
-	const { data } = useGetByIdQuery({ path: 'items', id: id }, { skip: !id });
-	const [formData, setFormData] = useFormData<any>(inputFields, data);
-
-	const [trigger, result] = useUpdateByIdMutation();
-
+const UpdateItemPage = () => {
 	return (
 		<>
-			<FormPage
+			<EditItemPage data={table} />
+			{/* <FormPage
 				data={inputFields}
 				formData={formData}
 				setFormData={setFormData}
@@ -87,9 +83,9 @@ const EditItemPage = () => {
 				title='Update Menu Item'
 				type='update'
 				id={id}
-			/>
+			/> */}
 		</>
 	);
 };
 
-export default EditItemPage;
+export default UpdateItemPage;

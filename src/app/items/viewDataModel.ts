@@ -34,6 +34,18 @@ const data: ViewModalDataModelProps[] = [
 		type: 'string',
 	},
 	{
+		title: 'Custom Sections',
+		dataKey: 'customSections',
+		type: 'custom-section-array',
+	},
+
+	{
+		title: 'Images',
+		dataKey: 'images',
+		type: 'image-array',
+	},
+
+	{
 		title: 'Collections',
 		dataKey: 'collection',
 		type: 'data-array-tag',

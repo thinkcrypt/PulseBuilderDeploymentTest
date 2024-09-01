@@ -2,7 +2,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Flex, FlexProps, Grid, Heading, Text } from '@chakra-ui/react';
 
-import { sizes, currency, useAppSelector, Pagination, OrderModal } from '../../';
+import { sizes, currency, useAppSelector, Pagination } from '../../';
+import OrderModal from '@/components/pos/OrderModal';
 
 type ResultContainerProps = FlexProps & {
 	data: any;
@@ -34,6 +35,8 @@ const PosResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 					<Pagination data={data && data} />
 				</Flex>
 				<Flex
+					pl={4}
+					w='350px'
 					justify='space-between'
 					align='center'
 					flex={1}

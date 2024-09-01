@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button, MenuButton, MenuButtonProps } from '@chakra-ui/react';
-import Icon from '../library/icon/Icon';
+import { Icon } from '@/components/library';
 
 type ButtonOfMenuProps = MenuButtonProps & {
 	children?: any;

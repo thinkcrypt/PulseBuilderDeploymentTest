@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
-import { Center, FormControl, Image, Stack, InputProps, GridProps, Flex } from '@chakra-ui/react';
-
-import { UploadModal, HelperText, Label } from '../../';
+import { Center, FormControl, Image, Stack, InputProps, GridProps } from '@chakra-ui/react';
+import { UploadModal, HelperText, Label, ImageContainer } from '../../';
 
 type FormDataType = InputProps &
 	GridProps & {
@@ -23,36 +22,30 @@ const VImage: FC<FormDataType> = ({
 	isDisabled = false,
 }) => {
 	const type = value ? 'edit' : 'add';
-	if (isDisabled)
-		return (
-			<Flex>
-				<Image
-					h='200px'
-					w='200px'
-					objectFit='contain'
-					src={value}
-				/>
-			</Flex>
-		);
+
+	const imageComponent = (
+		<ImageContainer>
+			<Image
+				h='100%'
+				w='100%'
+				objectFit='contain'
+				src={value}
+			/>
+		</ImageContainer>
+	);
+
+	if (isDisabled) return imageComponent;
 	return (
 		<FormControl isRequired={isRequired}>
-			<Stack
-				spacing={2}
-				w='full'>
+			<Stack w='full'>
 				<Label>{label}</Label>
 				<Center sx={styles.container}>
 					<UploadModal
 						type={type}
 						handleImage={onChange}
+						multiple={true}
 					/>
-					{value && (
-						<Image
-							h='200px'
-							w='100%'
-							objectFit='contain'
-							src={value}
-						/>
-					)}
+					{value && imageComponent}
 				</Center>
 				{helper && <HelperText>{helper}</HelperText>}
 			</Stack>

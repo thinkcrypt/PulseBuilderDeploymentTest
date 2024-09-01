@@ -1,4 +1,4 @@
-type Item = 'edit' | 'delete' | 'custom' | 'edit-select' | 'edit-data-select';
+type Item = 'edit' | 'delete' | 'custom' | 'edit-select' | 'edit-data-select' | 'export';
 
 type Prompt = {
 	title?: string;
@@ -7,9 +7,10 @@ type Prompt = {
 
 type BaseItem = {
 	title: string;
-	key: string;
+	key?: string;
 	type: Item;
 	prompt?: Prompt;
+	keyType?: 'string' | 'array' | 'object';
 };
 
 type SelectMenuItem = BaseItem & {
@@ -28,7 +29,7 @@ type OtherMenuItem = BaseItem & {
 	options?: never;
 	dataPath?: never;
 	dataModel?: never;
-	value: any;
+	value?: any;
 };
 
 export type SelectmenuItem = SelectMenuItem | DataSelectMenu | OtherMenuItem;

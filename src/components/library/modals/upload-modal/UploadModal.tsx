@@ -17,37 +17,37 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import InsertUrl from './InsertUrl';
 import MyPhotos from './MyPhotos';
 import UploadImage from './UploadImage';
+import { styles } from './';
 
-import { AddImageButton, EditImageButton } from '../../';
+import { AddImageButton, DeleteImageButton, EditImageButton } from '../../';
 
-const PADDING_X = 4;
-
-const buttonTypes = {
-	add: <AddImageButton size='200px' />,
-	edit: <EditImageButton />,
-};
-
-const UploadModal = ({
-	album,
-	trigger,
-	handleImage,
-	type = 'add',
-}: {
+type UploadModalProps = {
 	album?: string;
 	trigger?: React.ReactNode;
 	handleImage: any;
-	type?: 'add' | 'edit';
+	type?: 'add' | 'edit' | 'delete';
+	multiple?: boolean;
+	handleDelete?: any;
+};
+
+const tabs = ['Photos', 'Upload', 'Web Address (URL)'];
+
+const UploadModal: FC<UploadModalProps> = ({
+	album,
+	multiple,
+	trigger,
+	handleImage,
+	handleDelete,
+	type = 'add',
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const bg = useColorModeValue('menu.light', 'menu.dark');
 	const [img, setImg] = useState(null);
-
-	let triggerButton = buttonTypes[type] || trigger;
 
 	const handleImageSelect = (e: any) => {
 		setImg(e);
@@ -64,9 +64,21 @@ const UploadModal = ({
 		onClose();
 	};
 
+	const buttonTypes = {
+		add: <AddImageButton size='200px' />,
+		edit: <EditImageButton />,
+		delete: <DeleteImageButton onClick={handleDelete} />,
+	};
+
+	let triggerButton = (buttonTypes[type] as any) || trigger;
+
 	return (
 		<>
-			<Flex onClick={onOpen}>{triggerButton}</Flex>
+			{multiple && type == 'delete' ? (
+				<DeleteImageButton onClick={handleDelete} />
+			) : (
+				<Flex onClick={onOpen}>{triggerButton}</Flex>
+			)}
 			<Modal
 				isOpen={isOpen}
 				onClose={onClose}
@@ -82,9 +94,9 @@ const UploadModal = ({
 							colorScheme='brand'
 							flex={1}>
 							<TabList>
-								<Tab>Photos</Tab>
-								<Tab>Upload</Tab>
-								<Tab>Web Address (URL)</Tab>
+								{tabs.map((label: string, i: number) => (
+									<Tab key={i}>{label}</Tab>
+								))}
 							</TabList>
 							<TabPanels
 								h='full'
@@ -125,27 +137,6 @@ const UploadModal = ({
 			</Modal>
 		</>
 	);
-};
-
-const styles = {
-	container: {
-		border: '1px solid red',
-		h: '80vh',
-		w: '1200px',
-		position: 'fixed',
-		left: '20',
-		top: '20',
-		bg: 'background.light',
-		_dark: {
-			bg: 'background.dark',
-		},
-		zIndex: '999',
-	},
-	panel: {
-		flex: 1,
-		h: 'full',
-		px: 0,
-	},
 };
 
 export default UploadModal;

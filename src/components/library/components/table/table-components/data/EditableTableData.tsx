@@ -3,7 +3,7 @@ import React, { ChangeEvent, FC, useState } from 'react';
 
 import { CustomTd } from './';
 import { Switch, useColorModeValue } from '@chakra-ui/react';
-import { useUpdateByIdMutation } from '@/store/services/commonApi';
+import { useUpdateByIdMutation } from '../../../../store';
 import { useCustomToast } from '../../../../';
 
 import RowInput from '../../table-components/row-components/RowInput';

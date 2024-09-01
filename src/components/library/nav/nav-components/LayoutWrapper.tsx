@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Flex, FlexProps } from '@chakra-ui/react';
 
 type LayoutWrapperProps = FlexProps & {
-	children: React.ReactNode;
+	children: ReactNode;
 };
 
 const LayoutWrapper: FC<LayoutWrapperProps> = ({ children, ...props }) => {
