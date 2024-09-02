@@ -50,7 +50,7 @@ const SelfMenu = () => {
 							mb={2}>
 							{data?.name}
 						</Heading>
-						<Tag>{data?.restaurant?.name}</Tag>
+						<Tag>{data?.role?.name}</Tag>
 					</MenuItem>
 				</MenuGroup>
 				<MenuDivider />

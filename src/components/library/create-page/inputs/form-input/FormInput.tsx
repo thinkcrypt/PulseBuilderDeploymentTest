@@ -18,6 +18,7 @@ import {
 	VCustomAttributes,
 	VSection,
 	VSlug,
+	VPermissions,
 } from '../../../';
 
 type Option = {
@@ -121,6 +122,15 @@ const FormInput: FC<FormInputProps> = ({
 					{...props}
 				/>
 			);
+		case 'permissions':
+			return (
+				<VPermissions
+					dataModel={dataModel}
+					isRequired={isRequired}
+					options={options}
+					{...props}
+				/>
+			);
 		case 'view-only':
 			return <ViewOnly {...props} />;
 		case 'tag':
@@ -173,6 +183,14 @@ const FormInput: FC<FormInputProps> = ({
 					type={type}
 					isRequired={isRequired}
 					isDisabled={true}
+					{...props}
+				/>
+			);
+		case 'password':
+			return (
+				<VInput
+					type='password'
+					isRequired={isRequired}
 					{...props}
 				/>
 			);

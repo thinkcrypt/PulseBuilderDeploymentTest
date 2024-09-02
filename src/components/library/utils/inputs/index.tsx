@@ -32,4 +32,6 @@ export { default as FilterCheckbox } from './filter-inputs/FilterCheckbox';
 //elements
 export { default as Input } from './input-components/InputElement';
 
+export { default as VPermissions } from './VPermissions';
+
 export * from './input-components';

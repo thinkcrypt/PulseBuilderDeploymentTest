@@ -11,7 +11,7 @@ import {
 	Skeleton,
 	Text,
 } from '@chakra-ui/react';
-import { Column, ImageContainer, PLACEHOLDER_IMAGE, RenderTag } from '../../../../../';
+import { Align, Column, ImageContainer, PLACEHOLDER_IMAGE, RenderTag } from '../../../../../';
 
 type ViewItemProps = GridProps & {
 	title: string;
@@ -42,10 +42,9 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 			);
 		case 'data-tag':
 			return (
-				<Flex
+				<Align
 					flexWrap='wrap'
-					gap={2}
-					alignItems='center'>
+					gap={2}>
 					{children?.map((item: any, i: number) => (
 						<RenderTag
 							key={i}
@@ -53,14 +52,28 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 							item={item}
 						/>
 					))}
-				</Flex>
+				</Align>
+			);
+		case 'array-tag':
+			return (
+				<Align
+					flexWrap='wrap'
+					gap={2}>
+					{children?.map((item: any, i: number) => (
+						<Badge
+							colorScheme='purple'
+							variant='subtle'
+							key={i}>
+							{item?.toString()}
+						</Badge>
+					))}
+				</Align>
 			);
 		case 'data-array-tag':
 			return (
-				<Flex
+				<Align
 					flexWrap='wrap'
-					gap={2}
-					alignItems='center'>
+					gap={2}>
 					{children?.map((item: any, i: number) => (
 						<RenderTag
 							key={i}
@@ -68,7 +81,7 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 							item={item}
 						/>
 					))}
-				</Flex>
+				</Align>
 			);
 
 		case 'tag':
@@ -110,37 +123,20 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 				</Box>
 			);
 		case 'image':
-			return (
-				<ImageContainer>
-					<Image
-						src={children || PLACEHOLDER_IMAGE}
-						alt='image'
-						w='100%'
-						h='100%'
-						objectFit='contain'
-					/>
-				</ImageContainer>
-			);
+			return <ImageContainer src={children || PLACEHOLDER_IMAGE} />;
 		case 'image-array':
 			return (
-				<Flex
+				<Align
 					flexWrap='wrap'
-					align='center'
 					gap={2}>
 					{children?.map((item: string, i: number) => (
 						<ImageContainer
 							key={i}
-							size='100px'>
-							<Image
-								src={item || PLACEHOLDER_IMAGE}
-								alt='image'
-								w='100%'
-								h='100%'
-								objectFit='contain'
-							/>
-						</ImageContainer>
+							src={item || PLACEHOLDER_IMAGE}
+							size={100}
+						/>
 					))}
-				</Flex>
+				</Align>
 			);
 		case 'date':
 			return (

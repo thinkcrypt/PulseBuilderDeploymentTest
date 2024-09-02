@@ -13,6 +13,10 @@ export default function Home() {
 				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
 				gap={2}>
 				<Count
+					title='Orders'
+					path='orders'
+				/>
+				<Count
 					title='Total Products'
 					path='products'
 				/>

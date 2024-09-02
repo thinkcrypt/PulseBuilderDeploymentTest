@@ -23,6 +23,9 @@ export type InputDataType =
 	| 'custom-attribute'
 	| 'checkbox'
 	| 'slug'
+	| 'permissions'
+	| 'checkbox-menu'
+	| 'password'
 	| 'custom-section-array';
 
 export type ViewDataType =

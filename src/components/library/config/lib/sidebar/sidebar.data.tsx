@@ -55,6 +55,21 @@ const sidebar: SidebarItemType[] = [
 		icon: 'feedbacks',
 		path: 'feedbacks',
 	},
+	{
+		startOfSection: true,
+		sectionTitle: 'Admin Management',
+		title: 'Roles',
+		href: '/roles',
+		icon: 'customers',
+		path: 'roles',
+	},
+	{
+		sectionTitle: 'Users',
+		title: 'Users',
+		href: '/users',
+		icon: 'user',
+		path: 'users',
+	},
 
 	{
 		title: 'Settings',

@@ -25,8 +25,8 @@ const ImageContainer: React.FC<ImageContainerProps> = ({
 			src={src || PLACEHOLDER_IMAGE}
 			alt={alt || 'image'}
 			objectFit={objectFit || 'contain'}
-			width={boxSize}
-			height={boxSize}
+			width='100%'
+			height='100%'
 			style={{ borderRadius: '2px' }}
 		/>
 	);

@@ -23,6 +23,7 @@ const createFormFields = ({ schema, layout }: any): any[] => {
 							...(fieldConfig.options && { options: fieldConfig.options }),
 							...(fieldConfig.model && { model: fieldConfig.model }),
 							...(fieldConfig.dataModel && { dataModel: fieldConfig.model }),
+							...(fieldConfig.options && { dataModel: fieldConfig.options }),
 							span: 1,
 							endOfSection: lastElement && lastSubIndex,
 						});
@@ -41,6 +42,7 @@ const createFormFields = ({ schema, layout }: any): any[] => {
 						...(fieldConfig.options && { options: fieldConfig.options }),
 						...(fieldConfig.model && { model: fieldConfig.model }),
 						...(fieldConfig.dataModel && { dataModel: fieldConfig.dataModel }),
+						...(fieldConfig.options && { dataModel: fieldConfig.options }),
 						endOfSection: lastElement,
 					});
 				}
