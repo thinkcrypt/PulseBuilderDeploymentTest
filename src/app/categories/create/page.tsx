@@ -2,8 +2,45 @@
 
 import React from 'react';
 import { useAddCategoryMutation } from '@/store/services/categoriesApi';
-import fields from './dataModel';
+
 import { useFormData, FormPage } from '@/components/library';
+
+const fields: any = [
+	// {
+	// 	sectionTitle: 'Category Image',
+	// 	name: 'image',
+	// 	label: 'Image',
+	// 	isRequired: false,
+	// 	type: 'image',
+	// 	endOfSection: true,
+	// },
+	{
+		sectionTitle: 'Details',
+		name: 'name',
+		label: 'Category Name',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'description',
+		label: 'Description',
+		isRequired: false,
+		type: 'textarea',
+	},
+	{
+		name: 'priority',
+		label: 'Priority',
+		isRequired: false,
+		type: 'number',
+	},
+	{
+		name: 'isActive',
+		label: 'Is Active',
+		isRequired: false,
+		type: 'checkbox',
+		endOfSection: true,
+	},
+];
 
 const CreateCategoryPage = () => {
 	const [trigger, result] = useAddCategoryMutation();
