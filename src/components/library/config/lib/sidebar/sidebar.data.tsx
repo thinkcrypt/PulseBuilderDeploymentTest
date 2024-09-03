@@ -48,13 +48,13 @@ const sidebar: SidebarItemType[] = [
 		icon: 'customers',
 		path: 'customers',
 	},
-	{
-		sectionTitle: 'Customer',
-		title: 'Feedback',
-		href: '/feedbacks',
-		icon: 'feedbacks',
-		path: 'feedbacks',
-	},
+	// {
+	// 	sectionTitle: 'Customer',
+	// 	title: 'Feedback',
+	// 	href: '/feedbacks',
+	// 	icon: 'feedbacks',
+	// 	path: 'feedbacks',
+	// },
 	{
 		startOfSection: true,
 		sectionTitle: 'Admin Management',

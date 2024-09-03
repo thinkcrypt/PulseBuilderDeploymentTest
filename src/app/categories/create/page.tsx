@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { FC } from 'react';
 import { useAddCategoryMutation } from '@/store/services/categoriesApi';
 
 import { useFormData, FormPage } from '@/components/library';
+import { NextPage } from 'next';
 
 const fields: any = [
 	{
@@ -34,7 +35,7 @@ const fields: any = [
 	},
 ];
 
-const CreateCategoryPage = () => {
+const CreateCategoryPage: NextPage = () => {
 	const [trigger, result] = useAddCategoryMutation();
 	const [formData, setFormData] = useFormData(fields);
 
