@@ -1,6 +1,35 @@
 import { TableObjectProps } from '@/components/library';
 import viewDataModel from './viewDataModel';
-import editModel from './create/dataModel';
+// import editModel from './create/dataModel';
+
+const editModel: any = [
+	{
+		sectionTitle: 'Details',
+		name: 'name',
+		label: 'Category Name',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'description',
+		label: 'Description',
+		isRequired: false,
+		type: 'textarea',
+	},
+	{
+		name: 'priority',
+		label: 'Priority',
+		isRequired: false,
+		type: 'number',
+	},
+	{
+		name: 'isActive',
+		label: 'Is Active',
+		isRequired: false,
+		type: 'checkbox',
+		endOfSection: true,
+	},
+];
 
 const data: TableObjectProps = {
 	title: 'Categories',

@@ -6,14 +6,6 @@ import { useAddCategoryMutation } from '@/store/services/categoriesApi';
 import { useFormData, FormPage } from '@/components/library';
 
 const fields: any = [
-	// {
-	// 	sectionTitle: 'Category Image',
-	// 	name: 'image',
-	// 	label: 'Image',
-	// 	isRequired: false,
-	// 	type: 'image',
-	// 	endOfSection: true,
-	// },
 	{
 		sectionTitle: 'Details',
 		name: 'name',
