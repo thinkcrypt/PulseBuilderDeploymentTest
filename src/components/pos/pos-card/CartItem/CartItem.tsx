@@ -18,14 +18,17 @@ import {
 } from '@/components/library';
 
 type CartItem = {
-	id: string;
-	name: string;
-	price: number;
-	qty: number;
-	image?: string;
+	item: {
+		id: string;
+		name: string;
+		price: number;
+		qty: number;
+		image: string;
+	};
 };
 
-const CartItem = ({ id, name, price, qty, image }: CartItem) => {
+const CartItem = ({ item }: CartItem) => {
+	const { id, name, price, qty, image } = item;
 	const dispatch = useAppDispatch();
 
 	const [trigger, { isSuccess, isLoading, data }] = useGetCartTotalMutation();

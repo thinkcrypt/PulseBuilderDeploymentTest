@@ -1,5 +1,6 @@
-import { IconButton, useColorModeValue } from '@chakra-ui/react';
-import React, { useCallback, useEffect, useState } from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 
 import {
 	useAppDispatch,
@@ -8,9 +9,9 @@ import {
 	deleteAllFromCart,
 	updateUser,
 	Column,
-	Icon,
 	EmptyCartModal,
 	SpaceBetween,
+	IconButton,
 } from '@/components/library';
 
 import { useGetCartTotalMutation } from '@/store/services/ordersApi';
@@ -48,10 +49,10 @@ const PosCart = () => {
 			trigger({ items: cartItems, discount, shipping: Number(e.target.value) });
 		}
 	};
-	const handleResetCart = useCallback(() => {
+	const handleResetCart = () => {
 		dispatch(deleteAllFromCart());
 		trigger({ items: [] });
-	}, [dispatch, trigger]);
+	};
 
 	useEffect(() => {
 		setVal({ discount, shipping });
@@ -63,78 +64,76 @@ const PosCart = () => {
 		}
 	}, [result]);
 
-	const buttonColor = useColorModeValue('sidebar.light', 'sidebar.dark');
+	const selectCustomer = (
+		<PosSelect
+			insert={true}
+			dataModel={createCustomer}
+			path='customers'
+			value={user}
+			setValue={(e: string) => dispatch(updateUser(e))}
+			defaultValue={{ _id: 'guest', name: 'Walk in Customer' }}
+		/>
+	);
+
+	const emptyCartButton = (
+		<EmptyCartModal
+			onClick={handleResetCart}
+			title='Empty Cart'
+			trigger={
+				<IconButton
+					tooltip='Empty Cart'
+					aria-label='Empty Cart'
+					colorScheme='red'
+					iconName='delete'
+					iconSize={18}
+				/>
+			}
+		/>
+	);
 
 	return (
-		<SummaryContainer>
-			<Column p='16px 8px 0 8px'>
-				<SpaceBetween>
-					<PosSelect
-						insert={true}
-						dataModel={createCustomer}
-						path='customers'
-						value={user}
-						setValue={(e: string) => dispatch(updateUser(e))}
-						defaultValue={{ _id: 'guest', name: 'Walk in Customer' }}
+		<>
+			<SummaryContainer>
+				<Column p='16px 8px 0 8px'>
+					<SpaceBetween>
+						<>{selectCustomer}</>
+						<>{emptyCartButton}</>
+					</SpaceBetween>
+					<AddressWidget />
+				</Column>
+				<CartContainer>
+					{cartItems?.map((item: any) => (
+						<CartItem
+							key={item?.id}
+							item={item}
+						/>
+					))}
+				</CartContainer>
+				<CartPriceContainer>
+					<PriceItem title='Subtotal'>{subTotal}</PriceItem>
+					<PriceItem title='VAT (+)'>{vat}</PriceItem>
+
+					<EditablePriceItem
+						title='Shipping (+)'
+						value={val.shipping}
+						name='shipping'
+						onChange={handleChange}
 					/>
-					<EmptyCartModal
-						onClick={handleResetCart}
-						title='Empty Cart'
-						trigger={
-							<IconButton
-								colorScheme='red'
-								aria-label='reset-cart'
-								icon={
-									<Icon
-										name='delete'
-										size={18}
-										color={buttonColor}
-									/>
-								}
-							/>
-						}
+					<EditablePriceItem
+						title='Discount (-)'
+						value={val.discount}
+						name='discount'
+						onChange={handleChange}
 					/>
-				</SpaceBetween>
-				<AddressWidget />
-			</Column>
 
-			<CartContainer>
-				{cartItems?.map(({ id, name, price, qty, image }: any) => (
-					<CartItem
-						key={id}
-						id={id}
-						image={image}
-						name={name}
-						price={price}
-						qty={qty}
-					/>
-				))}
-			</CartContainer>
-
-			<CartPriceContainer>
-				<PriceItem title='Subtotal'>{subTotal}</PriceItem>
-				<PriceItem title='VAT (+)'>{vat}</PriceItem>
-
-				<EditablePriceItem
-					title='Shipping (+)'
-					value={val.shipping}
-					name='shipping'
-					onChange={handleChange}
-				/>
-				<EditablePriceItem
-					title='Discount (-)'
-					value={val.discount}
-					name='discount'
-					onChange={handleChange}
-				/>
-
-				<PriceItem
-					title='Total'
-					heading>
-					{total}
-				</PriceItem>
-			</CartPriceContainer>
-		</SummaryContainer>
+					<PriceItem
+						title='Total'
+						heading>
+						{total}
+					</PriceItem>
+				</CartPriceContainer>
+			</SummaryContainer>
+		</>
 	);
 };
 

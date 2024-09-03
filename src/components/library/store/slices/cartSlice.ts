@@ -97,13 +97,14 @@ export const cartSlice = createSlice({
 
 		addToCart: (state, action) => {
 			const { item, qty = 1 } = action.payload;
+			if (qty <= 0) return;
 			const existItem = state.cartItems.find((stateItem: CartItem) => stateItem.id === item.id);
 			if (existItem) {
 				state.cartItems = state.cartItems.map((stateItem: CartItem) =>
 					stateItem.id === item.id
 						? {
 								...stateItem,
-								qty: stateItem.qty + qty,
+								qty: Number(stateItem.qty) + Number(qty),
 						  }
 						: stateItem
 				);
@@ -115,7 +116,7 @@ export const cartSlice = createSlice({
 					price: item?.price,
 					note: item?.note,
 					vat: item?.vat,
-					qty: qty,
+					qty: Number(qty),
 				};
 				state.cartItems = [...state.cartItems, newItem];
 			}

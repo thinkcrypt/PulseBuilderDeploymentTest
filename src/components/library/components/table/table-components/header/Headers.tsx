@@ -18,9 +18,10 @@ type HeadersProps = {
 	selectable: boolean;
 	isLoading: boolean;
 	data: any;
+	showMenu?: boolean;
 };
 
-const Headers = ({ tableData, fields, selectable, isLoading, data }: HeadersProps) => {
+const Headers = ({ tableData, fields, selectable, isLoading, data, showMenu }: HeadersProps) => {
 	const [checked, setChecked] = useState(false);
 	const dispatch = useAppDispatch();
 	const { selectedItems } = useAppSelector(state => state.table);
@@ -56,6 +57,7 @@ const Headers = ({ tableData, fields, selectable, isLoading, data }: HeadersProp
 
 			{tableData.map(({ title, sort, dataKey, type }) => {
 				if (!fields?.includes(dataKey) && type !== 'menu') return null;
+				if (!showMenu && type == 'menu') return null;
 				return (
 					<Title
 						key={title}

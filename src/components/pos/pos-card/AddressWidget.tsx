@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import {
 	Modal,
@@ -11,9 +10,11 @@ import {
 	Flex,
 	ModalFooter,
 	Text,
+	Tooltip,
 } from '@chakra-ui/react';
 
 import {
+	IconButton,
 	useFormData,
 	FormContent,
 	ModalContainer,
@@ -26,6 +27,7 @@ import {
 	Address,
 	removeAddress,
 	setAddress,
+	Icon,
 } from '@/components/library';
 
 const inputFields: InputData<Address>[] = [
@@ -100,11 +102,16 @@ const AddressWidget = ({ id }: { id?: string }) => {
 		}
 	);
 
-	const [formData, setFormData] = useFormData<any>(inputFields, {
-		name: data?.name,
-		email: data?.email,
-		phone: data?.phone,
-	});
+	const [formData, setFormData] = useFormData<any>(inputFields);
+
+	const onModalOpen = () => {
+		setFormData({
+			name: data?.name,
+			email: data?.email,
+			phone: data?.phone,
+		});
+		onOpen();
+	};
 
 	const onModalClose = () => {
 		setFormData({});
@@ -121,45 +128,52 @@ const AddressWidget = ({ id }: { id?: string }) => {
 		dispatch(removeAddress());
 	};
 
+	const addressIsSet = (
+		<Flex
+			justify='space-between'
+			flex={1}>
+			<Column gap={0}>
+				<Text
+					fontSize='.8rem'
+					fontWeight='600'>
+					{`${address?.street}, ${address?.city},`} {`${address?.postalCode}, ${address?.country}`}
+				</Text>
+			</Column>
+
+			<IconButton
+				tooltip='Delete Address'
+				aria-label='Delete Address'
+				colorScheme='red'
+				variant='outline'
+				iconName='delete'
+				size='xs'
+				onClick={deleteAddress}
+			/>
+		</Flex>
+	);
+
+	const addressNotSet = (
+		<Button
+			size='sm'
+			fontWeight='700'
+			variant='link'
+			onClick={onModalOpen}>
+			Add Delivery Address
+		</Button>
+	);
+
 	return (
 		<>
 			<Flex
-				w='100%'
 				py={1}
 				pl={3}>
-				{isAddressSet ? (
-					<Flex
-						justify='space-between'
-						flex={1}>
-						<Column gap={0}>
-							<Text
-								fontSize='.8rem'
-								fontWeight='600'>
-								{`${address?.street}, ${address?.city},`}{' '}
-								{`${address?.postalCode}, ${address?.country}`}
-							</Text>
-						</Column>
-						<Button
-							size='xs'
-							onClick={deleteAddress}>
-							Delete
-						</Button>
-					</Flex>
-				) : (
-					<Button
-						size='sm'
-						fontWeight='700'
-						variant='link'
-						onClick={onOpen}>
-						Add Delivery Address
-					</Button>
-				)}
+				{isAddressSet ? addressIsSet : addressNotSet}
 			</Flex>
 
 			<Modal
 				size='4xl'
 				isOpen={isOpen}
-				onClose={onModalClose}>
+				onClose={onClose}>
 				<ModalOverlay />
 
 				<ModalContainer>

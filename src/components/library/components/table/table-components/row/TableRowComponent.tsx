@@ -26,6 +26,7 @@ const TableRowComponent: FC<TableProps> = ({
 	path,
 	fields = [],
 	clickable,
+	selectable,
 	...props
 }) => {
 	const isMobile = useIsMobile();
@@ -34,7 +35,7 @@ const TableRowComponent: FC<TableProps> = ({
 		// Create a TableRow for each item
 		<TableRow
 			cursor={clickable ? 'pointer' : 'default'}
-			selectable={!isMobile && true}
+			selectable={!isMobile && selectable}
 			id={item?._id}
 			key={item?._id}
 			actions={<div></div>}
@@ -65,16 +66,18 @@ const TableRowComponent: FC<TableProps> = ({
 
 					// If the type is 'menu', return a TableMenu component
 					if (type == 'menu')
-						return (
-							<TableMenu
-								item={item}
-								path={path}
-								data={menu}
-								id={item?._id}
-								key={dataKey}
-								title={item[dataKey]}
-							/>
-						);
+						if (!menu) return null;
+						else
+							return (
+								<TableMenu
+									item={item}
+									path={path}
+									data={menu}
+									id={item?._id}
+									key={dataKey}
+									title={item[dataKey]}
+								/>
+							);
 
 					// If the item name is not in the fields array and type is not 'menu', return null
 					if (!fields?.includes(dataKey) && type !== 'menu') {

@@ -34,6 +34,9 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	isError = false,
 	select,
 	showFilters = true,
+	search = true,
+	table,
+	error,
 }) => {
 	const tbody = isLoading ? (
 		<TableSkeleton
@@ -82,8 +85,12 @@ const CustomTable: React.FC<CustomTableProps> = ({
 
 					<TableSearchContainer>
 						{!hidePreferences && <Preferences path={path} />}
-						<TableSearch />
-						<TableRefresh />
+						{search && (
+							<>
+								<TableSearch />
+								<TableRefresh />
+							</>
+						)}
 					</TableSearchContainer>
 				</TableSettingsMenuContainer>
 			)}
@@ -103,7 +110,8 @@ const CustomTable: React.FC<CustomTableProps> = ({
 			)}
 			{isError && (
 				<TableErrorMessage title='Error Fetching Data.'>
-					There has been an error while fetching data. Please try refreshing the page.
+					{error?.data?.message ||
+						`There has been an error while fetching data. Please try refreshing the page.`}
 				</TableErrorMessage>
 			)}
 			<ResultContainer data={data} />

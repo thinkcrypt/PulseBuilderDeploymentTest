@@ -10,8 +10,6 @@ import {
 	useAppDispatch,
 	useAppSelector,
 	CustomTable,
-	PageHeading,
-	Layout,
 	Toast,
 	Headers,
 	TableRowComponent,
@@ -27,7 +25,7 @@ type TableProps = {
 };
 
 // Define the PageTable component
-const PageTable: FC<TableProps> = ({ table, inputFields }) => {
+const TableCustom: FC<TableProps> = ({ table, inputFields }) => {
 	const { page, limit, search, sort, filters, fields, preferences, selectedItems }: any =
 		useAppSelector((state: any) => state.table);
 	const dispatch = useAppDispatch();
@@ -39,10 +37,10 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	// Get the table state from the redux store
 	const { data, isLoading, isError, error, isSuccess } = useGetAllQuery({
 		page,
-		limit,
+		limit: table?.limit || limit,
 		search,
 		sort,
-		filters,
+		filters: table?.filters ? filters : null,
 		path: table?.path,
 	});
 
@@ -71,7 +69,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	const header = (
 		<Headers
 			selectable={selectable}
-			fields={preferences}
+			fields={table?.preferences || preferences}
 			tableData={table?.data}
 			isLoading={isLoading}
 			data={data?.doc}
@@ -83,7 +81,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 		<TableRowComponent
 			onClick={() => table?.clickable && router.push(`${table?.toPath}/${item?._id}`)}
 			selectable={selectable}
-			fields={preferences}
+			fields={table?.preferences || preferences}
 			item={item}
 			data={table?.data}
 			menu={table?.menu}
@@ -93,40 +91,27 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 		/>
 	));
 
-	// Return the layout, page heading, table, and toast components
 	return (
 		<>
-			<Layout
-				title={table?.title}
-				path={table?.path}>
-				<PageHeading
-					title={table?.title} //Heading of the page
-					button={table?.button?.title} //Button Title
-					href={table?.button?.path} //Page where button would redirect to
-					isModal={table?.isModal} //If create page should be modal
-					path={table?.path} //Path of the table
-					data={table?.createModel} //Input fields for the create page
-					export={table?.export} //If export button should be displayed
-				/>
+			<CustomTable
+				showFilters={table?.filters} //Hide filters
+				filters={table?.path} //Name of the filters
+				col={col} //No of columns for skeleton
+				isLoading={isLoading} //Loading state
+				header={header} //Header of the table
+				data={isSuccess && data} //Data to be displayed in the table
+				preferences={table?.preferences} //Preferences for the table
+				path={table?.path} //Path of the table
+				hidePreferences={table?.hidePreferences} //Hide preferences
+				selectedItems={selectedItems} //Selected items
+				isError={isError} //If error while fetching data
+				select={table?.select} //Select menu
+				search={table?.search}
+				error={error}
+				table={table}>
+				<>{body}</>
+			</CustomTable>
 
-				<CustomTable
-					showFilters={table?.filters} //Hide filters
-					filters={table?.path} //Name of the filters
-					col={col} //No of columns for skeleton
-					isLoading={isLoading} //Loading state
-					header={header} //Header of the table
-					data={isSuccess && data} //Data to be displayed in the table
-					preferences={table?.preferences} //Preferences for the table
-					path={table?.path} //Path of the table
-					hidePreferences={table?.hidePreferences} //Hide preferences
-					selectedItems={selectedItems} //Selected items
-					isError={isError} //If error while fetching data
-					select={table?.select} //Select menu
-					error={error} //Error message
-					table={table}>
-					<>{body}</>
-				</CustomTable>
-			</Layout>
 			{/* Toast component to display error */}
 			<Toast
 				error={error}
@@ -136,4 +121,4 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	);
 };
 
-export default PageTable;
+export default TableCustom;

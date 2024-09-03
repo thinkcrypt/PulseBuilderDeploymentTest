@@ -1,6 +1,8 @@
+'use client';
 import React from 'react';
 import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { useIsMobile, Icon, useAppDispatch, useAppSelector, navigate } from '../../';
 
@@ -19,33 +21,51 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 	const bg = useColorModeValue('white', '#222');
 	const hover = useColorModeValue('#fafafa', '#141414');
 
-	const changeRoute = (): void => {
+	const router = useRouter();
+
+	const changeRoute = (e: any): void => {
+		e.preventDefault();
+		router.push(href);
 		dispatch(navigate({ selected: path }));
 	};
 
 	const isMobile = useIsMobile();
 
-	return (
-		<Flex
-			userSelect='none'
-			_hover={selected !== path ? { bg: hover } : {}}
-			onClick={changeRoute}
-			as={Link}
-			href={href}
-			h={{ base: 10, md: 7 }}
-			bg={selected == path ? bg : 'transparent'}
-			sx={{ ...styles.container, ...sx }}>
-			<Icon
-				color={color}
-				name={icon}
-				size={isMobile ? 20 : undefined}
-			/>
-			<Text
-				fontSize={{ base: '16px', md: '14px' }}
-				fontWeight='600'>
+	const Container = ({ children }: any) => {
+		return href ? (
+			<Link
+				href={href}
+				passHref={children}>
 				{children}
-			</Text>
-		</Flex>
+			</Link>
+		) : (
+			<>{children}</>
+		);
+	};
+
+	// return <Link href='/'>home</Link>;
+
+	return (
+		<Link href={href}>
+			<Flex
+				userSelect='none'
+				_hover={selected !== path ? { bg: hover } : {}}
+				onClick={changeRoute}
+				h={{ base: 10, md: 7 }}
+				bg={selected == path ? bg : 'transparent'}
+				sx={{ ...styles.container, ...sx }}>
+				<Icon
+					color={color}
+					name={icon}
+					size={isMobile ? 20 : undefined}
+				/>
+				<Text
+					fontSize={{ base: '16px', md: '14px' }}
+					fontWeight='600'>
+					{children}
+				</Text>
+			</Flex>
+		</Link>
 	);
 };
 

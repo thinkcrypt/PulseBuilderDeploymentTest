@@ -15,7 +15,7 @@ export type ThemeProps = {
 //components
 export * from './containers';
 
-export { default as Icon } from './icon/Icon';
+export * from './icon';
 
 export { AuthWrapper, NotLoggedIn } from './wrappers';
 

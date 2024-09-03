@@ -24,9 +24,8 @@ type LayoutProps = FlexPropsType & {
 const Layout: FC<LayoutProps> = ({
 	children,
 	title,
-	path = '/dashboard',
+	path = '/pos',
 	hideColorMode = false,
-
 	...props
 }) => {
 	const dispatch = useAppDispatch();
@@ -43,7 +42,6 @@ const Layout: FC<LayoutProps> = ({
 					<Flex
 						flexDir='column'
 						w='full'
-						bg='blue'
 						{...props}>
 						<Flex
 							flex={1}

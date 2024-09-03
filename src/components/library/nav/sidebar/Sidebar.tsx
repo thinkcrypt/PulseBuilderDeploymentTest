@@ -15,6 +15,7 @@ import {
 	SidebarHeading,
 	SidebarLogo,
 } from './sidebar-components';
+import Link from 'next/link';
 
 const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...props }) => {
 	const { data } = useGetSelfQuery({});
@@ -27,12 +28,14 @@ const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...
 				{sidebar.slice(0, -1).map((item, i) => (
 					<Stack key={i}>
 						<SidebarHeading show={item?.startOfSection}>{item?.sectionTitle}</SidebarHeading>
-						<SidebarItem
-							href={item?.href}
-							path={item?.path}
-							icon={item?.icon}>
-							{item?.title}
-						</SidebarItem>
+						<Link href={item?.href}>
+							<SidebarItem
+								href={item?.href}
+								path={item?.path}
+								icon={item?.icon}>
+								{item?.title}
+							</SidebarItem>
+						</Link>
 					</Stack>
 				))}
 			</SidebarBody>

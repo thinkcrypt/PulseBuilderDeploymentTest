@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
-import { SideDrawer, PosLayout as Layout, Column } from '@/components/library';
-import { Grid, Flex, GridItem } from '@chakra-ui/react';
+import { Flex, Grid, GridItem } from '@chakra-ui/react';
+
 import PosFilters from '@/components/pos/PosFilters';
 import PosSearch from '@/components/pos/PosSearch';
 import PosCart from '@/components/pos/PosCart';
 import PorductListPos from '@/components/pos/PorductListPos';
 
-const page = () => {
+import { sizes, PosLayout as Layout, Column, SideDrawer } from '@/components/library';
+import { NextPage } from 'next';
+
+const PosPage: NextPage = () => {
 	return (
 		<>
-			{/* <SideDrawer />; */}
+			<SideDrawer />
 			<Layout
 				path='pos'
 				title='POS'>
@@ -33,13 +38,13 @@ const page = () => {
 						</Flex>
 						<PorductListPos />
 					</Column>
-					{/* {/* <GridItem> */}
-					<PosCart />
-					{/* </GridItem> */}
+					<GridItem>
+						<PosCart />
+					</GridItem>
 				</Grid>
 			</Layout>
 		</>
 	);
 };
 
-export default page;
+export default PosPage;

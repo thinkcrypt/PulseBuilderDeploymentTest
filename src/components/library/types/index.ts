@@ -109,6 +109,9 @@ export type TableObjectProps = {
 	select?: SelectDataType;
 	preferences?: any;
 	hidePreferences?: boolean;
+	search?: boolean;
+	showMenu?: boolean;
+	limit?: number;
 };
 
 export type ModelType =
