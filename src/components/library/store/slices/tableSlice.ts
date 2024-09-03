@@ -13,6 +13,7 @@ type TableProps = {
 	totalDocs?: number; // The total number of documents
 	totalPages?: number; // The total number of pages
 	filters?: any; // The applied filters
+	unitFilters?: any; // The unit filters
 	fields?: string[]; // The fields to be returned
 	selected?: string[]; // The selected items
 	preferences?: string[]; // The preferences

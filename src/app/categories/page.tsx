@@ -7,8 +7,8 @@ import { categories } from '@/models';
 
 const { getAll } = categories;
 
-const page: NextPage = () => {
+const CatPage: NextPage = () => {
 	return <PageTable table={getAll} />;
 };
 
-export default page;
+export default CatPage;

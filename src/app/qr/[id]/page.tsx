@@ -1,13 +1,12 @@
 'use client';
 
 import { useGetProductsByQrQuery } from '@/store/services/productsApi';
-import { Flex, Heading, Text, Center, Skeleton, Image } from '@chakra-ui/react';
+import { Heading, Text, Center, Skeleton, Image } from '@chakra-ui/react';
 import React from 'react';
 import { useParams } from 'next/navigation';
 import FoodMenuItem from '@/components/menu/FoodMenuItem';
-import Column from '@/components/containers/Column';
-import { useGetByIdQuery } from '@/store/services/commonApi';
-import Icon from '@/components/library/icon/Icon';
+import { Column, Icon } from '@/components/library';
+import { useGetByIdQuery } from '@/components/library/store/services/commonApi';
 import Link from 'next/link';
 
 const QrMenuPage = () => {

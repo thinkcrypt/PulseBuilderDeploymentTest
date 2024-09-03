@@ -7,5 +7,5 @@ export * from './slices/tableSlice';
 // export * from './slices/tableSlice';
 //export * from './slices/authSlice';
 
-export * from './services/mainApi';
+// export * from './services/mainApi';
 export * from './services/commonApi';

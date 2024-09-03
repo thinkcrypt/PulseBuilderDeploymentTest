@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { Button, Flex } from '@chakra-ui/react';
 
-import { useUpdateByIdMutation } from '@/store/services/commonApi';
+import { useUpdateByIdMutation } from '@/components/library/store/services/commonApi';
 import { useGetSelfQuery } from '@/store/services/authApi';
 
 import QrComponent from './_components/QrComponent';

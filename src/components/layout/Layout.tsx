@@ -3,15 +3,14 @@
 import React, { FC } from 'react';
 import { Flex, Heading, useMediaQuery, FlexProps } from '@chakra-ui/react';
 
-import { refresh } from '@/store/slices/tableSlice';
-import { navigate } from '@/store/slices/routeSlice';
-
 import {
 	useIsMobile,
 	AuthWrapper,
 	SelfMenu,
 	SpaceBetween,
 	CreateMenu,
+	refresh,
+	navigate,
 	padding,
 	sizes,
 	useAppDispatch,

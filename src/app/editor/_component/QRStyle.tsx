@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Box, Flex, FlexProps, Text, useColorModeValue } from '@chakra-ui/react';
 import { QRCode } from 'react-qrcode-logo';
-import Column from '@/components/containers/Column';
+import { Column } from '@/components/library';
 
 type QRStyleProps = FlexProps & {
 	style: any;

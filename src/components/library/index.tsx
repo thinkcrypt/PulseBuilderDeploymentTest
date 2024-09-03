@@ -26,7 +26,7 @@ export * from './nav';
 export * from './utils/inputs';
 export * from './utils/texts';
 
-export { default as Count } from './stat/Count';
+export * from './stat';
 
 export { Details, DetailItem } from './detail';
 export { default as HeadingMenu } from './settings/heading-menu/HeadingMenu';

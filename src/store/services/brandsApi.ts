@@ -1,4 +1,4 @@
-import { mainApi } from '@/components/library/store';
+import mainApi from '@/components/library/store/services/mainApi';
 import { ListType, TableProps } from '../store.types';
 import { BASE_LIMIT } from '@/lib/constants';
 

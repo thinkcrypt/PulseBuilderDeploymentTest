@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, Flex } from '@chakra-ui/react';
 import { useClipboard } from '@chakra-ui/react';
 import * as htmlToImage from 'html-to-image';
-import { useGetByIdQuery } from '@/store/services/commonApi';
+import { useGetByIdQuery } from '@/components/library/store/services/commonApi';
 
 import Qr from '@/components/library/qr/Qr';
 

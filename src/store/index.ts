@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { TOKEN_NAME } from '@/components/library';
-import { routeSlice, tableSlice, cartSlice, mainApi, authSlice } from '@/components/library/store';
+
+import { routeSlice, tableSlice, cartSlice, authSlice } from '@/components/library/store';
+
+import mainApi from '@/components/library/store/services/mainApi';
 
 export const store = configureStore({
 	reducer: {

@@ -15,7 +15,7 @@ import {
 	LeftContainer,
 } from './_component';
 import Qr from '@/components/library/qr/Qr';
-import { useGetByIdQuery, usePostMutation } from '@/store/services/commonApi';
+import { useGetByIdQuery, usePostMutation } from '@/components/library/store/services/commonApi';
 import { useCustomToast, useIsMobile } from '@/components/library';
 import ColorMode from '@/components/color-mode/ColorMode';
 

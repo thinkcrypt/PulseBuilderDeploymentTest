@@ -8,9 +8,26 @@ export const userApi = mainApi.injectEndpoints({
 			query: id => `${id}/get/filters`,
 			providesTags: ['Filters'],
 		}),
-		getCount: builder.query<any, string>({
-			query: id => `${id}/get/count`,
-			providesTags: ['count', 'items', 'categories', 'scan'],
+		// getCount: builder.query<any, any>({
+		// 	query: ({ path, filters }: { path: string; filters: any }) => ({
+		// 		url: `${path}/get/count`,
+		// 		params: { ...filters },
+		// 	}),
+		// 	providesTags: ({ path }) => [path],
+		// }),
+		getCount: builder.query<any, any>({
+			query: ({ path, filters = {} }: { path: string; filters?: any }) => ({
+				url: `${path}/get/count`,
+				params: { ...filters },
+			}),
+			// providesTags: ({ path }) => [path],
+		}),
+		getSum: builder.query<any, any>({
+			query: ({ path, field, filters = {} }: { path: string; field: string; filters?: any }) => ({
+				url: `${path}/get/sum/${field}`,
+				params: { ...filters },
+			}),
+			// providesTags: (result, error, { path }) => [path],
 		}),
 		getAll: builder.query<any, any>({
 			query: ({
@@ -33,6 +50,7 @@ export const userApi = mainApi.injectEndpoints({
 		}),
 		getById: builder.query<any, { path: string; id: any }>({
 			query: ({ path, id }): any => `${path}/${id}`,
+
 			providesTags: [
 				'products',
 				'brands',
@@ -167,4 +185,5 @@ export const {
 	useGetByIdToEditQuery,
 	useLazyGetByIdToEditQuery,
 	useExportManyMutation,
+	useGetSumQuery,
 } = userApi;

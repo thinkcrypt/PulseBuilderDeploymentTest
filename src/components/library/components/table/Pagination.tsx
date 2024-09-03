@@ -2,7 +2,7 @@ import { Center, Flex, Select } from '@chakra-ui/react';
 import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
-import { updateTable } from '@/store/slices/tableSlice';
+import { updateTable } from '../../store/slices/tableSlice';
 
 import {
 	useIsMobile,

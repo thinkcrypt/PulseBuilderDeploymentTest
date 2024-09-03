@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { FormControl, Stack, SelectProps } from '@chakra-ui/react';
-import { useGetSelectDataQuery } from '@/store/services/commonApi';
+import { useGetSelectDataQuery } from '../../';
 
 import { Label, SelectContainer, HelperText } from '../../';
 

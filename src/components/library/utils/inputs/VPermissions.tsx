@@ -61,6 +61,7 @@ const VPermissions: React.FC<VDataMenuProps> = ({
 
 	const renderMenuItems = options?.map((item: any, i: number) => (
 		<Checkbox
+			key={i}
 			defaultChecked={value?.includes(item?.value)}
 			id={item?.value}
 			onChange={(e: any) => addPermission(item?.value, e.target.checked)}

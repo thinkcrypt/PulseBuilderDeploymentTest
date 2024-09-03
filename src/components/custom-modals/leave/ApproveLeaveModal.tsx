@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-import { useUpdateByIdMutation } from '@/store/services/commonApi';
+import { useUpdateByIdMutation } from '@/components/library/store/services/commonApi';
 import CustomMenuItem from '@/components/library/menu/CustomMenuItem';
 import { ViewOnly, useCustomToast } from '@/components/library';
 

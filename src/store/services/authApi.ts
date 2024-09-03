@@ -1,4 +1,4 @@
-import { mainApi } from '@/components/library/store';
+import mainApi from '@/components/library/store/services/mainApi';
 import { LoginBodyType, LoginPayloadType } from './types';
 
 export const authApi = mainApi.injectEndpoints({

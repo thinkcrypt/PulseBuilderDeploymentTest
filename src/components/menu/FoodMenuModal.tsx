@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import Column from '../library/containers/Column';
 import { useSwipeable } from 'react-swipeable';
-import SpaceBetween from '../containers/SpaceBetween';
+import { SpaceBetween } from '@/components/library';
 import CookingTime from './CookingTime';
 import {
 	FoodMenuBadge,

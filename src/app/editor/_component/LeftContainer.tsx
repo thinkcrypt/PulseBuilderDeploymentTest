@@ -1,4 +1,4 @@
-import Column from '@/components/containers/Column';
+import { Column } from '@/components/library';
 import React, { ReactNode } from 'react';
 
 const LeftContainer = ({ children }: { children: ReactNode }) => {

@@ -84,12 +84,12 @@ const FormPage: FC<FormPageType> = ({
 		}
 	};
 
-	const getOnChangeHandler = (type: string) => {
+	const getOnChangeHandler = (type: string, key?: string) => {
 		const params = { formData, setFormData, setChangedData };
 
 		switch (type) {
 			case 'image':
-				return (e: any) => handleImage({ e, ...params });
+				return (e: any) => handleImage({ e, dataKey: key || 'image', ...params });
 			case 'switch':
 			case 'checkbox':
 				return (e: any) => handleSwitch({ e, ...params });
@@ -120,7 +120,7 @@ const FormPage: FC<FormPageType> = ({
 											label={item?.label}
 											type={item?.type}
 											value={getFieldValue({ name: item?.name, formData })}
-											onChange={getOnChangeHandler(item?.type)}
+											onChange={getOnChangeHandler(item?.type, item?.name)}
 											model={item?.model}
 											placeholder={item?.placeholder}
 											options={item?.options}

@@ -1,16 +1,20 @@
 'use client';
-import React, { useState } from 'react';
+
+import React, { FC, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { useGetByIdQuery, usePostMutation } from '@/store/services/commonApi';
-import Column from '@/components/library/containers/Column';
+import {
+	Column,
+	useGetByIdQuery,
+	usePostMutation,
+	useRedirect,
+	useCustomToast,
+} from '@/components/library';
 import { Button, Center, Heading, Image } from '@chakra-ui/react';
 import UserInput from '@/components/library/utils/user-input/UserInput';
 import UserTextArea from '@/components/library/utils/user-input/UserTextArea';
 import UserRating from '@/components/library/utils/user-input/UserRating';
-import useCustomToast from '@/components/library/hooks/useCustomToast';
-import useRedirect from '@/hooks/useRedirect';
 
-const FeedbackPage = () => {
+const FeedbackPage: FC<{}> = () => {
 	const { id } = useParams();
 
 	const [formData, setFormData] = useState<any>({

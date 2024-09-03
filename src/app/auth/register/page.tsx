@@ -2,7 +2,7 @@
 import Attendance from '@/components/attendance/Attendance';
 import { VInput, useCustomToast, useAppDispatch } from '@/components/library';
 import { useRegisterMutation } from '@/store/services/authApi';
-import { login } from '@/store/slices/authSlice';
+import { login } from '@/components/library/store/slices/authSlice';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
 const LoginPage: FC<{}> = () => {

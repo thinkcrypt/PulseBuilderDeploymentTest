@@ -1,7 +1,6 @@
 import React from 'react';
 import { Flex, Text } from '@chakra-ui/react';
-import Icon from '@/components/library/icon/Icon';
-
+import { Icon } from '@/components/library';
 const CookingTime = ({ children }: { children: number }) => {
 	if (!children || children === 0) return null;
 	return (
