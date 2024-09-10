@@ -20,7 +20,7 @@ const ModalContainer: React.FC<MenuContainerProps> = ({ children, isSmallScreen,
 		return (
 			<DrawerContent
 				borderTopRadius='2xl'
-				h='90vh'
+				h='85vh'
 				bg='menu.light'
 				_dark={{
 					bg: 'menu.dark',

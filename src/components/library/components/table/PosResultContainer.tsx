@@ -22,7 +22,7 @@ const PosResultContainer: FC<ResultContainerProps> = ({ data, cart, ...props }) 
 	return (
 		<Flex sx={{ ...styles.container, ...props }}>
 			<Grid
-				gridTemplateColumns={{ sm: '11fr 1fr', md: sizes.POS_RATIO }}
+				gridTemplateColumns={{ base: '6fr 1fr', md: sizes.POS_RATIO }}
 				w='full'
 				alignItems='center'
 				h='100%'>
