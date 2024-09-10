@@ -13,6 +13,11 @@ import {
 	Flex,
 	Heading,
 	Text,
+	Drawer,
+	DrawerOverlay,
+	DrawerCloseButton,
+	DrawerHeader,
+	DrawerBody,
 	useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -29,6 +34,7 @@ import {
 	VTextarea,
 	useAppDispatch,
 	useAppSelector,
+	useIsMobile,
 } from '@/components/library';
 import {
 	OrderAddress,
@@ -204,6 +210,14 @@ const OrderModal = () => {
 		</>
 	);
 
+	const isSmallScreen = useIsMobile();
+
+	const Container = isSmallScreen ? Drawer : Modal;
+	const Overlay = isSmallScreen ? DrawerOverlay : ModalOverlay;
+	const CloseButton = isSmallScreen ? DrawerCloseButton : ModalCloseButton;
+	const Header = isSmallScreen ? DrawerHeader : ModalHeader;
+	const Body = isSmallScreen ? DrawerBody : ModalBody;
+
 	return (
 		<>
 			<Button
@@ -214,21 +228,25 @@ const OrderModal = () => {
 				Confirm Order
 			</Button>
 
-			<Modal
+			<Container
+				{...(!isSmallScreen && { isCentered: true })}
+				{...(isSmallScreen && { placement: 'bottom' })}
 				closeOnOverlayClick={false}
 				size='5xl'
 				isOpen={isOpen}
 				onClose={onModalClose}>
-				<ModalOverlay />
-				<ModalContainer>
-					<ModalHeader>
+				<Overlay />
+				<ModalContainer isSmallScreen={isSmallScreen}>
+					<Header>
 						Order Details
 						{isAddressSet && <OrderAddress address={{ ...address }} />}
-					</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
+					</Header>
+					<CloseButton />
+					<Body>
 						<Grid
-							gridTemplateColumns='3fr 2fr'
+							display={{ base: 'flex', md: 'grid' }}
+							flexDir={{ base: 'column', md: 'row' }}
+							gridTemplateColumns={{ base: '1fr', md: '3fr 2fr' }}
 							gap={10}>
 							<Flex flexDirection='column'>{renderLeftSection}</Flex>
 							<Column
@@ -247,9 +265,9 @@ const OrderModal = () => {
 								</OrderButton>
 							</Column>
 						</Grid>
-					</ModalBody>
+					</Body>
 				</ModalContainer>
-			</Modal>
+			</Container>
 		</>
 	);
 };

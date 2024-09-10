@@ -12,6 +12,8 @@ import {
 } from '@/components/library';
 
 import { PosCard } from './';
+import PosCart from './PosCart';
+import PosCartDrawer from './PosDrawerCart';
 
 const PorductListPos = () => {
 	const { page, limit, search, sort, filters, fields, preferences } = useAppSelector(
@@ -38,20 +40,26 @@ const PorductListPos = () => {
 	return (
 		<>
 			<Flex
+				w='100%'
+				display={{ base: 'grid', md: 'flex' }}
+				gridTemplateColumns={{ base: '1fr 1fr', md: 'repeat(3, 1fr)' }}
 				bg='sidebar.light'
 				_dark={{ bg: 'sidebar.dark' }}
-				wrap='wrap'
+				flexWrap='wrap'
 				gap={3}
 				p={4}
 				pt={0}
-				pb='64px'
+				pb={{ base: '160px', md: '64px' }}
 				maxH='calc(100vh - 52px - 24px)'
 				overflowY='scroll'
 				justifyContent='space-between'>
 				{renderProductCards}
 				{data?.doc?.length === 0 && <NoDataFound />}
 			</Flex>
-			<PosResultContainer data={data} />
+			<PosResultContainer
+				data={data}
+				cart={data && <PosCartDrawer />}
+			/>
 		</>
 	);
 };

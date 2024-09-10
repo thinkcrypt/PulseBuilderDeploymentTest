@@ -1,6 +1,6 @@
 import React from 'react';
-import { SideDrawer, PosLayout as Layout, Column } from '@/components/library';
-import { Grid, Flex, GridItem } from '@chakra-ui/react';
+import { PosLayout as Layout, Column } from '@/components/library';
+import { Grid, Flex } from '@chakra-ui/react';
 import PosFilters from '@/components/pos/PosFilters';
 import PosSearch from '@/components/pos/PosSearch';
 import PosCart from '@/components/pos/PosCart';
@@ -11,11 +11,21 @@ const page = () => {
 		<>
 			{/* <SideDrawer />; */}
 			<Layout
-				path='pos'
+				path='/pos'
 				title='POS'>
-				<Grid gridTemplateColumns={'8fr 2fr'}>
-					<Column>
+				<Grid
+					gridTemplateColumns={{
+						base: '1fr',
+						md: '8fr 2fr',
+					}}
+					maxH='100vh'
+					overflow='none'>
+					<Flex
+						flexDir='column'
+						gap={{ base: 3, md: 1 }}>
 						<Flex
+							overflowX='scroll'
+							flexDir={{ base: 'column', md: 'row' }}
 							px={4}
 							justify='space-between'
 							gap={2}
@@ -32,10 +42,9 @@ const page = () => {
 							/>
 						</Flex>
 						<PorductListPos />
-					</Column>
-					{/* {/* <GridItem> */}
+					</Flex>
+
 					<PosCart />
-					{/* </GridItem> */}
 				</Grid>
 			</Layout>
 		</>

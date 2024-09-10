@@ -12,6 +12,11 @@ import {
 	Flex,
 	Heading,
 	useColorModeValue,
+	Drawer,
+	DrawerOverlay,
+	DrawerCloseButton,
+	DrawerHeader,
+	DrawerBody,
 } from '@chakra-ui/react';
 
 import PosInput from './PosInput';
@@ -27,6 +32,7 @@ import {
 	MenuItem,
 	useUpdateByIdMutation,
 	useCustomToast,
+	useIsMobile,
 } from '@/components/library';
 import {
 	OrderAddress,
@@ -167,27 +173,39 @@ const ViewOrderModal = ({ id }: { id: string }) => {
 		</>
 	);
 
+	const isSmallScreen = useIsMobile();
+
+	const Container = isSmallScreen ? Drawer : Modal;
+	const Overlay = isSmallScreen ? DrawerOverlay : ModalOverlay;
+	const CloseButton = isSmallScreen ? DrawerCloseButton : ModalCloseButton;
+	const Header = isSmallScreen ? DrawerHeader : ModalHeader;
+	const Body = isSmallScreen ? DrawerBody : ModalBody;
+
 	return (
 		<>
 			<MenuItem onClick={onModalOpen}>View Order</MenuItem>
 
-			<Modal
+			<Container
+				{...(!isSmallScreen && { isCentered: true })}
+				{...(isSmallScreen && { placement: 'bottom' })}
 				closeOnOverlayClick={false}
 				size='5xl'
 				isOpen={isOpen}
 				onClose={onModalClose}>
-				<ModalOverlay />
-				<ModalContainer>
-					<ModalHeader>
+				<Overlay />
+				<ModalContainer isSmallScreen={isSmallScreen}>
+					<Header>
 						Order Details
 						{data?.customer && <OrderCustomer data={data?.customer} />}
 						{data?.address && <OrderAddress address={data?.address} />}
-					</ModalHeader>
-					<ModalCloseButton />
+					</Header>
+					<CloseButton />
 					{data && (
-						<ModalBody>
+						<Body>
 							<Grid
-								gridTemplateColumns='3fr 2fr'
+								display={{ base: 'flex', md: 'grid' }}
+								flexDir={{ base: 'column', md: 'row' }}
+								gridTemplateColumns={{ base: '1fr', md: '3fr 2fr' }}
 								gap={10}>
 								<Flex flexDirection='column'>{renderLeftSection}</Flex>
 								<Column
@@ -207,10 +225,10 @@ const ViewOrderModal = ({ id }: { id: string }) => {
 									</OrderButton>
 								</Column>
 							</Grid>
-						</ModalBody>
+						</Body>
 					)}
 				</ModalContainer>
-			</Modal>
+			</Container>
 		</>
 	);
 };

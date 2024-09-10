@@ -1,6 +1,6 @@
 import { useMediaQuery } from '@chakra-ui/react';
 
-const useIsMobile = () => {
+const useIsMobile: any = () => {
 	const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 
 	const isMobile = isLargerThan800 ? false : true;

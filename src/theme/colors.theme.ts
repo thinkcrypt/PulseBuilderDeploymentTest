@@ -45,7 +45,8 @@ type Colors = {
 const RICH_BLACK = '#0E131F';
 const DARK = '#0E0E0E';
 
-const SAGE = '#B5BD89';
+// const SAGE = '#B5BD89';
+const SAGE = 'whitesmoke';
 const THIRSTLE = '#D0C4DF';
 
 //const BLACK = '#1f1f1f';

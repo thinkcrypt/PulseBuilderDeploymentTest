@@ -5,7 +5,7 @@ import { IoAdd } from 'react-icons/io5';
 import { TbSelector } from 'react-icons/tb';
 import { BsCalendar2Date } from 'react-icons/bs';
 import colors from '@/theme/colors.theme';
-import { useColorModeValue } from '@chakra-ui/react';
+import { grid, useColorModeValue } from '@chakra-ui/react';
 import { TbArrowForward } from 'react-icons/tb';
 import { TbSettings } from 'react-icons/tb';
 import { LuImagePlus } from 'react-icons/lu';
@@ -38,6 +38,10 @@ import { MdOutlineEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
 import { HiUserGroup } from 'react-icons/hi';
 // import { IoMdBarcode } from 'react-icons/io';
+import { IoBagOutline } from 'react-icons/io5';
+import { IoReorderTwoOutline } from 'react-icons/io5';
+import { IoGridOutline } from 'react-icons/io5';
+import { IoSearchOutline } from 'react-icons/io5';
 import { FaCartShopping } from 'react-icons/fa6';
 
 export type IconNameOptions =
@@ -47,7 +51,6 @@ export type IconNameOptions =
 	| 'arrow'
 	| 'barcode'
 	| 'brand'
-	| 'cart'
 	| 'category'
 	| 'clock-outline'
 	| 'close'
@@ -76,6 +79,11 @@ export type IconNameOptions =
 	| 'settings'
 	| 'settings-fill'
 	| 'subtract'
+	| 'cart'
+	| 'bag'
+	| 'grid'
+	| 'hamburger'
+	| 'search'
 	| 'user';
 
 type IconProps = {
@@ -120,7 +128,11 @@ const icons: any = {
 	close: MdOutlineCancel,
 	delete: MdDelete,
 	customers: HiUserGroup,
-	cart: FaCartShopping,
+	cart: IoBagOutline,
+	bag: IoBagOutline,
+	hamburger: IoReorderTwoOutline,
+	grid: IoGridOutline,
+	search: IoSearchOutline,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

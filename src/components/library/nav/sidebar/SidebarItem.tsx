@@ -4,13 +4,20 @@ import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import { useIsMobile, Icon, useAppDispatch, useAppSelector, navigate } from '../../';
+import {
+	useIsMobile,
+	Icon,
+	useAppDispatch,
+	useAppSelector,
+	navigate,
+	IconNameOptions,
+} from '../../';
 
 type SidebarItemProps = {
 	children: string;
 	href: string;
 	path: string;
-	icon: string;
+	icon: IconNameOptions;
 	sx?: any;
 };
 

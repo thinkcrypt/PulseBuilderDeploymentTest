@@ -9,6 +9,8 @@ import {
 	DeleteItemModal,
 	ViewItemModal,
 	DuplicateModal,
+	ModalMenuItem,
+	ModalMenuTrigger,
 } from '../../../../';
 import Link from 'next/link';
 
@@ -91,7 +93,7 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 									data={item?.dataModel}
 									title='Edit'
 									type='update'
-									trigger={<MenuItem>Edit</MenuItem>}
+									trigger='Edit'
 								/>
 							);
 

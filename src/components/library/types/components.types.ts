@@ -9,6 +9,7 @@ export type CustomTableProps = TableProps & {
 	filters?: string;
 	preferences?: any;
 	path?: any;
+	headers?: string[];
 	hidePreferences?: boolean;
 	selectable?: boolean;
 	selectedItems?: any;

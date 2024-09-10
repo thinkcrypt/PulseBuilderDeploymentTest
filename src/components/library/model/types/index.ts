@@ -16,36 +16,46 @@ type SchemaFieldTypes =
 	| 'data-tag'
 	| 'multi-select';
 
-type SchemaField = {
-	label?: string;
-	title?: string;
-	type:
-		| 'text'
-		| 'checkbox'
-		| 'date'
-		| 'string'
-		| 'textarea'
-		| 'tag'
-		| 'data-menu'
-		| 'password'
-		| 'select'
-		| 'data-tag'
-		| 'permissions'
-		| 'checkbox-menu'
-		| 'multi-select';
+type Types =
+	| 'checkbox'
+	| 'checkbox-menu'
+	| 'data-menu'
+	| 'data-tag'
+	| 'date'
+	| 'image'
+	| 'multi-select'
+	| 'number'
+	| 'password'
+	| 'permissions'
+	| 'select'
+	| 'slug'
+	| 'string'
+	| 'tag'
+	| 'text'
+	| 'textarea';
 
-	tableType?: 'text' | 'checkbox' | 'date' | 'string' | 'tag';
-	sort?: boolean;
-	displayInTable?: boolean;
-	default?: boolean;
-	isRequired?: boolean;
-	viewType?: SchemaFieldTypes | 'array-tag';
-	model?: string;
-	required?: boolean;
-	options?: { label: string; value: string }[];
-	tableKey?: string;
+type TableTypes = 'checkbox' | 'date' | 'image-text' | 'string' | 'tag' | 'text';
+
+type SchemaField = {
 	colorScheme?: (data: any) => string;
 	dataModel?: any;
+	default?: boolean;
+	displayInTable?: boolean;
+	inputLabel?: string;
+	imageKey?: string;
+	inputType?: string;
+	isRequired?: boolean;
+	label?: string;
+	model?: string;
+	options?: { label: string; value: string }[];
+	readOnlyOnUpdate?: boolean;
+	required?: boolean;
+	sort?: boolean;
+	tableKey?: string;
+	tableType?: TableTypes;
+	title?: string;
+	type: Types;
+	viewType?: SchemaFieldTypes | 'array-tag';
 };
 
 export type SchemaProps = {

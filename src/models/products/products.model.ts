@@ -17,7 +17,7 @@ const layout = [
 		sectionTitle: 'Product Description',
 		fields: [
 			'category',
-			'slug',
+			['slug', 'stock'],
 			'shortDescription',
 			'tags',
 			['price', 'vat'],

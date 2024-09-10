@@ -11,8 +11,8 @@ const CardContainer: FC<CenterProps & { children: ReactNode }> = ({ children, ..
 			_dark={{ bg: 'card.dark' }}
 			p={4}
 			flex={1} // Add this
-			minW='160px' // Add this
-			maxW='300px' // Add this
+			minW={{ base: '100%', md: '160px' }} // Add this}}
+			maxW={{ base: '160px', md: '300px' }} // Add this
 			borderRadius='8px'
 			gap={4}
 			{...props}>

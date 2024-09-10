@@ -9,6 +9,7 @@ const TableErrorMessage = ({
 	return (
 		<Center
 			flexDir='column'
+			textAlign='center'
 			h='200px'
 			{...props}>
 			<Text>{title}</Text>

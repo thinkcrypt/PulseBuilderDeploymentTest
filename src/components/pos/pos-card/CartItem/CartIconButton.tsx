@@ -5,13 +5,13 @@ import { Icon } from '@/components/library';
 type CartIconButtonProps = {
 	size: number;
 	onClick: any;
-	name: string;
+	name: any;
 };
 
 const CartIconButton: FC<CartIconButtonProps> = ({ size, onClick, name }) => (
 	<IconButton
 		onClick={onClick}
-		aria-label={name}
+		aria-label={'cart'}
 		icon={
 			<Icon
 				name={name}

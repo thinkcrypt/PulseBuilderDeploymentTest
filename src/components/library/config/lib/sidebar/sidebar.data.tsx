@@ -10,7 +10,7 @@ const sidebar: SidebarItemType[] = [
 	{
 		title: 'POS',
 		href: '/pos',
-		icon: 'pos',
+		icon: 'barcode',
 		path: 'pos',
 	},
 	{
@@ -25,7 +25,7 @@ const sidebar: SidebarItemType[] = [
 		sectionTitle: 'Product Management',
 		title: 'Products',
 		href: '/products',
-		icon: 'items',
+		icon: 'product',
 		path: 'products',
 	},
 	{
@@ -45,7 +45,7 @@ const sidebar: SidebarItemType[] = [
 		sectionTitle: 'Customer Management',
 		title: 'Customers',
 		href: '/customers',
-		icon: 'customers',
+		icon: 'customer',
 		path: 'customers',
 	},
 	// {
@@ -60,7 +60,7 @@ const sidebar: SidebarItemType[] = [
 		sectionTitle: 'Admin Management',
 		title: 'Roles',
 		href: '/roles',
-		icon: 'customers',
+		icon: 'role',
 		path: 'roles',
 	},
 	{

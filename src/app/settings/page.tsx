@@ -34,7 +34,12 @@ const SettingsPage = () => {
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
-		trigger({ body: formData, path: 'restaurant', invalidate: 'self', id: data?.restaurant?._id });
+		trigger({
+			body: formData,
+			path: 'restaurant',
+			invalidate: ['self'],
+			id: data?.restaurant?._id,
+		});
 	};
 
 	const handleImage = (e: any) => {

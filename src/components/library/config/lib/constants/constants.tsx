@@ -38,10 +38,12 @@ export const sizes = {
 	POS_MAX_HEIGHT: '75vh',
 	POS_RATIO: '8fr 2fr',
 	NAV_HEIGHT: 14,
+	CARD_RADIUS: '8px',
 };
 
 export const shadow = {
 	MENU: 'lg',
+	CARD: '2px 2px 10px rgba(0,0,0,.1)',
 };
 
 export const padding = {

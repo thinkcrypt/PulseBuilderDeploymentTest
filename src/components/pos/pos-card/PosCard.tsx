@@ -39,7 +39,7 @@ const PosCard = ({ item }: { item: any }) => {
 	const quickView = (
 		<Flex
 			flex={1}
-			// justify='flex-end'
+			w='100%'
 			onClick={(e: any) => {
 				e.stopPropagation();
 			}}>

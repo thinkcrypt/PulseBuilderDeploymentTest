@@ -21,6 +21,7 @@ import {
 } from '../../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
+	headers,
 	children,
 	filters,
 	header,

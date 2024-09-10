@@ -5,29 +5,23 @@ export const userApi = mainApi.injectEndpoints({
 	overrideExisting: true,
 	endpoints: builder => ({
 		getFilters: builder.query<any, string>({
-			query: id => `${id}/get/filters`,
-			providesTags: ['Filters'],
+			query: (path: string) => `${path}/get/filters`,
+			providesTags: ['filters'],
 		}),
-		// getCount: builder.query<any, any>({
-		// 	query: ({ path, filters }: { path: string; filters: any }) => ({
-		// 		url: `${path}/get/count`,
-		// 		params: { ...filters },
-		// 	}),
-		// 	providesTags: ({ path }) => [path],
-		// }),
+
 		getCount: builder.query<any, any>({
 			query: ({ path, filters = {} }: { path: string; filters?: any }) => ({
 				url: `${path}/get/count`,
 				params: { ...filters },
 			}),
-			// providesTags: ({ path }) => [path],
+			providesTags: (result, error, { path }) => [path],
 		}),
 		getSum: builder.query<any, any>({
 			query: ({ path, field, filters = {} }: { path: string; field: string; filters?: any }) => ({
 				url: `${path}/get/sum/${field}`,
 				params: { ...filters },
 			}),
-			// providesTags: (result, error, { path }) => [path],
+			providesTags: (result, error, { path }) => [path],
 		}),
 		getAll: builder.query<any, any>({
 			query: ({
@@ -48,38 +42,25 @@ export const userApi = mainApi.injectEndpoints({
 			query: (id: any) => `${id}?limit=1000&fields=name&sort=name`,
 			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons', 'collections'],
 		}),
-		getById: builder.query<any, { path: string; id: any }>({
-			query: ({ path, id }): any => `${path}/${id}`,
-
-			providesTags: [
-				'products',
-				'brands',
-				'categories',
-				'coupons',
-				'items',
-				'collection',
-				'collections',
-			],
+		getById: builder.query<any, { path: string; id: any; invalidate?: string[] }>({
+			query: ({ path, id, invalidate = [] }): any => `${path}/${id}`,
+			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
 		}),
-		getByIdToEdit: builder.query<any, { path: string; id: any }>({
-			query: ({ path, id }): any => `${path}/edit/${id}`,
-			providesTags: [
-				'products',
-				'brands',
-				'categories',
-				'coupons',
-				'items',
-				'collection',
-				'collections',
-			],
+		getByIdToEdit: builder.query<any, { path: string; id: any; invalidate?: string[] }>({
+			query: ({ path, id, invalidate }): any => `${path}/edit/${id}`,
+			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
 		}),
-		post: builder.mutation<any, { path: string; body: any; invalidate?: string; type?: string }>({
+		post: builder.mutation<any, { path: string; body: any; invalidate?: string[]; type?: string }>({
 			query: ({ path, body, invalidate }): any => ({
 				url: path,
 				method: 'POST',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
+			invalidatesTags: (result, error, { path, invalidate = [] }: any) => [
+				'filters',
+				path,
+				...invalidate,
+			],
 		}),
 		export: builder.mutation<any, { path: string; body: any; invalidate?: string; type?: string }>({
 			query: ({ path, body, invalidate, type = 'csv' }): any => ({
@@ -136,13 +117,16 @@ export const userApi = mainApi.injectEndpoints({
 				}
 			},
 		}),
-		updateById: builder.mutation<any, { path: string; id: string; body: any; invalidate?: any }>({
-			query: ({ path, id, body }): any => ({
+		updateById: builder.mutation<
+			any,
+			{ path: string; id: string; body: any; invalidate?: string[] }
+		>({
+			query: ({ path, id, body, invalidate }): any => ({
 				url: `${path}/${id}`,
 				method: 'PUT',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, id, invalidate = '' }) => [path, invalidate],
+			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [path, ...invalidate],
 		}),
 		updateMany: builder.mutation<any, { path: string; body: any; invalidate?: any }>({
 			query: ({ path, body }): any => ({
@@ -152,20 +136,20 @@ export const userApi = mainApi.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
 		}),
-		copyItem: builder.mutation<any, { path: string; body: any; invalidate?: any }>({
-			query: ({ path, body }): any => ({
+		copyItem: builder.mutation<any, { path: string; body: any; invalidate?: string[] }>({
+			query: ({ path, body, invalidate }): any => ({
 				url: `${path}/copy/${body.id}`,
 				method: 'PUT',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
+			invalidatesTags: (result, error, { path, invalidate = [] }) => [path, ...invalidate],
 		}),
-		deleteById: builder.mutation<any, { path: string; id: string }>({
-			query: ({ path, id }): any => ({
+		deleteById: builder.mutation<any, { path: string; id: string; invalidate?: string[] }>({
+			query: ({ path, id, invalidate }): any => ({
 				url: `${path}/${id}`,
 				method: 'DELETE',
 			}),
-			invalidatesTags: (result, error, { path, id }) => [path],
+			invalidatesTags: (result, error, { path, id, invalidate }: any) => [path, invalidate],
 		}),
 	}),
 });

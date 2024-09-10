@@ -182,7 +182,8 @@ const FormInput: FC<FormInputProps> = ({
 				<VInput
 					type={type}
 					isRequired={isRequired}
-					isDisabled={true}
+					// isDisabled={true}
+					isReadOnly={true}
 					{...props}
 				/>
 			);

@@ -1,12 +1,16 @@
 import React, { FC, ReactNode } from 'react';
 
-import TableData from '../data/TableData';
-import TableMenu from '../menu/TableMenu';
-import EditableTableData from '../data/EditableTableData';
-
 import { format } from 'date-fns';
-import { Grid, Heading, StackProps, TableRowProps } from '@chakra-ui/react';
-import { useIsMobile, formatDataKey, TableRow } from '../../../../';
+import { GridItem, Heading, StackProps, TableRowProps } from '@chakra-ui/react';
+import {
+	useIsMobile,
+	formatDataKey,
+	TableRow,
+	Column,
+	EditableTableData,
+	TableData,
+	TableMenu,
+} from '../../../../';
 
 type TableProps = StackProps &
 	TableRowProps & {
@@ -86,13 +90,9 @@ const TableRowComponent: FC<TableProps> = ({
 
 					const Container = ({ children }: { children: ReactNode }) =>
 						isMobile && type !== 'image-text' ? (
-							<Grid
-								gridTemplateColumns='1fr 1fr'
-								gap={2}
-								alignItems='center'
-								_notLast={{ pb: 2 }}>
-								{children}
-							</Grid>
+							<Column gap={0}>{children}</Column>
+						) : isMobile ? (
+							<GridItem colSpan={2}>{children}</GridItem>
 						) : (
 							<>{children}</>
 						);
@@ -126,6 +126,7 @@ const TableRowComponent: FC<TableProps> = ({
 							{isMobile && type !== 'image-text' && (
 								<Heading size='xs'>{formatDataKey(dataKey)}</Heading>
 							)}
+
 							<TableData
 								colorScheme={colorScheme}
 								key={dataKey}

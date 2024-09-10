@@ -2,9 +2,7 @@
 
 import React, { FC } from 'react';
 import { Flex, FlexProps } from '@chakra-ui/react';
-
 import { refresh, navigate } from '../';
-
 import { AuthWrapper, padding, useAppDispatch, ColorMode, Body, Column, LayoutWrapper } from '../';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
@@ -29,7 +27,7 @@ const Layout: FC<LayoutProps> = ({
 	...props
 }) => {
 	const dispatch = useAppDispatch();
-	dispatch(navigate({ selected: path }));
+	dispatch(navigate({ selected: path || '/pos' }));
 
 	React.useEffect(() => {
 		dispatch(refresh());
@@ -41,8 +39,7 @@ const Layout: FC<LayoutProps> = ({
 				<Body>
 					<Flex
 						flexDir='column'
-						w='full'
-						{...props}>
+						w='full'>
 						<Flex
 							flex={1}
 							w='full'>

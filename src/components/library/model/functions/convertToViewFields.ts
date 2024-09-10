@@ -9,6 +9,7 @@ const createViewField = ({ key, field }: { key: string; field: any }): any => {
 	if (!field?.viewType) {
 		if (field?.type == 'data-tag') type = 'data-array-tag';
 		if (field?.type == 'text') type = 'string';
+		if (field?.type == 'checkbox') type = 'tag';
 	}
 
 	const title = field?.label || field?.title;

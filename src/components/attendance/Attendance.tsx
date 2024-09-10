@@ -21,6 +21,7 @@ const Attendance: FC<AttendanceProps> = ({
 			flex={1}
 			h='100vh'
 			gap={2}
+			bg='sidebar.light'
 			_dark={{ bg: 'container.dark' }}
 			px={4}
 			flexDirection='column'>

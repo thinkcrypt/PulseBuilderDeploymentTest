@@ -115,6 +115,13 @@ const schema = {
 		sort: true,
 	},
 
+	stock: {
+		type: 'number',
+		label: 'Stock',
+		displayInTable: true,
+		sort: true,
+	},
+
 	tags: {
 		label: 'tags',
 		isRequired: false,
