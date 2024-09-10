@@ -38,9 +38,7 @@ const Layout: FC<LayoutProps> = ({
 			<LayoutWrapper
 				maxH='100vh'
 				overflow='hidden'>
-				<Body
-					maxH='100vh'
-					overflow='hidden'>
+				<Body overflow='hidden'>
 					<Flex
 						flexDir='column'
 						w='full'>

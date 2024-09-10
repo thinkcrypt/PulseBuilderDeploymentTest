@@ -5,6 +5,18 @@ import PosFilters from '@/components/pos/PosFilters';
 import PosSearch from '@/components/pos/PosSearch';
 import PosCart from '@/components/pos/PosCart';
 import PorductListPos from '@/components/pos/PorductListPos';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'MINT',
+	description: 'MINT',
+	viewport: {
+		width: 'device-width',
+		initialScale: 1,
+		maximumScale: 1,
+		userScalable: false,
+	},
+};
 
 const page = () => {
 	return (
@@ -21,6 +33,7 @@ const page = () => {
 					maxH='100vh'
 					overflow='none'>
 					<Flex
+						overflow='hidden'
 						flexDir='column'
 						gap={{ base: 3, md: 1 }}>
 						<Flex

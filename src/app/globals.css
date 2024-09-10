@@ -107,3 +107,9 @@ a {
     color-scheme: dark;
   }
 }
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
