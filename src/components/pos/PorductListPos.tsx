@@ -50,7 +50,7 @@ const PorductListPos = () => {
 				p={4}
 				pt={0}
 				pb={{ base: '160px', md: '64px' }}
-				maxH='calc(100vh - 52px - 24px)'
+				maxH={{ base: 'calc(100vh - 52px - 128px)', md: 'calc(100vh - 52px - 24px)' }}
 				overflowY='scroll'
 				justifyContent='space-between'>
 				{renderProductCards}
