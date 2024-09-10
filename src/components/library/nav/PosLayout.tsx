@@ -35,8 +35,12 @@ const Layout: FC<LayoutProps> = ({
 
 	return (
 		<AuthWrapper>
-			<LayoutWrapper>
-				<Body>
+			<LayoutWrapper
+				maxH='100vh'
+				overflow='hidden'>
+				<Body
+					maxH='100vh'
+					overflow='hidden'>
 					<Flex
 						flexDir='column'
 						w='full'>
