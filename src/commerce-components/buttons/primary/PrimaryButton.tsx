@@ -8,7 +8,7 @@ const PrimaryButton: FC<ButtonChild> = ({ children, ...props }) => {
 			bg='eblack.200'
 			borderColor='eblack.200'
 			borderWidth={1}
-			_dark={{ color: 'white' }}
+			_dark={{ color: 'eblack.200', bg: 'white' }}
 			_hover={{
 				bg: 'white',
 				color: 'eblack.200',

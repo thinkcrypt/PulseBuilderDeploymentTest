@@ -1,11 +1,11 @@
-import { FlexChild } from '../../';
+import { FlexChild, padding } from '../../';
 import React, { FC } from 'react';
 import { Flex } from '@chakra-ui/react';
 
 const LandingSection: FC<FlexChild> = ({ children, ...props }) => {
 	return (
 		<Flex
-			p='16px'
+			p={padding.LAYOUT}
 			{...props}>
 			{children}
 		</Flex>

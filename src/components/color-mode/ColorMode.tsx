@@ -3,6 +3,7 @@
 import { Center, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
+import { zIndex } from '../library';
 
 const SIZE = '24px';
 
@@ -23,6 +24,7 @@ const ColorMode = () => {
 
 const styles = {
 	container: {
+		zIndex: 999,
 		h: '44px',
 		w: '44px',
 		bg: 'container.light',

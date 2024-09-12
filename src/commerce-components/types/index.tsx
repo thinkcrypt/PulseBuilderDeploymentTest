@@ -17,7 +17,7 @@ export type StackChild = StackProps & {
 };
 
 export type GridChild = GridProps & {
-	children: ReactNode;
+	children?: ReactNode;
 };
 
 export type ButtonChild = ButtonProps & {

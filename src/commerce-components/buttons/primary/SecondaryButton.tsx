@@ -9,12 +9,12 @@ const SecondaryButton: FC<ButtonChild> = ({ children, ...props }) => {
 			bg='white'
 			borderColor='eblack.200'
 			color='eblack.200'
-			_dark={{ color: 'white', bg: 'eblack.200' }}
+			_dark={{ color: 'white', bg: 'eblack.200', borderColor: 'white' }}
 			_hover={{
 				borderColor: 'white',
 				bg: 'eblack.200',
 				color: 'white',
-				_dark: { color: 'white', bg: 'eblack.200' },
+				_dark: { color: 'eblack.200', bg: 'white', borderColor: 'eblack.200' },
 			}}
 			{...props}>
 			{children}

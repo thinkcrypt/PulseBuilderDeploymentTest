@@ -1,15 +1,17 @@
-import { FlexChild, sizes } from '../../';
-import { Flex } from '@chakra-ui/react';
+import { FlexChild, sizes, Column } from '../../';
 import React, { FC } from 'react';
 
 const Body: FC<FlexChild> = ({ children, ...props }) => {
 	return (
-		<Flex
-			flexDir='column'
+		<Column
+			pt={{
+				base: sizes.NAVBAR_HEIGHT_BASE,
+				md: sizes.NAVBAR_HEIGHT,
+			}}
 			minH={sizes.BODY_MIN_HEIGHT}
 			{...props}>
 			{children}
-		</Flex>
+		</Column>
 	);
 };
 
