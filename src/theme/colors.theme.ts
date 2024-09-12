@@ -64,7 +64,7 @@ const test = {
 	900: 'tomato',
 };
 
-export const colors: Colors = {
+export const colors: any = {
 	brand: {
 		// 100: 'red',
 		light: '#635BFF',
@@ -172,6 +172,24 @@ export const colors: Colors = {
 		light: '#d1d3d3',
 		dark: 'whitesmoke',
 	},
+	//ecom-commers
+	white: {
+		200: '#f5f5f5',
+		600: '#202020',
+	},
+	eblack: {
+		200: '#202020',
+	},
+	etext: {
+		400: '#676767',
+		600: '#202020',
+	},
+	eborder: {
+		300: '#fafafa',
+		600: '#e3e3e3',
+	},
 };
+
+//ecom-colors
 
 export default colors;

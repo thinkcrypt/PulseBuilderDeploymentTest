@@ -43,12 +43,16 @@ import { IoReorderTwoOutline } from 'react-icons/io5';
 import { IoGridOutline } from 'react-icons/io5';
 import { IoSearchOutline } from 'react-icons/io5';
 import { FaCartShopping } from 'react-icons/fa6';
+import { IoIosArrowRoundForward } from 'react-icons/io';
+import { IoIosArrowRoundBack } from 'react-icons/io';
 
 export type IconNameOptions =
 	| 'add'
 	| 'add-image'
 	| 'add-tag'
 	| 'arrow'
+	| 'arrow-right'
+	| 'arrow-left'
 	| 'barcode'
 	| 'brand'
 	| 'category'
@@ -133,6 +137,8 @@ const icons: any = {
 	hamburger: IoReorderTwoOutline,
 	grid: IoGridOutline,
 	search: IoSearchOutline,
+	'arrow-right': IoIosArrowRoundForward,
+	'arrow-left': IoIosArrowRoundBack,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

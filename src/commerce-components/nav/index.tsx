@@ -1,1 +1,3 @@
-export { default as Header } from './header/Header';
+export * from './header';
+export { default as Body } from './body/Body';
+export * from './footer';
