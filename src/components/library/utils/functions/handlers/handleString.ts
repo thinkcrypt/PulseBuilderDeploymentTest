@@ -1,6 +1,7 @@
 import Handler from './handler.type';
 
 const handleString = ({ e, formData, setFormData, setChangedData }: Handler) => {
+	console.log(e.target.name);
 	if (e.target.name.includes('.')) {
 		const [parent, child] = e.target.name.split('.');
 		setFormData((prevState: any) => ({

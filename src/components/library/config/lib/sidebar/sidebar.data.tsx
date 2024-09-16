@@ -72,6 +72,15 @@ const sidebar: SidebarItemType[] = [
 	},
 
 	{
+		startOfSection: true,
+		sectionTitle: 'Content',
+		title: 'Home',
+		href: '/home-content',
+		icon: 'home',
+		path: 'home-content',
+	},
+
+	{
 		title: 'Settings',
 		href: '/settings',
 		icon: 'settings-fill',

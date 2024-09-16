@@ -8,7 +8,10 @@ import {
 	handleImage,
 	handleSwitch,
 	handleImageArray,
+	handleNestedImage,
+	handleNestedString,
 } from '../../../';
+import { Text } from '@chakra-ui/react';
 
 type FormMainType = {
 	fields: any;
@@ -28,6 +31,8 @@ const FormMain: FC<FormMainType> = ({
 	const sections = React.useMemo(() => {
 		let section: any[] = [];
 		let sections: any[][] = [];
+
+		if (!fields || !Array.isArray(fields)) return [];
 
 		fields.forEach((field: any, i: number) => {
 			section.push(field);
@@ -52,6 +57,11 @@ const FormMain: FC<FormMainType> = ({
 					handleImageArray({ e, dataKey: key || 'image', type, ...params });
 			case 'checkbox':
 				return (e: any) => handleSwitch({ e, ...params });
+			case 'nested-image':
+				return (e: any) => handleNestedImage({ e, dataKey: key || 'image', ...params });
+			case 'nested-string':
+				return (e: any) => handleNestedString({ e, ...params });
+
 			default:
 				return (e: any) => handleChange({ e, ...params });
 		}
@@ -66,18 +76,20 @@ const FormMain: FC<FormMainType> = ({
 					item={item}
 					key={i}>
 					{(!item?.renderCondition || item?.renderCondition(formData)) && (
-						<FormInput
-							isRequired={item?.isRequired || false}
-							name={item?.name}
-							label={item?.label}
-							type={item?.type}
-							value={getFieldValue({ name: item?.name, formData })}
-							onChange={getOnChangeHandler(item?.type, item?.name)}
-							model={item?.model}
-							placeholder={item?.placeholder}
-							options={item?.options}
-							dataModel={item?.dataModel}
-						/>
+						<>
+							<FormInput
+								isRequired={item?.isRequired || false}
+								name={item?.name}
+								label={item?.label}
+								type={item?.type}
+								value={getFieldValue({ name: item?.name, formData })}
+								onChange={getOnChangeHandler(item?.type, item?.name)}
+								model={item?.model}
+								placeholder={item?.placeholder}
+								options={item?.options}
+								dataModel={item?.dataModel}
+							/>
+						</>
 					)}
 				</FormItem>
 			))}

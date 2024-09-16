@@ -19,6 +19,7 @@ import {
 	VSection,
 	VSlug,
 	VPermissions,
+	VCatCollectionList,
 } from '../../../';
 
 type Option = {
@@ -48,6 +49,14 @@ const FormInput: FC<FormInputProps> = ({
 }) => {
 	switch (type) {
 		case 'image':
+			return (
+				<VImage
+					isRequired={isRequired}
+					onChange={props.onChange}
+					{...props}
+				/>
+			);
+		case 'nested-image':
 			return (
 				<VImage
 					isRequired={isRequired}
@@ -122,6 +131,10 @@ const FormInput: FC<FormInputProps> = ({
 					{...props}
 				/>
 			);
+
+		case 'category-collection-array':
+			return <VCatCollectionList {...props} />;
+
 		case 'permissions':
 			return (
 				<VPermissions
@@ -201,6 +214,14 @@ const FormInput: FC<FormInputProps> = ({
 					type={type}
 					isRequired={isRequired}
 					isDisabled={true}
+					{...props}
+				/>
+			);
+		case 'nested-string':
+			return (
+				<VInput
+					type={type}
+					isRequired={isRequired}
 					{...props}
 				/>
 			);

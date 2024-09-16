@@ -18,6 +18,7 @@ const About = () => {
 				h={{ base: '40vh', md: '70vh' }}
 				objectFit='cover'
 				src={SRC}
+				alt='About Us Image'
 			/>
 			<Column
 				flex={1}

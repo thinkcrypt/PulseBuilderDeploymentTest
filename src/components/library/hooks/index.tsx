@@ -4,3 +4,5 @@ export { default as useRedirect } from './useRedirect';
 export { useAppDispatch, useAppSelector } from './useReduxHooks';
 export { default as useAuth } from './useAuth';
 export { default as useFormData } from './useFormData';
+
+export { default as useGetItemNameById } from './useGetItemNameById';

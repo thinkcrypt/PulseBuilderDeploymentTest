@@ -38,6 +38,7 @@ type VDataMenuProps = InputProps & {
 	helper?: string;
 	model: string;
 	dataModel?: any;
+	hideNew?: boolean;
 };
 
 const VDataMenu: React.FC<VDataMenuProps> = ({
@@ -48,6 +49,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	helper,
 	model,
 	dataModel,
+	hideNew = false,
 	...props
 }) => {
 	const { onOpen, onClose, isOpen } = useDisclosure();
@@ -173,7 +175,9 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 								</Flex>
 							</MenuGroup>
 							<MenuDivider mb={1} />
-							<MenuItem onClick={() => btnRef.current.click()}>Add new {model}</MenuItem>
+							{dataModel && (
+								<MenuItem onClick={() => btnRef.current.click()}>Add new {model}</MenuItem>
+							)}
 							<MenuDivider
 								mt={1}
 								mb={0}

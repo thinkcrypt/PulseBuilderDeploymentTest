@@ -13,18 +13,36 @@ const useFormData = <T extends {}>(data: any[], updatedData?: any) => {
 
 	const [formData, setFormData] = useState<T>(initialFormData);
 
+	const updateNestedState = (state: any, keys: (string | number)[], value: any): any => {
+		if (keys.length === 1) {
+			return { ...state, [keys[0]]: value };
+		}
+		const [firstKey, ...restKeys] = keys;
+		const indexMatch = firstKey.toString().match(/^(\w+)\[(\d+)\]$/);
+		if (indexMatch) {
+			const [_, arrayKey, index] = indexMatch;
+			const array = state[arrayKey] || [];
+			const newArray = [...array];
+			newArray[Number(index)] = updateNestedState(array[Number(index)] || {}, restKeys, value);
+			return {
+				...state,
+				[arrayKey]: newArray,
+			};
+		}
+		return {
+			...state,
+			[firstKey]: updateNestedState(state[firstKey] || {}, restKeys, value),
+		};
+	};
+
 	const updateFormData = (newData: Partial<T>) => {
 		const formattedData = Object.fromEntries(
 			Object.entries(newData)
 				.filter(
-					([key]) => key in formData || Object.keys(formData).some(k => k.startsWith(key + '.'))
+					([key]) =>
+						key in formData || Object.keys(formData).some(k => k.startsWith(key.split('.')[0]))
 				)
-
 				.map(([key, value]) => {
-					if (key.includes('.')) {
-						const [parent, child] = key.split('.');
-						return [parent, { ...((formData as any)[parent] || {}), [child]: value }];
-					}
 					if (typeof value === 'boolean') {
 						return [key, value];
 					} else if (
@@ -41,7 +59,13 @@ const useFormData = <T extends {}>(data: any[], updatedData?: any) => {
 					return [key, value];
 				})
 		);
-		setFormData(prevState => ({ ...prevState, ...formattedData }));
+
+		const updatedFormData = Object.entries(formattedData).reduce((acc, [key, value]) => {
+			const keys = key.split('.').flatMap(k => k.match(/(\w+|\[\d+\])/g) || []);
+			return updateNestedState(acc, keys, value);
+		}, formData);
+
+		setFormData(prevState => ({ ...prevState, ...updatedFormData }));
 	};
 
 	useEffect(() => {

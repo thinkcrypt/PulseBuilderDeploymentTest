@@ -29,6 +29,8 @@ export { default as FilterInput } from './filter-inputs/FilterInput';
 export { default as FilterSelect } from './filter-inputs/FilterSelect';
 export { default as FilterCheckbox } from './filter-inputs/FilterCheckbox';
 
+export { default as VCatCollectionList } from './VCatCollectionList';
+
 //elements
 export { default as Input } from './input-components/InputElement';
 

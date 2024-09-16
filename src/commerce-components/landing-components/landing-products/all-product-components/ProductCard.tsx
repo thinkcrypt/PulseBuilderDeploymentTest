@@ -2,10 +2,11 @@
 
 import React, { FC, ReactNode } from 'react';
 import { Column, SubHeading, Title, sizes, Text, BgImage, Button, ButtonChild } from '../../..';
+import { FlexProps } from '@chakra-ui/react';
 
 const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
-type ProductCardProps = {
+type ProductCardProps = FlexProps & {
 	name: string;
 	price: number | string;
 	src: string;
@@ -14,9 +15,9 @@ type ProductCardProps = {
 	};
 };
 
-const ProductCard: FC<ProductCardProps> = ({ name, price, src, category }) => {
+const ProductCard: FC<ProductCardProps> = ({ name, price, src, category, ...props }) => {
 	return (
-		<Container>
+		<Container {...props}>
 			<CardImage src={src}>
 				<AddToCartButton>Add to Cart</AddToCartButton>
 			</CardImage>
@@ -29,13 +30,14 @@ const ProductCard: FC<ProductCardProps> = ({ name, price, src, category }) => {
 	);
 };
 
-const Container = ({ children }: { children: ReactNode }) => (
+const Container = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
 	<Column
 		pb={8}
 		pt={4}
 		userSelect='none'
 		w='full'
-		gap={4}>
+		gap={4}
+		{...props}>
 		{children}
 	</Column>
 );

@@ -7,8 +7,7 @@ const Logo: FC<FlexChild> = ({ children, ...props }) => {
 		<Center {...props}>
 			<Title
 				fontSize='2rem'
-				letterSpacing={-0.75}
-				fontFamily='Bebas Neue'>
+				letterSpacing={-0.75}>
 				{children}
 			</Title>
 		</Center>
