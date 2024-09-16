@@ -93,7 +93,7 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 									data={item?.dataModel}
 									title='Edit'
 									type='update'
-									trigger='Edit'
+									trigger={<ModalMenuItem>{item?.title}</ModalMenuItem>}
 								/>
 							);
 
