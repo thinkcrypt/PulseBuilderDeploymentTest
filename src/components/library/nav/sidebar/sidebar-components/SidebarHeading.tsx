@@ -14,6 +14,7 @@ const SidebarHeading: FC<SidebarHeadingProps> = ({ children, show = false, ...pr
 			pt={4}
 			fontSize={{ base: 'md', md: '2xs' }}
 			fontWeight='700'
+			fontFamily='Bebas Neue'
 			textTransform='uppercase'
 			{...props}>
 			{children}

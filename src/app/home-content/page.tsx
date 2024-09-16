@@ -27,7 +27,7 @@ const HomeContentPage = () => {
 			title='Home Content'>
 			<Link
 				isExternal
-				href='http://localhost:3000'>
+				href={process.env.NEXT_PUBLIC_ECOM}>
 				<Button>Preview</Button>
 			</Link>
 
