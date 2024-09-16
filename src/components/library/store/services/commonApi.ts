@@ -149,7 +149,7 @@ export const userApi = mainApi.injectEndpoints({
 				url: `${path}/${id}`,
 				method: 'DELETE',
 			}),
-			invalidatesTags: (result, error, { path, id, invalidate }: any) => [path, invalidate],
+			invalidatesTags: (result, error, { path, id, invalidate }: any) => [path, ...invalidate],
 		}),
 	}),
 });
