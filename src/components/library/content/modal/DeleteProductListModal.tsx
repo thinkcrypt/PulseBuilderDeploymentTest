@@ -9,7 +9,7 @@ import {
 	Flex,
 	useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
 	useCustomToast,
@@ -40,6 +40,12 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({ title, id, chi
 		e.preventDefault();
 		trigger({ id: id, path: '/contents/product', invalidate: ['content', 'product', 'products'] });
 	};
+
+	useEffect(() => {
+		if (result?.isSuccess && !result?.isLoading) {
+			closeItem();
+		}
+	}, [result?.isLoading]);
 
 	useCustomToast({
 		successText: `${title ? title : 'Item'} Deleted Successfully`,
