@@ -135,14 +135,27 @@ const schema = {
 	},
 	customSections: {
 		label: 'Custom Sections',
-		type: 'custom-section-array',
+		type: 'custom-section',
 		isRequired: false,
+		dataModel: [
+			{ name: 'title', label: 'Title', type: 'text' },
+			{ name: 'description', label: 'Description', type: 'textarea' },
+			// { name: 'image', label: 'Image', type: 'image' },
+		],
 	},
 
 	faq: {
 		label: 'Frequently Asked Questions',
 		type: 'custom-section-array',
 		isRequired: false,
+	},
+	'meta.title': {
+		label: 'Meta Title',
+		type: 'text',
+	},
+	'meta.description': {
+		label: 'Meta Description',
+		type: 'textarea',
 	},
 	createdAt: {
 		label: 'Created At',

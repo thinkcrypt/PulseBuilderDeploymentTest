@@ -18,6 +18,7 @@ export type InputDataType =
 	| 'nested-string'
 	| 'string'
 	| 'radio'
+	| 'custom-section'
 	| 'nested-text'
 	| 'nested-textarea'
 	| 'view-only'

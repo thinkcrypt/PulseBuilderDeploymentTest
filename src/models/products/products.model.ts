@@ -38,6 +38,10 @@ const layout = [
 		sectionTitle: 'Frequently Asked Questions',
 		fields: ['faq'],
 	},
+	{
+		sectionTitle: 'SEO',
+		fields: ['meta.title', 'meta.description'],
+	},
 ];
 
 const tableLayout: any[] = [
@@ -47,6 +51,7 @@ const tableLayout: any[] = [
 	'vat',
 	'isActive',
 	'slug',
+	'stock',
 	'sku',
 	'isFeatured',
 	'isDiscount',

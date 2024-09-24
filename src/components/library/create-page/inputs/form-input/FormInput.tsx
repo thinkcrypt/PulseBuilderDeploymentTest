@@ -20,6 +20,7 @@ import {
 	VSlug,
 	VPermissions,
 	VCatCollectionList,
+	VCustom,
 } from '../../../';
 
 type Option = {
@@ -168,6 +169,16 @@ const FormInput: FC<FormInputProps> = ({
 					onChange={props.onChange}
 					isRequired={isRequired}
 					name={props.name}
+					{...props}
+				/>
+			);
+		case 'custom-section':
+			return (
+				<VCustom
+					onChange={props.onChange}
+					isRequired={isRequired}
+					name={props.name}
+					dataModel={dataModel}
 					{...props}
 				/>
 			);
