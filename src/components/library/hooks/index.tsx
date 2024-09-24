@@ -6,3 +6,4 @@ export { default as useAuth } from './useAuth';
 export { default as useFormData } from './useFormData';
 
 export { default as useGetItemNameById } from './useGetItemNameById';
+export { default as useQtyInCart } from './useQtyInCart';

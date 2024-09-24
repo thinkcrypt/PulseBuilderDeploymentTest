@@ -33,6 +33,11 @@ const schema = {
 		type: 'string',
 		displayInTable: true,
 	},
+	origin: {
+		label: 'Order From',
+		type: 'string',
+		displayInTable: true,
+	},
 	address: {
 		label: 'Address',
 		type: 'object',

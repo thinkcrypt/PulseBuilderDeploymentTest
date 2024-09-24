@@ -5,7 +5,7 @@ import itemMenu from './itemMenu';
 const tableLayout: string[] = [
 	'customer',
 	'status',
-
+	'origin',
 	'totalItems',
 	'vat',
 	'subTotal',

@@ -24,6 +24,8 @@ import {
 	addToCart,
 	Label,
 	Price,
+	useAppSelector,
+	useQtyInCart,
 } from '../../../';
 import CardContainer from '@/components/pos/pos-card/CardContainer';
 
@@ -37,6 +39,8 @@ const AddToCartModal: React.FC<DeleteItemModalProps> = ({ children, item }) => {
 	const cancelRef = React.useRef<any>();
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
+	const inCart = useQtyInCart(item?._id);
+
 	const [qty, setQty] = useState<number>();
 
 	const dispatch = useAppDispatch();
@@ -46,10 +50,23 @@ const AddToCartModal: React.FC<DeleteItemModalProps> = ({ children, item }) => {
 		onClose();
 	};
 
+	const outOfStock = () => {
+		if (item?.stock < 1) {
+			return true;
+		}
+		if (item?.stock <= inCart + (qty || 1)) {
+			return true;
+		}
+	};
+
 	const handleDelete = (e: any) => {
 		e.preventDefault();
-		dispatch(addToCart({ item, qty }));
-		closeItem();
+		if (outOfStock()) {
+			return;
+		} else {
+			dispatch(addToCart({ item, qty }));
+			closeItem();
+		}
 	};
 
 	const onModalOpen = () => {
@@ -84,6 +101,8 @@ const AddToCartModal: React.FC<DeleteItemModalProps> = ({ children, item }) => {
 									)}
 									<Text fontSize='.8rem'>SKU: {item?.sku}</Text>
 									<Text fontSize='.8rem'>Barcode: {item?.barcode}</Text>
+									<Text fontSize='.8rem'>Stock: {item?.stock}</Text>
+									<Text fontSize='.8rem'>In Cart: {inCart}</Text>
 									<Heading size='xs'>Qty: {qty}</Heading>
 									<Heading size='sm'>
 										Unit Price: <Price>{item?.price}</Price>
@@ -119,13 +138,23 @@ const AddToCartModal: React.FC<DeleteItemModalProps> = ({ children, item }) => {
 									Discard
 								</Button>
 
-								<Button
-									colorScheme='brand'
-									type='submit'
-									ml={2}
-									size='sm'>
-									Add To Cart
-								</Button>
+								{outOfStock() ? (
+									<Button
+										colorScheme='brand'
+										isDisabled
+										ml={2}
+										size='sm'>
+										Out Of Stock
+									</Button>
+								) : (
+									<Button
+										colorScheme='brand'
+										type='submit'
+										ml={2}
+										size='sm'>
+										Add To Cart
+									</Button>
+								)}
 							</AlertDialogFooter>
 						</form>
 					</AlertDialogContent>
