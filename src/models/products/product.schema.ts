@@ -135,13 +135,13 @@ const schema = {
 	},
 	customSections: {
 		label: 'Custom Sections',
-		type: 'custom-section',
+		type: 'custom-section-array',
 		isRequired: false,
-		dataModel: [
-			{ name: 'title', label: 'Title', type: 'text' },
-			{ name: 'description', label: 'Description', type: 'textarea' },
-			// { name: 'image', label: 'Image', type: 'image' },
-		],
+		// dataModel: [
+		// 	{ name: 'title', label: 'Title', type: 'text' },
+		// 	{ name: 'description', label: 'Description', type: 'textarea' },
+		// 	// { name: 'image', label: 'Image', type: 'image' },
+		// ],
 	},
 
 	faq: {
