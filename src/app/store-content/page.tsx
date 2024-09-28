@@ -3,21 +3,7 @@ import { LayoutSuspense } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import { Button, Link } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
-
-import {
-	heroData,
-	aboutUsData,
-	discoverData,
-	HeroComponent,
-	DiscoverComponent,
-	AboutComponent,
-	ProductListComponent,
-	listData,
-	CategoryComponent,
-	collectionsData,
-	FeaturedCollection,
-	featuredCollectionData,
-} from './_components';
+import { StoreConfig, storeData } from './_components';
 
 const HomeContentPage = () => {
 	const { data, isLoading } = useGetContentQuery({});
@@ -25,15 +11,20 @@ const HomeContentPage = () => {
 	return (
 		<LayoutSuspense
 			isLoading={isLoading || !data}
-			path='/home-content'
-			title='Home Content'>
+			path='/store-content'
+			title='Store Content'>
 			<Link
 				isExternal
 				href={process.env.NEXT_PUBLIC_ECOM}>
 				<Button>Preview</Button>
 			</Link>
 
-			<HeroComponent
+			<StoreConfig
+				content={data?.basic}
+				dataModel={storeData}
+			/>
+
+			{/* <HeroComponent
 				content={data?.content}
 				dataModel={heroData}
 			/>
@@ -60,7 +51,7 @@ const HomeContentPage = () => {
 			<FeaturedCollection
 				content={data?.content}
 				dataModel={featuredCollectionData}
-			/>
+			/> */}
 		</LayoutSuspense>
 	);
 };

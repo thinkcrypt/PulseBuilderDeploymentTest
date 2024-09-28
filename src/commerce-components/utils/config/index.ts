@@ -10,6 +10,11 @@ export const padding = {
 	LAYOUT: 4,
 };
 
+export const currency = {
+	code: 'BDT',
+	symbol: '৳',
+};
+
 export const sizes = {
 	NAVBAR_HEIGHT: navbarHeight,
 	NAVBAR_HEIGHT_BASE: navbarHeightMobile,

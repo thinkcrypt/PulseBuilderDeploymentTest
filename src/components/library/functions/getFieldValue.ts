@@ -21,13 +21,14 @@ const getFieldValue = ({ name, formData }: { name: string; formData: any }) => {
 				!Array.isArray(obj[arrayKey]) ||
 				obj[arrayKey].length <= Number(index)
 			) {
-				console.error(`Array access error: ${arrayKey}[${index}] does not exist.`);
 				return undefined;
 			}
 			return getValue(obj[arrayKey][Number(index)], restKeys);
 		}
 		if (obj && obj[firstKey] === undefined) {
-			console.error(`Key access error: ${firstKey} does not exist.`);
+			return undefined;
+		}
+		if (!obj) {
 			return undefined;
 		}
 		return getValue(obj[firstKey], restKeys);
@@ -40,7 +41,7 @@ const getFieldValue = ({ name, formData }: { name: string; formData: any }) => {
 			const indexMatch = k.match(/^\[(\d+)\]$/);
 			return indexMatch ? Number(indexMatch[1]) : k;
 		});
-	console.log(`Retrieving value for keys: ${JSON.stringify(keys)}`);
+
 	return getValue(formData, keys);
 };
 

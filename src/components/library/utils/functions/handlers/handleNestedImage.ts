@@ -21,7 +21,7 @@ const updateNestedState: any = (state: any, keys: (string | number)[], value: an
 	} else {
 		return {
 			...state,
-			[firstKey]: updateNestedState(state[firstKey] || {}, restKeys, value),
+			[firstKey]: updateNestedState(state?.[firstKey] || {}, restKeys, value),
 		};
 	}
 };

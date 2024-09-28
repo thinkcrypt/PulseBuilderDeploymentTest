@@ -11,8 +11,9 @@ export const contentApi = mainApi.injectEndpoints({
 			providesTags: ['content'],
 		}),
 		updateContent: builder.mutation({
-			query: ({ body }): any => ({
+			query: ({ body, path = 'content' }): any => ({
 				url: `/contents`,
+				params: { type: path },
 				method: 'PUT',
 				body: body,
 			}),

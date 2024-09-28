@@ -1,7 +1,17 @@
 'use client';
 
 import React, { FC, ReactNode } from 'react';
-import { Column, SubHeading, Title, sizes, Text, BgImage, Button, ButtonChild } from '../../..';
+import {
+	Column,
+	SubHeading,
+	Title,
+	sizes,
+	Text,
+	BgImage,
+	Button,
+	ButtonChild,
+	currency,
+} from '../../..';
 import { FlexProps } from '@chakra-ui/react';
 
 const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
@@ -22,7 +32,9 @@ const ProductCard: FC<ProductCardProps> = ({ name, price, src, category, ...prop
 				<AddToCartButton>Add to Cart</AddToCartButton>
 			</CardImage>
 			<Column>
-				<Text fontSize='1.2rem'>BDT. {price}</Text>
+				<Text fontSize='1.2rem'>
+					{currency?.symbol} {price}
+				</Text>
 				<Title type='h6'>{name}</Title>
 				<SubHeading fontSize='1.1rem'>{category?.name}</SubHeading>
 			</Column>

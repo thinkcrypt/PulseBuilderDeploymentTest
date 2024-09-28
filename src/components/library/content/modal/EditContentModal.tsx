@@ -37,7 +37,7 @@ const EditContentModal = ({
 	data,
 	dataModel,
 	children,
-	path,
+	path = 'content',
 	title,
 	type,
 	id,
@@ -70,6 +70,7 @@ const EditContentModal = ({
 		e.stopPropagation();
 		trigger({
 			body: formData,
+			path,
 		});
 	};
 

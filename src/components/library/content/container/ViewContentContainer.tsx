@@ -8,6 +8,7 @@ type ViewContentContainerType = {
 	dataModel: any;
 	data: any;
 	edit?: boolean;
+	path?: string;
 };
 
 const ViewContentContainer: FC<ViewContentContainerType> = ({
@@ -16,6 +17,7 @@ const ViewContentContainer: FC<ViewContentContainerType> = ({
 	dataModel,
 	data,
 	edit = true,
+	path,
 }) => {
 	return (
 		<Column
@@ -31,6 +33,7 @@ const ViewContentContainer: FC<ViewContentContainerType> = ({
 				<Heading size='sm'>{title || '--'}</Heading>
 				{edit && (
 					<EditContentModal
+						path={path}
 						data={data}
 						dataModel={dataModel}>
 						<Button
