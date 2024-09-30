@@ -12,6 +12,15 @@ const dataFields: TableObjectProps = {
 	createModel: customerDataField,
 	// clickable: true,
 	//toPath: '/items/edit',
+	select: {
+		show: true,
+		menu: [
+			{
+				title: 'Send SMS',
+				type: 'marketing-sms',
+			},
+		],
+	},
 	export: true,
 
 	button: {

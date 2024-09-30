@@ -8,6 +8,7 @@ type Item =
 	| 'edit-modal'
 	| 'redirect'
 	| 'custom'
+	| 'marketing-sms'
 	| 'custom-modal'
 	| 'duplicate';
 

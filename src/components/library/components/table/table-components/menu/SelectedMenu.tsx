@@ -7,6 +7,7 @@ import {
 	EditDataSelectModal,
 	MenuButton,
 	ExportManyModal,
+	SendBulkSmsModal,
 } from '../../../../';
 
 type TableMenuProps = {
@@ -62,6 +63,14 @@ const SelectedMenu: FC<TableMenuProps> = ({ path, hide, data, items }) => {
 						case 'export':
 							return (
 								<ExportManyModal
+									key={i}
+									ids={items}
+									path={path}
+								/>
+							);
+						case 'marketing-sms':
+							return (
+								<SendBulkSmsModal
 									key={i}
 									ids={items}
 									path={path}

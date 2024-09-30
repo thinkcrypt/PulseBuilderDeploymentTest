@@ -1,4 +1,11 @@
-type Item = 'edit' | 'delete' | 'custom' | 'edit-select' | 'edit-data-select' | 'export';
+type Item =
+	| 'edit'
+	| 'delete'
+	| 'custom'
+	| 'edit-select'
+	| 'edit-data-select'
+	| 'export'
+	| 'marketing-sms';
 
 type Prompt = {
 	title?: string;

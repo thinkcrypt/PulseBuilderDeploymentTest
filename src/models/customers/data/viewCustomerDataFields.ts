@@ -13,7 +13,14 @@ const viewCustomerDataFields: TableObjectDataProps[] = [
 	{
 		title: 'Email',
 		dataKey: 'email',
-		sort: 'price',
+		sort: 'email',
+		default: true,
+	},
+
+	{
+		title: 'Phone',
+		dataKey: 'phone',
+		sort: 'phone',
 		default: true,
 	},
 	{
