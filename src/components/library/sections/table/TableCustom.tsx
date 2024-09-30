@@ -107,6 +107,7 @@ const TableCustom: FC<TableProps> = ({ table, inputFields }) => {
 				isError={isError} //If error while fetching data
 				select={table?.select} //Select menu
 				search={table?.search}
+				pagination={table?.pagination}
 				error={error}
 				table={table}>
 				<>{body}</>

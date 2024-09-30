@@ -9,12 +9,9 @@ import {
 	Flex,
 	Heading,
 	IconButton,
-	DrawerBody,
-	Link,
 } from '@chakra-ui/react';
 import React from 'react';
 import Sidebar from './Sidebar';
-import NextLink from 'next/link';
 
 import { useGetSelfQuery } from '@/store/services/authApi';
 import { zIndex } from '@/lib/constants';

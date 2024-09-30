@@ -8,6 +8,7 @@ export type CustomTableProps = TableProps & {
 	col?: number;
 	filters?: string;
 	preferences?: any;
+	pagination?: boolean;
 	path?: any;
 	headers?: string[];
 	hidePreferences?: boolean;

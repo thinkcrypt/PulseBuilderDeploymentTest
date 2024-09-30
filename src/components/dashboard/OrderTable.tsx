@@ -12,6 +12,7 @@ const viewAll: TableObjectProps = {
 	search: false,
 	hidePreferences: true,
 	filters: false,
+	pagination: false,
 	limit: 5,
 	preferences: ['customer.name', 'totalItems', 'status', 'total', 'dueAmount'],
 	// select: {

@@ -21,3 +21,11 @@ const categories = {
 };
 
 export { collections, categories };
+
+import ProductSchema from './products/product.schema';
+import CustomerSchema from './customer/schema';
+
+export const schema: any = {
+	products: ProductSchema,
+	customers: CustomerSchema,
+};

@@ -29,6 +29,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	isLoading,
 	col,
 	preferences,
+	pagination = true,
 	path,
 	hidePreferences,
 	selectedItems,
@@ -115,7 +116,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 						`There has been an error while fetching data. Please try refreshing the page.`}
 				</TableErrorMessage>
 			)}
-			<ResultContainer data={data} />
+			{pagination && <ResultContainer data={data} />}
 		</>
 	);
 };

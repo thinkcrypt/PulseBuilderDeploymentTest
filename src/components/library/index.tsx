@@ -80,6 +80,7 @@ export {
 	RowInput,
 	RowSelect,
 	ViewItemModal,
+	ViewItem,
 	DeleteItemModal,
 	EditManyModal,
 	EditManySelectModal,

@@ -99,6 +99,7 @@ export type TableObjectProps = {
 	path: string;
 	filters?: boolean;
 	button?: ButtonType;
+	pagination?: boolean;
 	clickable?: boolean;
 	toPath?: string;
 	isModal?: boolean;
