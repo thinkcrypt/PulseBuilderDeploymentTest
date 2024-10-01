@@ -4,6 +4,7 @@ import { Center, FlexProps, Text } from '@chakra-ui/react';
 type NoDataFoundProps = FlexProps & {
 	title?: string;
 	description?: string;
+	children?: string;
 };
 
 // Default values for title and description
@@ -14,6 +15,7 @@ const DEFAULT_DESCRIPTION: string =
 const NoDataFound: FC<NoDataFoundProps> = ({
 	title = DEFAULT_TITLE,
 	description = DEFAULT_DESCRIPTION,
+	children,
 	...props
 }) => {
 	return (
@@ -21,9 +23,10 @@ const NoDataFound: FC<NoDataFoundProps> = ({
 			flexDir='column'
 			h='400px'
 			w='100%'
+			gap={1}
 			{...props}>
-			<Text>{title}</Text>
-			<Text>{description}</Text>
+			<Text fontWeight='600'>{title}</Text>
+			<Text>{children || description}</Text>
 		</Center>
 	);
 };

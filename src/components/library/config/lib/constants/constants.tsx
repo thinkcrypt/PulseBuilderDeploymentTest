@@ -37,6 +37,7 @@ export const sizes = {
 	RADIUS_MENU: 'lg',
 	POS_MAX_HEIGHT: '75vh',
 	POS_RATIO: '8fr 2fr',
+	POS_RATIO_BASE: '6fr 1fr',
 	NAV_HEIGHT: 14,
 	CARD_RADIUS: '8px',
 };

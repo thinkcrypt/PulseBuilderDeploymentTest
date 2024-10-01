@@ -76,15 +76,30 @@ const sidebar: SidebarItemType[] = [
 		sectionTitle: 'Content',
 		title: 'Store',
 		href: '/store-content',
-		icon: 'home',
+		icon: 'shop',
 		path: 'store-content',
 	},
 
 	{
 		title: 'Home',
 		href: '/home-content',
-		icon: 'home',
+		icon: 'content',
 		path: 'home-content',
+	},
+
+	{
+		startOfSection: true,
+		sectionTitle: 'Reports',
+		title: 'Top Products',
+		href: '/reports/top-products',
+		icon: 'report',
+		path: 'top-products',
+	},
+	{
+		title: 'Top Customers',
+		href: '/reports/top-customers',
+		icon: 'report',
+		path: 'top-customers',
 	},
 
 	{

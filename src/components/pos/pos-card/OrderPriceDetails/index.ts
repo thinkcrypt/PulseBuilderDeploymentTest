@@ -1,5 +1,3 @@
-import OrderPriceDetails from './OrderPriceDetails';
-
 export { default as OPDContainer } from './Container';
 export { default as OPDBottomContainer } from './BottomContainer';
 
@@ -10,5 +8,7 @@ export type OPDProps = {
 	shipping: number;
 	vat: number;
 };
+
+import OrderPriceDetails from './OrderPriceDetails';
 
 export default OrderPriceDetails;

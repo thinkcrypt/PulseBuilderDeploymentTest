@@ -8,11 +8,9 @@ import {
 	ModalCloseButton,
 	Button,
 	useDisclosure,
-	GridItem,
 	Grid,
 	Flex,
 	Heading,
-	Text,
 	Drawer,
 	DrawerOverlay,
 	DrawerCloseButton,
@@ -59,6 +57,7 @@ const OrderModal = () => {
 	const [status, setStatus] = useState('pending');
 
 	const [createOrder, createOrderResult] = useAddOrderMutation();
+	const { isSuccess, isError, isLoading, error } = createOrderResult;
 
 	useEffect(() => {
 		trigger({ items: cartItems, discount, shipping });
@@ -82,10 +81,10 @@ const OrderModal = () => {
 
 	useCustomToast({
 		successText: 'Order Created',
-		isSuccess: createOrderResult?.isSuccess,
-		isError: createOrderResult?.isError,
-		isLoading: createOrderResult?.isLoading,
-		error: createOrderResult?.error,
+		isSuccess: isSuccess,
+		isError: isError,
+		isLoading: isLoading,
+		error: error,
 	});
 
 	const handleCreateOrder = () => {
@@ -102,11 +101,11 @@ const OrderModal = () => {
 	};
 
 	useEffect(() => {
-		if (!createOrderResult?.isLoading && createOrderResult?.isSuccess) {
+		if (!isLoading && isSuccess) {
 			dispatch(resetCart());
 			onModalClose();
 		}
-	}, [createOrderResult?.isLoading]);
+	}, [isLoading]);
 
 	const borderColor = useColorModeValue('#bbb', 'stroke.deepD');
 

@@ -56,6 +56,13 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	}, []);
 
 	useEffect(() => {
+		if (table?.preferences) {
+			dispatch(setPreferences(table?.preferences));
+			setCol(table?.preferences.length + 1);
+			if (table?.hidePreferences) {
+				return;
+			}
+		}
 		const defaultPreferences = table?.data
 			? table?.data?.filter(item => item.default).map(item => item.dataKey)
 			: [];
@@ -110,6 +117,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 				/>
 
 				<CustomTable
+					search={table?.search} //Hide search bar
 					showFilters={table?.filters} //Hide filters
 					filters={table?.path} //Name of the filters
 					col={col} //No of columns for skeleton

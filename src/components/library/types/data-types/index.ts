@@ -59,5 +59,6 @@ export type TableDataFieldType =
 	| 'data-array'
 	| 'image-text'
 	| 'checkbox'
+	| 'number'
 	| 'tag'
 	| 'data-array-count';

@@ -1,19 +1,18 @@
+'use client';
+
 import React from 'react';
-import { TableObjectProps } from '@/components/library';
-import TableCustom from '../library/sections/table/TableCustom';
+import { NextPage } from 'next';
+import { PageTable, TableObjectProps } from '@/components/library';
 
 const viewAll: TableObjectProps = {
-	title: 'Top Products',
+	title: 'Top Selling Products',
 	path: 'products/top-selling',
 	clickable: true,
 	toPath: '/view/products',
 	export: false,
 	search: false,
-	hidePreferences: true,
-	filters: false,
-	limit: 5,
-	pagination: false,
 	preferences: ['name', 'sku', 'category', 'price', 'totalQuantity'],
+	hidePreferences: true,
 
 	data: [
 		{
@@ -36,8 +35,8 @@ const viewAll: TableObjectProps = {
 	showMenu: false,
 };
 
-const TopProducts = () => {
-	return <TableCustom table={viewAll} />;
+const page: NextPage = () => {
+	return <PageTable table={viewAll} />;
 };
 
-export default TopProducts;
+export default page;

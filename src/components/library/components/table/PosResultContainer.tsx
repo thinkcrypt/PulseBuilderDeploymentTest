@@ -2,10 +2,9 @@
 import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { Flex, FlexProps, Grid, Heading, Text } from '@chakra-ui/react';
 
-import { sizes, currency, useAppSelector, Pagination } from '../../';
+import { sizes, currency, useAppSelector, Pagination, FlexChild, SpaceBetween } from '../../';
 import OrderModal from '@/components/pos/OrderModal';
 import CartDrawer from '@/components/pos/CartDrawer';
-import PosCartDrawer from '@/components/pos/PosDrawerCart';
 
 type ResultContainerProps = FlexProps & {
 	data: any;
@@ -20,76 +19,80 @@ const PosResultContainer: FC<ResultContainerProps> = ({ data, cart, ...props }) 
 		console.log(JSON.stringify(cartItems));
 	}, [cartItems]);
 	return (
-		<Flex sx={{ ...styles.container, ...props }}>
+		<Container {...props}>
 			<Grid
-				gridTemplateColumns={{ base: '6fr 1fr', md: sizes.POS_RATIO }}
+				gridTemplateColumns={{ base: sizes.POS_RATIO_BASE, md: sizes.POS_RATIO }}
 				w='full'
 				alignItems='center'
 				h='100%'>
-				<Flex
+				<SpaceBetween
 					gap={4}
-					align='center'
-					justify='space-between'
 					w='full'
 					px={6}>
 					<Text>
 						<b>{data?.totalDocs}</b> results
 					</Text>
 					<Pagination data={data && data} />
-				</Flex>
+				</SpaceBetween>
 				<Flex
 					display={{ base: 'flex', md: 'none' }}
 					flex={1}
 					justify='flex-end'
-					px='8px'>
+					px={2}>
 					<CartDrawer
 						cart={cart || <></>}
 						footer={
-							<Flex
+							<SpaceBetween
 								pl={4}
 								w='350px'
-								justify='space-between'
-								align='center'
 								flex={1}
 								h='100%'>
 								<Heading size='sm'>Total: {`${currency.symbol}${total?.toLocaleString()}`}</Heading>
 								<OrderModal />
-							</Flex>
+							</SpaceBetween>
 						}
 					/>
 				</Flex>
-				<Flex
-					display={{ base: 'none', md: 'flex' }}
-					pl={4}
-					w='350px'
-					justify='space-between'
-					align='center'
-					flex={1}
-					h='100%'>
+				<Footer>
 					<Heading size='sm'>Total: {`${currency.symbol}${total?.toLocaleString()}`}</Heading>
 					<OrderModal />
-				</Flex>
+				</Footer>
 			</Grid>
-		</Flex>
+		</Container>
 	);
 };
 
-const styles = {
-	container: {
-		alignItems: 'center',
-		borderTop: '1px solid',
-		borderTopColor: 'stroke.deepL',
-		zIndex: 10,
-		position: 'fixed',
-		bottom: 0,
-		left: 0,
-		bg: 'container.light',
-		w: 'full',
-		_dark: { bg: 'container.dark', borderTopColor: 'stroke.deepD' },
-		overflow: 'scroll',
-		fontSize: '.9rem',
-		h: '52px',
-	},
-};
+const Footer = ({ children }: FlexChild) => (
+	<Flex
+		display={{ base: 'none', md: 'flex' }}
+		pl={4}
+		w='350px'
+		justify='space-between'
+		align='center'
+		flex={1}
+		h='100%'>
+		{children}
+	</Flex>
+);
+
+const Container = ({ children, ...props }: FlexChild) => (
+	<Flex
+		align='center'
+		borderTop='1px solid'
+		borderTopColor='stroke.deepL'
+		zIndex={10}
+		position='fixed'
+		bottom={0}
+		left={0}
+		bg='container.light'
+		w='full'
+		_dark={{ bg: 'container.dark', borderTopColor: 'stroke.deepD' }}
+		overflow='scroll'
+		fontSize='.9rem'
+		h='52px'
+		{...props}>
+		{children}
+	</Flex>
+);
 
 export default PosResultContainer;

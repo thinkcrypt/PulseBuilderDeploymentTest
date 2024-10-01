@@ -39,6 +39,9 @@ import { MdDelete } from 'react-icons/md';
 import { HiUserGroup } from 'react-icons/hi';
 // import { IoMdBarcode } from 'react-icons/io';
 import { FaCartShopping } from 'react-icons/fa6';
+import { IoStorefront } from 'react-icons/io5';
+import { BiSolidBookContent } from 'react-icons/bi';
+import { BiSolidReport } from 'react-icons/bi';
 
 export type IconNameOptions =
 	| 'add'
@@ -52,6 +55,7 @@ export type IconNameOptions =
 	| 'clock-outline'
 	| 'close'
 	| 'collections'
+	| 'content'
 	| 'coupon'
 	| 'customer'
 	| 'customers'
@@ -71,10 +75,13 @@ export type IconNameOptions =
 	| 'order'
 	| 'pos'
 	| 'product'
+	| 'report'
 	| 'role'
 	| 'select'
 	| 'settings'
 	| 'settings-fill'
+	| 'shop'
+	| 'store'
 	| 'subtract'
 	| 'user';
 
@@ -121,6 +128,10 @@ const icons: any = {
 	delete: MdDelete,
 	customers: HiUserGroup,
 	cart: FaCartShopping,
+	store: IoStorefront,
+	shop: IoStorefront,
+	content: BiSolidBookContent,
+	report: BiSolidReport,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

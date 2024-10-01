@@ -53,6 +53,7 @@ const TableRowComponent: FC<TableProps> = ({
 					type,
 					image,
 					imageKey,
+					toLocaleStr,
 					editable,
 					editType,
 					options,
@@ -128,6 +129,7 @@ const TableRowComponent: FC<TableProps> = ({
 							)}
 
 							<TableData
+								toLocaleStr={toLocaleStr}
 								colorScheme={colorScheme}
 								key={dataKey}
 								type={type}

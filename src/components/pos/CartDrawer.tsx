@@ -9,7 +9,6 @@ import {
 	DrawerContent,
 	DrawerCloseButton,
 	useDisclosure,
-	Button,
 } from '@chakra-ui/react';
 import { IconButton } from '../library';
 
@@ -19,7 +18,6 @@ const CartDrawer = ({ footer, cart }: { footer: ReactNode; cart: ReactNode }) =>
 	return (
 		<>
 			<IconButton
-				// variant='ghost'
 				w='44px'
 				h='44px'
 				aria-label='Open Cart'
@@ -28,7 +26,6 @@ const CartDrawer = ({ footer, cart }: { footer: ReactNode; cart: ReactNode }) =>
 				Open
 			</IconButton>
 			<Drawer
-				//	size='sm'
 				isOpen={isOpen}
 				placement='right'
 				onClose={onClose}>

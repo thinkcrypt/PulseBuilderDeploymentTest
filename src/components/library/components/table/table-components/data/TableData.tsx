@@ -18,6 +18,7 @@ const TableData: React.FC<TableDataPropsType> = ({
 	id,
 	type,
 	colorScheme,
+	toLocaleStr,
 	tagType,
 	imageKey,
 	key,
@@ -49,6 +50,8 @@ const TableData: React.FC<TableDataPropsType> = ({
 					</Badge>
 				</CustomTd>
 			);
+		case 'number':
+			return <CustomTd {...props}> {children?.toLocaleString()}</CustomTd>;
 
 		case 'image-text':
 			return (

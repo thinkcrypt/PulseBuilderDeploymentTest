@@ -24,6 +24,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	headers,
 	children,
 	filters,
+
 	header,
 	data,
 	isLoading,
@@ -89,6 +90,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 						{!hidePreferences && <Preferences path={path} />}
 						{search && (
 							<>
+								<p>{search?.toString()}</p>
 								<TableSearch />
 								<TableRefresh />
 							</>

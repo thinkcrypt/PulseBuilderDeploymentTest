@@ -20,6 +20,7 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 	button,
 	isModal = false,
 	path,
+
 	data,
 	export: exportData,
 	...props

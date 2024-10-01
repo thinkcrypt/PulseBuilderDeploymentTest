@@ -1,4 +1,4 @@
-import { TableCellProps } from '@chakra-ui/react';
+import { ButtonProps, FlexProps, GridProps, TableCellProps, TextProps } from '@chakra-ui/react';
 export type { CustomTableProps } from './components.types';
 import { MenuItem, SelectmenuItem } from './table';
 
@@ -8,6 +8,7 @@ import { InputDataType } from './data-types';
 export type { InputDataType } from './data-types';
 
 import { ViewDataType, TableDataFieldType } from './data-types';
+import { ReactNode } from 'react';
 export type { ViewDataType, TableDataFieldType } from './data-types';
 
 export type SidebarItemType = {
@@ -55,6 +56,7 @@ type CommonProps = {
 	tagType?: { value?: string; color?: string }[];
 	colorScheme?: any;
 	helperText?: string;
+	toLocaleStr?: boolean;
 };
 
 type SelectProps = CommonProps & {
@@ -150,3 +152,19 @@ type OtherInputData<T> = BaseInputData<T> & {
 };
 
 export type InputData<T> = DataSelectInputData<T> | OtherInputData<T>;
+
+export type FlexChild = FlexProps & {
+	children?: ReactNode;
+};
+
+export type GridChild = GridProps & {
+	children?: ReactNode;
+};
+
+export type ButtonChild = ButtonProps & {
+	children?: ReactNode;
+};
+
+export type TextChild = TextProps & {
+	children?: ReactNode;
+};
