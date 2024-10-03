@@ -14,7 +14,8 @@ const SidebarContent: React.FC<SidebarContainerProps> = ({ children, ...props })
 			_dark={{ bg: 'sidebar.dark' }}
 			borderTopRadius={{ base: '0', md: THEME == 'basic' ? 0 : 'xl' }}
 			w='full'
-			px={3}
+			px={sizes.SIDEBAR_PX}
+			pr={0}
 			pt={4}
 			m={THEME == 'basic' ? 0 : '16px'}
 			my='0'

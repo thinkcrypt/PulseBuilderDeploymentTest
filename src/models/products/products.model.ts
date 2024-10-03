@@ -11,13 +11,13 @@ import itemMenu from './data/itemMenu';
 const layout = [
 	{
 		sectionTitle: 'Product Information',
-		fields: ['image', 'name'],
+		fields: ['image', 'name', 'status'],
 	},
 	{
 		sectionTitle: 'Product Description',
 		fields: [
 			'category',
-			['slug', 'stock'],
+			'slug',
 			'shortDescription',
 			'tags',
 			['price', 'vat'],
@@ -27,8 +27,21 @@ const layout = [
 		],
 	},
 	{
+		sectionTitle: 'Stock Information',
+		fields: ['allowStock', ['stock', 'lowStockAlert']],
+	},
+	{
+		sectionTitle: 'Discount Information',
+		fields: ['isDiscount', ['discountType', 'discount']],
+	},
+
+	{
 		sectionTitle: 'Detailed Description',
 		fields: ['description'],
+	},
+	{
+		sectionTitle: 'Media',
+		fields: ['images'],
 	},
 	{
 		sectionTitle: 'Custom Fields',
@@ -51,6 +64,8 @@ const tableLayout: any[] = [
 	'vat',
 	'isActive',
 	'slug',
+	'status',
+	'allowStock',
 	'stock',
 	'sku',
 	'isFeatured',

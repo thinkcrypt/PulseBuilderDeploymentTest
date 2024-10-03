@@ -40,6 +40,7 @@ export const sizes = {
 	POS_RATIO_BASE: '6fr 1fr',
 	NAV_HEIGHT: 14,
 	CARD_RADIUS: '8px',
+	SIDEBAR_PX: 3,
 };
 
 export const shadow = {

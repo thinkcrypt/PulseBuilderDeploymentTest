@@ -2,7 +2,7 @@ import productUnitOptions from '../util/productUnitOptions';
 
 const schema = {
 	image: {
-		label: 'Image',
+		label: 'Thumbnail',
 		type: 'image',
 	},
 	name: {
@@ -97,15 +97,31 @@ const schema = {
 		colorScheme: (isActive: boolean) => (isActive ? 'green' : 'red'),
 	},
 	isDiscount: {
+		sort: true,
 		label: 'Is Discount',
 		type: 'checkbox',
+		displayIntable: true,
 		colorScheme: (isActive: boolean) => (isActive ? 'green' : 'red'),
 	},
+	discountType: {
+		sort: true,
+		label: 'Discount Type',
+		type: 'select',
+		displayIntable: true,
+		options: [
+			{ label: 'Percentage', value: 'percentage' },
+			{ label: 'Flat', value: 'flat' },
+		],
+		renderCondition: (data: any) => data.isDiscount,
+	},
 	discount: {
+		sort: true,
 		label: 'Discount',
 		isRequired: false,
 		type: 'number',
+
 		displayInTable: true,
+		renderCondition: (data: any) => data.isDiscount,
 	},
 
 	barcode: {
@@ -115,17 +131,50 @@ const schema = {
 		sort: true,
 	},
 
+	allowStock: {
+		type: 'checkbox',
+		label: 'Allow Stock',
+		sort: true,
+		displayInTable: true,
+		colorScheme: (isActive: boolean) => (isActive ? 'green' : 'red'),
+	},
+
 	stock: {
 		type: 'number',
 		label: 'Stock',
 		displayInTable: true,
 		sort: true,
+		renderCondition: (data: any) => data.allowStock,
+	},
+
+	lowStockAlert: {
+		type: 'number',
+		label: 'Low Stock Alert',
+		displayInTable: true,
+		sort: true,
+		renderCondition: (data: any) => data.allowStock,
 	},
 
 	tags: {
 		label: 'tags',
 		isRequired: false,
 		type: 'tag',
+	},
+	status: {
+		label: 'Status',
+		isRequired: true,
+		displayInTable: true,
+		colorScheme: (data: any) => {
+			if (data === 'published') return 'green';
+			if (data === 'draft') return 'orange';
+			if (data === 'archived') return 'red';
+		},
+		type: 'select',
+		options: [
+			{ label: 'Draft', value: 'draft' },
+			{ label: 'Published', value: 'published' },
+			{ label: 'Archived', value: 'archived' },
+		],
 	},
 
 	customAttributes: {
