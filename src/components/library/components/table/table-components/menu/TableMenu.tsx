@@ -45,6 +45,15 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 									{item?.title}
 								</MenuItem>
 							);
+
+						case 'link':
+							return (
+								<MenuItem
+									href={`${item?.href}/${id}` || '#'}
+									key={i}>
+									{item?.title}
+								</MenuItem>
+							);
 						case 'edit':
 							return (
 								<MenuItem

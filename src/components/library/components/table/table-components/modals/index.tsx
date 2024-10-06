@@ -5,3 +5,5 @@ export { default as EditManyModal } from './EditManyModal';
 export { default as EditManySelectModal } from './EditManySelectModal';
 export { default as EditDataSelectModal } from './EditDataSelectModal';
 export { default as DuplicateModal } from './DuplicateModal';
+
+export { default as EditFieldModal } from './EditFieldModal';

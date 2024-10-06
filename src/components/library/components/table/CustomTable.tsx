@@ -18,6 +18,7 @@ import {
 	CustomTableProps,
 	SelectedMenu,
 	selectAll,
+	TableResultContainer,
 } from '../../';
 
 const CustomTable: React.FC<CustomTableProps> = ({
@@ -97,7 +98,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 					</TableSearchContainer>
 				</TableSettingsMenuContainer>
 			)}
-
+			{table?.topPagination && <TableResultContainer data={data} />}
 			<TableContainer>
 				<Table size='sm'>
 					<Thead>
@@ -106,6 +107,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 					<Tbody>{tbody}</Tbody>
 				</Table>
 			</TableContainer>
+
 			{data?.docsInPage == 0 && (
 				<TableErrorMessage title='No results found.'>
 					There {`aren't`} any results for that query. Try using different filters.

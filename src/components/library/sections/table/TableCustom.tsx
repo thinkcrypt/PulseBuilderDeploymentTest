@@ -40,7 +40,7 @@ const TableCustom: FC<TableProps> = ({ table, inputFields }) => {
 		limit: table?.limit || limit,
 		search,
 		sort,
-		filters: table?.filters ? filters : null,
+		filters: table?.preFilters ?? (table?.filters ? filters : null),
 		path: table?.path,
 	});
 

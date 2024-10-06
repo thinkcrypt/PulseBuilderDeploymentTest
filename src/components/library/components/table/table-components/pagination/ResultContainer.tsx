@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Flex, FlexProps, Text } from '@chakra-ui/react';
 
-import { useIsMobile, useAppSelector, sizes, Pagination, THEME } from '../../';
+import { useIsMobile, useAppSelector, sizes, Pagination, THEME } from '../../../..';
 
 type ResultContainerProps = FlexProps & {
 	data: any;

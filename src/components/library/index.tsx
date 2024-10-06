@@ -36,12 +36,15 @@ export { default as PageTable } from './pages/page-tables/PageTable';
 export type * from './types';
 export * from './utils/functions/handlers';
 
+export * from './view';
+
 export {
 	CustomTable,
 	Headers,
 	PageHeading,
 	TableRowComponent,
 	ResultContainer,
+	TableResultContainer,
 	PopModal,
 	PopModalHeader,
 	PopModalBody,

@@ -16,9 +16,10 @@ import {
 
 type PaginationProps = {
 	data: any;
+	showPerPage?: boolean;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ data }) => {
+const Pagination: React.FC<PaginationProps> = ({ data, showPerPage = true }) => {
 	const { page, limit } = useAppSelector(state => state.table);
 	const dispatch = useAppDispatch();
 
@@ -69,7 +70,7 @@ const Pagination: React.FC<PaginationProps> = ({ data }) => {
 		<Flex
 			justify='flex-end'
 			align='center'>
-			<Center gap={2}> {perpage}</Center>
+			{showPerPage && <Center gap={2}>{perpage}</Center>}
 
 			<Flex
 				borderRadius={4}

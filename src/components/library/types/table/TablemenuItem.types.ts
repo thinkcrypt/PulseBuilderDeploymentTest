@@ -9,6 +9,7 @@ type Item =
 	| 'redirect'
 	| 'custom'
 	| 'marketing-sms'
+	| 'link'
 	| 'custom-modal'
 	| 'duplicate';
 

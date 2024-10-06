@@ -2,7 +2,6 @@ export { default as CustomTable } from './CustomTable';
 export { default as Headers } from './table-components/header/Headers';
 export { default as PageHeading } from './PageHeading';
 export { default as TableRowComponent } from './table-components/row/TableRowComponent';
-export { default as ResultContainer } from './ResultContainer';
 export { default as TableHead } from './TableHead';
 export { default as TableHeading } from './TableHeading';
 export { default as Title } from './Title';
@@ -13,19 +12,14 @@ export { default as TableRefresh } from './table-components/tool-bar/table-toolb
 export { default as Preferences } from './Preferences';
 export { default as PosResultContainer } from './PosResultContainer';
 
+export * from './table-components/pagination';
+
 export type { TableItemProps, TableDataProps } from './types';
 export { TableErrorMessage } from './table-components/error';
 
 export * from './table-components/modals';
 
-export {
-	StickyBottomContainer,
-	FilterContainer,
-	SelectedItemsContainer,
-	TableContainer,
-	TableSearchContainer,
-	TableSettingsMenuContainer,
-} from './table-components/containers';
+export * from './table-components/containers';
 
 export {
 	CustomTd,

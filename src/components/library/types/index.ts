@@ -114,7 +114,9 @@ export type TableObjectProps = {
 	hidePreferences?: boolean;
 	search?: boolean;
 	showMenu?: boolean;
+	topPagination?: boolean;
 	limit?: number;
+	preFilters?: any;
 };
 
 export type ModelType =
