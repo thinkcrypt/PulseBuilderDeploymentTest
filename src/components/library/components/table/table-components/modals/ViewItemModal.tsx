@@ -32,10 +32,9 @@ type DeleteItemModalProps = {
 	path: string;
 	dataModel: ViewModalDataModelProps[];
 	trigger?: any;
-	item: any;
 };
 
-const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigger, id, item }) => {
+const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigger, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const { data, isFetching, isError } = useGetByIdQuery(
