@@ -20,9 +20,10 @@ type TableMenuProps = {
 	path: string;
 	title: any;
 	item: any;
+	doc: any;
 };
 
-const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }) => {
+const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, doc }) => {
 	return (
 		<Menu>
 			<CustomTd>
@@ -33,8 +34,8 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 				{data?.map((item: any, i: number) => {
 					const commonProps = {
 						key: i,
-						id,
-						path,
+						id: item?.id ? item?.id(doc) : id,
+						path: item?.path || path,
 					};
 					switch (item.type) {
 						case 'redirect':
@@ -76,22 +77,23 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem }
 							return (
 								<DeleteItemModal
 									{...commonProps}
-									title={title}
+									title={item?.title}
 								/>
 							);
 						case 'duplicate':
 							return (
 								<DuplicateModal
 									{...commonProps}
-									title={title}
+									title={item?.title}
 								/>
 							);
 						case 'view-modal':
 							return (
 								<ViewItemModal
 									{...commonProps}
-									title={title}
+									title={item?.title}
 									dataModel={item?.dataModel}
+									item={item}
 								/>
 							);
 

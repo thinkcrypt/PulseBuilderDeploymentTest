@@ -31,9 +31,10 @@ type CreateModalProps = {
 	type?: 'post' | 'update';
 	id?: string;
 	title?: string;
+	invalidate?: any;
 };
 
-const CreateModal = ({ data, trigger, path, title, type, id }: CreateModalProps) => {
+const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [fetch, { data: prevData, isFetching, isUninitialized }] = useLazyGetByIdToEditQuery();
@@ -70,9 +71,9 @@ const CreateModal = ({ data, trigger, path, title, type, id }: CreateModalProps)
 		e.stopPropagation();
 
 		if (type === 'update') {
-			updateApi({ path, id: id || 'id', body: changedData });
+			updateApi({ path, id: id || 'id', body: changedData, invalidate });
 		} else {
-			callApi({ path, body: formData });
+			callApi({ path, body: formData, invalidate: invalidate });
 		}
 	};
 

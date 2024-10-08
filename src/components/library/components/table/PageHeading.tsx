@@ -12,6 +12,7 @@ type PageHeadingProps = FlexProps & {
 	path: string;
 	data?: any;
 	export?: boolean;
+	table: any;
 };
 
 const PageHeading: React.FC<PageHeadingProps> = ({
@@ -20,7 +21,7 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 	button,
 	isModal = false,
 	path,
-
+	table,
 	data,
 	export: exportData,
 	...props
@@ -33,6 +34,7 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 			type='post'
 			path={path}
 			data={data}
+			invalidate={table?.invalidate}
 		/>
 	) : href ? (
 		<Link href={href}>{btn}</Link>

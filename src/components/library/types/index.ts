@@ -110,6 +110,7 @@ export type TableObjectProps = {
 	clickable?: boolean;
 	toPath?: string;
 	isModal?: boolean;
+	invalidate?: any;
 	createModel?: any;
 	export?: boolean;
 	menu?: MenuItem[];

@@ -27,14 +27,15 @@ import { ViewItem } from './';
 import { DrawerContentContainer } from '../pop-modals';
 
 type DeleteItemModalProps = {
-	title?: string;
+	title: string;
 	id: string;
 	path: string;
 	dataModel: ViewModalDataModelProps[];
 	trigger?: any;
+	item: any;
 };
 
-const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigger, id }) => {
+const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigger, id, item }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const { data, isFetching, isError } = useGetByIdQuery(
@@ -75,7 +76,7 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigg
 		if (trigger) {
 			return <Flex onClick={onOpen}>{trigger}</Flex>;
 		} else {
-			return <MenuItem onClick={onOpen}>View</MenuItem>;
+			return <MenuItem onClick={onOpen}>{title || 'View'}</MenuItem>;
 		}
 	};
 

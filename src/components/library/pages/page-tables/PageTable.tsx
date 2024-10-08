@@ -107,6 +107,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 				title={table?.title}
 				path={table?.path}>
 				<PageHeading
+					table={table}
 					title={table?.title} //Heading of the page
 					button={table?.button?.title} //Button Title
 					href={table?.button?.path} //Page where button would redirect to

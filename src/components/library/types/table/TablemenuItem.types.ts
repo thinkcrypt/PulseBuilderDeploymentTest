@@ -17,6 +17,8 @@ type BaseMenuItem = {
 	title: string;
 	type: Item;
 	dataModel?: any;
+	id?: any;
+	path?: string;
 };
 
 type CustomModalMenuItem = BaseMenuItem & {

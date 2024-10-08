@@ -29,6 +29,9 @@ const tags = [
 	'uploads',
 	'user',
 	'users',
+	'adjustments/damages',
+	'damages',
+	'expenses',
 ];
 
 export const mainApi = createApi({

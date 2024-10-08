@@ -79,6 +79,7 @@ const TableRowComponent: FC<TableProps> = ({
 									path={path}
 									data={menu}
 									id={item?._id}
+									doc={item}
 									key={dataKey}
 									title={item[dataKey]}
 								/>

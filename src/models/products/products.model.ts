@@ -83,6 +83,8 @@ const createProductFormFields = createFormFields({ schema, layout });
 export const viewAllDataFields = convertToTableFields({ schema, fields: tableLayout });
 export const viewPreviewFields = convertToViewFields({ schema });
 
+export const viewProductFields = convertToViewFields({ schema });
+
 const form = {
 	type: 'add',
 	title: 'Add New Product',

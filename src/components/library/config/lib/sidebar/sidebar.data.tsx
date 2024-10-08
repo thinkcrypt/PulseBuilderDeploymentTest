@@ -48,6 +48,14 @@ const sidebar: SidebarItemType[] = [
 	},
 	{
 		startOfSection: true,
+		sectionTitle: 'Inventory Management',
+		title: 'Damages',
+		href: '/damages',
+		icon: 'product',
+		path: 'adjustments/damages',
+	},
+	{
+		startOfSection: true,
 		sectionTitle: 'Customer Management',
 		title: 'Customers',
 		href: '/customers',

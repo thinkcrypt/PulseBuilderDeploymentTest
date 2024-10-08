@@ -61,4 +61,5 @@ export type TableDataFieldType =
 	| 'checkbox'
 	| 'number'
 	| 'tag'
+	| 'text'
 	| 'data-array-count';

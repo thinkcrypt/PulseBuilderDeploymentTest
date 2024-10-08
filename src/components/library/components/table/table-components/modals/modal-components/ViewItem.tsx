@@ -143,7 +143,7 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 				<Text
 					wordBreak='break-all'
 					fontSize='.95rem'>
-					{children.toLocaleString()}
+					{children?.toLocaleString()}
 				</Text>
 			);
 		default:
