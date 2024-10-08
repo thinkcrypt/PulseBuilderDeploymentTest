@@ -17,10 +17,12 @@ const layout = [
 		sectionTitle: 'Product Description',
 		fields: [
 			'category',
+			'brand',
 			'slug',
 			'shortDescription',
 			'tags',
-			['price', 'vat'],
+			['cost', 'price'],
+			'vat',
 			['unitValue', 'unit'],
 			['sku', 'barcode'],
 			['isFeatured'],
@@ -60,7 +62,9 @@ const layout = [
 const tableLayout: any[] = [
 	'name',
 	'price',
+	'cost',
 	'category',
+	'brand',
 	'vat',
 	'isActive',
 	'slug',

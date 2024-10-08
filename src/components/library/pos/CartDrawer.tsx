@@ -10,7 +10,7 @@ import {
 	DrawerCloseButton,
 	useDisclosure,
 } from '@chakra-ui/react';
-import { IconButton } from '../library';
+import { IconButton } from '..';
 
 const CartDrawer = ({ footer, cart }: { footer: ReactNode; cart: ReactNode }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();

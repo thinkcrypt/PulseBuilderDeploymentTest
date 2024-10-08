@@ -42,6 +42,8 @@ import { FaCartShopping } from 'react-icons/fa6';
 import { IoStorefront } from 'react-icons/io5';
 import { BiSolidBookContent } from 'react-icons/bi';
 import { BiSolidReport } from 'react-icons/bi';
+import { FaMoneyCheckAlt } from 'react-icons/fa';
+import { TbBrandPatreonFilled } from 'react-icons/tb';
 
 export type IconNameOptions =
 	| 'add'
@@ -50,6 +52,7 @@ export type IconNameOptions =
 	| 'arrow'
 	| 'barcode'
 	| 'brand'
+	| 'brand-alt'
 	| 'cart'
 	| 'category'
 	| 'clock-outline'
@@ -65,6 +68,8 @@ export type IconNameOptions =
 	| 'delivery'
 	| 'dots'
 	| 'edit'
+	| 'expense'
+	| 'expense-categories'
 	| 'feedback'
 	| 'feedbacks'
 	| 'fields'
@@ -132,6 +137,8 @@ const icons: any = {
 	shop: IoStorefront,
 	content: BiSolidBookContent,
 	report: BiSolidReport,
+	expense: FaMoneyCheckAlt,
+	'brand-alt': TbBrandPatreonFilled,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

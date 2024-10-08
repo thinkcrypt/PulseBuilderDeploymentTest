@@ -1,3 +1,4 @@
+import { createBrandModel } from '../brand/brand.model';
 import productUnitOptions from '../util/productUnitOptions';
 
 const schema = {
@@ -25,6 +26,24 @@ const schema = {
 		tableType: 'text',
 		tableKey: 'category.name',
 		//dataModel: editCategoriesModel,
+	},
+	brand: {
+		label: 'Brand',
+		isRequired: true,
+		type: 'data-menu',
+		model: 'brands',
+		displayInTable: true,
+		tableType: 'text',
+		tableKey: 'brand.name',
+		dataModel: createBrandModel,
+	},
+	cost: {
+		label: 'Cost Price',
+		required: true,
+		displayInTable: true,
+		default: true,
+		type: 'number',
+		sort: true,
 	},
 	price: {
 		label: 'Price',

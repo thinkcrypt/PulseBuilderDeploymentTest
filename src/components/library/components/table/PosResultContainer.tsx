@@ -3,8 +3,8 @@ import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { Flex, FlexProps, Grid, Heading, Text } from '@chakra-ui/react';
 
 import { sizes, currency, useAppSelector, Pagination, FlexChild, SpaceBetween } from '../../';
-import OrderModal from '@/components/pos/OrderModal';
-import CartDrawer from '@/components/pos/CartDrawer';
+import OrderModal from '@/components/library/pos/OrderModal';
+import CartDrawer from '@/components/library/pos/CartDrawer';
 
 type ResultContainerProps = FlexProps & {
 	data: any;

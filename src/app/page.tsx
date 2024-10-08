@@ -11,6 +11,8 @@ import {
 	useAppSelector,
 	SpaceBetween,
 	Align,
+	useSum,
+	ShowSum,
 } from '@/components/library';
 import OrderTable from '@/components/dashboard/OrderTable';
 import Link from 'next/link';
@@ -19,6 +21,24 @@ import TopCustomers from '@/components/dashboard/TopCustomers';
 
 export default function UserFeedback() {
 	const { filters } = useAppSelector((state: any) => state.table);
+
+	const getUpdatedFilters = (filters: any) => {
+		return {
+			...(filters?.createdAt_btwn && { date_btwn: filters?.createdAt_btwn }),
+			...(filters?.createdAt_eq && { date_eq: filters?.createdAt_eq }),
+			...(filters?.createdAt_last && { date_last: filters?.createdAt_last }),
+			...(filters?.createdAt_gte && { date_gte: filters?.createdAt_gte }),
+			...(filters?.createdAt_lte && { date_lte: filters?.createdAt_lte }),
+		};
+	};
+
+	const netProfit: number = useSum({ path: 'orders', field: 'profit', filters });
+	const expenses: number = useSum({
+		path: 'expenses',
+		field: 'amount',
+		filters: getUpdatedFilters(filters),
+	});
+
 	return (
 		<Layout
 			title='Dashboard'
@@ -66,6 +86,13 @@ export default function UserFeedback() {
 							filters={filters}
 							price
 						/>
+						<Sum
+							title='Gross Profit'
+							path='orders'
+							field='profit'
+							filters={filters}
+							price
+						/>
 
 						<Sum
 							title='Due Amount'
@@ -74,6 +101,19 @@ export default function UserFeedback() {
 							filters={filters}
 							price
 						/>
+						{/* <p>{JSON.stringify(filters)}</p> */}
+						<Sum
+							title='Expenses'
+							path='expenses'
+							field='amount'
+							filters={getUpdatedFilters(filters)}
+							price
+						/>
+						<ShowSum
+							title='Net Profit'
+							price>
+							{netProfit - expenses}
+						</ShowSum>
 					</Grid>
 				</Column>
 				<Column

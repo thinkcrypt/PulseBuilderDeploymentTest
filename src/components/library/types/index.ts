@@ -4,6 +4,8 @@ import { MenuItem, SelectmenuItem } from './table';
 
 export type { MenuItem as MenuItemProps, SelectmenuItem as SelectmenuItemProps } from './table';
 
+export type { default as Schema } from './schema.types';
+
 import { InputDataType } from './data-types';
 export type { InputDataType } from './data-types';
 
@@ -96,9 +98,12 @@ export type SelectDataType = {
 	menu: SelectmenuItem[];
 };
 
+export type FormLayout = { sectionTitle: string; fields: any[] }[];
+
 export type TableObjectProps = {
 	title: string;
 	path: string;
+	data: TableObjectDataProps[];
 	filters?: boolean;
 	button?: ButtonType;
 	pagination?: boolean;
@@ -106,7 +111,6 @@ export type TableObjectProps = {
 	toPath?: string;
 	isModal?: boolean;
 	createModel?: any;
-	data: TableObjectDataProps[];
 	export?: boolean;
 	menu?: MenuItem[];
 	select?: SelectDataType;

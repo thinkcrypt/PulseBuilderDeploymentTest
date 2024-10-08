@@ -35,6 +35,12 @@ const sidebar: SidebarItemType[] = [
 		path: 'categories',
 	},
 	{
+		title: 'Brands',
+		href: '/brands',
+		icon: 'brand-alt',
+		path: 'brands',
+	},
+	{
 		title: 'Collections',
 		href: '/collections',
 		icon: 'collections',
@@ -47,6 +53,20 @@ const sidebar: SidebarItemType[] = [
 		href: '/customers',
 		icon: 'customer',
 		path: 'customers',
+	},
+	{
+		startOfSection: true,
+		sectionTitle: 'Expenses',
+		title: 'Expenses',
+		href: '/expenses',
+		icon: 'expense',
+		path: 'expenses',
+	},
+	{
+		title: 'Expense Cateogry',
+		href: '/expense-categories',
+		icon: 'category',
+		path: 'expense-categories',
 	},
 	// {
 	// 	sectionTitle: 'Customer',

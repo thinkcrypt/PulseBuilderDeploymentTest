@@ -6,6 +6,11 @@ const schema = {
 		type: 'number',
 		displayInTable: true,
 	},
+	profit: {
+		label: 'Profit',
+		type: 'number',
+		displayInTable: true,
+	},
 	vat: {
 		label: 'VAT',
 		type: 'number',

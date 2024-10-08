@@ -10,6 +10,7 @@ const tableLayout: string[] = [
 	'vat',
 	'subTotal',
 	'total',
+	'profit',
 	'isPaid',
 	'dueAmount',
 	'coupon',

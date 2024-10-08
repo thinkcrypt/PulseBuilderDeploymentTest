@@ -1,10 +1,10 @@
 import React from 'react';
 import { PosLayout as Layout, Column } from '@/components/library';
 import { Grid, Flex } from '@chakra-ui/react';
-import PosFilters from '@/components/pos/PosFilters';
-import PosSearch from '@/components/pos/PosSearch';
-import PosCart from '@/components/pos/PosCart';
-import PorductListPos from '@/components/pos/PorductListPos';
+import PosFilters from '@/components/library/pos/PosFilters';
+import PosSearch from '@/components/library/pos/PosSearch';
+import PosCart from '@/components/library/pos/PosCart';
+import PorductListPos from '@/components/library/pos/PorductListPos';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

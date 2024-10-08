@@ -25,7 +25,7 @@ import AddressWidget from './pos-card/AddressWidget';
 import { formFields as createCustomer } from '@/models/customer';
 import CartPriceContainer from './CartPriceContainer';
 
-import { CartContainer, DrawerSummaryContainer as SummaryContainer } from './';
+import { CartContainer, DrawerSummaryContainer as SummaryContainer } from '.';
 
 const PosCartDrawer = () => {
 	const dispatch: any = useAppDispatch();

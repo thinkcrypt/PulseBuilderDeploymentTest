@@ -3,10 +3,10 @@
 import React from 'react';
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
 
-import PosFilters from '@/components/pos/PosFilters';
-import PosSearch from '@/components/pos/PosSearch';
-import PosCart from '@/components/pos/PosCart';
-import PorductListPos from '@/components/pos/PorductListPos';
+import PosFilters from '@/components/library/pos/PosFilters';
+import PosSearch from '@/components/library/pos/PosSearch';
+import PosCart from '@/components/library/pos/PosCart';
+import PorductListPos from '@/components/library/pos/PorductListPos';
 
 import { sizes, PosLayout as Layout, Column, SideDrawer } from '@/components/library';
 import { NextPage } from 'next';

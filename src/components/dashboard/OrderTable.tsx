@@ -14,7 +14,7 @@ const viewAll: TableObjectProps = {
 	filters: false,
 	pagination: false,
 	limit: 5,
-	preferences: ['customer.name', 'totalItems', 'status', 'total', 'dueAmount'],
+	preferences: ['customer.name', 'totalItems', 'status', 'total', 'dueAmount', 'profit'],
 	// select: {
 	// 	show: true,
 	// 	menu: multiSelectMenu,

@@ -27,7 +27,7 @@ import {
 	useAppSelector,
 	useQtyInCart,
 } from '../../../';
-import CardContainer from '@/components/pos/pos-card/CardContainer';
+import CardContainer from '@/components/library/pos/pos-card/CardContainer';
 
 type DeleteItemModalProps = {
 	item: any;

@@ -122,11 +122,7 @@ const VTags: React.FC<InputContainerProps> = ({
 					pt={2}>
 					{value?.map((item: string, i: number) => (
 						<WrapItem key={i}>
-							<Tag
-								size='sm'
-								variant='solid'
-								colorScheme='brand'
-								borderRadius='full'>
+							<Tag variant='subtle'>
 								<TagLabel> {item}</TagLabel>
 								<TagCloseButton onClick={() => deleteTag(item)} />
 							</Tag>

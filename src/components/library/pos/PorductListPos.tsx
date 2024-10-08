@@ -11,7 +11,7 @@ import {
 	useGetAllQuery,
 } from '@/components/library';
 
-import { PosCard } from './';
+import { PosCard } from '.';
 import PosCart from './PosCart';
 import PosCartDrawer from './PosDrawerCart';
 

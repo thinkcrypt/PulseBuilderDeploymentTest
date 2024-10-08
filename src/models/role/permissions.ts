@@ -7,6 +7,8 @@ const data: any = [
 	'role',
 	'customer',
 	'collection',
+	'content',
+	'expense',
 ];
 
 const transformData = (data: any) => {

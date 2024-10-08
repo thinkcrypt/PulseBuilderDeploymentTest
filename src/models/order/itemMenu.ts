@@ -1,6 +1,6 @@
 // import schema from './order.schema.ts';
 import { convertToViewFields, MenuItemProps } from '@/components/library';
-import ViewOrderModal from '@/components/pos/ViewOrderModel';
+import ViewOrderModal from '@/components/library/pos/ViewOrderModel';
 
 const itemMenu: MenuItemProps[] = [
 	{

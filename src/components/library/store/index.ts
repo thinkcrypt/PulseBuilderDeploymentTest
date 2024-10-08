@@ -9,3 +9,5 @@ export * from './slices/tableSlice';
 
 // export * from './services/mainApi';
 export * from './services/commonApi';
+
+export * from './services/ordersApi';

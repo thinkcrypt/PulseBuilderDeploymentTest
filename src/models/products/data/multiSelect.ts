@@ -23,16 +23,17 @@ const multiSelectMenu: SelectmenuItemProps[] = [
 		},
 	},
 	{
-		title: 'Update Feature Status',
+		title: 'Update Product Status',
 		type: 'edit-select',
-		key: 'isFeatured',
+		key: 'status',
 		options: [
-			{ label: 'Active', value: true },
-			{ label: 'InActive', value: false },
+			{ label: 'Published', value: 'published' },
+			{ label: 'Draft', value: 'draft' },
+			{ label: 'Archived', value: 'archived' },
 		],
 		prompt: {
-			title: 'Change Feature status',
-			body: 'Choose feature status',
+			title: 'Product Status',
+			body: 'Update Product Status',
 		},
 	},
 
