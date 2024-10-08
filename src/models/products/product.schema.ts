@@ -29,7 +29,7 @@ const schema = {
 	},
 	brand: {
 		label: 'Brand',
-		isRequired: true,
+
 		type: 'data-menu',
 		model: 'brands',
 		displayInTable: true,

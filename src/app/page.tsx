@@ -58,6 +58,24 @@ export default function UserFeedback() {
 					title='Categories'
 					path='categories'
 				/>
+				<Sum
+					title='Total Receivable'
+					path='orders'
+					field='dueAmount'
+					price
+				/>
+				<Sum
+					title='Inventory Value[Cost]'
+					path='products'
+					field='inventoryCostPrice'
+					price
+				/>
+				<Sum
+					title='Inventory Value[Sell]'
+					path='products'
+					field='inventorySellPrice'
+					price
+				/>
 			</Grid>
 			<Column
 				gap={6}
