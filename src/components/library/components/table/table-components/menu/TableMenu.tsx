@@ -93,7 +93,6 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 									{...commonProps}
 									title={item?.title}
 									dataModel={item?.dataModel}
-									item={item}
 								/>
 							);
 
