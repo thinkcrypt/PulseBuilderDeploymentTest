@@ -73,7 +73,7 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 		if (type === 'update') {
 			updateApi({ path, id: id || 'id', body: changedData, invalidate });
 		} else {
-			callApi({ path, body: formData, invalidate: invalidate });
+			callApi({ path, body: formData, invalidate: invalidate && invalidate });
 		}
 	};
 

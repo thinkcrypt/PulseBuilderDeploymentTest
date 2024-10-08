@@ -27,7 +27,7 @@ import { ViewItem } from './';
 import { DrawerContentContainer } from '../pop-modals';
 
 type DeleteItemModalProps = {
-	title: string;
+	title?: string;
 	id: string;
 	path: string;
 	dataModel: ViewModalDataModelProps[];
