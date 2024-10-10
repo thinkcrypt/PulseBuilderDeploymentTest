@@ -18,6 +18,13 @@ type CommonProps = {
 	renderCondition?: any;
 	tableKey?: string;
 	menuField?: string;
+	value?: any;
+	fetch?: (data: any) => {
+		path: string;
+		fields: { key: string; as: string }[];
+		id: any;
+	};
+	isExcluded?: boolean;
 };
 
 type Schema = {

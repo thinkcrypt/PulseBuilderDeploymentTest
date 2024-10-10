@@ -5,6 +5,7 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	ModalOverlay,
+	Text,
 	useDisclosure,
 } from '@chakra-ui/react';
 
@@ -46,6 +47,11 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 
 	const onModalOpen = () => {
 		onOpen();
+		let newFieldData = {};
+		data?.map(field => {
+			if (field?.value) newFieldData = { ...newFieldData, [field.name]: field.value };
+		});
+		setFormData({ ...formData, ...newFieldData });
 		if (type == 'update') {
 			fetch({ path, id });
 		}
@@ -70,10 +76,20 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 		e.preventDefault();
 		e.stopPropagation();
 
+		const findExcludedFields = data.filter((field: any) => field?.isExcluded);
+		const toPostData = { ...formData };
+
+		// Remove excluded fields from toPostData
+		findExcludedFields.forEach((field: any) => {
+			if (field.name in toPostData) {
+				delete toPostData[field.name];
+			}
+		});
+
 		if (type === 'update') {
 			updateApi({ path, id: id || 'id', body: changedData, invalidate });
 		} else {
-			callApi({ path, body: formData, invalidate: invalidate && invalidate });
+			callApi({ path, body: toPostData, invalidate: invalidate && invalidate });
 		}
 	};
 

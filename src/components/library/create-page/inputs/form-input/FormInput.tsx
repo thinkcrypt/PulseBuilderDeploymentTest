@@ -1,5 +1,5 @@
 import { InputProps, MenuProps, SelectProps, SwitchProps, TextareaProps } from '@chakra-ui/react';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import {
 	VInput,
@@ -21,6 +21,7 @@ import {
 	VPermissions,
 	VCatCollectionList,
 	VCustom,
+	useGetByIdQuery,
 } from '../../../';
 
 type Option = {
@@ -40,16 +41,43 @@ type FormInputProps = InputProps &
 		model?: string;
 		dataModel?: any;
 		item?: any;
+		formData?: any;
+		setFormData?: any;
+		setChangedData?: any;
 	};
 
 const FormInput: FC<FormInputProps> = ({
 	isRequired,
 	type = 'text',
+	formData,
+	setFormData,
+	setChangedData,
 	options,
 	dataModel,
 	item,
 	...props
 }) => {
+	const {
+		path: fetchPath = null,
+		id: fetchId = null,
+		fields: fetchFields = null,
+	} = item?.fetch ? item.fetch(formData) : {};
+
+	const { data, isFetching, isSuccess } = useGetByIdQuery(
+		{ path: fetchPath, id: fetchId },
+		{ skip: !item?.fetch || !fetchPath || !fetchId }
+	);
+
+	useEffect(() => {
+		if (isSuccess && !isFetching) {
+			let newData: any = {};
+			fetchFields.forEach((field: any) => {
+				newData[field?.as] = data[field?.key];
+			}, data);
+			setFormData((prev: any) => ({ ...formData, ...newData }));
+		}
+	}, [isFetching]);
+
 	switch (type) {
 		case 'image':
 			return (

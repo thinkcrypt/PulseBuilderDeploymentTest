@@ -147,6 +147,7 @@ type BaseInputData<T> = {
 	endOfSection?: boolean;
 	object?: boolean;
 	dataModel?: any;
+	value?: any;
 };
 
 type DataSelectInputData<T> = BaseInputData<T> & {

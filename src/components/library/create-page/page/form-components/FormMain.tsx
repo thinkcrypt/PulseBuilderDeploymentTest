@@ -73,25 +73,29 @@ const FormMain: FC<FormMainType> = ({
 			isModal={isModal}>
 			{section?.map((item: any, i: number) => (
 				<FormItem
+					isHidden={item?.renderCondition && !item?.renderCondition(formData)}
 					item={item}
 					key={i}>
-					{(!item?.renderCondition || item?.renderCondition(formData)) && (
-						<>
-							<FormInput
-								isRequired={item?.isRequired || false}
-								name={item?.name}
-								label={item?.label}
-								type={item?.type}
-								value={getFieldValue({ name: item?.name, formData })}
-								onChange={getOnChangeHandler(item?.type, item?.name)}
-								model={item?.model}
-								placeholder={item?.placeholder}
-								options={item?.options}
-								dataModel={item?.dataModel}
-								item={item}
-							/>
-						</>
-					)}
+					{/* {(!item?.renderCondition || item?.renderCondition(formData)) && ( */}
+					<>
+						<FormInput
+							formData={formData}
+							setFormData={setFormData}
+							setChangedData={setChangedData}
+							isRequired={item?.isRequired || false}
+							name={item?.name}
+							label={item?.label}
+							type={item?.type}
+							value={getFieldValue({ name: item?.name, formData })}
+							onChange={getOnChangeHandler(item?.type, item?.name)}
+							model={item?.model}
+							placeholder={item?.placeholder}
+							options={item?.options}
+							dataModel={item?.dataModel}
+							item={item}
+						/>
+					</>
+					{/* // )} */}
 				</FormItem>
 			))}
 		</FormDivision>

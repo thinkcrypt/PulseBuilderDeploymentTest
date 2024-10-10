@@ -1,17 +1,28 @@
 import { useState, useCallback, useEffect } from 'react';
 
 const useFormData = <T extends {}>(data: any[], updatedData?: any) => {
-	const initialFormData = useCallback(() => {
+	const initialFormData = () => {
+		// Check if data is not provided or is not an array, return an empty object
 		if (!data || !Array.isArray(data)) return {};
+
+		// Reduce the data array to an object with initial form values
 		return data?.reduce((acc: Partial<T>, curr: any) => {
+			// If the current item is of type 'tag', 'array', or 'data-tag',
+			// initialize with an empty array or provided value
 			if (curr.type === 'tag' || curr.type === 'array' || curr.type === 'data-tag') {
+				// If the value is not provided, initialize with an empty array
 				return { ...acc, [curr.name]: [] };
 			} else {
-				return { ...acc, [curr.name]: curr.type === 'switch' ? false : undefined };
+				// For other types, initialize with the provided value or default values
+				return {
+					...acc,
+					[curr.name]: curr.type === 'switch' ? false : undefined,
+				};
 			}
 		}, {});
-	}, [data]);
+	};
 
+	// Initialize the form data with the initial form values
 	const [formData, setFormData] = useState<T>(initialFormData);
 
 	const updateNestedState = (state: any, keys: (string | number)[], value: any): any => {

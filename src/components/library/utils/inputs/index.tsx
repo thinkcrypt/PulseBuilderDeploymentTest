@@ -39,4 +39,6 @@ export { default as Input } from './input-components/InputElement';
 
 export { default as VPermissions } from './VPermissions';
 
+export { default as VReadOnly } from './VReadOnly';
+
 export * from './input-components';

@@ -10,13 +10,16 @@ type FormItemProps = {
 		span?: number;
 	};
 	children: React.ReactNode;
+	isHidden?: boolean;
 };
 
 const FormItem: FC<FormItemProps> = ({
 	item: { startOfSection, sectionTitle, span },
 	children,
+	isHidden = false,
 }) => {
 	const clr = useColorModeValue('gray.200', 'gray.700');
+	if (isHidden) return null;
 	return (
 		<>
 			{startOfSection && (

@@ -49,6 +49,18 @@ export const adjustmentSchema: Schema = {
 		default: true,
 		displayInTable: true,
 	},
+	due: {
+		label: 'Due',
+		type: 'read-only',
+		isRequired: true,
+		fetch: (data: any) => ({
+			path: 'orders',
+			fields: [{ key: 'dueAmount', as: 'due' }],
+			id: data?.invoice,
+		}),
+		isExcluded: true,
+		// renderCondition: (data: any) => (data?.invoice ? true : false),
+	},
 	amount: {
 		label: 'Amount',
 		type: 'number',
@@ -143,7 +155,15 @@ export const adjustmentSchema: Schema = {
 const formLayout: FormLayout = [
 	{
 		sectionTitle: 'Payment details',
-		fields: ['invoice', 'account', 'amount', ['trnxId', 'reference'], 'date', 'paymentMethod'],
+		fields: [
+			'invoice',
+			'due',
+			'account',
+			'amount',
+			['trnxId', 'reference'],
+			'date',
+			'paymentMethod',
+		],
 	},
 	{
 		sectionTitle: 'Customer Information',
