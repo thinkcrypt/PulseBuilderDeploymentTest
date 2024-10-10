@@ -39,7 +39,7 @@ type VDataMenuProps = InputProps & {
 	model: string;
 	dataModel?: any;
 	hideNew?: boolean;
-	field: string;
+	field?: string;
 };
 
 const VDataMenu: React.FC<VDataMenuProps> = ({
