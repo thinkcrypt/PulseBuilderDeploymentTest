@@ -39,6 +39,7 @@ type FormInputProps = InputProps &
 		options?: Option[];
 		model?: string;
 		dataModel?: any;
+		item?: any;
 	};
 
 const FormInput: FC<FormInputProps> = ({
@@ -46,6 +47,7 @@ const FormInput: FC<FormInputProps> = ({
 	type = 'text',
 	options,
 	dataModel,
+	item,
 	...props
 }) => {
 	switch (type) {
@@ -129,6 +131,7 @@ const FormInput: FC<FormInputProps> = ({
 					dataModel={dataModel}
 					isRequired={isRequired}
 					model={props?.model || ''}
+					field={item?.menuField || 'name'}
 					{...props}
 				/>
 			);

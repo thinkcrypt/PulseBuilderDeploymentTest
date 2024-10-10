@@ -28,7 +28,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 					const typeDetail = createType({
 						type: type,
 						isReadOnly: fieldConfig?.readOnlyOnUpdate || false,
-						fieldType: fieldConfig.type,
+						fieldType: fieldConfig?.type,
 					});
 					if (fieldConfig) {
 						dataFields.push({
@@ -52,7 +52,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 				const typeDetail = createType({
 					type: type,
 					isReadOnly: fieldConfig?.readOnlyOnUpdate || false,
-					fieldType: fieldConfig.type,
+					fieldType: fieldConfig?.type,
 				});
 				if (fieldConfig) {
 					dataFields.push({

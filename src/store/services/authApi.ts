@@ -34,6 +34,14 @@ export const authApi = mainApi.injectEndpoints({
 			query: () => `auth/self`,
 			providesTags: ['self'],
 		}),
+		updateSelf: builder.mutation<any, any>({
+			query: body => ({
+				url: `auth/update/self`,
+				method: 'PUT',
+				body,
+			}),
+			invalidatesTags: ['self'],
+		}),
 		updatePreferences: builder.mutation<any, any>({
 			query: ({ field, preferences }) => ({
 				url: `auth/update/preferences`,
@@ -52,5 +60,6 @@ export const {
 	useUpdatePreferencesMutation,
 	useRegisterMutation,
 	useUpdatePasswordMutation,
+	useUpdateSelfMutation,
 } = authApi;
 export default authApi;

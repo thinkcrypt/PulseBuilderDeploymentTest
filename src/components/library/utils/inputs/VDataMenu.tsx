@@ -39,6 +39,7 @@ type VDataMenuProps = InputProps & {
 	model: string;
 	dataModel?: any;
 	hideNew?: boolean;
+	field: string;
 };
 
 const VDataMenu: React.FC<VDataMenuProps> = ({
@@ -50,6 +51,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	model,
 	dataModel,
 	hideNew = false,
+	field,
 	...props
 }) => {
 	const { onOpen, onClose, isOpen } = useDisclosure();

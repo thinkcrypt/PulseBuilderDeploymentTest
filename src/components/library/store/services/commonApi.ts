@@ -77,8 +77,11 @@ export const userApi = mainApi.injectEndpoints({
 					const link = document.createElement('a');
 					link.href = url;
 					const date = new Date();
+					const fileExtension = arg.type == 'pdf' ? 'pdf' : 'csv';
+
 					const timestamp = date.toISOString().replace(/[:.]/g, '-');
-					link.setAttribute('download', `data_${timestamp}.csv`);
+					const name = arg?.path.toUpperCase().replace('/', '_');
+					link.setAttribute('download', `${name}_${timestamp}.${fileExtension}`);
 
 					document.body.appendChild(link);
 					link.click();
@@ -88,6 +91,7 @@ export const userApi = mainApi.injectEndpoints({
 				}
 			},
 		}),
+
 		exportMany: builder.mutation<
 			any,
 			{ path: string; body: any; invalidate?: string; type?: string }

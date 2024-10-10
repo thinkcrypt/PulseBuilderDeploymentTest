@@ -88,6 +88,7 @@ const FormMain: FC<FormMainType> = ({
 								placeholder={item?.placeholder}
 								options={item?.options}
 								dataModel={item?.dataModel}
+								item={item}
 							/>
 						</>
 					)}

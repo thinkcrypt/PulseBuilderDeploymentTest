@@ -17,6 +17,7 @@ type CommonProps = {
 	colorScheme?: any;
 	renderCondition?: any;
 	tableKey?: string;
+	menuField?: string;
 };
 
 type Schema = {

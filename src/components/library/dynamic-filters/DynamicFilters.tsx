@@ -10,6 +10,7 @@ import {
 	RangeFilter,
 	useAppDispatch,
 	clearFilters,
+	TextFilter,
 } from '../';
 import { FilterSectionContainer } from './filter-components';
 
@@ -17,7 +18,7 @@ type FilterItemType = {
 	field: any;
 	label: any;
 	title: any;
-	type: 'boolean' | 'multi-select' | 'date' | 'range';
+	type: 'boolean' | 'multi-select' | 'date' | 'range' | 'text';
 	options?: any;
 };
 
@@ -58,6 +59,14 @@ const DynamicFilters = ({ path }: { path: any }) => {
 				if (item.type === 'date') {
 					return (
 						<DateFilter
+							key={i}
+							{...commonProps}
+						/>
+					);
+				}
+				if (item.type === 'text') {
+					return (
+						<TextFilter
 							key={i}
 							{...commonProps}
 						/>

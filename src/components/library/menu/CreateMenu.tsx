@@ -36,7 +36,7 @@ const CreateMenu = () => {
 
 			<MenuContainer>
 				<MenuGroup title='Create'>
-					<CustomMenuItem>Create Organization</CustomMenuItem>
+					<CustomMenuItem href='/products/create'>Create Product</CustomMenuItem>
 				</MenuGroup>
 			</MenuContainer>
 		</Menu>

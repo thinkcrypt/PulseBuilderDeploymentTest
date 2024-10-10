@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, useDisclosure, Text, Checkbox, Grid } from '@chakra-ui/react';
+import { Button, useDisclosure, Text, Checkbox, Grid, Select } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -22,16 +22,19 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 
 	const [trigger, result] = useExportMutation();
 
+	const [type, setType] = useState('csv');
+
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		trigger({
 			path: path,
 			body: selected,
-			type: 'csv',
+			type: type,
 		});
 	};
 
-	const close = () => {
+	const closeModal = () => {
+		setType('csv');
 		setSelected(preferences);
 		onClose();
 	};
@@ -88,15 +91,32 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 						rowGap={4}>
 						{checkboxes}
 					</Grid>
+					<Grid
+						alignItems='center'
+						py={2}
+						gridTemplateColumns={{ base: '1fr 1fr', md: '1fr 1fr' }}
+						gap={4}
+						rowGap={4}>
+						<Text>Select Export Type</Text>
+						<Select
+							size='sm'
+							value={type}
+							onChange={(e: any) => setType(e.target.value)}>
+							<option value='csv'>CSV</option>
+							<option value='pdf'>Pdf</option>
+						</Select>
+					</Grid>
 				</MenuModalBody>
 				<MenuModalFooter>
 					{selected?.length < 2 ? (
 						<Text color='red'>Please select at least 2 fields</Text>
+					) : selected?.length > 5 && type == 'pdf' ? (
+						<Text color='red'>You can only export up to 5 fields to PDF</Text>
 					) : (
 						<>
 							<DiscardButton
 								mr={2}
-								onClick={close}>
+								onClick={closeModal}>
 								Discard
 							</DiscardButton>
 							<Button

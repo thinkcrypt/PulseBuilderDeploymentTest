@@ -4,6 +4,7 @@ export type InputDataType =
 	| 'switch'
 	| 'image'
 	| 'image-array'
+	| 'array-string'
 	| 'date'
 	| 'tag'
 	| 'category-collection-array'

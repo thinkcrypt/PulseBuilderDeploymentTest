@@ -3,6 +3,7 @@ import schema from './order.schema';
 import itemMenu from './itemMenu';
 
 const tableLayout: string[] = [
+	'invoice',
 	'customer',
 	'status',
 	'origin',
@@ -13,6 +14,7 @@ const tableLayout: string[] = [
 	'profit',
 	'isPaid',
 	'dueAmount',
+	'paidAmount',
 	'coupon',
 ];
 

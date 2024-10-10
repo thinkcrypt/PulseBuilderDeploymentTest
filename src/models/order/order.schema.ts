@@ -1,6 +1,13 @@
 //
 
 const schema = {
+	invoice: {
+		label: 'Invoice',
+		type: 'string',
+		displayInTable: true,
+		default: true,
+		sort: true,
+	},
 	total: {
 		label: 'Total Price',
 		type: 'number',
@@ -20,6 +27,11 @@ const schema = {
 		label: 'Sub Total',
 		type: 'number',
 		default: true,
+		displayInTable: true,
+	},
+	paidAmount: {
+		label: 'Paid Amount',
+		type: 'number',
 		displayInTable: true,
 	},
 	dueAmount: {
