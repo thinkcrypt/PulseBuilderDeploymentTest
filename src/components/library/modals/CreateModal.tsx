@@ -5,14 +5,18 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	ModalOverlay,
-	Text,
 	useDisclosure,
+	Drawer,
+	DrawerOverlay,
+	DrawerCloseButton,
+	DrawerBody,
+	DrawerFooter,
 } from '@chakra-ui/react';
 
 import {
+	DrawerHeader,
 	ModalFormSection,
 	useCustomToast,
-	ModalContainer,
 	useFormData,
 	InputData,
 	ModalHeader,
@@ -23,6 +27,10 @@ import {
 	useLazyGetByIdToEditQuery,
 	DiscardButton,
 	ModalSubmitButton,
+	useIsMobile,
+	ModalContent,
+	DrawerContentContainer,
+	Align,
 } from '../';
 
 type CreateModalProps = {
@@ -41,6 +49,16 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 	const [fetch, { data: prevData, isFetching, isUninitialized }] = useLazyGetByIdToEditQuery();
 
 	const [formData, setFormData] = useFormData<any>(data, prevData);
+
+	const isMobile = useIsMobile();
+
+	const Container = isMobile ? Drawer : Modal;
+	const Overlay = isMobile ? DrawerOverlay : ModalOverlay;
+	const Content = isMobile ? DrawerContentContainer : ModalContent;
+	const Header = isMobile ? DrawerHeader : ModalHeader;
+	const CloseButton = isMobile ? DrawerCloseButton : ModalCloseButton;
+	const Body = isMobile ? DrawerBody : ModalBody;
+	const Footer = isMobile ? DrawerFooter : ModalFooter;
 
 	const [callApi, result] = usePostMutation();
 	const [updateApi, updateResult] = useUpdateByIdMutation();
@@ -111,21 +129,48 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 		}
 	}, [prevData, isFetching]);
 
+	const footer = (
+		<>
+			{!isMobile && (
+				<DiscardButton
+					mr={2}
+					onClick={onModalClose}>
+					Discard
+				</DiscardButton>
+			)}
+			<ModalSubmitButton
+				borderRadius={{ base: 'md', md: 'md' }}
+				size={{ base: 'sm', md: 'xs' }}
+				{...(isMobile && { w: '100%' })}
+				isLoading={isLoading}>
+				Confirm
+			</ModalSubmitButton>
+		</>
+	);
+
 	return (
 		<>
 			<Flex onClick={onModalOpen}>{trigger || title || path}</Flex>
 
-			<Modal
-				size='2xl'
+			<Container
+				isCentered
+				{...(isMobile && { placement: 'bottom' })}
+				{...(isMobile && { isFullHeight: false })}
 				isOpen={isOpen}
+				size='xl'
 				onClose={onModalClose}
 				closeOnOverlayClick={false}>
-				<ModalOverlay />
-				<ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-					<ModalHeader>{`${type === 'update' ? 'Update' : 'Create'} ${path}`}</ModalHeader>
-					<ModalCloseButton />
-					<form onSubmit={handleSubmit}>
-						<ModalBody px={6}>
+				<Overlay />
+				<form onSubmit={handleSubmit}>
+					<Content
+						// overflowY='scroll'
+						onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+						<Header>{`${type === 'update' ? 'Update' : 'Create'} ${path}`}</Header>
+						<CloseButton />
+
+						<Body
+							px={{ base: 4, md: 6 }}
+							{...(isMobile && { overflowY: 'scroll' })}>
 							<ModalFormSection>
 								<FormMain
 									fields={data}
@@ -135,18 +180,19 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 									isModal={true}
 								/>
 							</ModalFormSection>
-						</ModalBody>
-						<ModalFooter>
-							<DiscardButton
-								mr={2}
-								onClick={onModalClose}>
-								Discard
-							</DiscardButton>
-							<ModalSubmitButton isLoading={isLoading}>Confirm</ModalSubmitButton>
-						</ModalFooter>
-					</form>
-				</ModalContainer>
-			</Modal>
+							{isMobile && <Align pt={2}>{footer}</Align>}
+						</Body>
+						{!isMobile && (
+							<Footer
+								borderTopWidth={1}
+								borderColor='border.light'
+								_dark={{ borderColor: 'border.dark' }}>
+								{footer}
+							</Footer>
+						)}
+					</Content>
+				</form>
+			</Container>
 		</>
 	);
 };

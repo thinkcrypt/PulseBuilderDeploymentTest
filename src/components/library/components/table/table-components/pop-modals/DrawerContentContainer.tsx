@@ -16,6 +16,7 @@ const DrawerContentContainer: FC<DrawerContentType> = ({ children, ...props }) =
 			maxH='85vh'
 			minH='20vh'
 			userSelect='none'
+			// overflowY='scroll'
 			borderTopRadius='20px'
 			{...props}>
 			{children}

@@ -93,6 +93,7 @@ export {
 	RenderTag,
 	MenuButton,
 	DuplicateModal,
+	DrawerContentContainer,
 } from './components/table';
 
 export * from './dynamic-filters/filters';

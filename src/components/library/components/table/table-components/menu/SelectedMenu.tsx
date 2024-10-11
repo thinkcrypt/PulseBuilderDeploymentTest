@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { Menu } from '@chakra-ui/react';
+import { Menu, MenuButton, IconButton } from '@chakra-ui/react';
 import {
 	MenuContainer,
 	EditManyModal,
 	EditManySelectModal,
 	EditDataSelectModal,
-	MenuButton,
+	Icon,
 	ExportManyModal,
 	SendBulkSmsModal,
 } from '../../../../';
@@ -22,7 +22,17 @@ const SelectedMenu: FC<TableMenuProps> = ({ path, hide, data, items }) => {
 
 	return (
 		<Menu>
-			<MenuButton />
+			<MenuButton
+				as={IconButton}
+				size='md'
+				icon={
+					<Icon
+						name='settings'
+						size={12}
+					/>
+				}
+				variant='ghost'
+			/>
 			<MenuContainer>
 				{data?.map((item: any, i: number) => {
 					const commonProps = {

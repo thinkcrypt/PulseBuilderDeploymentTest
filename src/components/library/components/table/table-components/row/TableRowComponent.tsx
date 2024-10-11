@@ -39,7 +39,7 @@ const TableRowComponent: FC<TableProps> = ({
 		// Create a TableRow for each item
 		<TableRow
 			cursor={clickable ? 'pointer' : 'default'}
-			selectable={!isMobile && selectable}
+			selectable={selectable}
 			id={item?._id}
 			key={item?._id}
 			actions={<div></div>}

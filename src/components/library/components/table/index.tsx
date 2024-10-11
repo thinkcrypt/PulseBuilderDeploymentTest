@@ -41,13 +41,7 @@ export {
 	MenuModal,
 } from './table-components/menu-modals';
 
-export {
-	PopModal,
-	PopModalHeader,
-	PopModalBody,
-	PopModalCloseButton,
-	PopModalFooter,
-} from './table-components/pop-modals';
+export * from './table-components/pop-modals';
 
 export {
 	RowContainerBase,

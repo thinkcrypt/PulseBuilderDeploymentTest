@@ -23,9 +23,9 @@ import {
 	useGetByIdQuery,
 	MenuItem,
 	getValue,
+	DrawerContentContainer,
 } from '../../../../';
 import { ViewItem } from './';
-import { DrawerContentContainer } from '../pop-modals';
 
 type DeleteItemModalProps = {
 	title?: string;

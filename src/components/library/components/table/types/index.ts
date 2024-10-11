@@ -8,7 +8,7 @@ export type TableItemProps = {
 };
 
 export type TableDataProps = TableCellProps & {
-	children: any;
+	children?: any;
 	date?: boolean;
 	price?: boolean;
 	src?: string;

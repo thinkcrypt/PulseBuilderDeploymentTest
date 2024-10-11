@@ -16,7 +16,7 @@ const SidebarBody: FC<SidebarBodyProps> = ({ children }) => {
 			h={BODY_HEIGHT}
 			overflowY='scroll'
 			zIndex={9999}
-			spacing={{ base: 2, md: 1 }}>
+			spacing={{ base: 0, md: 0.4 }}>
 			{children}
 		</Stack>
 	);
