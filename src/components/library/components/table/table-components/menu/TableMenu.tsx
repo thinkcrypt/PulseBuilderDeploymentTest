@@ -38,6 +38,14 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 						path: item?.path || path,
 					};
 					switch (item.type) {
+						case 'custom-redirect':
+							return (
+								<MenuItem
+									href={item?.href(doc) || '#'}
+									key={i}>
+									{item?.title}
+								</MenuItem>
+							);
 						case 'redirect':
 							return (
 								<MenuItem

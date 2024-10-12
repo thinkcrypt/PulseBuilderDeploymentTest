@@ -14,6 +14,7 @@ const tableLayout: string[] = [
 	'profit',
 	'isPaid',
 	'dueAmount',
+	'returnAmount',
 	'paidAmount',
 	'coupon',
 ];

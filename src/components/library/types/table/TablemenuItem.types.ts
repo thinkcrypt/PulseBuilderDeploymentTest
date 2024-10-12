@@ -11,6 +11,7 @@ type Item =
 	| 'marketing-sms'
 	| 'link'
 	| 'custom-modal'
+	| 'custom-redirect'
 	| 'duplicate';
 
 type BaseMenuItem = {
@@ -31,10 +32,15 @@ type RedirectMenuItem = BaseMenuItem & {
 	href: string;
 };
 
+type CustomRedirectItem = BaseMenuItem & {
+	type: 'custom-redirect';
+	href: (data: any) => string;
+};
+
 type OtherMenuItem = BaseMenuItem & {
-	type: Exclude<Item, 'redirect' | 'custom-modal'>;
+	type: Exclude<Item, 'redirect' | 'custom-modal' | 'custom-redirect'>;
 	href?: string;
 	modal?: never;
 };
 
-export type MenuItem = CustomModalMenuItem | RedirectMenuItem | OtherMenuItem;
+export type MenuItem = CustomModalMenuItem | RedirectMenuItem | OtherMenuItem | CustomRedirectItem;

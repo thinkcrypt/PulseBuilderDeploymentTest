@@ -99,7 +99,7 @@ const ViewOrderModal = ({ id }: { id: string }) => {
 							{i + 1}. {item?.name}
 						</OrderItemText>
 						<GridItem textAlign='center'>{item?.unitPrice?.toFixed(2)?.toLocaleString()}</GridItem>
-						<GridItem textAlign='center'>{item?.qty}</GridItem>
+						<GridItem textAlign='center'>{item?.qty - item?.returnQty}</GridItem>
 						<GridItem textAlign='right'>
 							{currency.symbol}
 							{item?.totalPrice?.toFixed(2)?.toLocaleString()}

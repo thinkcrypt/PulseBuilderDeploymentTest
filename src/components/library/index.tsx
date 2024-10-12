@@ -28,7 +28,7 @@ export * from './utils/texts';
 
 export * from './stat';
 
-export { Details, DetailItem } from './detail';
+export * from './detail';
 export { default as HeadingMenu } from './settings/heading-menu/HeadingMenu';
 
 export { default as PageTable } from './pages/page-tables/PageTable';
@@ -38,63 +38,7 @@ export * from './utils/functions/handlers';
 
 export * from './view';
 
-export {
-	CustomTable,
-	Headers,
-	PageHeading,
-	TableRowComponent,
-	ResultContainer,
-	TableResultContainer,
-	PopModal,
-	PopModalHeader,
-	PopModalBody,
-	PopModalFooter,
-	PopModalCloseButton,
-	TableHead,
-	TableHeading,
-	Title,
-	TableSkeleton,
-	TableSearch,
-	TableRow,
-	TableRefresh,
-	Preferences,
-	PosResultContainer,
-	StickyBottomContainer,
-	FilterContainer,
-	SelectedItemsContainer,
-	TableContainer,
-	TableSearchContainer,
-	TableSettingsMenuContainer,
-	CustomTd,
-	TableData,
-	TableDateData,
-	TableSelectItem,
-	EditableTableData,
-	TableMenu,
-	MenuModalHeader,
-	MenuModalBody,
-	MenuModalCloseButton,
-	MenuModalFooter,
-	MenuModalOverlay,
-	MenuModalContent,
-	MenuModal,
-	RowContainerBase,
-	RowContainerMd,
-	RowInput,
-	RowSelect,
-	ViewItemModal,
-	ViewItem,
-	DeleteItemModal,
-	EditManyModal,
-	EditManySelectModal,
-	TableErrorMessage,
-	EditDataSelectModal,
-	SelectedMenu,
-	RenderTag,
-	MenuButton,
-	DuplicateModal,
-	DrawerContentContainer,
-} from './components/table';
+export * from './components/table';
 
 export * from './dynamic-filters/filters';
 
@@ -112,3 +56,4 @@ export * from './model';
 export * from './model/types';
 export * from './content';
 export * from './components/skeleton';
+export * from './page';

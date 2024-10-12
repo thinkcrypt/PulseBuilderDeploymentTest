@@ -34,6 +34,12 @@ const schema = {
 		type: 'number',
 		displayInTable: true,
 	},
+	returnAmount: {
+		label: 'Return Amount',
+		type: 'number',
+		displayInTable: true,
+		default: true,
+	},
 	dueAmount: {
 		label: 'Due Amount',
 		type: 'number',

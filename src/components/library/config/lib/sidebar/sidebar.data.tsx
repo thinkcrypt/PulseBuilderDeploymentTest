@@ -55,6 +55,12 @@ const sidebar: SidebarItemType[] = [
 		path: 'adjustments/damages',
 	},
 	{
+		title: 'Returns',
+		href: '/return',
+		icon: 'product',
+		path: 'return',
+	},
+	{
 		startOfSection: true,
 		sectionTitle: 'Customer Management',
 		title: 'Customers',

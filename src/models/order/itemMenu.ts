@@ -22,13 +22,18 @@ const itemMenu: MenuItemProps[] = [
 	// 	type: 'duplicate',
 	// },
 	{
-		title: 'Delete',
-		type: 'delete',
-	},
-	{
 		title: 'View Order',
 		type: 'custom-modal',
 		modal: ViewOrderModal,
+	},
+	{
+		title: 'Sale Return',
+		type: 'custom-redirect',
+		href: (formData: any) => `/return/${formData._id}`,
+	},
+	{
+		title: 'Delete',
+		type: 'delete',
 	},
 ];
 

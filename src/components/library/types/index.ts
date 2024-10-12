@@ -34,6 +34,8 @@ export type TableDataProps = TableCellProps & {
 	price?: boolean;
 	src?: string;
 	type?: string;
+	heading?: string;
+	editable?: boolean;
 };
 
 type EditType = 'text' | 'number' | 'select' | 'boolean' | 'date';

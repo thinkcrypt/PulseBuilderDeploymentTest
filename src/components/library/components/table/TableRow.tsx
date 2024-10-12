@@ -7,8 +7,13 @@ type TableRowProps = {
 	children: ReactNode;
 	actions?: ReactNode;
 	selectable?: boolean;
-	id: string;
+	id?: string;
 };
+
+// type SelectableTableRowProps = {
+// 	selectable: true;
+// 	id: string;
+// };
 
 const TableRow: FC<TableRowProps> = ({ children, actions, selectable, id, ...props }) => {
 	const isMobile = useIsMobile();
@@ -16,7 +21,7 @@ const TableRow: FC<TableRowProps> = ({ children, actions, selectable, id, ...pro
 
 	return (
 		<Container {...props}>
-			{selectable && <TableSelectItem id={id} />}
+			{selectable && <TableSelectItem id={id || ''} />}
 			{children}
 		</Container>
 	);

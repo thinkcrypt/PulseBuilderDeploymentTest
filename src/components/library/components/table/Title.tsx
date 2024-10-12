@@ -9,6 +9,7 @@ export type TitleProps = FlexProps & {
 	info?: string;
 	sort?: string;
 	ifItemsSelected?: boolean;
+	isNumeric?: boolean;
 };
 
 export const Title: React.FC<TitleProps> = ({
@@ -16,6 +17,7 @@ export const Title: React.FC<TitleProps> = ({
 	sort,
 	info,
 	ifItemsSelected,
+	isNumeric,
 	...props
 }) => {
 	const { sort: val } = useAppSelector(state => state.table);
@@ -56,6 +58,7 @@ export const Title: React.FC<TitleProps> = ({
 
 	return (
 		<Th
+			isNumeric={isNumeric}
 			_dark={{ borderBottomColor: 'stroke.deepD' }}
 			cursor={Boolean(sort) ? 'pointer' : 'default'}
 			onClick={handleSort}
