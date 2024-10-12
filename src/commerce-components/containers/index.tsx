@@ -6,3 +6,4 @@ export { default as ColRow } from './flex/ColRow';
 export { default as Full } from './flex/Full';
 export { default as Flex } from './flex/Flexx';
 export { default as BgImage } from './flex/BgImage';
+export { default as Grid } from './flex/Grid';

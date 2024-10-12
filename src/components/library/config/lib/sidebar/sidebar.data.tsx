@@ -58,7 +58,7 @@ const sidebar: SidebarItemType[] = [
 		title: 'Returns',
 		href: '/return',
 		icon: 'product',
-		path: 'return',
+		path: 'returns',
 	},
 	{
 		startOfSection: true,

@@ -49,7 +49,7 @@ export const adjustmentSchema: Schema = {
 		type: 'textarea',
 	},
 	date: {
-		label: 'Created At',
+		label: 'Return Date',
 		type: 'date',
 		sort: true,
 		default: true,
@@ -88,19 +88,16 @@ const viewDataFields = convertToViewFields({ schema });
 const damageTable: TableObjectProps = {
 	title: 'Returns',
 	path: 'returns',
-	isModal: true,
-	hidePreferences: true,
-	invalidate: ['products'],
+	invalidate: ['returns', 'orders'],
 	data: viewFields,
-	createModel: formFields,
 	menu: [
 		{ type: 'edit-modal', title: 'Edit', dataModel: formFields },
 		{ type: 'view-modal', title: 'View', dataModel: viewDataFields },
 		{
 			type: 'view-modal',
-			title: 'View Product',
+			title: 'View Return',
 			dataModel: viewProductFields,
-			path: 'products',
+			path: 'returns',
 			id: (data: any) => data?.product?._id,
 		},
 	],

@@ -17,7 +17,8 @@ const TabularDetail = ({
 			gridTemplateColumns='1fr 1fr'
 			borderWidth={1}
 			h='full'
-			_notLast={{ borderBottomWidth: 0 }}>
+			_notLast={{ borderBottomWidth: 0 }}
+			{...props}>
 			<Flex
 				align='center'
 				px={4}

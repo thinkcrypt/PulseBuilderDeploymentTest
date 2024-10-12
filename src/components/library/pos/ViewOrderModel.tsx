@@ -7,7 +7,6 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	useDisclosure,
-	GridItem,
 	Grid,
 	Flex,
 	Heading,
@@ -20,12 +19,10 @@ import {
 } from '@chakra-ui/react';
 
 import PosInput from './PosInput';
-import OrderPriceDetails from './pos-card/OrderPriceDetails/OrderPriceDetails';
 
 import {
 	ModalContainer,
 	Column,
-	currency,
 	VTextarea,
 	useGetByIdQuery,
 	Align,
@@ -33,16 +30,9 @@ import {
 	useUpdateByIdMutation,
 	useCustomToast,
 	useIsMobile,
-} from '@/components/library';
-import {
-	OrderAddress,
-	OrderButton,
-	OrderCustomer,
-	OrderItemHeading,
-	OrderItemsContainer,
-	OrderItemText,
-	OrderRightSectionContainer,
-} from './pos-card/odder';
+	OrderItems,
+} from '../';
+import { OrderAddress, OrderButton, OrderCustomer } from './pos-card/odder';
 
 const ViewOrderModal = ({ id }: { id: string }) => {
 	const { data, isFetching, isError, isSuccess, refetch } = useGetByIdQuery({
@@ -82,45 +72,7 @@ const ViewOrderModal = ({ id }: { id: string }) => {
 		error: result?.error,
 	});
 
-	const renderLeftSection = (
-		<>
-			<OrderRightSectionContainer>
-				<OrderItemHeading>Description</OrderItemHeading>
-				<OrderItemHeading textAlign='center'>Price</OrderItemHeading>
-				<OrderItemHeading textAlign='center'>Qty</OrderItemHeading>
-				<OrderItemHeading textAlign='right'>Amount</OrderItemHeading>
-			</OrderRightSectionContainer>
-			<OrderItemsContainer>
-				{data?.items?.map((item: any, i: number) => (
-					<Grid
-						gridTemplateColumns='2fr 1fr 1fr 1fr'
-						key={i}>
-						<OrderItemText fontWeight='600'>
-							{i + 1}. {item?.name}
-						</OrderItemText>
-						<GridItem textAlign='center'>{item?.unitPrice?.toFixed(2)?.toLocaleString()}</GridItem>
-						<GridItem textAlign='center'>{item?.qty - item?.returnQty}</GridItem>
-						<GridItem textAlign='right'>
-							{currency.symbol}
-							{item?.totalPrice?.toFixed(2)?.toLocaleString()}
-						</GridItem>
-					</Grid>
-				))}
-			</OrderItemsContainer>
-			<Flex
-				flex={1}
-				align='flex-end'
-				w='full'>
-				<OrderPriceDetails
-					total={data?.total}
-					subTotal={data?.subTotal}
-					discount={data?.discount}
-					shipping={data?.shipping}
-					vat={data?.vat}
-				/>
-			</Flex>
-		</>
-	);
+	const renderLeftSection = <OrderItems data={data} />;
 
 	const renderRightSection = (
 		<>

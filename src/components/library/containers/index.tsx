@@ -8,3 +8,6 @@ export { default as SpaceBetween } from './SpaceBetween';
 export { default as ImageContainer } from './ImageContainer';
 export { default as AlignCenter } from './AlignCenter';
 export { default as Align } from './AlignCenter';
+export { default as Grid } from './Grid';
+export { default as Flex } from './Flex';
+export { default as GridItem } from './GridItem';

@@ -27,6 +27,11 @@ const itemMenu: MenuItemProps[] = [
 		modal: ViewOrderModal,
 	},
 	{
+		title: 'Details',
+		type: 'custom-redirect',
+		href: (formData: any) => `/orders/${formData._id}`,
+	},
+	{
 		title: 'Sale Return',
 		type: 'custom-redirect',
 		href: (formData: any) => `/return/${formData._id}`,

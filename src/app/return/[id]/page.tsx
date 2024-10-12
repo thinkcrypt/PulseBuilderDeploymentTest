@@ -234,6 +234,7 @@ const CreateReturn = () => {
 			<Tbody>
 				{data?.items?.map((item: any, i: number) => (
 					<ReturnProduct
+						key={i}
 						item={item}
 						i={i}
 						setItem={setItem}
@@ -246,7 +247,7 @@ const CreateReturn = () => {
 	return (
 		<Layout
 			title='Sale Return'
-			path='sale-return'>
+			path='returns'>
 			<form onSubmit={handleSubmit}>
 				<Column gap={4}>
 					<TableContainer

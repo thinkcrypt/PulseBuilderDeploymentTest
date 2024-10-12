@@ -16,7 +16,7 @@ import {
 	Select,
 	Grid,
 } from '@chakra-ui/react';
-import { Price } from '@/components/library';
+import { Price } from '../';
 
 type InputContainerProps = InputProps &
 	TextareaProps &
