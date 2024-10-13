@@ -6,7 +6,6 @@ import {
 	convertToTableFields,
 	convertToFormFields,
 } from '@/components/library';
-import { viewProductFields } from '../products/products.model';
 
 type PaymentType = {
 	invoice: string;

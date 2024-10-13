@@ -11,6 +11,7 @@ import {
 	DrawerCloseButton,
 	DrawerBody,
 	DrawerFooter,
+	useColorModeValue,
 } from '@chakra-ui/react';
 
 import {
@@ -35,22 +36,32 @@ import {
 
 type CreateModalProps = {
 	data: InputData<any>[];
-	trigger: any;
+	trigger?: any;
 	path: string;
 	type?: 'post' | 'update';
 	id?: string;
 	title?: string;
 	invalidate?: any;
+	children?: any;
 };
 
-const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: CreateModalProps) => {
+const CreateModal = ({
+	data,
+	trigger,
+	path,
+	title,
+	type,
+	id,
+	invalidate,
+	children,
+}: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [fetch, { data: prevData, isFetching, isUninitialized }] = useLazyGetByIdToEditQuery();
-
 	const [formData, setFormData] = useFormData<any>(data, prevData);
-
 	const isMobile = useIsMobile();
+
+	const borderColor = useColorModeValue('border.light', 'border.dark');
 
 	const Container = isMobile ? Drawer : Modal;
 	const Overlay = isMobile ? DrawerOverlay : ModalOverlay;
@@ -150,7 +161,7 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 
 	return (
 		<>
-			<Flex onClick={onModalOpen}>{trigger || title || path}</Flex>
+			<Flex onClick={onModalOpen}>{children || trigger || title || path}</Flex>
 
 			<Container
 				isCentered
@@ -165,7 +176,7 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 					<Content
 						// overflowY='scroll'
 						onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-						<Header>{`${type === 'update' ? 'Update' : 'Create'} ${path}`}</Header>
+						<Header>{title || `${type === 'update' ? 'Update' : 'Create'} ${path}`}</Header>
 						<CloseButton />
 
 						<Body
@@ -185,8 +196,7 @@ const CreateModal = ({ data, trigger, path, title, type, id, invalidate }: Creat
 						{!isMobile && (
 							<Footer
 								borderTopWidth={1}
-								borderColor='border.light'
-								_dark={{ borderColor: 'border.dark' }}>
+								borderColor={borderColor}>
 								{footer}
 							</Footer>
 						)}

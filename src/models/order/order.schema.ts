@@ -1,5 +1,40 @@
 //
 
+export const orderStatus = [
+	{
+		label: 'Pending',
+		value: 'pending',
+	},
+	{
+		label: 'Order Placed',
+		value: 'order-placed',
+	},
+	{
+		label: 'Processing',
+		value: 'processing',
+	},
+	{
+		label: 'Ready For Dispatch',
+		value: 'ready-for-dispatch',
+	},
+	{
+		label: 'Dispatched',
+		value: 'dispatched',
+	},
+	{
+		label: 'Completed',
+		value: 'completed',
+	},
+	{
+		label: 'Refunded',
+		value: 'refunded',
+	},
+	{
+		label: 'Cancelled',
+		value: 'cancelled',
+	},
+];
+
 const schema = {
 	invoice: {
 		label: 'Invoice',

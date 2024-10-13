@@ -1,6 +1,6 @@
 type CreateType = {
 	schema: any;
-	layout: any;
+	layout: { sectionTitle: string; fields: any[] }[];
 	type?: 'post' | 'update';
 };
 

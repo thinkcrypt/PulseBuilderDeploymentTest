@@ -7,7 +7,6 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	useDisclosure,
-	Grid,
 	Flex,
 	Heading,
 	useColorModeValue,
@@ -31,6 +30,7 @@ import {
 	useCustomToast,
 	useIsMobile,
 	OrderItems,
+	OrderListGrid,
 } from '../';
 import { OrderAddress, OrderButton, OrderCustomer } from './pos-card/odder';
 
@@ -154,11 +154,7 @@ const ViewOrderModal = ({ id }: { id: string }) => {
 					<CloseButton />
 					{data && (
 						<Body>
-							<Grid
-								display={{ base: 'flex', md: 'grid' }}
-								flexDir={{ base: 'column', md: 'row' }}
-								gridTemplateColumns={{ base: '1fr', md: '3fr 2fr' }}
-								gap={10}>
+							<OrderListGrid>
 								<Flex flexDirection='column'>{renderLeftSection}</Flex>
 								<Column
 									flex={1}
@@ -176,7 +172,7 @@ const ViewOrderModal = ({ id }: { id: string }) => {
 										Update Order
 									</OrderButton>
 								</Column>
-							</Grid>
+							</OrderListGrid>
 						</Body>
 					)}
 				</ModalContainer>

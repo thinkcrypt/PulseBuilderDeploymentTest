@@ -10,7 +10,10 @@ const TableErrorMessage = ({
 		<Center
 			flexDir='column'
 			textAlign='center'
-			h='200px'
+			h={{
+				base: '50px',
+				md: '200px',
+			}}
 			{...props}>
 			<Text>{title}</Text>
 			<Text>{children}</Text>

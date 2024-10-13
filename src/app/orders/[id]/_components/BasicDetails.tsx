@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Column, DetailItem } from '@/components/library';
+import { Grid } from '@chakra-ui/react';
 
 const BasicDetails = ({ data }: { data: any }) => {
 	const convertAddress = (address: any) => {
@@ -11,53 +12,45 @@ const BasicDetails = ({ data }: { data: any }) => {
 		return `${street}${city}${postalCode}${country}`;
 	};
 	return (
-		<>
-			<Column
-				gap={1}
-				fontSize='.95rem'>
-				<DetailItem
-					row
-					title='Invoice:'>
-					#{data?.invoice}
-				</DetailItem>
-				<DetailItem
-					row
-					title='Customer:'>
-					{data?.customer?.name || 'Walk-in Customer'}
-				</DetailItem>
-				<DetailItem
-					row
-					title='Order Date:'>
-					{data?.createdAt ? new Date(data?.createdAt).toLocaleString() : ''}
-				</DetailItem>
-				<DetailItem
-					row
-					title='Payment Status:'>
-					{data?.isPaid ? 'Paid' : 'Unpaid'}
-				</DetailItem>
-				<DetailItem title='Address:'>{convertAddress(data?.address)}</DetailItem>
-			</Column>
-			<Column
-				gap={1}
-				fontSize='.95rem'>
-				<DetailItem
-					row
-					title='Recipient Name'>
-					{data?.address?.name}
-				</DetailItem>
-				<DetailItem
-					row
-					title='Recipient Email:'>
-					{data?.address?.email}
-				</DetailItem>
-				<DetailItem
-					row
-					title='Recipient Phone:'>
-					{data?.address?.phone}
-				</DetailItem>
-			</Column>
-		</>
+		<Grid
+			gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }}
+			gap={2}>
+			<Section>
+				<Item title='Invoice:'>#{data?.invoice}</Item>
+				<Item title='Customer:'>{data?.customer?.name || 'Walk-in Customer'}</Item>
+				<Item title='Order Date:'>
+					{data?.createdAt ? new Date(data?.createdAt).toLocaleDateString() : ''}
+				</Item>
+				<Item title='Order Time:'>
+					{data?.createdAt ? new Date(data?.createdAt).toLocaleTimeString() : ''}
+				</Item>
+
+				<Item title='Address:'>{convertAddress(data?.address)}</Item>
+			</Section>
+			<Section>
+				<Item title='Recipient:'>{data?.address?.name}</Item>
+				<Item title='Email:'>{data?.address?.email}</Item>
+				<Item title='Phone:'>{data?.address?.phone}</Item>
+				<Item title='Payment Status:'>{data?.isPaid ? 'Paid' : 'Due'}</Item>
+			</Section>
+		</Grid>
 	);
 };
+
+const Item = ({ children, title }: { children: ReactNode; title: string }) => (
+	<DetailItem
+		row
+		title={title}>
+		{children}
+	</DetailItem>
+);
+
+const Section = ({ children }: { children: ReactNode }) => (
+	<Column
+		gap={1.5}
+		fontSize='.95rem'>
+		{children}
+	</Column>
+);
 
 export default BasicDetails;

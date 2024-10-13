@@ -75,6 +75,8 @@ const EditManyModal: FC<EditManyModalType> = ({
 		error,
 	});
 
+	const orderStatus = [{}];
+
 	return (
 		<>
 			<MenuItem onClick={onOpen}>{title}</MenuItem>

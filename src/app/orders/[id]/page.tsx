@@ -1,14 +1,41 @@
 'use client';
 import React from 'react';
-import { Layout, useGetByIdQuery, OrderItems, Column, Grid } from '@/components/library';
+import {
+	Layout,
+	useGetByIdQuery,
+	OrderItems,
+	Column,
+	Section,
+	OrderListGrid,
+	convertToFormFields,
+	CreateModal,
+} from '@/components/library';
 import { useParams } from 'next/navigation';
-import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 import { LeftSection, BasicDetails, OrderPayments } from './_components';
+import { orderStatus } from '@/models/order/order.schema';
+
+const updateForm = convertToFormFields({
+	schema: {
+		status: {
+			label: 'Order Status',
+			type: 'select',
+			options: orderStatus,
+		},
+	},
+	layout: [
+		{
+			sectionTitle: 'Update Order Status',
+			fields: ['status'],
+		},
+	],
+	type: 'update',
+});
 
 const OrderDetailPage = () => {
-	const { id } = useParams();
+	const { id }: { id: string } = useParams();
 
-	const { data, isFetching } = useGetByIdQuery(
+	const { data, isFetching, isLoading } = useGetByIdQuery(
 		{
 			path: 'orders',
 			id: id,
@@ -18,10 +45,10 @@ const OrderDetailPage = () => {
 		}
 	);
 
-	if (!data)
+	if (!data || isLoading)
 		return (
 			<Layout
-				title='Order details'
+				title='Loading...'
 				path='orders'>
 				...
 			</Layout>
@@ -31,27 +58,45 @@ const OrderDetailPage = () => {
 		<Layout
 			title={`Invoice #${data?.invoice}`}
 			path='orders'>
-			<BasicDetails data={data} />
+			<Column
+				gap={{ base: 4, md: 12 }}
+				pt={{ base: 2, md: 0 }}>
+				<Section heading='Customer Details'>
+					<BasicDetails data={data} />
+				</Section>
+				<Section
+					mb={2}
+					heading='Order Details'
+					rightComponent={
+						<CreateModal
+							path='orders'
+							id={id}
+							type='update'
+							data={updateForm}>
+							<Button size='sm'>Update Order Status</Button>
+						</CreateModal>
+					}>
+					<OrderListGrid>
+						<Flex flexDirection='column'>
+							<OrderItems data={data} />
+						</Flex>
+						<Column
+							flex={1}
+							gap={4}>
+							<Column
+								gap={2}
+								flex={1}>
+								<LeftSection data={data} />
+							</Column>
+						</Column>
+					</OrderListGrid>
+				</Section>
 
-			<Grid
-				display={{ base: 'flex', md: 'grid' }}
-				flexDir={{ base: 'column', md: 'row' }}
-				gridTemplateColumns={{ base: '1fr', md: '3fr 2fr' }}
-				gap={10}>
-				<Flex flexDirection='column'>
-					<OrderItems data={data} />
-				</Flex>
-				<Column
-					flex={1}
-					gap={4}>
-					<Column
-						gap={2}
-						flex={1}>
-						<LeftSection data={data} />
-					</Column>
-				</Column>
-			</Grid>
-			<OrderPayments invoice={data?.invoice} />
+				<OrderPayments
+					order={id}
+					invoice={data?.invoice}
+				/>
+			</Column>
 		</Layout>
 	);
 };
