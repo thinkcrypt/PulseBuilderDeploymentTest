@@ -6,8 +6,8 @@ import TableCustom from '../library/sections/table/TableCustom';
 const viewAll: TableObjectProps = {
 	title: 'Orders',
 	path: 'orders',
-	// clickable: true,
-	//toPath: '/items/edit',
+	clickable: true,
+	toPath: '/orders',
 	export: false,
 	search: false,
 	hidePreferences: true,
