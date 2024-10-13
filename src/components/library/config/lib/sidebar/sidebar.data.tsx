@@ -19,6 +19,12 @@ const sidebar: SidebarItemType[] = [
 		icon: 'order',
 		path: 'orders',
 	},
+	{
+		title: 'Delivery',
+		href: '/deliveries',
+		icon: 'order',
+		path: 'deliveries',
+	},
 
 	{
 		startOfSection: true,

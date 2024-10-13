@@ -12,7 +12,7 @@ import {
 } from '@/components/library';
 import { useParams } from 'next/navigation';
 import { Button, Flex } from '@chakra-ui/react';
-import { LeftSection, BasicDetails, OrderPayments } from './_components';
+import { LeftSection, BasicDetails, OrderPayments, OrderDelivery } from './_components';
 import { orderStatus } from '@/models/order/order.schema';
 
 const updateForm = convertToFormFields({
@@ -64,6 +64,12 @@ const OrderDetailPage = () => {
 				<Section heading='Customer Details'>
 					<BasicDetails data={data} />
 				</Section>
+				{/* <Section heading='Delivery Details'> */}
+				<OrderDelivery
+					id={data?.delivery}
+					order={id}
+				/>
+				{/* </Section> */}
 				<Section
 					mb={2}
 					heading='Order Details'
