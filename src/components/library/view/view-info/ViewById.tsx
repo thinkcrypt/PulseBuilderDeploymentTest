@@ -13,7 +13,7 @@ const ViewById = ({ path, id, schema }: { path: string; id: string; schema: any 
 
 	const { data, isFetching, isError } = useGetByIdQuery(
 		{
-			path: 'customers',
+			path: path,
 			id: id,
 		},
 		{ skip: !id || !path }

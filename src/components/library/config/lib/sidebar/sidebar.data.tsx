@@ -14,6 +14,8 @@ const sidebar: SidebarItemType[] = [
 		path: 'pos',
 	},
 	{
+		startOfSection: true,
+		sectionTitle: 'Order Management',
 		title: 'Order',
 		href: '/orders',
 		icon: 'order',
@@ -73,6 +75,12 @@ const sidebar: SidebarItemType[] = [
 		href: '/customers',
 		icon: 'customer',
 		path: 'customers',
+	},
+	{
+		title: 'Suppliers',
+		href: '/suppliers',
+		icon: 'customer',
+		path: 'suppliers',
 	},
 	{
 		startOfSection: true,
@@ -146,6 +154,18 @@ const sidebar: SidebarItemType[] = [
 		href: '/reports/top-customers',
 		icon: 'report',
 		path: 'top-customers',
+	},
+	{
+		title: 'Customer Ledger',
+		href: '/customer-ledger',
+		icon: 'report',
+		path: 'customer-ledger',
+	},
+	{
+		title: 'Supplier Ledger',
+		href: '/supplier-ledger',
+		icon: 'report',
+		path: 'supplier-ledger',
 	},
 
 	{

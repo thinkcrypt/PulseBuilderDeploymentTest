@@ -33,11 +33,7 @@ const dataFields: TableObjectProps = {
 			type: 'edit-modal',
 			dataModel: edit,
 		},
-		// {
-		// 	title: 'Quick View',
-		// 	type: 'view-modal',
-		// 	dataModel: viewById,
-		// },
+
 		{
 			title: 'View',
 			type: 'link',

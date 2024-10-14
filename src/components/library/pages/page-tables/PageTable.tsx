@@ -39,15 +39,14 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	// Get the table state from the redux store
 	const { data, isLoading, isError, error, isSuccess } = useGetAllQuery({
 		page,
-		limit,
+		limit: table?.limit || limit,
 		search,
 		sort,
-		filters,
+		filters: table?.preFilters ?? (table?.filters ? filters : null),
 		path: table?.path,
 	});
 
 	const { data: userData } = useGetSelfQuery({});
-
 	useEffect(() => {
 		const defaultFields = table?.data
 			? table?.data?.filter(item => item.type !== 'menu').map(item => item.dataKey)
