@@ -77,6 +77,12 @@ const sidebar: SidebarItemType[] = [
 		path: 'customers',
 	},
 	{
+		title: 'Customer Groups',
+		href: '/groups',
+		icon: 'collections',
+		path: 'groups',
+	},
+	{
 		title: 'Suppliers',
 		href: '/suppliers',
 		icon: 'customer',

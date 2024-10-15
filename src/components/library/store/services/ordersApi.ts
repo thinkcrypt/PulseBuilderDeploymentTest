@@ -25,7 +25,7 @@ export const ordersApi = mainApi.injectEndpoints({
 				method: 'POST',
 				body,
 			}),
-			invalidatesTags: ['orders'],
+			invalidatesTags: ['orders', 'products'],
 		}),
 		getCartTotal: builder.mutation<any, any>({
 			query: body => ({

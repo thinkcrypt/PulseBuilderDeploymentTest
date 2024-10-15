@@ -54,7 +54,7 @@ const AddToCartModal: React.FC<DeleteItemModalProps> = ({ children, item }) => {
 		if (item?.stock < 1) {
 			return true;
 		}
-		if (item?.stock <= inCart + (qty || 1)) {
+		if (item?.stock < inCart + (qty || 1)) {
 			return true;
 		}
 	};

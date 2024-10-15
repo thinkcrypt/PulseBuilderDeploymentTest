@@ -102,8 +102,6 @@ const updateForm = {
 const viewAll: TableObjectProps = {
 	title: 'Products',
 	path: 'products',
-	// clickable: true,
-	//toPath: '/items/edit',
 	export: true,
 	select: {
 		show: true,

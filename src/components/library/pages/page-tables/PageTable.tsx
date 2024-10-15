@@ -35,14 +35,14 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 	const router = useRouter();
 
 	const selectable = table?.select?.show ? true : false;
-
+	const tableFilters = table?.filters !== undefined ? table?.filters : true;
 	// Get the table state from the redux store
 	const { data, isLoading, isError, error, isSuccess } = useGetAllQuery({
 		page,
 		limit: table?.limit || limit,
 		search,
 		sort,
-		filters: table?.preFilters ?? (table?.filters ? filters : null),
+		filters: table?.preFilters ?? (tableFilters ? filters : null),
 		path: table?.path,
 	});
 

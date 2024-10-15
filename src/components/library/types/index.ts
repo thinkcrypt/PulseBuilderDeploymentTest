@@ -77,6 +77,7 @@ export type TableObjectDataProps = SelectProps | NonSelectProps;
 type ButtonType = {
 	title: string;
 	path?: string;
+	icon?: string;
 };
 
 /**

@@ -14,6 +14,11 @@ const schema: SchemaProps = {
 		displayInTable: true,
 		default: true,
 	},
+	group: {
+		label: 'Groups',
+		type: 'data-tag',
+		model: 'groups',
+	},
 	phone: {
 		label: 'Phone',
 		type: 'text',

@@ -5,14 +5,10 @@ import {
 	PLACEHOLDER_IMAGE,
 	ImageContainer,
 	Column,
-	useAppDispatch,
-	addToCart,
 	currency,
 	ViewItemModal,
 	AddToCartModal,
 } from '@/components/library';
-
-import CardContainer from './CardContainer';
 
 import { viewPreviewFields as viewAllDataFields } from '@/models/products/products.model';
 

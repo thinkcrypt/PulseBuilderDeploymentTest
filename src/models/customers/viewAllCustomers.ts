@@ -19,6 +19,18 @@ const dataFields: TableObjectProps = {
 				title: 'Send SMS',
 				type: 'marketing-sms',
 			},
+			{
+				title: 'Add to group',
+				type: 'edit-data-select',
+				key: 'group',
+				keyType: 'array',
+				dataPath: 'groups',
+				//dataModel: createCollection,
+				prompt: {
+					title: 'Add to group',
+					body: 'Add Customers to group',
+				},
+			},
 		],
 	},
 	export: true,
@@ -27,6 +39,7 @@ const dataFields: TableObjectProps = {
 		title: 'Add Customers',
 		path: '/customers/create',
 	},
+
 	menu: [
 		{
 			title: 'Edit',

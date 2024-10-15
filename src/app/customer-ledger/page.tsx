@@ -20,7 +20,6 @@ const LedgerPage: NextPage = () => {
 	const ledgerTable: TableObjectProps = {
 		title: 'Customer Ledgers',
 		path: 'ledgers',
-
 		preFilters: { type: 'customer' },
 		filters: false,
 		data: viewFields,
