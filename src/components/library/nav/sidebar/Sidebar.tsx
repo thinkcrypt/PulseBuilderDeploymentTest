@@ -20,7 +20,7 @@ import Link from 'next/link';
 const Sidebar: React.FC<FlexProps & { closeBtn?: ReactNode }> = ({ closeBtn, ...props }) => {
 	const { data } = useGetSelfQuery({});
 
-	const title = data?.store?.name || process.env.NEXT_PUBLIC_STORE_NAME || '--';
+	const title = data?.shop?.name || process.env.NEXT_PUBLIC_STORE_NAME || '--';
 
 	const main = (
 		<>

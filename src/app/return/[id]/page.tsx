@@ -137,6 +137,7 @@ const CreateReturn = () => {
 				{data?.customer ? data?.customer?.name : 'Walk-in Customer'}
 			</ReturnItem>
 			<ReturnItem heading='Product Price'>{data?.subTotal?.toLocaleString()}</ReturnItem>
+			<ReturnItem heading='Vat'>{data?.vat?.toLocaleString()}</ReturnItem>
 			<ReturnItem heading='Discount'>{data?.discount?.toLocaleString()}</ReturnItem>
 			<ReturnItem heading='Paid'>{data?.paidAmount?.toLocaleString()}</ReturnItem>
 			<ReturnItem heading='Total Receivable'>{data?.dueAmount?.toLocaleString()}</ReturnItem>
@@ -178,7 +179,10 @@ const CreateReturn = () => {
 				gap={2}>
 				<VInput
 					label='Total Return Amount'
-					value={formData.items.reduce((acc: number, item: any) => acc + item.returnAmount, 0)}
+					value={formData.items.reduce(
+						(acc: number, item: any) => acc + (item.returnAmount + item.unitVat * item.returnQty),
+						0
+					)}
 					name='reference'
 					isReadOnly={true}
 				/>

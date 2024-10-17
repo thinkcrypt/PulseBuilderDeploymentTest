@@ -156,6 +156,12 @@ const sidebar: SidebarItemType[] = [
 		path: 'top-products',
 	},
 	{
+		title: 'Low Stock',
+		href: '/reports/low-stock',
+		icon: 'report',
+		path: 'reports/low-stock',
+	},
+	{
 		title: 'Top Customers',
 		href: '/reports/top-customers',
 		icon: 'report',

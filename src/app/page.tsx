@@ -113,7 +113,7 @@ export default function UserFeedback() {
 						/>
 
 						<Sum
-							title='Due Amount'
+							title='Invoice Due'
 							path='orders'
 							field='dueAmount'
 							filters={filters}

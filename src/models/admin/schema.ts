@@ -26,6 +26,12 @@ const schema: SchemaProps = {
 		type: 'password',
 		isRequired: true,
 	},
+	shop: {
+		label: 'Shop',
+		type: 'string',
+		tableKey: 'shop.name',
+		displayInTable: true,
+	},
 	role: {
 		label: 'Role',
 		isRequired: true,
