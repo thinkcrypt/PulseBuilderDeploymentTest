@@ -41,7 +41,7 @@ type VDataMenuProps = InputProps & {
 	hideNew?: boolean;
 	field?: string;
 	type?: 'object' | 'value';
-	key?: 'string';
+	dataKey?: 'string';
 	unselect?: boolean;
 };
 
@@ -56,7 +56,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	hideNew = false,
 	field,
 	type = 'value',
-	key = '_id',
+	dataKey = '_id',
 	unselect = true,
 	...props
 }) => {
