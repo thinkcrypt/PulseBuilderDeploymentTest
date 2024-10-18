@@ -2,9 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import { useIsMobile, Tr, CustomTd as Td } from '../../';
-
 import { useToast } from '@chakra-ui/react';
-
 import InputElement from '../../utils/inputs/input-components/InputElement';
 
 const ReturnProduct = ({ item, i, setItem }: { item: any; i: number; setItem: any }) => {

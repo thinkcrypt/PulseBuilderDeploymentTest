@@ -40,6 +40,9 @@ type VDataMenuProps = InputProps & {
 	dataModel?: any;
 	hideNew?: boolean;
 	field?: string;
+	type?: 'object' | 'value';
+	key?: 'string';
+	unselect?: boolean;
 };
 
 const VDataMenu: React.FC<VDataMenuProps> = ({
@@ -52,6 +55,9 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	dataModel,
 	hideNew = false,
 	field,
+	type = 'value',
+	key = '_id',
+	unselect = true,
 	...props
 }) => {
 	const { onOpen, onClose, isOpen } = useDisclosure();
@@ -77,19 +83,15 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 
 	const handleChange = (e: any) => {
 		if (props.onChange) {
-			if (props.onChange) {
-				const event = {
-					target: {
-						name: props.name,
-						value: e._id,
-					},
-				} as any;
-
-				props.onChange(event);
-			}
+			const event = {
+				target: {
+					name: props.name,
+					value: type == 'object' ? e : e?._id,
+				},
+			} as any;
+			props.onChange(event);
 		}
 		setTitle(e?.name);
-
 		onClose();
 	};
 
@@ -112,7 +114,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 	const btnRef = React.useRef<any>(null);
 
 	return (
-		<>
+		<Flex w='full'>
 			{dataModel && (
 				<CreateModal
 					data={dataModel}
@@ -132,7 +134,8 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 					<>
 						<FormControl
 							isRequired={isRequired}
-							gap={4}>
+							gap={4}
+							w='full'>
 							<Stack
 								spacing={2}
 								w='full'>
@@ -150,7 +153,6 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 										isRequired={isRequired}
 										value={value}
 										h='1px'
-										w='full'
 										color='transparent'
 										focusBorderColor='transparent'
 										border='none'
@@ -189,18 +191,20 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 								w='100%'
 								maxH={MAX_H}
 								overflowY='scroll'>
-								<MenuItem
-									w={WIDTH}
-									onClick={() => handleChange({ name: ``, _id: undefined })}>
-									Unselect
-								</MenuItem>
+								{unselect && (
+									<MenuItem
+										w={WIDTH}
+										onClick={() => handleChange({ name: ``, _id: undefined })}>
+										Unselect
+									</MenuItem>
+								)}
 								{renderMenuItems}
 							</Flex>
 						</MenuContainer>
 					</>
 				)}
 			</Menu>
-		</>
+		</Flex>
 	);
 };
 
