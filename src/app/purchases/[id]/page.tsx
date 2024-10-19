@@ -195,7 +195,7 @@ const CreatePurchase = () => {
 
 			<Tbody>
 				{data?.items?.map((item: any, i: number) => (
-					<Tr>
+					<Tr key={i}>
 						<Td heading='#'>{i + 1}</Td>
 						<Td heading='Product Name'>{item?.name}</Td>
 
