@@ -8,24 +8,20 @@ import {
 	useDisclosure,
 	MenuDivider,
 	Button,
-	FormControl,
-	Stack,
 	InputProps,
 } from '@chakra-ui/react';
 
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import {
 	DataMenuButton,
-	Label,
 	CreateModal,
-	HelperText,
 	MenuContainer,
 	MenuItem,
 	ItemOfDataMenu,
+	useGetAllQuery,
+	FormControl,
 } from '../../';
-
-import { useGetAllQuery } from '../../store';
 
 const WIDTH = '300px';
 const MAX_H = '200px';
@@ -134,34 +130,24 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 					<>
 						<FormControl
 							isRequired={isRequired}
-							gap={4}
+							label={label}
+							helper={helper}
 							w='full'>
-							<Stack
-								spacing={2}
-								w='full'>
-								<Label>{label}</Label>
-								<Stack
-									spacing={1}
-									w='full'>
-									<DataMenuButton
-										value={value}
-										isActive={isOpen}>
-										{value ? getNameById(value) : `Select ${label}`}
-									</DataMenuButton>
-									<Input
-										ref={inputRef}
-										isRequired={isRequired}
-										value={value}
-										h='1px'
-										color='transparent'
-										focusBorderColor='transparent'
-										border='none'
-										{...props}
-									/>
-								</Stack>
-
-								{helper && <HelperText>{helper}</HelperText>}
-							</Stack>
+							<DataMenuButton
+								value={value}
+								isActive={isOpen}>
+								{value ? getNameById(value) : `Select ${label}`}
+							</DataMenuButton>
+							<Input
+								ref={inputRef}
+								isRequired={isRequired}
+								value={value}
+								h='1px'
+								color='transparent'
+								focusBorderColor='transparent'
+								border='none'
+								{...props}
+							/>
 						</FormControl>
 
 						<MenuContainer w={WIDTH}>
@@ -186,11 +172,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 								mt={1}
 								mb={0}
 							/>
-							<Flex
-								flexDir='column'
-								w='100%'
-								maxH={MAX_H}
-								overflowY='scroll'>
+							<MenuItemScrollContainer>
 								{unselect && (
 									<MenuItem
 										w={WIDTH}
@@ -199,7 +181,7 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 									</MenuItem>
 								)}
 								{renderMenuItems}
-							</Flex>
+							</MenuItemScrollContainer>
 						</MenuContainer>
 					</>
 				)}
@@ -207,5 +189,15 @@ const VDataMenu: React.FC<VDataMenuProps> = ({
 		</Flex>
 	);
 };
+
+const MenuItemScrollContainer = ({ children }: { children: ReactNode }) => (
+	<Flex
+		flexDir='column'
+		w='100%'
+		maxH={MAX_H}
+		overflowY='scroll'>
+		{children}
+	</Flex>
+);
 
 export default VDataMenu;

@@ -102,11 +102,12 @@ const Layout: FC<LayoutProps> = ({
 								borderTopRightRadius={{ base: `0`, md: THEME == 'basic' ? 0 : 'xl' }}
 								bg={{ base: 'background.400', md: 'background.light' }}
 								_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
-								p={PX}
+								px={PX}
+								pt={{ base: 4, md: 1 }}
 								pb={0}
 								w='full'>
 								<Column
-									pl={{ base: 0, md: 2 }}
+									pl={{ base: 0, md: 0 }}
 									w='full'
 									gap={4}>
 									{children}

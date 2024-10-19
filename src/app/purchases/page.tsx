@@ -14,7 +14,6 @@ const fields = [
 	'supplier',
 	'date',
 	'status',
-	// 'totalItems',
 	'total',
 	'subTotal',
 	'shippingCost',
@@ -40,9 +39,9 @@ const table: TableObjectProps = {
 	data: tableFields,
 	menu: [
 		{
-			type: 'view-modal',
-			title: 'View Details',
-			dataModel: viewFields,
+			type: 'view',
+			title: 'View',
+			path: '/purchases',
 		},
 	],
 };
