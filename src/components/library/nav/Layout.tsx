@@ -62,29 +62,26 @@ const Layout: FC<LayoutProps> = ({
 	return (
 		<AuthWrapper>
 			<LayoutWrapper>
-				{props?.type !== 'pos' && (
-					<Navbar
-						showMenu={showMenu}
-						px={PX}
-						w={showMenu ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
-						left={showMenu ? 0 : sizes.HOME_NAV_LEFT}>
-						<SpaceBetween>
-							<Heading
-								color={THEME == 'basic' ? 'inherit' : 'white'}
-								size='md'
-								fontFamily='Bebas Neue'>
-								{title}
-							</Heading>
-						</SpaceBetween>
-						<Flex
-							align='center'
-							gap={4}>
-							<SelfMenu />
-							<CreateMenu />
-						</Flex>
-					</Navbar>
-				)}
-
+				<Navbar
+					showMenu={showMenu}
+					px={PX}
+					w={showMenu ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
+					left={showMenu ? 0 : sizes.HOME_NAV_LEFT}>
+					<SpaceBetween>
+						<Heading
+							color={THEME == 'basic' ? 'inherit' : 'white'}
+							size='md'
+							fontFamily='Bebas Neue'>
+							{title}
+						</Heading>
+					</SpaceBetween>
+					<Flex
+						align='center'
+						gap={4}>
+						<SelfMenu />
+						<CreateMenu />
+					</Flex>
+				</Navbar>
 				<Body>
 					{type == 'default' && <Sidebar />}
 					<Flex
@@ -96,23 +93,7 @@ const Layout: FC<LayoutProps> = ({
 							pt={props?.type == 'pos' ? 0 : type == 'pos' ? 12 : sizes.NAV_HEIGHT}
 							flex={1}
 							w='full'>
-							<Flex
-								overflowY='hidden'
-								h={`calc(100vh - ${sizes.NAV_HEIGHT})`}
-								borderTopRightRadius={{ base: `0`, md: THEME == 'basic' ? 0 : 'xl' }}
-								bg={{ base: 'background.400', md: 'background.light' }}
-								_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
-								px={PX}
-								pt={{ base: 4, md: 1 }}
-								pb={0}
-								w='full'>
-								<Column
-									pl={{ base: 0, md: 0 }}
-									w='full'
-									gap={4}>
-									{children}
-								</Column>
-							</Flex>
+							<Main>{children}</Main>
 						</Flex>
 					</Flex>
 				</Body>
@@ -121,5 +102,25 @@ const Layout: FC<LayoutProps> = ({
 		</AuthWrapper>
 	);
 };
+
+const Main = ({ children }: { children: React.ReactNode }) => (
+	<Flex
+		overflowY='hidden'
+		h={`calc(100vh - ${sizes.NAV_HEIGHT})`}
+		borderTopRightRadius={{ base: `0`, md: THEME == 'basic' ? 0 : 'xl' }}
+		bg={{ base: 'background.400', md: 'background.light' }}
+		_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
+		px={PX}
+		pt={{ base: 4, md: 1 }}
+		pb='32px'
+		w='full'>
+		<Column
+			pl={{ base: 0, md: 0 }}
+			w='full'
+			gap={4}>
+			{children}
+		</Column>
+	</Flex>
+);
 
 export default Layout;

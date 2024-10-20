@@ -11,6 +11,8 @@ import {
 	useGetByIdQuery,
 	CustomTd as Td,
 	sizes,
+	PageHeading,
+	SimplePageHeading,
 } from '@/components/library';
 import {
 	Grid,
@@ -44,6 +46,10 @@ const HEADINGS: HeadingProps[] = [
 		isNumeric: true,
 	},
 	{
+		content: 'Delivered Qty',
+		isNumeric: true,
+	},
+	{
 		content: 'Unit Cost Price',
 		isNumeric: true,
 	},
@@ -70,7 +76,7 @@ const formFields = {
 	date: {
 		name: 'date',
 		label: 'Purchase Date',
-		type: 'date',
+		type: 'string',
 	},
 	subTotal: {
 		name: 'subTotal',
@@ -113,6 +119,14 @@ const formFields = {
 		label: 'Total',
 		type: 'number',
 		isReadOnly: true,
+	},
+};
+
+const table = {
+	isModal: true,
+	path: 'purchases',
+	button: {
+		title: 'Add Purchase',
 	},
 };
 
@@ -206,6 +220,12 @@ const CreatePurchase = () => {
 						</Td>
 
 						<Td
+							heading='Delivered Qty'
+							isNumeric={!isMobile && true}>
+							{item?.deliveredQty}
+						</Td>
+
+						<Td
 							isNumeric={!isMobile && true}
 							heading='Cost Price'>
 							{item?.price}
@@ -236,6 +256,26 @@ const CreatePurchase = () => {
 		<Layout
 			title={`Purchase #${data?.invoice}`}
 			path='purchases'>
+			<SimplePageHeading
+				{...(!data?.isDelivered && { button: 'Update Status' })}
+				{...(!data?.isDelivered && { isModal: true })}
+				title={`Purchase #${data?.invoice}`}
+				path='purchases'
+				type='update'
+				id={data?._id}
+				data={[
+					{
+						name: 'status',
+						label: 'Status',
+						type: 'select',
+						options: [
+							{ label: 'Pending', value: 'pending' },
+							{ label: 'Processing', value: 'processing' },
+							{ label: 'Delivered', value: 'delivered' },
+						],
+					},
+				]}
+			/>
 			<Column
 				gap={4}
 				pb='64px'>

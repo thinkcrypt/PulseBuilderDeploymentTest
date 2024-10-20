@@ -24,13 +24,13 @@ const sidebar: SidebarItemType[] = [
 	{
 		title: 'Purchase',
 		href: '/purchases',
-		icon: 'order',
+		icon: 'purchase',
 		path: 'purchases',
 	},
 	{
 		title: 'Delivery',
 		href: '/deliveries',
-		icon: 'order',
+		icon: 'delivery-fill',
 		path: 'deliveries',
 	},
 

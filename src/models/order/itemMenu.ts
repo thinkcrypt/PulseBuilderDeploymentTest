@@ -37,7 +37,7 @@ const itemMenu: MenuItemProps[] = [
 		href: (formData: any) => `/return/${formData._id}`,
 	},
 	{
-		title: 'Delete',
+		title: 'Cancel Order',
 		type: 'delete',
 	},
 ];

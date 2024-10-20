@@ -6,6 +6,7 @@ const schema: Schema = {
 		label: 'Invoice',
 		displayInTable: true,
 		default: true,
+		sort: true,
 	},
 	supplier: {
 		type: 'string',
@@ -84,6 +85,7 @@ const schema: Schema = {
 		type: 'textarea',
 		label: 'Note',
 	},
+
 	isDelivered: {
 		type: 'tag',
 		label: 'Delivered',
