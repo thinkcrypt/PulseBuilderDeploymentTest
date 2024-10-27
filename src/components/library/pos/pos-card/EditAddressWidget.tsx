@@ -9,75 +9,69 @@ import {
 	useDisclosure,
 	Flex,
 	ModalFooter,
-	Text,
 } from '@chakra-ui/react';
 
 import {
-	IconButton,
 	useFormData,
 	FormContent,
 	ModalContainer,
-	Column,
 	InputData,
-	useAppDispatch,
-	useAppSelector,
-	useGetByIdQuery,
 	DiscardButton,
 	Address,
-	removeAddress,
-	setAddress,
+	useLazyGetByIdToEditQuery,
 } from '../../';
 
 const inputFields: InputData<Address>[] = [
 	{
-		name: 'name',
+		name: 'address.name',
 		label: 'Recipient Name',
 		isRequired: true,
 		type: 'text',
 	},
 	{
-		name: 'email',
+		name: 'address.email',
 		label: 'Recipient Email',
 		isRequired: true,
 		type: 'text',
 		span: 1,
 	},
 	{
-		name: 'phone',
+		name: 'address.phone',
 		label: 'Recipient Phone',
 		isRequired: true,
 		type: 'text',
 		span: 1,
 	},
 	{
-		name: 'street',
+		name: 'address.street',
 		label: 'Street Address',
 		isRequired: true,
 		type: 'textarea',
 	},
 	{
-		name: 'city',
+		name: 'address.city',
 		label: 'City',
 		isRequired: true,
 		type: 'text',
 		span: 1,
 	},
 	{
-		name: 'state',
+		name: 'address.state',
 		label: 'State',
 		isRequired: false,
 		type: 'text',
 		span: 1,
 	},
 	{
-		name: 'country',
+		name: 'address.country',
 		label: 'Country',
 		isRequired: false,
 		type: 'text',
 		span: 1,
+		value: () => 'Bangladesh',
 	},
 	{
-		name: 'postalCode',
+		name: 'address.postalCode',
 		label: 'Post Code',
 		isRequired: true,
 		type: 'text',
@@ -85,30 +79,22 @@ const inputFields: InputData<Address>[] = [
 	},
 ];
 
-const AddressWidget = ({ id }: { id?: string }) => {
+const EditAddressWidget = ({ id }: { id: string }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const dispatch = useAppDispatch();
-	const { isAddressSet, address, user }: any = useAppSelector(state => state.cart);
 
-	const { data, isFetching } = useGetByIdQuery(
-		{
-			path: 'customers',
-			id: user,
-		},
-		{
-			skip: !user,
-		}
-	);
+	const [fetch, { data: prevData }] = useLazyGetByIdToEditQuery();
 
-	const [formData, setFormData] = useFormData<any>(inputFields);
+	const [formData, setFormData] = useFormData<any>(inputFields, prevData);
 
 	const onModalOpen = () => {
-		setFormData({
-			name: data?.name,
-			email: data?.email,
-			phone: data?.phone,
-		});
 		onOpen();
+		let newFieldData = {};
+		inputFields?.map((field: any) => {
+			if (field?.value) newFieldData = { ...newFieldData, [field.name]: field.value };
+		});
+		setFormData({ ...formData, ...newFieldData });
+		onOpen();
+		fetch({ path: 'orders', id });
 	};
 
 	const onModalClose = () => {
@@ -118,55 +104,22 @@ const AddressWidget = ({ id }: { id?: string }) => {
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
-		dispatch(setAddress(formData));
+
 		onModalClose();
 	};
-
-	const deleteAddress = (e: any) => {
-		dispatch(removeAddress());
-	};
-
-	const addressIsSet = (
-		<Flex
-			justify='space-between'
-			flex={1}>
-			<Column gap={0}>
-				<Text
-					fontSize='.8rem'
-					fontWeight='600'>
-					{`${address?.street}, ${address?.city},`} {`${address?.postalCode}, ${address?.country}`}
-				</Text>
-			</Column>
-
-			<IconButton
-				tooltip='Delete Address'
-				aria-label='Delete Address'
-				colorScheme='red'
-				variant='outline'
-				iconName='delete'
-				size='xs'
-				onClick={deleteAddress}
-			/>
-		</Flex>
-	);
 
 	const addressNotSet = (
 		<Button
 			size='sm'
-			fontWeight='700'
-			variant='link'
+			colorScheme='brand'
 			onClick={onModalOpen}>
-			Add Delivery Address
+			Update
 		</Button>
 	);
 
 	return (
 		<>
-			<Flex
-				py={1}
-				pl={3}>
-				{isAddressSet ? addressIsSet : addressNotSet}
-			</Flex>
+			<Flex>{addressNotSet}</Flex>
 
 			<Modal
 				size='4xl'
@@ -176,7 +129,7 @@ const AddressWidget = ({ id }: { id?: string }) => {
 
 				<ModalContainer>
 					<ModalCloseButton />
-					<ModalHeader>Delivery Address</ModalHeader>
+					<ModalHeader>Edit Customer</ModalHeader>
 					<form onSubmit={handleSubmit}>
 						<ModalBody>
 							<FormContent
@@ -204,4 +157,4 @@ const AddressWidget = ({ id }: { id?: string }) => {
 	);
 };
 
-export default AddressWidget;
+export default EditAddressWidget;

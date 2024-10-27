@@ -3,8 +3,6 @@
 import React, { FC } from 'react';
 import { Flex, Heading, useMediaQuery, FlexProps } from '@chakra-ui/react';
 
-import { refresh, navigate } from '../';
-
 import {
 	useIsMobile,
 	AuthWrapper,
@@ -21,6 +19,9 @@ import {
 	Column,
 	LayoutWrapper,
 	THEME,
+	refresh,
+	navigate,
+	Align,
 } from '../';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
@@ -75,12 +76,14 @@ const Layout: FC<LayoutProps> = ({
 							{title}
 						</Heading>
 					</SpaceBetween>
-					<Flex
-						align='center'
-						gap={4}>
+					<Align gap={4}>
+						<ColorMode
+							size='20px'
+							position='navbar'
+						/>
 						<SelfMenu />
 						<CreateMenu />
-					</Flex>
+					</Align>
 				</Navbar>
 				<Body>
 					{type == 'default' && <Sidebar />}

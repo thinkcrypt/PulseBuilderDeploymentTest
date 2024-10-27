@@ -9,10 +9,17 @@ import {
 	OrderListGrid,
 	convertToFormFields,
 	CreateModal,
+	EditAddressWidget,
 } from '@/components/library';
 import { useParams } from 'next/navigation';
 import { Button, Flex } from '@chakra-ui/react';
-import { LeftSection, BasicDetails, OrderPayments, OrderDelivery } from './_components';
+import {
+	LeftSection,
+	BasicDetails,
+	OrderPayments,
+	OrderDelivery,
+	updateAddressModel,
+} from './_components';
 import { orderStatus } from '@/models/order/order.schema';
 
 const updateForm = convertToFormFields({
@@ -61,7 +68,17 @@ const OrderDetailPage = () => {
 			<Column
 				gap={{ base: 4, md: 12 }}
 				pt={{ base: 2, md: 0 }}>
-				<Section heading='Customer Details'>
+				<Section
+					heading='Customer Details'
+					rightComponent={
+						<CreateModal
+							path='orders'
+							id={id}
+							type='update'
+							data={updateAddressModel}>
+							<Button size='sm'>Update Address</Button>
+						</CreateModal>
+					}>
 					<BasicDetails data={data} />
 				</Section>
 				{/* <Section heading='Delivery Details'> */}
