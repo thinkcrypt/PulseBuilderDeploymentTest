@@ -46,6 +46,7 @@ import { FaMoneyCheckAlt } from 'react-icons/fa';
 import { TbBrandPatreonFilled } from 'react-icons/tb';
 import { GiBuyCard } from 'react-icons/gi';
 import { FaTruck } from 'react-icons/fa';
+import { FaCircleInfo } from 'react-icons/fa6';
 
 export type IconNameOptions =
 	| 'add'
@@ -78,6 +79,7 @@ export type IconNameOptions =
 	| 'fields'
 	| 'home'
 	| 'items'
+	| 'info'
 	| 'leave'
 	| 'menu'
 	| 'order'
@@ -145,6 +147,7 @@ const icons: any = {
 	'brand-alt': TbBrandPatreonFilled,
 	purchase: GiBuyCard,
 	'delivery-fill': FaTruck,
+	info: FaCircleInfo,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

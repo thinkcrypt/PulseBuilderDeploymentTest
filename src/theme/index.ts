@@ -55,6 +55,8 @@ export const buttonTheme = defineStyleConfig({
 export const tooltipTheme = defineStyleConfig({
 	baseStyle: {
 		borderRadius: 'lg',
+		bg: 'brand.500',
+		_dark: { bg: 'whitesmoke' },
 	},
 });
 

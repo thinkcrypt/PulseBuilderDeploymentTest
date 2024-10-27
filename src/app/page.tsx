@@ -128,6 +128,7 @@ export default function UserFeedback() {
 							price
 						/>
 						<ShowSum
+							tooltip='Net Profit = Gross Profit - Expenses'
 							title='Net Profit'
 							price>
 							{netProfit - expenses}
