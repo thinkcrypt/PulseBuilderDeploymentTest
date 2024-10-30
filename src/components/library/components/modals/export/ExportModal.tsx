@@ -45,7 +45,7 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 
 	useEffect(() => {
 		if (result?.isSuccess) {
-			close();
+			closeModal();
 		}
 	}, [result]);
 

@@ -22,7 +22,7 @@ type DeleteItemModalProps = {
 
 const DeleteSection: React.FC<DeleteItemModalProps> = ({ value, handleDataChange, name, idx }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef<any>();
+	const cancelRef = React.useRef<any>(undefined);
 
 	const closeItem = () => {
 		onClose();

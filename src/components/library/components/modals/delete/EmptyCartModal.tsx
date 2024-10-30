@@ -27,7 +27,7 @@ const EmptyCartModal: React.FC<DeleteItemModalProps> = ({
 	onClick,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef<any>();
+	const cancelRef = React.useRef<any>(undefined);
 
 	const closeItem = () => {
 		onClose();

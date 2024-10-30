@@ -21,7 +21,7 @@ type DeleteItemModalProps = {
 
 const DuplicateModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef<any>();
+	const cancelRef = React.useRef<any>(undefined);
 
 	const [trigger, result] = useCopyItemMutation();
 

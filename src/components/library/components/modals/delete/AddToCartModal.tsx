@@ -36,7 +36,7 @@ type DeleteItemModalProps = {
 
 const AddToCartModal: React.FC<DeleteItemModalProps> = ({ children, item }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef<any>();
+	const cancelRef = React.useRef<any>(undefined);
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
 	const inCart = useQtyInCart(item?._id);

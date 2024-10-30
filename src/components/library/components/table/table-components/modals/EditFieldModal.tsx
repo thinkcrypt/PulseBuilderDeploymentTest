@@ -37,7 +37,7 @@ const EditFieldModal: FC<EditManyModalType> = ({
 	value,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = useRef<any>();
+	const cancelRef = useRef<any>(undefined);
 
 	const { data, isFetching } = useGetByIdToEditQuery({ path, id: item });
 

@@ -27,7 +27,7 @@ type DeleteItemModalProps = {
 
 const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({ title, id, children }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef<any>();
+	const cancelRef = React.useRef<any>(undefined);
 
 	const [trigger, result] = useDeleteByIdMutation();
 
