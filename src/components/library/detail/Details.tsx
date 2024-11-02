@@ -1,15 +1,27 @@
 import React, { FC } from 'react';
-import { Grid, Input, Text, InputProps, Button, Box } from '@chakra-ui/react';
+import {
+	Grid,
+	Input,
+	Text,
+	InputProps,
+	Button,
+	Box,
+	Textarea,
+	TextareaProps,
+	useColorModeValue,
+} from '@chakra-ui/react';
 import UpdatePasswordModal from '../modals/update-password/UpdatePasswordModal';
 
-type DetailProps = InputProps & {
-	title: string;
-	children: any;
-	editing: boolean;
-	isPassword?: boolean;
-};
+type DetailProps = InputProps &
+	TextareaProps & {
+		title: string;
+		children: any;
+		editing: boolean;
+		isPassword?: boolean;
+		type?: 'input' | 'textarea';
+	};
 
-const Details: FC<DetailProps> = ({ title, children, editing, isPassword, ...props }) => {
+const Details: FC<DetailProps> = ({ title, children, editing, type, isPassword, ...props }) => {
 	const textBox = (
 		<Text
 			px={3}
@@ -25,16 +37,28 @@ const Details: FC<DetailProps> = ({ title, children, editing, isPassword, ...pro
 		</Box>
 	);
 
-	const inputBox = (
-		<Input
-			w='400px'
-			size='sm'
-			borderRadius='lg'
-			color='text.500'
-			value={children}
-			{...props}
-		/>
-	);
+	const inputTextColor = useColorModeValue('text.500', 'gray.300');
+
+	const inputBox =
+		type == 'textarea' ? (
+			<Textarea
+				w='400px'
+				size='sm'
+				borderRadius='lg'
+				color={inputTextColor}
+				value={children}
+				{...props}
+			/>
+		) : (
+			<Input
+				w='400px'
+				size='sm'
+				borderRadius='lg'
+				color={inputTextColor}
+				value={children}
+				{...props}
+			/>
+		);
 
 	return (
 		<Grid

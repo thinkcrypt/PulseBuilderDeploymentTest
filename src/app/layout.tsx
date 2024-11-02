@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/library/providers/Providers';
 import 'swiper/css';
-import { Provider as C3Provider } from '@/components/ui/provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,11 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			lang='en'
 			suppressHydrationWarning>
 			<body className={inter.className}>
-				<Providers>
-					{/* <C3Provider> */}
-					{children}
-					{/* </C3Provider> */}
-				</Providers>
+				{/* <C3Provider> */}
+				<Providers>{children} </Providers>
+				{/* </C3Provider> */}
 			</body>
 		</html>
 	);

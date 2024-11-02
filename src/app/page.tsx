@@ -119,7 +119,7 @@ export default function UserFeedback() {
 							filters={filters}
 							price
 						/>
-						{/* <p>{JSON.stringify(filters)}</p> */}
+
 						<Sum
 							title='Expenses'
 							path='expenses'

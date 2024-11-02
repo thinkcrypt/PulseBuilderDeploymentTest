@@ -1,24 +1,14 @@
+'use client';
+
 import React from 'react';
-import { PosLayout as Layout, Column } from '@/components/library';
+import { PosLayout as Layout } from '@/components/library';
 import { Grid, Flex } from '@chakra-ui/react';
 import PosFilters from '@/components/library/pos/PosFilters';
 import PosSearch from '@/components/library/pos/PosSearch';
 import PosCart from '@/components/library/pos/PosCart';
 import PorductListPos from '@/components/library/pos/PorductListPos';
-import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-	title: 'MINT',
-	description: 'MINT',
-	viewport: {
-		width: 'device-width',
-		initialScale: 1,
-		maximumScale: 1,
-		userScalable: false,
-	},
-};
-
-const page = () => {
+const PosPage = () => {
 	return (
 		<>
 			{/* <SideDrawer />; */}
@@ -64,4 +54,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default PosPage;

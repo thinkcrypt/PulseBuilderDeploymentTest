@@ -77,6 +77,19 @@ export const colors: any = {
 		// 600: 'darkslateblue',
 		600: '#111',
 	},
+
+	red: {
+		// 500: '#A5292f',
+		// 100: 'green',
+		// 200: 'blue',
+		// 300: 'teal',
+		// 400: 'slateblue',
+		600: '#EA001C',
+		// 700: 'yellow',
+		// 800: 'orange',
+		// 900: 'tomato',
+		//#EA001C
+	},
 	// black: test,
 	// white: test,
 	// blackAlpha: test,

@@ -131,7 +131,14 @@ const FormInput: FC<FormInputProps> = ({
 					{...props}
 				/>
 			);
-		case 'textarea' || 'nested-textarea':
+		case 'textarea':
+			return (
+				<VTextarea
+					isRequired={isRequired}
+					{...props}
+				/>
+			);
+		case 'nested-textarea':
 			return (
 				<VTextarea
 					isRequired={isRequired}
