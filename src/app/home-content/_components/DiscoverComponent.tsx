@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Center, Grid, Heading, Text } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/button';
+import { Box, Center, Grid, Heading, Text, Button } from '@chakra-ui/react';
 import { ViewContentContainer, ImageView } from '@/components/library';
 import { HomeContentProps } from '.';
 
