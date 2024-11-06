@@ -39,22 +39,23 @@ const Details: FC<DetailProps> = ({ title, children, editing, type, isPassword, 
 
 	const inputTextColor = useColorModeValue('text.500', 'gray.300');
 
+	const styleProps = {
+		borderRadius: 'lg',
+		color: inputTextColor,
+		size: 'sm',
+		w: { base: '100%', md: '400px' },
+	};
+
 	const inputBox =
 		type == 'textarea' ? (
 			<Textarea
-				w='400px'
-				size='sm'
-				borderRadius='lg'
-				color={inputTextColor}
+				{...styleProps}
 				value={children}
 				{...props}
 			/>
 		) : (
 			<Input
-				w='400px'
-				size='sm'
-				borderRadius='lg'
-				color={inputTextColor}
+				{...styleProps}
 				value={children}
 				{...props}
 			/>
@@ -62,9 +63,9 @@ const Details: FC<DetailProps> = ({ title, children, editing, type, isPassword, 
 
 	return (
 		<Grid
-			gridTemplateColumns='1fr 3fr'
+			gridTemplateColumns={{ base: '1fr 2fr', md: '1fr 3fr' }}
 			w='100%'
-			h='64px'>
+			h='50px'>
 			<Text
 				py={1}
 				fontWeight='600'

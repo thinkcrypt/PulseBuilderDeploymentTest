@@ -1,9 +1,7 @@
 'use client';
 
-import Layout from '@/components/layout/Layout';
-import { Heading } from '@chakra-ui/react';
 import React from 'react';
-import { Column } from '@/components/library';
+import { Column, Layout } from '@/components/library';
 import { UserEdit, StoreEdit } from './_components';
 
 const SettingsPage = () => {
@@ -11,8 +9,7 @@ const SettingsPage = () => {
 		<Layout
 			title='Settings'
 			path='settings'>
-			<Heading size='lg'>Profile</Heading>
-			<Column>
+			<Column pb='32px'>
 				<UserEdit />
 				<StoreEdit />
 			</Column>

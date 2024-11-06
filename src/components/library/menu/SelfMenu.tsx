@@ -54,6 +54,8 @@ const SelfMenu = () => {
 					</MenuItem>
 				</MenuGroup>
 				<MenuDivider />
+				<CustomMenuItem href='/settings'>Settings</CustomMenuItem>
+				<MenuDivider />
 				<MenuGroup>
 					<CustomMenuItem onClick={handleLogout}>Logout</CustomMenuItem>
 				</MenuGroup>

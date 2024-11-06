@@ -43,7 +43,6 @@ const Layout: FC<LayoutProps> = ({
 	title,
 	path = '/dashboard',
 	hideColorMode = false,
-
 	...props
 }) => {
 	const dispatch = useAppDispatch();
