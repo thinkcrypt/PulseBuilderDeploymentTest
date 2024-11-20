@@ -9,8 +9,8 @@ import {
 	DeleteItemModal,
 	ViewItemModal,
 	DuplicateModal,
-	ModalMenuItem,
-	ModalMenuTrigger,
+	DecisionModal,
+	UpdateDataMenuModal,
 } from '../../../../';
 import Link from 'next/link';
 
@@ -37,6 +37,15 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 						id: item?.id ? item?.id(doc) : id,
 						path: item?.path || path,
 					};
+
+					let data = {};
+
+					if (item?.renderCondition && !item?.renderCondition(doc)) return null;
+
+					if (item?.getValue) {
+						data = item?.getValue(doc);
+					}
+
 					switch (item.type) {
 						case 'custom-redirect':
 							return (
@@ -71,6 +80,29 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 									{item?.title}
 								</MenuItem>
 							);
+						case 'post':
+							return (
+								<CreateModal
+									key={i}
+									path={item?.path || path}
+									data={item?.dataModel}
+									doc={doc}
+									invalidate={item?.invalidate}
+									id={item?.id ? item?.id(doc) : id}
+									title={item?.title}>
+									<MenuItem>{item?.title}</MenuItem>
+								</CreateModal>
+							);
+						case 'edit-modal':
+							return (
+								<CreateModal
+									{...commonProps}
+									data={item?.dataModel}
+									title='Edit'
+									type='update'
+									trigger={<MenuItem>{item?.title}</MenuItem>}
+								/>
+							);
 
 						case 'view':
 							return (
@@ -88,6 +120,28 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 									title={item?.title}
 								/>
 							);
+						case 'update-key':
+							switch (item?.keyType) {
+								case 'data-menu':
+									return (
+										<UpdateDataMenuModal
+											key={i}
+											item={item}
+											id={item?.id ? item?.id(doc) : id}
+											doc={doc}
+										/>
+									);
+								default:
+									return null;
+							}
+						case 'update-api':
+							return (
+								<DecisionModal
+									item={item}
+									key={i}
+									doc={doc}
+								/>
+							);
 						case 'duplicate':
 							return (
 								<DuplicateModal
@@ -101,17 +155,6 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 									{...commonProps}
 									title={item?.title}
 									dataModel={item?.dataModel}
-								/>
-							);
-
-						case 'edit-modal':
-							return (
-								<CreateModal
-									{...commonProps}
-									data={item?.dataModel}
-									title='Edit'
-									type='update'
-									trigger={<MenuItem>{item?.title}</MenuItem>}
 								/>
 							);
 

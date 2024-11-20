@@ -15,16 +15,6 @@ const viewAll: TableObjectProps = {
 	pagination: false,
 	limit: 5,
 	preferences: ['customer.name', 'totalItems', 'status', 'total', 'dueAmount', 'profit'],
-	// select: {
-	// 	show: true,
-	// 	menu: multiSelectMenu,
-	// },
-	// button: {
-	// 	title: 'Add Product',
-	// 	path: '/products/create',
-	// },
-	// menu: itemMenu,
-	// clickable: true,
 
 	data: viewAllDataFields,
 	showMenu: false,

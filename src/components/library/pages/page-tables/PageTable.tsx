@@ -22,12 +22,11 @@ import {
 
 type TableProps = {
 	table: TableObjectProps;
-	isModal?: boolean;
-	inputFields?: any;
+	layoutPath?: string;
 };
 
 // Define the PageTable component
-const PageTable: FC<TableProps> = ({ table, inputFields }) => {
+const PageTable: FC<TableProps> = ({ table, layoutPath }) => {
 	const { page, limit, search, sort, filters, preferences, selectedItems }: any = useAppSelector(
 		(state: any) => state.table
 	);
@@ -105,7 +104,7 @@ const PageTable: FC<TableProps> = ({ table, inputFields }) => {
 		<>
 			<Layout
 				title={table?.title}
-				path={table?.path}>
+				path={layoutPath || table?.path}>
 				<PageHeading
 					table={table}
 					title={table?.title} //Heading of the page

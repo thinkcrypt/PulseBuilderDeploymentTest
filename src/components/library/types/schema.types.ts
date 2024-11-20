@@ -20,6 +20,7 @@ type CommonProps = {
 	tableKey?: string;
 	menuField?: string;
 	value?: any;
+	getValue?: (doc: any) => any;
 	fetch?: (data: any) => {
 		path: string;
 		fields: { key: string; as: string }[];
@@ -30,6 +31,10 @@ type CommonProps = {
 
 type Schema = {
 	[key: string]: CommonProps;
+};
+
+export type SchemaType<T> = {
+	[K in keyof T]: CommonProps;
 };
 
 export default Schema;

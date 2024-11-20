@@ -49,6 +49,12 @@ const sidebar: SidebarItemType[] = [
 		path: 'categories',
 	},
 	{
+		title: 'Coupons',
+		href: '/coupons',
+		icon: 'category',
+		path: 'coupons',
+	},
+	{
 		title: 'Brands',
 		href: '/brands',
 		icon: 'brand-alt',
@@ -103,17 +109,24 @@ const sidebar: SidebarItemType[] = [
 		path: 'expenses',
 	},
 	{
+		title: 'Expense Cateogry',
+		href: '/expense-categories',
+		icon: 'category',
+		path: 'expense-categories',
+	},
+	{
 		title: 'Payments',
 		href: '/payments',
 		icon: 'expense',
 		path: 'payments',
 	},
 	{
-		title: 'Expense Cateogry',
-		href: '/expense-categories',
-		icon: 'category',
-		path: 'expense-categories',
+		title: 'Pending Refunds',
+		href: '/pending-refunds',
+		icon: 'expense',
+		path: 'pending-refunds',
 	},
+
 	// {
 	// 	sectionTitle: 'Customer',
 	// 	title: 'Feedback',
@@ -156,6 +169,13 @@ const sidebar: SidebarItemType[] = [
 	{
 		startOfSection: true,
 		sectionTitle: 'Reports',
+		title: 'Profit/Loss Report',
+		href: '/reports/profit-loss',
+		icon: 'report',
+		path: '/reports/profit-loss',
+	},
+
+	{
 		title: 'Top Products',
 		href: '/reports/top-products',
 		icon: 'report',

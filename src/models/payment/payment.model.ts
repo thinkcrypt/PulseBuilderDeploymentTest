@@ -54,7 +54,10 @@ export const adjustmentSchema: Schema = {
 		isRequired: true,
 		fetch: (data: any) => ({
 			path: 'orders',
-			fields: [{ key: 'dueAmount', as: 'due' }],
+			fields: [
+				{ key: 'dueAmount', as: 'due' },
+				{ key: '_id', as: 'invice' },
+			],
 			id: data?.invoice,
 		}),
 		isExcluded: true,

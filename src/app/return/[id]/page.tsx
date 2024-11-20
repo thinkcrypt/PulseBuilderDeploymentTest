@@ -11,6 +11,7 @@ import {
 	TabularDetail as ReturnItem,
 	sizes,
 	usePostMutation,
+	useRedirect,
 } from '@/components/library';
 import { useParams } from 'next/navigation';
 import { Grid, Text, Table, Thead, Tbody, Th, TableContainer, Button } from '@chakra-ui/react';
@@ -122,6 +123,8 @@ const CreateReturn = () => {
 			},
 		});
 	};
+
+	useRedirect({ path: `/orders/${id}`, ...result });
 
 	const basics = data && (
 		<Grid

@@ -43,6 +43,7 @@ type CreateModalProps = {
 	title?: string;
 	invalidate?: any;
 	children?: any;
+	doc?: any;
 };
 
 const CreateModal = ({
@@ -54,6 +55,7 @@ const CreateModal = ({
 	id,
 	invalidate,
 	children,
+	doc,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -77,8 +79,10 @@ const CreateModal = ({
 	const onModalOpen = () => {
 		onOpen();
 		let newFieldData = {};
+		console.log(data);
 		data?.map(field => {
-			if (field?.value) newFieldData = { ...newFieldData, [field.name]: field.value };
+			if (field?.getValue) newFieldData = { ...newFieldData, [field.name]: field?.getValue(doc) };
+			if (field?.value) newFieldData = { ...newFieldData, [field.name]: field?.value };
 		});
 		setFormData({ ...formData, ...newFieldData });
 		if (type == 'update') {

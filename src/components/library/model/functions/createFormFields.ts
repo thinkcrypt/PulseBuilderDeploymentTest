@@ -48,6 +48,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 							...(fieldConfig?.value && { value: fieldConfig.value }),
 							...(fieldConfig?.fetch && { fetch: fieldConfig.fetch }),
 							...(fieldConfig?.isExcluded && { isExcluded: fieldConfig.isExcluded }),
+							...(fieldConfig?.getValue && { getValue: fieldConfig.getValue }),
 						});
 					}
 				});
@@ -74,6 +75,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 						...(fieldConfig?.value && { value: fieldConfig.value }),
 						...(fieldConfig?.fetch && { fetch: fieldConfig.fetch }),
 						...(fieldConfig?.isExcluded && { isExcluded: fieldConfig.isExcluded }),
+						...(fieldConfig?.getValue && { getValue: fieldConfig.getValue }),
 
 						endOfSection: lastElement,
 					});
