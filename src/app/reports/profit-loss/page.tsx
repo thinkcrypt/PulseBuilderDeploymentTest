@@ -42,7 +42,7 @@ const Container = ({ children, ...props }: any) => (
 	</Grid>
 );
 
-const page: NextPage = () => {
+const ProfitLossPage: NextPage = () => {
 	const { filters } = useAppSelector((state: any) => state.table);
 	const netProfit: number = useSum({ path: 'orders', field: 'profit', filters });
 
@@ -169,4 +169,4 @@ const page: NextPage = () => {
 	);
 };
 
-export default page;
+export default ProfitLossPage;
