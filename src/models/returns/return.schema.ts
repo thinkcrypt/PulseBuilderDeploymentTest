@@ -26,6 +26,14 @@ export const adjustmentSchema: Schema = {
 		isRequired: true,
 	},
 
+	status: {
+		label: 'Status',
+		type: 'string',
+		sort: true,
+		default: true,
+		displayInTable: true,
+	},
+
 	note: {
 		label: 'Note',
 		type: 'textarea',
@@ -75,7 +83,7 @@ const schema = adjustmentSchema;
 
 const viewFields = convertToTableFields({
 	schema,
-	fields: ['invoice', 'amount', 'reason', 'note', 'date', 'createdAt'],
+	fields: ['invoice', 'amount', 'status', 'reason', 'note', 'date', 'createdAt'],
 });
 
 const formFields = convertToFormFields({
