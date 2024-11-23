@@ -48,8 +48,8 @@ type CustomRedirectItem = BaseMenuItem & {
 
 type UpdateApiItem = BaseMenuItem & {
 	type: 'update-api';
-	path: string;
-	id: (data: any) => string;
+	path?: string;
+	id?: (data: any) => string;
 	body: object;
 };
 

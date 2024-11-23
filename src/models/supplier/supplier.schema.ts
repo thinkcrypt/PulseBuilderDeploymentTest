@@ -14,6 +14,7 @@ const supplierSchema: Schema = {
 		label: 'Email',
 		displayInTable: true,
 		default: true,
+		isRequired: true,
 	},
 	phone: {
 		type: 'text',

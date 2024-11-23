@@ -7,7 +7,7 @@ const schema: SchemaProps = {
 	},
 	name: {
 		isRequired: true,
-		type: 'text',
+		type: 'string',
 		label: 'Name',
 		inputLabel: 'Product Name',
 		sort: true,
@@ -22,9 +22,10 @@ const schema: SchemaProps = {
 		type: 'slug',
 		tableType: 'text',
 		displayInTable: true,
-		required: true,
 		sort: true,
 		readOnlyOnUpdate: true,
+		helperText:
+			'This text will be used as part of the URL for this category. Leave it empty to auto-generate.',
 	},
 	shortDescription: {
 		label: 'Short Description',

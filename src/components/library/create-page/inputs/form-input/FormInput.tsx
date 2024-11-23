@@ -44,6 +44,7 @@ type FormInputProps = InputProps &
 		formData?: any;
 		setFormData?: any;
 		setChangedData?: any;
+		helper?: string;
 	};
 
 const FormInput: FC<FormInputProps> = ({
@@ -55,6 +56,7 @@ const FormInput: FC<FormInputProps> = ({
 	options,
 	dataModel,
 	item,
+	helper,
 	...props
 }) => {
 	const {
@@ -84,6 +86,7 @@ const FormInput: FC<FormInputProps> = ({
 				<VImage
 					isRequired={isRequired}
 					onChange={props.onChange}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -92,6 +95,7 @@ const FormInput: FC<FormInputProps> = ({
 				<VImage
 					isRequired={isRequired}
 					onChange={props.onChange}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -100,6 +104,7 @@ const FormInput: FC<FormInputProps> = ({
 				<VImageArray
 					isRequired={isRequired}
 					onChange={props.onChange}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -108,6 +113,7 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<VSelect
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}>
 					<option
 						value=''
@@ -128,6 +134,7 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<VSwitch
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -135,6 +142,7 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<VTextarea
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -142,6 +150,7 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<VTextarea
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -150,6 +159,7 @@ const FormInput: FC<FormInputProps> = ({
 				<VDataSelect
 					isRequired={isRequired}
 					model={props?.model || ''}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -157,6 +167,7 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<VCheckbox
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -167,12 +178,18 @@ const FormInput: FC<FormInputProps> = ({
 					isRequired={isRequired}
 					model={props?.model || ''}
 					field={item?.menuField || 'name'}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
 
 		case 'category-collection-array':
-			return <VCatCollectionList {...props} />;
+			return (
+				<VCatCollectionList
+					{...props}
+					helper={item?.helper}
+				/>
+			);
 
 		case 'permissions':
 			return (
@@ -180,15 +197,22 @@ const FormInput: FC<FormInputProps> = ({
 					dataModel={dataModel}
 					isRequired={isRequired}
 					options={options}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
 		case 'view-only':
-			return <ViewOnly {...props} />;
+			return (
+				<ViewOnly
+					helper={item?.helper}
+					{...props}
+				/>
+			);
 		case 'tag':
 			return (
 				<VTags
 					type={type}
+					helper={item?.helper}
 					isRequired={isRequired}
 					{...props}
 				/>
@@ -197,6 +221,7 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<VCustomAttributes
 					type={type}
+					helper={item?.helper}
 					isRequired={isRequired}
 					{...props}
 				/>
@@ -207,6 +232,7 @@ const FormInput: FC<FormInputProps> = ({
 					onChange={props.onChange}
 					isRequired={isRequired}
 					name={props.name}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -216,6 +242,7 @@ const FormInput: FC<FormInputProps> = ({
 					onChange={props.onChange}
 					isRequired={isRequired}
 					name={props.name}
+					helper={item?.helper}
 					dataModel={dataModel}
 					{...props}
 				/>
@@ -227,6 +254,7 @@ const FormInput: FC<FormInputProps> = ({
 					type={type}
 					model={props?.model || ''}
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -236,6 +264,7 @@ const FormInput: FC<FormInputProps> = ({
 					type={type}
 					isRequired={isRequired}
 					onChange={props.onChange}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -245,6 +274,7 @@ const FormInput: FC<FormInputProps> = ({
 					type={type}
 					isRequired={isRequired}
 					// isDisabled={true}
+					helper={item?.helper}
 					isReadOnly={true}
 					{...props}
 				/>
@@ -254,23 +284,27 @@ const FormInput: FC<FormInputProps> = ({
 				<VInput
 					type='password'
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
 		case 'string':
 			return (
-				<VInput
-					type={type}
-					isRequired={isRequired}
-					isDisabled={true}
-					{...props}
-				/>
+				<>
+					<VInput
+						type={type}
+						isRequired={isRequired}
+						helper={item?.helper}
+						{...props}
+					/>
+				</>
 			);
 		case 'nested-string':
 			return (
 				<VInput
 					type={type}
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);
@@ -279,6 +313,7 @@ const FormInput: FC<FormInputProps> = ({
 				<VInput
 					type={type}
 					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);

@@ -44,6 +44,12 @@ type CreateModalProps = {
 	invalidate?: any;
 	children?: any;
 	doc?: any;
+	prompt?: {
+		title?: string;
+		body?: string;
+		btnText?: string;
+		successMsg?: string;
+	};
 };
 
 const CreateModal = ({
@@ -56,6 +62,7 @@ const CreateModal = ({
 	invalidate,
 	children,
 	doc,
+	prompt,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -94,8 +101,11 @@ const CreateModal = ({
 
 	const [changedData, setChangedData] = useState({});
 
-	const successText =
-		type == 'update' ? 'Information Updated Successfully' : 'Item added successfully';
+	const successText = prompt?.successMsg
+		? prompt?.successMsg
+		: type == 'update'
+		? 'Information Updated Successfully'
+		: 'Item added successfully';
 
 	useCustomToast({
 		successText,
@@ -158,7 +168,7 @@ const CreateModal = ({
 				size={{ base: 'md', md: 'xs' }}
 				{...(isMobile && { w: '100%' })}
 				isLoading={isLoading}>
-				Confirm
+				{prompt?.btnText || 'Confirm'}
 			</ModalSubmitButton>
 		</>
 	);
@@ -172,7 +182,7 @@ const CreateModal = ({
 				{...(isMobile && { placement: 'bottom' })}
 				{...(isMobile && { isFullHeight: false })}
 				isOpen={isOpen}
-				size='xl'
+				size='2xl'
 				onClose={onModalClose}
 				closeOnOverlayClick={false}>
 				<Overlay />
@@ -180,7 +190,9 @@ const CreateModal = ({
 					<Content
 						// overflowY='scroll'
 						onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-						<Header>{title || `${type === 'update' ? 'Update' : 'Create'} ${path}`}</Header>
+						<Header>
+							{prompt?.title || title || `${type === 'update' ? 'Update' : 'Create'} ${path}`}
+						</Header>
 						<CloseButton />
 
 						<Body

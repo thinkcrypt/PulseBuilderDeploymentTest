@@ -74,11 +74,33 @@ type NonSelectProps = CommonProps & {
 
 export type TableObjectDataProps = SelectProps | NonSelectProps;
 
-type ButtonType = {
+type CommonButton = {
 	title: string;
-	path?: string;
 	icon?: string;
+	path?: never;
+	isModal?: true;
+	dataModel?: any;
 };
+
+type RedirectButton = {
+	title: string;
+	icon?: string;
+	path: string;
+	isModal?: never;
+	dataModel?: never;
+	prompt?: never;
+};
+
+type ModalButton = {
+	title: string;
+	icon?: string;
+	path?: never;
+	isModal: true;
+	dataModel: any;
+	prompt?: PromptType;
+};
+
+type ButtonType = CommonButton | RedirectButton | ModalButton;
 
 /**
  * Data Modal for the
@@ -183,7 +205,7 @@ export type TextChild = TextProps & {
 
 export type PromptType = {
 	title: string;
-	body: string;
+	body?: string;
 	btnText?: string;
 	successMsg?: string;
 };

@@ -31,10 +31,10 @@ const viewAll: TableObjectProps = {
 	// 	show: true,
 	// 	menu: multiSelectMenu,
 	// },
-	// button: {
-	// 	title: 'Add Product',
-	// 	path: '/products/create',
-	// },
+	button: {
+		title: 'Add Order',
+		path: '/orders/add',
+	},
 	menu: itemMenu,
 	data: viewAllDataFields,
 };

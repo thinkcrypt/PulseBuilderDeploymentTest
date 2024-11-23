@@ -11,6 +11,7 @@ import {
 	DuplicateModal,
 	DecisionModal,
 	UpdateDataMenuModal,
+	UpdateStringModal,
 } from '../../../../';
 import Link from 'next/link';
 
@@ -131,6 +132,28 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 											doc={doc}
 										/>
 									);
+								case 'string':
+									return (
+										<UpdateStringModal
+											key={i}
+											item={item}
+											id={item?.id ? item?.id(doc) : id}
+											doc={doc}
+											path={item?.path || path}
+											type='text'
+										/>
+									);
+								case 'number':
+									return (
+										<UpdateStringModal
+											key={i}
+											item={item}
+											id={item?.id ? item?.id(doc) : id}
+											doc={doc}
+											path={item?.path || path}
+											type='number'
+										/>
+									);
 								default:
 									return null;
 							}
@@ -138,8 +161,10 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 							return (
 								<DecisionModal
 									item={item}
+									path={item?.path || path}
 									key={i}
 									doc={doc}
+									itemId={id}
 								/>
 							);
 						case 'duplicate':
