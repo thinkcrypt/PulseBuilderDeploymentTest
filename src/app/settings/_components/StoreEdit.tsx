@@ -9,6 +9,7 @@ import {
 	useUpdateByIdMutation,
 } from '@/components/library';
 import moment from 'moment';
+import { Flex } from '@chakra-ui/react';
 
 const StoreEdit = () => {
 	const { data, isFetching } = useGetSelfQuery({});
@@ -21,18 +22,23 @@ const StoreEdit = () => {
 		email: '',
 		phone: '',
 		description: '',
+		address: '',
+		logo: '',
 		expire: '',
 	});
 
 	const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
+	const handleImage = (e: any) => setFormData({ ...formData, logo: e });
 
 	const refresh = () =>
 		setFormData({
 			name: data?.shop?.name || '',
 			email: data?.shop?.email || '',
 			phone: data?.shop?.phone || '',
-			description: data?.shop?.description || '',
+			description: data?.shop?.description || 'N/A',
 			expire: data?.shop?.expire || '',
+			address: data?.shop?.address || 'N/A',
+			logo: data?.shop?.logo,
 		});
 
 	const handleSubmit = (e: any) => {
@@ -46,6 +52,8 @@ const StoreEdit = () => {
 				name: formData?.name,
 				phone: formData?.phone,
 				description: formData?.description,
+				address: formData?.address,
+				logo: formData?.logo,
 			},
 		});
 	};
@@ -84,6 +92,14 @@ const StoreEdit = () => {
 			editing={editing}>
 			<Details
 				editing={editing}
+				title='Shop Logo'
+				name='logo'
+				type='image'
+				onChange={handleImage}>
+				{formData?.logo}
+			</Details>
+			<Details
+				editing={editing}
 				title='Shop Name'
 				name='name'
 				onChange={handleChange}>
@@ -110,6 +126,17 @@ const StoreEdit = () => {
 				name='expire'>
 				{moment(formData?.expire).format('DD-MM-YYYY') || '--'}
 			</Details>
+			<Flex h='100px'>
+				<Details
+					editing={editing}
+					title='Address'
+					name='address'
+					onChange={handleChange}
+					type='textarea'>
+					{formData?.address}
+				</Details>
+			</Flex>
+
 			<Details
 				editing={editing}
 				title='Description'
