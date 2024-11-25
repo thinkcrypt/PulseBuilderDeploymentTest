@@ -14,6 +14,7 @@ import {
 import UpdatePasswordModal from '../modals/update-password/UpdatePasswordModal';
 import { VImage } from '../utils/inputs';
 import { PLACEHOLDER_IMAGE } from '../config';
+import { CreateModal } from '../modals';
 
 type DetailProps = InputProps &
 	TextareaProps &
@@ -23,9 +24,34 @@ type DetailProps = InputProps &
 		editing: boolean;
 		isPassword?: boolean;
 		type?: 'input' | 'textarea' | 'image';
+		body?: string;
+		path?: string;
+		dataModel?: any;
+		prompt?: {
+			title?: string;
+			body?: string;
+			btnText?: string;
+			successMsg?: string;
+		};
+		id?: string;
+		invalidate?: string[];
 	};
 
-const Details: FC<DetailProps> = ({ title, children, editing, type, isPassword, ...props }) => {
+const Details: FC<DetailProps> = ({
+	title,
+	children,
+	editing,
+	type,
+	isPassword,
+	body,
+	path,
+	dataModel,
+	prompt,
+	id,
+	invalidate,
+	populate,
+	...props
+}) => {
 	const textBox =
 		type == 'image' ? (
 			<Image
@@ -46,6 +72,21 @@ const Details: FC<DetailProps> = ({ title, children, editing, type, isPassword, 
 	const passwordBox = (
 		<Box>
 			<UpdatePasswordModal trigger={<Button size='sm'>Change Password</Button>} />
+		</Box>
+	);
+
+	const modalBox = (
+		<Box>
+			<CreateModal
+				type='update'
+				data={dataModel}
+				prompt={prompt}
+				id={id}
+				populate={populate}
+				invalidate={invalidate}
+				path={path}>
+				<Button size='sm'>{body}</Button>
+			</CreateModal>
 		</Box>
 	);
 
@@ -91,7 +132,7 @@ const Details: FC<DetailProps> = ({ title, children, editing, type, isPassword, 
 				fontSize='.9rem'>
 				{title}
 			</Text>
-			{isPassword ? passwordBox : editing ? inputBox : textBox}
+			{isPassword ? passwordBox : type == 'modal' ? modalBox : editing ? inputBox : textBox}
 		</Grid>
 	);
 };

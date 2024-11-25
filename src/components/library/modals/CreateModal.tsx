@@ -44,6 +44,7 @@ type CreateModalProps = {
 	invalidate?: any;
 	children?: any;
 	doc?: any;
+	populate?: any;
 	prompt?: {
 		title?: string;
 		body?: string;
@@ -63,11 +64,12 @@ const CreateModal = ({
 	children,
 	doc,
 	prompt,
+	populate,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [fetch, { data: prevData, isFetching, isUninitialized }] = useLazyGetByIdToEditQuery();
-	const [formData, setFormData] = useFormData<any>(data, prevData);
+	const [formData, setFormData] = useFormData<any>(data, populate || prevData);
 	const isMobile = useIsMobile();
 
 	const borderColor = useColorModeValue('border.light', 'border.dark');
@@ -86,13 +88,18 @@ const CreateModal = ({
 	const onModalOpen = () => {
 		onOpen();
 		let newFieldData = {};
-		console.log(data);
+
 		data?.map(field => {
 			if (field?.getValue) newFieldData = { ...newFieldData, [field.name]: field?.getValue(doc) };
 			if (field?.value) newFieldData = { ...newFieldData, [field.name]: field?.value };
 		});
+
 		setFormData({ ...formData, ...newFieldData });
 		if (type == 'update') {
+			if (populate) {
+				setFormData(populate);
+				return;
+			}
 			fetch({ path, id });
 		}
 	};
@@ -143,15 +150,12 @@ const CreateModal = ({
 	};
 
 	useEffect(() => {
-		if (isSuccess && !isLoading) {
-			onModalClose();
-		}
+		if (isSuccess && !isLoading) onModalClose();
 	}, [isLoading]);
 
 	useEffect(() => {
-		if (prevData) {
-			setFormData(prevData);
-		}
+		if (populate) return;
+		if (prevData) setFormData(prevData);
 	}, [prevData, isFetching]);
 
 	const footer = (

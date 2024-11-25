@@ -25,6 +25,8 @@ const StoreEdit = () => {
 		address: '',
 		logo: '',
 		expire: '',
+		faq: [],
+		terms: [],
 	});
 
 	const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,13 +41,15 @@ const StoreEdit = () => {
 			expire: data?.shop?.expire || '',
 			address: data?.shop?.address || 'N/A',
 			logo: data?.shop?.logo,
+			faq: data?.shop?.faq,
+			terms: data?.shop?.terms,
 		});
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 
 		updateSelf({
-			path: '/auth/update/shop',
+			path: '/auth/update/shop/edit',
 			id: data?.shop?._id,
 			invalidate: ['self'],
 			body: {
@@ -144,6 +148,31 @@ const StoreEdit = () => {
 				onChange={handleChange}
 				type='textarea'>
 				{formData?.description}
+			</Details>
+
+			<Details
+				title='FAQ'
+				body='View FAQ'
+				invalidate={['self']}
+				path='/auth/update/shop/edit'
+				id={data?.shop?._id}
+				populate={data?.shop}
+				prompt={{ title: 'Frequently Asked Questions', btnText: 'Update' }}
+				dataModel={[{ name: 'faq', label: 'FAQ', type: 'custom-section-array' }]}
+				type='modal'>
+				{formData?.faq}
+			</Details>
+			<Details
+				title='Terms'
+				body='View Terms & Conditions'
+				invalidate={['self']}
+				path='/auth/update/shop/edit'
+				id={data?.shop?._id}
+				populate={data?.shop}
+				prompt={{ title: 'Terms & Conditions', btnText: 'Update' }}
+				dataModel={[{ name: 'terms', label: 'Terms & Conditions', type: 'array-string' }]}
+				type='modal'>
+				{formData?.terms}
 			</Details>
 		</SettingsEditContainer>
 	);

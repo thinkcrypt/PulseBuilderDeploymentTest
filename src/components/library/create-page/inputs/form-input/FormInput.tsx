@@ -22,6 +22,7 @@ import {
 	VCatCollectionList,
 	VCustom,
 	useGetByIdQuery,
+	VArrayString,
 } from '../../../';
 
 type Option = {
@@ -229,6 +230,16 @@ const FormInput: FC<FormInputProps> = ({
 		case 'custom-section-array':
 			return (
 				<VSection
+					onChange={props.onChange}
+					isRequired={isRequired}
+					name={props.name}
+					helper={item?.helper}
+					{...props}
+				/>
+			);
+		case 'array-string':
+			return (
+				<VArrayString
 					onChange={props.onChange}
 					isRequired={isRequired}
 					name={props.name}
