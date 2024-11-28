@@ -191,19 +191,25 @@ const sidebar: SidebarItemType[] = [
 		title: 'Top Customers',
 		href: '/reports/top-customers',
 		icon: 'report',
-		path: 'top-customers',
+		path: 'reports/top-customers',
 	},
 	{
 		title: 'Customer Ledger',
 		href: '/customer-ledger',
 		icon: 'report',
-		path: 'customer-ledger',
+		path: 'ledgers',
 	},
 	{
 		title: 'Supplier Ledger',
 		href: '/supplier-ledger',
 		icon: 'report',
 		path: 'supplier-ledger',
+	},
+	{
+		title: 'SMS Log',
+		href: '/reports/sms-log',
+		icon: 'report',
+		path: 'reports/sms-log',
 	},
 
 	{

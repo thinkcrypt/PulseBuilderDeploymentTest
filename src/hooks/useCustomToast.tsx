@@ -29,7 +29,7 @@ const useCustomToast = ({
 				status: 'error',
 				duration: 9000,
 				isClosable: true,
-				variant: 'left-accent',
+				// variant: 'left-accent',
 			});
 	}, [isLoading]);
 
