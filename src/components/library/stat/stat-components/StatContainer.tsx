@@ -1,5 +1,6 @@
 import { StatProps, Stat } from '@chakra-ui/react';
 import React from 'react';
+import { shadow } from '../../';
 
 const StatContainer = ({ children, ...props }: StatProps & { children: React.ReactNode }) => {
 	return (
@@ -8,7 +9,7 @@ const StatContainer = ({ children, ...props }: StatProps & { children: React.Rea
 			w='full'
 			p={4}
 			bg='white'
-			boxShadow='0 2px 20px rgba(0,0,0,.07)'
+			boxShadow={shadow?.DASH}
 			_dark={{ bg: 'menu.dark' }}
 			borderRadius={16}>
 			{children}

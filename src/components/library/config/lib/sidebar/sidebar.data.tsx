@@ -121,10 +121,24 @@ const sidebar: SidebarItemType[] = [
 		path: 'payments',
 	},
 	{
+		title: 'Payment Accounts',
+		href: '/payment-account',
+		icon: 'expense',
+		path: 'payment-accounts',
+	},
+	{
 		title: 'Pending Refunds',
 		href: '/pending-refunds',
 		icon: 'expense',
 		path: 'pending-refunds',
+	},
+	{
+		startOfSection: true,
+		sectionTitle: 'Assets',
+		title: 'Assets',
+		href: '/assets',
+		icon: 'dashboard',
+		path: 'assets',
 	},
 
 	// {

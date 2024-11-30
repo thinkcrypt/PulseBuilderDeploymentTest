@@ -9,6 +9,7 @@ import {
 	SpaceBetween,
 	Align,
 	FlexChild,
+	DashContainer,
 } from '@/components/library';
 
 import {
@@ -18,6 +19,7 @@ import {
 	TopCustomers,
 	TopProducts,
 	OrderTable,
+	ShopQr,
 } from '@/components/dashboard';
 
 import Link from 'next/link';
@@ -27,6 +29,12 @@ export default function UserFeedback() {
 		<Layout
 			title='Dashboard'
 			path='dashboard'>
+			<Grid
+				pt={1}
+				gridTemplateColumns={{ base: '1fr', md: '1fr' }}
+				gap={2}>
+				<ShopQr />
+			</Grid>
 			<Grid
 				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
 				gap={2}>
@@ -51,28 +59,35 @@ export default function UserFeedback() {
 					</Align>
 					<OrderAnalytics title='Order Analytics' />
 				</Column>
+
 				<Col
 					gap={2}
 					pb={2}>
-					<SpaceBetween align='center'>
-						<Heading size='md'>Recent Orders</Heading>
-						<Link href='/orders'>
-							<Button size='xs'>View Orders</Button>
-						</Link>
-					</SpaceBetween>
-					<OrderTable />
+					<DashContainer>
+						<SpaceBetween align='center'>
+							<Heading size='md'>Recent Orders</Heading>
+							<Link href='/orders'>
+								<Button size='xs'>View Orders</Button>
+							</Link>
+						</SpaceBetween>
+						<OrderTable />
+					</DashContainer>
 				</Col>
 				<Column gap={2}>
-					<SpaceBetween align='center'>
-						<Heading size='md'>Top Selling Products</Heading>
-					</SpaceBetween>
-					<TopProducts />
+					<DashContainer>
+						<SpaceBetween align='center'>
+							<Heading size='md'>Top Selling Products</Heading>
+						</SpaceBetween>
+						<TopProducts />
+					</DashContainer>
 				</Column>
 				<Column gap={2}>
-					<SpaceBetween align='center'>
-						<Heading size='md'>Top Customers</Heading>
-					</SpaceBetween>
-					<TopCustomers />
+					<DashContainer>
+						<SpaceBetween align='center'>
+							<Heading size='md'>Top Customers</Heading>
+						</SpaceBetween>
+						<TopCustomers />
+					</DashContainer>
 				</Column>
 			</Col>
 		</Layout>

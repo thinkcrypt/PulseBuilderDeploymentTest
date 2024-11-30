@@ -27,6 +27,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 				field.forEach((subField: any, subIndex: number) => {
 					const fieldConfig = schema[subField];
 					const lastSubIndex = subIndex === field.length - 1;
+					const firstSubIndex = subIndex === 0;
 					const typeDetail = createType({
 						type: type,
 						isReadOnly: fieldConfig?.readOnlyOnUpdate || false,
@@ -34,7 +35,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 					});
 					if (fieldConfig) {
 						dataFields.push({
-							...(firstIndex && { sectionTitle: sectionTitle }),
+							...(firstIndex && firstSubIndex && { sectionTitle: sectionTitle }),
 							name: subField,
 							label: fieldConfig.label || fieldConfig.title,
 							isRequired: fieldConfig.isRequired || fieldConfig.required || false,

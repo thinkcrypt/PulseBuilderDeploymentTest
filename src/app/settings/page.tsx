@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Column, Layout } from '@/components/library';
-import { UserEdit, StoreEdit } from './_components';
+import { UserEdit, StoreEdit, StoreSocials } from './_components';
 
 const SettingsPage = () => {
 	return (
@@ -12,6 +12,7 @@ const SettingsPage = () => {
 			<Column pb='32px'>
 				<UserEdit />
 				<StoreEdit />
+				<StoreSocials />
 			</Column>
 		</Layout>
 	);

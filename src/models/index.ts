@@ -33,3 +33,6 @@ export const schema: any = {
 	suppliers: SupplierSchema,
 	purchases: PurchaseSchema,
 };
+
+export { default as assetSchema } from './asset/asset.schema';
+export { default as paymentAccountSchema } from './payment-account/paymentAccount.schema';

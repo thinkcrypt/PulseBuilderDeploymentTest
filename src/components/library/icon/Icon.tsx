@@ -47,6 +47,7 @@ import { TbBrandPatreonFilled } from 'react-icons/tb';
 import { GiBuyCard } from 'react-icons/gi';
 import { FaTruck } from 'react-icons/fa';
 import { FaCircleInfo } from 'react-icons/fa6';
+import { FaRegCopy } from 'react-icons/fa6';
 
 export type IconNameOptions =
 	| 'add'
@@ -62,6 +63,7 @@ export type IconNameOptions =
 	| 'close'
 	| 'collections'
 	| 'content'
+	| 'copy'
 	| 'coupon'
 	| 'customer'
 	| 'customers'
@@ -89,6 +91,7 @@ export type IconNameOptions =
 	| 'report'
 	| 'role'
 	| 'select'
+	| 'copy'
 	| 'settings'
 	| 'settings-fill'
 	| 'shop'
@@ -148,6 +151,7 @@ const icons: any = {
 	purchase: GiBuyCard,
 	'delivery-fill': FaTruck,
 	info: FaCircleInfo,
+	copy: FaRegCopy,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

@@ -17,9 +17,9 @@ const DashboardOverview = () => {
 				path='categories'
 			/>
 			<Sum
-				title='Total Receivable'
-				path='orders'
-				field='dueAmount'
+				title='Total Assets'
+				path='assets'
+				field='value'
 				price
 			/>
 			<Sum

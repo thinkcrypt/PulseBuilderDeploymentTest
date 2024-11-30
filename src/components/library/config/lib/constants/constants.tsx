@@ -46,6 +46,7 @@ export const sizes = {
 export const shadow = {
 	MENU: 'lg',
 	CARD: '2px 2px 10px rgba(0,0,0,.1)',
+	DASH: '0 2px 20px rgba(0,0,0,.07)',
 };
 
 export const padding = {

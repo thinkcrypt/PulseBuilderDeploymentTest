@@ -67,6 +67,8 @@ const FormMain: FC<FormMainType> = ({
 		}
 	};
 
+	// return <Text>{JSON.stringify(fields)}</Text>;
+
 	return sections.map((section: any, i: number) => (
 		<FormDivision
 			key={i}
@@ -76,7 +78,6 @@ const FormMain: FC<FormMainType> = ({
 					isHidden={item?.renderCondition && !item?.renderCondition(formData)}
 					item={item}
 					key={i}>
-					{/* {(!item?.renderCondition || item?.renderCondition(formData)) && ( */}
 					<>
 						<FormInput
 							formData={formData}

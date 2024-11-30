@@ -1,6 +1,6 @@
 import React, { FC, Fragment, ReactNode } from 'react';
-import { Flex, Heading, Button, ButtonProps, useColorModeValue } from '@chakra-ui/react';
-import { Column, Icon, SpaceBetween } from '../../';
+import { Flex, Heading, Button, ButtonProps, useColorModeValue, Grid } from '@chakra-ui/react';
+import { Icon, SpaceBetween } from '../../';
 
 type SettingsEditContainerProps = {
 	editing: boolean;
@@ -10,6 +10,7 @@ type SettingsEditContainerProps = {
 	isLoading: boolean;
 	children: React.ReactNode;
 	heading: string;
+	cols?: string;
 };
 
 const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
@@ -20,6 +21,7 @@ const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
 	isLoading,
 	children,
 	heading,
+	cols,
 }) => {
 	const editState = editing ? (
 		<EditButtons
@@ -38,7 +40,12 @@ const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
 				<Heading size='md'>{heading}</Heading>
 				<Fragment>{editState}</Fragment>
 			</SpaceBetween>
-			<Column py={6}>{children}</Column>
+			<Grid
+				row={2}
+				gridTemplateColumns={{ base: '1fr', md: cols || '1fr' }}
+				py={6}>
+				{children}
+			</Grid>
 		</form>
 	);
 };
