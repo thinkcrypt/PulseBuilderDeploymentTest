@@ -17,7 +17,7 @@ import React, { ReactNode, useEffect } from 'react';
 import { Icon } from '@/components/library';
 import Link from 'next/link';
 
-const SHOP_BASE_URL = process.env.NEXT_PUBLIC_SHOP_BASE_URL || 'https://shop.thinkcrypt.io';
+const SHOP_BASE_URL = process.env.NEXT_PUBLIC_SHOP_BASE_URL || 'https://mintapp.store';
 
 // STYLING
 const COL_SPAN = { base: 1, md: 2, lg: 2, xl: 1 };

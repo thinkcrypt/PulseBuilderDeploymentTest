@@ -1,5 +1,12 @@
 'use client';
-import { VInput, useCustomToast, useAppDispatch, login, AuthForm } from '@/components/library';
+import {
+	VInput,
+	useCustomToast,
+	NotLoggedIn,
+	useAppDispatch,
+	AuthForm,
+	login,
+} from '@/components/library';
 import { useLgoinMutation } from '@/store/services/authApi';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
@@ -10,8 +17,8 @@ type FormDataType = {
 
 const LoginPage: FC<{}> = () => {
 	const [formData, setFormData] = useState<FormDataType>({
-		email: '',
-		password: '',
+		email: 'john.doe@example.com',
+		password: 'password123',
 	});
 
 	const [trigger, result] = useLgoinMutation();
@@ -40,26 +47,30 @@ const LoginPage: FC<{}> = () => {
 	});
 
 	return (
-		<AuthForm
-			title='Login'
-			isLoading={isLoading}
-			handleSubmit={handleSubmit}>
-			<VInput
-				label='Email'
-				isRequired
-				value={formData.email}
-				onChange={handleChange}
-				name='email'
-			/>
-			<VInput
-				label='Password'
-				isRequired
-				value={formData.password}
-				onChange={handleChange}
-				name='password'
-				type='password'
-			/>
-		</AuthForm>
+		<NotLoggedIn>
+			<AuthForm
+				title='Login [DEMO]'
+				isLoading={isLoading}
+				handleSubmit={handleSubmit}>
+				<VInput
+					label='Email'
+					isRequired
+					isReadOnly
+					value={formData.email}
+					onChange={handleChange}
+					name='email'
+				/>
+				<VInput
+					label='Password'
+					isRequired
+					isReadOnly
+					value={formData.password}
+					onChange={handleChange}
+					name='password'
+					type='password'
+				/>
+			</AuthForm>
+		</NotLoggedIn>
 	);
 };
 

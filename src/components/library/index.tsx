@@ -17,7 +17,7 @@ export * from './containers';
 
 export * from './icon';
 
-export { AuthWrapper, NotLoggedIn } from './wrappers';
+export * from './wrappers';
 
 export * from './menu';
 export * from './components';

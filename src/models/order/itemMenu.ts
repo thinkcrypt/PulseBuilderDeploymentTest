@@ -26,6 +26,7 @@ const itemMenu: MenuItemProps[] = [
 		type: 'custom-modal',
 		modal: ViewOrderModal,
 	},
+
 	{
 		title: 'Details',
 		type: 'custom-redirect',

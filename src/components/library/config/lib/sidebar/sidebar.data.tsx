@@ -164,21 +164,21 @@ const sidebar: SidebarItemType[] = [
 		path: 'users',
 	},
 
-	// {
-	// 	startOfSection: true,
-	// 	sectionTitle: 'Content',
-	// 	title: 'Store',
-	// 	href: '/store-content',
-	// 	icon: 'shop',
-	// 	path: 'store-content',
-	// },
+	{
+		startOfSection: true,
+		sectionTitle: 'Content',
+		title: 'Store',
+		href: '/store-content',
+		icon: 'shop',
+		path: 'store-content',
+	},
 
-	// {
-	// 	title: 'Home',
-	// 	href: '/home-content',
-	// 	icon: 'content',
-	// 	path: 'home-content',
-	// },
+	{
+		title: 'Home',
+		href: '/home-content',
+		icon: 'content',
+		path: 'home-content',
+	},
 
 	{
 		startOfSection: true,
