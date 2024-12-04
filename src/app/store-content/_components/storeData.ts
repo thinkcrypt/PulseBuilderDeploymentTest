@@ -23,6 +23,18 @@ const data = [
 		isRequired: true,
 		type: 'text',
 	},
+	{
+		name: 'brandColor',
+		label: 'Brand Color',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'brandTextColor',
+		label: 'Brand Text Color',
+		isRequired: true,
+		type: 'text',
+	},
 ];
 
 export default data;
