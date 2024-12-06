@@ -19,6 +19,8 @@ export * from './icon';
 
 export * from './wrappers';
 
+export * from './cms';
+
 export * from './menu';
 export * from './components';
 

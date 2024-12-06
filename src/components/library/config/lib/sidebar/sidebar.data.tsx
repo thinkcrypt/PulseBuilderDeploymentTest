@@ -172,6 +172,12 @@ const sidebar: SidebarItemType[] = [
 		icon: 'shop',
 		path: 'store-content',
 	},
+	// {
+	// 	title: 'Banner',
+	// 	href: '/store-content/banner',
+	// 	icon: 'content',
+	// 	path: 'store-content/banner',
+	// },
 
 	{
 		title: 'Home',

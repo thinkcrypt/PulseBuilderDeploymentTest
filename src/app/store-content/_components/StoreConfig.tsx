@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Heading, Text, Image, Flex } from '@chakra-ui/react';
-import { ViewContentContainer, Column } from '@/components/library';
+import { Heading, Text, Image, Grid } from '@chakra-ui/react';
+import { ViewContentContainer, Column, ColorInput } from '@/components/library';
 import { HomeContentProps } from './';
 
 const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
@@ -13,7 +13,7 @@ const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
 			<Column gap={4}>
 				<Image
 					src={content?.logo}
-					w='200px'
+					w='140px'
 					h='auth'
 				/>
 				<Column gap={2}>
@@ -28,25 +28,51 @@ const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
 					<Heading size='sm'>Email</Heading>
 					<Text>{content?.email}</Text>
 				</Column>
+
 				<Column gap={2}>
-					<Heading size='sm'>Brand Color</Heading>
-					<Flex
-						h='44px'
-						w='100px'
-						borderRadius='8px'
-						bg={content?.brandColor}
-					/>
+					<Heading size='sm'>Primary Font</Heading>
+					<Text>{content?.primaryFont}</Text>
 				</Column>
+
 				<Column gap={2}>
-					<Heading size='sm'>Brand Text Color</Heading>
-					<Flex
-						border='1px solid'
-						h='44px'
-						w='100px'
-						borderRadius='8px'
-						bg={content?.brandTextColor}
-					/>
+					<Heading size='sm'>Secondary Font</Heading>
+					<Text>{content?.secondaryFont}</Text>
 				</Column>
+
+				<Grid
+					gridTemplateColumns='repeat(2, 1fr)'
+					gap={4}>
+					<ColorInput
+						value={content?.brandColor}
+						title='Brand Color'
+					/>
+
+					<ColorInput
+						value={content?.brandTextColor}
+						title='Brand Text Color'
+					/>
+
+					<ColorInput
+						value={content?.primaryTextColor}
+						title='Primary Text Color'
+					/>
+					<ColorInput
+						value={content?.secondaryTextColor}
+						title='Secondary Text Color'
+					/>
+					<ColorInput
+						value={content?.headerBg}
+						title='Header Background Color'
+					/>
+					<ColorInput
+						value={content?.headerFg}
+						title='Header Foreground Color'
+					/>
+					<ColorInput
+						value={content?.headerBorder}
+						title='Header Border Color'
+					/>
+				</Grid>
 			</Column>
 		</ViewContentContainer>
 	);

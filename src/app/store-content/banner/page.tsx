@@ -1,9 +1,9 @@
 'use client';
+
 import { LayoutSuspense } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { Button, Link } from '@chakra-ui/react';
-import React, { ReactNode } from 'react';
-import { BannerConfig, bannerData, StoreConfig, storeData } from './_components';
+import React from 'react';
+import { BannerConfig, bannerData, StoreConfig, storeData } from '../_components';
 
 const HomeContentPage = () => {
 	const { data, isLoading } = useGetContentQuery({});
@@ -11,14 +11,10 @@ const HomeContentPage = () => {
 	return (
 		<LayoutSuspense
 			isLoading={isLoading || !data}
-			path='/store-content'
-			title='Store Content'>
-			<StoreConfig
-				content={data?.basic}
-				dataModel={storeData}
-			/>
+			path='/home-content'
+			title='Banner content'>
 			<BannerConfig
-				content={data?.content}
+				content={data?.content?.banner}
 				dataModel={bannerData}
 			/>
 		</LayoutSuspense>

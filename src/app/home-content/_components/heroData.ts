@@ -36,6 +36,22 @@ const data = [
 		type: 'text',
 		endOfSection: true,
 	},
+	{
+		name: 'hero.align',
+		label: 'Align',
+		isRequired: true,
+		type: 'select',
+		options: [
+			{
+				label: 'Left',
+				value: 'left',
+			},
+			{
+				label: 'Center',
+				value: 'center',
+			},
+		],
+	},
 ];
 
 export default data;

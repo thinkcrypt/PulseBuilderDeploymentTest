@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Box, Button, Heading, Text } from '@chakra-ui/react';
-import { ViewContentContainer, ImageView } from '../../../components/library';
+import { ViewContentContainer, ImageView, Column } from '../../../components/library';
 
 type HeroDataProps = {
 	content: any;
@@ -20,6 +20,10 @@ const HeroData: FC<HeroDataProps> = ({ content, dataModel }) => {
 					<Button>{content?.hero?.btnText}</Button>
 				</Box>
 			</ImageView>
+			<Column gap={2}>
+				<Heading size='sm'>Align</Heading>
+				<Text>{content?.hero?.align}</Text>
+			</Column>
 		</ViewContentContainer>
 	);
 };

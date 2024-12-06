@@ -1,3 +1,15 @@
+const fontOptions = [
+	{ label: 'Playfair Display', value: 'Playfair Display' },
+	{ label: 'Inter', value: 'Inter' },
+	{ label: 'Roboto Mono', value: 'Roboto Mono' },
+	{ label: 'Montserrat', value: 'Montserrat' },
+	{ label: 'Open Sans', value: 'Open Sans' },
+	{ label: 'Lato', value: 'Lato' },
+	{ label: 'Oswald', value: 'Oswald' },
+	{ label: 'Raleway', value: 'Raleway' },
+	{ label: 'Bebas Neue', value: 'Bebas Neue' },
+];
+
 const data = [
 	{
 		name: 'logo',
@@ -24,6 +36,18 @@ const data = [
 		type: 'text',
 	},
 	{
+		name: 'primaryFont',
+		label: 'Primary Font',
+		type: 'select',
+		options: fontOptions,
+	},
+	{
+		name: 'secondaryFont',
+		label: 'Secondary Font',
+		type: 'select',
+		options: fontOptions,
+	},
+	{
 		name: 'brandColor',
 		label: 'Brand Color',
 		isRequired: true,
@@ -33,6 +57,35 @@ const data = [
 		name: 'brandTextColor',
 		label: 'Brand Text Color',
 		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'primaryTextColor',
+		label: 'Primary Text Color',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'secondaryTextColor',
+		label: 'Secondary Text Color',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'headerBg',
+		label: 'Header Background Color',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'headerFg',
+		label: 'Header Foreground Color',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'headerBorder',
+		label: 'Header Border Color',
 		type: 'text',
 	},
 ];
