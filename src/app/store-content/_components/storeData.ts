@@ -2,12 +2,18 @@ const fontOptions = [
 	{ label: 'Playfair Display', value: 'Playfair Display' },
 	{ label: 'Inter', value: 'Inter' },
 	{ label: 'Roboto Mono', value: 'Roboto Mono' },
+	{ label: 'Roboto', value: 'Roboto' },
 	{ label: 'Montserrat', value: 'Montserrat' },
 	{ label: 'Open Sans', value: 'Open Sans' },
 	{ label: 'Lato', value: 'Lato' },
 	{ label: 'Oswald', value: 'Oswald' },
 	{ label: 'Raleway', value: 'Raleway' },
 	{ label: 'Bebas Neue', value: 'Bebas Neue' },
+	{ label: 'Montserrat', value: 'Montserrat' },
+	{
+		label: 'Poppins',
+		value: 'Poppins',
+	},
 ];
 
 const data = [
