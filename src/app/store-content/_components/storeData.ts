@@ -66,6 +66,12 @@ const data = [
 		type: 'text',
 	},
 	{
+		name: 'bgColor',
+		label: 'Background Color',
+		isRequired: true,
+		type: 'text',
+	},
+	{
 		name: 'primaryTextColor',
 		label: 'Primary Text Color',
 		isRequired: true,

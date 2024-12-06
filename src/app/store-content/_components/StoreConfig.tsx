@@ -53,6 +53,11 @@ const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
 					/>
 
 					<ColorInput
+						value={content?.bgColor}
+						title='Background Color'
+					/>
+
+					<ColorInput
 						value={content?.primaryTextColor}
 						title='Primary Text Color'
 					/>
