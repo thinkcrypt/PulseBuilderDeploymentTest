@@ -52,6 +52,22 @@ const data = [
 			},
 		],
 	},
+	{
+		name: 'hero.padding',
+		label: 'Padding',
+		isRequired: true,
+		type: 'select',
+		options: [
+			{
+				label: 'Apply Padding',
+				value: 'apply',
+			},
+			{
+				label: 'No Padding',
+				value: 'none',
+			},
+		],
+	},
 ];
 
 export default data;
