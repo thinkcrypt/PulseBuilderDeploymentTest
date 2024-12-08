@@ -98,8 +98,10 @@ const schema = {
 		type: 'slug',
 		tableType: 'text',
 		displayInTable: true,
-		required: true,
 		sort: true,
+		readOnlyOnUpdate: true,
+		helperText:
+			'This text will be used as part of the URL for this category. Leave it empty to auto-generate.',
 	},
 	isActive: {
 		label: 'Is Active',
@@ -173,7 +175,7 @@ const schema = {
 		label: 'Stock',
 		displayInTable: true,
 		sort: true,
-		renderCondition: (data: any) => data.allowStock,
+		// renderCondition: (data: any) => data.allowStock,
 	},
 
 	lowStockAlert: {
@@ -181,7 +183,7 @@ const schema = {
 		label: 'Low Stock Alert',
 		displayInTable: true,
 		sort: true,
-		renderCondition: (data: any) => data.allowStock,
+		// renderCondition: (data: any) => data.allowStock,
 	},
 
 	tags: {
