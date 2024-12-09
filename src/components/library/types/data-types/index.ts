@@ -14,6 +14,7 @@ export type InputDataType =
 	| 'data-select'
 	| 'data-menu'
 	| 'checkbox'
+	| 'color'
 	| 'multi-select'
 	| 'nested-image'
 	| 'nested-string'
