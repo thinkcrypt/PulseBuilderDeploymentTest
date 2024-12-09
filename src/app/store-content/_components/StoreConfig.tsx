@@ -40,7 +40,7 @@ const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
 				</Column>
 
 				<Grid
-					gridTemplateColumns='repeat(2, 1fr)'
+					gridTemplateColumns={{ base: '1fr 1fr', md: 'repeat(3, 1fr)' }}
 					gap={4}>
 					<ColorInput
 						value={content?.brandColor}
@@ -76,6 +76,22 @@ const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
 					<ColorInput
 						value={content?.headerBorder}
 						title='Header Border Color'
+					/>
+					<ColorInput
+						value={content?.footerBg}
+						title='Footer Background Color'
+					/>
+					<ColorInput
+						value={content?.footerFg}
+						title='Footer Foreground Color'
+					/>
+					<ColorInput
+						value={content?.footerBannerBg}
+						title='Footer Banner Background'
+					/>
+					<ColorInput
+						value={content?.footerBannerFg}
+						title='Footer Banner Foreground'
 					/>
 				</Grid>
 			</Column>

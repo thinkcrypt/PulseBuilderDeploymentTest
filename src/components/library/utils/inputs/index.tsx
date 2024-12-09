@@ -41,5 +41,6 @@ export { default as Input } from './input-components/InputElement';
 export { default as VPermissions } from './VPermissions';
 
 export { default as VReadOnly } from './VReadOnly';
+export { default as VColor } from './VColor';
 
 export * from './input-components';

@@ -23,6 +23,7 @@ import {
 	VCustom,
 	useGetByIdQuery,
 	VArrayString,
+	VColor,
 } from '../../../';
 
 type Option = {
@@ -303,6 +304,17 @@ const FormInput: FC<FormInputProps> = ({
 			return (
 				<>
 					<VInput
+						type={type}
+						isRequired={isRequired}
+						helper={item?.helper}
+						{...props}
+					/>
+				</>
+			);
+		case 'color':
+			return (
+				<>
+					<VColor
 						type={type}
 						isRequired={isRequired}
 						helper={item?.helper}

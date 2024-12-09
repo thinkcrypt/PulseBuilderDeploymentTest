@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 const ColorInput = ({ value, title }: { value: string; title: string }) => (
 	<Flex
@@ -7,12 +7,17 @@ const ColorInput = ({ value, title }: { value: string; title: string }) => (
 		gap={2}>
 		<Heading size='sm'>{title}</Heading>
 		<Flex
-			border='1px solid'
-			h='44px'
-			w='100px'
-			borderRadius='8px'
-			bg={value}
-		/>
+			align='center'
+			gap={2}>
+			<Flex
+				border='1px solid'
+				h='32px'
+				w='32px'
+				borderRadius='8px'
+				bg={value}
+			/>
+			<Text fontWeight='600'>{value}</Text>
+		</Flex>
 	</Flex>
 );
 
