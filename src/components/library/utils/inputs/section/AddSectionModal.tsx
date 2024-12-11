@@ -13,6 +13,7 @@ import {
 	InsertModalFooter,
 	InsertModalHeader,
 	InsertModalOverlay,
+	VImage,
 	VInput,
 	VTextarea,
 } from '../../../';
@@ -23,10 +24,12 @@ type UploadModalProps = {
 	type?: 'add' | 'edit' | 'delete';
 	multiple?: boolean;
 	handleDelete?: any;
-	value: { title: string; description: string }[];
+	value: { image?: string; title: string; description: string }[];
 	name: string;
-	prevVal?: { title: string; description: string };
+	prevVal?: { image?: string; title: string; description: string };
 	index?: number;
+	dataModel?: any;
+	hasImage?: boolean;
 };
 
 const AddSectionModal: FC<UploadModalProps> = ({
@@ -39,32 +42,50 @@ const AddSectionModal: FC<UploadModalProps> = ({
 	name,
 	prevVal,
 	index = 0,
+	dataModel,
+	hasImage,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const closeModal = () => {
-		setVal({ title: '', description: '' });
-		onClose();
-	};
-
 	const [val, setVal] = useState<{
+		image?: string;
 		title: string;
 		description: string;
 	}>(
 		prevVal || {
+			image: '',
 			title: '',
 			description: '',
 		}
 	);
 
+	const closeModal = () => {
+		hasImage
+			? setVal({
+					image: '',
+					title: '',
+					description: '',
+			  })
+			: setVal({
+					title: '',
+					description: '',
+			  });
+		onClose();
+	};
+
 	const openModal = () => {
-		setVal(prevVal || { title: '', description: '' });
+		if (hasImage) setVal(prevVal || { image: '', title: '', description: '' });
+		else setVal(prevVal || { title: '', description: '' });
 		onOpen();
 	};
 
 	const handleChange = (e: any) => {
 		const { name, value } = e.target;
 		setVal(prevVal => ({ ...prevVal, [name]: value }));
+	};
+
+	const handleImage = (e: any) => {
+		setVal(prevVal => ({ ...prevVal, image: e }));
 	};
 
 	const handleAddSection = () => {
@@ -111,7 +132,7 @@ const AddSectionModal: FC<UploadModalProps> = ({
 			<Button
 				size='sm'
 				colorScheme='brand'>
-				Add Section
+				Add Item
 			</Button>
 		),
 		edit: (
@@ -144,6 +165,14 @@ const AddSectionModal: FC<UploadModalProps> = ({
 					<InsertModalCloseButton />
 					<InsertModalBody flex={1}>
 						<Column gap={4}>
+							{hasImage && (
+								<VImage
+									name='image'
+									label='Image'
+									value={val?.image}
+									onChange={handleImage}
+								/>
+							)}
 							<VInput
 								name='title'
 								label='Title'
@@ -155,7 +184,7 @@ const AddSectionModal: FC<UploadModalProps> = ({
 								label='Description'
 								value={val?.description}
 								h='full'
-								minH='400px'
+								minH='300px'
 								onChange={handleChange}
 							/>
 						</Column>

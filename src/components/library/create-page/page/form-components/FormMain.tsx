@@ -11,7 +11,6 @@ import {
 	handleNestedImage,
 	handleNestedString,
 } from '../../../';
-import { Text } from '@chakra-ui/react';
 
 type FormMainType = {
 	fields: any;

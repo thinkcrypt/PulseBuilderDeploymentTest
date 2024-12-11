@@ -61,3 +61,19 @@ export * from './components/skeleton';
 export * from './page';
 export * from './pos';
 export * from './settings';
+
+export const fontOptions = [
+	{ label: 'Bebas Neue', value: 'Bebas Neue' },
+	{ label: 'Inter', value: 'Inter' },
+	{ label: 'Lato', value: 'Lato' },
+	{ label: 'Marcellus', value: 'Marcellus' },
+	{ label: 'Montserrat', value: 'Montserrat' },
+	{ label: 'Montserrat', value: 'Montserrat' },
+	{ label: 'Open Sans', value: 'Open Sans' },
+	{ label: 'Oswald', value: 'Oswald' },
+	{ label: 'Playfair Display', value: 'Playfair Display' },
+	{ label: 'Poppins', value: 'Poppins' },
+	{ label: 'Raleway', value: 'Raleway' },
+	{ label: 'Roboto', value: 'Roboto' },
+	{ label: 'Roboto Mono', value: 'Roboto Mono' },
+];

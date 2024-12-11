@@ -235,6 +235,7 @@ const FormInput: FC<FormInputProps> = ({
 					isRequired={isRequired}
 					name={props.name}
 					helper={item?.helper}
+					hasImage={item?.hasImage}
 					{...props}
 				/>
 			);

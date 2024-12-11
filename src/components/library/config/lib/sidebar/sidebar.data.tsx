@@ -166,24 +166,33 @@ const sidebar: SidebarItemType[] = [
 
 	{
 		startOfSection: true,
-		sectionTitle: 'Content',
+		sectionTitle: 'Content (NEXA)',
 		title: 'Store',
 		href: '/store-content',
 		icon: 'shop',
 		path: 'store-content',
 	},
-	// {
-	// 	title: 'Banner',
-	// 	href: '/store-content/banner',
-	// 	icon: 'content',
-	// 	path: 'store-content/banner',
-	// },
 
 	{
 		title: 'Home',
 		href: '/home-content',
 		icon: 'content',
 		path: 'home-content',
+	},
+	{
+		startOfSection: true,
+		sectionTitle: 'Content (HONGO)',
+		title: 'Store',
+		href: '/hongo/store-content',
+		icon: 'shop',
+		path: 'hongo/store-content',
+	},
+
+	{
+		title: 'Home',
+		href: '/hongo/home-content',
+		icon: 'content',
+		path: 'hongo/home-content',
 	},
 
 	{
