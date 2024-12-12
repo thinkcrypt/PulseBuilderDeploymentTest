@@ -6,7 +6,7 @@ import React from 'react';
 import { BannerConfig, bannerData, StoreConfig, storeData } from '../_components';
 
 const HomeContentPage = () => {
-	const { data, isLoading } = useGetContentQuery({});
+	const { data, isLoading } = useGetContentQuery({ path: 'hongo' });
 
 	return (
 		<LayoutSuspense
@@ -14,6 +14,7 @@ const HomeContentPage = () => {
 			path='/home-content'
 			title='Banner content'>
 			<BannerConfig
+				path='hongo'
 				content={data?.content?.banner}
 				dataModel={bannerData}
 			/>
