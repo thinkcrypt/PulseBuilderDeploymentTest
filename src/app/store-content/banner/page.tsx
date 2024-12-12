@@ -6,7 +6,9 @@ import React from 'react';
 import { BannerConfig, bannerData, StoreConfig, storeData } from '../_components';
 
 const HomeContentPage = () => {
-	const { data, isLoading } = useGetContentQuery({});
+	const { data, isLoading } = useGetContentQuery({
+		path: 'nexa',
+	});
 
 	return (
 		<LayoutSuspense
@@ -14,6 +16,7 @@ const HomeContentPage = () => {
 			path='/home-content'
 			title='Banner content'>
 			<BannerConfig
+				path='nexa'
 				content={data?.content?.banner}
 				dataModel={bannerData}
 			/>
