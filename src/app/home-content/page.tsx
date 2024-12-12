@@ -20,7 +20,7 @@ import {
 } from './_components';
 
 const HomeContentPage = () => {
-	const { data, isLoading } = useGetContentQuery({ theme: 'nexa' });
+	const { data, isLoading } = useGetContentQuery({ path: 'nexa' });
 
 	return (
 		<LayoutSuspense
