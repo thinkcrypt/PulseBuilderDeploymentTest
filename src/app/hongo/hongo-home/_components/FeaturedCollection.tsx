@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Center, Grid, Heading, Text } from '@chakra-ui/react';
-import { ViewContentContainer, ImageView } from '@/components/library';
-import { HomeContentProps } from '.';
+import { ViewContentContainer, ImageView, HomeContentProps } from '@/components/library';
 
 type ItemProps = {
 	image: string;
@@ -9,12 +8,13 @@ type ItemProps = {
 	subTitle?: string;
 };
 
-const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content }) => {
+const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	const data = content.featuredCollection;
 	return (
 		<ViewContentContainer
 			title='Featured Collection'
 			data={content}
+			path={path}
 			dataModel={dataModel}>
 			{!data || (data?.length == 0 && <Center>No Content Added Yet</Center>)}
 			<Grid

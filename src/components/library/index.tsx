@@ -77,3 +77,9 @@ export const fontOptions = [
 	{ label: 'Roboto', value: 'Roboto' },
 	{ label: 'Roboto Mono', value: 'Roboto Mono' },
 ];
+
+export type HomeContentProps = {
+	content: any;
+	dataModel: any;
+	path: any;
+};

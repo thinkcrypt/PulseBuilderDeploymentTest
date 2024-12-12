@@ -9,10 +9,11 @@ import {
 	EditProductListModal,
 	ViewProductContainer,
 	sortDataByPriority,
+	HomeContentProps,
 } from '@/components/library';
-import { HomeContentProps, CollectionDetails } from '.';
+import { CollectionDetails } from '.';
 
-const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content }) => {
+const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	const productList = sortDataByPriority(content?.productList);
 
 	const editButton = (
@@ -33,6 +34,7 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content }) => {
 
 	return (
 		<ViewProductContainer
+			path={path}
 			title='Product List'
 			edit={false}
 			data={content?.productList}

@@ -183,16 +183,16 @@ const sidebar: SidebarItemType[] = [
 		startOfSection: true,
 		sectionTitle: 'Content (HONGO)',
 		title: 'Store',
-		href: '/hongo/store-content',
+		href: '/hongo/hongo-store',
 		icon: 'shop',
-		path: 'hongo/store-content',
+		path: 'hongo/hongo-store',
 	},
 
 	{
 		title: 'Home',
-		href: '/hongo/home-content',
+		href: '/hongo/hongo-home',
 		icon: 'content',
-		path: 'hongo/home-content',
+		path: 'hongo/hongo-home',
 	},
 
 	{

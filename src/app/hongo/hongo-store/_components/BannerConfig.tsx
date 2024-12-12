@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Heading, Text } from '@chakra-ui/react';
-import { ViewContentContainer, Column, ColorInput } from '@/components/library';
-import { HomeContentProps } from './';
+import { ViewContentContainer, Column, ColorInput, HomeContentProps } from '@/components/library';
 
-const BannerConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
+const BannerConfig: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	const { leftText, rightText, bgColor, fgColor, hide } = content?.banner;
 	return (
 		<ViewContentContainer
+			path={path}
 			title='Banner Information'
 			data={content}
 			dataModel={dataModel}>

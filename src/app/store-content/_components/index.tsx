@@ -1,6 +1,7 @@
 export type HomeContentProps = {
 	content: any;
 	dataModel: any;
+	path: any;
 };
 
 //Store

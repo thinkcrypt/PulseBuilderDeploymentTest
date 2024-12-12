@@ -31,15 +31,16 @@ type CreateModalProps = {
 	id?: string;
 	title?: string;
 	data: any;
+	contentType?: 'basic' | 'content';
 };
 
 const EditContentModal = ({
 	data,
 	dataModel,
 	children,
-	path = 'content',
+	path = 'nexa',
 	title,
-	type,
+	contentType = 'content',
 	id,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -69,6 +70,7 @@ const EditContentModal = ({
 		trigger({
 			body: formData,
 			path,
+			type: contentType,
 		});
 	};
 

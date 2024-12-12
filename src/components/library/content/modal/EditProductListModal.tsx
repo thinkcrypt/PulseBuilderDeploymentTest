@@ -36,7 +36,7 @@ const EditProductListModal = ({
 	data,
 	dataModel,
 	children,
-	path,
+	path = 'nexa',
 	title,
 	type,
 	id,
@@ -70,7 +70,7 @@ const EditProductListModal = ({
 		trigger({
 			id: id,
 			body: formData,
-			path: '/contents/product',
+			path: `/contents/product/${path}`,
 			invalidate: ['content', 'product', 'products'],
 		});
 	};

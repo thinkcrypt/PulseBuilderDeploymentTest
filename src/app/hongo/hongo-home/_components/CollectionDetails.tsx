@@ -1,5 +1,5 @@
 import { AdminProductCard as ProductCard } from '@/commerce-components/landing-components/landing-products';
-import { PLACEHOLDER_IMAGE, useGetAllQuery } from '@/components/library';
+import { PLACEHOLDER_IMAGE, useGetAllQuery, HomeContentProps } from '@/components/library';
 import { Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 

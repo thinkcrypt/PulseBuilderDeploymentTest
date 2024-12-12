@@ -25,7 +25,12 @@ type DeleteItemModalProps = {
 	children: React.ReactNode;
 };
 
-const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({ title, id, children }) => {
+const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
+	title,
+	id,
+	children,
+	path = 'nexa',
+}) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = React.useRef<any>(undefined);
 
@@ -38,7 +43,11 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({ title, id, chi
 
 	const handleDelete = (e: any) => {
 		e.preventDefault();
-		trigger({ id: id, path: '/contents/product', invalidate: ['content', 'product', 'products'] });
+		trigger({
+			id: id,
+			path: `/contents/product/${path}`,
+			invalidate: ['content', 'product', 'products'],
+		});
 	};
 
 	useEffect(() => {

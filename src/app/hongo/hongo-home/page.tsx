@@ -1,6 +1,6 @@
 'use client';
 import { LayoutSuspense } from '@/components/library';
-import { useGetContentQuery } from '@/components/library/store/services/hongoApi';
+import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import { Button, Link } from '@chakra-ui/react';
 import React from 'react';
 
@@ -20,7 +20,7 @@ import {
 } from './_components';
 
 const HomeContentPage = () => {
-	const { data, isLoading } = useGetContentQuery({});
+	const { data, isLoading } = useGetContentQuery({ path: 'hongo' });
 
 	return (
 		<LayoutSuspense
@@ -34,16 +34,19 @@ const HomeContentPage = () => {
 			</Link>
 
 			<HeroComponent
+				path='hongo'
 				content={data?.content}
 				dataModel={heroData}
 			/>
 
 			<ServicesComponent
+				path='hongo'
 				content={data?.content}
 				dataModel={discoverData}
 			/>
 
 			<CategoryComponent
+				path='hongo'
 				content={data?.content}
 				dataModel={collectionsData}
 			/>
@@ -54,6 +57,7 @@ const HomeContentPage = () => {
 			/> */}
 
 			<ProductListComponent
+				path='hongo'
 				content={data?.content}
 				dataModel={listData}
 			/>

@@ -34,7 +34,13 @@ type CreateModalProps = {
 	data?: any;
 };
 
-const AddProductListModal = ({ data = [], dataModel, children, path, title }: CreateModalProps) => {
+const AddProductListModal = ({
+	data = [],
+	dataModel,
+	children,
+	path = 'nexa',
+	title,
+}: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [formData, setFormData] = useFormData<any>(dataModel);
@@ -63,6 +69,7 @@ const AddProductListModal = ({ data = [], dataModel, children, path, title }: Cr
 		e.stopPropagation();
 		trigger({
 			body: formData,
+			path: path,
 		});
 	};
 

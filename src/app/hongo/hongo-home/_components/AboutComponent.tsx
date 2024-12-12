@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Heading, Text } from '@chakra-ui/react';
-import { ViewContentContainer, ImageView } from '@/components/library';
-import { HomeContentProps } from '.';
+import { ViewContentContainer, ImageView, HomeContentProps } from '@/components/library';
 
-const AboutComponent: FC<HomeContentProps> = ({ dataModel, content }) => {
+const AboutComponent: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	const { title, subTitle, image } = content?.about;
 	return (
 		<ViewContentContainer
+			path={path}
 			title='About Us'
 			data={content}
 			dataModel={dataModel}>

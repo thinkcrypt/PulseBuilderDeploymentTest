@@ -12,13 +12,15 @@ import {
 type HeroDataProps = {
 	content: any;
 	dataModel: any;
+	path: string;
 };
 
-const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel }) => {
+const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, path }) => {
 	return (
 		<ViewContentContainer
 			title='Category Section'
 			data={content}
+			path={path}
 			dataModel={dataModel}>
 			<Align
 				justify='space-between'

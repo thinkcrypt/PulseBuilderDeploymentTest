@@ -9,6 +9,7 @@ type ViewContentContainerType = {
 	data: any;
 	edit?: boolean;
 	path?: string;
+	type?: 'basic' | 'content';
 };
 
 const ViewContentContainer: FC<ViewContentContainerType> = ({
@@ -18,6 +19,7 @@ const ViewContentContainer: FC<ViewContentContainerType> = ({
 	data,
 	edit = true,
 	path,
+	type = 'content',
 }) => {
 	return (
 		<Column
@@ -35,6 +37,7 @@ const ViewContentContainer: FC<ViewContentContainerType> = ({
 					<EditContentModal
 						path={path}
 						data={data}
+						contentType={type}
 						dataModel={dataModel}>
 						<Button
 							colorScheme='gray'

@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { Box, Center, Grid, Heading, Text, Flex, Image } from '@chakra-ui/react';
-import { ViewContentContainer, Column } from '@/components/library';
-import { HomeContentProps } from '.';
+import { ViewContentContainer, Column, HomeContentProps } from '@/components/library';
 
-const ServicesComponent: FC<HomeContentProps> = ({ dataModel, content }) => {
+const ServicesComponent: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	const data = content?.services;
 	return (
 		<ViewContentContainer
 			title='Services Information'
 			data={content}
+			path={path}
 			dataModel={dataModel}>
 			<Grid
 				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }}

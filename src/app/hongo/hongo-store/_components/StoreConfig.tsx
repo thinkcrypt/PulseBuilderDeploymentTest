@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Heading, Text, Image, Grid } from '@chakra-ui/react';
-import { ViewContentContainer, Column, ColorInput } from '@/components/library';
-import { HomeContentProps } from './';
+import { ViewContentContainer, Column, ColorInput, HomeContentProps } from '@/components/library';
 
-const StoreConfig: FC<HomeContentProps> = ({ dataModel, content }) => {
+const StoreConfig: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	return (
 		<ViewContentContainer
-			path='basic'
+			path={path}
+			type='basic'
 			title='Store Information'
 			data={content}
 			dataModel={dataModel}>
