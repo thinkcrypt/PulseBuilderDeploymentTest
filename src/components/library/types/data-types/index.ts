@@ -10,6 +10,7 @@ export type InputDataType =
 	| 'category-collection-array'
 	| 'textarea'
 	| 'read-only'
+	| 'editor'
 	| 'select'
 	| 'data-select'
 	| 'data-menu'

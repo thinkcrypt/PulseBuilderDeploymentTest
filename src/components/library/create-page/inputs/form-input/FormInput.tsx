@@ -24,6 +24,7 @@ import {
 	useGetByIdQuery,
 	VArrayString,
 	VColor,
+	VEditor,
 } from '../../../';
 
 type Option = {
@@ -329,6 +330,16 @@ const FormInput: FC<FormInputProps> = ({
 					type={type}
 					isRequired={isRequired}
 					helper={item?.helper}
+					{...props}
+				/>
+			);
+		case 'editor':
+			return (
+				<VEditor
+					onChange={props.onChange}
+					name={props.name}
+					helper={item?.helper}
+					isRequired={item?.isRequired}
 					{...props}
 				/>
 			);

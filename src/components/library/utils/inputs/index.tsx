@@ -43,4 +43,6 @@ export { default as VPermissions } from './VPermissions';
 export { default as VReadOnly } from './VReadOnly';
 export { default as VColor } from './VColor';
 
+export { default as VEditor } from './VEditor';
+
 export * from './input-components';

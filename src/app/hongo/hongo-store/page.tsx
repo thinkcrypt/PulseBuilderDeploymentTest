@@ -2,7 +2,14 @@
 import { LayoutSuspense } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import React, { ReactNode } from 'react';
-import { BannerConfig, bannerData, StoreConfig, storeData } from './_components';
+import {
+	aboutPageData,
+	BannerConfig,
+	bannerData,
+	PageConfig,
+	StoreConfig,
+	storeData,
+} from './_components';
 
 const HomeContentPage = () => {
 	const { data, isLoading } = useGetContentQuery({
@@ -23,6 +30,13 @@ const HomeContentPage = () => {
 				path='hongo'
 				content={data?.content}
 				dataModel={bannerData}
+			/>
+			<PageConfig
+				dataModel={aboutPageData}
+				path='hongo'
+				title='About Page'
+				content={data?.content}
+				data={data?.content?.aboutPage}
 			/>
 		</LayoutSuspense>
 	);
