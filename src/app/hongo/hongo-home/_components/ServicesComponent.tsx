@@ -1,37 +1,61 @@
 import React, { FC } from 'react';
-import { Box, Center, Grid, Heading, Text, Flex, Image } from '@chakra-ui/react';
-import { ViewContentContainer, Column, HomeContentProps } from '@/components/library';
+import { Grid, Heading, Text, Flex, Image } from '@chakra-ui/react';
+import { HoverContentContainer, Column, HomeContentProps } from '@/components/library';
+import { PADDING_X } from '.';
 
-const ServicesComponent: FC<HomeContentProps> = ({ dataModel, content, path }) => {
-	const data = content?.services;
+const ServicesComponent: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
+	const serviceData = content?.services;
+	const { basic } = data;
 	return (
-		<ViewContentContainer
+		<HoverContentContainer
 			title='Services Information'
 			data={content}
 			path={path}
-			dataModel={dataModel}>
+			bg={basic?.bgColor}
+			dataModel={dataModel}
+			px={PADDING_X}>
 			<Grid
-				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }}
-				gap={6}>
-				{data?.map(({ image, title, description }: any, i: number) => (
+				py={12}
+				templateColumns={{
+					base: 'repeat(1, 1fr)',
+					md: 'repeat(2, 1fr)',
+					lg: 'repeat(3, 1fr)',
+					xl: 'repeat(4, 1fr)',
+				}}
+				gap={4}
+				borderBottom='1px solid'
+				borderBottomColor={basic?.borderColor}>
+				{serviceData?.map(({ image, title, description }: any, i: number) => (
 					<Flex
 						key={i}
-						gap={2}
+						gap={3}
 						align='center'>
 						<Image
-							h='100px'
-							w='100px'
+							h='64px'
+							w='64px'
 							src={image}
 							objectFit={'contain'}
 						/>
 						<Column gap={2}>
-							<Heading size='md'>{title}</Heading>
-							<Text>{description}</Text>
+							<Heading
+								color={basic?.primaryTextColor}
+								fontFamily={basic?.primaryFont}
+								_dark={{ color: basic?.primaryTextColor }}
+								fontSize='1.15rem'>
+								{title}
+							</Heading>
+							<Text
+								fontSize='1rem'
+								color={basic?.secondaryTextColor}
+								_dark={{ color: basic?.secondary }}
+								fontFamily={basic?.secondaryFont}>
+								{description}
+							</Text>
 						</Column>
 					</Flex>
 				))}
 			</Grid>
-		</ViewContentContainer>
+		</HoverContentContainer>
 	);
 };
 

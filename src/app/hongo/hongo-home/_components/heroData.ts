@@ -1,5 +1,6 @@
 const data = [
 	{
+		sectionTitle: 'Hero Section',
 		name: 'hero.image',
 		label: 'Image',
 		isRequired: false,
@@ -15,7 +16,7 @@ const data = [
 		name: 'hero.titleColor',
 		label: 'Title Color',
 		isRequired: true,
-		type: 'text',
+		type: 'color',
 	},
 	{
 		name: 'hero.subTitle',
@@ -24,33 +25,8 @@ const data = [
 		type: 'textarea',
 	},
 	{
-		name: 'hero.subTitleColor',
-		label: 'Sub Title Color',
-		isRequired: true,
-		type: 'color',
-	},
-	{
-		name: 'hero.btnText',
-		label: 'Button Text',
-		isRequired: true,
-		type: 'color',
-		endOfSection: true,
-	},
-	{
-		name: 'hero.btnColor',
-		label: 'Button Color',
-
-		type: 'color',
-	},
-	{
-		name: 'hero.btnTextColor',
-		label: 'Button Text Text',
-
-		type: 'color',
-	},
-	{
 		name: 'hero.align',
-		label: 'Align',
+		label: 'Align Contents',
 		isRequired: true,
 		type: 'select',
 		options: [
@@ -62,7 +38,37 @@ const data = [
 				label: 'Center',
 				value: 'center',
 			},
+			{
+				label: 'Right',
+				value: 'right',
+			},
 		],
+	},
+	{
+		name: 'hero.subTitleColor',
+		label: 'Sub Title Color',
+		isRequired: true,
+		type: 'color',
+		endOfSection: true,
+	},
+	{
+		sectionTitle: 'CTA Button Button',
+		name: 'hero.btnText',
+		label: 'Button Text',
+		isRequired: true,
+		type: 'text',
+	},
+	{
+		name: 'hero.btnColor',
+		label: 'Button Color',
+		type: 'color',
+		span: 1,
+	},
+	{
+		name: 'hero.btnTextColor',
+		label: 'Button Text Text',
+		type: 'color',
+		span: 1,
 	},
 ];
 

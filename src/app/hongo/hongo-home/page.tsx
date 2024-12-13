@@ -17,6 +17,11 @@ import {
 	collectionsData,
 	FeaturedCollection,
 	featuredCollectionData,
+	ColorComponent,
+	BannerConfig,
+	bannerData,
+	HeaderConfig,
+	headerData,
 } from './_components';
 
 const HomeContentPage = () => {
@@ -26,14 +31,37 @@ const HomeContentPage = () => {
 		<LayoutSuspense
 			isLoading={isLoading || !data}
 			path='/home-content'
-			title='Home Content'>
-			<Link
+			title='Home Content'
+			position='relative'
+			gap={0}>
+			{/* <Link
 				isExternal
 				href={process.env.NEXT_PUBLIC_ECOM}>
 				<Button>Preview</Button>
-			</Link>
+			</Link> */}
+			{/* <ColorComponent
+				data={data}
+				path='hongo'
+				content={data?.basic}
+				dataModel={heroData}
+			/> */}
+
+			<BannerConfig
+				data={data}
+				path='hongo'
+				content={data?.content}
+				dataModel={bannerData}
+			/>
+
+			<HeaderConfig
+				data={data}
+				path='hongo'
+				content={data?.basic}
+				dataModel={headerData}
+			/>
 
 			<HeroComponent
+				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={heroData}
@@ -41,11 +69,13 @@ const HomeContentPage = () => {
 
 			<ServicesComponent
 				path='hongo'
+				data={data}
 				content={data?.content}
 				dataModel={discoverData}
 			/>
 
 			<CategoryComponent
+				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={collectionsData}
@@ -57,6 +87,7 @@ const HomeContentPage = () => {
 			/> */}
 
 			<ProductListComponent
+				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={listData}

@@ -17,3 +17,13 @@ export { default as discoverData } from './discoverData';
 export { default as listData } from './listData';
 export { default as collectionsData } from './collectionsData';
 export { default as featuredCollectionData } from './featuredCollectionData';
+
+export { default as ColorComponent } from './ColorComponent';
+
+export { default as BannerConfig } from './BannerConfig';
+export { default as bannerData } from './bannerData';
+
+export { default as HeaderConfig } from './HeaderConfig';
+export { default as headerData } from './headerData';
+
+export const PADDING_X = { base: 6, md: 24 };

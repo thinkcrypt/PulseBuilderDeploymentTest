@@ -5,7 +5,6 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	ModalOverlay,
-	Text,
 	useDisclosure,
 } from '@chakra-ui/react';
 
@@ -32,6 +31,8 @@ type CreateModalProps = {
 	title?: string;
 	data: any;
 	contentType?: 'basic' | 'content';
+	setIsOpen?: any;
+	setHover?: any;
 };
 
 const EditContentModal = ({
@@ -41,6 +42,8 @@ const EditContentModal = ({
 	path = 'nexa',
 	title,
 	contentType = 'content',
+	setIsOpen,
+	setHover,
 	id,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,6 +53,7 @@ const EditContentModal = ({
 	const onModalOpen = () => {
 		setFormData(data);
 		onOpen();
+		setIsOpen && setIsOpen(true);
 	};
 
 	const { isSuccess, isLoading, isError, error } = result;
@@ -76,6 +80,8 @@ const EditContentModal = ({
 
 	const onModalClose = () => {
 		setFormData({});
+		setHover && setHover(false);
+		setIsOpen && setIsOpen(false);
 		result.reset();
 		onClose();
 	};
@@ -97,7 +103,7 @@ const EditContentModal = ({
 				closeOnOverlayClick={false}>
 				<ModalOverlay />
 				<ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-					<ModalHeader>{`Update ${title}`}</ModalHeader>
+					<ModalHeader>{`Update Content`}</ModalHeader>
 					<ModalCloseButton />
 					<form onSubmit={handleSubmit}>
 						<ModalBody px={6}>

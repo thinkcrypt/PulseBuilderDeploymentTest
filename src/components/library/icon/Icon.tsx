@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
-import { IoIosHome, IoIosAddCircleOutline } from 'react-icons/io';
-import { IoAdd } from 'react-icons/io5';
+import { IoIosHome, IoIosAddCircleOutline, IoIosStar } from 'react-icons/io';
+import { IoAdd, IoBagOutline, IoSearchOutline } from 'react-icons/io5';
 import { TbSelector } from 'react-icons/tb';
 import { BsCalendar2Date } from 'react-icons/bs';
 import colors from '@/theme/colors.theme';
@@ -23,7 +23,7 @@ import { RiSettings3Fill } from 'react-icons/ri';
 import { FaTable } from 'react-icons/fa6';
 import { TiPrinter } from 'react-icons/ti';
 import { IoMdBarcode } from 'react-icons/io';
-import { CiMenuBurger } from 'react-icons/ci';
+import { CiMenuBurger, CiStar } from 'react-icons/ci';
 import { GrSubtract } from 'react-icons/gr';
 import { SiCkeditor4 } from 'react-icons/si';
 import { FaRegEdit } from 'react-icons/fa';
@@ -69,6 +69,7 @@ export type IconNameOptions =
 	| 'customers'
 	| 'dashboard'
 	| 'date'
+	| 'search'
 	| 'delete'
 	| 'delivery'
 	| 'delivery-fill'
@@ -88,6 +89,7 @@ export type IconNameOptions =
 	| 'pos'
 	| 'product'
 	| 'purchase'
+	| 'cart-bag'
 	| 'report'
 	| 'role'
 	| 'select'
@@ -97,7 +99,9 @@ export type IconNameOptions =
 	| 'shop'
 	| 'store'
 	| 'subtract'
-	| 'user';
+	| 'user'
+	| 'rating-fill'
+	| 'rating-outline';
 
 type IconProps = {
 	size?: number;
@@ -152,6 +156,10 @@ const icons: any = {
 	'delivery-fill': FaTruck,
 	info: FaCircleInfo,
 	copy: FaRegCopy,
+	'rating-fill': IoIosStar,
+	'rating-outline': CiStar,
+	search: IoSearchOutline,
+	'cart-bag': IoBagOutline,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {
