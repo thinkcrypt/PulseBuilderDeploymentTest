@@ -77,7 +77,7 @@ const GetItem = ({ path, id, data }: { path: string; id: string; data: any }) =>
 			gap={4}
 			align='center'>
 			<Image
-				borderRadius='full'
+				borderRadius={data?.content?.collections?.borderRadius}
 				src={image || PLACEHOLDER_IMAGE}
 				h='180px'
 				w='180px'

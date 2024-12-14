@@ -7,6 +7,13 @@ const data = [
 	},
 
 	{
+		name: 'collections.borderRadius',
+		label: 'Border Radius',
+		isRequired: true,
+		type: 'number',
+	},
+
+	{
 		name: 'collections.items',
 		label: 'Collections List',
 		isRequired: true,
