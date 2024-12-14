@@ -15,7 +15,7 @@ import { BiSolidCategory } from 'react-icons/bi';
 import { TbFileInvoice } from 'react-icons/tb';
 import { MdBrandingWatermark } from 'react-icons/md';
 import { RiCoupon2Fill } from 'react-icons/ri';
-import { FaUserFriends } from 'react-icons/fa';
+import { FaRegEnvelope, FaUserFriends } from 'react-icons/fa';
 import { FaUserTag } from 'react-icons/fa';
 import { FaUnlockKeyhole } from 'react-icons/fa6';
 import { TbTruckDelivery } from 'react-icons/tb';
@@ -50,6 +50,8 @@ import { FaCircleInfo } from 'react-icons/fa6';
 import { FaRegCopy } from 'react-icons/fa6';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
+import { MdLocalPhone } from 'react-icons/md';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 export type IconNameOptions =
 	| 'add'
@@ -104,7 +106,10 @@ export type IconNameOptions =
 	| 'user'
 	| 'rating-fill'
 	| 'rating-outline'
-	| 'arrow-left';
+	| 'arrow-left'
+	| 'envelope'
+	| 'map'
+	| 'phone';
 
 type IconProps = {
 	size?: number;
@@ -164,6 +169,9 @@ const icons: any = {
 	search: IoSearchOutline,
 	'cart-bag': IoBagOutline,
 	'arrow-left': IoIosArrowBack,
+	envelope: FaRegEnvelope,
+	map: FaMapMarkerAlt,
+	phone: MdLocalPhone,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

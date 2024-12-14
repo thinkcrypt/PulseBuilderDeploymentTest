@@ -29,4 +29,8 @@ export { default as headerData } from './headerData';
 export { default as fontData } from './fontData';
 export { default as colorData } from './colorData';
 
+export { default as FooterConfig } from './FooterConfig';
+export { default as footerData } from './footerData';
+export { default as storeData } from './storeData';
+
 export const PADDING_X = { base: 6, md: 24 };

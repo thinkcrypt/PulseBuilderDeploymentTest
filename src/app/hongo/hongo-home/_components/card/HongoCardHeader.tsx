@@ -5,7 +5,7 @@ import { PLACEHOLDER_IMAGE } from '@/components/library';
 const HongoCardHeader = ({ imgSrc, ...props }: FlexProps & { imgSrc: string }) => (
 	<Flex
 		w='full'
-		h='18rem'
+		h='200px'
 		overflow='hidden'
 		{...props}>
 		<Image

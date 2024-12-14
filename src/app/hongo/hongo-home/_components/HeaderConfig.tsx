@@ -61,13 +61,6 @@ const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 							/>
 						</SearchButton>
 					</Container>
-					{/* <BtnContainer config={content}>
-						<Icon
-							color={content?.brandTextColor}
-							size={18}
-							name='search'
-						/>
-					</BtnContainer> */}
 
 					<BtnContainer config={doc}>
 						<CartTotal config={doc}>{1}</CartTotal>

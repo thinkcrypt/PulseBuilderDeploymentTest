@@ -18,6 +18,9 @@ import {
 	headerData,
 	fontData,
 	colorData,
+	FooterConfig,
+	footerData,
+	storeData,
 } from './_components';
 
 const sidebarData = [
@@ -40,6 +43,14 @@ const sidebarData = [
 	{
 		startOfSection: true,
 		sectionTitle: 'Components (HONGO)',
+		title: 'Store',
+		icon: 'content',
+		dataPath: 'basic',
+		type: 'component',
+		path: 'hongo',
+		dataModel: storeData,
+	},
+	{
 		title: 'Header',
 		icon: 'content',
 		dataPath: 'content',
@@ -117,6 +128,13 @@ const HomeContentPage = () => {
 				path='hongo'
 				content={data?.content}
 				dataModel={listData}
+			/>
+
+			<FooterConfig
+				data={data}
+				path='hongo'
+				content={data?.content}
+				dataModel={footerData}
 			/>
 		</EditorLayoutSuspense>
 	);

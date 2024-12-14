@@ -12,24 +12,29 @@ const HongoProductCard = ({ data, config, ...props }: { data: any; config: any }
 			borderRadius={`${config.cardRadius}px`}>
 			<CartHeader imgSrc={data?.image} />
 			<Column
+				flex={1}
 				bg={config.cardBg}
 				alignItems='center'
 				gap={2}
 				p='.8rem'
 				{...props}>
 				<Name config={config}>{data?.name}</Name>
-				<Box>
-					<Rating
-						ratingValue={data?.rating || '3'}
-						color={config?.primaryText}
-					/>
-				</Box>
-				<Price config={config}>{data?.price.toLocaleString()}</Price>
+				<Column
+					flex={1}
+					justify='flex-end'>
+					<Box>
+						<Rating
+							ratingValue={data?.rating || '3'}
+							color={config?.primaryText}
+						/>
+					</Box>
+					<Price config={config}>{data?.price.toLocaleString()}</Price>
+				</Column>
 			</Column>
 
 			<Center
-				mt='auto'
-				p='.8rem'>
+				p='.8rem'
+				pt={0}>
 				<AddToCart config={config}>Add to Cart</AddToCart>
 			</Center>
 		</Flex>
@@ -65,7 +70,7 @@ const Price: FC<TextConfig> = ({ children, config }) => (
 			color: config?.primaryTextColor,
 		}}
 		fontFamily={config?.secondaryFont}>
-		{children}
+		BDT. {children}
 	</Text>
 );
 
@@ -74,10 +79,11 @@ const AddToCart: FC<TextConfig> = ({ children, config }) => (
 		w='full'
 		transition='.4s'
 		bg={config?.btnColor}
-		borderRadius='0'
+		borderRadius={`${config?.cardRadius / 2}px`}
 		color={config?.btnTextColor}
 		borderWidth={1}
 		borderColor={config?.btnColor}
+		h='36px'
 		_hover={{
 			backgroundColor: config.btnTextColor,
 			color: config.btnColor,
