@@ -1,6 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import {
 	Flex,
+	FlexProps,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
@@ -22,12 +23,10 @@ import {
 } from '../..';
 import { useUpdateContentMutation } from '../../store/services/contentApi';
 
-type CreateModalProps = {
+type CreateModalProps = FlexProps & {
 	dataModel: InputData<any>[];
 	children?: React.ReactNode;
 	path?: string;
-	type?: 'post' | 'update';
-	id?: string;
 	title?: string;
 	data: any;
 	contentType?: 'basic' | 'content';
@@ -44,7 +43,7 @@ const EditContentModal = ({
 	contentType = 'content',
 	setIsOpen,
 	setHover,
-	id,
+	...props
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [formData, setFormData] = useFormData<any>(dataModel, data);
@@ -94,7 +93,11 @@ const EditContentModal = ({
 
 	return (
 		<>
-			<Flex onClick={onModalOpen}>{children || title || path}</Flex>
+			<Flex
+				onClick={onModalOpen}
+				{...props}>
+				{children || title || path}
+			</Flex>
 
 			<Modal
 				size='2xl'

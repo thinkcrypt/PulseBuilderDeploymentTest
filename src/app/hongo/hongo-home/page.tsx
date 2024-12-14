@@ -1,51 +1,82 @@
 'use client';
-import { LayoutSuspense } from '@/components/library';
+import { EditorLayoutSuspense, LayoutSuspense } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { Button, Link } from '@chakra-ui/react';
 import React from 'react';
 
 import {
 	heroData,
-	aboutUsData,
 	discoverData,
 	HeroComponent,
 	ServicesComponent,
-	AboutComponent,
 	ProductListComponent,
 	listData,
 	CategoryComponent,
 	collectionsData,
-	FeaturedCollection,
-	featuredCollectionData,
-	ColorComponent,
 	BannerConfig,
 	bannerData,
 	HeaderConfig,
 	headerData,
+	fontData,
+	colorData,
 } from './_components';
+
+const sidebarData = [
+	{
+		startOfSection: true,
+		sectionTitle: 'Pages (HONGO)',
+		title: 'Home Page',
+		href: '/home-content',
+		icon: 'content',
+		path: 'home-content',
+		type: 'page',
+	},
+	{
+		title: 'Store Settings',
+		href: '/hongo/hongo-store',
+		icon: 'shop',
+		path: 'hongo/hongo-store',
+		type: 'page',
+	},
+	{
+		startOfSection: true,
+		sectionTitle: 'Components (HONGO)',
+		title: 'Header',
+		icon: 'content',
+		dataPath: 'content',
+		type: 'component',
+		path: 'hongo',
+		dataModel: headerData,
+	},
+	{
+		title: 'Fonts',
+		icon: 'shop',
+		type: 'component',
+		path: 'hongo',
+		dataPath: 'basic',
+		dataModel: fontData,
+	},
+	{
+		title: 'Colors',
+		icon: 'shop',
+		type: 'component',
+		path: 'hongo',
+		dataPath: 'basic',
+		dataModel: colorData,
+	},
+];
 
 const HomeContentPage = () => {
 	const { data, isLoading } = useGetContentQuery({ path: 'hongo' });
 
 	return (
-		<LayoutSuspense
+		<EditorLayoutSuspense
+			data={data}
+			sidebarData={sidebarData}
 			isLoading={isLoading || !data}
 			path='/home-content'
 			title='Home Content'
 			position='relative'
 			gap={0}>
-			{/* <Link
-				isExternal
-				href={process.env.NEXT_PUBLIC_ECOM}>
-				<Button>Preview</Button>
-			</Link> */}
-			{/* <ColorComponent
-				data={data}
-				path='hongo'
-				content={data?.basic}
-				dataModel={heroData}
-			/> */}
-
 			<BannerConfig
 				data={data}
 				path='hongo'
@@ -56,7 +87,7 @@ const HomeContentPage = () => {
 			<HeaderConfig
 				data={data}
 				path='hongo'
-				content={data?.basic}
+				content={data?.content}
 				dataModel={headerData}
 			/>
 
@@ -81,27 +112,13 @@ const HomeContentPage = () => {
 				dataModel={collectionsData}
 			/>
 
-			{/* <DiscoverComponent
-				content={data?.content}
-				dataModel={discoverData}
-			/> */}
-
 			<ProductListComponent
 				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={listData}
 			/>
-
-			{/* <AboutComponent
-				content={data?.content}
-				dataModel={aboutUsData}
-			/>
-			<FeaturedCollection
-				content={data?.content}
-				dataModel={featuredCollectionData}
-			/> */}
-		</LayoutSuspense>
+		</EditorLayoutSuspense>
 	);
 };
 

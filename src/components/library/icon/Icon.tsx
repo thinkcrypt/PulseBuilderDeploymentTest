@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 import { IoIosHome, IoIosAddCircleOutline, IoIosStar } from 'react-icons/io';
 import { IoAdd, IoBagOutline, IoSearchOutline } from 'react-icons/io5';
-import { TbSelector } from 'react-icons/tb';
+import { TbArrowBack, TbSelector } from 'react-icons/tb';
 import { BsCalendar2Date } from 'react-icons/bs';
 import colors from '@/theme/colors.theme';
 import { useColorModeValue } from '@chakra-ui/react';
@@ -48,6 +48,8 @@ import { GiBuyCard } from 'react-icons/gi';
 import { FaTruck } from 'react-icons/fa';
 import { FaCircleInfo } from 'react-icons/fa6';
 import { FaRegCopy } from 'react-icons/fa6';
+import { IoIosArrowRoundBack } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io';
 
 export type IconNameOptions =
 	| 'add'
@@ -101,7 +103,8 @@ export type IconNameOptions =
 	| 'subtract'
 	| 'user'
 	| 'rating-fill'
-	| 'rating-outline';
+	| 'rating-outline'
+	| 'arrow-left';
 
 type IconProps = {
 	size?: number;
@@ -160,6 +163,7 @@ const icons: any = {
 	'rating-outline': CiStar,
 	search: IoSearchOutline,
 	'cart-bag': IoBagOutline,
+	'arrow-left': IoIosArrowBack,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

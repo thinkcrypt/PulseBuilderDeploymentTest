@@ -3,16 +3,35 @@ import { Box, Center, CenterProps, Flex, Image, Input, Text } from '@chakra-ui/r
 import { HomeContentProps, HoverContentContainer, Icon } from '@/components/library';
 import { PADDING_X } from '.';
 
+type HeaderConfigProps = {
+	bgColor: string; //
+	fgColor: string; //
+	borderColor: string; //
+	searchBoxBg: string; //
+	searchBoxFg: string; //
+	searchBoxIcon: string;
+	iconBg: string; //
+	iconFg: string; //
+	tagBg: string; //
+	tagFg: string; //
+	logo?: string; //
+	searchBoxText: string; //
+	searchBoxTextColor: string; //
+	searchBoxRadius: string; //
+	iconRadius: string; //
+};
+
 const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
+	const doc: HeaderConfigProps = content?.header;
 	return (
 		<HoverContentContainer
-			type='basic'
+			type='content'
 			path={path}
 			title='Banner Information'
 			data={content}
 			dataModel={dataModel}
-			bg={content?.headerBg}
-			borderBottom={`1px solid ${content?.headerBorder}`}
+			bg={doc?.bgColor}
+			borderBottom={`1px solid ${doc?.borderColor}`}
 			px={PADDING_X}
 			position='sticky'
 			top='0'>
@@ -21,24 +40,24 @@ const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 				justify='space-between'
 				w='full'
 				h='80px'
-				bg={content?.headerBg}
+				bg={doc?.bgColor}
 				py='.5rem'>
 				<Image
 					w='auto'
 					h='2.5rem'
 					objectFit='contain'
-					src={content?.logo}
+					src={doc?.logo}
 					alt='Logo Image'
 				/>
 				<Flex
 					align='center'
 					gap={3}>
-					<Container>
-						<SearchInputField config={content} />
-						<SearchButton>
+					<Container config={doc}>
+						<SearchInputField config={doc} />
+						<SearchButton config={doc}>
 							<Icon
 								name='search'
-								color={content?.searchBoxColor}
+								color={doc?.searchBoxIcon}
 							/>
 						</SearchButton>
 					</Container>
@@ -50,10 +69,10 @@ const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 						/>
 					</BtnContainer> */}
 
-					<BtnContainer config={content}>
-						<CartTotal config={content}>{1}</CartTotal>
+					<BtnContainer config={doc}>
+						<CartTotal config={doc}>{1}</CartTotal>
 						<Icon
-							color={content?.headerIconColor}
+							color={doc?.iconFg}
 							size={18}
 							name='cart-bag'
 						/>
@@ -64,7 +83,11 @@ const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 	);
 };
 
-const Container = ({ children, ...props }: CenterProps & { children: ReactNode }) => {
+const Container = ({
+	children,
+	config,
+	...props
+}: CenterProps & { config: HeaderConfigProps; children: ReactNode }) => {
 	return (
 		<Center
 			position='relative'
@@ -76,24 +99,30 @@ const Container = ({ children, ...props }: CenterProps & { children: ReactNode }
 	);
 };
 
-const SearchInputField = ({ config }: { config: any }) => {
+const SearchInputField = ({ config }: { config: HeaderConfigProps }) => {
 	const BTN_WIDTH = { base: '2rem', md: '2.8rem' };
 	return (
 		<Input
-			_placeholder={{ letterSpacing: '-0.5px', fontSize: '.95rem', color: config.searchTextColor }}
+			_placeholder={{
+				letterSpacing: '-0.5px',
+				fontSize: '.95rem',
+				color: config.searchBoxTextColor,
+			}}
+			bg={config?.searchBoxFg}
 			h={BTN_WIDTH}
-			borderRadius='full'
+			borderRadius={config?.searchBoxRadius}
 			type='text'
-			placeholder='Search your desired products'
+			placeholder={config?.searchBoxText}
 			w='300px'
-			borderColor={config?.searchBoxColor}
+			borderColor={config?.searchBoxBg}
 		/>
 	);
 };
 
-const SearchButton = ({ children }: { children: ReactNode }) => {
+const SearchButton = ({ children, config }: { children: ReactNode; config: HeaderConfigProps }) => {
 	return (
 		<Center
+			color={config?.searchBoxIcon}
 			w='36px'
 			h='36px'
 			position='absolute'
@@ -109,14 +138,14 @@ const BtnContainer = ({
 	children,
 	config,
 	...props
-}: CenterProps & { config: any; children: ReactNode }) => {
+}: CenterProps & { config: HeaderConfigProps; children: ReactNode }) => {
 	const BTN_WIDTH = { base: '2rem', md: '2.8rem' };
 	return (
 		<Center
 			w={BTN_WIDTH}
 			h={BTN_WIDTH}
-			borderRadius='full'
-			backgroundColor={config?.headerFg}
+			borderRadius={config?.iconRadius}
+			backgroundColor={config?.iconBg}
 			cursor='pointer'
 			position='relative'
 			{...props}>
@@ -129,7 +158,7 @@ const CartTotal = ({
 	children,
 	config,
 	...props
-}: CenterProps & { config: any; children: ReactNode }) => {
+}: CenterProps & { config: HeaderConfigProps; children: ReactNode }) => {
 	return (
 		<Center
 			position='absolute'
@@ -137,8 +166,8 @@ const CartTotal = ({
 			top='-2px'
 			right='-2px'
 			fontSize='.775rem'
-			color={config?.headerTagTextColor}
-			bg={config?.headerTagColor}
+			color={config?.tagFg}
+			bg={config?.tagBg}
 			borderRadius='full'
 			fontWeight='500'
 			{...props}>

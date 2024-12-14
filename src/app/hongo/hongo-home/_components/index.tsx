@@ -26,4 +26,7 @@ export { default as bannerData } from './bannerData';
 export { default as HeaderConfig } from './HeaderConfig';
 export { default as headerData } from './headerData';
 
+export { default as fontData } from './fontData';
+export { default as colorData } from './colorData';
+
 export const PADDING_X = { base: 6, md: 24 };

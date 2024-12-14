@@ -16,9 +16,9 @@ import Sidebar from './Sidebar';
 import { useGetSelfQuery } from '@/store/services/authApi';
 import { zIndex } from '@/lib/constants';
 
-import { Icon } from '../../';
+import { EditorSidebar, Icon } from '../../';
 
-const SideDrawer = () => {
+const EditorSideDrawer = ({ sidebarData, doc }: { sidebarData: any; doc: any }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const { data } = useGetSelfQuery({});
@@ -50,7 +50,11 @@ const SideDrawer = () => {
 
 				<DrawerContent>
 					{/* <DrawerBody> */}
-					<Sidebar closeBtn={<DrawerCloseButton />} />
+					<EditorSidebar
+						doc={doc}
+						data={sidebarData}
+						closeBtn={<DrawerCloseButton />}
+					/>
 					{/* </DrawerBody> */}
 				</DrawerContent>
 			</Drawer>
@@ -69,4 +73,4 @@ const styles = {
 	},
 };
 
-export default SideDrawer;
+export default EditorSideDrawer;

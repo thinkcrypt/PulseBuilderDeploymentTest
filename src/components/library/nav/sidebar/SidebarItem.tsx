@@ -15,7 +15,7 @@ import {
 
 type SidebarItemProps = {
 	children: string;
-	href: string;
+	href?: string;
 	path: string;
 	icon: IconNameOptions;
 	sx?: any;
@@ -31,6 +31,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 	const router = useRouter();
 
 	const changeRoute = (e: any): void => {
+		if (!href) return;
 		e.preventDefault();
 		router.push(href);
 		dispatch(navigate({ selected: path }));
@@ -53,10 +54,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 	// return <Link href='/'>home</Link>;
 
 	return (
-		<Link href={href}>
+		<>
 			<Flex
 				userSelect='none'
-				_hover={selected !== path ? { bg: hover } : {}}
+				_hover={selected !== path ? { bg: hover } : !href ? { bg: hover } : {}}
 				onClick={changeRoute}
 				h={{ base: 10, md: 7 }}
 				bg={selected == path ? bg : 'transparent'}
@@ -72,7 +73,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 					{children}
 				</Text>
 			</Flex>
-		</Link>
+		</>
 	);
 };
 

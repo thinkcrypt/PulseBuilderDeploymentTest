@@ -16,7 +16,6 @@ const styles = {
 		borderRightWidth: 0,
 		borderRightColor: 'stroke.light',
 		flexDir: 'column',
-
 		_dark: {
 			borderRightColor: 'stroke.dark',
 		},

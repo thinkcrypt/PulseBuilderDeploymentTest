@@ -8,7 +8,7 @@ type SidebarBodyProps = StackProps & {
 
 const BODY_HEIGHT = theme.SIDEBAR.body.heigth;
 
-const SidebarBody: FC<SidebarBodyProps> = ({ children }) => {
+const SidebarBody: FC<SidebarBodyProps> = ({ children, ...props }) => {
 	return (
 		<Stack
 			pr={sizes.SIDEBAR_PX}
@@ -16,7 +16,8 @@ const SidebarBody: FC<SidebarBodyProps> = ({ children }) => {
 			h={BODY_HEIGHT}
 			overflowY='scroll'
 			zIndex={9999}
-			spacing={{ base: 0, md: 0.4 }}>
+			spacing={{ base: 0, md: 0.4 }}
+			{...props}>
 			{children}
 		</Stack>
 	);
