@@ -84,6 +84,7 @@ const GetItem = ({ path, id, data }: { path: string; id: string; data: any }) =>
 				objectFit='cover'
 			/>
 			<Text
+				textAlign='center'
 				fontWeight='500'
 				fontSize='1.4rem'
 				fontFamily={data?.basic?.primaryFont}

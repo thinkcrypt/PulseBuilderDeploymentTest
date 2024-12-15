@@ -20,7 +20,7 @@ export { default as featuredCollectionData } from './featuredCollectionData';
 
 export { default as ColorComponent } from './ColorComponent';
 
-export { default as BannerConfig } from './BannerConfig';
+export { default as BannerConfig } from './HongoBannerConfig';
 export { default as bannerData } from './bannerData';
 
 export { default as HeaderConfig } from './HeaderConfig';
