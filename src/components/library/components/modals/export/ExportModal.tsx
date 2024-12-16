@@ -74,13 +74,19 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 			<Button
 				onClick={onOpen}
 				size='sm'
-				colorScheme='gray'>
+				borderColor='container.borderLight'
+				colorScheme='gray'
+				_light={{
+					bg: 'container.newLight',
+					borderColor: 'container.borderLight',
+					borderWidth: 1,
+				}}>
 				Export
 			</Button>
 
 			<MenuModal
 				isOpen={isOpen}
-				onClose={close}>
+				onClose={closeModal}>
 				<MenuModalHeader>Select Fields</MenuModalHeader>
 				<MenuModalCloseButton />
 				<MenuModalBody>

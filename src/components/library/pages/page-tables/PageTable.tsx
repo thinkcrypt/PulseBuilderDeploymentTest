@@ -103,6 +103,7 @@ const PageTable: FC<TableProps> = ({ table, layoutPath }) => {
 	return (
 		<>
 			<Layout
+				pb='32px'
 				title={table?.title}
 				path={layoutPath || table?.path}>
 				<PageHeading

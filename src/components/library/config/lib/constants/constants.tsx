@@ -53,6 +53,18 @@ export const padding = {
 	BASE: sizes.PADDING_X_BASE,
 	MD: sizes.PADDING_X_MD,
 	LG: sizes.PADDING_X_LG,
+	CONTAINER: {
+		BASE: 4,
+		MD: 6,
+		LG: 6,
+	},
+};
+
+export const radius = {
+	CONTAINER: '8px',
+	MODAL: '8px',
+	BUTTON: '6px',
+	INPUT: '6px',
 };
 
 export const zIndex = {

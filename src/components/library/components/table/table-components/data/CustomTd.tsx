@@ -3,7 +3,7 @@ import { Td, Image, Text, Flex, Heading, useColorModeValue } from '@chakra-ui/re
 
 import { useIsMobile, Column, PLACEHOLDER_IMAGE, TableDataProps } from '../../../../';
 
-const PADDING_Y = 1;
+const PADDING_Y = 2;
 const PADDING_X = 4;
 
 const IMG_SIZE = { base: '50px', md: '40px' };
@@ -24,16 +24,14 @@ const CustomTd: FC<TableDataProps> = ({ children, src, type, heading, editable, 
 	return (
 		<>
 			<Container
-				_dark={{
-					borderColor: 'stroke.deepD',
-				}}
+				border='none'
 				gap={heading ? 2 : { base: 4, md: 0 }}
 				flexDir={heading ? 'column' : 'row'}
 				wordBreak='break-word'
 				fontSize={isMobile && type == 'image-text' ? '1.2rem' : isMobile ? '1rem' : '.82rem'}
 				py={PADDING_Y}
 				px={{ base: 0, md: PADDING_X }}
-				fontWeight='500'
+				fontWeight='400'
 				{...props}>
 				{type == 'image-text' && (
 					<Image

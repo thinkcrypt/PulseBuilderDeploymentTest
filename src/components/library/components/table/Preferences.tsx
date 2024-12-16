@@ -12,6 +12,7 @@ import {
 	MenuModalBody,
 	MenuModalCloseButton,
 	MenuModalFooter,
+	radius,
 } from '../../';
 
 const Preferences = ({ path }: { path: string }) => {
@@ -84,10 +85,19 @@ const Preferences = ({ path }: { path: string }) => {
 			{/* <Tooltip placement='bottom' label='Select Table Fields' borderRadius='md'>
 				<span> */}
 			<IconButton
-				size='sm'
 				aria-label='fields'
 				onClick={onOpen}
 				colorScheme='gray'
+				size='md'
+				borderWidth={1}
+				borderRadius={radius?.BUTTON}
+				_dark={{
+					borderWidth: 0,
+				}}
+				_light={{
+					borderColor: 'container.borderLight',
+					bg: 'container.newLight',
+				}}
 				icon={<Icon name='fields' />}
 			/>
 			{/* </span>

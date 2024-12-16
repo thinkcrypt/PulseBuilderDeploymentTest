@@ -110,7 +110,7 @@ const Main = ({ children }: { children: React.ReactNode }) => (
 		overflowY='hidden'
 		h={`calc(100vh - ${sizes.NAV_HEIGHT})`}
 		borderTopRightRadius={{ base: `0`, md: THEME == 'basic' ? 0 : 'xl' }}
-		bg={{ base: 'background.400', md: 'background.light' }}
+		bg={{ base: 'background.light', md: 'background.light' }}
 		_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
 		px={PX}
 		pt={{ base: 4, md: 1 }}

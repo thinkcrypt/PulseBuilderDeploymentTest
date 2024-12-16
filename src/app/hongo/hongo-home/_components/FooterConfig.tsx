@@ -7,12 +7,18 @@ import {
 	Flex,
 	Grid,
 	GridItem,
+	GridItemProps,
 	Image,
 	Input,
 	Text,
 	TextProps,
 } from '@chakra-ui/react';
-import { HomeContentProps, HoverContentContainer, Icon } from '@/components/library';
+import {
+	HomeContentProps,
+	HoverContentContainer,
+	Icon,
+	IconNameOptions,
+} from '@/components/library';
 import { PADDING_X } from '.';
 import { Column } from '@/commerce-components';
 
@@ -61,7 +67,8 @@ const FooterConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 				py='4rem'>
 				<Grid
 					templateColumns='repeat(3, 1fr)'
-					gap={6}>
+					gap={6}
+					rowGap={4}>
 					<Item>
 						<Contact config={data} />
 					</Item>
@@ -88,10 +95,11 @@ const FooterConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 	);
 };
 
-const Item = ({ children }: { children: React.ReactNode }) => (
+const Item = ({ children, ...props }: GridItemProps & { children: React.ReactNode }) => (
 	<GridItem
 		w='100%'
-		h='auto'>
+		h='auto'
+		{...props}>
 		{children}
 	</GridItem>
 );
@@ -155,9 +163,10 @@ const QuickLinks: FC<any> = ({ data, config, ...props }) => {
 			<TextNormal
 				mb='1rem'
 				fontWeight='600'
-				fontSize='2rem'
+				fontSize='1.5rem'
 				fontFamily={config?.basic?.primaryFont}
-				color={config?.content?.footer?.fgColor}>
+				color={config?.content?.footer?.fgColor}
+				_dark={{ color: config?.content?.footer?.fgColor }}>
 				{data?.label}
 			</TextNormal>
 			<Column gap={3}>
@@ -166,7 +175,7 @@ const QuickLinks: FC<any> = ({ data, config, ...props }) => {
 						key={i}
 						fontFamily={config?.basic?.secondaryFont}
 						color={config?.content?.footer?.fgColor}
-						display='inline-block'>
+						_dark={{ color: config?.content?.footer?.fgColor }}>
 						{item?.name}
 					</TextNormal>
 				))}
@@ -181,6 +190,34 @@ type ContactProps = BoxProps & {
 };
 
 const Contact: FC<ContactProps> = ({ data, config, ...props }) => {
+	const textProps = {
+		fontFamily: config?.basic?.secondaryFont,
+		_dark: { color: config?.content?.footer?.fgColor },
+		color: config?.content?.footer?.fgColor,
+		fontSize: '1rem',
+		fontWeight: '400',
+	};
+	const iconProps = {
+		size: 16,
+		color: config?.content?.footer?.fgColor,
+	};
+
+	const containerProps = {
+		mb: 3,
+		alignItems: 'center',
+		gap: 2,
+	};
+
+	const IconContainer = ({ children, icon }: { children: ReactNode; icon: IconNameOptions }) => (
+		<Flex {...containerProps}>
+			<Icon
+				{...iconProps}
+				name={icon}
+			/>
+			<Text {...textProps}>{children}</Text>
+		</Flex>
+	);
+
 	return (
 		<Box
 			color={config?.content?.footer?.fgColor}
@@ -188,45 +225,14 @@ const Contact: FC<ContactProps> = ({ data, config, ...props }) => {
 			<TextNormal
 				mb='1rem'
 				fontWeight='600'
-				fontSize='2rem'
+				fontSize='1.5rem'
 				fontFamily={config?.basic?.primaryFont}
 				color={config?.content?.footer?.fgColor}>
 				Contact Us
 			</TextNormal>
-			<Flex
-				mb={3}
-				alignItems='center'
-				gap={2}>
-				<Icon
-					color={config?.content?.footer?.fgColor}
-					size={16}
-					name='map'
-				/>
-
-				<TextNormal color={config?.content?.footer?.fgColor}>{config?.basic?.address}</TextNormal>
-			</Flex>
-			<Flex
-				mb={3}
-				alignItems='center'
-				gap={2}>
-				<Icon
-					color={config?.content?.footer?.fgColor}
-					size={16}
-					name='phone'
-				/>
-				<TextNormal color={data?.fgColor}>{config?.basic?.phone}</TextNormal>
-			</Flex>
-			<Flex
-				mb={3}
-				alignItems='center'
-				gap={2}>
-				<Icon
-					color={config?.content?.footer?.fgColor}
-					size={16}
-					name='envelope'
-				/>
-				<TextNormal color={data?.fgColor}>{config?.basic?.email}</TextNormal>
-			</Flex>
+			<IconContainer icon='map'>{config?.basic?.address}</IconContainer>
+			<IconContainer icon='phone'>{config?.basic?.phone}</IconContainer>
+			<IconContainer icon='envelope'>{config?.basic?.email}</IconContainer>
 		</Box>
 	);
 };

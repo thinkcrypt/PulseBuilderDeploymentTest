@@ -1,6 +1,6 @@
 import React, { FC, Fragment, ReactNode } from 'react';
 import { Flex, Heading, Button, ButtonProps, useColorModeValue, Grid } from '@chakra-ui/react';
-import { Icon, SpaceBetween } from '../../';
+import { Icon, SpaceBetween, padding, radius } from '../../';
 
 type SettingsEditContainerProps = {
 	editing: boolean;
@@ -32,21 +32,47 @@ const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
 		<ToEditButton onClick={openEdit}>Edit</ToEditButton>
 	);
 
+	const P = { base: padding.CONTAINER.BASE, md: padding.CONTAINER.MD, lg: padding.CONTAINER.LG };
+
 	return (
-		<form onSubmit={handleSubmit}>
-			<SpaceBetween
-				borderBottomWidth={1}
-				py={5}>
-				<Heading size='md'>{heading}</Heading>
-				<Fragment>{editState}</Fragment>
-			</SpaceBetween>
-			<Grid
-				row={2}
-				gridTemplateColumns={{ base: '1fr', md: cols || '1fr' }}
-				py={6}>
-				{children}
-			</Grid>
-		</form>
+		<Flex
+			py={P}
+			bg='container.newLight'
+			w='full'
+			borderColor='container.borderLight'
+			_dark={{
+				bg: 'container.newDark',
+				borderColor: 'container.borderDark',
+			}}
+			borderRadius={radius.CONTAINER}
+			borderWidth={1}>
+			<form
+				onSubmit={handleSubmit}
+				style={{ width: '100%' }}>
+				<SpaceBetween
+					borderBottomWidth={1}
+					borderColor='container.borderLight'
+					_dark={{
+						borderColor: 'container.borderDark',
+					}}
+					pb={4}
+					px={P}>
+					<Heading
+						fontWeight='700'
+						fontSize='1.25rem'>
+						{heading}
+					</Heading>
+					<Fragment>{editState}</Fragment>
+				</SpaceBetween>
+				<Grid
+					px={P}
+					pt={6}
+					row={2}
+					gridTemplateColumns={{ base: '1fr', md: cols || '1fr' }}>
+					{children}
+				</Grid>
+			</form>
+		</Flex>
 	);
 };
 

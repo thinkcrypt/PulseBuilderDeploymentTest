@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 import React from 'react';
-import { shadow } from '../../';
+import { shadow, radius } from '../../';
 
 const DashContainer = ({ children, ...props }: FlexProps & { children: React.ReactNode }) => {
 	return (
@@ -9,11 +9,17 @@ const DashContainer = ({ children, ...props }: FlexProps & { children: React.Rea
 			flexDir='column'
 			w='full'
 			p={6}
-			pb={2}
-			bg='white'
-			boxShadow={shadow?.DASH}
-			_dark={{ bg: 'menu.dark' }}
-			borderRadius={16}
+			px={0}
+			pb={0}
+			bg='container.newLight'
+			borderWidth={1}
+			borderColor='container.borderLight'
+			//boxShadow={shadow?.DASH}
+			_dark={{
+				bg: 'menu.dark',
+				borderColor: 'container.borderDark',
+			}}
+			borderRadius={radius.CONTAINER}
 			{...props}>
 			{children}
 		</Flex>

@@ -36,15 +36,19 @@ export const buttonTheme = defineStyleConfig({
 	baseStyle: {
 		fontWeight: '500', // change the font weight to normal
 		borderRadius: '6px', // <-- border radius is same for all variants and sizes
-		fontSize: '.9rem',
+		fontSize: '14px',
+		px: 4,
 	},
 	sizes: {
 		xs: buttonXs,
+		md: {
+			fontSize: '14px',
+		},
 		sm: {
-			h: '30px',
+			h: '34px',
 			fontSize: '14px',
 			lineHeight: '1.5',
-			px: 3,
+			px: 4,
 		},
 	},
 	defaultProps: {

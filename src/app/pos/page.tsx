@@ -23,6 +23,7 @@ const PosPage = () => {
 					maxH='100vh'
 					overflow='none'>
 					<Flex
+						bg='background.light'
 						overflow='hidden'
 						flexDir='column'
 						gap={{ base: 3, md: 1 }}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Tooltip } from '@chakra-ui/react';
 import { TbRefresh } from 'react-icons/tb';
-import { useAppDispatch, refresh } from '../../../../..';
+import { useAppDispatch, refresh, radius } from '../../../../..';
 
 const TableRefresh = () => {
 	const dispatch = useAppDispatch();
@@ -15,10 +15,15 @@ const TableRefresh = () => {
 			label='Refresh'
 			placement='top'>
 			<Button
-				size='sm'
-				borderRadius={4}
+				size='md'
+				borderRadius={radius?.BUTTON}
 				onClick={onReset}
-				colorScheme='gray'>
+				colorScheme='gray'
+				borderWidth={1}
+				_light={{
+					borderColor: 'container.borderLight',
+					bg: 'container.newLight',
+				}}>
 				<TbRefresh />
 			</Button>
 		</Tooltip>

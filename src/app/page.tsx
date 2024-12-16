@@ -30,7 +30,7 @@ export default function UserFeedback() {
 			title='Dashboard'
 			path='dashboard'>
 			<Grid
-				pt={1}
+				pt={{ base: 2, md: 4 }}
 				gridTemplateColumns={{ base: '1fr', md: '1fr' }}
 				gap={2}>
 				<ShopQr />
@@ -64,7 +64,9 @@ export default function UserFeedback() {
 					gap={2}
 					pb={2}>
 					<DashContainer>
-						<SpaceBetween align='center'>
+						<SpaceBetween
+							align='center'
+							px={4}>
 							<Heading size='md'>Recent Orders</Heading>
 							<Link href='/orders'>
 								<Button size='xs'>View Orders</Button>
@@ -75,7 +77,9 @@ export default function UserFeedback() {
 				</Col>
 				<Column gap={2}>
 					<DashContainer>
-						<SpaceBetween align='center'>
+						<SpaceBetween
+							align='center'
+							px={4}>
 							<Heading size='md'>Top Selling Products</Heading>
 						</SpaceBetween>
 						<TopProducts />
@@ -83,7 +87,9 @@ export default function UserFeedback() {
 				</Column>
 				<Column gap={2}>
 					<DashContainer>
-						<SpaceBetween align='center'>
+						<SpaceBetween
+							align='center'
+							px={4}>
 							<Heading size='md'>Top Customers</Heading>
 						</SpaceBetween>
 						<TopCustomers />

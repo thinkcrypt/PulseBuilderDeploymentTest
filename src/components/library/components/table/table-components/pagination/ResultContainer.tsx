@@ -17,8 +17,10 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 
 	return (
 		<Flex
-			bg='sidebar.light'
-			_dark={{ bg: 'sidebar.dark' }}
+			bg='background.light'
+			borderTop='1px solid'
+			borderTopColor={{ base: 'stroke.deepL', md: 'transparent' }}
+			_dark={{ bg: 'sidebar.dark', borderTopColor: 'stroke.deepD' }}
 			pl={{ base: 0, md: THEME == 'basic' ? 0 : 4 }}
 			sx={{
 				...styles.container,
@@ -29,14 +31,11 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 			}}>
 			<Flex
 				px={4}
+				pl={6}
 				align='center'
 				justify='space-between'
 				gap={4}
-				w='100%'
-				bg='container.light'
-				borderTop='1px solid'
-				borderTopColor='stroke.deepL'
-				_dark={{ bg: 'container.dark', borderTopColor: 'stroke.deepD' }}>
+				w='100%'>
 				<Text>
 					<b>{data?.totalDocs || '--'}</b> results
 				</Text>

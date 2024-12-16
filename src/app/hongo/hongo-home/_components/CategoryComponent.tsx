@@ -32,22 +32,20 @@ const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, path, data }
 				justify='space-between'
 				w='full'
 				gap={4}>
-				<Column>
-					<Heading
-						size='xl'
-						color={basic?.primaryTextColor}
-						_dark={{ color: basic?.primaryTextColor }}
-						fontFamily={basic?.primaryFont}>
-						{content?.collections?.title}
-					</Heading>
-				</Column>
+				<Heading
+					size='xl'
+					color={basic?.primaryTextColor}
+					_dark={{ color: basic?.primaryTextColor }}
+					fontFamily={basic?.primaryFont}>
+					{content?.collections?.title}
+				</Heading>
 			</Align>
 			<Grid
 				pb={12}
 				borderBottomWidth={1}
 				borderBottomColor={basic?.borderColor}
-				rowGap={6}
-				gridTemplateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
+				rowGap={4}
+				gridTemplateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)' }}
 				gap={4}>
 				{content?.collections?.items?.length <= 0 && <Text>No items found</Text>}
 				{content?.collections?.items?.map(
@@ -79,8 +77,8 @@ const GetItem = ({ path, id, data }: { path: string; id: string; data: any }) =>
 			<Image
 				borderRadius={data?.content?.collections?.borderRadius}
 				src={image || PLACEHOLDER_IMAGE}
-				h='180px'
-				w='180px'
+				h={{ base: '180px', md: '200px' }}
+				w={data?.content?.collections?.borderRadius > 20 ? '200px' : '100%'}
 				objectFit='cover'
 			/>
 			<Text

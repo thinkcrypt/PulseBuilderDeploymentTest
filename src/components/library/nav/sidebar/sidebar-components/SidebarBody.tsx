@@ -14,6 +14,7 @@ const SidebarBody: FC<SidebarBodyProps> = ({ children, ...props }) => {
 			pr={sizes.SIDEBAR_PX}
 			maxH={BODY_HEIGHT}
 			h={BODY_HEIGHT}
+			pt={4}
 			overflowY='scroll'
 			zIndex={9999}
 			spacing={{ base: 0, md: 0.4 }}

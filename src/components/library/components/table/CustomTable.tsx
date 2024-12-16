@@ -101,7 +101,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 			{table?.topPagination && <TableResultContainer data={data} />}
 			<TableContainer>
 				<Table size='sm'>
-					<Thead>
+					<Thead _light={{ bg: 'background.light' }}>
 						<Tr>{header}</Tr>
 					</Thead>
 					<Tbody>{tbody}</Tbody>

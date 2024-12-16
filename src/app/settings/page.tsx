@@ -9,7 +9,10 @@ const SettingsPage = () => {
 		<Layout
 			title='Settings'
 			path='settings'>
-			<Column pb='32px'>
+			<Column
+				pt={{ base: 4, md: 6 }}
+				pb='32px'
+				gap={{ base: 4, md: 8 }}>
 				<UserEdit />
 				<StoreEdit />
 				<StoreSocials />

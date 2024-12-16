@@ -47,8 +47,9 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 		<Flex
 			justify='space-between'
 			{...props}
-			align='center'>
-			<Heading fontSize='1.75rem'>{title}</Heading>
+			align='center'
+			pt={4}>
+			<Heading fontSize={{ base: '1.5rem', md: '1.75rem' }}>{title}</Heading>
 			<Flex gap={2}>
 				<>{Boolean(exportData) && exportButton}</>
 				<>{(Boolean(button) || isModal) && toButton}</>

@@ -11,6 +11,7 @@ import {
 	useAppSelector,
 	navigate,
 	IconNameOptions,
+	radius,
 } from '../../';
 
 type SidebarItemProps = {
@@ -24,9 +25,10 @@ type SidebarItemProps = {
 const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, sx }) => {
 	const { selected } = useAppSelector((state: any) => state.route);
 	const dispatch = useAppDispatch();
+
 	const color = useColorModeValue('#4a4a4a', '#fff');
 	const bg = useColorModeValue('white', '#222');
-	const hover = useColorModeValue('#fafafa', '#141414');
+	const hover = useColorModeValue('sidebar.hoverLight', 'sidebar.hoverDark');
 
 	const router = useRouter();
 
@@ -59,6 +61,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 				userSelect='none'
 				_hover={selected !== path ? { bg: hover } : !href ? { bg: hover } : {}}
 				onClick={changeRoute}
+				borderColor={selected == path ? 'container.borderLight' : 'transparent'}
+				borderWidth='1px'
+				_dark={{
+					borderColor: 'container.borderDark',
+				}}
 				h={{ base: 10, md: 7 }}
 				bg={selected == path ? bg : 'transparent'}
 				sx={{ ...styles.container, ...sx }}>
@@ -79,11 +86,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 
 const styles = {
 	container: {
-		borderRadius: 10,
+		borderRadius: radius.CONTAINER,
 		alignItems: 'center',
 		gap: 3,
 		px: 2.5,
-		transition: 'all .2s ease-in-out',
+		transition: 'all .1s ease-in-out',
 		fontWeight: '600',
 		cursor: 'pointer',
 		fontSize: '.9rem',

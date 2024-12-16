@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { ModalHeader, ModalHeaderProps } from '@chakra-ui/react';
+import { radius } from '../../config';
 
 type CustomModalHeaderProps = ModalHeaderProps & {
 	children?: ReactNode;
@@ -8,12 +9,9 @@ type CustomModalHeaderProps = ModalHeaderProps & {
 const CustomModalHeader: FC<CustomModalHeaderProps> = ({ children, ...props }) => {
 	return (
 		<ModalHeader
-			bg='sidebar.light'
-			borderColor='border.light'
-			borderBottomWidth={1}
 			_dark={{ bg: 'background.dark', borderColor: 'border.dark' }}
-			borderTopRadius='2xl'
-			fontWeight='bold'
+			borderTopRadius={radius.MODAL}
+			fontWeight='700'
 			fontSize='.9rem'
 			h='100px'
 			{...props}>
