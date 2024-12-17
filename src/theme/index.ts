@@ -37,7 +37,29 @@ export const buttonTheme = defineStyleConfig({
 		fontWeight: '500', // change the font weight to normal
 		borderRadius: '6px', // <-- border radius is same for all variants and sizes
 		fontSize: '14px',
+		letterSpacing: '-0.4px',
 		px: 4,
+	},
+
+	variants: {
+		white: {
+			h: '34px',
+			color: '#171717',
+			border: '1px solid',
+			borderColor: '#e7e7e7',
+			bg: 'white',
+			_hover: {
+				bg: 'inherit',
+			},
+			_dark: {
+				color: '#fafafa',
+				borderColor: '#333',
+				bg: '#171717',
+				_hover: {
+					bg: 'gray.800',
+				},
+			},
+		},
 	},
 	sizes: {
 		xs: buttonXs,

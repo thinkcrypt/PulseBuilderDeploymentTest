@@ -10,9 +10,9 @@ const StatContainer = ({ children, ...props }: StatProps & { children: React.Rea
 			w='full'
 			p={4}
 			bg='container.newLight'
-			border='container.borderLight'
+			borderColor='container.borderLight'
 			borderWidth={1}
-			// boxShadow={shadow?.DASH}
+			boxShadow={shadow?.DASH}
 			_dark={{
 				bg: 'menu.dark',
 				borderColor: 'container.borderDark',

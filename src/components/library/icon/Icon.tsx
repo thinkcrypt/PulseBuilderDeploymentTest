@@ -52,11 +52,15 @@ import { IoIosArrowRoundBack } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import { MdLocalPhone } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { GoListUnordered } from 'react-icons/go';
+import { TbFileExport } from 'react-icons/tb';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 
 export type IconNameOptions =
 	| 'add'
 	| 'add-image'
 	| 'add-tag'
+	| 'add-circle'
 	| 'arrow'
 	| 'barcode'
 	| 'brand'
@@ -75,6 +79,8 @@ export type IconNameOptions =
 	| 'date'
 	| 'search'
 	| 'delete'
+	| 'export-doc'
+	| 'menu'
 	| 'delivery'
 	| 'delivery-fill'
 	| 'dots'
@@ -88,7 +94,7 @@ export type IconNameOptions =
 	| 'items'
 	| 'info'
 	| 'leave'
-	| 'menu'
+	| 'action-menu'
 	| 'order'
 	| 'pos'
 	| 'product'
@@ -172,6 +178,9 @@ const icons: any = {
 	envelope: FaRegEnvelope,
 	map: FaMapMarkerAlt,
 	phone: MdLocalPhone,
+	'action-menu': GoListUnordered,
+	'export-doc': TbFileExport,
+	'add-circle': IoMdAddCircleOutline,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

@@ -12,6 +12,7 @@ import {
 	MenuModalCloseButton,
 	MenuModalFooter,
 	DiscardButton,
+	Icon,
 } from '../../../';
 import { useExportMutation } from '@/components/library/store/services/commonApi';
 
@@ -74,13 +75,9 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 			<Button
 				onClick={onOpen}
 				size='sm'
-				borderColor='container.borderLight'
-				colorScheme='gray'
-				_light={{
-					bg: 'container.newLight',
-					borderColor: 'container.borderLight',
-					borderWidth: 1,
-				}}>
+				pl={3}
+				variant='white'
+				leftIcon={<Icon name='export-doc' />}>
 				Export
 			</Button>
 

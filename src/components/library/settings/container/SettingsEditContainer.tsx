@@ -1,6 +1,6 @@
 import React, { FC, Fragment, ReactNode } from 'react';
 import { Flex, Heading, Button, ButtonProps, useColorModeValue, Grid } from '@chakra-ui/react';
-import { Icon, SpaceBetween, padding, radius } from '../../';
+import { Icon, SpaceBetween, padding, radius, shadow } from '../../';
 
 type SettingsEditContainerProps = {
 	editing: boolean;
@@ -40,6 +40,7 @@ const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
 			bg='container.newLight'
 			w='full'
 			borderColor='container.borderLight'
+			shadow={shadow.DASH}
 			_dark={{
 				bg: 'container.newDark',
 				borderColor: 'container.borderDark',
@@ -55,11 +56,12 @@ const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
 					_dark={{
 						borderColor: 'container.borderDark',
 					}}
-					pb={4}
+					mt={-2}
+					pb={3}
 					px={P}>
 					<Heading
-						fontWeight='700'
-						fontSize='1.25rem'>
+						fontWeight='600'
+						fontSize={{ base: '1.15rem', md: '1.25rem' }}>
 						{heading}
 					</Heading>
 					<Fragment>{editState}</Fragment>
@@ -68,6 +70,7 @@ const SettingsEditContainer: FC<SettingsEditContainerProps> = ({
 					px={P}
 					pt={6}
 					row={2}
+					rowGap={2}
 					gridTemplateColumns={{ base: '1fr', md: cols || '1fr' }}>
 					{children}
 				</Grid>

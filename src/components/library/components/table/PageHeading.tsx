@@ -1,7 +1,7 @@
-import { Flex, FlexProps, Heading, Button } from '@chakra-ui/react';
+import { Flex, FlexProps, Heading, Button, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
-import { CreateModal } from '../../';
+import { CreateModal, Icon } from '../../';
 import ExportModal from '../modals/export/ExportModal';
 
 type PageHeadingProps = FlexProps & {
@@ -26,7 +26,21 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 	export: exportData,
 	...props
 }) => {
-	const btn = <Button size='sm'>{button}</Button>;
+	const iconColor = useColorModeValue('#fafafa', '#171717');
+	const btn = (
+		<Button
+			size='sm'
+			pl={3}
+			leftIcon={
+				<Icon
+					size={18}
+					name='add'
+					color={iconColor}
+				/>
+			}>
+			{button}
+		</Button>
+	);
 	const exportButton = <ExportModal path={path} />;
 	const toButton = isModal ? (
 		<CreateModal
@@ -45,12 +59,17 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 
 	return (
 		<Flex
+			flexDir={{ base: 'column', md: 'row' }}
+			gap={2}
 			justify='space-between'
 			{...props}
-			align='center'
+			align={{ base: 'flex-start', md: 'center' }}
 			pt={4}>
 			<Heading fontSize={{ base: '1.5rem', md: '1.75rem' }}>{title}</Heading>
-			<Flex gap={2}>
+			<Flex
+				gap={2}
+				w='full'
+				justify='flex-end'>
 				<>{Boolean(exportData) && exportButton}</>
 				<>{(Boolean(button) || isModal) && toButton}</>
 			</Flex>
