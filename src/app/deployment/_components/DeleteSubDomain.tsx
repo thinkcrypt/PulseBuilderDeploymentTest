@@ -33,7 +33,7 @@ const DeleteSubDomain = () => {
 
 	useCustomToast({ ...result, successText: 'Subdomain removed successfully' });
 
-	if (!data) return null;
+	if (!data && isError) return null;
 
 	return (
 		<ConfigContainer heading='Remove Subdomain'>
