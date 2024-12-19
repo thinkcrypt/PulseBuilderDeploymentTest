@@ -1,3 +1,5 @@
+import { border } from '@chakra-ui/react';
+
 export const TOKEN_NAME: string = process.env.NEXT_PUBLIC_TOKEN_NAME || 'MINT_CAFE_TOKEN_TWO';
 
 export const REFRESH_TOKEN: string =
@@ -55,13 +57,22 @@ export const padding = {
 	LG: sizes.PADDING_X_LG,
 	CONTAINER: {
 		BASE: 4,
-		MD: 6,
-		LG: 6,
+		MD: 8,
+		LG: 8,
+	},
+};
+
+export const styles = {
+	bigInput: {
+		borderRadius: '6px',
+		_light: {
+			borderColor: 'container.borderLight',
+		},
 	},
 };
 
 export const radius = {
-	CONTAINER: '6px',
+	CONTAINER: '8px',
 	MODAL: '8px',
 	BUTTON: '6px',
 	INPUT: '6px',

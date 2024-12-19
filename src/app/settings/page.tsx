@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Column, Layout } from '@/components/library';
+import { Column, Layout, StaticPage } from '@/components/library';
 import { UserEdit, StoreEdit, StoreSocials } from './_components';
 
 const SettingsPage = () => {
@@ -9,14 +9,11 @@ const SettingsPage = () => {
 		<Layout
 			title='Settings'
 			path='settings'>
-			<Column
-				pt={{ base: 4, md: 6 }}
-				pb='32px'
-				gap={{ base: 4, md: 8 }}>
+			<StaticPage>
 				<UserEdit />
 				<StoreEdit />
 				<StoreSocials />
-			</Column>
+			</StaticPage>
 		</Layout>
 	);
 };

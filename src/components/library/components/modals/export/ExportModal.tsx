@@ -1,6 +1,14 @@
 'use client';
 
-import { Button, useDisclosure, Text, Checkbox, Grid, Select } from '@chakra-ui/react';
+import {
+	Button,
+	useDisclosure,
+	Text,
+	Checkbox,
+	Grid,
+	Select,
+	useColorModeValue,
+} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -70,6 +78,8 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 		</Checkbox>
 	));
 
+	const iconColor = useColorModeValue('#fafafa', '#171717');
+
 	return (
 		<>
 			<Button
@@ -84,7 +94,7 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 			<MenuModal
 				isOpen={isOpen}
 				onClose={closeModal}>
-				<MenuModalHeader>Select Fields</MenuModalHeader>
+				<MenuModalHeader>Select Export Fields</MenuModalHeader>
 				<MenuModalCloseButton />
 				<MenuModalBody>
 					<Grid
@@ -100,8 +110,12 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 						gridTemplateColumns={{ base: '1fr 1fr', md: '1fr 1fr' }}
 						gap={4}
 						rowGap={4}>
-						<Text>Select Export Type</Text>
+						<Text fontWeight='600'>Export As:</Text>
 						<Select
+							_light={{
+								borderColor: 'container.borderLight',
+								bg: 'container.newLight',
+							}}
 							size='sm'
 							value={type}
 							onChange={(e: any) => setType(e.target.value)}>
@@ -123,6 +137,13 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 								Discard
 							</DiscardButton>
 							<Button
+								leftIcon={
+									<Icon
+										name='export-doc'
+										size={14}
+										color={iconColor}
+									/>
+								}
 								size='xs'
 								onClick={handleSubmit}
 								isLoading={result?.isLoading}>

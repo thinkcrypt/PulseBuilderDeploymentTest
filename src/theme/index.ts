@@ -19,7 +19,8 @@ export const headingTheme = defineStyleConfig({
 
 export const textTheme = defineStyleConfig({
 	baseStyle: {
-		color: '#4a4a4a',
+		color: '#171717',
+		fontSize: '15px',
 		_dark: {
 			color: 'text.dark',
 		},

@@ -11,9 +11,9 @@ const CustomModalHeader: FC<CustomModalHeaderProps> = ({ children, ...props }) =
 		<ModalHeader
 			_dark={{ bg: 'background.dark', borderColor: 'border.dark' }}
 			borderTopRadius={radius.MODAL}
-			fontWeight='700'
-			fontSize='.9rem'
-			h='100px'
+			fontWeight='600'
+			fontSize='1rem'
+			h='80px'
 			{...props}>
 			{children}
 		</ModalHeader>
