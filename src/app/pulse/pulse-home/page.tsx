@@ -50,12 +50,22 @@ const sidebarData = [
 		path: 'home-content',
 		type: 'page',
 	},
-	{
-		title: 'Store Settings',
-		href: '/hongo/hongo-store',
-		icon: 'shop',
-		path: 'hongo/hongo-store',
-		type: 'page',
+	// {
+	// 	title: 'Store Settings',
+	// 	href: '/pulse/pulse-store',
+	// 	icon: 'shop',
+	// 	path: 'pulse/pulse-store',
+	// 	type: 'page',
+	// },
+    {
+        startOfSection: true,
+		sectionTitle: 'Header',
+		title: 'Header',
+		icon: 'content',
+		dataPath: 'content',
+		type: 'component',
+		path: 'pulse',
+		dataModel: pulseHeaderData,
 	},
 	// {
 	// 	startOfSection: true,
@@ -65,7 +75,7 @@ const sidebarData = [
 	// 	dataPath: 'basic',
 	// 	type: 'component',
 	// 	path: 'hongo',
-	// 	dataModel: storeData,
+	// 	dataModel: headerData,
 	// },
 	// {
 	// 	title: 'Header',

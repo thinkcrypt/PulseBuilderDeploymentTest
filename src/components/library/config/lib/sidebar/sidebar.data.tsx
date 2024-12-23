@@ -203,6 +203,14 @@ const sidebar: SidebarItemType[] = [
 		path: 'pulse',
 		// type: 'page',
 	},
+	// {
+	// 	startOfSection: true,
+	// 	sectionTitle: 'Content (HONGO)',
+	// 	title: 'Store',
+	// 	href: '/hongo/hongo-store',
+	// 	icon: 'shop',
+	// 	path: 'hongo/hongo-store',
+	// },
 	{
 		startOfSection: true,
 		sectionTitle: 'Reports',
