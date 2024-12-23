@@ -3,13 +3,15 @@ import { LoginBodyType, LoginPayloadType } from './types';
 
 export const authApi = mainApi.injectEndpoints({
 	endpoints: builder => ({
-		lgoin: builder.mutation<LoginPayloadType, LoginBodyType>({
-			query: ({ email, password }) => ({
+		lgoin: builder.mutation<LoginPayloadType, any>({
+			query: ({ email, password, lead, from }) => ({
 				url: `auth/login`,
 				method: 'POST',
 				body: {
 					email,
 					password,
+					lead,
+					from,
 				},
 			}),
 			invalidatesTags: ['self'],

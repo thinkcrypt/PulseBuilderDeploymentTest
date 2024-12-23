@@ -6,4 +6,6 @@ export type LoginPayloadType = {
 export type LoginBodyType = {
 	email: string;
 	password: string;
+	from?: string;
+	lead?: string;
 };

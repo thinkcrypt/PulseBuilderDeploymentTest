@@ -1,6 +1,8 @@
 'use client';
+
 import { VInput, useCustomToast, useAppDispatch, login, AuthForm } from '@/components/library';
 import { useLgoinMutation } from '@/store/services/authApi';
+import { useParams, useSearchParams } from 'next/navigation';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
 type FormDataType = {
@@ -9,6 +11,8 @@ type FormDataType = {
 };
 
 const LoginPage: FC<{}> = () => {
+	const searchParams = useSearchParams();
+
 	const [formData, setFormData] = useState<FormDataType>({
 		email: '',
 		password: '',

@@ -19,7 +19,7 @@ const DeploymentPage = () => {
 			title='Project deployment'
 			path='deployment'>
 			<StaticPage>
-				<Column>
+				<Column gap={4}>
 					<Heading size='md'>{section?.title}</Heading>
 					<Text>{section?.description}</Text>
 				</Column>

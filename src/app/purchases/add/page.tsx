@@ -16,6 +16,7 @@ import {
 	CreateNav,
 	CreateBody,
 	sizes,
+	radius,
 } from '@/components/library';
 import {
 	Grid,
@@ -344,12 +345,15 @@ const CreatePurchase = () => {
 
 const MintTableContainer = ({ children }: { children: ReactNode }) => (
 	<TableContainer
-		bg={{ base: 'transparent', md: 'menu.light' }}
+		bg={'background.light'}
+		_light={{
+			borderColor: 'container.borderLight',
+		}}
 		_dark={{ bg: { base: 'transparent', md: 'menu.dark' } }}
 		p={{ base: 0, md: 4 }}
-		borderRadius={sizes.CARD_RADIUS}
-		boxShadow={{ base: 'none', md: shadow.CARD }}
-		borderWidth={{ base: 0, md: 1 }}>
+		borderRadius={radius.CONTAINER}
+		boxShadow={shadow.DASH}
+		borderWidth={1}>
 		{children}
 	</TableContainer>
 );

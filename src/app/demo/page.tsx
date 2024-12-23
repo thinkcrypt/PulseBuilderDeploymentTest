@@ -8,14 +8,21 @@ import {
 	login,
 } from '@/components/library';
 import { useLgoinMutation } from '@/store/services/authApi';
+import { useSearchParams } from 'next/navigation';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
 type FormDataType = {
 	email: string;
 	password: string;
+	lead?: string;
+	from?: string;
 };
 
 const LoginPage: FC<{}> = () => {
+	const searchParams = useSearchParams();
+	const lead = searchParams.get('lead');
+	const from = searchParams.get('from');
+
 	const [formData, setFormData] = useState<FormDataType>({
 		email: 'john.doe@example.com',
 		password: 'password123',
@@ -31,7 +38,7 @@ const LoginPage: FC<{}> = () => {
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
-		trigger(formData);
+		trigger({ ...formData, lead, from });
 	};
 
 	useEffect(() => {
