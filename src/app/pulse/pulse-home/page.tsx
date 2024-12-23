@@ -1,13 +1,13 @@
-'use client';
+"use client";
 import {
-	EditorLayoutSuspense,
-	useAppDispatch,
-	resetBuilder,
-	push,
-} from '@/components/library';
-import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { Box } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+  EditorLayoutSuspense,
+  useAppDispatch,
+  resetBuilder,
+  push,
+} from "@/components/library";
+import { useGetContentQuery } from "@/components/library/store/services/contentApi";
+import { Box } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 
 //////////////////////////// chakra
 // import { padding } from '@/lib/config/constants';
@@ -17,8 +17,10 @@ import React, { useEffect } from 'react';
 // import { placeholderImage } from '@/lib/config/constants';
 // import { Icon, IconNameOptions } from '../icon';
 
-import PulseHeader from './_components/Header/PulseHeader';
-import pulseHeaderData from './_components/Header/pulseHeaderData';
+import PulseHeader from "./_components/Header/PulseHeader";
+import pulseHeaderData from "./_components/Header/pulseHeaderData";
+import { Pulsebanner, pulseBannerData } from "./_components/Banner";
+import pulseHeroData from "./_components/Banner/pulseHeroData";
 
 // import {
 // 	heroData,
@@ -41,105 +43,111 @@ import pulseHeaderData from './_components/Header/pulseHeaderData';
 // } from './_components';
 
 const sidebarData = [
-	{
-		startOfSection: true,
-		sectionTitle: 'Pages (HONGO)',
-		title: 'Home Page',
-		href: '/home-content',
-		icon: 'content',
-		path: 'home-content',
-		type: 'page',
-	},
-	{
-		title: 'Store Settings',
-		href: '/hongo/hongo-store',
-		icon: 'shop',
-		path: 'hongo/hongo-store',
-		type: 'page',
-	},
-	// {
-	// 	startOfSection: true,
-	// 	sectionTitle: 'Components (HONGO)',
-	// 	title: 'Store',
-	// 	icon: 'content',
-	// 	dataPath: 'basic',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataModel: storeData,
-	// },
-	// {
-	// 	title: 'Header',
-	// 	icon: 'content',
-	// 	dataPath: 'content',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataModel: headerData,
-	// },
-	// {
-	// 	title: 'Fonts',
-	// 	icon: 'shop',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataPath: 'basic',
-	// 	dataModel: fontData,
-	// },
-	// {
-	// 	title: 'Colors',
-	// 	icon: 'shop',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataPath: 'basic',
-	// 	dataModel: colorData,
-	// },
+  {
+    startOfSection: true,
+    sectionTitle: "Pages (HONGO)",
+    title: "Home Page",
+    href: "/home-content",
+    icon: "content",
+    path: "home-content",
+    type: "page",
+  },
+  {
+    title: "Store Settings",
+    href: "/hongo/hongo-store",
+    icon: "shop",
+    path: "hongo/hongo-store",
+    type: "page",
+  },
+  // {
+  // 	startOfSection: true,
+  // 	sectionTitle: 'Components (HONGO)',
+  // 	title: 'Store',
+  // 	icon: 'content',
+  // 	dataPath: 'basic',
+  // 	type: 'component',
+  // 	path: 'hongo',
+  // 	dataModel: storeData,
+  // },
+  // {
+  // 	title: 'Header',
+  // 	icon: 'content',
+  // 	dataPath: 'content',
+  // 	type: 'component',
+  // 	path: 'hongo',
+  // 	dataModel: headerData,
+  // },
+  // {
+  // 	title: 'Fonts',
+  // 	icon: 'shop',
+  // 	type: 'component',
+  // 	path: 'hongo',
+  // 	dataPath: 'basic',
+  // 	dataModel: fontData,
+  // },
+  // {
+  // 	title: 'Colors',
+  // 	icon: 'shop',
+  // 	type: 'component',
+  // 	path: 'hongo',
+  // 	dataPath: 'basic',
+  // 	dataModel: colorData,
+  // },
 ];
 
 const HomeContentPage = () => {
-	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
-		path: 'pulse',
-	});
+  const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
+    path: "pulse",
+  });
 
-	console.log('pulse data:::', data);
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		dispatch(resetBuilder());
-	}, []);
+  console.log("pulse data:::", data);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(resetBuilder());
+  }, []);
 
-	useEffect(() => {
-		if (data && !isFetching && isSuccess) {
-			dispatch(
-				push({
-					basic: data?.basic,
-					content: data?.content,
-				})
-			);
-		}
-	}, [isFetching]);
+  useEffect(() => {
+    if (data && !isFetching && isSuccess) {
+      dispatch(
+        push({
+          basic: data?.basic,
+          content: data?.content,
+        })
+      );
+    }
+  }, [isFetching]);
 
-	return (
-		<EditorLayoutSuspense
-			data={data}
-			sidebarData={sidebarData}
-			isLoading={isLoading || !data}
-			path='/home-content'
-			title='Home Content'
-			position='relative'
-			gap={0}
-		>
-			<PulseHeader
-				data={data}
-				path='pulse'
-				content={data?.content}
-				dataModel={pulseHeaderData}
-			/>
+  return (
+    <EditorLayoutSuspense
+      data={data}
+      sidebarData={sidebarData}
+      isLoading={isLoading || !data}
+      path="/home-content"
+      title="Home Content"
+      position="relative"
+      gap={0}
+    >
+      <PulseHeader
+        data={data}
+        path="pulse"
+        content={data?.content}
+        dataModel={pulseHeaderData}
+      />
+      <Pulsebanner
+        data={data}
+        path="pulse"
+        content={data?.content}
+        dataModel={pulseHeroData}
+      />
 
-			{/* <FooterConfig
+      {/* <FooterConfig
 				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={footerData}
 			/>  */}
-		</EditorLayoutSuspense>
-	);
+    </EditorLayoutSuspense>
+  );
 };
 
 export default HomeContentPage;
