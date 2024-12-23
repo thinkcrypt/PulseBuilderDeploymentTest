@@ -1,7 +1,7 @@
 'use client';
-import { EditorLayoutSuspense, LayoutSuspense } from '@/components/library';
+import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
 	heroData,
@@ -77,7 +77,22 @@ const sidebarData = [
 ];
 
 const HomeContentPage = () => {
-	const { data, isLoading } = useGetContentQuery({ path: 'hongo' });
+	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({ path: 'hongo' });
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(resetBuilder());
+	}, []);
+
+	useEffect(() => {
+		if (data && !isFetching && isSuccess) {
+			dispatch(
+				push({
+					basic: data?.basic,
+					content: data?.content,
+				})
+			);
+		}
+	}, [isFetching]);
 
 	return (
 		<EditorLayoutSuspense

@@ -27,13 +27,13 @@ const DeleteSubDomain = () => {
 		trigger({
 			path: 'deployments/delete',
 			body: { id: data?._id },
-			invalidate: ['contents', 'deployments'],
+			invalidate: ['contents', 'deployments', 'deployments/status'],
 		});
 	};
 
 	useCustomToast({ ...result, successText: 'Subdomain removed successfully' });
 
-	if (!data && isError) return null;
+	if (!data || isError) return null;
 
 	return (
 		<ConfigContainer heading='Remove Subdomain'>

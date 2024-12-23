@@ -2,7 +2,6 @@
 
 import { Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, ReactNode } from 'react';
-import SideDrawer from './sidebar/SideDrawer';
 import { sizes, zIndex, padding, EditorSideDrawer } from '../';
 
 type FlexPropsType = FlexProps & {
@@ -15,33 +14,10 @@ type FlexPropsType = FlexProps & {
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 
 const EditorNavbar: FC<FlexPropsType> = ({ children, showMenu, sidebarData, doc, ...props }) => {
-	const styles = {
-		container: {
-			h: sizes.NAV_HEIGHT || 12,
-			poistion: 'fixed',
-			top: 0,
-			left: 0,
-			alignItems: 'center',
-			bg: 'navbar.light',
-			//bg: 'rgba(255, 255, 255, 0.4)',
-			borderBottomWidth: 2,
-			borderBottomColor: 'stroke.light',
-			px: PX,
-			w: '100vw',
-			zIndex: zIndex.NAV || 999,
-			_dark: {
-				bg: 'navbar.dark',
-				//	bg: 'rgba(23, 23, 23, 0.4)',
-				borderBottomColor: 'stroke.dark',
-			},
-			backdropFilter: 'blur(10px)',
-			...props,
-		},
-	};
-
 	return (
 		<Flex
-			sx={styles.container}
+			{...container}
+			{...props}
 			position='fixed'>
 			{showMenu && (
 				<EditorSideDrawer
@@ -52,6 +28,25 @@ const EditorNavbar: FC<FlexPropsType> = ({ children, showMenu, sidebarData, doc,
 			{children}
 		</Flex>
 	);
+};
+
+const container: FlexProps = {
+	h: sizes.NAV_HEIGHT || 12,
+	top: 0,
+	alignItems: 'center',
+	borderBottomWidth: 1,
+	bg: 'white',
+	_light: {
+		borderBottomColor: 'container.borderLight',
+	},
+	px: PX,
+	w: '100vw',
+	zIndex: zIndex.NAV || 999,
+	_dark: {
+		bg: 'navbar.dark',
+		borderBottomColor: 'stroke.dark',
+	},
+	backdropFilter: 'blur(10px)',
 };
 
 export default EditorNavbar;

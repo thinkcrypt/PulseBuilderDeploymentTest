@@ -1,21 +1,17 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Flex, Heading, useMediaQuery, FlexProps } from '@chakra-ui/react';
+import { Flex, Heading, useMediaQuery, FlexProps, Button } from '@chakra-ui/react';
 
 import {
 	useIsMobile,
 	AuthWrapper,
-	SelfMenu,
 	SpaceBetween,
-	CreateMenu,
 	padding,
 	sizes,
 	useAppDispatch,
 	ColorMode,
 	Body,
-	Navbar,
-	Sidebar,
 	Column,
 	LayoutWrapper,
 	THEME,
@@ -24,10 +20,19 @@ import {
 	Align,
 	Icon,
 	EditorSidebar,
+	useAppSelector,
+	undo,
+	redo,
 } from '../';
 import EditorNavbar from './EditorNavbar';
+import { useUpdateContentMutation } from '../store/services/contentApi';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
+const navbarStyleProps = {
+	px: PX,
+	w: { base: 'full', md: sizes.HOME_NAV_MAX_WIDTH },
+	left: { base: 0, md: sizes.HOME_NAV_LEFT },
+};
 
 export type FlexPropsType = FlexProps & {
 	children?: React.ReactNode;
@@ -54,42 +59,66 @@ const EditorLayout: FC<LayoutProps> = ({
 }) => {
 	const dispatch = useAppDispatch();
 	dispatch(navigate({ selected: path }));
+	const [trigger, result] = useUpdateContentMutation();
 
 	React.useEffect(() => {
 		dispatch(refresh());
 	}, []);
 
+	const { history, next } = useAppSelector(state => state.builder);
 	const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
-
 	const type = isLargerThan800 ? (props?.type == 'pos' ? 'pos' : 'default') : 'pos';
 
 	const isMobile = useIsMobile();
 	const showMenu = isMobile || props?.type == 'pos';
+	const navbarDataProps = { doc: data, sidebarData, showMenu };
+
+	const handleUndo = () => {
+		const formData = history[history?.length - 1];
+		trigger({
+			body: formData,
+			path: 'hongo',
+			type: 'all',
+		});
+		dispatch(undo());
+	};
+
+	const handleRedo = () => {
+		const formData = next[next?.length - 1];
+		trigger({
+			body: formData,
+			path: 'hongo',
+			type: 'all',
+		});
+		dispatch(redo());
+	};
 
 	return (
 		<AuthWrapper>
 			<LayoutWrapper>
 				<EditorNavbar
-					doc={data}
-					sidebarData={sidebarData}
-					showMenu={showMenu}
-					px={PX}
-					w={showMenu ? 'full' : sizes.HOME_NAV_MAX_WIDTH}
-					left={showMenu ? 0 : sizes.HOME_NAV_LEFT}>
+					{...navbarStyleProps}
+					{...navbarDataProps}>
 					<SpaceBetween>
 						<Flex
 							gap={2}
 							align='center'>
-							<Icon
-								color={THEME == 'basic' ? 'inherit' : 'white'}
-								name='arrow-left'
-							/>
-							<Heading
-								color={THEME == 'basic' ? 'inherit' : 'white'}
-								size='md'
-								fontFamily='Bebas Neue'>
-								Exit Editor
-							</Heading>
+							<Button
+								isLoading={result.isLoading}
+								onClick={handleUndo}
+								isDisabled={history?.length < 1}
+								variant='white'
+								leftIcon={<Icon name='undo' />}>
+								Undo
+							</Button>
+							{/* <Button
+								isLoading={result.isLoading}
+								onClick={handleRedo}
+								isDisabled={next.length < 1}
+								variant='white'
+								rightIcon={<Icon name='redo' />}>
+								Redo
+							</Button> */}
 						</Flex>
 					</SpaceBetween>
 					<Align gap={4}>
@@ -133,7 +162,7 @@ const Main = ({ children }: { children: React.ReactNode }) => (
 		bg={{ base: 'background.400', md: 'background.light' }}
 		_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
 		px={PX}
-		pt={{ base: 4, md: 1 }}
+		pt={{ base: 4, md: 4 }}
 		pb='32px'
 		w='full'>
 		<Column

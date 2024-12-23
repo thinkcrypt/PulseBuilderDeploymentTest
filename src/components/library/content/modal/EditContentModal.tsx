@@ -60,7 +60,7 @@ const EditContentModal = ({
 	const [changedData, setChangedData] = useState({});
 
 	useCustomToast({
-		successText: 'Contnt Updated',
+		successText: 'Content Updated',
 		isSuccess,
 		isError,
 		isLoading,

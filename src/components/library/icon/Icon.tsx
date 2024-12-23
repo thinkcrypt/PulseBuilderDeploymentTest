@@ -55,6 +55,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { GoListUnordered } from 'react-icons/go';
 import { TbFileExport } from 'react-icons/tb';
 import { IoMdAddCircleOutline } from 'react-icons/io';
+import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
 
 export type IconNameOptions =
 	| 'add'
@@ -115,6 +116,8 @@ export type IconNameOptions =
 	| 'arrow-left'
 	| 'envelope'
 	| 'map'
+	| 'undo'
+	| 'redo'
 	| 'phone';
 
 type IconProps = {
@@ -181,6 +184,8 @@ const icons: any = {
 	'action-menu': GoListUnordered,
 	'export-doc': TbFileExport,
 	'add-circle': IoMdAddCircleOutline,
+	undo: HiArrowUturnLeft,
+	redo: HiArrowUturnRight,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

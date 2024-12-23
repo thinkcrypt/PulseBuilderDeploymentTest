@@ -50,6 +50,7 @@ export const userApi = mainApi.injectEndpoints({
 			query: ({ path, invalidate = [] }): any => `${path}/get/one`,
 			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
 		}),
+
 		getByIdToEdit: builder.query<any, { path: string; id: any; invalidate?: string[] }>({
 			query: ({ path, id, invalidate }): any => `${path}/edit/${id}`,
 			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
