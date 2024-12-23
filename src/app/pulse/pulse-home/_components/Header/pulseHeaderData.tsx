@@ -1,0 +1,195 @@
+const pulseHeaderData = [
+  {
+    name: "header.logoText",
+    label: "Logo Text",
+    isRequired: true,
+    type: "text",
+  },
+
+  {
+    name: "header.bgColor",
+    label: "Background Color",
+    isRequired: true,
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.fgColor",
+    label: "Foreground Color",
+    isRequired: true,
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.iconBg",
+    label: "Icon Background",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.iconFg",
+    label: "Icon Foreground",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.iconHoverBg",
+    label: "Icon Hover Background",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.iconHoverFg",
+    label: "Icon Hover Foreground",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.tagBg",
+    label: "Icon Tag Background",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.tagFg",
+    label: "Icon Tag Foreground",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.tagRadius",
+    label: "Icon Tag Radius",
+    type: "number",
+    span: 1,
+  },
+
+  {
+    name: "header.btnBg",
+    label: "Button Background",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.btnFg",
+    label: "Button Foreground",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.btnFontSize",
+    label: "Button Font Size",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.btnFontWeight",
+    label: "Button Font Weight",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.btnHeight",
+    label: "Button Font Height",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.btnHoverBg",
+    label: "Button Hover Background",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.btnHoverFg",
+    label: "Button Hover Foreground",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.btnRadius",
+    label: "Button Radius",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.btnText",
+    label: "Button Text",
+    type: "text",
+    span: 1,
+  },
+  {
+    name: "header.btnWidth",
+    label: "Button Width",
+    type: "number",
+    span: 1,
+  },
+
+  {
+    name: "header.borderColor",
+    label: "Border Bottom Color",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.borderWidth",
+    label: "Border Bottom Width",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.searchBoxBg",
+    label: "Search Box Border",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.searchBoxFg",
+    label: "Search Box Background",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.searchBoxIcon",
+    label: "Search Box Icon",
+    type: "color",
+    span: 1,
+  },
+  {
+    name: "header.searchBoxText",
+    label: "Search Box Text",
+    type: "text",
+    span: 1,
+  },
+  {
+    name: "header.searchBoxRadius",
+    label: "Search Box Radius",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.iconRadius",
+    label: "Icon Radius",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.iconSize",
+    label: "Icon Size",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.logoHeight",
+    label: "Logo Height",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.logoWidth",
+    label: "Logo Width",
+    type: "number",
+    span: 1,
+  },
+];
+
+export default pulseHeaderData;

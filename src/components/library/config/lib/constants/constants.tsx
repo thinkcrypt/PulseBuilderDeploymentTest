@@ -1,11 +1,13 @@
 import { border } from '@chakra-ui/react';
 
-export const TOKEN_NAME: string = process.env.NEXT_PUBLIC_TOKEN_NAME || 'MINT_CAFE_TOKEN_TWO';
+export const TOKEN_NAME: string =
+	process.env.NEXT_PUBLIC_TOKEN_NAME || 'MINT_CAFE_TOKEN_TWO';
 
 export const REFRESH_TOKEN: string =
 	process.env.REFRESH_TOKEN || 'THINKCRYPT_ERP_REFRESH_TOKEN_TEST_ONE';
 
-export const STORE: string = process.env.NEXT_PUBLIC_STORE || '6587157f9b62eb0e74c9f2ef';
+export const STORE: string =
+	process.env.NEXT_PUBLIC_STORE || '6587157f9b62eb0e74c9f2ef';
 
 export const CART_NAME: string =
 	process.env.NEXT_PUBLIC_CART_NAME || 'THINKCRYPT_ERP_CART_TEST_ONE';
@@ -23,6 +25,8 @@ export const currency = {
 	code: 'BDT',
 	symbol: '৳',
 };
+
+export const placeholderLogo = './logo/placeholderImage.png';
 
 const BASE_SIDEBAR_WIDTH = '240px';
 const BASE_SIDEBAR_WIDTH_SMALL = '20PX';

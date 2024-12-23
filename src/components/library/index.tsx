@@ -164,4 +164,5 @@ export type HomeContentProps = {
 	dataModel: any;
 	path: any;
 	data?: any;
+	basic?: any;
 };

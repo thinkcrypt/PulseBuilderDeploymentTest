@@ -194,7 +194,15 @@ const sidebar: SidebarItemType[] = [
 		icon: 'content',
 		path: 'hongo/hongo-home',
 	},
-
+	{
+		startOfSection: true,
+		sectionTitle: 'Pages (PULSE)',
+		title: 'Home Page',
+		href: '/pulse/pulse-home',
+		icon: 'content',
+		path: 'pulse',
+		// type: 'page',
+	},
 	{
 		startOfSection: true,
 		sectionTitle: 'Reports',
