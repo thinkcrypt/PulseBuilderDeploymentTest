@@ -27,25 +27,11 @@ export const currency = {
 };
 
 export const placeholderLogo = "./logo/placeholderImage.png";
-export const placeholderImage = "./logo/placeholderLogo.png";
-
-export const sectionPadding = {
-  PADDING_X_2XL: "2rem",
-  PADDING_X_LG: "1.5rem",
-  PADDING_X_MOBILE: "1rem",
-};
-
-export const maxWidth = {
-  base: "100%",
-  sm: "540px",
-  md: "720px",
-  lg: "960px",
-  xl: "1140px",
-  "2xl": "1320px",
-};
 
 const BASE_SIDEBAR_WIDTH = "240px";
 const BASE_SIDEBAR_WIDTH_SMALL = "20PX";
+
+export const PADDING_X = { base: 6, md: 24 };
 
 export const sizes = {
   SIDEBAR_WIDTH: BASE_SIDEBAR_WIDTH,
@@ -69,6 +55,12 @@ export const shadow = {
   MENU: "lg",
   CARD: "2px 2px 10px rgba(0,0,0,.1)",
   DASH: "2px 2px 4px rgba(0,0,0,.05)",
+};
+
+export const sectionPadding = {
+  PADDING_X_2XL: "18rem",
+  PADDING_X_LG: "12rem",
+  PADDING_X_MOBILE: "1rem",
 };
 
 export const padding = {

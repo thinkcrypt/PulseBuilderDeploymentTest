@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import { useGetAllQuery } from '@/components/library';
-import { ProductCard } from '.';
+import { ProductCard } from '@/app/pulse/pulse-home/_components/FeatureProduct/Product';
+// import { ProductCard } from '.';
 
 type HongoCollectionDetailsProps = {
 	id?: string;
 	type?: 'collection' | 'category';
 	config: any;
+	css?: any;
 	limit?: number;
 };
 
@@ -14,11 +16,11 @@ const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 	id,
 	type,
 	config,
+	css,
 	limit = 4,
 }) => {
 	const { data, isError, isFetching } = useGetAllQuery({
 		path: 'products',
-
 		filters: {
 			...(type == 'category' && { category_in: id }),
 			...(type == 'collection' && { collection_in: id }),
@@ -40,11 +42,13 @@ const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 		}
 
 		return data?.doc?.map((item: any, i: number) => (
-			<ProductCard
-				data={item}
-				key={i}
-				config={config}
-			/>
+			// old one
+			// <ProductCard
+			// 	data={item}
+			// 	key={i}
+			// 	config={config}
+			// />
+			<ProductCard data={item} key={i} basic={config} css={css} />
 		));
 	};
 

@@ -32,6 +32,11 @@ import SponsoredBannerTwo from "./_components/Sponsored-Banners/SponsoredBannerT
 import sponsoredBannerTwoData from "./_components/Sponsored-Banners/sponsoredBannerTwoData";
 import SponsoredBannerThree from "./_components/Sponsored-Banners/SponsoredBannerThree";
 import sponsoredBannerThreeData from "./_components/Sponsored-Banners/sponsoredBannerThreeData";
+import basicDataSchema from "./_components/Basic/basicData";
+import PulseProductListComponent from "./_components/PulseProductList/PulseProduct";
+import { listData } from "@/app/home-content/_components";
+import FooterConfig from "./_components/Footer/PulseFooter";
+import { footerData } from "@/app/hongo/hongo-home/_components";
 
 // import {
 // 	heroData,
@@ -64,46 +69,16 @@ const sidebarData = [
     type: "page",
   },
   {
-    title: "Store Settings",
-    href: "/hongo/hongo-store",
-    icon: "shop",
-    path: "hongo/hongo-store",
-    type: "page",
+    startOfSection: true,
+    sectionTitle: "Basic",
+    title: "Basic",
+    icon: "content",
+    dataPath: "basic",
+    type: "component",
+    path: "pulse",
+    // dataModel: storeData,
+    dataModel: basicDataSchema,
   },
-  // {
-  // 	startOfSection: true,
-  // 	sectionTitle: 'Components (HONGO)',
-  // 	title: 'Store',
-  // 	icon: 'content',
-  // 	dataPath: 'basic',
-  // 	type: 'component',
-  // 	path: 'hongo',
-  // 	dataModel: storeData,
-  // },
-  // {
-  // 	title: 'Header',
-  // 	icon: 'content',
-  // 	dataPath: 'content',
-  // 	type: 'component',
-  // 	path: 'hongo',
-  // 	dataModel: headerData,
-  // },
-  // {
-  // 	title: 'Fonts',
-  // 	icon: 'shop',
-  // 	type: 'component',
-  // 	path: 'hongo',
-  // 	dataPath: 'basic',
-  // 	dataModel: fontData,
-  // },
-  // {
-  // 	title: 'Colors',
-  // 	icon: 'shop',
-  // 	type: 'component',
-  // 	path: 'hongo',
-  // 	dataPath: 'basic',
-  // 	dataModel: colorData,
-  // },
 ];
 
 const HomeContentPage = () => {
@@ -147,6 +122,7 @@ const HomeContentPage = () => {
       />
       <PulseHeader
         data={data}
+        basic={data?.basic}
         path="pulse"
         content={data?.content}
         dataModel={pulseHeaderData}
@@ -174,6 +150,13 @@ const HomeContentPage = () => {
         content={data?.content}
         dataModel={featuredCategoriesData}
       />
+      <PulseProductListComponent
+        data={data}
+        path="pulse"
+        basic={data?.basic}
+        content={data?.content}
+        dataModel={listData}
+      />
 
       <SponsoredBannerOne
         data={data}
@@ -197,12 +180,47 @@ const HomeContentPage = () => {
         dataModel={sponsoredBannerThreeData}
       />
 
+      <FooterConfig
+        data={data}
+        path="hongo"
+        content={data?.content}
+        dataModel={footerData}
+      />
+
       {/* <FooterConfig
+	return (
+		<EditorLayoutSuspense
+			data={data}
+			sidebarData={sidebarData}
+			isLoading={isLoading || !data}
+			path='/home-content'
+			title='Home Content'
+			position='relative'
+			gap={0}
+		>
+			<PulseHeader
 				data={data}
-				path='hongo'
+				path='pulse'
+				basic={data?.basic}
 				content={data?.content}
-				dataModel={footerData}
-			/>  */}
+				dataModel={pulseHeaderData}
+			/>
+
+
+			{/* <FeatureProduct
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={pulseHeaderData}
+			/> */}
+      {/* <StoreConfig
+				content={data?.basic}
+				path='pulse'
+				// dataModel={basicDataSchema}
+				dataModel={storeData}
+			/> */}
+      {/*  */}
     </EditorLayoutSuspense>
   );
 };
