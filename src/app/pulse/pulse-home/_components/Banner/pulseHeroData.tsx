@@ -1,11 +1,9 @@
 const pulseHeroData = [
   {
-    startOfSection: true,
     sectionTitle: "Hero Section",
     name: "hero.images",
     label: "Hero Images",
     type: "image-array",
-    dataKey: "hero.images",
   },
   {
     name: "hero.height",
@@ -14,7 +12,6 @@ const pulseHeroData = [
     endOfSection: true,
   },
   {
-    startOfSection: true,
     sectionTitle: "Show/Hide",
     name: "hero.hide",
     label: "Show/Hide Banner",

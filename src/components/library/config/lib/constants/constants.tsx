@@ -29,6 +29,21 @@ export const currency = {
 export const placeholderLogo = "./logo/placeholderImage.png";
 export const placeholderImage = "./logo/placeholderLogo.png";
 
+export const sectionPadding = {
+  PADDING_X_2XL: "2rem",
+  PADDING_X_LG: "1.5rem",
+  PADDING_X_MOBILE: "1rem",
+};
+
+export const maxWidth = {
+  base: "100%",
+  sm: "540px",
+  md: "720px",
+  lg: "960px",
+  xl: "1140px",
+  "2xl": "1320px",
+};
+
 const BASE_SIDEBAR_WIDTH = "240px";
 const BASE_SIDEBAR_WIDTH_SMALL = "20PX";
 
