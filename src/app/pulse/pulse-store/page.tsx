@@ -13,7 +13,7 @@ import {
 
 const HomeContentPage = () => {
 	const { data, isLoading } = useGetContentQuery({
-		path: 'hongo',
+		path: 'pulse',
 	});
 
 	return (
@@ -23,10 +23,10 @@ const HomeContentPage = () => {
 			title='Store Content'>
 			<StoreConfig
 				content={data?.basic}
-				path='hongo'
+				path='pulse'
 				dataModel={storeData}
 			/>
-			<BannerConfig
+			{/* <BannerConfig
 				path='hongo'
 				content={data?.content}
 				dataModel={bannerData}
@@ -37,7 +37,7 @@ const HomeContentPage = () => {
 				title='About Page'
 				content={data?.content}
 				data={data?.content?.aboutPage}
-			/>
+			/> */}
 		</LayoutSuspense>
 	);
 };

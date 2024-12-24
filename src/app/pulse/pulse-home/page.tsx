@@ -4,6 +4,7 @@ import {
 	useAppDispatch,
 	resetBuilder,
 	push,
+	LayoutSuspense,
 } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import { Box } from '@chakra-ui/react';
@@ -19,6 +20,8 @@ import React, { useEffect } from 'react';
 
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
+import basicDataSchema from './_components/Basic/basicData';
+import { StoreConfig, storeData } from '../pulse-store/_components';
 
 // import {
 // 	heroData,
@@ -57,15 +60,16 @@ const sidebarData = [
 	// 	path: 'pulse/pulse-store',
 	// 	type: 'page',
 	// },
-    {
-        startOfSection: true,
-		sectionTitle: 'Header',
-		title: 'Header',
+	{
+		startOfSection: true,
+		sectionTitle: 'Basic',
+		title: 'Basic',
 		icon: 'content',
-		dataPath: 'content',
+		dataPath: 'basic',
 		type: 'component',
 		path: 'pulse',
-		dataModel: pulseHeaderData,
+		// dataModel: storeData,
+		dataModel: basicDataSchema,
 	},
 	// {
 	// 	startOfSection: true,
@@ -108,7 +112,7 @@ const HomeContentPage = () => {
 		path: 'pulse',
 	});
 
-	console.log('pulse data:::', data);
+	console.log('basic data:::', data?.basic);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());
@@ -138,10 +142,16 @@ const HomeContentPage = () => {
 			<PulseHeader
 				data={data}
 				path='pulse'
+				basic={data?.basic}
 				content={data?.content}
 				dataModel={pulseHeaderData}
 			/>
-
+			{/* <StoreConfig
+				content={data?.basic}
+				path='pulse'
+				// dataModel={basicDataSchema}
+				dataModel={storeData}
+			/> */}
 			{/* <FooterConfig
 				data={data}
 				path='hongo'

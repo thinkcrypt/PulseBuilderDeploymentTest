@@ -1,20 +1,28 @@
 import React, { FC } from 'react';
 import { Heading, Text, Image, Grid } from '@chakra-ui/react';
-import { ViewContentContainer, Column, ColorInput, HomeContentProps } from '@/components/library';
+import {
+	ViewContentContainer,
+	Column,
+	ColorInput,
+	HomeContentProps,
+} from '@/components/library';
 
 const StoreConfig: FC<HomeContentProps> = ({ dataModel, content, path }) => {
+	console.log('from store config', content);
 	return (
 		<ViewContentContainer
 			path={path}
 			type='basic'
 			title='Store Information'
 			data={content}
-			dataModel={dataModel}>
+			dataModel={dataModel}
+		>
 			<Column gap={4}>
 				<Image
-					src={content?.logo}
+					src={content?.logo ? content?.logo : 'what!?'}
 					w='140px'
-					h='auth'
+					h='140px'
+					alt={'Store Logo Hongo'}
 				/>
 				<Column gap={2}>
 					<Heading size='sm'>Store Name</Heading>
@@ -41,36 +49,22 @@ const StoreConfig: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 
 				<Grid
 					gridTemplateColumns={{ base: '1fr 1fr', md: 'repeat(3, 1fr)' }}
-					gap={4}>
-					<ColorInput
-						value={content?.brandColor}
-						title='Brand Color'
-					/>
+					gap={4}
+				>
+					<ColorInput value={content?.brandColor} title='Brand Color' />
 
 					<ColorInput
 						value={content?.brandTextColor}
 						title='Brand Text Color'
 					/>
 
-					<ColorInput
-						value={content?.borderColor}
-						title='Border Color'
-					/>
+					<ColorInput value={content?.borderColor} title='Border Color' />
 
-					<ColorInput
-						value={content?.btnColor}
-						title='Button Color'
-					/>
+					<ColorInput value={content?.btnColor} title='Button Color' />
 
-					<ColorInput
-						value={content?.btnTextColor}
-						title='Button Text Color'
-					/>
+					<ColorInput value={content?.btnTextColor} title='Button Text Color' />
 
-					<ColorInput
-						value={content?.bgColor}
-						title='Background Color'
-					/>
+					<ColorInput value={content?.bgColor} title='Background Color' />
 
 					<ColorInput
 						value={content?.primaryTextColor}
