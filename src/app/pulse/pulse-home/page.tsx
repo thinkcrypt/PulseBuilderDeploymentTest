@@ -21,7 +21,11 @@ import React, { useEffect } from 'react';
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
-import { FooterConfig, footerData, listData } from '@/app/hongo/hongo-home/_components';
+import {
+	FooterConfig,
+	footerData,
+	listData,
+} from '@/app/hongo/hongo-home/_components';
 import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
 // import { listData } from '@/app/home-content/_components';
 // import FeatureProduct from './_components/FeatureProduct/FeatureProduct';
@@ -96,19 +100,6 @@ const HomeContentPage = () => {
 				dataModel={listData}
 			/>
 
-			{/* <FeatureProduct
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={pulseHeaderData}
-			/> */}
-			{/* <StoreConfig
-				content={data?.basic}
-				path='pulse'
-				// dataModel={basicDataSchema}
-				dataModel={storeData}
-			/> */}
 			<FooterConfig
 				data={data}
 				path='hongo'
