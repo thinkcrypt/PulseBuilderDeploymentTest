@@ -1,5 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 import {
+	placeholderLogo,
+	PADDING_X,
+} from '../../../../../components/library/config/lib/constants/constants';
+
+import {
 	Box,
 	BoxProps,
 	Center,
@@ -18,13 +23,11 @@ import {
 // import { PADDING_X } from '.';
 import SearchBox from './SearchBox';
 import LogoImage from './LogoImage';
-import { placeholderLogo } from '@/components/library/config/lib/constants/constants';
 export const padding = {
 	PADDING_X_2XL: '18rem',
 	PADDING_X_LG: '12rem',
 	PADDING_X_MOBILE: '1rem',
 };
-
 type HeaderConfigProps = {
 	bgColor: string; //
 	fgColor: string; //
@@ -42,7 +45,7 @@ type HeaderConfigProps = {
 	searchBoxRadius: string; //
 	iconRadius: string; //
 };
-export const PADDING_X = { base: 6, md: 24 };
+
 // dataModel, content, path, data
 const HeaderConfig: FC<HomeContentProps> = ({
 	dataModel,
@@ -73,7 +76,7 @@ const HeaderConfig: FC<HomeContentProps> = ({
 							<LogoImage
 								w={`${header?.logoWidth}px`}
 								h={`${header?.logoHeight}px`}
-								src={basic?.logo || '/logo/placeholderImage.png'}
+								src={basic?.logo || placeholderLogo}
 							/>
 						</Box>
 						<SearchBox header={header} />

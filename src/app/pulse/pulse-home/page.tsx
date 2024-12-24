@@ -21,27 +21,10 @@ import React, { useEffect } from 'react';
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
-import { StoreConfig, storeData } from '../pulse-store/_components';
-
-// import {
-// 	heroData,
-// 	discoverData,
-// 	HeroComponent,
-// 	ServicesComponent,
-// 	ProductListComponent,
-// 	listData,
-// 	CategoryComponent,
-// 	collectionsData,
-// 	BannerConfig,
-// 	bannerData,
-// 	HeaderConfig,
-// 	headerData,
-// 	fontData,
-// 	colorData,
-// 	FooterConfig,
-// 	footerData,
-// 	storeData,
-// } from './_components';
+import { FooterConfig, footerData, listData } from '@/app/hongo/hongo-home/_components';
+import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
+// import { listData } from '@/app/home-content/_components';
+// import FeatureProduct from './_components/FeatureProduct/FeatureProduct';
 
 const sidebarData = [
 	{
@@ -53,13 +36,6 @@ const sidebarData = [
 		path: 'home-content',
 		type: 'page',
 	},
-	// {
-	// 	title: 'Store Settings',
-	// 	href: '/pulse/pulse-store',
-	// 	icon: 'shop',
-	// 	path: 'pulse/pulse-store',
-	// 	type: 'page',
-	// },
 	{
 		startOfSection: true,
 		sectionTitle: 'Basic',
@@ -71,40 +47,6 @@ const sidebarData = [
 		// dataModel: storeData,
 		dataModel: basicDataSchema,
 	},
-	// {
-	// 	startOfSection: true,
-	// 	sectionTitle: 'Components (HONGO)',
-	// 	title: 'Store',
-	// 	icon: 'content',
-	// 	dataPath: 'basic',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataModel: headerData,
-	// },
-	// {
-	// 	title: 'Header',
-	// 	icon: 'content',
-	// 	dataPath: 'content',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataModel: headerData,
-	// },
-	// {
-	// 	title: 'Fonts',
-	// 	icon: 'shop',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataPath: 'basic',
-	// 	dataModel: fontData,
-	// },
-	// {
-	// 	title: 'Colors',
-	// 	icon: 'shop',
-	// 	type: 'component',
-	// 	path: 'hongo',
-	// 	dataPath: 'basic',
-	// 	dataModel: colorData,
-	// },
 ];
 
 const HomeContentPage = () => {
@@ -112,7 +54,7 @@ const HomeContentPage = () => {
 		path: 'pulse',
 	});
 
-	console.log('basic data:::', data?.basic);
+	console.log('pulse data:::', data);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());
@@ -146,18 +88,33 @@ const HomeContentPage = () => {
 				content={data?.content}
 				dataModel={pulseHeaderData}
 			/>
+			<PulseProductListComponent
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={listData}
+			/>
+
+			{/* <FeatureProduct
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={pulseHeaderData}
+			/> */}
 			{/* <StoreConfig
 				content={data?.basic}
 				path='pulse'
 				// dataModel={basicDataSchema}
 				dataModel={storeData}
 			/> */}
-			{/* <FooterConfig
+			<FooterConfig
 				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={footerData}
-			/>  */}
+			/>
 		</EditorLayoutSuspense>
 	);
 };

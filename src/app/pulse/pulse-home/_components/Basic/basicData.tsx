@@ -1,4 +1,12 @@
+import { fontOptions } from '@/components/library';
+
 const basicDataSchema = [
+	{
+		name: 'logo',
+		label: 'Logo',
+		isRequired: true,
+		type: 'image',
+	},
 	///////////////// Icon
 	{
 		// startOfSection: true,
@@ -9,18 +17,21 @@ const basicDataSchema = [
 		type: 'text',
 		span: 1,
 	},
+
 	{
 		name: 'bgColor',
 		label: 'Background Color',
 		type: 'color',
 		span: 1,
 	},
+
 	{
 		name: 'borderColor',
 		label: 'Border Color',
 		type: 'color',
 		span: 1,
 	},
+
 	{
 		name: 'brandColor',
 		label: 'Brand Color',
@@ -73,12 +84,7 @@ const basicDataSchema = [
 		type: 'text',
 		span: 1,
 	},
-	{
-		name: 'logo',
-		label: 'Logo',
-		isRequired: true,
-		type: 'image',
-	},
+
 	{
 		name: 'name',
 		label: 'Theme Name',
@@ -88,7 +94,8 @@ const basicDataSchema = [
 	{
 		name: 'primaryFont',
 		label: 'Primary Font',
-		type: 'text',
+		options: fontOptions,
+		type: 'select',
 		span: 1,
 	},
 	{
@@ -101,7 +108,8 @@ const basicDataSchema = [
 	{
 		name: 'secondaryFont',
 		label: 'Secondary Font',
-		type: 'text',
+		options: fontOptions,
+		type: 'select',
 		span: 1,
 	},
 	{

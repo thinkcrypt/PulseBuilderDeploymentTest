@@ -126,7 +126,7 @@ const EditContentModal = ({
 								onClick={onModalClose}>
 								Discard
 							</DiscardButton>
-							<ModalSubmitButton isLoading={isLoading}>Confirm</ModalSubmitButton>
+							<ModalSubmitButton isLoading={isLoading}>Confiedirm</ModalSubmitButton>
 						</ModalFooter>
 					</form>
 				</ModalContainer>
