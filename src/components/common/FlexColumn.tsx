@@ -1,15 +1,15 @@
-import { Flex, FlexProps } from '@chakra-ui/react';
-import React, { FC, ReactNode } from 'react';
+import { Flex, FlexProps } from "@chakra-ui/react";
+import React, { FC, ReactNode } from "react";
 
 type FlexColumnProps = FlexProps & {
-	children?: ReactNode;
+  children?: ReactNode;
 };
 const FlexColumn: FC<FlexColumnProps> = ({ children, ...props }) => {
-	return (
-		<Flex flexDir='column' {...props}>
-			{children}
-		</Flex>
-	);
+  return (
+    <Flex flexDir="column" {...props}>
+      {children}
+    </Flex>
+  );
 };
 
 export default FlexColumn;

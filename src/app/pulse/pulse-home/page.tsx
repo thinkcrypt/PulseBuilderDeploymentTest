@@ -4,7 +4,6 @@ import {
 	useAppDispatch,
 	resetBuilder,
 	push,
-	LayoutSuspense,
 } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import { Box } from '@chakra-ui/react';
@@ -18,6 +17,46 @@ import React, { useEffect } from 'react';
 // import { placeholderImage } from '@/lib/config/constants';
 // import { Icon, IconNameOptions } from '../icon';
 
+// import PulseHeader from "./_components/Header/PulseHeader";
+// import pulseHeaderData from "./_components/Header/pulseHeaderData";
+import { pulseBannerData, PulseHero } from './_components/Banner';
+import pulseHeroData from './_components/Banner/pulseHeroData';
+import FeaturedCategories from './_components/featured-categories/FeaturedCategories';
+import featuredCategoriesData from './_components/featured-categories/featuredCategoriesData';
+import ServiceContent from './_components/services/ServiceContent';
+import serviceData from './_components/services/serviceData';
+import Banner from './_components/Banner/Banner';
+import SponsoredBannerOne from './_components/Sponsored-Banners/SponsoredBannerOne';
+import sponsoredBannerOneData from './_components/Sponsored-Banners/sponsoredBannerOneData';
+import SponsoredBannerTwo from './_components/Sponsored-Banners/SponsoredBannerTwo';
+import sponsoredBannerTwoData from './_components/Sponsored-Banners/sponsoredBannerTwoData';
+import SponsoredBannerThree from './_components/Sponsored-Banners/SponsoredBannerThree';
+import sponsoredBannerThreeData from './_components/Sponsored-Banners/sponsoredBannerThreeData';
+// import basicDataSchema from "./_components/Basic/basicData";
+// import PulseProductListComponent from "./_components/PulseProductList/PulseProduct";
+// import { listData } from "@/app/home-content/_components";
+// import FooterConfig from "./_components/Footer/PulseFooter";
+// import { footerData } from "@/app/hongo/hongo-home/_components";
+
+// import {
+// 	heroData,
+// 	discoverData,
+// 	HeroComponent,
+// 	ServicesComponent,
+// 	ProductListComponent,
+// 	listData,
+// 	CategoryComponent,
+// 	collectionsData,
+// 	BannerConfig,
+// 	bannerData,
+// 	HeaderConfig,
+// 	headerData,
+// 	fontData,
+// 	colorData,
+// 	FooterConfig,
+// 	footerData,
+// 	storeData,
+// } from './_components';
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
@@ -85,12 +124,42 @@ const HomeContentPage = () => {
 			position='relative'
 			gap={0}
 		>
+			<Banner
+				data={data}
+				path='pulse'
+				content={data?.content}
+				basic={data?.basic}
+				dataModel={pulseBannerData}
+			/>
 			<PulseHeader
+				data={data}
+				basic={data?.basic}
+				path='pulse'
+				content={data?.content}
+				dataModel={pulseHeaderData}
+			/>
+			<PulseHero
 				data={data}
 				path='pulse'
 				basic={data?.basic}
 				content={data?.content}
-				dataModel={pulseHeaderData}
+				dataModel={pulseHeroData}
+			/>
+
+			<ServiceContent
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={serviceData}
+			/>
+
+			<FeaturedCategories
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={featuredCategoriesData}
 			/>
 			<PulseProductListComponent
 				data={data}
@@ -98,6 +167,28 @@ const HomeContentPage = () => {
 				basic={data?.basic}
 				content={data?.content}
 				dataModel={listData}
+			/>
+
+			<SponsoredBannerOne
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={sponsoredBannerOneData}
+			/>
+			<SponsoredBannerTwo
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={sponsoredBannerTwoData}
+			/>
+			<SponsoredBannerThree
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={sponsoredBannerThreeData}
 			/>
 
 			<FooterConfig
