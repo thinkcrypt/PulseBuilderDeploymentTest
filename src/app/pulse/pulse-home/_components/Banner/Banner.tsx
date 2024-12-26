@@ -42,6 +42,7 @@ const Banner: FC<TopBannerProps> = ({
   basic,
 }) => {
   const banner = content?.banner;
+  const header = content?.header;
 
   return (
     <HoverContentContainer
@@ -56,19 +57,21 @@ const Banner: FC<TopBannerProps> = ({
       position="sticky"
       top="0"
     >
-      <Flex
-        h={banner?.height}
-        w="full"
-        py={`${banner?.paddingY}px`}
-        px={`${banner?.paddingX}px`}
-        bg={banner?.bgColor}
-      >
-        <SectionPadding w="full" display="flex" alignItems="center">
-          <ChildText banner={banner} basic={basic}>
-            {banner?.children}
-          </ChildText>
-        </SectionPadding>
-      </Flex>
+      <SectionPadding bg={banner?.bgColor} h="80px" overflow="hidden" py="1rem">
+        <Flex
+          h={banner?.height}
+          w="full"
+          py={`${banner?.paddingY}px`}
+          px={`${banner?.paddingX}px`}
+          bg={banner?.bgColor}
+        >
+          <SectionPadding w="full" display="flex" alignItems="center">
+            <ChildText banner={banner} basic={basic}>
+              {banner?.children}
+            </ChildText>
+          </SectionPadding>
+        </Flex>
+      </SectionPadding>
     </HoverContentContainer>
   );
 };

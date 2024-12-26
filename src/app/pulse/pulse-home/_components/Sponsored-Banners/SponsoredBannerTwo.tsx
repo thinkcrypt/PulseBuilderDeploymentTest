@@ -1,6 +1,11 @@
 import { HoverContentContainer } from "@/components/library";
-import { placeholderLogo } from "@/components/library/config/lib/constants/constants";
 import {
+  maxWidth,
+  placeholderLogo,
+  sectionPadding,
+} from "@/components/library/config/lib/constants/constants";
+import {
+  Box,
   BoxProps,
   Flex,
   FlexProps,
@@ -37,7 +42,7 @@ const SponsoredBannerTwo: FC<any> = ({
       title="Banner Information"
       data={content}
       dataModel={dataModel}
-      bg={banner?.bgColor}
+      bg={basic?.bgColor}
       borderBottom={`1px solid ${banner?.borderColor}`}
       px={PADDING_X}
       position="sticky"
@@ -81,4 +86,23 @@ const BannerImage = ({
   <Flex w="full" h="300px" {...props}>
     <Image w="full" h="auto" objectFit="cover" src={src} />
   </Flex>
+);
+
+const SectionPadding = ({
+  children,
+  ...props
+}: BoxProps & { children: ReactNode }) => (
+  <Box
+    px={{
+      base: sectionPadding.PADDING_X_MOBILE,
+      lg: sectionPadding.PADDING_X_LG,
+      "2xl": sectionPadding.PADDING_X_2XL,
+    }}
+    maxW={maxWidth}
+    h="full"
+    mx="auto"
+    {...props}
+  >
+    {children}
+  </Box>
 );

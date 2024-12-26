@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import { placeholderLogo } from "@/components/library/config/lib/constants/constants";
 import { Autoplay } from "swiper/modules";
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box, BoxProps, Flex, Image } from "@chakra-ui/react";
 import { HomeContentProps, HoverContentContainer } from "@/components/library";
 export const padding = {
   PADDING_X_2XL: "18rem",
@@ -42,14 +42,33 @@ const HeroConfig: FC<HomeContentProps> = ({
       position="sticky"
       top="0"
     >
-      <Box>
-        <BannerSlider hero={content?.hero} />
-      </Box>
+      <SectionPadding overflow="hidden" py="3rem">
+        <Box>
+          <BannerSlider hero={content?.hero} />
+        </Box>
+      </SectionPadding>
     </HoverContentContainer>
   );
 };
 
 export default HeroConfig;
+
+const SectionPadding = ({
+  children,
+  ...props
+}: BoxProps & { children: ReactNode }) => (
+  <Box
+    px={{
+      base: padding.PADDING_X_MOBILE,
+      lg: padding.PADDING_X_LG,
+      "2xl": padding.PADDING_X_2XL,
+    }}
+    w="full"
+    {...props}
+  >
+    {children}
+  </Box>
+);
 
 type BannerSliderProps = {
   hero: any;

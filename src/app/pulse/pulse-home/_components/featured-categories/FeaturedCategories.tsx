@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import Link from "next/link";
-import { BoxProps, Flex, Grid, TextProps } from "@chakra-ui/react";
+import { Box, BoxProps, Flex, Grid, TextProps } from "@chakra-ui/react";
 const TEMPLATE_COLUMN = {
   base: "repeat(2, 1fr)",
   md: "repeat(3, 1fr)",
@@ -35,6 +35,7 @@ const FeaturedCategories: FC<HomeContentProps> = ({
   basic,
 }) => {
   const banner = content?.banner;
+  const collectionsCss = content?.collectionsCss;
   const doc: FeaturedCategoriesProps = content?.collections;
   const collections = content?.collections;
   const css = content?.collectionsCss;
@@ -46,13 +47,13 @@ const FeaturedCategories: FC<HomeContentProps> = ({
       title="Banner Information"
       data={content}
       dataModel={dataModel}
-      bg={banner?.bgColor}
+      bg={collectionsCss?.bgColor}
       borderBottom={`1px solid ${banner?.borderColor}`}
       px={PADDING_X}
       position="sticky"
       top="0"
     >
-      <>
+      <SectionPadding bg={collectionsCss?.bgColor} overflow="hidden" py="3rem">
         <Flex py="1rem" flexDir="column" alignItems={css?.align} mb="1rem">
           <Title css={css}>{collections ? collections?.title : "-"}</Title>
           <SubTitle css={css}>
@@ -65,12 +66,29 @@ const FeaturedCategories: FC<HomeContentProps> = ({
               <CollectionCard key={i} item={item} css={css} />
             ))}
         </Grid>
-      </>
+      </SectionPadding>
     </HoverContentContainer>
   );
 };
 
 export default FeaturedCategories;
+
+const SectionPadding = ({
+  children,
+  ...props
+}: BoxProps & { children: ReactNode }) => (
+  <Box
+    px={{
+      base: padding.PADDING_X_MOBILE,
+      lg: padding.PADDING_X_LG,
+      "2xl": padding.PADDING_X_2XL,
+    }}
+    w="full"
+    {...props}
+  >
+    {children}
+  </Box>
+);
 
 const Title = ({
   children,

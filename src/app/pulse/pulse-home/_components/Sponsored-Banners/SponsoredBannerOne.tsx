@@ -1,7 +1,11 @@
 import { HoverContentContainer } from "@/components/library";
-import { placeholderLogo } from "@/components/library/config/lib/constants/constants";
-import { BoxProps, Flex, Grid, Image } from "@chakra-ui/react";
-import React, { FC } from "react";
+import {
+  maxWidth,
+  placeholderLogo,
+  sectionPadding,
+} from "@/components/library/config/lib/constants/constants";
+import { Box, BoxProps, Flex, Grid, Image } from "@chakra-ui/react";
+import React, { FC, ReactNode } from "react";
 
 const TEMPLATE_COLUMN = {
   base: "repeat(2, 1fr)",
@@ -41,13 +45,13 @@ const SponsoredBannerOne: FC<any> = ({
       title="Banner Information"
       data={content}
       dataModel={dataModel}
-      bg={banner?.bgColor}
+      bg={basic?.bgColor}
       borderBottom={`1px solid ${banner?.borderColor}`}
       px={PADDING_X}
       position="sticky"
       top="0"
     >
-      <>
+      <SectionPadding bg={basic?.bgcolor} overflow="hidden" py="3rem">
         <Grid
           gridTemplateColumns={{
             base: `1fr 1fr`,
@@ -62,9 +66,28 @@ const SponsoredBannerOne: FC<any> = ({
             </Flex>
           ))}
         </Grid>
-      </>
+      </SectionPadding>
     </HoverContentContainer>
   );
 };
 
 export default SponsoredBannerOne;
+
+const SectionPadding = ({
+  children,
+  ...props
+}: BoxProps & { children: ReactNode }) => (
+  <Box
+    px={{
+      base: sectionPadding.PADDING_X_MOBILE,
+      lg: sectionPadding.PADDING_X_LG,
+      "2xl": sectionPadding.PADDING_X_2XL,
+    }}
+    maxW={maxWidth}
+    h="full"
+    mx="auto"
+    {...props}
+  >
+    {children}
+  </Box>
+);

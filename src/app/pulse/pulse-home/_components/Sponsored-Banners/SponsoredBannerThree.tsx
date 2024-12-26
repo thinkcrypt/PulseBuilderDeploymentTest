@@ -1,6 +1,11 @@
 import { HoverContentContainer } from "@/components/library";
-import { placeholderLogo } from "@/components/library/config/lib/constants/constants";
 import {
+  maxWidth,
+  placeholderLogo,
+  sectionPadding,
+} from "@/components/library/config/lib/constants/constants";
+import {
+  Box,
   BoxProps,
   Flex,
   FlexProps,
@@ -8,7 +13,7 @@ import {
   GridProps,
   Image,
 } from "@chakra-ui/react";
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 const TEMPLATE_COLUMN = {
   base: "repeat(2, 1fr)",
@@ -37,9 +42,10 @@ const SponsoredBannerThree: FC<any> = ({
       title="Banner Information"
       data={content}
       dataModel={dataModel}
-      bg={banner?.bgColor}
+      bg={basic?.bgColor}
       borderBottom={`1px solid ${banner?.borderColor}`}
       px={PADDING_X}
+      py={"3rem"}
       position="sticky"
       top="0"
     >
@@ -51,3 +57,22 @@ const SponsoredBannerThree: FC<any> = ({
 };
 
 export default SponsoredBannerThree;
+
+const SectionPadding = ({
+  children,
+  ...props
+}: BoxProps & { children: ReactNode }) => (
+  <Box
+    px={{
+      base: sectionPadding.PADDING_X_MOBILE,
+      lg: sectionPadding.PADDING_X_LG,
+      "2xl": sectionPadding.PADDING_X_2XL,
+    }}
+    maxW={maxWidth}
+    h="full"
+    mx="auto"
+    {...props}
+  >
+    {children}
+  </Box>
+);
