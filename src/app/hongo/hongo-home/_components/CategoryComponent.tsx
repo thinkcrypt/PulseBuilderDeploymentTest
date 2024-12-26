@@ -40,7 +40,7 @@ const CategoryComponent: FC<HeroDataProps> = ({
 					_dark={{ color: basic?.primaryTextColor }}
 					fontFamily={basic?.primaryFont}
 				>
-					{content?.collections?.title}lkkfgd
+					{content?.collections?.title}
 				</Heading>
 			</Align>
 			<Grid

@@ -64,7 +64,7 @@ export const maxWidth = {
 	xl: '1140px',
 	'2xl': '1320px',
 };
-
+export const cartBoxShadow = '0px 0px 8px -4px rgb(0, 0, 0)';
 export const sectionPadding = {
   PADDING_X_2XL: "18rem",
   PADDING_X_LG: "12rem",

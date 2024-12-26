@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import Link from 'next/link';
-import { BoxProps, Flex, Grid, TextProps } from '@chakra-ui/react';
+import { BoxProps, Flex, Grid, Image, Text, TextProps } from '@chakra-ui/react';
 const TEMPLATE_COLUMN = {
 	base: 'repeat(2, 1fr)',
 	md: 'repeat(3, 1fr)',
@@ -13,11 +13,16 @@ type FeaturedCategoryProps = BoxProps & {
 	content: any;
 	basic: any;
 };
-import { HomeContentProps, HoverContentContainer } from '@/components/library';
+import {
+	HomeContentProps,
+	HoverContentContainer,
+	useGetItemNameById,
+} from '@/components/library';
 import CollectionCard from './CollectionCard';
 import { jsonData } from '@/components/library/config/lib/data';
 import Headng from '@/components/text/Heading';
 import NormalText from '@/components/text/NormalText';
+import { Column } from '@/commerce-components';
 export const padding = {
 	PADDING_X_2XL: '18rem',
 	PADDING_X_LG: '12rem',
@@ -59,11 +64,27 @@ const FeaturedCategories: FC<HomeContentProps> = ({
 						{collections ? collections?.subTitle : '-'}
 					</SubTitle>
 				</Flex>
-				<Grid templateColumns={TEMPLATE_COLUMN} gap={4} bg='red.100'>
-					{collections?.items &
-						collections?.items?.map((item: any, i: number) => (
-							<CollectionCard key={i} item={item} css={css} />
-						))}
+				<Grid
+					pb={12}
+					borderBottomWidth={1}
+					borderBottomColor={basic?.borderColor}
+					rowGap={4}
+					gridTemplateColumns={{
+						base: 'repeat(2, 1fr)',
+						md: 'repeat(3, 1fr)',
+						lg: 'repeat(4, 1fr)',
+					}}
+					gap={4}
+				>
+					{content?.collections?.items?.length <= 0 && (
+						<Text>No items found</Text>
+					)}
+					{content?.collections?.items?.map(
+						(item: any, i: number) =>
+							i < 4 && (
+								<GetItem key={i} path={item?.type} id={item?.id} data={data} />
+							)
+					)}
 				</Grid>
 			</>
 		</HoverContentContainer>
@@ -108,3 +129,39 @@ const SubTitle = ({
 		{children}
 	</NormalText>
 );
+const GetItem = ({
+	path,
+	id,
+	data,
+}: {
+	path: string;
+	id: string;
+	data: any;
+}) => {
+	const { name, image } = useGetItemNameById({
+		id,
+		path,
+	});
+
+	return (
+		<Column gap={4} align='center'>
+			<Image
+				borderRadius={data?.content?.collections?.borderRadius}
+				src={image || 'nai'}
+				h={{ base: '180px', md: '200px' }}
+				w={data?.content?.collections?.borderRadius > 20 ? '200px' : '100%'}
+				objectFit='cover'
+			/>
+			<Text
+				textAlign='center'
+				fontWeight='500'
+				fontSize='1.4rem'
+				fontFamily={data?.basic?.primaryFont}
+				color={data?.basic?.primaryTextColor}
+				_dark={{ color: data?.basic?.primaryTextColor }}
+			>
+				{name || 'processing...'}
+			</Text>
+		</Column>
+	);
+};

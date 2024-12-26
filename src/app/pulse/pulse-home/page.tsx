@@ -21,8 +21,8 @@ import React, { useEffect } from 'react';
 // import pulseHeaderData from "./_components/Header/pulseHeaderData";
 import { pulseBannerData, PulseHero } from './_components/Banner';
 import pulseHeroData from './_components/Banner/pulseHeroData';
-import FeaturedCategories from './_components/featured-categories/FeaturedCategories';
-import featuredCategoriesData from './_components/featured-categories/featuredCategoriesData';
+// import FeaturedCategories from './_components/featured-categories-old/FeaturedCategories';
+import featuredCategoriesData from './_components/featured-categories-old/featuredCategoriesData';
 import ServiceContent from './_components/services/ServiceContent';
 import serviceData from './_components/services/serviceData';
 import Banner from './_components/Banner/Banner';
@@ -43,6 +43,8 @@ import {
 import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
 import PulseFooter from './_components/footer/Footer';
 import pulseFooterSchema from './_components/footer/components/pulseFooterSchema';
+import { FeaturedCategory } from './_components/featured-category';
+
 
 // import { listData } from '@/app/home-content/_components';
 // import FeatureProduct from './_components/FeatureProduct/FeatureProduct';
@@ -133,7 +135,7 @@ const HomeContentPage = () => {
 				dataModel={serviceData}
 			/>
 
-			<FeaturedCategories
+			<FeaturedCategory
 				data={data}
 				path='pulse'
 				basic={data?.basic}
