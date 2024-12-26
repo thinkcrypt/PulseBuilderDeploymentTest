@@ -1,7 +1,7 @@
 const pulseHeroData = [
   {
     sectionTitle: "Hero Section",
-    name: "hero.images",
+    name: "images",
     label: "Hero Images",
     type: "image-array",
   },
@@ -11,6 +11,7 @@ const pulseHeroData = [
     type: "number",
     endOfSection: true,
   },
+
   {
     sectionTitle: "Show/Hide",
     name: "hero.hide",

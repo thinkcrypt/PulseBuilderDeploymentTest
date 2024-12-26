@@ -69,6 +69,35 @@ const FeaturedCategories: FC<HomeContentProps> = ({
       </SectionPadding>
     </HoverContentContainer>
   );
+  return (
+    <HoverContentContainer
+      type="content"
+      path={path}
+      title="Banner Information"
+      data={content}
+      dataModel={dataModel}
+      bg={basic?.cardBg}
+      borderBottom={`1px solid ${banner?.borderColor}`}
+      px={PADDING_X}
+      position="sticky"
+      top="0"
+    >
+      <>
+        <Flex py="1rem" flexDir="column" alignItems={css?.align} mb="1rem">
+          <Title css={css}>{collections ? collections?.title : "-"}</Title>
+          <SubTitle css={css}>
+            {collections ? collections?.subTitle : "-"}
+          </SubTitle>
+        </Flex>
+        <Grid templateColumns={TEMPLATE_COLUMN} gap={4} bg="red.100">
+          {collections?.items &
+            collections?.items?.map((item: any, i: number) => (
+              <CollectionCard key={i} item={item} css={css} />
+            ))}
+        </Grid>
+      </>
+    </HoverContentContainer>
+  );
 };
 
 export default FeaturedCategories;

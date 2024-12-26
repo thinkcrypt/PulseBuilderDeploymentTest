@@ -64,6 +64,14 @@ export const shadow = {
   CARD: "2px 2px 10px rgba(0,0,0,.1)",
   DASH: "2px 2px 4px rgba(0,0,0,.05)",
 };
+export const maxWidth = {
+	base: '100%',
+	sm: '540px',
+	md: '720px',
+	lg: '960px',
+	xl: '1140px',
+	'2xl': '1320px',
+};
 
 export const sectionPadding = {
   PADDING_X_2XL: "18rem",

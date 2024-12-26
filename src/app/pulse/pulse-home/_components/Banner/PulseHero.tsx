@@ -28,15 +28,17 @@ const HeroConfig: FC<HomeContentProps> = ({
   basic,
 }) => {
   const banner = content?.banner;
+  console.log("banner", banner);
   const doc: HeroConfigProps = content?.hero;
   return (
     <HoverContentContainer
       type="content"
       path={path}
       title="Banner Information"
-      data={content}
+      data={data}
       dataModel={dataModel}
-      bg={banner?.bgColor}
+      bg={basic?.bgColor}
+      // bg={banner?.bgColor}
       borderBottom={`1px solid ${banner?.borderColor}`}
       px={PADDING_X}
       position="sticky"
