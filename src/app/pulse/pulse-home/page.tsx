@@ -6,7 +6,7 @@ import {
 	push,
 } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { Box } from '@chakra-ui/react';
+// import { Box } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 
 //////////////////////////// chakra
@@ -32,31 +32,6 @@ import SponsoredBannerTwo from './_components/Sponsored-Banners/SponsoredBannerT
 import sponsoredBannerTwoData from './_components/Sponsored-Banners/sponsoredBannerTwoData';
 import SponsoredBannerThree from './_components/Sponsored-Banners/SponsoredBannerThree';
 import sponsoredBannerThreeData from './_components/Sponsored-Banners/sponsoredBannerThreeData';
-// import basicDataSchema from "./_components/Basic/basicData";
-// import PulseProductListComponent from "./_components/PulseProductList/PulseProduct";
-// import { listData } from "@/app/home-content/_components";
-// import FooterConfig from "./_components/Footer/PulseFooter";
-// import { footerData } from "@/app/hongo/hongo-home/_components";
-
-// import {
-// 	heroData,
-// 	discoverData,
-// 	HeroComponent,
-// 	ServicesComponent,
-// 	ProductListComponent,
-// 	listData,
-// 	CategoryComponent,
-// 	collectionsData,
-// 	BannerConfig,
-// 	bannerData,
-// 	HeaderConfig,
-// 	headerData,
-// 	fontData,
-// 	colorData,
-// 	FooterConfig,
-// 	footerData,
-// 	storeData,
-// } from './_components';
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
@@ -66,6 +41,9 @@ import {
 	listData,
 } from '@/app/hongo/hongo-home/_components';
 import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
+import PulseFooter from './_components/footer/Footer';
+import pulseFooterSchema from './_components/footer/components/pulseFooterSchema';
+
 // import { listData } from '@/app/home-content/_components';
 // import FeatureProduct from './_components/FeatureProduct/FeatureProduct';
 
@@ -138,6 +116,7 @@ const HomeContentPage = () => {
 				content={data?.content}
 				dataModel={pulseHeaderData}
 			/>
+
 			<PulseHero
 				data={data}
 				path='pulse'
@@ -190,13 +169,19 @@ const HomeContentPage = () => {
 				content={data?.content}
 				dataModel={sponsoredBannerThreeData}
 			/>
-
-			<FooterConfig
+			<PulseFooter
+				data={data}
+				path='pulse'
+				basic={data?.basic}
+				content={data?.content}
+				dataModel={pulseFooterSchema}
+			/>
+			{/* <FooterConfig
 				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={footerData}
-			/>
+			/> */}
 		</EditorLayoutSuspense>
 	);
 };
