@@ -77,8 +77,8 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 				rowGap={4}
 				gridTemplateColumns={{
 					base: 'repeat(2, 1fr)',
-					md: 'repeat(3, 1fr)',
-					lg: 'repeat(4, 1fr)',
+					md: 'repeat(4, 1fr)',
+					lg: 'repeat(8, 1fr)',
 				}}
 				gap={4}
 			>
@@ -87,7 +87,7 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 				)}
 				{content?.collections?.items?.map(
 					(item: any, i: number) =>
-						i < 4 && (
+						i < 16 && (
 							// <GetItem key={i} path={item?.type} id={item?.id} data={data} />
 							// <CollectionCard key={i} basic={basic} path={item} id={item?.id} item={item} css={css} />
 							<CollectionCard key={i} path={item?.type} id={item?.id} data={data} css={css} basic={basic}/>

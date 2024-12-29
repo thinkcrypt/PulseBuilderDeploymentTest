@@ -22,7 +22,13 @@ type SidebarItemProps = {
 	sx?: any;
 };
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, sx }) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({
+	href,
+	children,
+	path,
+	icon,
+	sx,
+}) => {
 	const { selected } = useAppSelector((state: any) => state.route);
 	const dispatch = useAppDispatch();
 
@@ -43,9 +49,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 
 	const Container = ({ children }: any) => {
 		return href ? (
-			<Link
-				href={href}
-				passHref={children}>
+			<Link href={href} passHref={children}>
 				{children}
 			</Link>
 		) : (
@@ -67,16 +71,12 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ href, children, path, icon, s
 					borderColor: 'container.borderDark',
 				}}
 				h={{ base: 10, md: 7 }}
+				w='full'
 				bg={selected == path ? bg : 'transparent'}
-				sx={{ ...styles.container, ...sx }}>
-				<Icon
-					color={color}
-					name={icon}
-					size={isMobile ? 20 : undefined}
-				/>
-				<Text
-					fontSize={{ base: '16px', md: '14px' }}
-					fontWeight='600'>
+				sx={{ ...styles.container, ...sx }}
+			>
+				<Icon color={color} name={icon} size={isMobile ? 20 : undefined} />
+				<Text fontSize={{ base: '16px', md: '14px' }} fontWeight='600'>
 					{children}
 				</Text>
 			</Flex>

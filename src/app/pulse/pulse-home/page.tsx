@@ -6,22 +6,9 @@ import {
 	push,
 } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-// import { Box } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-
-//////////////////////////// chakra
-// import { padding } from '@/lib/config/constants';
-// import { BoxProps, Center, CenterProps, Flex } from '@chakra-ui/react';
-// import { LogoImage, SearchBox } from './sections/index';
-// // import { useGetStoreQuery } from '@/store/services/storeApi';
-// import { placeholderImage } from '@/lib/config/constants';
-// import { Icon, IconNameOptions } from '../icon';
-
-// import PulseHeader from "./_components/Header/PulseHeader";
-// import pulseHeaderData from "./_components/Header/pulseHeaderData";
 import { pulseBannerData, PulseHero } from './_components/Banner';
 import pulseHeroData from './_components/Banner/pulseHeroData';
-// import FeaturedCategories from './_components/featured-categories-old/FeaturedCategories';
 import featuredCategoriesData from './_components/featured-categories-old/featuredCategoriesData';
 import ServiceContent from './_components/services/ServiceContent';
 import serviceData from './_components/services/serviceData';
@@ -36,18 +23,13 @@ import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
 import {
-	FooterConfig,
-	footerData,
 	listData,
 } from '@/app/hongo/hongo-home/_components';
 import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
 import PulseFooter from './_components/footer/Footer';
 import pulseFooterSchema from './_components/footer/components/pulseFooterSchema';
 import { FeaturedCategory } from './_components/featured-category';
-
-
-// import { listData } from '@/app/home-content/_components';
-// import FeatureProduct from './_components/FeatureProduct/FeatureProduct';
+import { Box } from '@chakra-ui/react';
 
 const sidebarData = [
 	{
@@ -118,59 +100,60 @@ const HomeContentPage = () => {
 				content={data?.content}
 				dataModel={pulseHeaderData}
 			/>
+			<Box bg={data?.basic?.bgColor}>
+				<PulseHero
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={pulseHeroData}
+				/>
 
-			<PulseHero
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={pulseHeroData}
-			/>
+				<ServiceContent
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={serviceData}
+				/>
 
-			<ServiceContent
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={serviceData}
-			/>
+				<FeaturedCategory
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={featuredCategoriesData}
+				/>
+				<PulseProductListComponent
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={listData}
+				/>
 
-			<FeaturedCategory
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={featuredCategoriesData}
-			/>
-			<PulseProductListComponent
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={listData}
-			/>
-
-			<SponsoredBannerOne
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={sponsoredBannerOneData}
-			/>
-			<SponsoredBannerTwo
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={sponsoredBannerTwoData}
-			/>
-			<SponsoredBannerThree
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={sponsoredBannerThreeData}
-			/>
+				<SponsoredBannerOne
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={sponsoredBannerOneData}
+				/>
+				<SponsoredBannerTwo
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={sponsoredBannerTwoData}
+				/>
+				<SponsoredBannerThree
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={sponsoredBannerThreeData}
+				/>
+			</Box>
 			<PulseFooter
 				data={data}
 				path='pulse'

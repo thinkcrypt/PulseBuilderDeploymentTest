@@ -39,6 +39,7 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 						{item?.type == 'page' ? (
 							<Link href={item?.href}>
 								<SidebarItem
+								
 									sx={{
 										color: textColor,
 									}}
