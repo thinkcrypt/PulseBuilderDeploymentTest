@@ -28,7 +28,6 @@ const HeroConfig: FC<HomeContentProps> = ({
 	basic,
 }) => {
 	const banner = content?.banner;
-	console.log('banner', banner);
 	const doc: HeroConfigProps = content?.hero;
 	return (
 		<HoverContentContainer

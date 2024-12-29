@@ -44,7 +44,7 @@ const SponsoredBannerThree: FC<any> = ({
       top="0"
     >
       <Flex w="full" h={bannerData?.h}>
-        <Image w="full" h="auto" objectFit="cover" src={bannerData?.image} />
+        <Image w="full" h="auto" objectFit="cover" src={bannerData?.image} alt={'sponsered banner image'}/>
       </Flex>
     </HoverContentContainer>
   );

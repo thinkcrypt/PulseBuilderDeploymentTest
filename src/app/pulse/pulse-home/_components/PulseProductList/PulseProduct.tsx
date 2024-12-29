@@ -26,7 +26,6 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 	const productList = sortDataByPriority(content?.productList);
 	const { basic } = data;
 	const css = data?.content?.homeProductCss;
-	console.log('basic data:', basic);
 	if (!data || !content) return null;
 
 	return (

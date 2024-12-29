@@ -41,7 +41,7 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 }) => {
 	const collections = content?.collections;
 	const css = content?.collectionsCss;
-
+// console.log('item path::', )
 	return (
 
 		<HoverContentContainer

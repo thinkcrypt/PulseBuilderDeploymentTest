@@ -25,7 +25,6 @@ const CollectionCard: FC<CollectionCard> = ({
 	data,
 	...props
 }) => {
-	// console.log('item img:::', data);
 	const { name, image } = useGetItemNameById({
 		id,
 		path,
