@@ -1,49 +1,60 @@
 import { Box, BoxProps, Center, Flex, TextProps } from '@chakra-ui/react';
 import React, { FC, ReactNode } from 'react';
-import NormalText from '../NormalText';
 
+import { currency } from '@/components/library/config/lib/constants/constants';
+import useColors from '@/components/library/hooks/useColors';
+import { NormalText } from '../../text';
 
 type ProductPriceProps = BoxProps & {
-	children: any;
-	discountValue: number;
-	isDiscount: boolean;
+	children: number; // Original price
+	discountValue: number; // Discount amount
+	isDiscount: boolean; // Whether a discount is applied
 	discount: number;
 	css: any;
 	basic: any;
 };
 
 const ProductPrice: FC<ProductPriceProps> = ({
-	children,
+	children: price, // Original price
 	css,
+	basic,
 	discountValue,
-	discount,
 	isDiscount,
 	...props
 }) => {
+	const finalPrice = isDiscount ? price - discountValue : price;
+	const colors = useColors();
 	return (
 		<Center gap={2}>
 			<NormalText
 				css={css}
-				color={css?.priceTextColor}
-				fontSize={`${css?.cardTitleSize}px`}
-				fontWeight={css?.cardTitleWeight}
-				textAlign={css?.cardTitleTextAlign}
+				basic={basic}
+				// color={css?.priceTextColor}
+				// fontSize={`${css?.cardTitleSize}px`}
+				// fontWeight={css?.cardTitleWeight}
+				// textAlign={css?.cardTitleTextAlign}
+				fontSize='16px'
+				fontWeight='600'
+				color={colors?.hoverColor}
 				{...props}
 			>
-				{`Tk. ${children?.toLocaleString()}`}
+				{`${finalPrice.toLocaleString()} ${currency?.symbol}`}
 			</NormalText>
 
 			{isDiscount && (
 				<NormalText
 					css={css}
-					color={css?.priceTextColor}
-					fontSize={`12px`}
-					fontWeight={css?.cardTitleWeight}
-					textAlign={css?.cardTitleTextAlign}
+					basic={basic}
+					// color={css?.priceTextColor}
+					// fontWeight={css?.cardTitleWeight}
+					// textAlign={css?.cardTitleTextAlign}
 					textDecoration='line-through'
+					fontSize={`12px`}
+					fontWeight='600'
+					color={colors?.cardText}
 					{...props}
 				>
-					{`Tk. ${discountValue?.toLocaleString()}`}
+					{`${price.toLocaleString()} ${currency?.symbol}`}
 				</NormalText>
 			)}
 		</Center>

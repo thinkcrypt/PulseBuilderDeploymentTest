@@ -13,7 +13,7 @@ type HongoCollectionDetailsProps = {
 	limit?: number;
 };
 
-const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
+const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 	id,
 	type,
 	config,
@@ -47,12 +47,6 @@ const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 		}
 
 		return data?.doc?.map((item: any, i: number) => (
-			// old one
-			// <ProductCard
-			// 	data={item}
-			// 	key={i}
-			// 	config={config}
-			// />
 			<ProductCard data={item} key={i} basic={config} css={css} />
 		));
 	};
@@ -70,4 +64,4 @@ const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 	);
 };
 
-export default HongoCollectionDetails;
+export default PulseCollectionDetails;

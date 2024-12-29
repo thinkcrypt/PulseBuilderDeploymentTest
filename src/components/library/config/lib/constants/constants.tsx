@@ -26,6 +26,10 @@ export const currency = {
   symbol: "৳",
 };
 
+
+export const productCardBoxShadow = '0px 0px 6px -3px rgb(0, 0, 0, .2)';
+export const cartBoxShadowHover = '0 2px 5px rgba(0, 0, 0, 0.1);';
+
 export const placeholderLogo = "./logo/placeholderImage.png";
 
 const BASE_SIDEBAR_WIDTH = "240px";
