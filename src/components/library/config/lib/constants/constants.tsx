@@ -25,14 +25,6 @@ export const currency = {
   code: "BDT",
   symbol: "৳",
 };
-export const maxWidth = {
-  base: "100%",
-  sm: "540px",
-  md: "720px",
-  lg: "960px",
-  xl: "1140px",
-  "2xl": "1320px",
-};
 
 export const placeholderLogo = "./logo/placeholderImage.png";
 
@@ -65,12 +57,12 @@ export const shadow = {
   DASH: "2px 2px 4px rgba(0,0,0,.05)",
 };
 export const maxWidth = {
-	base: '100%',
-	sm: '540px',
-	md: '720px',
-	lg: '960px',
-	xl: '1140px',
-	'2xl': '1320px',
+  base: "100%",
+  sm: "540px",
+  md: "720px",
+  lg: "960px",
+  xl: "1140px",
+  "2xl": "1320px",
 };
 
 export const sectionPadding = {
