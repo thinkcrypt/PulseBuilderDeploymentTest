@@ -22,9 +22,7 @@ import sponsoredBannerThreeData from './_components/Sponsored-Banners/sponsoredB
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
-import {
-	listData,
-} from '@/app/hongo/hongo-home/_components';
+import { listData } from '@/app/hongo/hongo-home/_components';
 import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
 import PulseFooter from './_components/footer/Footer';
 import pulseFooterSchema from './_components/footer/components/pulseFooterSchema';

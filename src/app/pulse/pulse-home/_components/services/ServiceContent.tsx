@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import {
+  Box,
   BoxProps,
   Flex,
   FlexProps,
@@ -21,6 +22,10 @@ type FeaturedCategoryProps = BoxProps & {
   basic: any;
 };
 import { HomeContentProps, HoverContentContainer } from "@/components/library";
+import {
+  maxWidth,
+  sectionPadding,
+} from "@/components/library/config/lib/constants/constants";
 
 import Headng from "@/components/text/Heading";
 import NormalText from "@/components/text/NormalText";
@@ -42,6 +47,8 @@ const ServiceContent: FC<HomeContentProps> = ({
   basic,
 }) => {
   const banner = content?.banner;
+  const serviceCSS = content?.serviceCSS;
+  const header = content?.header;
   const doc: ServiceContentProps = content?.serviceContent;
   let serviceContent = content?.serviceContent;
   if (content?.serviceContent?.length > 0) {
@@ -59,13 +66,13 @@ const ServiceContent: FC<HomeContentProps> = ({
       title="Banner Information"
       data={content}
       dataModel={dataModel}
-      bg={banner?.bgColor}
+      bg={serviceCSS?.bgColor}
       borderBottom={`1px solid ${banner?.borderColor}`}
       px={PADDING_X}
       position="sticky"
       top="0"
     >
-      <>
+      <SectionPadding bg={serviceCSS?.bgColor} overflow="hidden" py="3rem">
         <Grid gridTemplateColumns={TEMPLATE_COLUMN} gap={4} bg={css?.bgColor}>
           {serviceContent?.map((item: any, i: number) => (
             <ServiceCard
@@ -84,12 +91,29 @@ const ServiceContent: FC<HomeContentProps> = ({
             />
           ))}
         </Grid>
-      </>
+      </SectionPadding>
     </HoverContentContainer>
   );
 };
 
 export default ServiceContent;
+
+const SectionPadding = ({
+  children,
+  ...props
+}: BoxProps & { children: ReactNode }) => (
+  <Box
+    px={{
+      base: padding.PADDING_X_MOBILE,
+      lg: padding.PADDING_X_LG,
+      "2xl": padding.PADDING_X_2XL,
+    }}
+    w="full"
+    {...props}
+  >
+    {children}
+  </Box>
+);
 
 const Title = ({
   css,
