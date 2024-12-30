@@ -1,119 +1,117 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 import {
-  Box,
-  BoxProps,
-  Flex,
-  FlexProps,
-  Grid,
-  Image,
-  TextProps,
-} from "@chakra-ui/react";
+	Box,
+	BoxProps,
+	Flex,
+	FlexProps,
+	Grid,
+	Image,
+	TextProps,
+} from '@chakra-ui/react';
 
 const TEMPLATE_COLUMN = {
-  base: "repeat(2, 1fr)",
-  md: "repeat(3, 1fr)",
-  lg: "repeat(4, 1fr)",
-  xl: "repeat(5, 1fr)",
-  "2xl": "repeat(6, 1fr)",
+	base: 'repeat(2, 1fr)',
+	md: 'repeat(3, 1fr)',
+	lg: 'repeat(4, 1fr)',
+	xl: 'repeat(5, 1fr)',
+	'2xl': 'repeat(6, 1fr)',
 };
 type TopBannerProps = BoxProps & {
-  content: any;
-  basic: any;
-  dataModel: any;
-  path: any;
-  data: any;
+	content: any;
+	basic: any;
+	dataModel: any;
+	path: any;
+	data: any;
 };
 
-import { HomeContentProps, HoverContentContainer } from "@/components/library";
-import NormalText from "@/components/text/NormalText";
+import { HomeContentProps, HoverContentContainer } from '@/components/library';
+import NormalText from '@/components/text/NormalText';
 import {
-  maxWidth,
-  sectionPadding,
-} from "@/components/library/config/lib/constants/constants";
+	maxWidth,
+	sectionPadding,
+} from '@/components/library/config/lib/constants/constants';
 
 type BannerProps = {};
 export const PADDING_X = { base: 6, md: 24 };
 // dataModel, content, path, data
 const Banner: FC<TopBannerProps> = ({
-  dataModel,
-  content,
-  path,
-  data,
-  basic,
+	dataModel,
+	content,
+	path,
+	data,
+	basic,
 }) => {
-  const banner = content?.banner;
-  const header = content?.header;
+	const banner = content?.banner;
+	const header = content?.header;
 
-  return (
-    <HoverContentContainer
-      type="content"
-      path={path}
-      title="Banner Information"
-      data={content}
-      dataModel={dataModel}
-      bg={banner?.bgColor}
-      borderBottom={`1px solid ${banner?.borderColor}`}
-      px={PADDING_X}
-      position="sticky"
-      top="0"
-    >
-      <SectionPadding bg={banner?.bgColor} h="80px" overflow="hidden" py="1rem">
-        <Flex
-          h={banner?.height}
-          w="full"
-          py={`${banner?.paddingY}px`}
-          px={`${banner?.paddingX}px`}
-          bg={banner?.bgColor}
-        >
-          <SectionPadding w="full" display="flex" alignItems="center">
-            <ChildText banner={banner} basic={basic}>
-              {banner?.children}
-            </ChildText>
-          </SectionPadding>
-        </Flex>
-      </SectionPadding>
-    </HoverContentContainer>
-  );
+	return (
+		<HoverContentContainer
+			type='content'
+			path={path}
+			title='Banner Information'
+			data={content}
+			dataModel={dataModel}
+			bg={banner?.bgColor}
+			borderBottom={`1px solid ${banner?.borderColor}`}
+			px={PADDING_X}
+			position='sticky'
+			top='0'
+		>
+			<Flex
+				h={banner?.height}
+				w='full'
+				py={`${banner?.paddingY}px`}
+				px={`${banner?.paddingX}px`}
+				bg={banner?.bgColor}
+			>
+				<SectionPadding w='full' display='flex' alignItems='center'>
+					<ChildText banner={banner} basic={basic}>
+						{banner?.children}
+					</ChildText>
+				</SectionPadding>
+			</Flex>
+		</HoverContentContainer>
+	);
 };
 
 export default Banner;
 
 const SectionPadding = ({
-  children,
-  ...props
+	children,
+	...props
 }: BoxProps & { children: ReactNode }) => (
-  <Box
-    px={{
-      base: sectionPadding.PADDING_X_MOBILE,
-      lg: sectionPadding.PADDING_X_LG,
-      "2xl": sectionPadding.PADDING_X_2XL,
-    }}
-    maxW={maxWidth}
-    h="full"
-    mx="auto"
-    {...props}
-  >
-    {children}
-  </Box>
+	<Box
+		px={{
+			base: sectionPadding.PADDING_X_MOBILE,
+			lg: sectionPadding.PADDING_X_LG,
+			'2xl': sectionPadding.PADDING_X_2XL,
+		}}
+		maxW={maxWidth}
+		h='full'
+		mx='auto'
+		{...props}
+	>
+		{children}
+	</Box>
 );
 
 const ChildText = ({
-  children,
-  banner,
-  basic,
-  ...props
+	children,
+	banner,
+	basic,
+	...props
 }: BoxProps & { children: ReactNode; banner: any; basic: any }) => (
-  <NormalText
-    w="full"
-    textAlign={banner?.textAlign}
-    color={banner?.fgColor}
-    basic={basic}
-    css={banner}
-    fontFamily={banner?.fontFamily}
-    fontWeight={banner?.fontWeight}
-    fontSize={banner?.fontSize}
-    letterSpacing={banner?.letterSpacing}
-  >
-    {banner?.children}
-  </NormalText>
+	<NormalText
+		w='full'
+		textAlign={banner?.textAlign}
+		color={banner?.fgColor}
+		basic={basic}
+		css={banner}
+		fontFamily={banner?.fontFamily}
+		fontWeight={banner?.fontWeight}
+		fontSize={banner?.fontSize}
+		letterSpacing={banner?.letterSpacing}
+	>
+		{banner?.children}
+	</NormalText>
 );
