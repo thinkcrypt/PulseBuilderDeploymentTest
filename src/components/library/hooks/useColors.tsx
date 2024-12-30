@@ -1,7 +1,6 @@
 'use client';
-// import { useGetStoreQuery } from '@/store/services/storeApi';
-import React from 'react';
 import { useGetContentQuery } from '../store/services/contentApi';
+import React, { useState } from 'react';
 
 export type ColorProps = {
 	border: string;
@@ -24,12 +23,12 @@ export type ColorProps = {
 	hoverColor: string;
 	dark: string;
 	cardText: string;
+	darkLight: string;
+	arrowBox: string;
 };
 
 const useColors = (): ColorProps => {
-	const { data, isLoading } = useGetContentQuery({
-		path: 'pulse',
-	});
+	const { data, isLoading } = useGetContentQuery({ path: 'pulse' });
 
 	const [border, setBorder] = React.useState<string>('eborder.600');
 	const [brand, setBrand] = React.useState<string>('#202020');
@@ -51,6 +50,8 @@ const useColors = (): ColorProps => {
 	const [dark, setDark] = React.useState<string>('#081621');
 	const [hoverColor, setHoverColor] = React.useState<string>('#ef4a23');
 	const [cardText, setCardText] = React.useState<string>('#666666');
+	const [darkLight, setDarkLight] = React.useState<string>('#27323b');
+	const [arrowBox, setArrowBox] = React.useState<string>('#666666');
 
 	React.useEffect(() => {
 		if (data) {
@@ -58,7 +59,6 @@ const useColors = (): ColorProps => {
 			setBrandText(data?.basic?.brandTextColor);
 			setPrimaryText(data?.basic?.primaryTextColor);
 			setPrimaryText(data?.basic?.primaryTextColor);
-
 			setBorder(data?.basic?.borderColor || 'eborder.600');
 		}
 	}, [isLoading, data]);
@@ -82,6 +82,8 @@ const useColors = (): ColorProps => {
 		dark,
 		hoverColor,
 		cardText,
+		darkLight,
+		arrowBox,
 	};
 };
 

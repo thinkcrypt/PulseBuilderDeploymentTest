@@ -41,7 +41,9 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			edit={false}
 			data={content?.productList}
 			dataModel={dataModel}
-			position='relative'
+			position='sticky'
+			top='0'
+
 		>
 			<Column gap={0}>
 				{/* <Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>

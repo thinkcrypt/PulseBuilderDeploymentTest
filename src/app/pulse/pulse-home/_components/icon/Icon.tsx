@@ -5,7 +5,7 @@ import { BiSolidCategory } from 'react-icons/bi';
 import { FaFacebookF, FaRegMap } from 'react-icons/fa';
 import { FaAngleLeft, FaLink, FaLinkedinIn } from 'react-icons/fa6';
 import { FiTag, FiUser } from 'react-icons/fi';
-import { IoIosHome } from 'react-icons/io';
+import { IoIosHome,IoMdArrowDropright } from 'react-icons/io';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
@@ -51,6 +51,7 @@ export type IconNameOptions =
 	| 'whatsapp'
 	| 'instagram'
 	| 'youtube'
+	| 'arrow-right-solid'
 	| 'user';
 
 type IconProps = {
@@ -87,6 +88,7 @@ const icons: { [key in IconNameOptions]: FC<{ size: number; color: string }> } =
 		whatsapp: FaWhatsapp,
 		// instagram: FaInstagram,
 		youtube: FaYoutube,
+		'arrow-right-solid': IoMdArrowDropright, // arrow-right-solid
 	};
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

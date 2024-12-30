@@ -1,7 +1,7 @@
 const pulseHeroData = [
   {
     sectionTitle: "Hero Section",
-    name: "images",
+    name: "hero.images",
     label: "Hero Images",
     type: "image-array",
   },
