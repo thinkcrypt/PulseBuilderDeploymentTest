@@ -22,7 +22,7 @@ const DropdownWrapper: FC<DropdownWrapperProps> = ({ children, css }) => {
 			zIndex={zIndex?.navbarDropdown}
 			w='200px'
 			boxShadow={productCardBoxShadow}
-			borderTop={`4px solid ${colors?.hoverColor}`}
+			borderTop={`4px solid ${css?.hoverFg}`}
 		>
 			{children}
 		</Box>

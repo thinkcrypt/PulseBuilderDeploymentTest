@@ -20,6 +20,7 @@ import { navData } from './navData';
 import useColors from '@/components/library/hooks/useColors';
 import { NormalText } from '../../text';
 import { Icon } from '../../icon';
+import MenuDrawerBody from './MenuDrawerBody';
 
 type MenuDrawerProps = BoxProps & {
 	content: any;
@@ -31,8 +32,7 @@ const MenuDrawer: FC<MenuDrawerProps> = ({ content, basic, ...props }) => {
 	const btnRef = useRef<HTMLDivElement>(null);
 	const colors = useColors();
 
-	const navItems = navData?.navItems;
-	const css = content?.navItemsCss;
+	const css = content?.headerCategories;
 
 	return (
 		<Box {...props}>
@@ -64,78 +64,7 @@ const MenuDrawer: FC<MenuDrawerProps> = ({ content, basic, ...props }) => {
 						borderRadius: '0 8px 8px 0', // Optional: Adds rounded corners to the top
 					}}
 				>
-					<DrawerBody>
-						{navItems?.map((item: any, i: number) => (
-							<Accordion allowToggle key={i}>
-								<AccordionItem>
-									<AccordionButton>
-										<Link href={item?.link || '#'}>
-											<NormalText
-												css={css}
-												basic={basic}
-												as='span'
-												flex='1'
-												textAlign='left'
-												fontSize={'16px'}
-											>
-												{item?.text}
-											</NormalText>
-										</Link>
-										<AccordionIcon />
-									</AccordionButton>
-
-									{item?.dropDown && (
-										<AccordionPanel pb={4} w='full'>
-											{item.dropDown.map((subItem: any, j: number) => (
-												<Accordion key={j} allowMultiple>
-													<AccordionItem w='full'>
-														<AccordionButton w='full'>
-															<Box textAlign='left' w='full'>
-																<Link
-																	href={subItem?.link || '#'}
-																	style={{ width: '100%' }}
-																>
-																	<NormalText
-																		fontSize='14px'
-																		css={css}
-																		basic={basic}
-																	>
-																		{subItem?.text}
-																	</NormalText>
-																</Link>
-															</Box>
-															{subItem?.dropDown && <AccordionIcon />}
-														</AccordionButton>
-
-														{subItem?.dropDown && (
-															<AccordionPanel pb={4} w='full'>
-																{subItem?.dropDown?.map(
-																	(childItem: any, k: number) => (
-																		<Box key={k} pl={4}>
-																			<Link href={childItem?.link || '#'}>
-																				<NormalText
-																					css={css}
-																					basic={basic}
-																					fontSize='14px'
-																					py={1}
-																				>
-																					{childItem?.text}
-																				</NormalText>
-																			</Link>
-																		</Box>
-																	)
-																)}
-															</AccordionPanel>
-														)}
-													</AccordionItem>
-												</Accordion>
-											))}
-										</AccordionPanel>
-									)}
-								</AccordionItem>
-							</Accordion>
-						))}
-					</DrawerBody>
+					<MenuDrawerBody css={css} basic={basic} />
 				</DrawerContent>
 			</Drawer>
 		</Box>

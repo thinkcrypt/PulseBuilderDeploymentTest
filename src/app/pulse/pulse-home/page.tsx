@@ -13,8 +13,6 @@ import featuredCategoriesData from './_components/featured-categories-old/featur
 import ServiceContent from './_components/services/ServiceContent';
 import serviceData from './_components/services/serviceData';
 import Banner from './_components/Banner/Banner';
-import SponsoredBannerOne from './_components/Sponsored-Banners/SponsoredBannerOne';
-import sponsoredBannerOneData from './_components/Sponsored-Banners/sponsoredBannerOneData';
 import SponsoredBannerTwo from './_components/Sponsored-Banners/SponsoredBannerTwo';
 import sponsoredBannerTwoData from './_components/Sponsored-Banners/sponsoredBannerTwoData';
 import SponsoredBannerThree from './_components/Sponsored-Banners/SponsoredBannerThree';
@@ -29,6 +27,7 @@ import pulseFooterSchema from './_components/footer/components/pulseFooterSchema
 import { FeaturedCategory } from './_components/featured-category';
 import { Box } from '@chakra-ui/react';
 import PulseNavbar from './_components/nav-bar/Navbar';
+import navSchema from './_components/nav-bar/components/navSchema';
 
 const sidebarData = [
 	{
@@ -104,7 +103,7 @@ const HomeContentPage = () => {
 				basic={data?.basic}
 				path='pulse'
 				content={data?.content}
-				dataModel={pulseHeaderData}
+				dataModel={navSchema}
 			/>
 			<Box bg={data?.basic?.bgColor}>
 				<PulseHero
@@ -145,13 +144,6 @@ const HomeContentPage = () => {
 					basic={data?.basic}
 					content={data?.content}
 					dataModel={sponsoredBannerTwoData}
-				/>
-				<PulseProductListComponent
-					data={data}
-					path='pulse'
-					basic={data?.basic}
-					content={data?.content}
-					dataModel={listData}
 				/>
 
 				<SponsoredBannerThree

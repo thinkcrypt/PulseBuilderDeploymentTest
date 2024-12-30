@@ -38,13 +38,14 @@ const PulseNavbar: FC<NavbarProps> = ({
 
 	const css = content?.headerCategories;
 
-	console.log('nav items css: ', content?.headerCategories);
+	// console.log('nav items css: ', content?.headerCategories);
 	return (
 		<HoverContentContainer
 			type='content'
 			path={path}
 			title='Banner Information'
 			data={content}
+			edit={true}
 			// bg={'red.200'}
 			dataModel={dataModel}
 			px={PADDING_X}
