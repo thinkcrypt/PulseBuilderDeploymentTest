@@ -43,7 +43,7 @@ const CollectionCard: FC<CollectionCard> = ({
 				boxShadow={css?.boxShadow || cartBoxShadow}
 				_hover={{ color: css?.fgColorHover }}
 			>
-				<Flex w='full' maxH='100px'>
+				<Flex w='full' maxH='80px'>
 					<Image
 						w={'full'}
 						h={'auto'}

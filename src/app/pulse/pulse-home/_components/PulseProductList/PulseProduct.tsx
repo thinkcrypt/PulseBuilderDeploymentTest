@@ -44,14 +44,14 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			position='relative'
 		>
 			<Column gap={0}>
-				<Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
+				{/* <Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
 					<Title basic={basic} css={css}>
 						{content?.collections?.title}
 					</Title>
 					<SubTitle basic={basic} css={css}>
 						{content?.collections?.subTitle}
 					</SubTitle>
-				</Flex>
+				</Flex> */}
 				{/* Here goes our sytled product card */}
 				{productList?.map((item: any, i: number) => (
 					<Container key={i} item={item} dataModel={dataModel}>
