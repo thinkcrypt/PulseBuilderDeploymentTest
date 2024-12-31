@@ -20,7 +20,6 @@ import sponsoredBannerThreeData from './_components/Sponsored-Banners/sponsoredB
 import PulseHeader from './_components/Header/PulseHeader';
 import pulseHeaderData from './_components/Header/pulseHeaderData';
 import basicDataSchema from './_components/Basic/basicData';
-import { listData } from '@/app/hongo/hongo-home/_components';
 import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
 import PulseFooter from './_components/footer/Footer';
 import pulseFooterSchema from './_components/footer/components/pulseFooterSchema';
@@ -28,15 +27,23 @@ import { FeaturedCategory } from './_components/featured-category';
 import { Box } from '@chakra-ui/react';
 import PulseNavbar from './_components/nav-bar/Navbar';
 import navSchema from './_components/nav-bar/components/navSchema';
+import productListSchema from './_components/PulseProductList/productListSchema';
 
 const sidebarData = [
 	{
 		startOfSection: true,
-		sectionTitle: 'Pages (HONGO)',
+		sectionTitle: 'Pages (PULSE)',
 		title: 'Home Page',
 		href: '/home-content',
 		icon: 'content',
 		path: 'home-content',
+		type: 'page',
+	},
+	{
+		title: 'Product Details',
+		href: '/product-details',
+		icon: 'content',
+		path: 'product-details',
 		type: 'page',
 	},
 	{
@@ -135,7 +142,7 @@ const HomeContentPage = () => {
 					path='pulse'
 					basic={data?.basic}
 					content={data?.content}
-					dataModel={listData}
+					dataModel={productListSchema}
 				/>
 
 				<SponsoredBannerTwo

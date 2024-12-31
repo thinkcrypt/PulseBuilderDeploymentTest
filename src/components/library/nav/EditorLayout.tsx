@@ -52,7 +52,7 @@ const EditorLayout: FC<LayoutProps> = ({
 	children,
 	title,
 	data,
-	path = '/dashboard',
+	path = '/',
 	hideColorMode = false,
 	sidebarData,
 	...props
