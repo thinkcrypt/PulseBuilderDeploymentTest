@@ -1,5 +1,8 @@
-import { navbarBoxShadow, zIndex } from '@/components/library/config/lib/constants/constants';	
-import useColors from "@/components/library/hooks/useColors";
+import {
+	navbarBoxShadow,
+	zIndex,
+} from '@/components/library/config/lib/constants/constants';
+import useColors from '@/components/library/hooks/useColors';
 import { Box, BoxProps } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 

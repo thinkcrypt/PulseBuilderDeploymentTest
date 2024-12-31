@@ -12,7 +12,6 @@ import {
 } from './components/index';
 import { navData } from './components/navData';
 import { HoverContentContainer } from '@/components/library';
-import { PADDING_X } from '../../../../../components/library/config/lib/constants/constants';
 type NavbarProps = BoxProps & {
 	content: any;
 	basic: any;
@@ -38,16 +37,16 @@ const PulseNavbar: FC<NavbarProps> = ({
 
 	const css = content?.headerCategories;
 
-	console.log('nav items css: ', content?.headerCategories);
+	// console.log('nav items css: ', content?.headerCategories);
 	return (
 		<HoverContentContainer
 			type='content'
 			path={path}
 			title='Banner Information'
 			data={content}
-			// bg={'red.200'}
+			edit={true}
+			bg={'red.200'}
 			dataModel={dataModel}
-			px={PADDING_X}
 			position='sticky'
 			top='0'
 		>

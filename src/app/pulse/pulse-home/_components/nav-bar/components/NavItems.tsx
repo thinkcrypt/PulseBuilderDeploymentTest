@@ -1,6 +1,6 @@
 // import { FlexColumn } from "@/components/common";
-import useColors from "@/components/library/hooks/useColors";
-import { NormalText } from "../../text";
+import useColors from '@/components/library/hooks/useColors';
+import { NormalText } from '../../text';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -19,7 +19,7 @@ const NavItems: FC<NavItemsProps> = ({
 	hoverItem,
 	index,
 }) => {
-	const colors = useColors();
+	// const colors = useColors();
 	return (
 		<Link
 			href={item?.link || ''}
@@ -34,9 +34,9 @@ const NavItems: FC<NavItemsProps> = ({
 				display='flex'
 				css={css}
 				basic={basic}
-				fontSize='14px'
-				fontWeight='600'
-				color={hoverItem === index ? colors?.hoverColor : colors?.dark}
+				fontSize={css?.fontSize}
+				fontWeight={css?.fontWeight}
+				color={hoverItem === index ? css?.hoverFg : css?.fgColor}
 			>
 				{item?.text}
 			</NormalText>

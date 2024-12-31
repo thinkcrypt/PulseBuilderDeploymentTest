@@ -1,4 +1,4 @@
-import { useGetStoreQuery } from '@/store/services/storeApi';
+
 import { Text, TextProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 

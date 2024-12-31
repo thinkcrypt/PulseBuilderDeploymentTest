@@ -24,16 +24,16 @@ const DropdownItems: FC<DropdownItemsProps> = ({ css, basic, dropdown }) => {
 				justifyContent='space-between'
 				alignItems='center'
 				mt='4px'
-				color={colors?.black}
+				color={css?.fgColor}
 				_hover={{
-					bg: colors?.hoverColor,
+					bg: css?.hoverFg,
 					color: colors?.white,
 				}}
 			>
 				<NormalText
 					px={2}
 					py={1}
-					fontSize='14px'
+					fontSize={css?.fontSize}
 					css={css}
 					basic={basic}
 					color={'inherit'}
@@ -42,7 +42,7 @@ const DropdownItems: FC<DropdownItemsProps> = ({ css, basic, dropdown }) => {
 				</NormalText>
 
 				{dropdown?.dropDown && (
-					<Icon size={16} color={colors?.hoverColor} name='arrow-right-solid' />
+					<Icon size={16} color={css?.hoverFg} name='arrow-right-solid' />
 				)}
 			</Flex>
 		</Link>

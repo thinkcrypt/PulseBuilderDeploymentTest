@@ -1,4 +1,4 @@
-const data = [
+const productListSchema = [
 	{
 		name: 'title',
 		label: 'Title',
@@ -52,4 +52,4 @@ const data = [
 	},
 ];
 
-export default data;
+export default productListSchema;
