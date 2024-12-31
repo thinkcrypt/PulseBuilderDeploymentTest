@@ -1,21 +1,4 @@
 const pulseHeaderData = [
-	////////////////// Header bg
-	// startOfSection: true,
-	// 	sectionTitle: 'Pages (HONGO)',
-	// 	title: 'Home Page',
-	// 	href: '/home-content',
-	// 	icon: 'content',
-	// 	path: 'home-content',
-	// 	type: 'page',
-	// {
-	// 	// startOfSection: true,
-	// 	sectionTitle: 'Header Logo',
-	// 	// title: 'Header',
-	// 	name: 'basic.logo',
-	// 	label: 'Header Logo',
-	// 	type: 'image',
-	// 	span: 1,
-	// },
 	{
 		// startOfSection: true,
 		sectionTitle: 'Header Colors',

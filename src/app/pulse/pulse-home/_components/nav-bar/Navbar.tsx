@@ -12,7 +12,6 @@ import {
 } from './components/index';
 import { navData } from './components/navData';
 import { HoverContentContainer } from '@/components/library';
-import { PADDING_X } from '../../../../../components/library/config/lib/constants/constants';
 type NavbarProps = BoxProps & {
 	content: any;
 	basic: any;
@@ -46,9 +45,8 @@ const PulseNavbar: FC<NavbarProps> = ({
 			title='Banner Information'
 			data={content}
 			edit={true}
-			// bg={'red.200'}
+			bg={'red.200'}
 			dataModel={dataModel}
-			px={PADDING_X}
 			position='sticky'
 			top='0'
 		>
