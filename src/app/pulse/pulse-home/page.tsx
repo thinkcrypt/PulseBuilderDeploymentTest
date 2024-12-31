@@ -34,14 +34,14 @@ const sidebarData = [
 		startOfSection: true,
 		sectionTitle: 'Pages (PULSE)',
 		title: 'Home Page',
-		href: '/home-content',
+		href: '/pulse/pulse-home',
 		icon: 'content',
-		path: 'home-content',
+		path: 'pulse/pulse-home',
 		type: 'page',
 	},
 	{
 		title: 'Product Details',
-		href: '/product-details',
+		href: '/pulse/product-details',
 		icon: 'content',
 		path: 'product-details',
 		type: 'page',
@@ -64,7 +64,7 @@ const HomeContentPage = () => {
 		path: 'pulse',
 	});
 
-	console.log('pulse data:::', data);
+	// console.log('pulse data:::', data);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());
