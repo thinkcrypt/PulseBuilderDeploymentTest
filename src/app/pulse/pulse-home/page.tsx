@@ -144,22 +144,15 @@ const HomeContentPage = () => {
 					content={data?.content}
 					dataModel={productListSchema}
 				/>
-
-				<SponsoredBannerTwo
+				{/* <SponsoredBannerTwo
 					data={data}
 					path='pulse'
 					basic={data?.basic}
 					content={data?.content}
-					dataModel={sponsoredBannerTwoData}
-				/>
+					dataModel={productListSchema}
+				/> */}
 
-				<SponsoredBannerThree
-					data={data}
-					path='pulse'
-					basic={data?.basic}
-					content={data?.content}
-					dataModel={sponsoredBannerThreeData}
-				/>
+				
 			</Box>
 			<PulseFooter
 				data={data}

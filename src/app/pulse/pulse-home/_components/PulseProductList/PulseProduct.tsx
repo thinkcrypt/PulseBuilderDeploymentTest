@@ -25,11 +25,12 @@ import PulseCollectionDetails from './PulseCollection';
 const PulseProductListComponent: FC<HomeContentProps> = ({
 	dataModel,
 	content,
+	basic,
 	path,
 	data,
 }) => {
 	const productList = sortDataByPriority(content?.productList);
-	const { basic } = data;
+	// const { basic } = data;
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
 
@@ -43,7 +44,6 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			dataModel={dataModel}
 			position='sticky'
 			top='0'
-
 		>
 			<Column gap={0}>
 				{/* <Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
@@ -54,6 +54,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 						{content?.collections?.subTitle}
 					</SubTitle>
 				</Flex> */}
+
 				{/* Here goes our sytled product card */}
 				{productList?.map((item: any, i: number) => (
 					<Container key={i} item={item} dataModel={dataModel}>
@@ -75,6 +76,8 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 							type={item?.type}
 							config={basic}
 							css={css}
+							dataModel={dataModel}
+							data={data}
 						/>
 					</Container>
 				))}

@@ -2,6 +2,11 @@ import React, { FC } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import { useGetAllQuery } from '@/components/library';
 import { ProductCard } from '@/app/pulse/pulse-home/_components/FeatureProduct/Product';
+import { RiDatabase2Line } from 'react-icons/ri';
+import SponsoredBannerTwo from '../Sponsored-Banners/SponsoredBannerTwo';
+import SponsoredBannerThree from '../Sponsored-Banners/SponsoredBannerThree';
+import sponsoredBannerTwoData from '../Sponsored-Banners/sponsoredBannerTwoData';
+import sponsoredBannerThreeData from '../Sponsored-Banners/sponsoredBannerThreeData';
 
 // import { ProductCard } from '.';
 
@@ -9,13 +14,19 @@ type HongoCollectionDetailsProps = {
 	id?: string;
 	type?: 'collection' | 'category';
 	config: any;
+	dataModel?: any;
 	css?: any;
+	content?: any;
+	basic?: any;
+	path?: any;
+	data?: any;
 	limit?: number;
 };
 
 const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 	id,
 	type,
+	data:bannerData,
 	config,
 	css,
 	limit = 10,
@@ -29,7 +40,12 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			sort: 'priority',
 		},
 	});
-
+	// console.log('all?::::::', bannerData);
+	const data1 = data?.doc.slice(0, 4);
+	const data2 = data?.doc.slice(4,4);
+	// console.log('all1?::::::', data1);
+	// console.log('all2?::::::', data2);
+	
 	const renderContent = () => {
 		if (isError) {
 			return (
@@ -46,9 +62,51 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			);
 		}
 
-		return data?.doc?.map((item: any, i: number) => (
-			<ProductCard data={item} key={i} basic={config} css={css} />
-		));
+		return (
+			<>
+				{/* Render data1 */}
+				{data1?.map((item: any, i: number) => (
+					<ProductCard
+						data={item}
+						key={`data1-${i}`}
+						basic={config}
+						css={css}
+					/>
+				))}
+
+				{/* Render SponsoredBannerTwo */}
+				<GridItem colSpan={{ base: 2, md: 4 }}>
+					<SponsoredBannerTwo
+						data={bannerData?.content?.sponsoredBannerTwo}
+						path='pulse'
+						basic={data?.basic}
+						content={data?.content}
+						dataModel={sponsoredBannerTwoData}
+					/>
+				</GridItem>
+
+				{/* Render data2 */}
+				{data2?.map((item: any, i: number) => (
+					<ProductCard
+						data={item}
+						key={`data2-${i}`}
+						basic={config}
+						css={css}
+					/>
+				))}
+
+				{/* Render SponsoredBannerThree */}
+				<GridItem colSpan={{ base: 2, md: 4 }}>
+					<SponsoredBannerThree
+						data={bannerData?.content?.sponsoredBannerThree}
+						path='pulse'
+						basic={data?.basic}
+						content={data?.content}
+						dataModel={sponsoredBannerThreeData}
+					/>
+				</GridItem>
+			</>
+		);
 	};
 
 	return (
