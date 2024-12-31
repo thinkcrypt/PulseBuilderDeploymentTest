@@ -11,57 +11,15 @@ const featuredCategoriesData = [
 		type: 'text',
 		endOfSection: true,
 	},
-	{
-		name: 'collections.borderRadius',
-		label: 'Border Radius',
-		// isRequired: true,
-		type: 'number',
-	},
 
 	{
 		name: 'collections.items',
 		label: 'Collections List',
 		isRequired: true,
 		type: 'category-collection-array',
-	},
-	{
-		sectionTitle: 'Featured Categories',
-		name: 'collections.title',
-		label: 'Title',
-		isRequired: true,
-		type: 'text',
+		endOfSection: true,
 	},
 
-	{
-		name: 'collections.items',
-		label: 'Collections',
-		type: 'text',
-		endOfSection: true,
-	},
-	{
-		sectionTitle: 'Categories CSS List',
-		name: 'collectionsCss.align',
-		label: 'Align Items',
-		type: 'text',
-	},
-	{
-		name: 'collectionsCss.bgColor',
-		label: 'Background Color',
-		type: 'color',
-		span: 1,
-	},
-	{
-		name: 'collectionsCss.fgColor',
-		label: 'Foreground Color',
-		type: 'color',
-		span: 1,
-	},
-	{
-		name: 'collectionsCss.fgColorHover',
-		label: 'Foreground Color Hover',
-		type: 'color',
-		endOfSection: true,
-	},
 	{
 		sectionTitle: 'Typography',
 		name: 'collectionsCss.fontSize',
@@ -102,6 +60,28 @@ const featuredCategoriesData = [
 		label: 'Title Color',
 		type: 'color',
 		span: 1,
+	},
+	{
+		name: 'collectionsCss.align',
+		label: 'Align Items',
+		type: 'text',
+	},
+	{
+		name: 'collectionsCss.bgColor',
+		label: 'Background Color',
+		type: 'color',
+		span: 1,
+	},
+	{
+		name: 'collectionsCss.fgColor',
+		label: 'Foreground Color',
+		type: 'color',
+		span: 1,
+	},
+	{
+		name: 'collectionsCss.fgColorHover',
+		label: 'Foreground Color Hover',
+		type: 'color',
 	},
 	{
 		name: 'collectionsCss.subTitleColor',

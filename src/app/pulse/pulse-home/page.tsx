@@ -64,7 +64,7 @@ const HomeContentPage = () => {
 		path: 'pulse',
 	});
 
-	// console.log('pulse data:::', data);
+	console.log('pulse data:::', data);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());

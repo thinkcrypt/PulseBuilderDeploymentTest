@@ -13,6 +13,7 @@ import { GoHomeFill } from 'react-icons/go';
 import { ImPriceTag } from 'react-icons/im';
 import { BiSolidCategory } from 'react-icons/bi';
 import { TbFileInvoice } from 'react-icons/tb';
+import { FiTag, FiUser } from 'react-icons/fi';
 import { MdBrandingWatermark } from 'react-icons/md';
 import { RiCoupon2Fill } from 'react-icons/ri';
 import { FaRegEnvelope, FaUserFriends } from 'react-icons/fa';
@@ -50,12 +51,21 @@ import { FaCircleInfo } from 'react-icons/fa6';
 import { FaRegCopy } from 'react-icons/fa6';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import { MdLocalPhone } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { GoListUnordered } from 'react-icons/go';
 import { TbFileExport } from 'react-icons/tb';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
+
+
+import {
+	MdArrowForwardIos,
+	MdLocalPhone,
+	MdOutlineArrowBackIosNew,
+	MdOutlineDelete,
+	MdOutlineShoppingBag,
+} from 'react-icons/md';
+
 
 export type IconNameOptions =
 	| 'add'
@@ -134,6 +144,7 @@ const icons: any = {
 	select: TbSelector,
 	settings: TbSettings,
 	'add-tag': IoIosAddCircleOutline,
+	tag: FiTag,
 	home: GoHomeFill,
 	'add-image': LuImagePlus,
 	product: ImPriceTag,
@@ -142,7 +153,7 @@ const icons: any = {
 	order: TbFileInvoice,
 	brand: MdBrandingWatermark,
 	coupon: RiCoupon2Fill,
-	user: FaUserFriends,
+	user: FiUser,
 	customer: FaUserTag,
 	role: FaUnlockKeyhole,
 	delivery: TbTruckDelivery,
@@ -162,7 +173,7 @@ const icons: any = {
 	close: MdOutlineCancel,
 	delete: MdDelete,
 	customers: HiUserGroup,
-	cart: FaCartShopping,
+	cart: MdOutlineShoppingBag,
 	store: IoStorefront,
 	shop: IoStorefront,
 	content: BiSolidBookContent,
