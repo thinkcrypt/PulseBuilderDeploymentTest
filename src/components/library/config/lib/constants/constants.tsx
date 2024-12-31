@@ -26,9 +26,8 @@ export const currency = {
   symbol: "৳",
 };
 
-
-export const productCardBoxShadow = '0px 0px 6px -3px rgb(0, 0, 0, .2)';
-export const cartBoxShadowHover = '0 2px 5px rgba(0, 0, 0, 0.1);';
+export const productCardBoxShadow = "0px 0px 6px -3px rgb(0, 0, 0, .2)";
+export const cartBoxShadowHover = "0 2px 5px rgba(0, 0, 0, 0.1);";
 
 export const placeholderLogo = "./logo/placeholderImage.png";
 
@@ -62,15 +61,11 @@ export const shadow = {
 };
 export const maxWidth = {
   base: "100%",
-  sm: "540px",
-  md: "720px",
-  lg: "960px",
   xl: "1140px",
   "2xl": "1320px",
 };
 
-
-export const cartBoxShadow = '0px 0px 8px -4px rgb(0, 0, 0)';
+export const cartBoxShadow = "0px 0px 8px -4px rgb(0, 0, 0)";
 
 export const sectionPadding = {
   PADDING_X_2XL: "18rem",
@@ -98,7 +93,7 @@ export const styles = {
   },
 };
 
-export const navbarBoxShadow = '0px 8px 9px -14px rgb(0, 0, 0)';
+export const navbarBoxShadow = "0px 8px 9px -14px rgb(0, 0, 0)";
 
 export const radius = {
   CONTAINER: "8px",
@@ -111,12 +106,12 @@ export const radius = {
 export const zIndex = {
   NAV: 999,
   SIDEBAR: 999,
-  header: '999',
-	navbar: '1000',
-	navbarDropdown: '1100',
-	navbarSubDropdown: '1200',
-	hero: '777',
-	contact: '666',
+  header: "999",
+  navbar: "1000",
+  navbarDropdown: "1100",
+  navbarSubDropdown: "1200",
+  hero: "777",
+  contact: "666",
 };
 
 export const BASE_LIMIT = 16;
