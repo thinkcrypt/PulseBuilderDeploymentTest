@@ -1,12 +1,5 @@
 import React, { FC, ReactNode, useState } from 'react';
-import {
-	Heading,
-	Text,
-	Flex,
-	Center,
-	FlexProps,
-	TextProps,
-} from '@chakra-ui/react';
+import { Heading, Text, Flex, Center, FlexProps } from '@chakra-ui/react';
 import {
 	Column,
 	Button,
@@ -19,8 +12,11 @@ import {
 	HomeContentProps,
 	HoverContentContainer,
 } from '@/components/library';
-import { NormalText } from '../text';
+import { CollectionDetails } from '@/app/hongo/hongo-home/_components/card';
+import { ProductCard } from '../FeatureProduct/Product';
 import PulseCollectionDetails from './PulseCollection';
+// import { CollectionDetails } from '@/app/home-content/_components';
+// import { CollectionDetails } from '@/app/hongo/hongo-home/_components';
 
 const PulseProductListComponent: FC<HomeContentProps> = ({
 	dataModel,
@@ -43,7 +39,6 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			dataModel={dataModel}
 			position='sticky'
 			top='0'
-
 		>
 			<Column gap={0}>
 				{/* <Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
@@ -188,47 +183,6 @@ const Overlay = ({ children }: { children: ReactNode }) => (
 	>
 		{children}
 	</Center>
-);
-const Title = ({
-	children,
-	css,
-	basic,
-	...props
-}: TextProps & { children: any; css: any; basic: any }) => (
-	<Heading
-		fontSize={{
-			base: css?.titleFontSizeBASE,
-			xl: css?.titleFontSizeBG,
-		}}
-		color={css?.titleColor}
-		fontWeight={css?.titleFontWeight}
-		css={css}
-		basic={basic}
-		{...props}
-	>
-		{children}
-	</Heading>
-);
-
-const SubTitle = ({
-	children,
-	css,
-	basic,
-	...props
-}: TextProps & { children: any; css: any; basic: any }) => (
-	<NormalText
-		fontSize={{
-			base: css?.subTitleFontSizeBASE,
-			xl: css?.subTitleFontSizeBG,
-		}}
-		color={css?.subTitleColor}
-		fontWeight={css?.titleFontWeight}
-		css={css}
-		basic={basic}
-		{...props}
-	>
-		{children}
-	</NormalText>
 );
 
 export default PulseProductListComponent;

@@ -9,7 +9,12 @@ type HongoCollectionDetailsProps = {
 	id?: string;
 	type?: 'collection' | 'category';
 	config: any;
+	dataModel?: any;
 	css?: any;
+	content?: any;
+	basic?: any;
+	path?: any;
+	data?: any;
 	limit?: number;
 };
 
