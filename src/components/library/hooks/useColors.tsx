@@ -1,22 +1,22 @@
-'use client';
-import { useGetContentQuery } from '../store/services/contentApi';
-import React, { useState } from 'react';
+"use client";
+import { useGetContentQuery } from "../store/services/contentApi";
+import React, { useState } from "react";
 
 export type ColorProps = {
-	border: string;
-	brand: string;
-	brandText: string;
-	primaryText: string;
-	overlay: string;
+  border: string;
+  brand: string;
+  brandText: string;
+  primaryText: string;
+  overlay: string;
 
-	fBg: string;
-	fFg: string;
-	fBorder: string;
-	fTitle: string;
-	fHov: string;
-	iconBg: string;
-	iconHoverBg: string;
-	iconFg: string;
+  fBg: string;
+  fFg: string;
+  fBorder: string;
+  fTitle: string;
+  fHov: string;
+  iconBg: string;
+  iconHoverBg: string;
+  iconFg: string;
 
 	white: string;
 	black: string;
@@ -30,22 +30,22 @@ export type ColorProps = {
 };
 
 const useColors = (): ColorProps => {
-	const { data, isLoading } = useGetContentQuery({ path: 'pulse' });
+  const { data, isLoading } = useGetContentQuery({ path: "pulse" });
 
-	const [border, setBorder] = React.useState<string>('eborder.600');
-	const [brand, setBrand] = React.useState<string>('#202020');
-	const [brandText, setBrandText] = React.useState<string>('#fff');
-	const [primaryText, setPrimaryText] = React.useState<string>('#202020');
-	const [overlay, setOverlay] = React.useState<string>('#202020');
+  const [border, setBorder] = React.useState<string>("eborder.600");
+  const [brand, setBrand] = React.useState<string>("#202020");
+  const [brandText, setBrandText] = React.useState<string>("#fff");
+  const [primaryText, setPrimaryText] = React.useState<string>("#202020");
+  const [overlay, setOverlay] = React.useState<string>("#202020");
 
-	const [fBg, setFBg] = React.useState<string>('#081621');
-	const [fFg, setFFg] = React.useState<string>('#838383');
-	const [fBorder, setFBorder] = React.useState<string>('#212e38');
-	const [fTitle, setFTitle] = React.useState<string>('#fff');
-	const [fHov, setFHov] = React.useState<string>('#ef4a23');
-	const [iconHoverBg, setIconHoverBg] = React.useState<string>('#3749bb');
-	const [iconBg, setIconBg] = React.useState<string>('#202020');
-	const [iconFg, setIconFg] = React.useState<string>('#202020');
+  const [fBg, setFBg] = React.useState<string>("#081621");
+  const [fFg, setFFg] = React.useState<string>("#838383");
+  const [fBorder, setFBorder] = React.useState<string>("#212e38");
+  const [fTitle, setFTitle] = React.useState<string>("#fff");
+  const [fHov, setFHov] = React.useState<string>("#ef4a23");
+  const [iconHoverBg, setIconHoverBg] = React.useState<string>("#3749bb");
+  const [iconBg, setIconBg] = React.useState<string>("#202020");
+  const [iconFg, setIconFg] = React.useState<string>("#202020");
 
 	const [white, setWhite] = React.useState<string>('#fff');
 	const [black, setBlack] = React.useState<string>('#000000');
@@ -57,15 +57,15 @@ const useColors = (): ColorProps => {
 	const [tagBg, setTagBg] = React.useState<string>('#F5F6FC');
 	const [scrollBar, setScrollBar] = React.useState<string>('#a2a2a2');
 
-	React.useEffect(() => {
-		if (data) {
-			setBrand(data?.basic?.brandColor);
-			setBrandText(data?.basic?.brandTextColor);
-			setPrimaryText(data?.basic?.primaryTextColor);
-			setPrimaryText(data?.basic?.primaryTextColor);
-			setBorder(data?.basic?.borderColor || 'eborder.600');
-		}
-	}, [isLoading, data]);
+  React.useEffect(() => {
+    if (data) {
+      setBrand(data?.basic?.brandColor);
+      setBrandText(data?.basic?.brandTextColor);
+      setPrimaryText(data?.basic?.primaryTextColor);
+      setPrimaryText(data?.basic?.primaryTextColor);
+      setBorder(data?.basic?.borderColor || "eborder.600");
+    }
+  }, [isLoading, data]);
 
 	return {
 		border,

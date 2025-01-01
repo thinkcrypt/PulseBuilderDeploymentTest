@@ -15,7 +15,7 @@ import {
 import { FC, useRef } from 'react';
 import useColors from '@/components/library/hooks/useColors';
 import { Icon } from '../../icon';
-import SimpleNavLists from './simpleNavLists';
+import SimpleNavLists from './SimpleNavLists';
 
 type MenuDrawerProps = BoxProps & {
 	content: any;

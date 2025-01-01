@@ -1,33 +1,33 @@
 import {
-	maxWidth,
-	sectionPadding,
-} from '@/components/library/config/lib/constants/constants';
-import { Box, BoxProps, Center, Grid } from '@chakra-ui/react';
-import { FC, ReactNode } from 'react';
+  maxWidth,
+  sectionPadding,
+} from "@/components/library/config/lib/constants/constants";
+import { Box, BoxProps, Center, Grid } from "@chakra-ui/react";
+import { FC, ReactNode } from "react";
 import {
-	CopyrightText,
-	FooterAddress,
-	FooterLinks,
-	SocialIcons,
-	SupportCard,
-} from './components/index';
-import Link from 'next/link';
-import FooterTitle from './components/FooterTitle';
-import { footerData } from './components/footerData';
-import { HoverContentContainer } from '@/components/library';
+  CopyrightText,
+  FooterAddress,
+  FooterLinks,
+  SocialIcons,
+  SupportCard,
+} from "./components/index";
+import Link from "next/link";
+import FooterTitle from "./components/FooterTitle";
+import { footerData } from "./components/footerData";
+import { HoverContentContainer } from "@/components/library";
 
 const TEMPLATE_COLUMN = {
-	base: 'repeat(2, 1fr)',
-	md: 'repeat(2, 1fr)',
-	lg: 'repeat(3, 1fr)',
+  base: "repeat(2, 1fr)",
+  md: "repeat(2, 1fr)",
+  lg: "repeat(3, 1fr)",
 };
 
 type FooterProps = {
-	content: any;
-	basic: any;
-	path: string;
-	data: any;
-	dataModel: any;
+  content: any;
+  basic: any;
+  path: string;
+  data: any;
+  dataModel: any;
 };
 
 const PulseFooter: FC<FooterProps> = ({
@@ -112,19 +112,19 @@ const PulseFooter: FC<FooterProps> = ({
 export default PulseFooter;
 
 const SectionPadding = ({
-	children,
-	...props
+  children,
+  ...props
 }: BoxProps & { children: ReactNode }) => (
-	<Box
-		px={{
-			base: sectionPadding.PADDING_X_MOBILE,
-			lg: sectionPadding.PADDING_X_LG,
-			'2xl': sectionPadding.PADDING_X_2XL,
-		}}
-		maxW={maxWidth}
-		mx='auto'
-		{...props}
-	>
-		{children}
-	</Box>
+  <Box
+    px={{
+      base: sectionPadding.PADDING_X_MOBILE,
+      lg: sectionPadding.PADDING_X_LG,
+      "2xl": sectionPadding.PADDING_X_2XL,
+    }}
+    maxW={maxWidth}
+    mx="auto"
+    {...props}
+  >
+    {children}
+  </Box>
 );

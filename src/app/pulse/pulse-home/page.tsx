@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
 	EditorLayoutSuspense,
 	useAppDispatch,
@@ -31,39 +31,39 @@ import productListSchema from './_components/PulseProductList/productListSchema'
 import SimpleNavBar from './_components/nav-bar/SimpleNavBar';
 
 const sidebarData = [
-	{
-		startOfSection: true,
-		sectionTitle: 'Pages (PULSE)',
-		title: 'Home Page',
-		href: '/pulse/pulse-home',
-		icon: 'content',
-		path: 'pulse/pulse-home',
-		type: 'page',
-	},
-	{
-		title: 'Product Details',
-		href: '/pulse/product-details',
-		icon: 'content',
-		path: 'product-details',
-		type: 'page',
-	},
-	{
-		startOfSection: true,
-		sectionTitle: 'Basic',
-		title: 'Basic',
-		icon: 'content',
-		dataPath: 'basic',
-		type: 'component',
-		path: 'pulse',
-		// dataModel: storeData,
-		dataModel: basicDataSchema,
-	},
+  {
+    startOfSection: true,
+    sectionTitle: "Pages (PULSE)",
+    title: "Home Page",
+    href: "/pulse/pulse-home",
+    icon: "content",
+    path: "pulse/pulse-home",
+    type: "page",
+  },
+  {
+    title: "Product Details",
+    href: "/pulse/product-details",
+    icon: "content",
+    path: "product-details",
+    type: "page",
+  },
+  {
+    startOfSection: true,
+    sectionTitle: "Basic",
+    title: "Basic",
+    icon: "content",
+    dataPath: "basic",
+    type: "component",
+    path: "pulse",
+    // dataModel: storeData,
+    dataModel: basicDataSchema,
+  },
 ];
 
 const HomeContentPage = () => {
-	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
-		path: 'pulse',
-	});
+  const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
+    path: "pulse",
+  });
 
 	console.log('pulse data:::', data);
 	const dispatch = useAppDispatch();
@@ -71,16 +71,16 @@ const HomeContentPage = () => {
 		dispatch(resetBuilder());
 	}, []);
 
-	useEffect(() => {
-		if (data && !isFetching && isSuccess) {
-			dispatch(
-				push({
-					basic: data?.basic,
-					content: data?.content,
-				})
-			);
-		}
-	}, [isFetching]);
+  useEffect(() => {
+    if (data && !isFetching && isSuccess) {
+      dispatch(
+        push({
+          basic: data?.basic,
+          content: data?.content,
+        })
+      );
+    }
+  }, [isFetching]);
 
 	return (
 		<EditorLayoutSuspense
@@ -122,54 +122,61 @@ const HomeContentPage = () => {
 					dataModel={pulseHeroData}
 				/>
 
-				<ServiceContent
-					data={data}
-					path='pulse'
-					basic={data?.basic}
-					content={data?.content}
-					dataModel={serviceData}
-				/>
+        <ServiceContent
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={serviceData}
+        />
 
-				<FeaturedCategory
-					data={data}
-					path='pulse'
-					basic={data?.basic}
-					content={data?.content}
-					dataModel={featuredCategoriesData}
-				/>
+        <FeaturedCategory
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={featuredCategoriesData}
+        />
 
-				<PulseProductListComponent
-					data={data}
-					path='pulse'
-					basic={data?.basic}
-					content={data?.content}
-					dataModel={productListSchema}
-				/>
-				{/* <SponsoredBannerTwo
-					data={data}
-					path='pulse'
-					basic={data?.basic}
-					content={data?.content}
-					dataModel={productListSchema}
-				/> */}
+        <PulseProductListComponent
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={productListSchema}
+        />
 
-				
-			</Box>
-			<PulseFooter
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={pulseFooterSchema}
-			/>
-			{/* <FooterConfig
+        <SponsoredBannerTwo
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={sponsoredBannerTwoData}
+        />
+
+        <SponsoredBannerThree
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={sponsoredBannerThreeData}
+        />
+      </Box>
+      <PulseFooter
+        data={data}
+        path="pulse"
+        basic={data?.basic}
+        content={data?.content}
+        dataModel={pulseFooterSchema}
+      />
+      {/* <FooterConfig
 				data={data}
 				path='hongo'
 				content={data?.content}
 				dataModel={footerData}
 			/> */}
-		</EditorLayoutSuspense>
-	);
+    </EditorLayoutSuspense>
+  );
 };
 
 export default HomeContentPage;
