@@ -20,21 +20,26 @@ const TEMPLATE_COLUMN = {
 	md: 'repeat(3, 1fr)',
 	xl: 'repeat(4, 1fr)',
 };
+type SponsoredBannerTwoProps = BoxProps & {
+	content: any;
+	basic: any;
+	path: any;
+	dataModel: any;
+	data: any;
+};
 
-type SponsoredBannerTwoProps = BoxProps & {};
 export const PADDING_X = { base: 6, md: 24 };
 // dataModel, content, path, data
-const SponsoredBannerTwo: FC<any> = ({
-	dataModel,
+const SponsoredBannerTwo: FC<SponsoredBannerTwoProps> = ({
 	content,
+	basic,
 	path,
 	data,
-	basic,
-	children,
+	dataModel,
+	...props
 }) => {
-	const banner = content?.banner;
 	const bannerData = content?.sponsoredBannerTwo;
-	console.log('banner data::', data);
+	const banner = content?.banner;
 	return (
 		<HoverContentContainer
 			type='content'
@@ -48,9 +53,9 @@ const SponsoredBannerTwo: FC<any> = ({
 			position='sticky'
 			top='0'
 		>
-			<GridContainer>
-				<BannerImage src={data?.imageOne} />
-				<BannerImage src={data?.imageTwo} />
+			<GridContainer {...props}>
+				<BannerImage src={bannerData?.imageOne} />
+				<BannerImage src={bannerData?.imageTwo} />
 			</GridContainer>
 		</HoverContentContainer>
 	);

@@ -1,12 +1,5 @@
 import React, { FC, ReactNode, useState } from 'react';
-import {
-	Heading,
-	Text,
-	Flex,
-	Center,
-	FlexProps,
-	TextProps,
-} from '@chakra-ui/react';
+import { Heading, Text, Flex, Center, FlexProps } from '@chakra-ui/react';
 import {
 	Column,
 	Button,
@@ -19,18 +12,20 @@ import {
 	HomeContentProps,
 	HoverContentContainer,
 } from '@/components/library';
-import { NormalText } from '../text';
+import { CollectionDetails } from '@/app/hongo/hongo-home/_components/card';
+import { ProductCard } from '../FeatureProduct/Product';
 import PulseCollectionDetails from './PulseCollection';
+// import { CollectionDetails } from '@/app/home-content/_components';
+// import { CollectionDetails } from '@/app/hongo/hongo-home/_components';
 
 const PulseProductListComponent: FC<HomeContentProps> = ({
 	dataModel,
 	content,
-	basic,
 	path,
 	data,
 }) => {
 	const productList = sortDataByPriority(content?.productList);
-	// const { basic } = data;
+	const { basic } = data;
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
 
@@ -54,7 +49,6 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 						{content?.collections?.subTitle}
 					</SubTitle>
 				</Flex> */}
-
 				{/* Here goes our sytled product card */}
 				{productList?.map((item: any, i: number) => (
 					<Container key={i} item={item} dataModel={dataModel}>
@@ -76,8 +70,6 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 							type={item?.type}
 							config={basic}
 							css={css}
-							dataModel={dataModel}
-							data={data}
 						/>
 					</Container>
 				))}
@@ -191,47 +183,6 @@ const Overlay = ({ children }: { children: ReactNode }) => (
 	>
 		{children}
 	</Center>
-);
-const Title = ({
-	children,
-	css,
-	basic,
-	...props
-}: TextProps & { children: any; css: any; basic: any }) => (
-	<Heading
-		fontSize={{
-			base: css?.titleFontSizeBASE,
-			xl: css?.titleFontSizeBG,
-		}}
-		color={css?.titleColor}
-		fontWeight={css?.titleFontWeight}
-		css={css}
-		basic={basic}
-		{...props}
-	>
-		{children}
-	</Heading>
-);
-
-const SubTitle = ({
-	children,
-	css,
-	basic,
-	...props
-}: TextProps & { children: any; css: any; basic: any }) => (
-	<NormalText
-		fontSize={{
-			base: css?.subTitleFontSizeBASE,
-			xl: css?.subTitleFontSizeBG,
-		}}
-		color={css?.subTitleColor}
-		fontWeight={css?.titleFontWeight}
-		css={css}
-		basic={basic}
-		{...props}
-	>
-		{children}
-	</NormalText>
 );
 
 export default PulseProductListComponent;
