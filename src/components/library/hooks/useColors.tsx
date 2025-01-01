@@ -18,14 +18,15 @@ export type ColorProps = {
   iconHoverBg: string;
   iconFg: string;
 
-  white: string;
-  black: string;
-  hoverColor: string;
-  dark: string;
-  cardText: string;
-  darkLight: string;
-  arrowBox: string;
-  tagBg: string;
+	white: string;
+	black: string;
+	hoverColor: string;
+	dark: string;
+	cardText: string;
+	darkLight: string;
+	arrowBox: string;
+	tagBg: string;
+	scrollBar: string;
 };
 
 const useColors = (): ColorProps => {
@@ -46,14 +47,15 @@ const useColors = (): ColorProps => {
   const [iconBg, setIconBg] = React.useState<string>("#202020");
   const [iconFg, setIconFg] = React.useState<string>("#202020");
 
-  const [white, setWhite] = React.useState<string>("#fff");
-  const [black, setBlack] = React.useState<string>("#000000");
-  const [dark, setDark] = React.useState<string>("#081621");
-  const [hoverColor, setHoverColor] = React.useState<string>("#ef4a23");
-  const [cardText, setCardText] = React.useState<string>("#666666");
-  const [darkLight, setDarkLight] = React.useState<string>("#27323b");
-  const [arrowBox, setArrowBox] = React.useState<string>("#666666");
-  const [tagBg, setTagBg] = React.useState<string>("#F5F6FC");
+	const [white, setWhite] = React.useState<string>('#fff');
+	const [black, setBlack] = React.useState<string>('#000000');
+	const [dark, setDark] = React.useState<string>('#081621');
+	const [hoverColor, setHoverColor] = React.useState<string>('#ef4a23');
+	const [cardText, setCardText] = React.useState<string>('#666666');
+	const [darkLight, setDarkLight] = React.useState<string>('#27323b');
+	const [arrowBox, setArrowBox] = React.useState<string>('#666666');
+	const [tagBg, setTagBg] = React.useState<string>('#F5F6FC');
+	const [scrollBar, setScrollBar] = React.useState<string>('#a2a2a2');
 
   React.useEffect(() => {
     if (data) {
@@ -65,29 +67,30 @@ const useColors = (): ColorProps => {
     }
   }, [isLoading, data]);
 
-  return {
-    border,
-    brand,
-    brandText,
-    primaryText,
-    overlay,
-    fBg,
-    fFg,
-    fBorder,
-    fTitle,
-    fHov,
-    iconHoverBg,
-    iconBg,
-    iconFg,
-    white,
-    black,
-    dark,
-    hoverColor,
-    cardText,
-    darkLight,
-    arrowBox,
-    tagBg,
-  };
+	return {
+		border,
+		brand,
+		brandText,
+		primaryText,
+		overlay,
+		fBg,
+		fFg,
+		fBorder,
+		fTitle,
+		fHov,
+		iconHoverBg,
+		iconBg,
+		iconFg,
+		white,
+		black,
+		dark,
+		hoverColor,
+		cardText,
+		darkLight,
+		arrowBox,
+		tagBg,
+		scrollBar,
+	};
 };
 
 export default useColors;

@@ -20,7 +20,7 @@ type NavbarProps = BoxProps & {
 	dataModel?: any;
 };
 
-const PulseNavbar: FC<NavbarProps> = ({
+const PulseNavbar2: FC<NavbarProps> = ({
 	data,
 	path,
 	content,
@@ -82,7 +82,7 @@ const PulseNavbar: FC<NavbarProps> = ({
 	);
 };
 
-export default PulseNavbar;
+export default PulseNavbar2;
 
 const SectionPadding = ({
 	children,

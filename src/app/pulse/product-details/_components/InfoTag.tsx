@@ -6,16 +6,24 @@ import { FC } from "react";
 type InfoTagProps = BoxProps & {
   basic: any;
   title: string;
+  content?: any;
   value: string | number;
   css: any;
 };
 
-const InfoTag: FC<InfoTagProps> = ({ basic, title, value, css, ...props }) => {
+const InfoTag: FC<InfoTagProps> = ({
+  basic,
+  content,
+  title,
+  value,
+  css,
+  ...props
+}) => {
   const colors = useColors();
 
   return (
     <Box
-      bg={colors?.tagBg}
+      bg={css?.badgeBg}
       display="inline-block"
       px="1rem"
       py=".4rem"
@@ -33,7 +41,7 @@ const InfoTag: FC<InfoTagProps> = ({ basic, title, value, css, ...props }) => {
         </NormalText>
         <NormalText
           basic={basic}
-          color={css?.textPrimary}
+          color={css?.badgeFg ? css?.badgeFg : css?.textPrimary}
           fontSize="14px"
           fontWeight="600"
         >{` ${value}`}</NormalText>

@@ -1,15 +1,15 @@
 import React, { FC, ReactNode } from 'react';
 import {
-	placeholderLogo,
 	PADDING_X,
-} from '../../../../../components/library/config/lib/constants/constants';
-
+	placeholderLogo,
+} from '@/components/library/config/lib/constants/constants';
 import {
 	Box,
 	BoxProps,
 	Center,
 	CenterProps,
 	Flex,
+	Grid,
 	Image,
 	Input,
 	Text,
@@ -23,6 +23,7 @@ import {
 // import { PADDING_X } from '.';
 import SearchBox from './SearchBox';
 import LogoImage from './LogoImage';
+import { MenuDrawer } from '../nav-bar/components';
 export const padding = {
 	PADDING_X_2XL: '18rem',
 	PADDING_X_LG: '12rem',
@@ -64,29 +65,37 @@ const HeaderConfig: FC<HomeContentProps> = ({
 			data={content}
 			dataModel={dataModel}
 			bg={doc?.bgColor}
-			borderBottom={`1px solid ${doc?.borderColor}`}
 			px={PADDING_X}
 			position='sticky'
 			top='0'
 		>
-			<SectionPadding h='80px' bg={header?.bgColor} overflow='hidden' py='1rem'>
-				<Flex h='full' alignItems='center' justifyContent='space-between'>
-					<Flex>
-						<Box>
-							<LogoImage
-								w={`${header?.logoWidth}px`}
-								h={`${header?.logoHeight}px`}
-								src={basic?.logo || placeholderLogo}
-							/>
-						</Box>
-						<SearchBox header={header} />
-					</Flex>
-					<Flex gap={2}>
-						<HeaderIcon header={header} name='cart' />
-						<HeaderIcon header={header} name='user' />
-					</Flex>
+			<Grid gridTemplateColumns='repeat(3, 1fr)'>
+				<MenuDrawer
+					display={{ base: 'block', xl: 'none' }}
+					basic={basic}
+					content={content}
+				/>
+				<Flex justifyContent={{ base: 'center', xl: 'flex-start' }}>
+					<LogoImage
+						w={`${header?.logoWidth}px`}
+						h={`${header?.logoHeight}px`}
+						header={header}
+						src={basic?.logo || placeholderLogo}
+					/>
 				</Flex>
-			</SectionPadding>
+				<Flex display={{ base: 'none', xl: 'flex' }}>
+					<SearchBox header={header} />
+				</Flex>
+				<Flex justifyContent='flex-end' gap={2} alignItems='center'>
+					<HeaderIcon
+						display={{ base: 'flex', xl: 'none' }}
+						header={header}
+						name='search'
+					/>
+					<HeaderIcon header={header} name='cart' />
+					<HeaderIcon header={header} name='user' />
+				</Flex>
+			</Grid>
 		</HoverContentContainer>
 	);
 };
@@ -132,3 +141,19 @@ const HeaderIcon = ({
 		<Icon size={header?.iconSize} color={header?.iconFg} name={name} />
 	</Center>
 );
+
+////////////////////////////
+{
+	/* <HoverContentContainer
+			type='content'
+			path={path}
+			title='Banner Information'
+			data={content}
+			dataModel={dataModel}
+			bg={doc?.bgColor}
+			borderBottom={`1px solid ${doc?.borderColor}`}
+			px={PADDING_X}
+			position='sticky'
+			top='0'
+		></HoverContentContainer> */
+}

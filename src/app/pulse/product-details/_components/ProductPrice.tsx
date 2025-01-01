@@ -52,7 +52,7 @@ const ProductPrice: FC<ProductPriceProps> = ({
           textDecoration="line-through"
           fontSize={`14px`}
           fontWeight="600"
-          color={colors?.cardText}
+          color={css?.priceColor}
           {...props}
         >
           {`Tk. ${productData?.price?.toLocaleString()}`}

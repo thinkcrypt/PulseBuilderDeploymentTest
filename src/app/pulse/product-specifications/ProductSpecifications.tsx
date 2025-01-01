@@ -50,7 +50,7 @@ const ProductSpecifications: FC<any> = ({
       position="sticky"
       top="0"
     >
-      <Grid gridTemplateColumns={TEMPLATE_COLUMN} gap={4} py={"2rem"}>
+      <Grid gridTemplateColumns={TEMPLATE_COLUMN} gap={4} py={"1rem"}>
         <GridItem colSpan={4}>
           <ProductTabs
             basic={basic}

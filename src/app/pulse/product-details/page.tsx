@@ -14,6 +14,12 @@ import pulseFooterSchema from "../pulse-home/_components/footer/components/pulse
 import ProductDetailsPage from "./ProductDetailsPage";
 import { productDetailsData } from "./index";
 import { ProductSpecifications } from "../product-specifications";
+import Banner from "../pulse-home/_components/Banner/Banner";
+import { pulseBannerData } from "../pulse-home/_components/Banner";
+import { PulseHeader, pulseHeaderData } from "../pulse-home/_components/Header";
+import PulseNavbar from "../pulse-home/_components/nav-bar/Navbar";
+import navSchema from "../pulse-home/_components/nav-bar/components/navSchema";
+import { productSpecificiationsData } from "../product-specifications/index";
 
 const sidebarData = [
   {
@@ -77,6 +83,27 @@ const ProductDetails = () => {
       position="relative"
       gap={0}
     >
+      <Banner
+        data={data}
+        path="pulse"
+        content={data?.content}
+        basic={data?.basic}
+        dataModel={pulseBannerData}
+      />
+      <PulseHeader
+        data={data}
+        basic={data?.basic}
+        path="pulse"
+        content={data?.content}
+        dataModel={pulseHeaderData}
+      />
+      <PulseNavbar
+        data={data}
+        basic={data?.basic}
+        path="pulse"
+        content={data?.content}
+        dataModel={navSchema}
+      />
       {/* <Banner
 				data={data}
 				path='pulse'
@@ -96,7 +123,7 @@ const ProductDetails = () => {
         path="pulse"
         basic={data?.basic}
         content={data?.content}
-        dataModel={productDetailsData}
+        dataModel={productSpecificiationsData}
       />
 
       <PulseFooter

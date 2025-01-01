@@ -28,11 +28,12 @@ import { HomeContentProps, HoverContentContainer } from '@/components/library';
 import NormalText from '@/components/text/NormalText';
 import {
 	maxWidth,
+	PADDING_X,
 	sectionPadding,
 } from '@/components/library/config/lib/constants/constants';
 
 type BannerProps = {};
-export const PADDING_X = { base: 6, md: 24 };
+
 // dataModel, content, path, data
 const Banner: FC<TopBannerProps> = ({
 	dataModel,

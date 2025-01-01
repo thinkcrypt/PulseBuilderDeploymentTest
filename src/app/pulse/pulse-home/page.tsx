@@ -28,6 +28,7 @@ import { Box } from "@chakra-ui/react";
 import PulseNavbar from "./_components/nav-bar/Navbar";
 import navSchema from "./_components/nav-bar/components/navSchema";
 import productListSchema from "./_components/PulseProductList/productListSchema";
+import SimpleNavBar from "./_components/nav-bar/SimpleNavBar";
 
 const sidebarData = [
   {
@@ -105,7 +106,7 @@ const HomeContentPage = () => {
         content={data?.content}
         dataModel={pulseHeaderData}
       />
-      <PulseNavbar
+      <SimpleNavBar
         data={data}
         basic={data?.basic}
         path="pulse"
