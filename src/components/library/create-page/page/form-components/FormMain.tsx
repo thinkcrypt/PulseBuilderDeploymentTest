@@ -49,7 +49,8 @@ const FormMain: FC<FormMainType> = ({
 
 		switch (type) {
 			case 'image':
-				return (e: any) => handleImage({ e, dataKey: key || 'image', ...params });
+				return (e: any) =>
+					handleImage({ e, dataKey: key || 'image', ...params });
 			case 'switch':
 			case 'image-array':
 				return (e: any, type?: string) =>
@@ -57,7 +58,8 @@ const FormMain: FC<FormMainType> = ({
 			case 'checkbox':
 				return (e: any) => handleSwitch({ e, ...params });
 			case 'nested-image':
-				return (e: any) => handleNestedImage({ e, dataKey: key || 'image', ...params });
+				return (e: any) =>
+					handleNestedImage({ e, dataKey: key || 'image', ...params });
 			case 'nested-string':
 				return (e: any) => handleNestedString({ e, ...params });
 
@@ -69,14 +71,13 @@ const FormMain: FC<FormMainType> = ({
 	// return <Text>{JSON.stringify(fields)}</Text>;
 
 	return sections.map((section: any, i: number) => (
-		<FormDivision
-			key={i}
-			isModal={isModal}>
+		<FormDivision key={i} isModal={isModal}>
 			{section?.map((item: any, i: number) => (
 				<FormItem
 					isHidden={item?.renderCondition && !item?.renderCondition(formData)}
 					item={item}
-					key={i}>
+					key={i}
+				>
 					<>
 						<FormInput
 							formData={formData}
@@ -98,6 +99,11 @@ const FormMain: FC<FormMainType> = ({
 					{/* // )} */}
 				</FormItem>
 			))}
+			{/* <input
+				type='text'
+				value={getFieldValue({ name: item?.name, formData })}
+				onChange={getOnChangeHandler(item?.type, item?.name)}
+			/> */}
 		</FormDivision>
 	));
 };

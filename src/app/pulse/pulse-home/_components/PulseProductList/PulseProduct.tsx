@@ -82,8 +82,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 					</Container>
 				))}
 			</Column>
-
-			<AddProductListModal dataModel={dataModel} path='pulse'>
+			<AddProductListModal dataModel={dataModel} path='pulse' key='productListTwo'>
 				<Center
 					mx={6}
 					cursor='pointer'

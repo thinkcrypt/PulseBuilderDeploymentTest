@@ -32,6 +32,7 @@ type CreateModalProps = {
 	id?: string;
 	title?: string;
 	data?: any;
+	key?: any;
 };
 
 const AddProductListModal = ({
@@ -40,6 +41,7 @@ const AddProductListModal = ({
 	children,
 	path = 'nexa',
 	title,
+	key,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -68,7 +70,7 @@ const AddProductListModal = ({
 		e.preventDefault();
 		e.stopPropagation();
 		trigger({
-			body: formData,
+			body: { ...formData, key: 'productListTwo' },
 			path: path,
 		});
 	};
@@ -93,7 +95,8 @@ const AddProductListModal = ({
 				size='2xl'
 				isOpen={isOpen}
 				onClose={onModalClose}
-				closeOnOverlayClick={false}>
+				closeOnOverlayClick={false}
+			>
 				<ModalOverlay />
 				<ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
 					<ModalHeader>{`Update ${title}`}</ModalHeader>
@@ -111,12 +114,12 @@ const AddProductListModal = ({
 							</ModalFormSection>
 						</ModalBody>
 						<ModalFooter>
-							<DiscardButton
-								mr={2}
-								onClick={onModalClose}>
+							<DiscardButton mr={2} onClick={onModalClose}>
 								Discard
 							</DiscardButton>
-							<ModalSubmitButton isLoading={isLoading}>Confirm</ModalSubmitButton>
+							<ModalSubmitButton isLoading={isLoading}>
+								Confirm
+							</ModalSubmitButton>
 						</ModalFooter>
 					</form>
 				</ModalContainer>
