@@ -1,5 +1,5 @@
-import React from 'react';
-import { useGetByIdQuery } from '../';
+import { useGetByIdQuery } from "@/components/library";
+
 
 const useGetItemNameById = ({ path, id }: { path: string; id: string }) => {
 	const { data, isLoading, isFetching } = useGetByIdQuery(
@@ -11,6 +11,9 @@ const useGetItemNameById = ({ path, id }: { path: string; id: string }) => {
 			skip: !id || !path,
 		}
 	);
+	
+
+	
 	if (isLoading || isFetching) return { name: '', image: '' };
 	if (!data) return { name: '', image: '', isFetching };
 	if (data)

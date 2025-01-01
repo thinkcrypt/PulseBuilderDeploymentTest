@@ -25,6 +25,8 @@ export type ColorProps = {
 	cardText: string;
 	darkLight: string;
 	arrowBox: string;
+	tagBg: string;
+	scrollBar: string;
 };
 
 const useColors = (): ColorProps => {
@@ -52,6 +54,8 @@ const useColors = (): ColorProps => {
 	const [cardText, setCardText] = React.useState<string>('#666666');
 	const [darkLight, setDarkLight] = React.useState<string>('#27323b');
 	const [arrowBox, setArrowBox] = React.useState<string>('#666666');
+	const [tagBg, setTagBg] = React.useState<string>('#F5F6FC');
+	const [scrollBar, setScrollBar] = React.useState<string>('#a2a2a2');
 
 	React.useEffect(() => {
 		if (data) {
@@ -84,6 +88,8 @@ const useColors = (): ColorProps => {
 		cardText,
 		darkLight,
 		arrowBox,
+		tagBg,
+		scrollBar,
 	};
 };
 
