@@ -117,8 +117,9 @@ const ProductDetailsPage: FC<any> = ({
         <Box>
           <Heading
             basic={basic}
-            fontSize="24px"
-            color={css?.titleColor}
+            fontSize={css?.headingFontSize}
+            color={css?.headingBg}
+            fontWeight={css?.headingFontWeight}
             mb="1rem"
           >
             {productData?.name}
@@ -129,6 +130,7 @@ const ProductDetailsPage: FC<any> = ({
             productData={productData}
             basic={basic}
             css={css}
+            content={content}
           />
           <ProductPrice css={css} basic={basic} productData={productData} />
 

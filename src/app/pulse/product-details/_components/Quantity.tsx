@@ -32,10 +32,14 @@ const Quanity: FC<QuanityProps> = ({
         w="2.5rem"
         h="2.5rem"
         userSelect="none"
-        bg={css?.atcBtnBg}
-        borderRadius={`${css?.atcBtnRadius}px`}
+        bg={css?.secondaryBtnBg}
+        borderRadius={`${css?.secondaryBtnRadius}px`}
+        _hover={{
+          bg: css?.secondaryBtnHoverBg,
+          color: css?.secondaryBtnHoberFg,
+        }}
       >
-        <Icon name="subtract" />
+        <Icon color={css?.secondaryBtnFg} name="subtract" />
       </Center>
       <Center>
         <NormalText
@@ -53,11 +57,15 @@ const Quanity: FC<QuanityProps> = ({
         onClick={() => handleQuantity("increment")}
         w="2.5rem"
         h="2.5rem"
-        bg={css?.atcBtnBg}
+        bg={css?.secondaryBtnBg}
         borderRadius={`${css?.atcBtnRadius}px`}
         userSelect="none"
+        _hover={{
+          bg: css?.secondaryBtnHoverBg,
+          color: css?.secondaryBtnHoberFg,
+        }}
       >
-        <Icon name="add" />
+        <Icon color={css?.secondaryBtnFg} name="add" />
       </Center>
     </Flex>
   );

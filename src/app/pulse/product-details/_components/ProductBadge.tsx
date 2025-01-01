@@ -5,12 +5,14 @@ import { currency } from "@/commerce-components";
 
 type ProductBadgeProps = FlexProps & {
   basic: any;
+  content?: any;
   productData: any;
   css: any;
 };
 
 const ProductBadge: FC<ProductBadgeProps> = ({
   basic,
+  content,
   productData,
   css,
   ...props
