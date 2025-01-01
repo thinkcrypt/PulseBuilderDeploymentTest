@@ -40,7 +40,7 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			sort: 'priority',
 		},
 	});
-	// console.log('all?::::::', bannerData);
+	console.log('contents?::::::', bannerData?.content);
 	const data1 = data?.doc.slice(0, 4);
 	const data2 = data?.doc.slice(4,4);
 	// console.log('all1?::::::', data1);

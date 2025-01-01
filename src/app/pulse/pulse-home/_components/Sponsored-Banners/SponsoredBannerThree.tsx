@@ -28,12 +28,11 @@ const SponsoredBannerThree: FC<any> = ({
   dataModel,
   content,
   path,
-  data,
+  data:bannerData,
   basic,
   children,
 }) => {
   const banner = content?.banner;
-  const bannerData = content?.sponsoredBannerThree;
 
   return (
     <HoverContentContainer
