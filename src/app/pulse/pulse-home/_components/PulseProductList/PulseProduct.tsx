@@ -21,6 +21,7 @@ import {
 } from '@/components/library';
 import { NormalText } from '../text';
 import PulseCollectionDetails from './PulseCollection';
+import { PADDING_X } from '@/components/library/config/lib/constants/constants';
 
 const PulseProductListComponent: FC<HomeContentProps> = ({
 	dataModel,
@@ -42,6 +43,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			edit={false}
 			data={content?.productList}
 			dataModel={dataModel}
+			px={PADDING_X}
 			position='sticky'
 			top='0'
 		>
@@ -139,7 +141,7 @@ const Container = ({
 			onMouseEnter={mouseEnter}
 			onMouseLeave={mouseLeave}
 			py={4}
-			px={6}
+			// px={6}
 			position='relative'
 			{...props}
 		>

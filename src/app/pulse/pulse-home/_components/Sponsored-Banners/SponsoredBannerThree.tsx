@@ -1,6 +1,7 @@
 import { HoverContentContainer } from '@/components/library';
 import {
 	maxWidth,
+	PADDING_X,
 	placeholderLogo,
 	sectionPadding,
 } from '@/components/library/config/lib/constants/constants';
@@ -24,21 +25,21 @@ const TEMPLATE_COLUMN = {
 type SponsoredBannerThreeProps = FlexProps & {
 	content: any;
 	basic: any;
-  path: any;
+	path: any;
 	dataModel: any;
-	data:any
+	data: any;
 };
 
 const SponsoredBannerThree: FC<SponsoredBannerThreeProps> = ({
 	content,
 	basic,
-  path,
+	path,
 	data,
 	dataModel,
 	...props
 }) => {
 	const bannerData = content?.sponsoredBannerThree;
-  const banner = content?.banner;
+	const banner = content?.banner;
 	return (
 		<HoverContentContainer
 			type='content'
@@ -48,7 +49,7 @@ const SponsoredBannerThree: FC<SponsoredBannerThreeProps> = ({
 			dataModel={dataModel}
 			bg={basic?.bgColor}
 			borderBottom={`1px solid ${banner?.borderColor}`}
-			py={'3rem'}
+			px={PADDING_X}
 			position='sticky'
 			top='0'
 		>

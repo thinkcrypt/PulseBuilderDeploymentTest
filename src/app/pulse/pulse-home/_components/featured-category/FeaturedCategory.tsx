@@ -11,18 +11,14 @@ import {
 	TextProps,
 } from '@chakra-ui/react';
 
-const TEMPLATE_COLUMN = {
-	base: 'repeat(2, 1fr)',
-	md: 'repeat(3, 1fr)',
-	lg: 'repeat(4, 1fr)',
-	xl: 'repeat(6, 1fr)',
-	'2xl': 'repeat(8, 1fr)',
-};
-
 import { FC } from 'react';
 import { CollectionCard } from './components';
 import { Column } from '@/commerce-components';
-import { HoverContentContainer, useGetItemNameById } from '@/components/library';
+import {
+	HoverContentContainer,
+	useGetItemNameById,
+} from '@/components/library';
+import { PADDING_X } from '@/components/library/config/lib/constants/constants';
 
 type FeaturedCategoryProps = BoxProps & {
 	content: any;
@@ -41,60 +37,64 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 }) => {
 	const collections = content?.collections;
 	const css = content?.collectionsCss;
-// console.log('item path::', )
+	console.log('featured category::', data);
 	return (
-
 		<HoverContentContainer
-		type="content"
-		path={path}
-		title="Banner Information"
-		data={content}
-		dataModel={dataModel}
-		// bg={banner?.bgColor}
-		// borderBottom={`1px solid ${banner?.borderColor}`}
-		// px={PADDING_X}
-		position="sticky"
-		top="0"
-	  >
-		<Box py='2rem'>
-			<Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
-				<Title basic={basic} css={css}>
-					{collections?.title}
-				</Title>
-				<SubTitle basic={basic} css={css}>
-					{collections?.subTitle}
-				</SubTitle>
-			</Flex>
-			{/* <Grid templateColumns={TEMPLATE_COLUMN} gap={4}>
+			type='content'
+			path={path}
+			title='Banner Information'
+			data={content}
+			dataModel={dataModel}
+			px={PADDING_X}
+			position='sticky'
+			top='0'
+		>
+			<Box py='2rem'>
+				<Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
+					<Title basic={basic} css={css}>
+						{collections?.title}
+					</Title>
+					<SubTitle basic={basic} css={css}>
+						{collections?.subTitle}
+					</SubTitle>
+				</Flex>
+				{/* <Grid templateColumns={TEMPLATE_COLUMN} gap={4}>
 				{jsonData?.collections?.map((item: any, i: number) => (
 					<CollectionCard basic={basic} key={i} item={item} css={css} />
 				))}
 			</Grid> */}
-			<Grid
-				pb={12}
-				borderBottomWidth={1}
-				borderBottomColor={basic?.borderColor}
-				rowGap={4}
-				gridTemplateColumns={{
-					base: 'repeat(2, 1fr)',
-					md: 'repeat(4, 1fr)',
-					lg: 'repeat(8, 1fr)',
-				}}
-				gap={4}
-			>
-				{content?.collections?.items?.length <= 0 && (
-					<Text>No items found</Text>
-				)}
-				{content?.collections?.items?.map(
-					(item: any, i: number) =>
-						i < 16 && (
-							// <GetItem key={i} path={item?.type} id={item?.id} data={data} />
-							// <CollectionCard key={i} basic={basic} path={item} id={item?.id} item={item} css={css} />
-							<CollectionCard key={i} path={item?.type} id={item?.id} data={data} css={css} basic={basic}/>
-						)
-				)}
-			</Grid>
-		</Box>
+				<Grid
+					pb={12}
+					borderBottomWidth={1}
+					borderBottomColor={basic?.borderColor}
+					rowGap={4}
+					gridTemplateColumns={{
+						base: 'repeat(2, 1fr)',
+						md: 'repeat(4, 1fr)',
+						lg: 'repeat(8, 1fr)',
+					}}
+					gap={4}
+				>
+					{content?.collections?.items?.length <= 0 && (
+						<Text>No items found</Text>
+					)}
+					{content?.collections?.items?.map(
+						(item: any, i: number) =>
+							i < 16 && (
+								// <GetItem key={i} path={item?.type} id={item?.id} data={data} />
+								// <CollectionCard key={i} basic={basic} path={item} id={item?.id} item={item} css={css} />
+								<CollectionCard
+									key={i}
+									path={item?.type}
+									id={item?.id}
+									data={data}
+									css={css}
+									basic={basic}
+								/>
+							)
+					)}
+				</Grid>
+			</Box>
 		</HoverContentContainer>
 	);
 };
