@@ -69,8 +69,10 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 					rowGap={4}
 					gridTemplateColumns={{
 						base: 'repeat(2, 1fr)',
-						md: 'repeat(4, 1fr)',
-						lg: 'repeat(8, 1fr)',
+						sm: 'repeat(3, 1fr)',
+						lg: 'repeat(4, 1fr)',
+						xl: 'repeat(6, 1fr)',
+						'2xl': 'repeat(8, 1fr)',
 					}}
 					gap={4}
 				>

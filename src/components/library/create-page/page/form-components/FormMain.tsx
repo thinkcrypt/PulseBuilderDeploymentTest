@@ -11,6 +11,7 @@ import {
 	handleNestedImage,
 	handleNestedString,
 } from '../../../';
+import { Select } from '@chakra-ui/react';
 
 type FormMainType = {
 	fields: any;
@@ -18,6 +19,8 @@ type FormMainType = {
 	setFormData: any;
 	setChangedData: any;
 	isModal?: boolean;
+	productListKeys?: any;
+	handleChangeProductList?: any;
 };
 
 const FormMain: FC<FormMainType> = ({
@@ -26,6 +29,8 @@ const FormMain: FC<FormMainType> = ({
 	setFormData,
 	setChangedData,
 	isModal = false,
+	productListKeys,
+	handleChangeProductList,
 }) => {
 	const sections = React.useMemo(() => {
 		let section: any[] = [];
@@ -99,11 +104,18 @@ const FormMain: FC<FormMainType> = ({
 					{/* // )} */}
 				</FormItem>
 			))}
-			{/* <input
-				type='text'
-				value={getFieldValue({ name: item?.name, formData })}
-				onChange={getOnChangeHandler(item?.type, item?.name)}
-			/> */}
+			<Select
+				placeholder='Select product list key'
+				value={productListKeys}
+				onChange={handleChangeProductList}
+				w='full'
+			>
+				<option value='productList'>Product List</option>
+				<option value='productListTwo'>Product List Two</option>
+				<option value='productListThree'>Product List Three</option>
+				<option value='productListFour'>Product List Four</option>
+				<option value='productListFive'>Product List Five</option>
+			</Select>
 		</FormDivision>
 	));
 };

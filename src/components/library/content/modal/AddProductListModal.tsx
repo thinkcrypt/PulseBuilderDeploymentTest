@@ -118,18 +118,9 @@ const AddProductListModal = ({
 									setFormData={setFormData}
 									setChangedData={setChangedData}
 									isModal={true}
+									productListKeys={productListKeys}
+									handleChangeProductList={handleChange}
 								/>
-								<Select
-									placeholder='Select product list key'
-									value={productListKeys}
-									onChange={handleChange}
-								>
-									<option value='productList'>Product List</option>
-									<option value='productListTwo'>Product List Two</option>
-									<option value='productListThree'>Product List Three</option>
-									<option value='productListFour'>Product List Four</option>
-									<option value='productListFive'>Product List Five</option>
-								</Select>
 							</ModalFormSection>
 						</ModalBody>
 						<ModalFooter>

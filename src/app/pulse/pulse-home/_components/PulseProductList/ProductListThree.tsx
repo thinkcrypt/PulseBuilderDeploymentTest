@@ -23,7 +23,7 @@ import { NormalText } from '../text';
 import PulseCollectionDetails from './PulseCollection';
 import { PADDING_X } from '@/components/library/config/lib/constants/constants';
 
-const PulseProductListComponent: FC<HomeContentProps> = ({
+const ProductListThree: FC<HomeContentProps> = ({
 	dataModel,
 	content,
 	basic,
@@ -31,9 +31,10 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 	data,
 }) => {
 	const productList =
-		content?.productList?.length > 0 &&
-		sortDataByPriority(content?.productList);
+		content?.productListThree?.length > 0 &&
+		sortDataByPriority(content?.productListThree);
 	// const { basic } = data;
+	// console.log('three ::', productList);
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
 
@@ -120,11 +121,7 @@ const Container = ({
 	item,
 	dataModel,
 	...props
-}: FlexProps & {
-	children: ReactNode;
-	item: any;
-	dataModel: any;
-}) => {
+}: FlexProps & { children: ReactNode; item: any; dataModel: any }) => {
 	const [hover, setHover] = useState(false);
 	const mouseEnter = () => setHover(true);
 	const mouseLeave = () => setHover(false);
@@ -152,7 +149,6 @@ const Container = ({
 			onMouseEnter={mouseEnter}
 			onMouseLeave={mouseLeave}
 			py={4}
-			// px={6}
 			position='relative'
 			{...props}
 		>
@@ -163,7 +159,7 @@ const Container = ({
 						id={item?._id}
 						dataModel={dataModel}
 						data={{ ...item }}
-						productKey='productList'
+						productKey='productListThree'
 					>
 						{editButton}
 					</EditProductListModal>
@@ -172,7 +168,7 @@ const Container = ({
 						path='pulse'
 						id={item?._id}
 						title={item?.title}
-						productKey='productList'
+						productKey='productListThree'
 					>
 						{deleteButton}
 					</DeleteProductListModal>
@@ -182,6 +178,7 @@ const Container = ({
 		</Column>
 	);
 };
+//
 
 const HeadingContainer = ({ children }: { children: ReactNode }) => (
 	<SpaceBetween w='full' py={6}>
@@ -247,4 +244,4 @@ const SubTitle = ({
 	</NormalText>
 );
 
-export default PulseProductListComponent;
+export default ProductListThree;

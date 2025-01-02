@@ -1,7 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 import {
+	maxWidth,
 	PADDING_X,
 	placeholderLogo,
+	sectionPadding,
 } from '@/components/library/config/lib/constants/constants';
 import {
 	Box,
@@ -24,6 +26,8 @@ import {
 import SearchBox from './SearchBox';
 import LogoImage from './LogoImage';
 import { MenuDrawer } from '../nav-bar/components';
+import SimpleMenuDrawer from '../nav-bar/components/SimpleMenuDrawer';
+import CartDrawer from './CartDrawer';
 export const padding = {
 	PADDING_X_2XL: '18rem',
 	PADDING_X_LG: '12rem',
@@ -46,9 +50,15 @@ type HeaderConfigProps = {
 	searchBoxRadius: string; //
 	iconRadius: string; //
 };
-
+type HeaderProps = {
+	dataModel?: any;
+	content?: any;
+	path?: any;
+	data?: any;
+	basic?: any;
+};
 // dataModel, content, path, data
-const HeaderConfig: FC<HomeContentProps> = ({
+const HeaderConfig: FC<HeaderProps> = ({
 	dataModel,
 	content,
 	path,
@@ -69,49 +79,54 @@ const HeaderConfig: FC<HomeContentProps> = ({
 			position='sticky'
 			top='0'
 		>
-			<Grid gridTemplateColumns='repeat(3, 1fr)'>
-				<MenuDrawer
-					display={{ base: 'block', xl: 'none' }}
-					basic={basic}
-					content={content}
-				/>
-				<Flex justifyContent={{ base: 'center', xl: 'flex-start' }}>
-					<LogoImage
-						w={`${header?.logoWidth}px`}
-						h={`${header?.logoHeight}px`}
-						header={header}
-						src={basic?.logo || placeholderLogo}
+			<Box bg={header?.bgColor}>
+				<Grid gridTemplateColumns='repeat(3, 1fr)'>
+					<SimpleMenuDrawer
+						display={{ base: 'block', xl: 'none' }}
+						basic={basic}
+						content={content}
 					/>
-				</Flex>
-				<Flex display={{ base: 'none', xl: 'flex' }}>
-					<SearchBox header={header} />
-				</Flex>
-				<Flex justifyContent='flex-end' gap={2} alignItems='center'>
-					<HeaderIcon
-						display={{ base: 'flex', xl: 'none' }}
-						header={header}
-						name='search'
-					/>
-					<HeaderIcon header={header} name='cart' />
-					<HeaderIcon header={header} name='user' />
-				</Flex>
-			</Grid>
+					<Flex justifyContent={{ base: 'flex-start', sm: 'center' }}>
+						<LogoImage header={header} src={basic?.logo || placeholderLogo} />
+					</Flex>
+					<Flex display={{ base: 'none', xl: 'flex' }}>
+						<SearchBox header={header} />
+					</Flex>
+					<Flex
+						justifyContent='flex-end'
+						gap={{ base: 1, sm: 2 }}
+						alignItems='center'
+					>
+						<HeaderIcon
+							display={{ base: 'flex', xl: 'none' }}
+							header={header}
+							name='search'
+						/>
+						<CartDrawer basic={basic} content={content}>
+							<HeaderIcon header={header} name='cart' />
+						</CartDrawer>
+						<HeaderIcon header={header} name='user' />
+					</Flex>
+				</Grid>
+			</Box>
 		</HoverContentContainer>
 	);
 };
 
 export default HeaderConfig;
+
 const SectionPadding = ({
 	children,
 	...props
 }: BoxProps & { children: ReactNode }) => (
 	<Box
 		px={{
-			base: padding.PADDING_X_MOBILE,
-			lg: padding.PADDING_X_LG,
-			'2xl': padding.PADDING_X_2XL,
+			base: sectionPadding.PADDING_X_MOBILE,
+			lg: sectionPadding.PADDING_X_LG,
+			'2xl': sectionPadding.PADDING_X_2XL,
 		}}
-		w='full'
+		maxW={maxWidth}
+		mx='auto'
 		{...props}
 	>
 		{children}
@@ -127,8 +142,8 @@ const HeaderIcon = ({
 	name: IconNameOptions;
 }) => (
 	<Center
-		w='40px'
-		h='40px'
+		w={{ base: '30px', md: `${header?.iconSize + 14}px` }}
+		h={{ base: '30px', md: `${header?.iconSize + 14}px` }}
 		borderRadius={header?.iconRadius}
 		bg={header?.iconBg}
 		cursor='pointer'
@@ -141,19 +156,3 @@ const HeaderIcon = ({
 		<Icon size={header?.iconSize} color={header?.iconFg} name={name} />
 	</Center>
 );
-
-////////////////////////////
-{
-	/* <HoverContentContainer
-			type='content'
-			path={path}
-			title='Banner Information'
-			data={content}
-			dataModel={dataModel}
-			bg={doc?.bgColor}
-			borderBottom={`1px solid ${doc?.borderColor}`}
-			px={PADDING_X}
-			position='sticky'
-			top='0'
-		></HoverContentContainer> */
-}

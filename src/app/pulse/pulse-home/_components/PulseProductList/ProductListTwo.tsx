@@ -30,7 +30,10 @@ const ProductListTwo: FC<HomeContentProps> = ({
 	path,
 	data,
 }) => {
-	const productList = sortDataByPriority(content?.productListTwo);
+	// const productList = sortDataByPriority(content?.productListTwo);
+	const productList =
+		content?.productListTwo?.length > 0 &&
+		sortDataByPriority(content?.productListTwo);
 	// const { basic } = data;
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
@@ -58,31 +61,32 @@ const ProductListTwo: FC<HomeContentProps> = ({
 				</Flex> */}
 
 				{/* Here goes our sytled product card */}
-				{productList?.map((item: any, i: number) => (
-					<Container key={i} item={item} dataModel={dataModel}>
-						<HeadingContainer>
-							<Column>
-								<Heading
-									fontFamily={basic?.primaryFont}
-									color={basic?.primaryTextColor}
-									_dark={{ color: basic?.primaryTextColor }}
-									size='xl'
-								>
-									{item.title}
-								</Heading>
-							</Column>
-						</HeadingContainer>
+				{productList &&
+					productList?.map((item: any, i: number) => (
+						<Container key={i} item={item} dataModel={dataModel}>
+							<HeadingContainer>
+								<Column>
+									<Heading
+										fontFamily={basic?.primaryFont}
+										color={basic?.primaryTextColor}
+										_dark={{ color: basic?.primaryTextColor }}
+										size='xl'
+									>
+										{item.title}
+									</Heading>
+								</Column>
+							</HeadingContainer>
 
-						<PulseCollectionDetails
-							id={item?.id}
-							type={item?.type}
-							config={basic}
-							css={css}
-							dataModel={dataModel}
-							data={data}
-						/>
-					</Container>
-				))}
+							<PulseCollectionDetails
+								id={item?.id}
+								type={item?.type}
+								config={basic}
+								css={css}
+								dataModel={dataModel}
+								data={data}
+							/>
+						</Container>
+					))}
 			</Column>
 			<AddProductListModal dataModel={dataModel} path='pulse'>
 				<Center
@@ -145,7 +149,6 @@ const Container = ({
 			onMouseEnter={mouseEnter}
 			onMouseLeave={mouseLeave}
 			py={4}
-			// px={6}
 			position='relative'
 			{...props}
 		>
@@ -156,6 +159,7 @@ const Container = ({
 						id={item?._id}
 						dataModel={dataModel}
 						data={{ ...item }}
+						productKey='productListTwo'
 					>
 						{editButton}
 					</EditProductListModal>
@@ -164,6 +168,7 @@ const Container = ({
 						path='pulse'
 						id={item?._id}
 						title={item?.title}
+						productKey='productListTwo'
 					>
 						{deleteButton}
 					</DeleteProductListModal>

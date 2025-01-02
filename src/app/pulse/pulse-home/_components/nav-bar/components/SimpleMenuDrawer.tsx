@@ -22,7 +22,19 @@ type MenuDrawerProps = BoxProps & {
 	basic: any;
 };
 
-const MenuDrawer: FC<MenuDrawerProps> = ({ content, basic, ...props }) => {
+const SimpleMenuDrawer: FC<MenuDrawerProps> = ({
+	content,
+	basic,
+	...props
+}) => {
+	// const { isOpen, onOpen, onClose } = useDisclosure();
+	// const btnRef = useRef<HTMLDivElement>(null);
+	// const colors = useColors();
+	// const css = content?.headerCategories;
+
+	// const collections = content?.collections?.items;
+
+	// const logoHeight = content?.header?.logoHeight;
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const btnRef = useRef<HTMLDivElement>(null);
 	const colors = useColors();
@@ -31,7 +43,7 @@ const MenuDrawer: FC<MenuDrawerProps> = ({ content, basic, ...props }) => {
 	const collections = content?.collections?.items;
 
 	const logoHeight = content?.header?.logoHeight;
-
+	const border = `${css?.borderBottomWidth}px solid ${content?.serviceCSS?.dividerColor}`;
 	return (
 		<Center {...props}>
 			<Flex alignItems='center' ref={btnRef} onClick={onOpen} h='full'>
@@ -55,17 +67,27 @@ const MenuDrawer: FC<MenuDrawerProps> = ({ content, basic, ...props }) => {
 				placement='left'
 				onClose={onClose}
 				finalFocusRef={btnRef}
+				autoFocus={false}
 			>
 				{/* <DrawerOverlay /> */}
 				<DrawerContent
-					sx={{
-						marginTop: `${logoHeight + 35}px`, // Moves the drawer down
+					marginTop={{
+						base: `${logoHeight}px`,
+						lg: `${logoHeight + 35}px`,
 					}}
 				>
 					<DrawerBody>
-						{collections?.map((item: any, i: number) => {
-							<SimpleNavLists item={item} key={i} css={css} basic={basic} />;
-						})}
+						{collections?.map((item: any, i: number) => (
+							<SimpleNavLists
+							index={i}
+								key={i}
+								item={item}
+								css={css}
+								basic={basic}
+								border={border}
+								collectionLength={collections?.length - 1}
+							/>
+						))}
 					</DrawerBody>
 				</DrawerContent>
 			</Drawer>
@@ -73,4 +95,4 @@ const MenuDrawer: FC<MenuDrawerProps> = ({ content, basic, ...props }) => {
 	);
 };
 
-export default MenuDrawer;
+export default SimpleMenuDrawer;

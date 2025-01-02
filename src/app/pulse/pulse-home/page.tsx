@@ -30,6 +30,7 @@ import navSchema from './_components/nav-bar/components/navSchema';
 import productListSchema from './_components/PulseProductList/productListSchema';
 import SimpleNavBar from './_components/nav-bar/SimpleNavBar';
 import ProductListTwo from './_components/PulseProductList/ProductListTwo';
+import ProductListThree from './_components/PulseProductList/ProductListThree';
 
 const sidebarData = [
   {
@@ -168,6 +169,13 @@ const HomeContentPage = () => {
           basic={data?.basic}
           content={data?.content}
           dataModel={sponsoredBannerThreeData}
+        />
+          <ProductListThree
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={productListSchema}
         />
       </Box>
       <PulseFooter
