@@ -1,5 +1,12 @@
 import React, { FC, ReactNode, useState } from 'react';
-import { Heading, Text, Flex, Center, FlexProps } from '@chakra-ui/react';
+import {
+	Heading,
+	Text,
+	Flex,
+	Center,
+	FlexProps,
+	TextProps,
+} from '@chakra-ui/react';
 import {
 	Column,
 	Button,
@@ -12,19 +19,18 @@ import {
 	HomeContentProps,
 	HoverContentContainer,
 } from '@/components/library';
-import { CollectionDetails } from '@/app/hongo/hongo-home/_components/card';
-import { ProductCard } from '../FeatureProduct/Product';
+import { NormalText } from '../text';
 import PulseCollectionDetails from './PulseCollection';
 import { PADDING_X } from '@/components/library/config/lib/constants/constants';
-
-const PulseProductListComponent: FC<HomeContentProps> = ({
+const ProductListTwo: FC<HomeContentProps> = ({
 	dataModel,
 	content,
+	basic,
 	path,
 	data,
 }) => {
-	const productList = sortDataByPriority(content?.productList);
-	const { basic } = data;
+	const productList = sortDataByPriority(content?.productListTwo);
+	// const { basic } = data;
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
 
@@ -49,6 +55,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 						{content?.collections?.subTitle}
 					</SubTitle>
 				</Flex> */}
+
 				{/* Here goes our sytled product card */}
 				{productList?.map((item: any, i: number) => (
 					<Container key={i} item={item} dataModel={dataModel}>
@@ -70,11 +77,13 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 							type={item?.type}
 							config={basic}
 							css={css}
+							dataModel={dataModel}
+							data={data}
 						/>
 					</Container>
 				))}
 			</Column>
-			<AddProductListModal dataModel={dataModel} path='pulse' key='productListTwo'>
+			<AddProductListModal dataModel={dataModel} path='pulse'>
 				<Center
 					mx={6}
 					cursor='pointer'
@@ -111,7 +120,11 @@ const Container = ({
 	const [hover, setHover] = useState(false);
 	const mouseEnter = () => setHover(true);
 	const mouseLeave = () => setHover(false);
-
+	// // product list keys
+	// const [productListKeys, setProductListKeys] = useState<string>('');
+	// const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+	// 	setProductListKeys(event.target.value);
+	// };
 	const editButton = (
 		<Button w='100px' size='lg' borderRadius={0} colorScheme='gray'>
 			Edit
@@ -183,5 +196,46 @@ const Overlay = ({ children }: { children: ReactNode }) => (
 		{children}
 	</Center>
 );
+const Title = ({
+	children,
+	css,
+	basic,
+	...props
+}: TextProps & { children: any; css: any; basic: any }) => (
+	<Heading
+		fontSize={{
+			base: css?.titleFontSizeBASE,
+			xl: css?.titleFontSizeBG,
+		}}
+		color={css?.titleColor}
+		fontWeight={css?.titleFontWeight}
+		css={css}
+		basic={basic}
+		{...props}
+	>
+		{children}
+	</Heading>
+);
 
-export default PulseProductListComponent;
+const SubTitle = ({
+	children,
+	css,
+	basic,
+	...props
+}: TextProps & { children: any; css: any; basic: any }) => (
+	<NormalText
+		fontSize={{
+			base: css?.subTitleFontSizeBASE,
+			xl: css?.subTitleFontSizeBG,
+		}}
+		color={css?.subTitleColor}
+		fontWeight={css?.titleFontWeight}
+		css={css}
+		basic={basic}
+		{...props}
+	>
+		{children}
+	</NormalText>
+);
+
+export default ProductListTwo;
