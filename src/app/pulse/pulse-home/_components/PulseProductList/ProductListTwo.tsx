@@ -23,14 +23,14 @@ import { NormalText } from '../text';
 import PulseCollectionDetails from './PulseCollection';
 import { PADDING_X } from '@/components/library/config/lib/constants/constants';
 
-const PulseProductListComponent: FC<HomeContentProps> = ({
+const ProductListTwo: FC<HomeContentProps> = ({
 	dataModel,
 	content,
 	basic,
 	path,
 	data,
 }) => {
-	const productList = sortDataByPriority(content?.productList);
+	const productList = sortDataByPriority(content?.productListTwo);
 	// const { basic } = data;
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
@@ -121,11 +121,11 @@ const Container = ({
 	const [hover, setHover] = useState(false);
 	const mouseEnter = () => setHover(true);
 	const mouseLeave = () => setHover(false);
-// // product list keys
-// const [productListKeys, setProductListKeys] = useState<string>('');
-// const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-// 	setProductListKeys(event.target.value);
-// };
+	// // product list keys
+	// const [productListKeys, setProductListKeys] = useState<string>('');
+	// const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+	// 	setProductListKeys(event.target.value);
+	// };
 	const editButton = (
 		<Button w='100px' size='lg' borderRadius={0} colorScheme='gray'>
 			Edit
@@ -239,4 +239,4 @@ const SubTitle = ({
 	</NormalText>
 );
 
-export default PulseProductListComponent;
+export default ProductListTwo;

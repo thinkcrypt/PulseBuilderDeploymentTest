@@ -37,7 +37,6 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 }) => {
 	const collections = content?.collections;
 	const css = content?.collectionsCss;
-	console.log('featured category::', data);
 	return (
 		<HoverContentContainer
 			type='content'
