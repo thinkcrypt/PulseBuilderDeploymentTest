@@ -25,7 +25,6 @@ const CustomTable: React.FC<CustomTableProps> = ({
 	headers,
 	children,
 	filters,
-
 	header,
 	data,
 	isLoading,
@@ -69,7 +68,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 							borderRadius='full'
 							onClick={onUnselect}
 						/>
-						<Text>{selectedItems?.length} selected</Text>
+						<Text>{selectedItems?.length} Items Selected</Text>
 					</Flex>
 
 					<SelectedMenu

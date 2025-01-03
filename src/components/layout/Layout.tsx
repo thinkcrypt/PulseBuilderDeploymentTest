@@ -90,19 +90,14 @@ const Layout: FC<LayoutProps> = ({
 					pl={type !== 'default' ? 0 : sizes.HOME_NAV_LEFT}
 					{...props}>
 					<Flex
-						pt={type == 'pos' ? 12 : PADDING_TOP}
+						pt={type == 'pos' ? 12 : '72px'}
 						flex={1}
+						p={PX}
+						flexDirection='column'
+						pb={0}
+						gap={4}
 						w='full'>
-						<Flex
-							p={PX}
-							pb={0}
-							w='full'>
-							<Column
-								w='full'
-								gap={4}>
-								{children}
-							</Column>
-						</Flex>
+						{children}
 					</Flex>
 				</Flex>
 			</Body>

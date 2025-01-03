@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Flex, FlexProps, Text } from '@chakra-ui/react';
 
-import { useIsMobile, useAppSelector, sizes, Pagination, THEME } from '../../../..';
+import { useIsMobile, useAppSelector } from '../../../../hooks';
+import { sizes, Pagination, THEME, styles as style } from '../../../..';
 
 type ResultContainerProps = FlexProps & {
 	data: any;
@@ -19,8 +20,9 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 		<Flex
 			bg='background.light'
 			borderTop='1px solid'
+			backdropFilter='blur(10px)'
 			borderTopColor={{ base: 'stroke.deepL', md: 'transparent' }}
-			_dark={{ bg: 'sidebar.dark', borderTopColor: 'stroke.deepD' }}
+			_dark={{ bg: 'background.dark', borderTopColor: 'stroke.deepD' }}
 			pl={{ base: 0, md: THEME == 'basic' ? 0 : 4 }}
 			sx={{
 				...styles.container,
@@ -32,12 +34,13 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 			<Flex
 				px={4}
 				pl={6}
+				backdropFilter={style.BACKDROP_FILTER}
 				align='center'
 				justify='space-between'
 				gap={4}
 				w='100%'>
 				<Text>
-					<b>{data?.totalDocs || '--'}</b> results
+					<b>{data?.totalDocs || '--'}</b> Results
 				</Text>
 
 				<Pagination data={data && data} />
@@ -48,12 +51,8 @@ const ResultContainer: FC<ResultContainerProps> = ({ data, ...props }) => {
 
 const styles = {
 	container: {
-		//borderTop: '1px solid',
-		//borderTopColor: 'stroke.deepL',
 		position: 'fixed',
 		bottom: 0,
-		// bg: 'container.light',
-		// _dark: { bg: 'container.dark', borderTopColor: 'stroke.deepD' },
 		overflow: 'scroll',
 		maxW: '100%',
 		fontSize: '.9rem',

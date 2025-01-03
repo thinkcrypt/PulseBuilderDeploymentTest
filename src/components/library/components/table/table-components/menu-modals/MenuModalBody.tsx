@@ -10,10 +10,16 @@ type MenuModalBodyProps = ModalBodyProps &
 const MenuModalBody: FC<MenuModalBodyProps> = ({ children }) => {
 	const isMobile = useIsMobile();
 	if (isMobile) {
-		return <DrawerBody>{children}</DrawerBody>;
+		return (
+			<DrawerBody
+				px={{ base: 4, md: 6 }}
+				overflowY='scroll'>
+				{children}
+			</DrawerBody>
+		);
 	}
 
-	return <ModalBody>{children}</ModalBody>;
+	return <ModalBody px={{ base: 4, md: 6 }}>{children}</ModalBody>;
 };
 
 export default MenuModalBody;

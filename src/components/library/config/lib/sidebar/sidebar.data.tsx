@@ -197,6 +197,22 @@ const sidebar: SidebarItemType[] = [
 
 	{
 		startOfSection: true,
+		sectionTitle: 'Configuration',
+		title: 'Settings',
+		href: '/settings',
+		icon: 'settings-fill',
+		path: 'settings',
+	},
+
+	{
+		title: 'Deployment',
+		href: '/deployment',
+		icon: 'settings-fill',
+		path: 'deployment',
+	},
+
+	{
+		startOfSection: true,
 		sectionTitle: 'Reports',
 		title: 'Profit/Loss Report',
 		href: '/reports/profit-loss',
@@ -239,13 +255,6 @@ const sidebar: SidebarItemType[] = [
 		href: '/reports/sms-log',
 		icon: 'report',
 		path: 'reports/sms-log',
-	},
-
-	{
-		title: 'Settings',
-		href: '/settings',
-		icon: 'settings-fill',
-		path: 'settings',
 	},
 ];
 

@@ -1,5 +1,3 @@
-import { border } from '@chakra-ui/react';
-
 export const TOKEN_NAME: string = process.env.NEXT_PUBLIC_TOKEN_NAME || 'MINT_CAFE_TOKEN_TWO';
 
 export const REFRESH_TOKEN: string =
@@ -26,6 +24,8 @@ export const currency = {
 
 const BASE_SIDEBAR_WIDTH = '240px';
 const BASE_SIDEBAR_WIDTH_SMALL = '20PX';
+
+export const BODY_PT = '72px';
 
 export const sizes = {
 	SIDEBAR_WIDTH: BASE_SIDEBAR_WIDTH,
@@ -55,6 +55,7 @@ export const padding = {
 	BASE: sizes.PADDING_X_BASE,
 	MD: sizes.PADDING_X_MD,
 	LG: sizes.PADDING_X_LG,
+	BODY_TOP: '72px',
 	CONTAINER: {
 		BASE: 4,
 		MD: 8,
@@ -62,26 +63,60 @@ export const padding = {
 	},
 };
 
+export const zIndex = {
+	NAV: 999,
+	SIDEBAR: 999,
+};
+
 export const styles = {
+	backdropFilter: 'blur(5px)',
+	BACKDROP_FILTER: 'blur(5px)',
+	BLUR_CONTAINER: {
+		bg: 'navbar.blurLight',
+		backdropFilter: 'blur(5px)',
+	},
+	MODAL_BLUR: {
+		bg: 'rgba(255, 255, 255, .6)',
+		backdropFilter: 'blur(10px)',
+	},
+	NAVBAR: {
+		h: sizes.NAV_HEIGHT || 12,
+		alignItems: 'center',
+		bg: 'navbar.blurLight',
+		backdropFilter: 'blur(5px)',
+		borderBottomWidth: 1,
+		zIndex: zIndex.NAV || 999,
+		borderBottomColor: 'navbar.borderBottomLight',
+		_dark: {
+			bg: 'navbar.dark',
+			borderBottomColor: 'navbar.borderBottomDark',
+		},
+	},
 	bigInput: {
 		borderRadius: '6px',
 		_light: {
 			borderColor: 'container.borderLight',
 		},
 	},
+	color: {
+		MODAL_OVERLAY: {
+			LIGHT: 'rgba(250, 250, 250, .8)',
+		},
+	},
 };
+
+// export const color = {
+// 	MODDAL_OVERLAY: {
+// 		LIGHT: 'rgba(250, 250, 250, .8)',
+// 	},
+// };
 
 export const radius = {
 	CONTAINER: '8px',
-	MODAL: '8px',
+	MODAL: '16px',
 	BUTTON: '6px',
 	INPUT: '6px',
 	SELECT_CONTAINER: '6px',
-};
-
-export const zIndex = {
-	NAV: 999,
-	SIDEBAR: 999,
 };
 
 export const BASE_LIMIT = 16;

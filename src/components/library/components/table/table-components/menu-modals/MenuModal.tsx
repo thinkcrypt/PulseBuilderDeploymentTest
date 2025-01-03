@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
-import { radius, useIsMobile } from '../../../../';
+import { radius, shadow, styles, useIsMobile } from '../../../../';
 
 type MenuModalProps = ModalProps &
 	DrawerProps & {
@@ -43,11 +43,15 @@ const MenuModal: FC<MenuModalProps> = ({ children, ...props }) => {
 
 	return (
 		<Modal {...props}>
-			<ModalOverlay />
+			<ModalOverlay _light={{ bg: styles?.color?.MODAL_OVERLAY?.LIGHT }} />
 			<ModalContent
-				boxShadow='lg'
+				boxShadow={shadow.DASH}
 				borderRadius={radius.MODAL}
 				bg='menu.light'
+				_light={{
+					borderWidth: 1,
+					borderColor: 'container.borderLight',
+				}}
 				_dark={{
 					bg: 'menu.dark',
 				}}>

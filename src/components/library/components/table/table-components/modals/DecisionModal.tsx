@@ -90,11 +90,13 @@ const DecisionModal: React.FC<DecisionModalProps> = ({ item, doc, path, itemId }
 								ref={cancelRef}
 								onClick={closeItem}
 								size='sm'
-								colorScheme='gray'>
+								variant='white'>
 								Discard
 							</Button>
 
 							<Button
+								spinnerPlacement='start'
+								loadingText='Processing'
 								isLoading={isLoading}
 								colorScheme='brand'
 								onClick={handleSubmit}

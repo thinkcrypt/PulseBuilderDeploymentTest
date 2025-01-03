@@ -63,6 +63,14 @@ const DeployProject = () => {
 		successText: 'Deployment successful',
 	});
 
+	const getMessage = () => {
+		if (!slug) return 'Enter your business name';
+		else if (isFetching) return 'Checking...';
+		else if (isError) return error?.data?.message;
+		else if (isSuccess) return data?.message;
+		else return '...';
+	};
+
 	if (!findDeployment?.isError) return null;
 
 	return (
@@ -101,15 +109,7 @@ const DeployProject = () => {
 							fontWeight='400'
 							fontStyle='italic'
 							color={isFetching ? 'inherit' : isSuccess ? 'green' : 'red.500'}>
-							{!slug
-								? 'Enter your business name'
-								: isFetching
-								? 'Checking...'
-								: isError
-								? error?.data?.message
-								: isSuccess
-								? data?.message
-								: '...'}
+							{getMessage()}
 						</Text>
 					</Align>
 				</ConfigContainerBody>

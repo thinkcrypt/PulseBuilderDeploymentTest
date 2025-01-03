@@ -69,16 +69,6 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 					</Stack>
 				))}
 			</SidebarBody>
-			{/* <SidebarFooter>
-				{sidebar?.length > 0 && (
-					<SidebarItem
-						href={sidebar[sidebar.length - 1]?.href}
-						path={sidebar[sidebar.length - 1]?.path}
-						icon={sidebar[sidebar.length - 1].icon}>
-						{sidebar[sidebar.length - 1]?.title}
-					</SidebarItem>
-				)}
-			</SidebarFooter> */}
 		</>
 	);
 

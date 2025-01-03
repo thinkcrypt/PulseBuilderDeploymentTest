@@ -143,12 +143,13 @@ const FormSection: React.FC<FormSectionProps> = ({
 					{...formFields.paymentMethod}
 					value={formData.paymentMethod}
 					onChange={handleChange}>
-					<option value='cash'>COD</option>
+					<option value='cod'>COD</option>
 					<option value='cash'>Cash</option>
 					<option value='card'>Card</option>
 					<option value='cheque'>Cheque</option>
-					<option value='other'>bKash</option>
-					<option value='other'>Nagad</option>
+					<option value='bkash'>bKash</option>
+					<option value='nagad'>Nagad</option>
+					<option value='other'>other</option>
 				</VSelect>
 			</Row>
 			<Row gridTemplateColumns='1fr'>

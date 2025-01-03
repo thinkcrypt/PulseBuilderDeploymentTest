@@ -119,6 +119,7 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 								<DeleteItemModal
 									{...commonProps}
 									title={item?.title}
+									item={item}
 								/>
 							);
 						case 'update-key':

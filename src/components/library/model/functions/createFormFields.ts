@@ -1,8 +1,6 @@
-import { HelperText } from '../../form';
-
 type CreateType = {
 	schema: any;
-	layout: { sectionTitle: string; fields: any[] }[];
+	layout: { sectionTitle: string; fields: any[]; description?: string }[];
 	type?: 'post' | 'update';
 };
 
@@ -17,7 +15,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 	const dataFields: any[] = [];
 
 	layout.forEach((section: any) => {
-		const { sectionTitle, fields } = section;
+		const { sectionTitle, fields, description } = section;
 
 		fields.forEach((field: any, index: number) => {
 			const lastElement = index === fields.length - 1;
@@ -35,7 +33,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 					});
 					if (fieldConfig) {
 						dataFields.push({
-							...(firstIndex && firstSubIndex && { sectionTitle: sectionTitle }),
+							...(firstIndex && firstSubIndex && { sectionTitle, description }),
 							name: subField,
 							label: fieldConfig.label || fieldConfig.title,
 							isRequired: fieldConfig.isRequired || fieldConfig.required || false,
@@ -65,7 +63,7 @@ const createFormFields = ({ schema, layout, type = 'post' }: CreateType): any[] 
 				});
 				if (fieldConfig) {
 					dataFields.push({
-						...(firstIndex && { sectionTitle: sectionTitle }),
+						...(firstIndex && { sectionTitle, description }),
 						name: field,
 						label: fieldConfig.label || fieldConfig.title,
 						isRequired: fieldConfig.isRequired || fieldConfig.required || false,

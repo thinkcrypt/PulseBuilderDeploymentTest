@@ -17,6 +17,7 @@ import categoriesSelectMenu from './categoriesSelectMenu';
 const createLayout = [
 	{
 		sectionTitle: 'Category Details',
+
 		fields: ['image', 'name', 'slug'],
 	},
 	{
@@ -25,6 +26,7 @@ const createLayout = [
 	},
 	{
 		sectionTitle: 'Display Settings',
+		description: 'Select the display settings for this category',
 		fields: ['priority', ['isActive', 'isFeatured'], ['displayInMenu', 'displayInHomePage']],
 	},
 ];
@@ -32,6 +34,7 @@ const createLayout = [
 const tableFields = [
 	'name',
 	'slug',
+	// 'products',
 	'priority',
 	'isActive',
 	'displayInHomePage',
@@ -120,6 +123,15 @@ const getAll: TableObjectProps = {
 				successMsg: 'Name updated successfully',
 			},
 			keyType: 'string',
+		},
+		{
+			title: 'Delete',
+			type: 'delete',
+			prompt: {
+				title: 'Delete Category',
+				body: 'Are you sure you want to delete this category?',
+				successMsg: 'Category deleted successfully',
+			},
 		},
 	],
 

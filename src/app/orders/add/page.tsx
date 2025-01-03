@@ -164,14 +164,6 @@ const CreatePurchase = () => {
 				paymentMethod: formData?.paymentMethod,
 				paidAmount: formData?.paidAmount,
 				origin: 'invoice',
-
-				// dueAmount:
-				// 	items?.reduce((acc: number, item: any) => acc + item.subTotal, 0) +
-				// 	Number(formData.shippingCost) -
-				// 	Number(formData.paidAmount),
-				// subTotal: invoice?.subTotal,
-				// total: invoice?.total,
-				// discount: formData?.discount,
 			},
 		});
 	};

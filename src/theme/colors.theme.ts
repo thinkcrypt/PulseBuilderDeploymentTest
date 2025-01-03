@@ -84,6 +84,7 @@ export const colors: any = {
 		// 200: 'blue',
 		// 300: 'teal',
 		// 400: 'slateblue',
+		500: '#EA001C',
 		600: '#EA001C',
 		// 700: 'yellow',
 		// 800: 'orange',
@@ -102,6 +103,7 @@ export const colors: any = {
 		400: '#f8f6f3',
 		500: '#fff',
 		200: BLACK,
+		blurLight: 'rgba(250, 250, 250, .4)',
 		light: THEME == 'basic' ? '#fafafa' : '#f1f1f1',
 		//dark: BLACK,
 		dark: THEME == 'basic' ? BLACK : '#121212',
@@ -153,6 +155,7 @@ export const colors: any = {
 	navbar: {
 		400: BLACK,
 		light: THEME == 'basic' ? '#fff' : BLACK,
+		blurLight: 'rgba(255, 255, 255, 0.4)',
 		dark: BLACK,
 		800: BLACK,
 		borderBottomLight: '#ECECEc',

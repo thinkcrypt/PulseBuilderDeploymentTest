@@ -20,6 +20,32 @@ const itemMenu: MenuItemProps[] = [
 		title: 'Make Copy',
 		type: 'duplicate',
 	},
+	{
+		title: 'Publish Product',
+		type: 'update-api',
+		body: {
+			status: 'published',
+		},
+		prompt: {
+			title: 'Publish Product',
+			body: 'Are you sure you want to publish this product?',
+			successMsg: 'Product Published Successfully',
+		},
+		renderCondition: (data: any) => data.status == 'draft',
+	},
+	{
+		title: 'Unpublish Product',
+		type: 'update-api',
+		body: {
+			status: 'draft',
+		},
+		prompt: {
+			title: 'Mark Product as Draft',
+			body: 'Are you sure you want to unpublish this product from website? it will not be visible to customers',
+			successMsg: 'Product Unpublished',
+		},
+		renderCondition: (data: any) => data.status == 'published',
+	},
 	// {
 	// 	title: 'Custom',
 	// 	type: 'custom-modal',

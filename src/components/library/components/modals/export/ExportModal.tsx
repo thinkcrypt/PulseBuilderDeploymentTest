@@ -131,11 +131,11 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 						<Text color='red'>You can only export up to 5 fields to PDF</Text>
 					) : (
 						<>
-							<DiscardButton
-								mr={2}
+							<Button
+								variant='white'
 								onClick={closeModal}>
 								Discard
-							</DiscardButton>
+							</Button>
 							<Button
 								leftIcon={
 									<Icon
@@ -144,7 +144,7 @@ const ExportModal = ({ path, ids }: { path: string; ids?: string[] }) => {
 										color={iconColor}
 									/>
 								}
-								size='xs'
+								size='sm'
 								onClick={handleSubmit}
 								isLoading={result?.isLoading}>
 								Export

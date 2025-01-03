@@ -27,6 +27,12 @@ const schema: SchemaProps = {
 		helperText:
 			'This text will be used as part of the URL for this category. Leave it empty to auto-generate.',
 	},
+	products: {
+		label: 'Products',
+		type: 'number',
+		displayInTable: true,
+		default: true,
+	},
 	shortDescription: {
 		label: 'Short Description',
 		type: 'textarea',

@@ -159,6 +159,16 @@ export const alignmentOptions = [
 	},
 ];
 
+const BASE_LIMIT = 16;
+export const SHOW_PER_PAGE_OPTIONS = [
+	{ value: BASE_LIMIT, label: BASE_LIMIT },
+	{ value: BASE_LIMIT * 2, label: BASE_LIMIT * 2 },
+	{ value: 50, label: 50 },
+	{ value: 100, label: 100 },
+	{ value: 250, label: 250 },
+	{ value: 999, label: 999 },
+];
+
 export type HomeContentProps = {
 	content: any;
 	dataModel: any;

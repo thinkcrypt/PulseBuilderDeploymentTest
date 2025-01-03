@@ -44,7 +44,7 @@ export const buttonTheme = defineStyleConfig({
 
 	variants: {
 		white: {
-			h: '34px',
+			h: '36px',
 			color: '#171717',
 			border: '1px solid',
 			borderColor: '#e7e7e7',

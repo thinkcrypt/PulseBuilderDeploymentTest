@@ -38,6 +38,7 @@ export const userApi = mainApi.injectEndpoints({
 			}),
 			providesTags: (result, error, { path }) => [path],
 		}),
+
 		getSelectData: builder.query<any, string>({
 			query: (id: any) => `${id}?limit=1000&fields=name&sort=name`,
 			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons', 'collections'],
@@ -137,6 +138,13 @@ export const userApi = mainApi.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [path, ...invalidate],
 		}),
+		deleteById: builder.mutation<any, { path: string; id: string; invalidate?: string[] }>({
+			query: ({ path, id, invalidate }): any => ({
+				url: `${path}/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [path, ...invalidate],
+		}),
 		updateMany: builder.mutation<any, { path: string; body: any; invalidate?: any }>({
 			query: ({ path, body }): any => ({
 				url: `${path}/update/many`,
@@ -152,13 +160,6 @@ export const userApi = mainApi.injectEndpoints({
 				body: body,
 			}),
 			invalidatesTags: (result, error, { path, invalidate = [] }) => [path, ...invalidate],
-		}),
-		deleteById: builder.mutation<any, { path: string; id: string; invalidate?: string[] }>({
-			query: ({ path, id, invalidate }): any => ({
-				url: `${path}/${id}`,
-				method: 'DELETE',
-			}),
-			invalidatesTags: (result, error, { path, id, invalidate }: any) => [path, ...invalidate],
 		}),
 	}),
 });
@@ -180,4 +181,5 @@ export const {
 	useExportManyMutation,
 	useGetSumQuery,
 	useGetOneQuery,
+	useLazyGetAllQuery,
 } = userApi;

@@ -1,4 +1,4 @@
-import React, { FormEvent, KeyboardEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { Flex, useDisclosure } from '@chakra-ui/react';
 
 import { useCustomToast, useIsMobile, useFormData } from '../hooks';
@@ -17,9 +17,9 @@ import {
 	DialogHeader,
 	DialogFooter,
 	Dialog,
+	DialogOverlay,
+	DialogContent,
 	DialogBody,
-	DrawerContentContainer,
-	ModalContent,
 } from '../';
 
 type CreateModalProps = {
@@ -50,8 +50,6 @@ const CreateModal = (props: CreateModalProps) => {
 	const [fetch, { data: prevData, isFetching, isUninitialized }] = useLazyGetByIdToEditQuery();
 	const [formData, setFormData] = useFormData<any>(data, populate || prevData);
 	const isMobile = useIsMobile();
-
-	const Content = isMobile ? DrawerContentContainer : ModalContent;
 
 	const [callApi, result] = usePostMutation();
 	const [updateApi, updateResult] = useUpdateByIdMutation();
@@ -90,10 +88,6 @@ const CreateModal = (props: CreateModalProps) => {
 		...result,
 	});
 
-	const handleKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
-		if (e.key === 'Enter') e.preventDefault();
-	};
-
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		e.stopPropagation();
@@ -127,13 +121,7 @@ const CreateModal = (props: CreateModalProps) => {
 
 	const footer = (
 		<>
-			{!isMobile && (
-				<DiscardButton
-					isDisabled={isLoading}
-					onClick={onModalClose}>
-					Discard
-				</DiscardButton>
-			)}
+			{!isMobile && <DiscardButton onClick={onModalClose}>Discard</DiscardButton>}
 			<ModalSubmitButton
 				{...(isMobile && { w: 'full' })}
 				isLoading={isLoading}>
@@ -149,27 +137,28 @@ const CreateModal = (props: CreateModalProps) => {
 			<Dialog
 				isOpen={isOpen}
 				onClose={onModalClose}>
-				<form
-					onSubmit={handleSubmit}
-					onKeyDown={handleKeyDown}>
-					<DialogHeader>
-						{prompt?.title || title || `${type === 'update' ? 'Update' : 'Create'} ${path}`}
-					</DialogHeader>
-					<DialogCloseButton />
+				<DialogOverlay />
+				<form onSubmit={handleSubmit}>
+					<DialogContent onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+						<DialogHeader>
+							{prompt?.title || title || `${type === 'update' ? 'Update' : 'Create'} ${path}`}
+						</DialogHeader>
+						<DialogCloseButton />
 
-					<DialogBody>
-						<ModalFormSection>
-							<FormMain
-								fields={data}
-								formData={formData}
-								setFormData={setFormData}
-								setChangedData={setChangedData}
-								isModal={true}
-							/>
-						</ModalFormSection>
-						{isMobile && <Align py={5}>{footer}</Align>}
-					</DialogBody>
-					{!isMobile && <DialogFooter>{footer}</DialogFooter>}
+						<DialogBody>
+							<ModalFormSection>
+								<FormMain
+									fields={data}
+									formData={formData}
+									setFormData={setFormData}
+									setChangedData={setChangedData}
+									isModal={true}
+								/>
+							</ModalFormSection>
+							{isMobile && <Align py={5}>{footer}</Align>}
+						</DialogBody>
+						{!isMobile && <DialogFooter>{footer}</DialogFooter>}
+					</DialogContent>
 				</form>
 			</Dialog>
 		</>

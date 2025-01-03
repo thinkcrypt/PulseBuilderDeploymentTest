@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { Flex, FlexProps } from '@chakra-ui/react';
-import { sizes, THEME } from '../../../';
+import { sizes, THEME, styles } from '../../../';
 
 type SidebarLogoProps = FlexProps & {
 	children: ReactNode;
@@ -9,18 +9,16 @@ type SidebarLogoProps = FlexProps & {
 const SidebarLogo: FC<SidebarLogoProps> = ({ children, ...props }) => {
 	return (
 		<Flex
-			h={sizes.NAV_HEIGHT || 12}
+			position='fixed'
+			top={0}
+			left={0}
 			px={5}
-			width='100%'
-			bg={THEME == 'basic' ? 'navbar.light' : 'navbar.light'}
-			borderBottomColor='navbar.borderBottomLight'
-			borderBottomWidth={1}
-			alignItems='center'
+			{...styles.NAVBAR}
 			_dark={{
-				bg: THEME == 'basic' ? 'sidebar.dark' : 'navbar.light',
-				borderBottomColor: 'navbar.borderBottomDark',
+				bg: 'sidebar.dark',
+				borderBottom: 'none',
 			}}
-			{...props}>
+			w={{ base: '320px', md: sizes.SIDEBAR_WIDTH }}>
 			{children}
 		</Flex>
 	);

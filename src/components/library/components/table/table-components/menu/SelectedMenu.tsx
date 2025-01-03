@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Menu, MenuButton, IconButton, Button } from '@chakra-ui/react';
+import { Menu, MenuButton, Button } from '@chakra-ui/react';
 import {
 	MenuContainer,
 	EditManyModal,

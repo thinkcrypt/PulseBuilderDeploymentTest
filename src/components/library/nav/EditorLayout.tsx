@@ -131,6 +131,7 @@ const EditorLayout: FC<LayoutProps> = ({
 				<Body>
 					{type == 'default' && (
 						<EditorSidebar
+							h='80vh'
 							doc={data}
 							data={sidebarData}
 						/>

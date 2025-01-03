@@ -12,7 +12,7 @@ const MenuModalHeader: FC<MenuModalBodyProps> = ({ children }) => {
 		return <DrawerHeader>{children}</DrawerHeader>;
 	}
 
-	return <ModalHeader>{children}</ModalHeader>;
+	return <ModalHeader h='52px'>{children}</ModalHeader>;
 };
 
 export default MenuModalHeader;

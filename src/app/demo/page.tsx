@@ -1,4 +1,5 @@
 'use client';
+
 import {
 	VInput,
 	useCustomToast,
@@ -8,8 +9,9 @@ import {
 	login,
 } from '@/components/library';
 import { useLgoinMutation } from '@/store/services/authApi';
+import { Center, Spinner } from '@chakra-ui/react';
 import { useSearchParams } from 'next/navigation';
-import React, { FC, ChangeEvent, useState, useEffect } from 'react';
+import React, { FC, ChangeEvent, useState, useEffect, Suspense } from 'react';
 
 type FormDataType = {
 	email: string;
@@ -18,7 +20,7 @@ type FormDataType = {
 	from?: string;
 };
 
-const LoginPage: FC<{}> = () => {
+const LoginPageContent: FC = () => {
 	const searchParams = useSearchParams();
 	const lead = searchParams.get('lead');
 	const from = searchParams.get('from');
@@ -54,29 +56,42 @@ const LoginPage: FC<{}> = () => {
 	});
 
 	return (
+		<AuthForm
+			title='Login [DEMO]'
+			isLoading={isLoading}
+			handleSubmit={handleSubmit}>
+			<VInput
+				label='Email'
+				isRequired
+				isReadOnly
+				value={formData.email}
+				onChange={handleChange}
+				name='email'
+			/>
+			<VInput
+				label='Password'
+				isRequired
+				isReadOnly
+				value={formData.password}
+				onChange={handleChange}
+				name='password'
+				type='password'
+			/>
+		</AuthForm>
+	);
+};
+
+const LoginPage: FC = () => {
+	return (
 		<NotLoggedIn>
-			<AuthForm
-				title='Login [DEMO]'
-				isLoading={isLoading}
-				handleSubmit={handleSubmit}>
-				<VInput
-					label='Email'
-					isRequired
-					isReadOnly
-					value={formData.email}
-					onChange={handleChange}
-					name='email'
-				/>
-				<VInput
-					label='Password'
-					isRequired
-					isReadOnly
-					value={formData.password}
-					onChange={handleChange}
-					name='password'
-					type='password'
-				/>
-			</AuthForm>
+			<Suspense
+				fallback={
+					<Center>
+						<Spinner size='xl' />
+					</Center>
+				}>
+				<LoginPageContent />
+			</Suspense>
 		</NotLoggedIn>
 	);
 };
