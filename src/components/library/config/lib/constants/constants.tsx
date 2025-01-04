@@ -26,10 +26,15 @@ export const currency = {
 	symbol: '৳',
 };
 
+// export const productCardBoxShadow = "0px 0px 6px -3px rgb(0, 0, 0, .2)";
+// export const cartBoxShadowHover = "0 2px 5px rgba(0, 0, 0, 0.1);";
+
 export const placeholderLogo = './logo/placeholderImage.png';
 
 const BASE_SIDEBAR_WIDTH = '240px';
 const BASE_SIDEBAR_WIDTH_SMALL = '20PX';
+
+export const PADDING_X = { base: 6, md: 24 };
 
 export const sizes = {
 	SIDEBAR_WIDTH: BASE_SIDEBAR_WIDTH,
@@ -49,10 +54,33 @@ export const sizes = {
 	SIDEBAR_PX: 3,
 };
 
+export const cartBoxShadow = '0 1px 1px rgba(0, 0, 0, 0.1)';
+export const cartBoxShadowHover = '0 2px 5px rgba(0, 0, 0, 0.1);';
+export const navbarBoxShadow = '0px 8px 9px -14px rgb(0, 0, 0)';
+export const productCardBoxShadow = '0px 0px 6px -3px rgb(0, 0, 0, .2)';
+
 export const shadow = {
 	MENU: 'lg',
 	CARD: '2px 2px 10px rgba(0,0,0,.1)',
 	DASH: '2px 2px 4px rgba(0,0,0,.05)',
+};
+// export const maxWidth = {
+// 	base: '100%',
+// 	xl: '1140px',
+// 	'2xl': '1320px',
+// };
+
+export const maxWidth = {
+	base: '100%',
+	xl: '1280px',
+	'2xl': '1536px',
+};
+// export const cartBoxShadow = "0px 0px 8px -4px rgb(0, 0, 0)";
+
+export const sectionPadding = {
+	PADDING_X_2XL: '2rem',
+	PADDING_X_LG: '1.5rem',
+	PADDING_X_MOBILE: '1rem',
 };
 
 export const padding = {
@@ -75,6 +103,8 @@ export const styles = {
 	},
 };
 
+// export const navbarBoxShadow = "0px 8px 9px -14px rgb(0, 0, 0)";
+
 export const radius = {
 	CONTAINER: '8px',
 	MODAL: '8px',
@@ -86,6 +116,12 @@ export const radius = {
 export const zIndex = {
 	NAV: 999,
 	SIDEBAR: 999,
+	header: '999',
+	navbar: '1000',
+	navbarDropdown: '1100',
+	navbarSubDropdown: '1200',
+	hero: '777',
+	contact: '666',
 };
 
 export const BASE_LIMIT = 16;

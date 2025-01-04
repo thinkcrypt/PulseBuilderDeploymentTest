@@ -16,6 +16,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogContent,
 	useDeleteByIdMutation,
+	useDeleteProductlistByKeyIdMutation,
 } from '../../';
 
 type DeleteItemModalProps = {
@@ -23,6 +24,7 @@ type DeleteItemModalProps = {
 	id: string;
 	path?: string;
 	children: React.ReactNode;
+	productKey?: any;
 };
 
 const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
@@ -30,11 +32,12 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 	id,
 	children,
 	path = 'nexa',
+	productKey,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = React.useRef<any>(undefined);
 
-	const [trigger, result] = useDeleteByIdMutation();
+	const [trigger, result] = useDeleteProductlistByKeyIdMutation();
 
 	const closeItem = () => {
 		result?.reset();
@@ -45,7 +48,8 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 		e.preventDefault();
 		trigger({
 			id: id,
-			path: `/contents/product/${path}`,
+			path: `/contents/product/pulse`,
+			productKey: productKey,
 			invalidate: ['content', 'product', 'products'],
 		});
 	};
@@ -71,7 +75,8 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 			<AlertDialog
 				isOpen={isOpen}
 				leastDestructiveRef={cancelRef}
-				onClose={closeItem}>
+				onClose={closeItem}
+			>
 				<AlertDialogOverlay>
 					<AlertDialogContent>
 						<AlertDialogHeader>Delete {title}</AlertDialogHeader>
@@ -86,7 +91,8 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 									ref={cancelRef}
 									onClick={closeItem}
 									size='sm'
-									colorScheme='gray'>
+									colorScheme='gray'
+								>
 									Discard
 								</Button>
 							)}
@@ -95,7 +101,8 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 								colorScheme='red'
 								onClick={handleDelete}
 								ml={2}
-								size='sm'>
+								size='sm'
+							>
 								Delete
 							</Button>
 						</AlertDialogFooter>

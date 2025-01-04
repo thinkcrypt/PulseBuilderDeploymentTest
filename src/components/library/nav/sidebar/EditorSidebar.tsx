@@ -1,9 +1,22 @@
 'use client';
-import { FlexProps, Heading, Stack, Flex, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import {
+	FlexProps,
+	Heading,
+	Stack,
+	Flex,
+	useColorMode,
+	useColorModeValue,
+} from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 import SidebarItem from './SidebarItem';
 
-import { sidebarData, THEME, Icon, DecisionAlert, EditContentModal } from '../../';
+import {
+	sidebarData,
+	THEME,
+	Icon,
+	DecisionAlert,
+	EditContentModal,
+} from '../../';
 
 import {
 	SidebarBody,
@@ -16,26 +29,21 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; doc?: any }> = ({
-	closeBtn,
-	data,
-	doc,
-	...props
-}) => {
+const EditorSidebar: React.FC<
+	FlexProps & { closeBtn?: ReactNode; data?: any; doc?: any }
+> = ({ closeBtn, data, doc, ...props }) => {
 	const router = useRouter();
 
 	const sidebar = data || sidebarData;
 	const textColor = useColorModeValue('text.dark', 'text.light');
 	const main = (
 		<>
-			<SidebarBody
-				bg='container.light'
-				_dark={{ bg: 'container.dark' }}>
+			<SidebarBody bg='container.light' _dark={{ bg: 'container.dark' }}>
 				{sidebar.map((item: any, i: number) => (
-					<Stack
-						key={i}
-						bg='inherit'>
-						<SidebarHeading show={item?.startOfSection}>{item?.sectionTitle}</SidebarHeading>
+					<Stack key={i} bg='inherit'>
+						<SidebarHeading show={item?.startOfSection}>
+							{item?.sectionTitle}
+						</SidebarHeading>
 						{item?.type == 'page' ? (
 							<Link href={item?.href}>
 								<SidebarItem
@@ -44,7 +52,8 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 									}}
 									href={item?.href}
 									path={item?.path}
-									icon={item?.icon}>
+									icon={item?.icon}
+								>
 									{item?.title}
 								</SidebarItem>
 							</Link>
@@ -55,13 +64,15 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 								data={doc[item?.dataPath]}
 								contentType={item?.dataPath}
 								title={item?.title}
-								path={item?.path}>
+								path={item?.path}
+							>
 								<SidebarItem
 									sx={{
 										color: textColor,
 									}}
 									path={item?.path}
-									icon={item?.icon}>
+									icon={item?.icon}
+								>
 									{item?.title}
 								</SidebarItem>
 							</EditContentModal>
@@ -82,7 +93,7 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 		</>
 	);
 
-	const handleExit = () => router.push('/dashboard');
+	const handleExit = () => router.push('/');
 
 	return (
 		<SidebarContainer {...props}>
@@ -90,28 +101,24 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 				bg='container.light'
 				_dark={{
 					bg: 'container.dark',
-				}}>
+				}}
+			>
 				<DecisionAlert
 					handler={handleExit}
 					prompt={{
 						title: 'Exit Editor',
 						body: 'Are you sure you want to exit the editor?',
 						btnText: 'Exit',
-					}}>
-					<Flex
-						cursor='pointer'
-						align='center'
-						gap={2}>
-						<Icon
-							name='arrow-left'
-							color='inherit'
-							size={20}
-						/>
+					}}
+				>
+					<Flex cursor='pointer' align='center' gap={2}>
+						<Icon name='arrow-left' color='inherit' size={20} />
 
 						<Heading
 							color={THEME == 'basic' ? 'inherit' : 'text.dark'}
 							size='md'
-							fontFamily='Bebas Neue'>
+							fontFamily='Bebas Neue'
+						>
 							Exit Editor
 						</Heading>
 					</Flex>
@@ -123,7 +130,8 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 				bg='container.light'
 				_dark={{
 					bg: 'container.dark',
-				}}>
+				}}
+			>
 				{main}
 			</SidebarContent>
 		</SidebarContainer>

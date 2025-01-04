@@ -1,4 +1,10 @@
-import { InputProps, MenuProps, SelectProps, SwitchProps, TextareaProps } from '@chakra-ui/react';
+import {
+	InputProps,
+	MenuProps,
+	SelectProps,
+	SwitchProps,
+	TextareaProps,
+} from '@chakra-ui/react';
 import React, { FC, useEffect } from 'react';
 
 import {
@@ -114,20 +120,12 @@ const FormInput: FC<FormInputProps> = ({
 
 		case 'select':
 			return (
-				<VSelect
-					isRequired={isRequired}
-					helper={item?.helper}
-					{...props}>
-					<option
-						value=''
-						disabled
-						selected>
+				<VSelect isRequired={isRequired} helper={item?.helper} {...props}>
+					<option value='' disabled selected>
 						Select option
 					</option>
 					{options?.map((option: any, i: number) => (
-						<option
-							key={i}
-							value={option?.value}>
+						<option key={i} value={option?.value}>
 							{option?.label}
 						</option>
 					))}
@@ -135,27 +133,15 @@ const FormInput: FC<FormInputProps> = ({
 			);
 		case 'switch':
 			return (
-				<VSwitch
-					isRequired={isRequired}
-					helper={item?.helper}
-					{...props}
-				/>
+				<VSwitch isRequired={isRequired} helper={item?.helper} {...props} />
 			);
 		case 'textarea':
 			return (
-				<VTextarea
-					isRequired={isRequired}
-					helper={item?.helper}
-					{...props}
-				/>
+				<VTextarea isRequired={isRequired} helper={item?.helper} {...props} />
 			);
 		case 'nested-textarea':
 			return (
-				<VTextarea
-					isRequired={isRequired}
-					helper={item?.helper}
-					{...props}
-				/>
+				<VTextarea isRequired={isRequired} helper={item?.helper} {...props} />
 			);
 		case 'data-select':
 			return (
@@ -168,11 +154,7 @@ const FormInput: FC<FormInputProps> = ({
 			);
 		case 'checkbox':
 			return (
-				<VCheckbox
-					isRequired={isRequired}
-					helper={item?.helper}
-					{...props}
-				/>
+				<VCheckbox isRequired={isRequired} helper={item?.helper} {...props} />
 			);
 		case 'data-menu':
 			return (
@@ -187,12 +169,7 @@ const FormInput: FC<FormInputProps> = ({
 			);
 
 		case 'category-collection-array':
-			return (
-				<VCatCollectionList
-					{...props}
-					helper={item?.helper}
-				/>
-			);
+			return <VCatCollectionList {...props} helper={item?.helper} />;
 
 		case 'permissions':
 			return (
@@ -205,12 +182,7 @@ const FormInput: FC<FormInputProps> = ({
 				/>
 			);
 		case 'view-only':
-			return (
-				<ViewOnly
-					helper={item?.helper}
-					{...props}
-				/>
-			);
+			return <ViewOnly helper={item?.helper} {...props} />;
 		case 'tag':
 			return (
 				<VTags

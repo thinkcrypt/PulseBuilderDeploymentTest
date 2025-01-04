@@ -52,7 +52,7 @@ const EditorLayout: FC<LayoutProps> = ({
 	children,
 	title,
 	data,
-	path = '/dashboard',
+	path = '/',
 	hideColorMode = false,
 	sidebarData,
 	...props
@@ -77,7 +77,8 @@ const EditorLayout: FC<LayoutProps> = ({
 		const formData = history[history?.length - 1];
 		trigger({
 			body: formData,
-			path: 'hongo',
+			path: 'pulse',
+			// path: 'hongo',
 			type: 'all',
 		});
 		dispatch(undo());
@@ -87,7 +88,8 @@ const EditorLayout: FC<LayoutProps> = ({
 		const formData = next[next?.length - 1];
 		trigger({
 			body: formData,
-			path: 'hongo',
+			path: 'pulse',
+			// path: 'hongo',
 			type: 'all',
 		});
 		dispatch(redo());

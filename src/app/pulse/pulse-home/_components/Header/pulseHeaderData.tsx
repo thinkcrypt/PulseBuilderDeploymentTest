@@ -1,18 +1,32 @@
 const pulseHeaderData = [
+  ////////////////// Header bg
+  // startOfSection: true,
+  // 	sectionTitle: 'Pages (HONGO)',
+  // 	title: 'Home Page',
+  // 	href: '/home-content',
+  // 	icon: 'content',
+  // 	path: 'home-content',
+  // 	type: 'page',
+  // {
+  // 	// startOfSection: true,
+  // 	sectionTitle: 'Header Logo',
+  // 	// title: 'Header',
+  // 	name: 'basic.logo',
+  // 	label: 'Header Logo',
+  // 	type: 'image',
+  // 	span: 1,
+  // },
   {
-    name: "header.logoText",
-    label: "Logo Text",
-    isRequired: true,
-    type: "text",
-  },
-
-  {
+    // startOfSection: true,
+    sectionTitle: "Header Colors",
+    // title: 'Header',
     name: "header.bgColor",
     label: "Background Color",
     isRequired: true,
     type: "color",
     span: 1,
   },
+
   {
     name: "header.fgColor",
     label: "Foreground Color",
@@ -20,7 +34,11 @@ const pulseHeaderData = [
     type: "color",
     span: 1,
   },
+  ///////////////// Icon
   {
+    // startOfSection: true,
+    sectionTitle: "Icon Colors",
+    // title: 'Icon',
     name: "header.iconBg",
     label: "Icon Background",
     type: "color",
@@ -62,8 +80,23 @@ const pulseHeaderData = [
     type: "number",
     span: 1,
   },
-
   {
+    name: "header.iconRadius",
+    label: "Icon Radius",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.iconSize",
+    label: "Icon Size",
+    type: "number",
+    span: 1,
+  },
+  ////////////////// Button
+  {
+    // startOfSection: true,
+    sectionTitle: "Button Colors",
+    // title: 'Button',
     name: "header.btnBg",
     label: "Button Background",
     type: "color",
@@ -89,7 +122,7 @@ const pulseHeaderData = [
   },
   {
     name: "header.btnHeight",
-    label: "Button Font Height",
+    label: "Button Height",
     type: "number",
     span: 1,
   },
@@ -124,21 +157,54 @@ const pulseHeaderData = [
     span: 1,
   },
 
+  /////////////////// Logo
   {
+    // startOfSection: true,
+    sectionTitle: "Logo Colors",
+    // title: 'Logo',
+    name: "header.logoHeight",
+    label: "Logo Height",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.logoWidth",
+    label: "Logo Width",
+    type: "number",
+    span: 1,
+  },
+  {
+    name: "header.logoText",
+    label: "Logo Text",
+    isRequired: true,
+    type: "text",
+  },
+
+  ////////////////// Border
+  {
+    endOfSection: true,
+    sectionTitle: "Border Colors",
+    // title: 'Border',
     name: "header.borderColor",
     label: "Border Bottom Color",
     type: "color",
     span: 1,
   },
   {
+    // endofSection: true,
     name: "header.borderWidth",
     label: "Border Bottom Width",
     type: "number",
     span: 1,
   },
+
+  /////////////////// Search Box
   {
+    // startOfSection: true,
+    sectionTitle: "Search Box Colors",
+    // title: 'Search Box',
     name: "header.searchBoxBg",
-    label: "Search Box Border",
+    label: "Search Box Colors",
     type: "color",
     span: 1,
   },
@@ -163,30 +229,6 @@ const pulseHeaderData = [
   {
     name: "header.searchBoxRadius",
     label: "Search Box Radius",
-    type: "number",
-    span: 1,
-  },
-  {
-    name: "header.iconRadius",
-    label: "Icon Radius",
-    type: "number",
-    span: 1,
-  },
-  {
-    name: "header.iconSize",
-    label: "Icon Size",
-    type: "number",
-    span: 1,
-  },
-  {
-    name: "header.logoHeight",
-    label: "Logo Height",
-    type: "number",
-    span: 1,
-  },
-  {
-    name: "header.logoWidth",
-    label: "Logo Width",
     type: "number",
     span: 1,
   },

@@ -1,10 +1,11 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import {
 	Flex,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
 	ModalOverlay,
+	Select,
 	useDisclosure,
 } from '@chakra-ui/react';
 
@@ -32,6 +33,9 @@ type CreateModalProps = {
 	id?: string;
 	title?: string;
 	data?: any;
+	key?: any;
+	productListKeys?: any;
+	setProductListKeys?: any;
 };
 
 const AddProductListModal = ({
@@ -40,10 +44,16 @@ const AddProductListModal = ({
 	children,
 	path = 'nexa',
 	title,
+	key,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [formData, setFormData] = useFormData<any>(dataModel);
+	// product list keys
+	const [productListKeys, setProductListKeys] = useState<string>('');
+	const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+		setProductListKeys(event.target.value);
+	};
 
 	const [trigger, result] = useAddHomeCategoryMutation();
 
@@ -68,7 +78,7 @@ const AddProductListModal = ({
 		e.preventDefault();
 		e.stopPropagation();
 		trigger({
-			body: formData,
+			body: { ...formData, key: productListKeys },
 			path: path,
 		});
 	};
@@ -93,7 +103,8 @@ const AddProductListModal = ({
 				size='2xl'
 				isOpen={isOpen}
 				onClose={onModalClose}
-				closeOnOverlayClick={false}>
+				closeOnOverlayClick={false}
+			>
 				<ModalOverlay />
 				<ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
 					<ModalHeader>{`Update ${title}`}</ModalHeader>
@@ -107,16 +118,18 @@ const AddProductListModal = ({
 									setFormData={setFormData}
 									setChangedData={setChangedData}
 									isModal={true}
+									productListKeys={productListKeys}
+									handleChangeProductList={handleChange}
 								/>
 							</ModalFormSection>
 						</ModalBody>
 						<ModalFooter>
-							<DiscardButton
-								mr={2}
-								onClick={onModalClose}>
+							<DiscardButton mr={2} onClick={onModalClose}>
 								Discard
 							</DiscardButton>
-							<ModalSubmitButton isLoading={isLoading}>Confirm</ModalSubmitButton>
+							<ModalSubmitButton isLoading={isLoading}>
+								Confirm
+							</ModalSubmitButton>
 						</ModalFooter>
 					</form>
 				</ModalContainer>

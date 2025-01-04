@@ -9,6 +9,12 @@ const sidebar: SidebarItemType[] = [
   },
 
   {
+    title: "Deployment",
+    href: "/deployment",
+    icon: "product",
+    path: "deployment",
+  },
+  {
     startOfSection: true,
     sectionTitle: "Admin Management",
     title: "Roles",
@@ -26,7 +32,7 @@ const sidebar: SidebarItemType[] = [
 
   {
     startOfSection: true,
-    sectionTitle: "Content (HONGO-Temporary for this night)",
+    sectionTitle: "Content (HONGO)",
     title: "Store",
     href: "/hongo/hongo-store",
     icon: "shop",

@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import {
 	Flex,
 	FlexProps,
@@ -6,6 +6,7 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	ModalOverlay,
+	Select,
 	useDisclosure,
 } from '@chakra-ui/react';
 
@@ -46,6 +47,7 @@ const EditContentModal = ({
 	...props
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	const [formData, setFormData] = useFormData<any>(dataModel, data);
 	const [trigger, result] = useUpdateContentMutation();
 
@@ -93,9 +95,7 @@ const EditContentModal = ({
 
 	return (
 		<>
-			<Flex
-				onClick={onModalOpen}
-				{...props}>
+			<Flex onClick={onModalOpen} {...props}>
 				{children || title || path}
 			</Flex>
 
@@ -103,7 +103,8 @@ const EditContentModal = ({
 				size='2xl'
 				isOpen={isOpen}
 				onClose={onModalClose}
-				closeOnOverlayClick={false}>
+				closeOnOverlayClick={false}
+			>
 				<ModalOverlay />
 				<ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
 					<ModalHeader>{`Update Content`}</ModalHeader>
@@ -121,12 +122,12 @@ const EditContentModal = ({
 							</ModalFormSection>
 						</ModalBody>
 						<ModalFooter>
-							<DiscardButton
-								mr={2}
-								onClick={onModalClose}>
+							<DiscardButton mr={2} onClick={onModalClose}>
 								Discard
 							</DiscardButton>
-							<ModalSubmitButton isLoading={isLoading}>Confirm</ModalSubmitButton>
+							<ModalSubmitButton isLoading={isLoading}>
+								Confirm
+							</ModalSubmitButton>
 						</ModalFooter>
 					</form>
 				</ModalContainer>

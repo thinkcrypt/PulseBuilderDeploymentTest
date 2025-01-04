@@ -1,6 +1,10 @@
 import { Handler } from './';
 
-const updateNestedState: any = (state: any, keys: (string | number)[], value: any) => {
+const updateNestedState: any = (
+	state: any,
+	keys: (string | number)[],
+	value: any
+) => {
 	if (keys.length === 1) {
 		return { ...state, [keys[0]]: value };
 	}
@@ -9,14 +13,22 @@ const updateNestedState: any = (state: any, keys: (string | number)[], value: an
 	if (indexMatch) {
 		const [_, arrayKey, index] = indexMatch;
 		const newArray = [...(state[arrayKey] || [])];
-		newArray[Number(index)] = updateNestedState(newArray[Number(index)] || {}, restKeys, value);
+		newArray[Number(index)] = updateNestedState(
+			newArray[Number(index)] || {},
+			restKeys,
+			value
+		);
 		return {
 			...state,
 			[arrayKey]: newArray,
 		};
 	} else if (typeof firstKey === 'number') {
 		const newArray = Array.isArray(state) ? [...state] : [];
-		newArray[firstKey] = updateNestedState(newArray[firstKey] || {}, restKeys, value);
+		newArray[firstKey] = updateNestedState(
+			newArray[firstKey] || {},
+			restKeys,
+			value
+		);
 		return newArray;
 	} else {
 		return {

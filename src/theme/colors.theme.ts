@@ -145,6 +145,7 @@ export const colors: any = {
 		darker: '#121212',
 		hoverLight: '#ECECEC',
 		hoverDark: '#141414',
+		// hoverDark: '#2D2D2D'
 	},
 	menu: {
 		light: '#fff',

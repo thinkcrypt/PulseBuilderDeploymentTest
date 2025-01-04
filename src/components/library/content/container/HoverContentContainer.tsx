@@ -5,11 +5,13 @@ import { EditContentModal } from '../..';
 type ViewContentContainerType = FlexProps & {
 	children: ReactNode;
 	title?: string;
-	dataModel: any;
+	dataModel?: any;
 	data: any;
 	edit?: boolean;
 	path?: string;
 	type?: 'basic' | 'content';
+	productListKeys?: any;
+	setProductListKeys?: any;
 };
 
 const HoverContentContainer: FC<ViewContentContainerType> = ({
@@ -17,6 +19,8 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 	children,
 	dataModel,
 	data,
+	productListKeys,
+	setProductListKeys,
 	edit = true,
 	path,
 	type = 'content',
@@ -32,12 +36,8 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 	};
 
 	return (
-		<Container
-			onMouseEnter={mouseEnter}
-			onMouseLeave={mouseLeave}>
-			<Body
-				position='relative'
-				{...props}>
+		<Container onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+			<Body position='relative' {...props}>
 				{edit && hover && (
 					<EditContentModal
 						setHover={setHover}
@@ -45,14 +45,16 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 						path={path}
 						data={data}
 						contentType={type}
-						dataModel={dataModel}>
+						dataModel={dataModel}
+					>
 						<Overlay>
 							<Button
 								display={hover ? 'block' : 'none'}
 								position='absolute'
 								colorScheme='gray'
 								borderRadius={0}
-								size='lg'>
+								size='lg'
+							>
 								Click to Edit
 							</Button>
 						</Overlay>
@@ -74,25 +76,25 @@ const Overlay = ({ children }: { children: ReactNode }) => (
 		flex={1}
 		zIndex={998}
 		bg='rgba(0,0,0,0.5)'
-		h='full'>
+		h='full'
+	>
 		{children}
 	</Center>
 );
 
-const Container = ({ children, ...props }: FlexProps & { children: ReactNode }) => {
+const Container = ({
+	children,
+	...props
+}: FlexProps & { children: ReactNode }) => {
 	return (
-		<Flex
-			flexDir='column'
-			{...props}>
+		<Flex flexDir='column' {...props}>
 			{children}
 		</Flex>
 	);
 };
 
 const Body = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
-	<Flex
-		flexDir='column'
-		{...props}>
+	<Flex flexDir='column' {...props}>
 		{children}
 	</Flex>
 );

@@ -50,11 +50,11 @@ const DeployProject = () => {
 	const onDeploy = (e: any) => {
 		e.preventDefault();
 		trigger({
-			path: 'contents/deploy/hongo',
+			path: 'contents/deploy/pulse',
 			invalidate: ['deployments', 'deployments/status', 'status'],
 			body: {
 				slug,
-				theme: 'hongo',
+				theme: 'pulse',
 			},
 		});
 	};
@@ -67,29 +67,30 @@ const DeployProject = () => {
 
 	return (
 		<ConfigContainer heading='Make Your Business Live in Seconds'>
+			
 			<form onSubmit={onDeploy}>
 				<ConfigContainerBody>
 					<Column pb={6}>
 						<Text>
-							Deploying your project on a MINT subdomain is quick and effortless. Just follow these
-							steps:
+							Deploying your project on a MINT subdomain is quick and
+							effortless. Just follow these steps:
 						</Text>
 						<Text as='li'>
-							Enter <strong>Your Business Name</strong> Type the name of your business or project
-							into the input field (e.g., mybusiness).
+							Enter <strong>Your Business Name</strong> Type the name of your
+							business or project into the input field (e.g., mybusiness).
 						</Text>
 						<Text as='li'>
-							Click <strong>{`‘Deploy’`}</strong> Once {`you've`} entered the name, hit the Deploy
-							button.
+							Click <strong>{`‘Deploy’`}</strong> Once {`you've`} entered the
+							name, hit the Deploy button.
 						</Text>
 					</Column>
-					<InputGroup
-						size='md'
-						maxW='600px'>
+					<InputGroup size='md' maxW='600px'>
 						<InputLeftAddon {...style?.addOn}>https://</InputLeftAddon>
 						<Input
 							value={slug || ''}
-							onChange={e => setSlug(e.target.value.toLowerCase().replace(/\s/g, '-'))}
+							onChange={e =>
+								setSlug(e.target.value.toLowerCase().replace(/\s/g, '-'))
+							}
 							placeholder='mybusiness'
 							{...styles?.bigInput}
 						/>
@@ -100,7 +101,8 @@ const DeployProject = () => {
 						<Text
 							fontWeight='400'
 							fontStyle='italic'
-							color={isFetching ? 'inherit' : isSuccess ? 'green' : 'red.500'}>
+							color={isFetching ? 'inherit' : isSuccess ? 'green' : 'red.500'}
+						>
 							{!slug
 								? 'Enter your business name'
 								: isFetching
@@ -121,7 +123,8 @@ const DeployProject = () => {
 						type='submit'
 						isDisabled={!isSuccess}
 						isLoading={result?.isLoading}
-						loadingText='Deploying'>
+						loadingText='Deploying'
+					>
 						Deploy
 					</Button>
 				</ConfigContainerFooter>
