@@ -97,7 +97,7 @@ const ServiceContent: FC<HomeContentProps> = ({
 };
 
 export default ServiceContent;
-
+//
 const SectionPadding = ({
 	children,
 	...props
@@ -122,7 +122,7 @@ const Title = ({
 	...props
 }: TextProps & {
 	css: any;
-basic: any;
+	basic: any;
 	children: any;
 }) => (
 	<Headng
