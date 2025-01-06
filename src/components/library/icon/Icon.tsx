@@ -57,7 +57,6 @@ import { TbFileExport } from 'react-icons/tb';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
 
-
 import {
 	MdArrowForwardIos,
 	MdLocalPhone,
@@ -65,7 +64,6 @@ import {
 	MdOutlineDelete,
 	MdOutlineShoppingBag,
 } from 'react-icons/md';
-
 
 export type IconNameOptions =
 	| 'add'
@@ -128,6 +126,7 @@ export type IconNameOptions =
 	| 'map'
 	| 'undo'
 	| 'redo'
+	| 'arrow-right'
 	| 'phone';
 
 type IconProps = {
@@ -196,6 +195,7 @@ const icons: any = {
 	'export-doc': TbFileExport,
 	'add-circle': IoMdAddCircleOutline,
 	undo: HiArrowUturnLeft,
+	'arrow-right': MdArrowForwardIos,
 	redo: HiArrowUturnRight,
 };
 
@@ -206,7 +206,9 @@ const Icon: FC<IconProps> = ({ name, ...props }) => {
 	return (
 		<IconComponent
 			size={props.size}
-			color={name == 'arrow' ? brandColor : props.color ? props.color : defaultColor}
+			color={
+				name == 'arrow' ? brandColor : props.color ? props.color : defaultColor
+			}
 			{...props}
 		/>
 	);
