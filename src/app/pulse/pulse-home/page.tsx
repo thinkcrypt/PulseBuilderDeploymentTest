@@ -9,7 +9,6 @@ import { useGetContentQuery } from "@/components/library/store/services/contentA
 import React, { useEffect } from "react";
 import { pulseBannerData, PulseHero } from "./_components/Banner";
 import pulseHeroData from "./_components/Banner/pulseHeroData";
-import featuredCategoriesData from "./_components/featured-categories-old/featuredCategoriesData";
 import ServiceContent from "./_components/services/ServiceContent";
 import serviceData from "./_components/services/serviceData";
 import Banner from "./_components/Banner/Banner";
@@ -29,6 +28,9 @@ import PulseNavbar from "./_components/nav-bar/Navbar";
 import navSchema from "./_components/nav-bar/components/navSchema";
 import productListSchema from "./_components/PulseProductList/productListSchema";
 import SimpleNavBar from "./_components/nav-bar/SimpleNavBar";
+import ProductListTwo from "./_components/PulseProductList/ProductListTwo";
+import ProductListThree from "./_components/PulseProductList/ProductListThree";
+import { featuredCategoriesData } from "./_components/FeatureProduct/Product";
 
 const sidebarData = [
   {
@@ -65,7 +67,7 @@ const HomeContentPage = () => {
     path: "pulse",
   });
 
-  // console.log('pulse data:::', data);
+  console.log("pulse data:::", data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(resetBuilder());
@@ -153,6 +155,13 @@ const HomeContentPage = () => {
           content={data?.content}
           dataModel={sponsoredBannerTwoData}
         />
+        <ProductListTwo
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={productListSchema}
+        />
 
         <SponsoredBannerThree
           data={data}
@@ -160,6 +169,13 @@ const HomeContentPage = () => {
           basic={data?.basic}
           content={data?.content}
           dataModel={sponsoredBannerThreeData}
+        />
+        <ProductListThree
+          data={data}
+          path="pulse"
+          basic={data?.basic}
+          content={data?.content}
+          dataModel={productListSchema}
         />
       </Box>
       <PulseFooter

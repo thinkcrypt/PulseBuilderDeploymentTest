@@ -23,18 +23,18 @@ import { NormalText } from '../text';
 import PulseCollectionDetails from './PulseCollection';
 import { PADDING_X } from '@/components/library/config/lib/constants/constants';
 
-const ProductListTwo: FC<HomeContentProps> = ({
+const ProductListThree: FC<HomeContentProps> = ({
 	dataModel,
 	content,
 	basic,
 	path,
 	data,
 }) => {
-	// const productList = sortDataByPriority(content?.productListTwo);
 	const productList =
-		content?.productListTwo?.length > 0 &&
-		sortDataByPriority(content?.productListTwo);
+		content?.productListThree?.length > 0 &&
+		sortDataByPriority(content?.productListThree);
 	// const { basic } = data;
+	// console.log('three ::', productList);
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
 
@@ -159,7 +159,7 @@ const Container = ({
 						id={item?._id}
 						dataModel={dataModel}
 						data={{ ...item }}
-						productKey='productListTwo'
+						productKey='productListThree'
 					>
 						{editButton}
 					</EditProductListModal>
@@ -168,7 +168,7 @@ const Container = ({
 						path='pulse'
 						id={item?._id}
 						title={item?.title}
-						productKey='productListTwo'
+						productKey='productListThree'
 					>
 						{deleteButton}
 					</DeleteProductListModal>
@@ -244,4 +244,4 @@ const SubTitle = ({
 	</NormalText>
 );
 
-export default ProductListTwo;
+export default ProductListThree;

@@ -2,12 +2,13 @@ import {
   maxWidth,
   sectionPadding,
 } from "@/components/library/config/lib/constants/constants";
-import { Box, BoxProps, Center, Grid } from "@chakra-ui/react";
+import { Box, BoxProps, Center, Flex, Grid } from "@chakra-ui/react";
 import { FC, ReactNode } from "react";
 import {
   CopyrightText,
   FooterAddress,
   FooterLinks,
+  LogoImage,
   SocialIcons,
   SupportCard,
 } from "./components/index";
@@ -17,7 +18,7 @@ import { footerData } from "./components/footerData";
 import { HoverContentContainer } from "@/components/library";
 
 const TEMPLATE_COLUMN = {
-  base: "repeat(2, 1fr)",
+  base: "repeat(1, 1fr)",
   md: "repeat(2, 1fr)",
   lg: "repeat(3, 1fr)",
 };
@@ -38,20 +39,16 @@ const PulseFooter: FC<FooterProps> = ({
   dataModel,
 }) => {
   const css = content?.footer;
-  // console.log('basic::', basic);
-  // console.log('css', css);
   const footer = footerData.footer;
   const border = `1px solid ${css?.borderColor}`;
   // const border = `1px solid red`;
-
+  console.log("footer css:::", css);
   const footerTheme = content?.footer;
-  console.log("footerTheme", footerTheme);
-  // const doc: HeroConfigProps = content?.hero;
   return (
     <HoverContentContainer
       type="content"
       path={path}
-      title="Banner Information"
+      title="Footer Information"
       data={content}
       dataModel={dataModel}
       bg={basic?.bgColor}
@@ -64,14 +61,13 @@ const PulseFooter: FC<FooterProps> = ({
       <Box bg={css?.bgColor} color={css?.fgColor}>
         <SectionPadding w="full" display="flex" alignItems="center" py={"3rem"}>
           <Grid gridTemplateColumns={TEMPLATE_COLUMN} w="full">
-            <Box>
-              <FooterTitle basic={basic} css={css}>
-                {footer?.support?.title}
-              </FooterTitle>
-              {footer?.support?.card?.map((item: any, i: number) => (
-                <SupportCard basic={basic} css={css} item={item} key={i} />
-              ))}
-            </Box>
+            <Flex alignItems="center">
+              <LogoImage
+                w={`${css?.logoWidth || 200}px`}
+                h={`${css?.logoHeight || 200}px`}
+                src={basic?.logo}
+              />
+            </Flex>
             <Box>
               <FooterTitle css={css} basic={basic}>
                 {footer?.about?.title}

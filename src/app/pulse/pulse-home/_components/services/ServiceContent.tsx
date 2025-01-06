@@ -2,6 +2,7 @@ import { FC, ReactNode } from 'react';
 import {
 	Box,
 	BoxProps,
+	Center,
 	Flex,
 	FlexProps,
 	Grid,
@@ -96,7 +97,7 @@ const ServiceContent: FC<HomeContentProps> = ({
 };
 
 export default ServiceContent;
-
+//
 const SectionPadding = ({
 	children,
 	...props
@@ -115,12 +116,13 @@ const SectionPadding = ({
 );
 
 const Title = ({
+	basic,
 	css,
 	children,
 	...props
 }: TextProps & {
 	css: any;
-
+	basic: any;
 	children: any;
 }) => (
 	<Headng
@@ -166,7 +168,11 @@ const ServiceCard = ({
 	text: string;
 }) => (
 	<Flex alignItems='center' {...props}>
-		<ServiceImage src={image} css={css} />
-		<Title css={css}>{text}</Title>
+		<Center w='40px' h='40px' mr='16px'>
+			<ServiceImage src={image} css={css} />
+		</Center>
+		<Title basic={basic} css={css}>
+			{text}
+		</Title>
 	</Flex>
 );

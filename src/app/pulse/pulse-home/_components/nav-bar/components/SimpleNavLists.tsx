@@ -8,9 +8,20 @@ type SimpleNavListType = {
 	basic?: any;
 	item?: any;
 	key?: number;
+	index?: number;
+	border?: any;
+	collectionLength?: any;
 };
 
-const SimpleNavLists: FC<SimpleNavListType> = ({ item, css, basic, key }) => {
+const SimpleNavLists: FC<SimpleNavListType> = ({
+	index,
+	item,
+	css,
+	basic,
+	border,
+	collectionLength,
+	key,
+}) => {
 	const { name, image, isFetching } = useGetItemNameById({
 		id: item?.id,
 		path: item?.type,
@@ -19,8 +30,15 @@ const SimpleNavLists: FC<SimpleNavListType> = ({ item, css, basic, key }) => {
 	return (
 		<>
 			<Accordion allowToggle key={key}>
-				<AccordionItem>
-					<AccordionButton w='full'>
+				<AccordionItem
+					border='none'
+					borderBottom={
+						index === collectionLength
+							? 'none' // No border for the last item
+							: border
+					}
+				>
+					<AccordionButton w='full' px='0px'>
 						<NormalText
 							css={css}
 							basic={basic}

@@ -28,7 +28,7 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 		setHoverItem(index);
 	};
 
-	const collections = content?.collections?.items.slice(0, 8);
+	const collections = content?.collections?.items.slice(0, 6);
 	const css = content?.headerCategories;
 
 	return (

@@ -10,6 +10,8 @@ type ViewContentContainerType = FlexProps & {
 	edit?: boolean;
 	path?: string;
 	type?: 'basic' | 'content';
+	productListKeys?: any;
+	setProductListKeys?: any;
 };
 
 const HoverContentContainer: FC<ViewContentContainerType> = ({
@@ -17,6 +19,8 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 	children,
 	dataModel,
 	data,
+	productListKeys,
+	setProductListKeys,
 	edit = true,
 	path,
 	type = 'content',

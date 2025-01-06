@@ -53,7 +53,6 @@ const Banner: FC<TopBannerProps> = ({
 			data={content}
 			dataModel={dataModel}
 			bg={banner?.bgColor}
-			borderBottom={`1px solid ${banner?.borderColor}`}
 			px={PADDING_X}
 			position='sticky'
 			top='0'

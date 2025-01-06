@@ -1,10 +1,11 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import {
 	Flex,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
 	ModalOverlay,
+	Select,
 	useDisclosure,
 } from '@chakra-ui/react';
 
@@ -33,6 +34,8 @@ type CreateModalProps = {
 	title?: string;
 	data?: any;
 	key?: any;
+	productListKeys?: any;
+	setProductListKeys?: any;
 };
 
 const AddProductListModal = ({
@@ -46,6 +49,11 @@ const AddProductListModal = ({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [formData, setFormData] = useFormData<any>(dataModel);
+	// product list keys
+	const [productListKeys, setProductListKeys] = useState<string>('');
+	const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+		setProductListKeys(event.target.value);
+	};
 
 	const [trigger, result] = useAddHomeCategoryMutation();
 
@@ -70,7 +78,7 @@ const AddProductListModal = ({
 		e.preventDefault();
 		e.stopPropagation();
 		trigger({
-			body: { ...formData, key: 'productListTwo' },
+			body: { ...formData, key: productListKeys },
 			path: path,
 		});
 	};
@@ -110,6 +118,8 @@ const AddProductListModal = ({
 									setFormData={setFormData}
 									setChangedData={setChangedData}
 									isModal={true}
+									productListKeys={productListKeys}
+									handleChangeProductList={handleChange}
 								/>
 							</ModalFormSection>
 						</ModalBody>

@@ -1,10 +1,10 @@
 import { HoverContentContainer } from "@/components/library";
 import {
-	maxWidth,
-	PADDING_X,
-	placeholderLogo,
-	sectionPadding,
-} from '@/components/library/config/lib/constants/constants';
+  maxWidth,
+  PADDING_X,
+  placeholderLogo,
+  sectionPadding,
+} from "@/components/library/config/lib/constants/constants";
 import {
   Box,
   BoxProps,
@@ -23,41 +23,46 @@ const TEMPLATE_COLUMN = {
 };
 
 type SponsoredBannerThreeProps = FlexProps & {
-	content: any;
-	basic: any;
-	path: any;
-	dataModel: any;
-	data: any;
+  content: any;
+  basic: any;
+  path: any;
+  dataModel: any;
+  data: any;
 };
 
 const SponsoredBannerThree: FC<SponsoredBannerThreeProps> = ({
-	content,
-	basic,
-	path,
-	data,
-	dataModel,
-	...props
+  content,
+  basic,
+  path,
+  data,
+  dataModel,
+  ...props
 }) => {
-	const bannerData = content?.sponsoredBannerThree;
-	const banner = content?.banner;
-	return (
-		<HoverContentContainer
-			type='content'
-			path={path}
-			title='Banner Information'
-			data={content}
-			dataModel={dataModel}
-			bg={basic?.bgColor}
-			borderBottom={`1px solid ${banner?.borderColor}`}
-			px={PADDING_X}
-			position='sticky'
-			top='0'
-		>
-			<Flex w='full' h={bannerData?.h} {...props}>
-				<Image w='full' h='auto' objectFit='contain' src={bannerData?.image} />
-			</Flex>
-		</HoverContentContainer>
-	);
+  const bannerData = content?.sponsoredBannerThree;
+
+  return (
+    <HoverContentContainer
+      type="content"
+      path={path}
+      title="Banner Information"
+      data={content}
+      dataModel={dataModel}
+      bg={basic?.bgColor}
+      px={PADDING_X}
+      position="sticky"
+      top="0"
+    >
+      <Flex w="full" h={`${bannerData?.h || "200px"}px`} {...props}>
+        <Image
+          w="full"
+          h="full"
+          objectFit="cover"
+          src={bannerData?.image}
+          alt={`banner image`}
+        />
+      </Flex>
+    </HoverContentContainer>
+  );
 };
 
 export default SponsoredBannerThree;

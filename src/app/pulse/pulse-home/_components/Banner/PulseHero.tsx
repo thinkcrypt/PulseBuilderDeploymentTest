@@ -28,9 +28,6 @@ const HeroConfig: FC<HomeContentProps> = ({
 	data,
 	basic,
 }) => {
-	const banner = content?.banner;
-	console.log('banner', banner);
-	const doc: HeroConfigProps = content?.hero;
 	return (
 		<HoverContentContainer
 			type='content'
@@ -39,13 +36,10 @@ const HeroConfig: FC<HomeContentProps> = ({
 			data={data}
 			dataModel={dataModel}
 			bg={basic?.bgColor}
-			px={PADDING_X}
 			position='sticky'
 			top='0'
 		>
-			<Box>
-				<BannerSlider hero={content?.hero} />
-			</Box>
+			<BannerSlider hero={content?.hero} />
 		</HoverContentContainer>
 	);
 };
