@@ -71,7 +71,12 @@ const ServiceContent: FC<HomeContentProps> = ({
 			position='sticky'
 			top='0'
 		>
-			<Flex w='full' py='4rem' display={{ base: 'none', lg: 'flex' }}>
+			<Flex
+				w='full'
+				py='2.5rem'
+				bg={css?.bgColor}
+				display={{ base: 'none', lg: 'flex' }}
+			>
 				{serviceContent?.map((item: any, i: number) => (
 					<ServiceCard
 						key={i}
