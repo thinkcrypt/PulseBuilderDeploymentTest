@@ -1,3 +1,5 @@
+import { BsBorderWidth } from 'react-icons/bs';
+
 export const TOKEN_NAME: string = process.env.NEXT_PUBLIC_TOKEN_NAME || 'MINT_CAFE_TOKEN_TWO';
 
 export const REFRESH_TOKEN: string =
@@ -43,12 +45,13 @@ export const sizes = {
 	NAV_HEIGHT: 14,
 	CARD_RADIUS: '8px',
 	SIDEBAR_PX: 3,
+	SEARCH_BAR_HEIGHT: '38px',
 };
 
 export const shadow = {
 	MENU: 'lg',
 	CARD: '2px 2px 10px rgba(0,0,0,.1)',
-	DASH: '2px 2px 4px rgba(0,0,0,.05)',
+	DASH: '0px 0px 1px rgba(0,0,0,.08), 0px 2px 2px 0px rgba(0, 0, 0, 0.04)',
 };
 
 export const padding = {
@@ -65,7 +68,7 @@ export const padding = {
 
 export const zIndex = {
 	NAV: 999,
-	SIDEBAR: 999,
+	SIDEBAR: 998,
 };
 
 export const styles = {
@@ -102,6 +105,13 @@ export const styles = {
 		MODAL_OVERLAY: {
 			LIGHT: 'rgba(250, 250, 250, .8)',
 		},
+	},
+	BORDER: {
+		_light: {
+			borderColor: 'container.borderLight',
+			borderWidth: 1,
+		},
+		borderRadius: '6px',
 	},
 };
 

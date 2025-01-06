@@ -47,6 +47,12 @@ export const userApi = mainApi.injectEndpoints({
 			query: ({ path, id, invalidate = [] }): any => `${path}/${id}`,
 			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
 		}),
+
+		get: builder.query<any, { path: string; invalidate?: string[] }>({
+			query: ({ path, invalidate = [] }): any => `${path}`,
+			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
+		}),
+
 		getOne: builder.query<any, { path: string; invalidate?: string[] }>({
 			query: ({ path, invalidate = [] }): any => `${path}/get/one`,
 			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
@@ -182,4 +188,5 @@ export const {
 	useGetSumQuery,
 	useGetOneQuery,
 	useLazyGetAllQuery,
+	useGetQuery,
 } = userApi;

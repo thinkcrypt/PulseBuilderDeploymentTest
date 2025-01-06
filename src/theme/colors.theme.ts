@@ -1,4 +1,6 @@
-import { THEME } from '../components/library';
+// import { THEME } from '../components/library';
+
+const THEME: 'basic' | 'fancy' = 'basic';
 
 type ColorMode = {
 	light?: string;
@@ -104,13 +106,18 @@ export const colors: any = {
 		500: '#fff',
 		200: BLACK,
 		blurLight: 'rgba(250, 250, 250, .4)',
-		light: THEME == 'basic' ? '#fafafa' : '#f1f1f1',
+		// light: THEME == 'basic' ? '#fafafa' : '#f1f1f1',
+		// //dark: BLACK,
+		// dark: THEME == 'basic' ? BLACK : '#121212',
+
+		light: '#fafafa',
 		//dark: BLACK,
-		dark: THEME == 'basic' ? BLACK : '#121212',
+		dark: BLACK,
 	},
 	text: {
 		light: '#171717',
 		dark: '#fafafa',
+		shade: '#666',
 		200: '#fff',
 		400: '#4a4a4a',
 		500: '#171717',
@@ -175,6 +182,10 @@ export const colors: any = {
 		borderDark: 'transparent',
 		borderDarker: '#111',
 	},
+	green: {
+		500: '#000',
+		600: '#000',
+	},
 	//black: { 500: BLACK, 600: BLACK, 700: BLACK, 800: BLACK, 900: BLACK, 200: BLACK },
 	gray: {
 		// 50: 'purple',
@@ -182,8 +193,8 @@ export const colors: any = {
 		//200: 'red',
 		// 300: 'green',
 		// 400: 'blue',
-		// 500: 'yellow',
-		// 600: 'orange',
+		// 500: '#000',
+		// 600: '#000',
 		// 700: 'tomato',
 		800: BLACK, //initial bg color of the load of colormode
 		// 900: 'green',

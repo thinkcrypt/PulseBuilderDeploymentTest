@@ -3,7 +3,16 @@ import { FlexProps, Heading, Stack, Flex, useColorMode, useColorModeValue } from
 import React, { ReactNode } from 'react';
 import SidebarItem from './SidebarItem';
 
-import { sidebarData, THEME, Icon, DecisionAlert, EditContentModal } from '../../';
+import {
+	sidebarData,
+	THEME,
+	Icon,
+	DecisionAlert,
+	EditContentModal,
+	sizes,
+	padding,
+	styles,
+} from '../../';
 
 import {
 	SidebarBody,
@@ -26,9 +35,46 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 
 	const sidebar = data || sidebarData;
 	const textColor = useColorModeValue('text.dark', 'text.light');
+
+	const handleExit = () => router.replace('/storefront');
+
+	const decisionModal = (
+		<DecisionAlert
+			handler={handleExit}
+			prompt={{
+				title: 'Exit Editor',
+				body: 'Are you sure you want to exit the editor?',
+				btnText: 'Exit',
+			}}>
+			<Flex
+				cursor='pointer'
+				align='center'
+				gap={2}>
+				<Icon
+					name='arrow-left'
+					color='inherit'
+					size={20}
+				/>
+
+				<Heading
+					color={THEME == 'basic' ? 'inherit' : 'text.dark'}
+					size='md'
+					fontFamily='Bebas Neue'>
+					Exit Editor
+				</Heading>
+			</Flex>
+		</DecisionAlert>
+	);
+
 	const main = (
 		<>
-			<SidebarBody
+			<Flex
+				flexDir='column'
+				pr={sizes.SIDEBAR_PX}
+				pb={8}
+				// pt={padding.BODY_TOP}
+				overflowY='scroll'
+				zIndex={9999}
 				bg='container.light'
 				_dark={{ bg: 'container.dark' }}>
 				{sidebar.map((item: any, i: number) => (
@@ -68,56 +114,53 @@ const EditorSidebar: React.FC<FlexProps & { closeBtn?: ReactNode; data?: any; do
 						) : null}
 					</Stack>
 				))}
-			</SidebarBody>
+			</Flex>
 		</>
 	);
 
-	const handleExit = () => router.push('/dashboard');
-
 	return (
-		<SidebarContainer {...props}>
-			<SidebarLogo
-				bg='container.light'
-				_dark={{
-					bg: 'container.dark',
-				}}>
-				<DecisionAlert
-					handler={handleExit}
-					prompt={{
-						title: 'Exit Editor',
-						body: 'Are you sure you want to exit the editor?',
-						btnText: 'Exit',
-					}}>
-					<Flex
-						cursor='pointer'
-						align='center'
-						gap={2}>
-						<Icon
-							name='arrow-left'
-							color='inherit'
-							size={20}
-						/>
-
-						<Heading
-							color={THEME == 'basic' ? 'inherit' : 'text.dark'}
-							size='md'
-							fontFamily='Bebas Neue'>
-							Exit Editor
-						</Heading>
-					</Flex>
-				</DecisionAlert>
-
-				{closeBtn && closeBtn}
-			</SidebarLogo>
+		<Flex {...containerCss}>
 			<SidebarContent
 				bg='container.light'
 				_dark={{
 					bg: 'container.dark',
 				}}>
+				<Flex {...logoContainer}>
+					{decisionModal}
+					{closeBtn && closeBtn}
+				</Flex>
 				{main}
 			</SidebarContent>
-		</SidebarContainer>
+		</Flex>
 	);
+};
+
+const logoContainer = {
+	w: sizes.SIDEBAR_WIDTH,
+	// h: sizes.NAV_HEIGHT,
+	// bg: 'container.light',
+	// borderBottomWidth: 1,
+	// borderBottomColor: 'stroke.light',
+	// zIndex: 999,
+	// _dark: {
+	// 	bg: 'container.dark',
+	// 	borderBottomColor: 'stroke.dark',
+	// },
+	...styles.NAVBAR,
+};
+
+const containerCss: FlexProps = {
+	position: 'fixed',
+	overflow: 'none',
+	left: 0,
+	w: sizes.SIDEBAR_WIDTH,
+	minW: sizes.SIDEBAR_WIDTH,
+	borderRightWidth: 0,
+	borderRightColor: 'stroke.light',
+	flexDir: 'column',
+	_dark: {
+		borderRightColor: 'stroke.dark',
+	},
 };
 
 export default EditorSidebar;

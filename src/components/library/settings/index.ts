@@ -5,3 +5,5 @@ export {
 	ConfigContainerBody,
 } from './container/ConfigContainer';
 export { default as StaticPage } from './container/StaticPage';
+
+export { default as NoDataContainer } from './container/NoDataContainer';

@@ -64,6 +64,7 @@ const Alert: React.FC<DeleteItemModalProps> = ({ prompt, loading, children, succ
 
 						<AlertDialogFooter>
 							<Button
+								isDisabled={isLoading}
 								ref={cancelRef}
 								onClick={closeItem}
 								size='sm'
@@ -73,6 +74,8 @@ const Alert: React.FC<DeleteItemModalProps> = ({ prompt, loading, children, succ
 
 							<Button
 								isLoading={isLoading}
+								loadingText='Processing'
+								spinnerPlacement='start'
 								colorScheme='red'
 								onClick={handleDelete}
 								ml={2}

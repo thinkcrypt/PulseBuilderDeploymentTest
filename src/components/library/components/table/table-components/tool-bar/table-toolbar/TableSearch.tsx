@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
 import { TbSearch } from 'react-icons/tb';
 
-import { useAppDispatch, updateTable, radius } from '../../../../..';
+import { useAppDispatch, updateTable, radius, sizes } from '../../../../..';
 
 const TableSearch = () => {
 	const [value, setValue] = React.useState<string>('');
@@ -14,9 +14,10 @@ const TableSearch = () => {
 	return (
 		<InputGroup
 			flex={1}
-			size='md'
+			size='sm'
 			w={{ base: 'full', lg: 300 }}>
 			<Input
+				h={sizes.SEARCH_BAR_HEIGHT}
 				borderRadius={radius.BUTTON}
 				placeholder='Search'
 				_light={{
@@ -27,6 +28,7 @@ const TableSearch = () => {
 				onChange={e => setValue(e.target.value)}
 			/>
 			<InputRightAddon
+				h={sizes.SEARCH_BAR_HEIGHT}
 				as={Button}
 				onClick={handleSearch}
 				colorScheme='gray'

@@ -14,6 +14,18 @@ const sidebar: SidebarItemType[] = [
 		path: 'pos',
 	},
 	{
+		title: 'Storefront',
+		href: '/storefront',
+		icon: 'shop',
+		path: 'storefront',
+	},
+	{
+		title: 'Deployment',
+		href: '/deployment',
+		icon: 'settings-fill',
+		path: 'deployment',
+	},
+	{
 		startOfSection: true,
 		sectionTitle: 'Order Management',
 		title: 'Order',
@@ -51,7 +63,7 @@ const sidebar: SidebarItemType[] = [
 	{
 		title: 'Coupons',
 		href: '/coupons',
-		icon: 'category',
+		icon: 'discount',
 		path: 'coupons',
 	},
 	{
@@ -71,13 +83,13 @@ const sidebar: SidebarItemType[] = [
 		sectionTitle: 'Inventory Management',
 		title: 'Damages',
 		href: '/damages',
-		icon: 'product',
+		icon: 'damage',
 		path: 'adjustments/damages',
 	},
 	{
 		title: 'Returns',
 		href: '/return',
-		icon: 'product',
+		icon: 'return',
 		path: 'returns',
 	},
 	{
@@ -91,13 +103,13 @@ const sidebar: SidebarItemType[] = [
 	{
 		title: 'Customer Groups',
 		href: '/groups',
-		icon: 'collections',
+		icon: 'customers',
 		path: 'groups',
 	},
 	{
 		title: 'Suppliers',
 		href: '/suppliers',
-		icon: 'customer',
+		icon: 'supplier',
 		path: 'suppliers',
 	},
 	{
@@ -117,7 +129,7 @@ const sidebar: SidebarItemType[] = [
 	{
 		title: 'Payments',
 		href: '/payments',
-		icon: 'expense',
+		icon: 'payment',
 		path: 'payments',
 	},
 	{
@@ -164,36 +176,36 @@ const sidebar: SidebarItemType[] = [
 		path: 'users',
 	},
 
-	{
-		startOfSection: true,
-		sectionTitle: 'Content (NEXA)',
-		title: 'Store',
-		href: '/store-content',
-		icon: 'shop',
-		path: 'store-content',
-	},
+	// {
+	// 	startOfSection: true,
+	// 	sectionTitle: 'Content (NEXA)',
+	// 	title: 'Store',
+	// 	href: '/store-content',
+	// 	icon: 'shop',
+	// 	path: 'store-content',
+	// },
 
-	{
-		title: 'Home',
-		href: '/home-content',
-		icon: 'content',
-		path: 'home-content',
-	},
-	{
-		startOfSection: true,
-		sectionTitle: 'Content (HONGO)',
-		title: 'Store',
-		href: '/hongo/hongo-store',
-		icon: 'shop',
-		path: 'hongo/hongo-store',
-	},
+	// {
+	// 	title: 'Home',
+	// 	href: '/home-content',
+	// 	icon: 'content',
+	// 	path: 'home-content',
+	// },
+	// {
+	// 	startOfSection: true,
+	// 	sectionTitle: 'Content (HONGO)',
+	// 	title: 'Store',
+	// 	href: '/hongo/hongo-store',
+	// 	icon: 'shop',
+	// 	path: 'hongo/hongo-store',
+	// },
 
-	{
-		title: 'Home',
-		href: '/hongo/hongo-home',
-		icon: 'content',
-		path: 'hongo/hongo-home',
-	},
+	// {
+	// 	title: 'Home',
+	// 	href: '/hongo/hongo-home',
+	// 	icon: 'content',
+	// 	path: 'hongo/hongo-home',
+	// },
 
 	{
 		startOfSection: true,
@@ -202,13 +214,6 @@ const sidebar: SidebarItemType[] = [
 		href: '/settings',
 		icon: 'settings-fill',
 		path: 'settings',
-	},
-
-	{
-		title: 'Deployment',
-		href: '/deployment',
-		icon: 'settings-fill',
-		path: 'deployment',
 	},
 
 	{

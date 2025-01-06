@@ -56,18 +56,32 @@ import { GoListUnordered } from 'react-icons/go';
 import { TbFileExport } from 'react-icons/tb';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
+import { GiBrokenPottery } from 'react-icons/gi';
+import { GiReturnArrow } from 'react-icons/gi';
+import { RiDiscountPercentFill } from 'react-icons/ri';
+import { HiMiniRocketLaunch } from 'react-icons/hi2';
+import { FaTshirt } from 'react-icons/fa';
+import { FaMoneyCheckDollar } from 'react-icons/fa6';
+import { GiMoneyStack } from 'react-icons/gi';
+import { PiUserListFill } from 'react-icons/pi';
+import { AiOutlineThunderbolt } from 'react-icons/ai';
+import { FaCheckCircle } from 'react-icons/fa';
 
 export type IconNameOptions =
+	| 'action-menu'
 	| 'add'
+	| 'add-circle'
 	| 'add-image'
 	| 'add-tag'
-	| 'add-circle'
 	| 'arrow'
+	| 'arrow-left'
 	| 'barcode'
 	| 'brand'
 	| 'brand-alt'
 	| 'cart'
+	| 'cart-bag'
 	| 'category'
+	| 'check'
 	| 'clock-outline'
 	| 'close'
 	| 'collections'
@@ -76,49 +90,52 @@ export type IconNameOptions =
 	| 'coupon'
 	| 'customer'
 	| 'customers'
+	| 'damage'
 	| 'dashboard'
 	| 'date'
-	| 'search'
 	| 'delete'
-	| 'export-doc'
-	| 'menu'
 	| 'delivery'
 	| 'delivery-fill'
+	| 'deploy'
+	| 'discount'
 	| 'dots'
 	| 'edit'
+	| 'envelope'
 	| 'expense'
 	| 'expense-categories'
+	| 'export-doc'
 	| 'feedback'
 	| 'feedbacks'
 	| 'fields'
 	| 'home'
-	| 'items'
 	| 'info'
+	| 'items'
 	| 'leave'
-	| 'action-menu'
+	| 'map'
+	| 'menu'
 	| 'order'
+	| 'payment'
+	| 'phone'
 	| 'pos'
 	| 'product'
 	| 'purchase'
-	| 'cart-bag'
+	| 'rating-fill'
+	| 'rating-outline'
+	| 'redo'
 	| 'report'
+	| 'return'
 	| 'role'
+	| 'search'
 	| 'select'
-	| 'copy'
 	| 'settings'
 	| 'settings-fill'
 	| 'shop'
 	| 'store'
 	| 'subtract'
-	| 'user'
-	| 'rating-fill'
-	| 'rating-outline'
-	| 'arrow-left'
-	| 'envelope'
-	| 'map'
+	| 'supplier'
+	| 'thunder'
 	| 'undo'
-	| 'redo'
-	| 'phone';
+	| 'user';
 
 type IconProps = {
 	size?: number;
@@ -127,65 +144,73 @@ type IconProps = {
 };
 
 const icons: any = {
-	arrow: TbArrowForward,
+	'action-menu': GoListUnordered,
 	add: IoAdd,
-	subtract: GrSubtract,
-	date: BsCalendar2Date,
-	select: TbSelector,
-	settings: TbSettings,
-	'add-tag': IoIosAddCircleOutline,
-	home: GoHomeFill,
+	'add-circle': IoMdAddCircleOutline,
 	'add-image': LuImagePlus,
-	product: ImPriceTag,
-	dashboard: IoIosHome,
-	category: BiSolidCategory,
-	order: TbFileInvoice,
-	brand: MdBrandingWatermark,
-	coupon: RiCoupon2Fill,
-	user: FaUserFriends,
-	customer: FaUserTag,
-	role: FaUnlockKeyhole,
-	delivery: TbTruckDelivery,
-	'settings-fill': RiSettings3Fill,
-	fields: FaTable,
-	pos: TiPrinter,
+	'add-tag': IoIosAddCircleOutline,
+	arrow: TbArrowForward,
+	'arrow-left': IoIosArrowBack,
 	barcode: IoMdBarcode,
-	menu: CiMenuBurger,
-	leave: SiCkeditor4,
-	edit: MdOutlineEdit,
-	items: MdFastfood,
+	brand: MdBrandingWatermark,
+	'brand-alt': TbBrandPatreonFilled,
+	cart: FaCartShopping,
+	category: BiSolidCategory,
+	check: FaCheckCircle,
+	close: MdOutlineCancel,
+	clock: FaRegClock,
+	'clock-outline': FaRegClock,
 	collections: BsCollectionFill,
+	content: BiSolidBookContent,
+	copy: FaRegCopy,
+	customer: FaUserTag,
+	customers: HiUserGroup,
+	damage: GiBrokenPottery,
+	dashboard: IoIosHome,
+	date: BsCalendar2Date,
+	delete: MdDelete,
+	delivery: TbTruckDelivery,
+	'delivery-fill': FaTruck,
+	deploy: HiMiniRocketLaunch,
+	discount: RiDiscountPercentFill,
+	dots: BsThreeDots,
+	edit: MdOutlineEdit,
+	envelope: FaRegEnvelope,
+	expense: FaMoneyCheckDollar,
+	'export-doc': TbFileExport,
 	feedback: FcFeedback,
 	feedbacks: MdFeedback,
-	'clock-outline': FaRegClock,
-	dots: BsThreeDots,
-	close: MdOutlineCancel,
-	delete: MdDelete,
-	customers: HiUserGroup,
-	cart: FaCartShopping,
-	store: IoStorefront,
-	shop: IoStorefront,
-	content: BiSolidBookContent,
-	report: BiSolidReport,
-	expense: FaMoneyCheckAlt,
-	'brand-alt': TbBrandPatreonFilled,
-	purchase: GiBuyCard,
-	'delivery-fill': FaTruck,
+	fields: FaTable,
+	home: GoHomeFill,
 	info: FaCircleInfo,
-	copy: FaRegCopy,
+	items: MdFastfood,
+	leave: SiCkeditor4,
+	map: FaMapMarkerAlt,
+	menu: CiMenuBurger,
+	order: TbFileInvoice,
+	payment: GiMoneyStack,
+	pos: TiPrinter,
+	phone: MdLocalPhone,
+	product: FaTshirt,
+	purchase: GiBuyCard,
+	rating: IoIosStar,
 	'rating-fill': IoIosStar,
 	'rating-outline': CiStar,
-	search: IoSearchOutline,
-	'cart-bag': IoBagOutline,
-	'arrow-left': IoIosArrowBack,
-	envelope: FaRegEnvelope,
-	map: FaMapMarkerAlt,
-	phone: MdLocalPhone,
-	'action-menu': GoListUnordered,
-	'export-doc': TbFileExport,
-	'add-circle': IoMdAddCircleOutline,
-	undo: HiArrowUturnLeft,
 	redo: HiArrowUturnRight,
+	report: BiSolidReport,
+	return: GiReturnArrow,
+	role: FaUnlockKeyhole,
+	search: IoSearchOutline,
+	select: TbSelector,
+	settings: TbSettings,
+	'settings-fill': RiSettings3Fill,
+	shop: IoStorefront,
+	store: IoStorefront,
+	subtract: GrSubtract,
+	supplier: PiUserListFill,
+	thunder: AiOutlineThunderbolt,
+	undo: HiArrowUturnLeft,
+	user: FaUserFriends,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

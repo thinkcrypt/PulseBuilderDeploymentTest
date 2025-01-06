@@ -10,7 +10,6 @@ const SidebarContent: React.FC<SidebarContainerProps> = ({ children, ...props })
 	return (
 		<Column
 			flex={1}
-			//bg='sidebar.light'
 			bg='rgba(250, 250, 250, .8)'
 			backdropFilter='blur(10px)'
 			_dark={{ bg: 'sidebar.dark' }}

@@ -156,16 +156,7 @@ const EditorLayout: FC<LayoutProps> = ({
 };
 
 const Main = ({ children }: { children: React.ReactNode }) => (
-	<Flex
-		overflowY='hidden'
-		h={`calc(100vh - ${sizes.NAV_HEIGHT})`}
-		borderTopRightRadius={{ base: `0`, md: THEME == 'basic' ? 0 : 'xl' }}
-		bg={{ base: 'background.400', md: 'background.light' }}
-		_dark={{ bg: 'background.dark', borderTopRightRadius: 0 }}
-		px={PX}
-		pt={{ base: 4, md: 4 }}
-		pb='32px'
-		w='full'>
+	<Flex {...mainProps}>
 		<Column
 			pl={{ base: 0, md: 0 }}
 			w='full'
@@ -174,5 +165,17 @@ const Main = ({ children }: { children: React.ReactNode }) => (
 		</Column>
 	</Flex>
 );
+
+const mainProps: FlexProps = {
+	overflowY: 'hidden',
+	h: `calc(100vh - ${sizes.NAV_HEIGHT})`,
+	borderTopRightRadius: { base: `0`, md: THEME == 'basic' ? 0 : 'xl' },
+	bg: { base: 'background.400', md: 'background.light' },
+	_dark: { bg: 'background.dark', borderTopRightRadius: 0 },
+	px: PX,
+	pt: { base: 4, md: 4 },
+	pb: '32px',
+	w: 'full',
+};
 
 export default EditorLayout;

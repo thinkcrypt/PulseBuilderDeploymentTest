@@ -50,11 +50,10 @@ const DeployProject = () => {
 	const onDeploy = (e: any) => {
 		e.preventDefault();
 		trigger({
-			path: 'contents/deploy/hongo',
-			invalidate: ['deployments', 'deployments/status', 'status'],
+			path: 'contents/deploy',
+			invalidate: ['deployments', 'deployments/status', 'status', 'active-theme'],
 			body: {
 				slug,
-				theme: 'hongo',
 			},
 		});
 	};

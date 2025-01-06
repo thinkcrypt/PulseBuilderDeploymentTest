@@ -26,6 +26,7 @@ import {
 	MenuModalFooter,
 	radius,
 	formatFieldName,
+	sizes,
 } from '../../';
 
 const Preferences = ({ path }: { path: string }) => {
@@ -149,6 +150,8 @@ const style: Style = {
 		colorScheme: 'gray',
 		size: 'md',
 		borderWidth: 1,
+		h: sizes?.SEARCH_BAR_HEIGHT,
+		w: sizes?.SEARCH_BAR_HEIGHT,
 		borderRadius: radius?.BUTTON,
 		_dark: {
 			borderWidth: 0,

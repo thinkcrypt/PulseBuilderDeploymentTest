@@ -2,7 +2,7 @@
 
 import { Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC, ReactNode } from 'react';
-import { sizes, zIndex, padding, EditorSideDrawer } from '../';
+import { sizes, zIndex, padding, EditorSideDrawer, styles } from '../';
 
 type FlexPropsType = FlexProps & {
 	children: ReactNode;
@@ -31,22 +31,13 @@ const EditorNavbar: FC<FlexPropsType> = ({ children, showMenu, sidebarData, doc,
 };
 
 const container: FlexProps = {
-	h: sizes.NAV_HEIGHT || 12,
 	top: 0,
-	alignItems: 'center',
-	borderBottomWidth: 1,
-	bg: 'white',
 	_light: {
 		borderBottomColor: 'container.borderLight',
 	},
 	px: PX,
 	w: '100vw',
-	zIndex: zIndex.NAV || 999,
-	_dark: {
-		bg: 'navbar.dark',
-		borderBottomColor: 'stroke.dark',
-	},
-	backdropFilter: 'blur(10px)',
+	...styles.NAVBAR,
 };
 
 export default EditorNavbar;
