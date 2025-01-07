@@ -11,6 +11,7 @@ import {
 } from "./_components/index";
 import useColors from "@/components/library/hooks/useColors";
 import { productData } from "../product-details/_components/productData";
+import RelatedProduct from "./_components/RelatedProduct";
 
 const TEMPLATE_COLUMN = {
   base: "repeat(2, 1fr)",
@@ -32,6 +33,8 @@ const ProductSpecifications: FC<any> = ({
   path,
   basic,
 }) => {
+  // const { data: relatedProduct, isLoading: relatedProductLoading } =
+  // useGetProductDataQuery({});
   const colors = useColors();
   const banner = content?.banner;
 
@@ -91,7 +94,14 @@ const ProductSpecifications: FC<any> = ({
             mb="1rem"
           />
         </GridItem>
-        <GridItem colSpan={2}>Related Products</GridItem>
+        {/* <GridItem colSpan={2}>Related Products</GridItem> */}
+        <GridItem colSpan={2}>
+          {/* <RelatedProduct
+            css={css}
+            basic={basic}
+            //relatedProduct={relatedProduct}
+          /> */}
+        </GridItem>
       </Grid>
     </HoverContentContainer>
   );

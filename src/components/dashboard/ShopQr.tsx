@@ -90,10 +90,10 @@ const ShopQr = () => {
 							right='1rem'
 							cursor='pointer'
 							onClick={onCopy}>
-							<Icon
+							{/* <Icon
 								size={24}
 								name='copy'
-							/>
+							/> */}
 						</Box>
 					</QrCodeWrapper>
 				</Skeleton>

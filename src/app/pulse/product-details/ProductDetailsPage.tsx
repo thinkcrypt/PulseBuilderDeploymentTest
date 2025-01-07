@@ -30,10 +30,12 @@ export const padding = {
 	PADDING_X_MOBILE: '1rem',
 };
 
-type ProductDetailsPageProps = {
-	images: string[];
-	height: number;
-	hide: boolean;
+type ProductDetailsProps = GridProps & {
+	basic: any;
+	content: any;
+	id: string;
+	productData: any;
+	isLoading: boolean;
 };
 export const PADDING_X = { base: 6, md: 24 };
 const ProductDetailsPage: FC<any> = ({
@@ -45,7 +47,6 @@ const ProductDetailsPage: FC<any> = ({
 }) => {
 	const banner = content?.banner;
 	const colors = useColors();
-
 	const [quantity, setQuantity] = useState(1);
 	const dispatch = useAppDispatch();
 	const toast = useToast();
@@ -90,7 +91,8 @@ const ProductDetailsPage: FC<any> = ({
 	};
 
 	const css = content?.productPage;
-	const doc: ProductDetailsPageProps = content?.hero;
+
+	// const doc: ProductDetailsPageProps = content?.hero;
 	return (
 		<HoverContentContainer
 			type='content'
