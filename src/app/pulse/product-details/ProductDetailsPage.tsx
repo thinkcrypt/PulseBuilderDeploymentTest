@@ -131,7 +131,7 @@ const ProductDetailsPage: FC<any> = ({
 					<Heading
 						basic={basic}
 						fontSize={css?.headingFontSize}
-						color={css?.headingBg}
+						color={css?.titleColor}
 						fontWeight={css?.headingFontWeight}
 						mb='1rem'
 					>

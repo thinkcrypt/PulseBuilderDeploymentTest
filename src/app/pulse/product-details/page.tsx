@@ -99,6 +99,7 @@ const ProductDetails = () => {
 	});
 
 	console.log('product details data:::', data);
+  
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());
