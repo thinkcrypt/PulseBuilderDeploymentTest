@@ -71,8 +71,6 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			{renderContent()}
 			<SliderArrowWrapper>
 				<SwipperArrowButton
-					// next={() => swiperRef.current?.slideNext()}
-					// prev={() => swiperRef.current?.slidePrev()}
 					css={css}
 				/>
 			</SliderArrowWrapper>
