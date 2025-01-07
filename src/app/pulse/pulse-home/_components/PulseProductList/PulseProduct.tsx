@@ -35,7 +35,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
-	console.log('cssss card:', css);
+	// console.log('cssss card:', css);
 	return (
 		<HoverContentContainer
 			bg={basic?.bgColor}

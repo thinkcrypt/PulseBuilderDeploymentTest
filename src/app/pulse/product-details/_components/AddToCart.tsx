@@ -15,8 +15,8 @@ const AddToCart: FC<AddToCartProps> = ({ addToCart, css, basic, ...props }) => {
 			color={css?.atcBtnFg}
 			bg={css?.atcBtnBg}
 			minW='150px'
-			w='full'
-			h='full'
+			// w='full'
+			// h='full'
 			onClick={addToCart}
 			_hover={{
 				bg: css?.atcBtnHoverBg,
