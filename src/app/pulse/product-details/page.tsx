@@ -92,14 +92,14 @@ const sidebarData = [
 		],
 	},
 ];
-
+// 
 const ProductDetails = () => {
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
 		path: 'pulse',
 	});
 
 	console.log('product details data:::', data);
-  
+
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());
