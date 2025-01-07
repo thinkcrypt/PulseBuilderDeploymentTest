@@ -30,30 +30,18 @@ const SocialShare: FC<SocialShareProps> = ({ productId, productData, css }) => {
 	const title = productData?.name;
 	const description = productData?.description;
 	const media = productData?.image;
-
+	//
 	return (
 		<Flex gap={2} flexWrap={{ base: 'wrap', lg: 'nowrap' }} p={2}>
 			<FacebookShareButton url={shareUrl} title={title}>
-				<Icon
-					size={css?.iconSize || 18}
-					color={css?.tabFg}
-					name='facebook'
-				/>
+				<Icon size={css?.iconSize || 18} color={css?.tabFg} name='facebook' />
 			</FacebookShareButton>
 
 			<WhatsappShareButton url={shareUrl} title={title} separator=':: '>
-				<Icon
-					size={css?.iconSize || 18}
-					color={css?.tabFg}
-					name='whatsapp'
-				/>
+				<Icon size={css?.iconSize || 18} color={css?.tabFg} name='whatsapp' />
 			</WhatsappShareButton>
 			<LinkedinShareButton url={shareUrl} title={title}>
-				<Icon
-					size={css?.iconSize || 18}
-					color={css?.tabFg}
-					name='linkedin'
-				/>
+				<Icon size={css?.iconSize || 18} color={css?.tabFg} name='linkedin' />
 			</LinkedinShareButton>
 
 			<PinterestShareButton
