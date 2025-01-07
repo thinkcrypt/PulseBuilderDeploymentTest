@@ -119,7 +119,8 @@ const ProductDetailsPage: FC<any> = ({
 				px={PADDING_X}
 				gridTemplateColumns={{ base: '1fr', lg: '1fr 1fr' }}
 				gap={12}
-				bg={colors?.white}
+				// bg={colors?.white}
+				bg={css?.tabBg || colors?.white}
 			>
 				<Flex>
 					<ProductImage src={productData?.image} />

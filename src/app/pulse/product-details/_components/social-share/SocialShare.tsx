@@ -26,13 +26,12 @@ const SocialShare: FC<SocialShareProps> = ({
 	const colors = useColors();
 	const css = content?.productPage;
 	return (
-		<Box {...props} py='2.5rem'>
+		<Box bg={css?.tabBg || colors?.white} {...props} py='2.5rem'>
 			<Flex
 				alignItems='center'
 				borderRadius={`${css?.borderRadius || 40}px`}
 				px='1.5rem'
 				py={'.6rem'}
-				bg={css?.tabBg || colors?.white}
 				boxShadow={css?.boxShadow || socialShareBoxShadow}
 			>
 				<NormalText
