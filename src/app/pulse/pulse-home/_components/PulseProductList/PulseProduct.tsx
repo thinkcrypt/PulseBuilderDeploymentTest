@@ -88,7 +88,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			<AddProductListModal
 				dataModel={dataModel}
 				path='pulse'
-				key='productListTwo'
+				hasProductlistKey='productList'
 			>
 				<Center
 					mx={6}

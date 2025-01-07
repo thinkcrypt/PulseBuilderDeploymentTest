@@ -58,6 +58,8 @@ export const cartBoxShadow = '0 1px 1px rgba(0, 0, 0, 0.1)';
 export const cartBoxShadowHover = '0 2px 5px rgba(0, 0, 0, 0.1);';
 export const navbarBoxShadow = '0px 8px 9px -14px rgb(0, 0, 0)';
 export const productCardBoxShadow = '0px 0px 6px -3px rgb(0, 0, 0, .2)';
+export const socialShareBoxShadow = "0 1px 4px rgba(0, 0, 0, 0.1)";
+
 
 export const shadow = {
 	MENU: 'lg',

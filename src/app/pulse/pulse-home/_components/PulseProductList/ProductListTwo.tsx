@@ -88,7 +88,7 @@ const ProductListTwo: FC<HomeContentProps> = ({
 						</Container>
 					))}
 			</Column>
-			<AddProductListModal dataModel={dataModel} path='pulse'>
+			<AddProductListModal dataModel={dataModel} path='pulse' hasProductlistKey='productListTwo'>
 				<Center
 					mx={6}
 					cursor='pointer'

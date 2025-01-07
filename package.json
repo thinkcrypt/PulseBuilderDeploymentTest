@@ -32,7 +32,8 @@
 		"react-slick": "^0.30.3",
 		"react-swipeable": "^7.0.1",
 		"slick-carousel": "^1.8.1",
-		 "swiper": "^11.1.15"
+		"swiper": "^11.1.15",
+		"react-share": "^5.1.2"
 	},
 	"devDependencies": {
 		"@types/node": "^20",

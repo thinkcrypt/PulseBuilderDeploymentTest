@@ -69,6 +69,28 @@ const sidebarData = [
 		path: 'pulse',
 		dataModel: cartSchema,
 	},
+	{
+		sectionTitle: 'Social Share',
+		title: 'Social Share',
+		icon: 'content',
+		dataPath: 'content',
+		type: 'component',
+		path: 'pulse',
+		dataModel: [
+			{
+				name: 'productPage.tabBg',
+				label: 'Background Color',
+				type: 'color',
+				span: 1,
+			},
+			{
+				name: 'productPage.tabFg',
+				label: 'Icon Color',
+				type: 'color',
+				span: 1,
+			},
+		],
+	},
 ];
 
 const ProductDetails = () => {

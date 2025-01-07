@@ -34,6 +34,7 @@ type CreateModalProps = {
 	title?: string;
 	data?: any;
 	key?: any;
+	hasProductlistKey?: any;
 	productListKeys?: any;
 	setProductListKeys?: any;
 };
@@ -44,6 +45,7 @@ const AddProductListModal = ({
 	children,
 	path = 'nexa',
 	title,
+	hasProductlistKey,
 	key,
 }: CreateModalProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -118,6 +120,7 @@ const AddProductListModal = ({
 									setFormData={setFormData}
 									setChangedData={setChangedData}
 									isModal={true}
+									hasProductlistKey={hasProductlistKey ? true : false}
 									productListKeys={productListKeys}
 									handleChangeProductList={handleChange}
 								/>
