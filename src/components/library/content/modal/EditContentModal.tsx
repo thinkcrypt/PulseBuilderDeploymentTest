@@ -49,6 +49,9 @@ const EditContentModal = ({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [formData, setFormData] = useFormData<any>(dataModel, data);
+	console.log('data:::', data);
+	console.log('form data:::', formData);
+
 	const [trigger, result] = useUpdateContentMutation();
 
 	const onModalOpen = () => {

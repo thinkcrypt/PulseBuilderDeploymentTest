@@ -34,6 +34,7 @@ const FormMain: FC<FormMainType> = ({
 	hasProductlistKey = false,
 	handleChangeProductList,
 }) => {
+	console.log('fields::', fields);
 	const sections = React.useMemo(() => {
 		let section: any[] = [];
 		let sections: any[][] = [];
