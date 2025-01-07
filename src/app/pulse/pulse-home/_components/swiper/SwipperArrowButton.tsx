@@ -5,8 +5,8 @@ import React, { FC } from 'react';
 import useColors from '@/components/library/hooks/useColors';
 import { Icon } from '@/components/library';
 type SwipperArrowButtonProps = CenterProps & {
-	prev: () => void;
-	next: () => void;
+	prev?: () => void;
+	next?: () => void;
 	css: any;
 };
 
@@ -21,7 +21,7 @@ const SwipperArrowButton: FC<SwipperArrowButtonProps> = ({
 		<>
 			<Center
 				p='.4rem'
-				bg={colors?.arrowBox}
+				bg={css?.arrowBtnBg || colors?.arrowBox}
 				color={colors?.white}
 				justifyContent='center'
 				alignItems='center'
@@ -34,11 +34,15 @@ const SwipperArrowButton: FC<SwipperArrowButtonProps> = ({
 				border={`1px solid ${css?.primary}`}
 				{...props}
 			>
-				<Icon name='arrow-left' color={css?.primary} size={40} />
+				<Icon
+					name='arrow-left'
+					color={css?.arrowBtnFg || css?.primary}
+					size={40}
+				/>
 			</Center>
 			<Center
 				p='.4rem'
-				bg={colors?.arrowBox}
+				bg={css?.arrowBtnBg || colors?.arrowBox}
 				color={colors?.white}
 				justifyContent='center'
 				alignItems='center'
@@ -50,7 +54,11 @@ const SwipperArrowButton: FC<SwipperArrowButtonProps> = ({
 				onClick={next}
 				border={`1px solid ${css?.primary}`}
 			>
-				<Icon name='arrow-right' color={css?.primary} size={40} />
+				<Icon
+					name='arrow-right'
+					color={css?.arrowBtnFg || css?.primary}
+					size={40}
+				/>
 			</Center>
 		</>
 	);

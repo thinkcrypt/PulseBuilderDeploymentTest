@@ -30,13 +30,12 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 	path,
 	data,
 }) => {
-	const productList =
-		content?.productList?.length > 0 &&
-		sortDataByPriority(content?.productList);
+	const productList = sortDataByPriority(content?.productList);
 	// const { basic } = data;
+
 	const css = data?.content?.homeProductCss;
 	if (!data || !content) return null;
-
+	console.log('cssss card:', css);
 	return (
 		<HoverContentContainer
 			bg={basic?.bgColor}
@@ -60,34 +59,37 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 				</Flex> */}
 
 				{/* Here goes our sytled product card */}
-				{productList &&
-					productList?.map((item: any, i: number) => (
-						<Container key={i} item={item} dataModel={dataModel}>
-							<HeadingContainer>
-								<Column>
-									<Heading
-										fontFamily={basic?.primaryFont}
-										color={basic?.primaryTextColor}
-										_dark={{ color: basic?.primaryTextColor }}
-										size='xl'
-									>
-										{item.title}
-									</Heading>
-								</Column>
-							</HeadingContainer>
+				{productList?.map((item: any, i: number) => (
+					<Container key={i} item={item} dataModel={dataModel}>
+						<HeadingContainer>
+							<Column>
+								<Heading
+									fontFamily={basic?.primaryFont}
+									color={basic?.primaryTextColor}
+									_dark={{ color: basic?.primaryTextColor }}
+									size='xl'
+								>
+									{item.title}
+								</Heading>
+							</Column>
+						</HeadingContainer>
 
-							<PulseCollectionDetails
-								id={item?.id}
-								type={item?.type}
-								config={basic}
-								css={css}
-								dataModel={dataModel}
-								data={data}
-							/>
-						</Container>
-					))}
+						<PulseCollectionDetails
+							id={item?.id}
+							type={item?.type}
+							config={basic}
+							css={css}
+							dataModel={dataModel}
+							data={data}
+						/>
+					</Container>
+				))}
 			</Column>
-			<AddProductListModal dataModel={dataModel} path='pulse'>
+			<AddProductListModal
+				dataModel={dataModel}
+				path='pulse'
+				key='productListTwo'
+			>
 				<Center
 					mx={6}
 					cursor='pointer'

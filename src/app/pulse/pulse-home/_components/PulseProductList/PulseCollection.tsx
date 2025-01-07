@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import { useGetAllQuery } from '@/components/library';
 import { ProductCard } from '@/app/pulse/pulse-home/_components/FeatureProduct/Product';
+import SliderArrowWrapper from '../swiper/SliderArrowWrapper';
+import SwipperArrowButton from '../swiper/SwipperArrowButton';
 
 // import { ProductCard } from '.';
 
@@ -51,9 +53,11 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			);
 		}
 
-		return data?.doc?.map((item: any, i: number) => (
-			<ProductCard data={item} key={i} basic={config} css={css} />
-		));
+		return data?.doc
+			?.slice(0, 4)
+			?.map((item: any, i: number) => (
+				<ProductCard data={item} key={i} basic={config} css={css} />
+			));
 	};
 
 	return (
@@ -65,6 +69,13 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			gap={4}
 		>
 			{renderContent()}
+			<SliderArrowWrapper>
+				<SwipperArrowButton
+					// next={() => swiperRef.current?.slideNext()}
+					// prev={() => swiperRef.current?.slidePrev()}
+					css={css}
+				/>
+			</SliderArrowWrapper>
 		</Grid>
 	);
 };
