@@ -27,6 +27,7 @@ const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, data: as
 				gap={4}>
 				{data?.map((item: ItemProps, i: number) => (
 					<BgImage
+						key={i}
 						src={item?.image}
 						h='520px'
 						w='full'
