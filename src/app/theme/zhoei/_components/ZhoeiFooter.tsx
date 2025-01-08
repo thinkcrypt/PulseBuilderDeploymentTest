@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { HoverContentContainer } from '@/components/library';
 import ZhoeiHero from './hero/ZhoeiHero';
+import { Footer } from './footer';
 
 type HeroDataProps = {
 	content: any;
@@ -12,12 +13,10 @@ const HeroData: FC<HeroDataProps> = ({ data, content, dataModel }) => {
 	return (
 		<HoverContentContainer
 			title='Hero Section'
+			type='basic'
 			data={content}
 			dataModel={dataModel}>
-			<ZhoeiHero
-				data={data}
-				content={content}
-			/>
+			<Footer data={data} />
 		</HoverContentContainer>
 	);
 };

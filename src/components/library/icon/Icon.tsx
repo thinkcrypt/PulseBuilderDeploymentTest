@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { IoIosHome, IoIosAddCircleOutline, IoIosStar } from 'react-icons/io';
-import { IoAdd, IoBagOutline, IoSearchOutline } from 'react-icons/io5';
+import { IoAdd, IoBagOutline, IoGridOutline, IoSearchOutline } from 'react-icons/io5';
 import { TbArrowBack, TbSelector } from 'react-icons/tb';
 import { BsCalendar2Date } from 'react-icons/bs';
 import colors from '@/theme/colors.theme';
@@ -135,7 +135,9 @@ export type IconNameOptions =
 	| 'supplier'
 	| 'thunder'
 	| 'undo'
-	| 'user';
+	| 'user'
+	| 'z-cart'
+	| 'z-grid';
 
 type IconProps = {
 	size?: number;
@@ -211,6 +213,10 @@ const icons: any = {
 	thunder: AiOutlineThunderbolt,
 	undo: HiArrowUturnLeft,
 	user: FaUserFriends,
+
+	//zhoei icons
+	'z-cart': IoBagOutline,
+	'z-grid': IoGridOutline,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

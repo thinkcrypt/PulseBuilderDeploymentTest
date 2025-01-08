@@ -11,6 +11,7 @@ type LayoutSpinnerProps = FlexProps & {
 	errorMessage?: string;
 	data?: any;
 	sidebarData?: any;
+	dataPath?: string;
 };
 
 const EditorLayoutSuspense: FC<LayoutSpinnerProps> = ({
@@ -22,6 +23,7 @@ const EditorLayoutSuspense: FC<LayoutSpinnerProps> = ({
 	errorMessage,
 	data,
 	sidebarData,
+	dataPath = 'hongo',
 	...props
 }) => {
 	if (isLoading)
@@ -39,6 +41,7 @@ const EditorLayoutSuspense: FC<LayoutSpinnerProps> = ({
 	else
 		return (
 			<EditorLayout
+				dataPath={dataPath}
 				sidebarData={sidebarData}
 				path={path}
 				data={data}

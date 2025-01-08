@@ -1,8 +1,7 @@
 'use client';
 import { EditorLayoutSuspense, push, resetBuilder, useAppDispatch } from '@/components/library';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { Button, Link } from '@chakra-ui/react';
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import {
 	heroData,
@@ -18,6 +17,12 @@ import {
 	FeaturedCollection,
 	featuredCollectionData,
 	storeData,
+	headerData,
+	HeaderComponent,
+	BannerComponent,
+	bannerData,
+	FooterComponent,
+	footerData,
 } from './_components';
 
 const sidebarData = [
@@ -68,41 +73,56 @@ const HomeContentPage = () => {
 			isLoading={isLoading || !data}
 			path='/theme/zhoei'
 			title='Home Page'
-			position='relative'
+			dataPath='nexa'
 			gap={0}>
-			{/* <Link
-				isExternal
-				href={process.env.NEXT_PUBLIC_ECOM}>
-				<Button>Preview</Button>
-			</Link> */}
+			<BannerComponent
+				data={data}
+				dataModel={bannerData}
+			/>
+
+			<HeaderComponent
+				data={data}
+				dataModel={headerData}
+			/>
 
 			<HeroComponent
+				data={data}
 				content={data?.content}
 				dataModel={heroData}
 			/>
 
 			<CategoryComponent
+				data={data}
 				content={data?.content}
 				dataModel={collectionsData}
 			/>
 
 			<DiscoverComponent
-				content={data?.content}
+				// content={data}
+				data={data}
 				dataModel={discoverData}
 			/>
 
 			<ProductListComponent
+				data={data}
 				content={data?.content}
 				dataModel={listData}
 			/>
 
 			<AboutComponent
+				data={data}
 				content={data?.content}
 				dataModel={aboutUsData}
 			/>
 			<FeaturedCollection
 				content={data?.content}
 				dataModel={featuredCollectionData}
+				data={data}
+			/>
+			<FooterComponent
+				data={data}
+				content={data?.basic}
+				dataModel={footerData}
 			/>
 		</EditorLayoutSuspense>
 	);

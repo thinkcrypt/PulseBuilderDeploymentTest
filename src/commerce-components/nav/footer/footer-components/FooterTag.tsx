@@ -1,4 +1,4 @@
-import { FlexChild, padding } from '../../../';
+import { FlexChild } from '@/builder';
 import React, { FC } from 'react';
 import { Center, Text } from '@chakra-ui/react';
 
@@ -8,7 +8,7 @@ const FooterTag: FC<FlexChild> = ({ children, ...props }) => {
 			w='full'
 			bg='eblack.200'
 			flex={1}
-			p={padding.LAYOUT_X}
+			p={8}
 			{...props}>
 			<Text color='white.200'>{children}</Text>
 		</Center>

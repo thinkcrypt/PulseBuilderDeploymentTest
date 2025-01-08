@@ -1,9 +1,17 @@
-import { AdminProductCard as ProductCard } from '@/commerce-components/landing-components/landing-products';
 import { PLACEHOLDER_IMAGE, useGetAllQuery } from '@/components/library';
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Grid, Text } from '@chakra-ui/react';
 import React from 'react';
+import ProductCard from './hero/ProductCard';
 
-const CollectionDetails = ({ id, type }: { id: string; type: 'collection' | 'category' }) => {
+const CollectionDetails = ({
+	id,
+	type,
+	data: asData,
+}: {
+	id: string;
+	type: 'collection' | 'category';
+	data: any;
+}) => {
 	const { data, isLoading, isError } = useGetAllQuery({
 		path: 'products',
 
@@ -15,23 +23,29 @@ const CollectionDetails = ({ id, type }: { id: string; type: 'collection' | 'cat
 		},
 	});
 	return (
-		<Flex
+		<Grid
+			gridTemplateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }}
 			py={4}
-			flexWrap='wrap'
+			pb={0}
 			gap={4}>
 			{data?.doc?.length <= 0 && <Text>No product to show</Text>}
 			{data &&
-				data?.doc?.map((item: any, index: number) => (
-					<ProductCard
-						w='180px'
-						key={index}
-						name={item.name}
-						price={item.price}
-						src={item.image || PLACEHOLDER_IMAGE}
-						category={{ name: '' }}
-					/>
-				))}
-		</Flex>
+				data?.doc?.map(
+					(item: any, index: number) =>
+						index < 4 && (
+							<ProductCard
+								data={asData}
+								w='100%'
+								key={index}
+								_id={item._id}
+								name={item.name}
+								price={item.price}
+								image={item.image || PLACEHOLDER_IMAGE}
+								category={{ name: '' }}
+							/>
+						)
+				)}
+		</Grid>
 	);
 };
 

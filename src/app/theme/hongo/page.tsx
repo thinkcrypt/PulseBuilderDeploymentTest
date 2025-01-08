@@ -95,6 +95,7 @@ const HomeContentPage = () => {
 			isLoading={isLoading || !data}
 			path='/theme/hongo'
 			title='Home Page'
+			dataPath='hongo'
 			position='relative'
 			gap={0}>
 			<BannerConfig
