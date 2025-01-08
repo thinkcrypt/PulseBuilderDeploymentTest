@@ -46,6 +46,7 @@ type LayoutProps = FlexPropsType & {
 	hideColorMode?: boolean;
 	sidebarData?: any;
 	data: any;
+	dataPath: string;
 };
 
 const EditorLayout: FC<LayoutProps> = ({
@@ -55,6 +56,7 @@ const EditorLayout: FC<LayoutProps> = ({
 	path = '/dashboard',
 	hideColorMode = false,
 	sidebarData,
+	dataPath,
 	...props
 }) => {
 	const dispatch = useAppDispatch();
@@ -77,7 +79,7 @@ const EditorLayout: FC<LayoutProps> = ({
 		const formData = history[history?.length - 1];
 		trigger({
 			body: formData,
-			path: 'hongo',
+			path: dataPath,
 			type: 'all',
 		});
 		dispatch(undo());
