@@ -42,7 +42,7 @@ const sidebarData = [
 		icon: 'content',
 		dataPath: 'basic',
 		type: 'component',
-		path: 'hongo',
+		path: 'nexa',
 		dataModel: storeData,
 	},
 ];

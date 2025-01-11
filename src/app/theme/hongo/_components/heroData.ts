@@ -1,7 +1,6 @@
-import { alignmentOptions, fontOptions, fontWeightOptions } from '@/components/library';
-import { start } from 'repl';
+import { alignmentOptions, fontWeightOptions } from '@/components/library';
 
-const titleDetails = [
+export const titleDetails = [
 	{
 		startOfSection: true,
 		sectionTitle: 'Title Details',
@@ -20,8 +19,8 @@ const titleDetails = [
 	{
 		name: 'hero.titleFont',
 		label: 'Title Font',
-		type: 'select',
-		options: fontOptions,
+		type: 'font',
+
 		span: 1,
 	},
 	{
@@ -39,8 +38,13 @@ const titleDetails = [
 	{
 		name: 'hero.titleFontWeight',
 		label: 'Font Weight',
-		type: 'select',
-		options: fontWeightOptions,
+		type: 'font-weight',
+		span: 1,
+	},
+	{
+		name: 'hero.titleLineHeight',
+		label: 'Line Height',
+		type: 'line-height',
 		span: 1,
 	},
 	{
@@ -49,14 +53,9 @@ const titleDetails = [
 		type: 'number',
 		span: 1,
 	},
-	{
-		name: 'hero.titleLineHeight',
-		label: 'Line Height',
-		type: 'number',
-	},
 ];
 
-const subTitleDetails = [
+export const subTitleDetails = [
 	{
 		startOfSection: true,
 		sectionTitle: 'SubTitle Details',
@@ -75,8 +74,7 @@ const subTitleDetails = [
 	{
 		name: 'hero.subTitleFont',
 		label: 'SubTitle Font',
-		type: 'select',
-		options: fontOptions,
+		type: 'font',
 		span: 1,
 	},
 	{
@@ -93,9 +91,8 @@ const subTitleDetails = [
 	},
 	{
 		name: 'hero.subTitleFontWeight',
-		label: 'SubTitle Weight',
-		type: 'select',
-		options: fontWeightOptions,
+		label: 'Sub Title Font Weight',
+		type: 'font-weight',
 		span: 1,
 	},
 	{
@@ -107,11 +104,12 @@ const subTitleDetails = [
 	{
 		name: 'hero.subTitleLineHeight',
 		label: 'SubTitle Height',
-		type: 'number',
+		type: 'line-height',
+		span: 1,
 	},
 ];
 
-const btnData = [
+export const btnData = [
 	{
 		sectionTitle: 'CTA Button',
 		startOfSection: true,
@@ -200,9 +198,6 @@ const data = [
 		type: 'select',
 		options: alignmentOptions,
 	},
-	...titleDetails,
-	...subTitleDetails,
-	...btnData,
 ];
 
 export default data;

@@ -7,7 +7,10 @@ import Link from 'next/link';
 
 const HeroCTA = ({ content }: { content: any }) => {
 	return (
-		<Center alignItems={getAlignment(content?.hero?.align)}>
+		<Center
+			justifyContent={getAlignment(content?.hero?.align)}
+			alignItems={getAlignment(content?.hero?.align)}
+			w='full'>
 			<Button
 				fontSize={content?.hero?.btnFontSize ? `${content?.hero?.btnFontSize}px` : '0'}
 				h={content?.hero?.btnHeight ? `${content?.hero?.btnHeight}px` : '44px'}

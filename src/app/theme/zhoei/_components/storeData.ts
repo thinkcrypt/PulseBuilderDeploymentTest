@@ -44,14 +44,16 @@ const data = [
 	{
 		name: 'primaryFont',
 		label: 'Primary Font',
-		type: 'select',
+		type: 'font',
 		options: fontOptions,
+		span: 1,
 	},
 	{
 		name: 'secondaryFont',
 		label: 'Secondary Font',
-		type: 'select',
+		type: 'font',
 		options: fontOptions,
+		span: 1,
 	},
 	{
 		name: 'brandColor',

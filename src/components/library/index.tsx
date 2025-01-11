@@ -62,87 +62,9 @@ export * from './page';
 export * from './pos';
 export * from './settings';
 
-export const fontOptions = [
-	{ label: 'Anton', value: 'Anton' },
-	{ label: 'Arimo', value: 'Arimo' },
-	{ label: 'Atma', value: 'Atma' },
-	{ label: 'Barlow', value: 'Barlow' },
-	{ label: 'Barlow Condensed', value: 'Barlow Condensed' },
-	{ label: 'Bebas Neue', value: 'Bebas Neue' },
-	{ label: 'Caveat', value: 'Caveat' },
-	{ label: 'Comfortaa', value: 'Comfortaa' },
-	{ label: 'Cormorant Garamond', value: 'Cormorant Garamond' },
-	{ label: 'Dosis', value: 'Dosis' },
-	{ label: 'EB Garamond', value: 'EB Garamond' },
-	{ label: 'Exo 2', value: 'Exo 2' },
-	{ label: 'Inter', value: 'Inter' },
-	{ label: 'Lato', value: 'Lato' },
-	{ label: 'Libre Baskerville', value: 'Libre Baskerville' },
-	{ label: 'Lora', value: 'Lora' },
-	{ label: 'Marcellus', value: 'Marcellus' },
-	{ label: 'Merriweather', value: 'Merriweather' },
-	{ label: 'Michroma', value: 'Michroma' },
-	{ label: 'Montserrat', value: 'Montserrat' },
-	{ label: 'Mulish', value: 'Mulish' },
-	{ label: 'Noto Serif', value: 'Noto Serif' },
-	{ label: 'Open Sans', value: 'Open Sans' },
-	{ label: 'Orbitron', value: 'Orbitron' },
-	{ label: 'Oswald', value: 'Oswald' },
-	{ label: 'Outfit', value: 'Outfit' },
-	{ label: 'Playfair Display', value: 'Playfair Display' },
-	{ label: 'Poppins', value: 'Poppins' },
-	{ label: 'PT Serif', value: 'PT Serif' },
-	{ label: 'Quicksand', value: 'Quicksand' },
-	{ label: 'Raleway', value: 'Raleway' },
-	{ label: 'Roboto', value: 'Roboto' },
-	{ label: 'Roboto Condensed', value: 'Roboto Condensed' },
-	{ label: 'Roboto Mono', value: 'Roboto Mono' },
-	{ label: 'Rubik', value: 'Rubik' },
-	{ label: 'Source Code Pro', value: 'Source Code Pro' },
-	{ label: 'Space Grotesk', value: 'Space Grotesk' },
-	{ label: 'Syncopate', value: 'Syncopate' },
-	{ label: 'Tomorrow', value: 'Tomorrow' },
-	{ label: 'Work Sans', value: 'Work Sans' },
-];
+export * from './builder';
 
-export const fontWeightOptions = [
-	{
-		label: '100',
-		value: 100,
-	},
-	{
-		label: '200',
-		value: 200,
-	},
-	{
-		label: '300',
-		value: 300,
-	},
-	{
-		label: '400',
-		value: 400,
-	},
-	{
-		label: '500',
-		value: 500,
-	},
-	{
-		label: '600',
-		value: 600,
-	},
-	{
-		label: '700',
-		value: 700,
-	},
-	{
-		label: '800',
-		value: 800,
-	},
-	{
-		label: '900',
-		value: 900,
-	},
-];
+export * from './data';
 
 export const alignmentOptions = [
 	{

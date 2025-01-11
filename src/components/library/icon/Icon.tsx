@@ -66,6 +66,8 @@ import { GiMoneyStack } from 'react-icons/gi';
 import { PiUserListFill } from 'react-icons/pi';
 import { AiOutlineThunderbolt } from 'react-icons/ai';
 import { FaCheckCircle } from 'react-icons/fa';
+import { GrEdit } from 'react-icons/gr';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 export type IconNameOptions =
 	| 'action-menu'
@@ -94,12 +96,14 @@ export type IconNameOptions =
 	| 'dashboard'
 	| 'date'
 	| 'delete'
+	| 'delete-builder'
 	| 'delivery'
 	| 'delivery-fill'
 	| 'deploy'
 	| 'discount'
 	| 'dots'
 	| 'edit'
+	| 'edit-builder'
 	| 'envelope'
 	| 'expense'
 	| 'expense-categories'
@@ -171,12 +175,14 @@ const icons: any = {
 	dashboard: IoIosHome,
 	date: BsCalendar2Date,
 	delete: MdDelete,
+	'delete-builder': RiDeleteBinLine,
 	delivery: TbTruckDelivery,
 	'delivery-fill': FaTruck,
 	deploy: HiMiniRocketLaunch,
 	discount: RiDiscountPercentFill,
 	dots: BsThreeDots,
 	edit: MdOutlineEdit,
+	'edit-builder': GrEdit,
 	envelope: FaRegEnvelope,
 	expense: FaMoneyCheckDollar,
 	'export-doc': TbFileExport,

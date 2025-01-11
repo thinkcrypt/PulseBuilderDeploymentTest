@@ -22,7 +22,7 @@ const SelectContainer: React.FC<InputContainerProps> = ({ children, ...props }) 
 				color: 'gray.300',
 				borderColor: 'selectBorder.dark',
 			}}
-			boxShadow='md'
+			boxShadow='sm'
 			_placeholder={{ fontSize: 14, fontWeight: '500' }}
 			{...props}>
 			{children}

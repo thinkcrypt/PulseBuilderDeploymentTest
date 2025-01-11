@@ -15,8 +15,7 @@ const HeroSubTitle = ({ content, basic }: { content: any; basic: any }) => {
 			letterSpacing={content?.hero?.subTitleLetterSpacing || 0}
 			lineHeight={content?.hero?.subTitleLineHeight || 1}
 			fontWeight={content?.hero?.subTitleFontWeight || '400'}
-			color={content?.hero?.subTitleColor}
-			mb='1rem'>
+			color={content?.hero?.subTitleColor}>
 			{content?.hero?.subTitle}
 		</Text>
 	);

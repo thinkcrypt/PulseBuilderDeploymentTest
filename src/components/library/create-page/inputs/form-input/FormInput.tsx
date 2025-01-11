@@ -25,6 +25,9 @@ import {
 	VArrayString,
 	VColor,
 	VEditor,
+	VFont,
+	fontWeightOptions,
+	BLineHeight,
 } from '../../../';
 
 type Option = {
@@ -133,6 +136,27 @@ const FormInput: FC<FormInputProps> = ({
 					))}
 				</VSelect>
 			);
+		case 'font-weight':
+			return (
+				<VSelect
+					isRequired={isRequired}
+					helper={item?.helper}
+					{...props}>
+					<option
+						value=''
+						disabled
+						selected>
+						Select option
+					</option>
+					{fontWeightOptions?.map((option: any, i: number) => (
+						<option
+							key={i}
+							value={option?.value}>
+							{option?.label}
+						</option>
+					))}
+				</VSelect>
+			);
 		case 'switch':
 			return (
 				<VSwitch
@@ -182,6 +206,26 @@ const FormInput: FC<FormInputProps> = ({
 					model={props?.model || ''}
 					field={item?.menuField || 'name'}
 					helper={item?.helper}
+					{...props}
+				/>
+			);
+
+		case 'font':
+			return (
+				<VFont
+					isRequired={isRequired}
+					helper={item?.helper}
+					onChange={props.onChange}
+					{...props}
+				/>
+			);
+
+		case 'line-height':
+			return (
+				<BLineHeight
+					isRequired={isRequired}
+					helper={item?.helper}
+					// onChange={props.onChange}
 					{...props}
 				/>
 			);

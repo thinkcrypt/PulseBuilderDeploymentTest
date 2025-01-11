@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, useState } from 'react';
-import { Button, Center, Flex, FlexProps, Heading } from '@chakra-ui/react';
-import { EditContentModal } from '../..';
+import { Button, ButtonProps, Center, Flex, FlexProps } from '@chakra-ui/react';
+import { BuilderBgOverlay, BuilderEditButton, EditContentModal, Icon } from '../..';
 
 type ViewContentContainerType = FlexProps & {
 	children: ReactNode;
@@ -10,6 +10,9 @@ type ViewContentContainerType = FlexProps & {
 	edit?: boolean;
 	path?: string;
 	type?: 'basic' | 'content';
+	component?: boolean;
+	section?: boolean;
+	zIndex?: number;
 };
 
 const HoverContentContainer: FC<ViewContentContainerType> = ({
@@ -19,13 +22,19 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 	data,
 	edit = true,
 	path,
+	component = false,
+	section = false,
 	type = 'content',
+	zIndex = 900,
 	...props
 }) => {
 	const [hover, setHover] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 
-	const mouseEnter = () => setHover(true);
+	const mouseEnter = (e: any) => {
+		e.stopPropagation();
+		setHover(true);
+	};
 	const mouseLeave = () => {
 		if (isOpen) return;
 		setHover(false);
@@ -46,16 +55,17 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 						data={data}
 						contentType={type}
 						dataModel={dataModel}>
-						<Overlay>
-							<Button
-								display={hover ? 'block' : 'none'}
-								position='absolute'
-								colorScheme='gray'
-								borderRadius={0}
-								size='lg'>
-								Click to Edit
-							</Button>
-						</Overlay>
+						<BuilderBgOverlay
+							section={section}
+							title={title}
+							component={component}
+							zIndex={zIndex}>
+							<BuilderEditButton
+								section={section}
+								hover={hover}>
+								{section ? 'Edit Section' : 'Click to Edit'}
+							</BuilderEditButton>
+						</BuilderBgOverlay>
 					</EditContentModal>
 				)}
 				{children}
@@ -64,24 +74,10 @@ const HoverContentContainer: FC<ViewContentContainerType> = ({
 	);
 };
 
-const Overlay = ({ children }: { children: ReactNode }) => (
-	<Center
-		cursor='pointer'
-		position='absolute'
-		top={0}
-		left={0}
-		w='full'
-		flex={1}
-		zIndex={998}
-		bg='rgba(0,0,0,0.5)'
-		h='full'>
-		{children}
-	</Center>
-);
-
 const Container = ({ children, ...props }: FlexProps & { children: ReactNode }) => {
 	return (
 		<Flex
+			w='full'
 			flexDir='column'
 			{...props}>
 			{children}
@@ -91,6 +87,7 @@ const Container = ({ children, ...props }: FlexProps & { children: ReactNode }) 
 
 const Body = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
 	<Flex
+		w='full'
 		flexDir='column'
 		{...props}>
 		{children}

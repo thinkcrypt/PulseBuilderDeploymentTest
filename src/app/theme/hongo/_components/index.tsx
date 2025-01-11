@@ -11,7 +11,12 @@ export { default as CollectionDetails } from './CollectionDetails';
 export { default as CategoryComponent } from './CategoryComponent';
 export { default as FeaturedCollection } from './FeaturedCollection';
 
-export { default as heroData } from './heroData';
+export {
+	default as heroData,
+	titleDetails,
+	subTitleDetails,
+	btnData as CTAButton,
+} from './heroData';
 export { default as aboutUsData } from './aboutUsData';
 export { default as discoverData } from './discoverData';
 export { default as listData } from './listData';

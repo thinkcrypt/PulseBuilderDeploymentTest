@@ -2,7 +2,6 @@ import { InputDataType, TableDataFieldType } from './data-types';
 
 type CommonProps = {
 	label: string;
-
 	type: InputDataType;
 	inputLabel?: string;
 	isRequired?: boolean;

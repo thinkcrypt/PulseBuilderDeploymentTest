@@ -11,6 +11,8 @@ import {
 	sortDataByPriority,
 	HomeContentProps,
 	HoverContentContainer,
+	BuilderEditButton,
+	BuilderBgOverlay,
 } from '@/components/library';
 import { CollectionDetails } from './card';
 import { PADDING_X } from '.';
@@ -81,18 +83,13 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path, 
 				dataModel={dataModel}
 				path='hongo'>
 				<Center
+					{...addProductListStyle}
 					mx={PADDING_X}
-					cursor='pointer'
 					borderColor={basic?.btnColor}
 					_dark={{
 						borderColor: basic?.btnColor,
 						color: basic?.btnColor,
 					}}
-					my={4}
-					h='100px'
-					w='full'
-					fontSize='2rem'
-					border='1px dashed'
 					borderRadius={4}>
 					<Heading
 						fontFamily={basic?.primaryFont}
@@ -115,25 +112,9 @@ const Container = ({
 	const mouseEnter = () => setHover(true);
 	const mouseLeave = () => setHover(false);
 
-	const editButton = (
-		<Button
-			w='100px'
-			size='lg'
-			borderRadius={0}
-			colorScheme='gray'>
-			Edit
-		</Button>
-	);
+	const editButton = <BuilderEditButton>Edit Section</BuilderEditButton>;
 
-	const deleteButton = (
-		<Button
-			w='100px'
-			size='lg'
-			borderRadius={0}
-			colorScheme='red'>
-			Delete
-		</Button>
-	);
+	const deleteButton = <BuilderEditButton btnType='delete'>Remove</BuilderEditButton>;
 
 	if (!item) return null;
 
@@ -146,22 +127,24 @@ const Container = ({
 			position='relative'
 			{...props}>
 			{hover && (
-				<Overlay>
-					<EditProductListModal
-						path='hongo'
-						id={item?._id}
-						dataModel={dataModel}
-						data={{ ...item }}>
-						{editButton}
-					</EditProductListModal>
+				<BuilderBgOverlay>
+					<Flex gap={2}>
+						<EditProductListModal
+							path='hongo'
+							id={item?._id}
+							dataModel={dataModel}
+							data={{ ...item }}>
+							{editButton}
+						</EditProductListModal>
 
-					<DeleteProductListModal
-						path='hongo'
-						id={item?._id}
-						title={item?.title}>
-						{deleteButton}
-					</DeleteProductListModal>
-				</Overlay>
+						<DeleteProductListModal
+							path='hongo'
+							id={item?._id}
+							title={item?.title}>
+							{deleteButton}
+						</DeleteProductListModal>
+					</Flex>
+				</BuilderBgOverlay>
 			)}
 			{children}
 		</Column>
@@ -176,20 +159,14 @@ const HeadingContainer = ({ children }: { children: ReactNode }) => (
 	</SpaceBetween>
 );
 
-const Overlay = ({ children }: { children: ReactNode }) => (
-	<Center
-		gap={2}
-		cursor='pointer'
-		position='absolute'
-		top={0}
-		left={0}
-		w='full'
-		flex={1}
-		zIndex={998}
-		bg='rgba(0,0,0,0.5)'
-		h='full'>
-		{children}
-	</Center>
-);
+const addProductListStyle = {
+	cursor: 'pointer',
+	my: 4,
+	h: '100px',
+	w: 'full',
+	fontSize: '2rem',
+	border: '1px dashed',
+	borderRadius: 4,
+};
 
 export default ProductListComponent;

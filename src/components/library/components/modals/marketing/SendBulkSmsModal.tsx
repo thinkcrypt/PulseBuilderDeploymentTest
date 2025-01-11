@@ -73,7 +73,7 @@ const SendBulkSmsModal = ({ path, ids }: { path: string; ids: string[] }) => {
 							Discard
 						</DiscardButton>
 						<Button
-							size='xs'
+							size='sm'
 							onClick={handleSubmit}
 							isLoading={result?.isLoading}>
 							Send
