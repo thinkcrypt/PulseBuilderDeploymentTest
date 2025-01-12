@@ -28,6 +28,7 @@ import {
 	VFont,
 	fontWeightOptions,
 	BLineHeight,
+	BOpacity,
 } from '../../../';
 
 type Option = {
@@ -225,7 +226,15 @@ const FormInput: FC<FormInputProps> = ({
 				<BLineHeight
 					isRequired={isRequired}
 					helper={item?.helper}
-					// onChange={props.onChange}
+					{...props}
+				/>
+			);
+
+		case 'opacity':
+			return (
+				<BOpacity
+					isRequired={isRequired}
+					helper={item?.helper}
 					{...props}
 				/>
 			);

@@ -4,17 +4,22 @@ import { Flex, FlexProps } from '@chakra-ui/react';
 type BgImageProps = FlexProps & {
 	src: string;
 	children?: ReactNode;
+	overlay?: string;
+	overlayOpacity?: number;
 };
 
-const BgImage: FC<BgImageProps> = ({ src, children, ...props }) => (
+const BgImage: FC<BgImageProps> = ({ src, children, overlay, overlayOpacity, ...props }) => (
 	<Flex
-		flex={1}
-		w='full'
 		bgSize='cover'
 		bgPosition='center center'
-		bgImage={`url(${src})`}
-		{...props}>
-		{children}
+		bgImage={`url(${src})`}>
+		<Flex
+			flex={1}
+			w='full'
+			h='full'
+			{...props}>
+			{children}
+		</Flex>
 	</Flex>
 );
 

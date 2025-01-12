@@ -9,6 +9,7 @@ import {
 } from '../../../../components/library';
 
 import { PADDING_X } from '.';
+import { useAppSelector } from '@/hooks';
 
 type HeroDataProps = {
 	content: any;
@@ -19,6 +20,9 @@ type HeroDataProps = {
 
 const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, path, data }) => {
 	const { basic } = data;
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
+	const limit = display == 'sm' ? 2 : 4;
 	return (
 		<HoverContentContainer
 			title='Category Section'
@@ -26,14 +30,14 @@ const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, path, data }
 			path={path}
 			bg={basic?.bgColor}
 			dataModel={dataModel}
-			px={PADDING_X}>
+			px={px}>
 			<Align
 				py={12}
 				justify='space-between'
 				w='full'
 				gap={4}>
 				<Heading
-					size='xl'
+					fontSize={display == 'sm' ? '2rem' : '3rem'}
 					color={basic?.primaryTextColor}
 					_dark={{ color: basic?.primaryTextColor }}
 					fontFamily={basic?.primaryFont}>
@@ -45,12 +49,16 @@ const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, path, data }
 				borderBottomWidth={1}
 				borderBottomColor={basic?.borderColor}
 				rowGap={4}
-				gridTemplateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)' }}
+				gridTemplateColumns={{
+					base: 'repeat(2, 1fr)',
+					md: 'repeat(2, 1fr)',
+					lg: `repeat(${limit}, 1fr)`,
+				}}
 				gap={4}>
 				{content?.collections?.items?.length <= 0 && <Text>No items found</Text>}
 				{content?.collections?.items?.map(
 					(item: any, i: number) =>
-						i < 4 && (
+						i < limit && (
 							<GetItem
 								key={i}
 								path={item?.type}

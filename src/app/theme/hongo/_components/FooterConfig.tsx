@@ -21,6 +21,7 @@ import {
 } from '@/components/library';
 import { PADDING_X } from '.';
 import { Column } from '@/commerce-components';
+import { useAppSelector } from '@/hooks';
 
 type HeaderConfigProps = {
 	bgColor: string; //
@@ -53,6 +54,8 @@ const pages: any = {
 const FooterConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
 	const doc: HeaderConfigProps = content?.footer;
 	const headerDoc = content?.header;
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
 	return (
 		<HoverContentContainer
 			type='content'
@@ -60,7 +63,7 @@ const FooterConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 			data={content}
 			dataModel={dataModel}
 			bg={doc?.bgColor}
-			px={PADDING_X}>
+			px={px}>
 			<Box
 				bg={doc.bgColor}
 				color={doc?.fgColor}
@@ -78,17 +81,19 @@ const FooterConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 							config={data}
 						/>
 					</Item>
-					<Item>
-						<Container config={headerDoc}>
-							<SearchInputField config={headerDoc} />
-							<SearchButton config={headerDoc}>
-								<Icon
-									name='search'
-									color={data?.content?.header?.searchBoxIcon}
-								/>
-							</SearchButton>
-						</Container>
-					</Item>
+					{display != 'sm' && (
+						<Item>
+							<Container config={headerDoc}>
+								<SearchInputField config={headerDoc} />
+								<SearchButton config={headerDoc}>
+									<Icon
+										name='search'
+										color={data?.content?.header?.searchBoxIcon}
+									/>
+								</SearchButton>
+							</Container>
+						</Item>
+					)}
 				</Grid>
 			</Box>
 		</HoverContentContainer>

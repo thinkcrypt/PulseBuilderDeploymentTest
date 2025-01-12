@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import { Box, Center, CenterProps, Flex, Image, Input, Text } from '@chakra-ui/react';
 import { HomeContentProps, HoverContentContainer, Icon } from '@/components/library';
 import { PADDING_X } from '.';
+import { useAppSelector } from '@/hooks';
 
 type HeaderConfigProps = {
 	bgColor: string; //
@@ -23,6 +24,8 @@ type HeaderConfigProps = {
 
 const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
 	const doc: HeaderConfigProps = content?.header;
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
 	return (
 		<HoverContentContainer
 			type='content'
@@ -32,7 +35,7 @@ const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 			dataModel={dataModel}
 			bg={doc?.bgColor}
 			borderBottom={`1px solid ${doc?.borderColor}`}
-			px={PADDING_X}
+			px={px}
 			position='sticky'
 			top='0'>
 			<Flex
@@ -52,15 +55,17 @@ const HeaderConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 				<Flex
 					align='center'
 					gap={3}>
-					<Container config={doc}>
-						<SearchInputField config={doc} />
-						<SearchButton config={doc}>
-							<Icon
-								name='search'
-								color={doc?.searchBoxIcon}
-							/>
-						</SearchButton>
-					</Container>
+					{display != 'sm' && (
+						<Container config={doc}>
+							<SearchInputField config={doc} />
+							<SearchButton config={doc}>
+								<Icon
+									name='search'
+									color={doc?.searchBoxIcon}
+								/>
+							</SearchButton>
+						</Container>
+					)}
 
 					<BtnContainer config={doc}>
 						<CartTotal config={doc}>{1}</CartTotal>

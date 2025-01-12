@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Center, Text } from '@chakra-ui/react';
 import { HomeContentProps, HoverContentContainer } from '@/components/library';
 import { PADDING_X } from '.';
+import { useAppSelector } from '@/hooks';
 
 const BannerConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
 	const { bgColor, fgColor } = content?.banner;
@@ -21,6 +22,8 @@ const BannerConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 			</Text>
 		);
 	};
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
 
 	return (
 		<HoverContentContainer
@@ -29,7 +32,7 @@ const BannerConfig: FC<HomeContentProps> = ({ dataModel, content, path, data }) 
 			data={content}
 			dataModel={dataModel}
 			bg={bgColor}
-			px={PADDING_X}>
+			px={px}>
 			<Center
 				display={{ base: 'none', lg: 'flex' }}
 				py={`${content?.banner?.paddingY}px` || '8px'}

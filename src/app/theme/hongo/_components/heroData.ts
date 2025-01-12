@@ -191,6 +191,20 @@ const data = [
 		type: 'image',
 	},
 	{
+		sectionTitle: 'Overlay',
+		startOfSection: true,
+		label: 'Overlay Background',
+		name: 'hero.bgColor',
+		type: 'color',
+		span: 1,
+	},
+	{
+		label: 'Overlay Opacity',
+		name: 'hero.opacity',
+		type: 'opacity',
+		span: 1,
+	},
+	{
 		label: 'Align Contents',
 		startOfSection: true,
 		name: 'hero.align',

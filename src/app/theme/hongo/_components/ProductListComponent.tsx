@@ -16,10 +16,14 @@ import {
 } from '@/components/library';
 import { CollectionDetails } from './card';
 import { PADDING_X } from '.';
+import { useAppSelector } from '@/hooks';
 
 const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
 	const productList = sortDataByPriority(content?.productList);
 	const { basic } = data;
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
+	const limit = display == 'sm' ? 4 : 8;
 
 	if (!data || !content) return null;
 
@@ -35,21 +39,24 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path, 
 			<Column gap={0}>
 				<Column
 					py={4}
-					px={PADDING_X}>
+					px={px}>
 					<HeadingContainer>
 						<Column>
 							<Heading
 								fontFamily={basic?.primaryFont}
 								color={basic?.primaryTextColor}
 								_dark={{ color: basic?.primaryTextColor }}
-								size='xl'>
+								fontSize={{
+									base: '2rem',
+									md: display == 'sm' ? '2rem' : '3rem',
+								}}>
 								Products
 							</Heading>
 						</Column>
 					</HeadingContainer>
 
 					<CollectionDetails
-						limit={8}
+						limit={limit}
 						config={basic}
 					/>
 				</Column>
@@ -64,7 +71,10 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path, 
 									fontFamily={basic?.primaryFont}
 									color={basic?.primaryTextColor}
 									_dark={{ color: basic?.primaryTextColor }}
-									size='xl'>
+									fontSize={{
+										base: '2rem',
+										md: display == 'sm' ? '2rem' : '3rem',
+									}}>
 									{item.title}
 								</Heading>
 							</Column>
@@ -74,6 +84,7 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path, 
 							id={item?.id}
 							type={item?.type}
 							config={basic}
+							limit={display == 'sm' ? 1 : 4}
 						/>
 					</Container>
 				))}
@@ -84,7 +95,7 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, path, 
 				path='hongo'>
 				<Center
 					{...addProductListStyle}
-					mx={PADDING_X}
+					mx={px}
 					borderColor={basic?.btnColor}
 					_dark={{
 						borderColor: basic?.btnColor,
@@ -111,6 +122,8 @@ const Container = ({
 	const [hover, setHover] = useState(false);
 	const mouseEnter = () => setHover(true);
 	const mouseLeave = () => setHover(false);
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
 
 	const editButton = <BuilderEditButton>Edit Section</BuilderEditButton>;
 
@@ -123,7 +136,7 @@ const Container = ({
 			onMouseEnter={mouseEnter}
 			onMouseLeave={mouseLeave}
 			py={4}
-			px={PADDING_X}
+			px={px}
 			position='relative'
 			{...props}>
 			{hover && (

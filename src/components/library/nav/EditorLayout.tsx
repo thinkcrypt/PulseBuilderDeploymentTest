@@ -1,7 +1,15 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Flex, Heading, useMediaQuery, FlexProps, Button } from '@chakra-ui/react';
+import {
+	Flex,
+	Heading,
+	useMediaQuery,
+	FlexProps,
+	Button,
+	IconButton,
+	withDefaultVariant,
+} from '@chakra-ui/react';
 
 import {
 	useIsMobile,
@@ -23,9 +31,11 @@ import {
 	useAppSelector,
 	undo,
 	redo,
+	setDisplay,
 } from '../';
 import EditorNavbar from './EditorNavbar';
 import { useUpdateContentMutation } from '../store/services/contentApi';
+import { BiBorderRadius } from 'react-icons/bi';
 
 const PX = { base: padding.BASE, md: padding.MD, lg: padding.LG };
 const navbarStyleProps = {
@@ -65,9 +75,10 @@ const EditorLayout: FC<LayoutProps> = ({
 
 	React.useEffect(() => {
 		dispatch(refresh());
+		dispatch(setDisplay('lg'));
 	}, []);
 
-	const { history, next } = useAppSelector(state => state.builder);
+	const { history, next, display } = useAppSelector(state => state.builder);
 	const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 	const type = isLargerThan800 ? (props?.type == 'pos' ? 'pos' : 'default') : 'pos';
 
@@ -85,6 +96,9 @@ const EditorLayout: FC<LayoutProps> = ({
 		dispatch(undo());
 	};
 
+	const largeDisplay = () => dispatch(setDisplay('lg'));
+	const smallDisplay = () => dispatch(setDisplay('sm'));
+
 	const handleRedo = () => {
 		const formData = next[next?.length - 1];
 		trigger({
@@ -95,13 +109,38 @@ const EditorLayout: FC<LayoutProps> = ({
 		dispatch(redo());
 	};
 
+	const iconContainer = {
+		borderRadius: 4,
+		p: '2px',
+		bg: '#eee',
+		_dark: {
+			bg: 'black',
+		},
+		h: '36px',
+		align: 'center',
+	};
+
+	const iconStyle = {
+		borderColor: 'transparent',
+		variant: 'white',
+		h: '32px',
+		w: '44px',
+		size: 'lg',
+		borderRadius: 4,
+		_hover: { bg: 'white' },
+		_dark: {
+			bg: 'navbar.dark',
+			_hover: { bg: 'black' },
+		},
+	};
+
 	return (
 		<AuthWrapper>
 			<LayoutWrapper>
 				<EditorNavbar
 					{...navbarStyleProps}
 					{...navbarDataProps}>
-					<SpaceBetween>
+					<SpaceBetween gap={4}>
 						<Flex
 							gap={2}
 							align='center'>
@@ -113,7 +152,33 @@ const EditorLayout: FC<LayoutProps> = ({
 								leftIcon={<Icon name='undo' />}>
 								Undo
 							</Button>
+							<Flex {...iconContainer}>
+								<IconButton
+									{...iconStyle}
+									aria-label='large display'
+									onClick={largeDisplay}
+									bg={display == 'lg' ? 'white' : '#eee'}
+									_dark={{
+										bg: display == 'lg' ? 'black' : '#333',
+									}}
+									borderRightRadius={0}
+									icon={<Icon name='desktop' />}
+								/>
+								<IconButton
+									{...iconStyle}
+									aria-label='small display'
+									onClick={smallDisplay}
+									bg={display == 'sm' ? 'white' : '#eee'}
+									_dark={{
+										bg: display == 'sm' ? 'black' : '#333',
+									}}
+									borderLeftRadius={0}
+									icon={<Icon name='mobile' />}
+								/>
+							</Flex>
+
 							{/* <Button
+
 								isLoading={result.isLoading}
 								onClick={handleRedo}
 								isDisabled={next.length < 1}
@@ -122,15 +187,19 @@ const EditorLayout: FC<LayoutProps> = ({
 								Redo
 							</Button> */}
 						</Flex>
+
+						<Align gap={4}>
+							<ColorMode
+								size='20px'
+								position='navbar'
+							/>
+						</Align>
 					</SpaceBetween>
-					<Align gap={4}>
-						<ColorMode
-							size='20px'
-							position='navbar'
-						/>
-					</Align>
 				</EditorNavbar>
-				<Body>
+				<Body
+					_light={{
+						bg: 'white',
+					}}>
 					{type == 'default' && (
 						<EditorSidebar
 							h='80vh'
@@ -172,10 +241,11 @@ const mainProps: FlexProps = {
 	overflowY: 'hidden',
 	h: `calc(100vh - ${sizes.NAV_HEIGHT})`,
 	borderTopRightRadius: { base: `0`, md: THEME == 'basic' ? 0 : 'xl' },
-	bg: { base: 'background.400', md: 'background.light' },
+	bg: { base: 'white', md: 'white' },
 	_dark: { bg: 'background.dark', borderTopRightRadius: 0 },
-	px: PX,
-	pt: { base: 4, md: 4 },
+
+	//px: PX,
+	//pt: { base: 4, md: 4 },
 	pb: '32px',
 	w: 'full',
 };

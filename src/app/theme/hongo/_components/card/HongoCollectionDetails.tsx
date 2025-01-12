@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import { useGetAllQuery } from '@/components/library';
 import { ProductCard } from '.';
+import { useAppSelector } from '@/hooks';
 
 type HongoCollectionDetailsProps = {
 	id?: string;
@@ -26,6 +27,9 @@ const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			sort: 'priority',
 		},
 	});
+
+	// const { basic } = data;
+	const { display } = useAppSelector(state => state.builder);
 
 	const renderContent = () => {
 		if (isError) {
@@ -52,7 +56,10 @@ const HongoCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 		<Grid
 			borderBottom='1px solid'
 			borderBottomColor={config?.borderColor}
-			gridTemplateColumns={{ base: 'repeat(2, 1fr)', md: '1fr 1fr 1fr 1fr' }}
+			gridTemplateColumns={{
+				base: 'repeat(1, 1fr)',
+				md: display == 'sm' ? '1fr' : '1fr 1fr 1fr 1fr',
+			}}
 			py={4}
 			gap={4}>
 			{renderContent()}

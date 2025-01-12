@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Center, Grid, Heading, Text } from '@chakra-ui/react';
 import { HoverContentContainer, ImageView, HomeContentProps } from '@/components/library';
+import { useAppSelector } from '@/hooks';
+import { PADDING_X } from '.';
 
 type ItemProps = {
 	image: string;
@@ -10,6 +12,8 @@ type ItemProps = {
 
 const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, path }) => {
 	const data = content.featuredCollection;
+	const { display } = useAppSelector(state => state.builder);
+	const px = display == 'sm' ? '16px' : PADDING_X;
 	return (
 		<HoverContentContainer
 			title='Featured Collection'

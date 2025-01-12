@@ -39,6 +39,7 @@ type InputDataType =
 	| 'font-style'
 	| 'shadow'
 	| 'font-size'
-	| 'line-height';
+	| 'line-height'
+	| 'opacity';
 
 export default InputDataType;

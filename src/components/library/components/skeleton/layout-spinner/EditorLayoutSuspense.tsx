@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Center, Spinner, FlexProps, Flex } from '@chakra-ui/react';
-import { EditorLayout, Layout } from '../../..';
+import { EditorLayout, Layout, useAppSelector } from '../../..';
 
 type LayoutSpinnerProps = FlexProps & {
 	isLoading: boolean;
@@ -26,6 +26,7 @@ const EditorLayoutSuspense: FC<LayoutSpinnerProps> = ({
 	dataPath = 'hongo',
 	...props
 }) => {
+	const { display } = useAppSelector(state => state.builder);
 	if (isLoading)
 		return (
 			<Layout
@@ -47,6 +48,9 @@ const EditorLayoutSuspense: FC<LayoutSpinnerProps> = ({
 				data={data}
 				title={title}>
 				<Flex
+					mx='auto'
+					maxW={display == 'lg' ? '100%' : '400px'}
+					{...(display == 'sm' && { boxShadow: '0 10px 20px rgba(0,0,0,.3)' })}
 					flexDir='column'
 					{...props}>
 					{children}

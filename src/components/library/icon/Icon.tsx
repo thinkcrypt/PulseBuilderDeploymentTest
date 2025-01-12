@@ -68,6 +68,8 @@ import { AiOutlineThunderbolt } from 'react-icons/ai';
 import { FaCheckCircle } from 'react-icons/fa';
 import { GrEdit } from 'react-icons/gr';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { HiMiniDevicePhoneMobile } from 'react-icons/hi2';
+import { FaDesktop } from 'react-icons/fa';
 
 export type IconNameOptions =
 	| 'action-menu'
@@ -100,6 +102,7 @@ export type IconNameOptions =
 	| 'delivery'
 	| 'delivery-fill'
 	| 'deploy'
+	| 'desktop'
 	| 'discount'
 	| 'dots'
 	| 'edit'
@@ -117,6 +120,7 @@ export type IconNameOptions =
 	| 'leave'
 	| 'map'
 	| 'menu'
+	| 'mobile'
 	| 'order'
 	| 'payment'
 	| 'phone'
@@ -179,6 +183,7 @@ const icons: any = {
 	delivery: TbTruckDelivery,
 	'delivery-fill': FaTruck,
 	deploy: HiMiniRocketLaunch,
+	desktop: FaDesktop,
 	discount: RiDiscountPercentFill,
 	dots: BsThreeDots,
 	edit: MdOutlineEdit,
@@ -195,6 +200,7 @@ const icons: any = {
 	leave: SiCkeditor4,
 	map: FaMapMarkerAlt,
 	menu: CiMenuBurger,
+	mobile: HiMiniDevicePhoneMobile,
 	order: TbFileInvoice,
 	payment: GiMoneyStack,
 	pos: TiPrinter,
