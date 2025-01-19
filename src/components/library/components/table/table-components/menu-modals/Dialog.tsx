@@ -30,6 +30,7 @@ const Dialog: FC<ModalProps & DrawerProps & { children: ReactNode }> = ({ childr
 					_dark={{
 						bg: 'menu.dark',
 					}}
+					shadow='2xl'
 					w='100%'
 					maxH='85vh'
 					minH='20vh'

@@ -100,7 +100,6 @@ const ViewItemModal: FC<DeleteItemModalProps> = ({ title, path, dataModel, trigg
 						</Column>
 					</Body>
 				</Content>
-				{/* </AlertDialogOverlay> */}
 			</Container>
 		</>
 	);

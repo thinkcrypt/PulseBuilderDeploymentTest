@@ -80,6 +80,32 @@ const sidebar: SidebarItemType[] = [
 	},
 	{
 		startOfSection: true,
+		sectionTitle: 'Location Management',
+		title: 'Locations',
+		href: '/locations',
+		icon: 'location',
+		path: 'locations',
+	},
+	{
+		title: 'Inventory',
+		href: '/inventories',
+		icon: 'inventory',
+		path: 'inventories',
+	},
+	{
+		title: 'Transfers',
+		href: '/transfers',
+		icon: 'transfer',
+		path: 'transfers',
+	},
+	{
+		title: 'Staffs',
+		href: '/staffs',
+		icon: 'staff',
+		path: 'staffs',
+	},
+	{
+		startOfSection: true,
 		sectionTitle: 'Inventory Management',
 		title: 'Damages',
 		href: '/damages',

@@ -15,7 +15,7 @@ export const dataFields: InputData<DataType>[] = [
 	{
 		sectionTitle: 'Customer Info',
 		name: 'name',
-		label: 'Product Name',
+		label: 'Full Name',
 		isRequired: true,
 		type: 'text',
 	},

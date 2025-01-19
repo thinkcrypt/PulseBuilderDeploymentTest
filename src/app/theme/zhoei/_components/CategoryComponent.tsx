@@ -12,6 +12,7 @@ import {
 } from '@/components/library';
 import { FlexChild } from '@/builder';
 import { SubHeading, Title } from './hero';
+import { useAppSelector } from '@/hooks';
 
 type HeroDataProps = {
 	content: any;
@@ -28,6 +29,8 @@ const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, data }) => {
 		color: data?.basic?.secondaryTextColor,
 		fontFamily: data?.basic?.secondaryFont,
 	};
+	const { display } = useAppSelector(state => state.builder);
+	const limit = display == 'sm' ? 1 : 4;
 	const GetItem = ({ path, id }: { path: string; id: string }) => {
 		const { name, image } = useGetItemNameById({
 			id,
@@ -69,8 +72,7 @@ const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, data }) => {
 			title='Category Section'
 			data={content}
 			bg={data?.basic?.bgColor}
-			px={8}
-			py={8}
+			p={display == 'sm' ? 4 : 8}
 			dataModel={dataModel}>
 			<TopContainer>
 				<Column
@@ -96,13 +98,13 @@ const CategoryComponent: FC<HeroDataProps> = ({ content, dataModel, data }) => {
 			</TopContainer>
 
 			<Grid
-				gridTemplateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }}
+				gridTemplateColumns={{ base: '1fr', md: `repeat(${limit}, 1fr)` }}
 				py={8}
 				gap={4}>
 				{content?.collections?.items?.length <= 0 && <Text>No items found</Text>}
 				{content?.collections?.items?.map(
 					(item: any, i: number) =>
-						i < 4 && (
+						i < limit && (
 							<GetItem
 								key={i}
 								path={item?.type}

@@ -189,6 +189,7 @@ const TableMenu: FC<TableMenuProps> = ({ data, id, path, title, item: dataItem, 
 								<item.modal
 									{...commonProps}
 									data={dataItem}
+									doc={doc}
 								/>
 							);
 						case 'custom-modal':

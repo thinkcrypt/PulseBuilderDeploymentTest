@@ -5,18 +5,7 @@ const data = [
 		isRequired: false,
 		type: 'image',
 	},
-	{
-		name: 'hero.title',
-		label: 'Title',
-		isRequired: true,
-		type: 'text',
-	},
-	{
-		name: 'hero.titleColor',
-		label: 'Title Color',
-		isRequired: true,
-		type: 'text',
-	},
+
 	{
 		name: 'hero.subTitle',
 		label: 'Sub Title',

@@ -29,6 +29,7 @@ import {
 	fontWeightOptions,
 	BLineHeight,
 	BOpacity,
+	VSlider,
 } from '../../../';
 
 type Option = {
@@ -235,6 +236,19 @@ const FormInput: FC<FormInputProps> = ({
 				<BOpacity
 					isRequired={isRequired}
 					helper={item?.helper}
+					{...props}
+				/>
+			);
+		case 'slider':
+			return (
+				<VSlider
+					isRequired={isRequired}
+					helper={item?.helper}
+					values={item?.values}
+					threshold={item?.threshold}
+					min={item?.min}
+					max={item?.max}
+					step={item?.step}
 					{...props}
 				/>
 			);

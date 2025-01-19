@@ -111,6 +111,8 @@ const Preferences = ({ path }: { path: string }) => {
 							<Button
 								size='sm'
 								onClick={handleSubmit}
+								loadingText='Processing'
+								spinnerPlacement='start'
 								isLoading={result?.isLoading}>
 								Apply
 							</Button>

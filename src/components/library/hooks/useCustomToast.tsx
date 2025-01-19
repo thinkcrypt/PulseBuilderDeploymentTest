@@ -99,11 +99,11 @@ const container = {
 const successContainer = {
 	...container,
 	_light: {
-		bg: '#111',
+		bg: '#171717',
 		color: '#fafafa',
 	},
 	_dark: {
-		bg: '#fafafa',
+		bg: '#eee',
 		color: '#222',
 	},
 };

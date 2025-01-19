@@ -3,6 +3,7 @@ import { Button, Grid } from '@chakra-ui/react';
 import { BgImage } from '@/builder';
 import { Column, HoverContentContainer } from '@/components/library';
 import { SubHeading, Title } from './hero';
+import { useAppSelector } from '@/hooks';
 
 type ItemProps = {
 	image: string;
@@ -38,6 +39,7 @@ const Discover: FC<{
 	data: any;
 	dataModel: any;
 }> = ({ data, dataModel }) => {
+	const { display } = useAppSelector(state => state.builder);
 	const renderItems = data?.content?.discover?.items.map((item: ItemProps, i: number) => (
 		<DiscoverItem
 			data={data}
@@ -51,13 +53,12 @@ const Discover: FC<{
 			title='Discover Section'
 			data={data?.content}
 			dataModel={dataModel}
-			p={4}
-			py={8}
+			p={display == 'sm' ? 4 : 8}
 			bg={data?.basic?.bgColor}>
 			<Column gap={16}>
 				<Column
 					textAlign='center'
-					w={{ base: 'full', md: '75%' }}
+					w={{ base: 'full', md: display == 'sm' ? 'full' : '75%' }}
 					mx='auto'
 					gap={8}>
 					<SubHeading
@@ -74,13 +75,13 @@ const Discover: FC<{
 						_dark={{
 							color: data?.basic?.primaryTextColor,
 						}}
-						type='h3'>
+						type={display == 'sm' ? 'h5' : 'h3'}>
 						{data?.content?.discover?.title}
 					</Title>
 				</Column>
 				<Grid
 					gap={8}
-					gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }}>
+					gridTemplateColumns={{ base: '1fr', md: display == 'sm' ? '1fr' : '1fr 1fr' }}>
 					{renderItems}
 				</Grid>
 			</Column>

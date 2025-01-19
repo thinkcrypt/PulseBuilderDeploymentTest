@@ -16,7 +16,7 @@ import { Align, Column, ImageContainer, PLACEHOLDER_IMAGE, RenderTag } from '../
 type ViewItemProps = GridProps & {
 	title: string;
 	type?: string;
-	children: string | boolean | number | Date;
+	children?: ReactNode;
 	colorScheme?: any;
 	path?: string;
 	isLoading?: boolean;
@@ -196,7 +196,7 @@ const ViewItem: FC<ViewItemProps> = ({
 				<Heading size='xs'>{title}:</Heading>
 			</SkeletonContent>
 			<SkeletonContent isLoading={isLoading}>
-				{!isLoading && renderContent({ type, children, colorScheme, path, isLoading })}
+				{!isLoading && children && renderContent({ type, children, colorScheme, path, isLoading })}
 			</SkeletonContent>
 		</GridContainer>
 	);

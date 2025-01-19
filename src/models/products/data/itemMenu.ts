@@ -1,3 +1,4 @@
+import ListInventoryModal from '@/components/library/components/modals/products/ListInventoryModal';
 import schema from '../product.schema';
 import { convertToViewFields, MenuItemProps } from '@/components/library';
 
@@ -15,6 +16,11 @@ const itemMenu: MenuItemProps[] = [
 		title: 'View',
 		type: 'view-modal',
 		dataModel: convertToViewFields({ schema }),
+	},
+	{
+		title: 'Stock Details',
+		type: 'custom',
+		modal: ListInventoryModal,
 	},
 	{
 		title: 'Make Copy',

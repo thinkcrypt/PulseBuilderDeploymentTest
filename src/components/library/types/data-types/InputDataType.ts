@@ -40,6 +40,7 @@ type InputDataType =
 	| 'shadow'
 	| 'font-size'
 	| 'line-height'
+	| 'slider'
 	| 'opacity';
 
 export default InputDataType;

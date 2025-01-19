@@ -4,23 +4,35 @@ import React, { FC } from 'react';
 import { Center, Flex, Grid, Image, Text, TextProps } from '@chakra-ui/react';
 import { FlexChild, GridChild } from '@/builder';
 import { Align, HoverContentContainer, Icon } from '@/components/library';
+import { useAppSelector } from '@/hooks';
 
 const ZhoeiHeaderComponent = ({ data, dataModel }: { data: any; dataModel: any }) => {
 	const cartCount = () => {
 		return 3;
 	};
+	const { display } = useAppSelector(state => state.builder);
 	return (
 		<HoverContentContainer
 			title='Hero Section'
 			type='basic'
 			data={data?.basic}
 			dataModel={dataModel}>
-			<HeaderContainer data={data}>
-				<HeaderSection display={{ base: 'none', md: 'flex' }}>
-					<HeaderText color={data?.basic?.headerFg}>Home</HeaderText>
-					<HeaderText color={data?.basic?.headerFg}>Categories</HeaderText>
-					<HeaderText color={data?.basic?.headerFg}>Shop</HeaderText>
-				</HeaderSection>
+			<HeaderContainer
+				data={data}
+				h={{ base: '60px', md: display == 'lg' ? '80px' : '60px' }}>
+				{display == 'lg' ? (
+					<HeaderSection display={{ base: 'none', md: 'flex' }}>
+						<HeaderText color={data?.basic?.headerFg}>Home</HeaderText>
+						<HeaderText color={data?.basic?.headerFg}>Categories</HeaderText>
+						<HeaderText color={data?.basic?.headerFg}>Shop</HeaderText>
+					</HeaderSection>
+				) : (
+					<HeaderIcon
+						color={data?.basic?.headerFg}
+						name='menu'
+						// href='#'
+					/>
+				)}
 				{/* <HeaderSection display={{ base: 'flex', md: 'none' }}>
 				<MenuDrawer />
 			</HeaderSection> */}
@@ -35,7 +47,7 @@ const ZhoeiHeaderComponent = ({ data, dataModel }: { data: any; dataModel: any }
 				</Center>
 
 				<HeaderSection
-					gap={{ base: 4, md: 8 }}
+					gap={{ base: 4, md: display == 'lg' ? 8 : 4 }}
 					justify='flex-end'>
 					{/* <SearchDrawer> */}
 					<HeaderIcon

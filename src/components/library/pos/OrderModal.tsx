@@ -21,7 +21,7 @@ import {
 
 import PosInput from './PosInput';
 import OrderPriceDetails from './pos-card/OrderPriceDetails/OrderPriceDetails';
-import { useAddOrderMutation, useGetCartTotalMutation } from '@/store/services/ordersApi';
+import { useAddOrderMutation, useGetCartTotalMutation } from '@/components/library';
 
 import {
 	resetCart,
@@ -34,6 +34,7 @@ import {
 	useAppSelector,
 	useIsMobile,
 	SpaceBetween,
+	VCheckbox,
 } from '@/components/library';
 import {
 	OrderAddress,
@@ -58,7 +59,8 @@ const OrderModal = () => {
 	const [paidAmount, setPaidAmount] = useState<any>();
 	const [paymentMethod, setPaymentMethod] = useState('cash');
 	const [note, setNote] = useState('');
-	const [status, setStatus] = useState('pending');
+	const [status, setStatus] = useState('confirmed');
+	const [emailReceipt, setEmailReceipt] = useState(false);
 
 	const [createOrder, createOrderResult] = useAddOrderMutation();
 	const { isSuccess, isError, isLoading, error, data } = createOrderResult;
@@ -84,11 +86,8 @@ const OrderModal = () => {
 	};
 
 	useCustomToast({
-		successText: 'Order Created',
-		isSuccess: isSuccess,
-		isError: isError,
-		isLoading: isLoading,
-		error: error,
+		successText: 'Order Placed Successfully',
+		...createOrderResult,
 	});
 
 	const handleCreateOrder = () => {
@@ -101,6 +100,7 @@ const OrderModal = () => {
 			status,
 			address,
 			customer: user,
+			emailReceipt,
 		});
 	};
 
@@ -203,6 +203,11 @@ const OrderModal = () => {
 					'completed',
 					'cancelled',
 				]}
+			/>
+			<VCheckbox
+				isChecked={emailReceipt}
+				onChange={(e: any) => setEmailReceipt(e.target.checked)}
+				label='Email Receipt'
 			/>
 			<VTextarea
 				value={note}

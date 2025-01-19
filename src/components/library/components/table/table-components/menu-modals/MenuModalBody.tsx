@@ -7,19 +7,26 @@ type MenuModalBodyProps = ModalBodyProps &
 		children: React.ReactNode;
 	};
 
-const MenuModalBody: FC<MenuModalBodyProps> = ({ children }) => {
+const MenuModalBody: FC<MenuModalBodyProps> = ({ children, ...props }) => {
 	const isMobile = useIsMobile();
 	if (isMobile) {
 		return (
 			<DrawerBody
 				px={{ base: 4, md: 6 }}
-				overflowY='scroll'>
+				overflowY='scroll'
+				{...props}>
 				{children}
 			</DrawerBody>
 		);
 	}
 
-	return <ModalBody px={{ base: 4, md: 6 }}>{children}</ModalBody>;
+	return (
+		<ModalBody
+			px={{ base: 4, md: 6 }}
+			{...props}>
+			{children}
+		</ModalBody>
+	);
 };
 
 export default MenuModalBody;

@@ -7,6 +7,7 @@ import {
 	DrawerContent,
 	ModalOverlay,
 	ModalContent,
+	DrawerContentProps,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
@@ -19,6 +20,7 @@ type MenuModalProps = ModalProps &
 
 const MenuModal: FC<MenuModalProps> = ({ children, ...props }) => {
 	const isMobile = useIsMobile();
+	const drawerStyleProps: any = styles.DRAWER;
 
 	if (isMobile) {
 		return (
@@ -27,36 +29,17 @@ const MenuModal: FC<MenuModalProps> = ({ children, ...props }) => {
 				placement='bottom'
 				{...props}>
 				<DrawerOverlay />
-				<DrawerContent
-					bg='menu.light'
-					_dark={{
-						bg: 'menu.dark',
-					}}
-					maxH='85vh'
-					userSelect='none'
-					borderTopRadius='20px'>
-					{children}
-				</DrawerContent>
+				<DrawerContent {...drawerStyleProps}>{children}</DrawerContent>
 			</Drawer>
 		);
 	}
 
 	return (
-		<Modal {...props}>
+		<Modal
+			isCentered
+			{...props}>
 			<ModalOverlay _light={{ bg: styles?.color?.MODAL_OVERLAY?.LIGHT }} />
-			<ModalContent
-				boxShadow={shadow.DASH}
-				borderRadius={radius.MODAL}
-				bg='menu.light'
-				_light={{
-					borderWidth: 1,
-					borderColor: 'container.borderLight',
-				}}
-				_dark={{
-					bg: 'menu.dark',
-				}}>
-				{children}
-			</ModalContent>
+			<ModalContent {...styles?.MODAL}>{children}</ModalContent>
 		</Modal>
 	);
 };

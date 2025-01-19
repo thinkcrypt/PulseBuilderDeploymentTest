@@ -13,6 +13,7 @@ const HeroData: FC<HeroDataProps> = ({ data, content, dataModel }) => {
 		<HoverContentContainer
 			title='Hero Section'
 			data={content}
+			section
 			dataModel={dataModel}>
 			<ZhoeiHero
 				data={data}

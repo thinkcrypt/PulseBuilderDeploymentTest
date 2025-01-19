@@ -36,7 +36,7 @@ type VDataMenuProps = InputProps & {
 	dataModel?: any;
 	hideNew?: boolean;
 	field?: string;
-	type?: 'object' | 'value';
+	type?: 'object' | 'value' | string;
 	dataKey?: 'string';
 	unselect?: boolean;
 };

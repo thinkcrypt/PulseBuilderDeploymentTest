@@ -45,6 +45,7 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { FaCartShopping } from 'react-icons/fa6';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { IoIosArrowRoundBack } from 'react-icons/io';
+import { BsBuildingsFill } from 'react-icons/bs';
 
 export type IconNameOptions =
 	| 'add'
@@ -74,6 +75,7 @@ export type IconNameOptions =
 	| 'home'
 	| 'items'
 	| 'leave'
+	| 'location'
 	| 'menu'
 	| 'order'
 	| 'pos'
@@ -88,7 +90,8 @@ export type IconNameOptions =
 	| 'grid'
 	| 'hamburger'
 	| 'search'
-	| 'user';
+	| 'user'
+	| 'location';
 
 type IconProps = {
 	size?: number;
@@ -111,6 +114,7 @@ const icons: any = {
 	category: BiSolidCategory,
 	order: TbFileInvoice,
 	brand: MdBrandingWatermark,
+	location: BsBuildingsFill,
 	coupon: RiCoupon2Fill,
 	user: FaUserFriends,
 	customer: FaUserTag,

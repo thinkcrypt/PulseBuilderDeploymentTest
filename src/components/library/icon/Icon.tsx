@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { IoIosHome, IoIosAddCircleOutline, IoIosStar } from 'react-icons/io';
 import { IoAdd, IoBagOutline, IoGridOutline, IoSearchOutline } from 'react-icons/io5';
 import { TbArrowBack, TbSelector } from 'react-icons/tb';
-import { BsCalendar2Date } from 'react-icons/bs';
+import { BsBuildingsFill, BsCalendar2Date } from 'react-icons/bs';
 import colors from '@/theme/colors.theme';
 import { useColorModeValue } from '@chakra-ui/react';
 import { TbArrowForward } from 'react-icons/tb';
@@ -70,6 +70,9 @@ import { GrEdit } from 'react-icons/gr';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { HiMiniDevicePhoneMobile } from 'react-icons/hi2';
 import { FaDesktop } from 'react-icons/fa';
+import { FaPeopleGroup } from 'react-icons/fa6';
+import { MdInventory } from 'react-icons/md';
+import { BiTransferAlt } from 'react-icons/bi';
 
 export type IconNameOptions =
 	| 'action-menu'
@@ -116,8 +119,10 @@ export type IconNameOptions =
 	| 'fields'
 	| 'home'
 	| 'info'
+	| 'inventory'
 	| 'items'
 	| 'leave'
+	| 'location'
 	| 'map'
 	| 'menu'
 	| 'mobile'
@@ -138,10 +143,12 @@ export type IconNameOptions =
 	| 'settings'
 	| 'settings-fill'
 	| 'shop'
+	| 'staff'
 	| 'store'
 	| 'subtract'
 	| 'supplier'
 	| 'thunder'
+	| 'transfer'
 	| 'undo'
 	| 'user'
 	| 'z-cart'
@@ -196,8 +203,10 @@ const icons: any = {
 	fields: FaTable,
 	home: GoHomeFill,
 	info: FaCircleInfo,
+	inventory: MdInventory,
 	items: MdFastfood,
 	leave: SiCkeditor4,
+	location: BsBuildingsFill,
 	map: FaMapMarkerAlt,
 	menu: CiMenuBurger,
 	mobile: HiMiniDevicePhoneMobile,
@@ -219,10 +228,12 @@ const icons: any = {
 	settings: TbSettings,
 	'settings-fill': RiSettings3Fill,
 	shop: IoStorefront,
+	staff: FaPeopleGroup,
 	store: IoStorefront,
 	subtract: GrSubtract,
 	supplier: PiUserListFill,
 	thunder: AiOutlineThunderbolt,
+	transfer: BiTransferAlt,
 	undo: HiArrowUturnLeft,
 	user: FaUserFriends,
 

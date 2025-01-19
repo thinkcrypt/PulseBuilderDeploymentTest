@@ -9,6 +9,7 @@ import { IoLogoTwitter } from 'react-icons/io5';
 import { IoLogoLinkedin } from 'react-icons/io5';
 import { IoLogoYoutube } from 'react-icons/io5';
 import { Align, HoverContentContainer } from '@/components/library';
+import { useAppSelector } from '@/hooks';
 
 const icons: { [key: string]: React.ElementType } = {
 	instagram: IoLogoInstagram,
@@ -56,6 +57,7 @@ const sizes = {
 };
 
 const ZhoeiBanner = ({ data, dataModel }: { data: any; dataModel: any }) => {
+	const { display } = useAppSelector(state => state.builder);
 	const BannerIcon = ({ name, href }: { name: string; href: string }) => {
 		const IconComponent = icons[name] || IoLogoInstagram;
 		return (
@@ -77,21 +79,23 @@ const ZhoeiBanner = ({ data, dataModel }: { data: any; dataModel: any }) => {
 			dataModel={dataModel}>
 			<Grid
 				{...(data?.content?.banner?.hide && { display: 'none' })}
-				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
+				gridTemplateColumns={{ base: '1fr', md: display == 'sm' ? '1fr' : '1fr 1fr 1fr' }}
 				px={padding.LAYOUT_X}
 				bg={data?.content?.banner?.bgColor}
 				h={{ base: sizes.BANNER_HEIGHT_BASE, md: sizes.BANNER_HEIGHT }}>
-				<Flex
-					align='center'
-					gap={4}
-					display={{ base: 'none', md: 'flex' }}>
-					{bannerIcons.map((icon, idx) => (
-						<BannerIcon
-							key={idx}
-							{...icon}
-						/>
-					))}
-				</Flex>
+				{display == 'lg' && (
+					<Flex
+						align='center'
+						gap={4}
+						display={{ base: 'none', md: 'flex' }}>
+						{bannerIcons.map((icon, idx) => (
+							<BannerIcon
+								key={idx}
+								{...icon}
+							/>
+						))}
+					</Flex>
+				)}
 				<Align
 					h={{ base: sizes.BANNER_HEIGHT_BASE, md: sizes.BANNER_HEIGHT }}
 					justify='center'
@@ -105,16 +109,18 @@ const ZhoeiBanner = ({ data, dataModel }: { data: any; dataModel: any }) => {
 					</Text>
 				</Align>
 
-				<Align justify='flex-end'>
-					<Text
-						textAlign='right'
-						display={{ base: 'none', md: 'flex' }}
-						letterSpacing='2px'
-						color={data?.content?.banner?.fgColor}
-						fontSize='.8rem'>
-						{data?.content?.banner?.rightText}
-					</Text>
-				</Align>
+				{display == 'lg' && (
+					<Align justify='flex-end'>
+						<Text
+							textAlign='right'
+							display={{ base: 'none', md: 'flex' }}
+							letterSpacing='2px'
+							color={data?.content?.banner?.fgColor}
+							fontSize='.8rem'>
+							{data?.content?.banner?.rightText}
+						</Text>
+					</Align>
+				)}
 			</Grid>
 		</HoverContentContainer>
 	);

@@ -1,20 +1,17 @@
 import React, { FC } from 'react';
 import { Box, Button, Grid, Heading, Image, Text } from '@chakra-ui/react';
-import {
-	ViewContentContainer,
-	ImageView,
-	HoverContentContainer,
-	Column,
-} from '@/components/library';
+import { HoverContentContainer, Column } from '@/components/library';
 import { HomeContentProps } from '.';
 import { SubHeading, Title } from './hero';
+import { useAppSelector } from '@/hooks';
 
 const AboutComponent: FC<HomeContentProps> = ({ dataModel, content, data }) => {
 	const { title, subTitle, image } = content?.about;
+	const { display } = useAppSelector(state => state.builder);
 	return (
 		<HoverContentContainer
 			bg={data?.basic?.bgColor}
-			px={8}
+			px={display == 'sm' ? 4 : 8}
 			title='About Us'
 			data={content}
 			dataModel={dataModel}>
@@ -33,7 +30,7 @@ const AboutComponent: FC<HomeContentProps> = ({ dataModel, content, data }) => {
 				gap={16}
 				w='full'
 				alignItems='center'
-				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }}>
+				gridTemplateColumns={{ base: '1fr', md: display == 'sm' ? '1fr' : '1fr 1fr' }}>
 				<Image
 					alt='About Us'
 					w='full'

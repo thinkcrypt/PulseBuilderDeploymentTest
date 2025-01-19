@@ -5,6 +5,7 @@ import { HomeContentProps } from '.';
 import { BgImage } from '@/builder';
 import { SubHeading, Title } from './hero';
 import { IconButton } from '@/commerce-components';
+import { useAppSelector } from '@/hooks';
 
 type ItemProps = {
 	image: string;
@@ -14,16 +15,17 @@ type ItemProps = {
 
 const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, data: asData }) => {
 	const data = content.featuredCollection;
+	const { display } = useAppSelector(state => state.builder);
 	return (
 		<HoverContentContainer
 			title='Featured Collection'
 			data={content}
 			bg={asData?.basic?.bgColor}
-			p={8}
+			p={display == 'sm' ? 4 : 8}
 			dataModel={dataModel}>
 			{!data || (data?.length == 0 && <Center>No Content Added Yet</Center>)}
 			<Grid
-				gridTemplateColumns='1fr 1fr 1fr'
+				gridTemplateColumns={display == 'sm' ? '1fr' : '1fr 1fr 1fr'}
 				gap={4}>
 				{data?.map((item: ItemProps, i: number) => (
 					<BgImage

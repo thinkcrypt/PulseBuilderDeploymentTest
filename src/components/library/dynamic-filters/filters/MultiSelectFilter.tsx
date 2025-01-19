@@ -143,7 +143,7 @@ const MultiSelectFilter: FC<FilterProps> = ({ title, field, options, label }) =>
 					maxH={{ base: 'auto', md: '180px' }}
 					overflowY='scroll'
 					gap={2}>
-					{options.length === 0 && <FilterCheckbox>No options available</FilterCheckbox>}
+					{options?.length === 0 && <FilterCheckbox>No options available</FilterCheckbox>}
 					{options
 						.filter(option => option?.label?.toLowerCase()?.includes(search?.toLowerCase()))
 						.map((option: any, i: number) => (

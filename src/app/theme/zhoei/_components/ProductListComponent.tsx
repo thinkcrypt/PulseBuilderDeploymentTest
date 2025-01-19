@@ -14,25 +14,10 @@ import {
 import { HomeContentProps, CollectionDetails } from '.';
 import { FlexChild } from '@/builder';
 import { SubHeading, Title } from './hero';
+import { useAppSelector } from '@/hooks';
 
 const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, data }) => {
 	const productList = sortDataByPriority(content?.productList);
-
-	const editButton = (
-		<Button
-			size='sm'
-			colorScheme='gray'>
-			Edit
-		</Button>
-	);
-
-	const deleteButton = (
-		<Button
-			size='sm'
-			colorScheme='red'>
-			Delete
-		</Button>
-	);
 
 	return (
 		<HoverContentContainer
@@ -169,6 +154,7 @@ const Container = ({
 			Delete
 		</Button>
 	);
+	const { display } = useAppSelector(state => state.builder);
 
 	if (!item) return null;
 
@@ -178,7 +164,7 @@ const Container = ({
 			onMouseLeave={mouseLeave}
 			py={4}
 			pb={0}
-			px={8}
+			px={display == 'sm' ? 4 : 8}
 			position='relative'
 			{...props}>
 			{hover && (

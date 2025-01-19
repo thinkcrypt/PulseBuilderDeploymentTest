@@ -2,6 +2,7 @@ import { PLACEHOLDER_IMAGE, useGetAllQuery } from '@/components/library';
 import { Flex, Grid, Text } from '@chakra-ui/react';
 import React from 'react';
 import ProductCard from './hero/ProductCard';
+import { useAppSelector } from '@/hooks';
 
 const CollectionDetails = ({
 	id,
@@ -12,6 +13,8 @@ const CollectionDetails = ({
 	type: 'collection' | 'category';
 	data: any;
 }) => {
+	const { display } = useAppSelector(state => state.builder);
+	const limit = display == 'sm' ? 1 : 4;
 	const { data, isLoading, isError } = useGetAllQuery({
 		path: 'products',
 
@@ -24,7 +27,7 @@ const CollectionDetails = ({
 	});
 	return (
 		<Grid
-			gridTemplateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }}
+			gridTemplateColumns={{ base: '1fr', md: `repeat(${limit}, 1fr)` }}
 			py={4}
 			pb={0}
 			gap={4}>
@@ -32,7 +35,7 @@ const CollectionDetails = ({
 			{data &&
 				data?.doc?.map(
 					(item: any, index: number) =>
-						index < 4 && (
+						index < limit && (
 							<ProductCard
 								data={asData}
 								w='100%'

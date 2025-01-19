@@ -35,4 +35,8 @@ export const schema: any = {
 };
 
 export { default as assetSchema } from './asset/asset.schema';
+export { default as locationSchema } from './location/location.schema';
 export { default as paymentAccountSchema } from './payment-account/paymentAccount.schema';
+export { default as staffSchema } from './staff/staff.schema';
+export { default as inventorySchema } from './products/inventory.schema';
+export { default as transferSchema } from './transfers/schema';

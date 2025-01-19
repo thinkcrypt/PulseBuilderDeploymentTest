@@ -8,7 +8,7 @@ type InputContainerProps = CheckboxProps & {
 	label: string;
 	isRequired?: boolean;
 	helper?: string;
-	value: boolean | undefined;
+	value?: boolean | undefined;
 	placeholder?: string;
 };
 

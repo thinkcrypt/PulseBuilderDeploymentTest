@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { PosLayout as Layout } from '@/components/library';
-import { Grid, Flex } from '@chakra-ui/react';
+import { PosLayout as Layout, SummaryContainer } from '@/components/library';
+import { Grid, Flex, FlexProps, GridProps } from '@chakra-ui/react';
 import PosFilters from '@/components/library/pos/PosFilters';
 import PosSearch from '@/components/library/pos/PosSearch';
 import PosCart from '@/components/library/pos/PosCart';
@@ -15,25 +15,9 @@ const PosPage = () => {
 			<Layout
 				path='/pos'
 				title='POS'>
-				<Grid
-					gridTemplateColumns={{
-						base: '1fr',
-						md: '8fr 2fr',
-					}}
-					maxH='100vh'
-					overflow='none'>
-					<Flex
-						bg='background.light'
-						overflow='hidden'
-						flexDir='column'
-						gap={{ base: 3, md: 1 }}>
-						<Flex
-							overflowX='scroll'
-							flexDir={{ base: 'column', md: 'row' }}
-							px={4}
-							justify='space-between'
-							gap={2}
-							align='center'>
+				<Grid {...pageGrid}>
+					<Flex {...container}>
+						<Flex {...navContainer}>
 							<PosSearch />
 
 							<PosFilters
@@ -47,12 +31,38 @@ const PosPage = () => {
 						</Flex>
 						<PorductListPos />
 					</Flex>
-
-					<PosCart />
+					<SummaryContainer>
+						<PosCart />
+					</SummaryContainer>
 				</Grid>
 			</Layout>
 		</>
 	);
+};
+
+const pageGrid: GridProps = {
+	gridTemplateColumns: {
+		base: '1fr',
+		md: '8fr 2fr',
+	},
+	maxH: '100vh',
+	overflow: 'none',
+};
+
+const container: FlexProps = {
+	bg: 'background.light',
+	overflow: 'hidden',
+	flexDir: 'column',
+	gap: { base: 3, md: 1 },
+};
+
+const navContainer: FlexProps = {
+	overflowX: 'scroll',
+	flexDir: { base: 'column', md: 'row' },
+	px: 4,
+	justify: 'space-between',
+	gap: 2,
+	align: 'center',
 };
 
 export default PosPage;

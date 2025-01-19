@@ -52,6 +52,7 @@ export const shadow = {
 	MENU: 'lg',
 	CARD: '2px 2px 10px rgba(0,0,0,.1)',
 	DASH: '0px 0px 1px rgba(0,0,0,.08), 0px 2px 2px 0px rgba(0, 0, 0, 0.04)',
+	MODAL: '2xl',
 };
 
 export const padding = {
@@ -112,6 +113,48 @@ export const styles = {
 			borderWidth: 1,
 		},
 		borderRadius: '6px',
+	},
+	MODAL: {
+		bg: 'menu.light',
+		_light: {
+			borderWidth: 1,
+			borderColor: 'container.borderLight',
+		},
+		_dark: {
+			bg: 'menu.dark',
+		},
+		borderRadius: '16px',
+		shadow: '2xl',
+	},
+	DRAWER: {
+		bg: 'menu.light',
+		_dark: {
+			bg: 'menu.dark',
+		},
+		maxH: '85vh',
+		userSelect: 'none',
+		borderTopRadius: '20px',
+	},
+	CONTAINER: {
+		RADIUS: {
+			borderRadius: '8px',
+		},
+		SHADOW: {
+			boxShadow: shadow.DASH,
+		},
+		BG: {
+			bg: 'container.newLight',
+			_dark: {
+				bg: 'menu.dark',
+			},
+		},
+		BORDER: {
+			borderWidth: 1,
+			borderColor: 'container.borderLight',
+			_dark: {
+				borderColor: '#eee',
+			},
+		},
 	},
 };
 

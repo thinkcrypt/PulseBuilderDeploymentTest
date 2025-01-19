@@ -243,9 +243,6 @@ const mainProps: FlexProps = {
 	borderTopRightRadius: { base: `0`, md: THEME == 'basic' ? 0 : 'xl' },
 	bg: { base: 'white', md: 'white' },
 	_dark: { bg: 'background.dark', borderTopRightRadius: 0 },
-
-	//px: PX,
-	//pt: { base: 4, md: 4 },
 	pb: '32px',
 	w: 'full',
 };
