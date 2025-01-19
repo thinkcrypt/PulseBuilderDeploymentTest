@@ -26,6 +26,25 @@ const schema = {
 		tableType: 'text',
 		tableKey: 'category.name',
 	},
+	incomingStock: {
+		label: 'Incoming Stock',
+		type: 'number',
+		displayInTable: true,
+		default: true,
+	},
+	receivedStock: {
+		label: 'Received Stock',
+		type: 'number',
+		displayInTable: true,
+		default: true,
+	},
+	stockInHand: {
+		label: 'Stock In Hand',
+		type: 'number',
+		displayInTable: true,
+		default: true,
+	},
+
 	brand: {
 		label: 'Brand',
 		type: 'data-menu',

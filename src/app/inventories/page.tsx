@@ -21,6 +21,9 @@ const tableLayout: any[] = [
 	'name',
 	'price',
 	'cost',
+	'stockInHand',
+	'receivedStock',
+	'incomingStock',
 	'category',
 	'brand',
 	'vat',
@@ -51,7 +54,7 @@ const table: TableObjectProps = {
 	data: convertToTableFields({ schema: inventorySchema, fields: tableLayout }),
 };
 
-const page: NextPage = () => {
+const InventoriesPage: React.FC<{}> = () => {
 	const { data, isLoading } = useGetAllQuery({ path: 'locations' });
 
 	return <PageTable table={table}>{data && <WarehouseSelect data={data} />}</PageTable>;
@@ -74,12 +77,12 @@ const WarehouseSelect = ({ data }: { data: any }) => {
 			<Text {...titleProps}>Select warehouse location:</Text>
 			{data && (
 				<Flex {...list}>
-					<Flex
+					{/* <Flex
 						onClick={() => onApplyFilter('')}
 						{...locationProps}
 						{...(val === '' ? selectedProps : nonSelectedProps)}>
 						<Text {...textStyle}>Main Warehouse</Text>
-					</Flex>
+					</Flex> */}
 					{data?.doc?.map((item: any, i: number) => (
 						<Flex
 							onClick={() => onApplyFilter(item._id)}
@@ -141,4 +144,4 @@ const textStyle: TextProps = {
 	color: 'inherit',
 };
 
-export default page;
+export default InventoriesPage;
