@@ -1,6 +1,6 @@
 'use client';
 
-import { useDisclosure, Text } from '@chakra-ui/react';
+import { useDisclosure, Text, Button } from '@chakra-ui/react';
 import React, { FC, Fragment, useEffect, useState } from 'react';
 
 import {
@@ -13,6 +13,7 @@ import {
 	usePostMutation,
 	useCustomToast,
 	ViewItem,
+	useUpdateByIdMutation,
 } from '../../../';
 
 type ListInventoryModalProps = {
@@ -25,6 +26,21 @@ type ListInventoryModalProps = {
 
 const ListTransferModal: FC<ListInventoryModalProps> = ({ key, id, path, data, doc }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [trigger, result] = useUpdateByIdMutation();
+
+	const handleTrigger = () => {
+		trigger({
+			id: data._id,
+			path: 'inventories/transfer/product/bulk',
+			body: {},
+			invalidate: ['inventories', 'transfers', 'products'],
+		});
+	};
+
+	useCustomToast({
+		...result,
+		successText: 'Transfer Received Successfully',
+	});
 
 	const closeModal = () => onClose();
 
@@ -74,6 +90,23 @@ const ListTransferModal: FC<ListInventoryModalProps> = ({ key, id, path, data, d
 								</ViewItem>
 							</Fragment>
 						))}
+						<ViewItem
+							isLoading={false}
+							title='Status'
+							type='number'>
+							{data?.status}
+						</ViewItem>
+						{data?.status != 'completed' && (
+							<Button
+								mt={4}
+								mx={4}
+								loadingText='Processing'
+								spinnerPlacement='start'
+								isLoading={result?.isLoading}
+								onClick={handleTrigger}>
+								Mark As Received
+							</Button>
+						)}
 					</Column>
 				</MenuModalBody>
 			</MenuModal>

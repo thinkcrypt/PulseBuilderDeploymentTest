@@ -45,7 +45,7 @@ const table: TableObjectProps = {
 	path: 'transfers',
 	button: {
 		title: 'Add Transfer',
-		path: '/locations/transfer',
+		path: '/inventories/transfer',
 	},
 	menu: [
 		{
