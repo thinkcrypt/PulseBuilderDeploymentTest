@@ -23,10 +23,39 @@ const viewCollections: TableObjectProps = {
 			type: 'edit-modal',
 			dataModel: createCollection,
 		},
+
 		{
 			title: 'View',
 			type: 'view-modal',
 			dataModel: getCollectionById,
+		},
+		{
+			type: 'update-api',
+			title: 'Mark as Inactive',
+			path: 'collections',
+			id: (data: any) => data?._id,
+			body: { isActive: false },
+			renderCondition: (data: any) => data?.isActive,
+			prompt: {
+				title: 'Mark as Inactive',
+				body: 'Are you sure you want to mark this collection as inactive, this will hide the collection from all collections page on the website?',
+				btnText: 'Proceed',
+				successMsg: 'Collection hidden successfully',
+			},
+		},
+		{
+			type: 'update-api',
+			title: 'Mark as Active',
+			path: 'collections',
+			id: (data: any) => data?._id,
+			body: { isActive: false },
+			renderCondition: (data: any) => !data?.isActive,
+			prompt: {
+				title: 'Mark as Active',
+				body: 'Are you sure you want to mark this collection as active, this will show the collection from all collections page on the website?',
+				btnText: 'Proceed',
+				successMsg: 'Collection is made visible successfully',
+			},
 		},
 	],
 
