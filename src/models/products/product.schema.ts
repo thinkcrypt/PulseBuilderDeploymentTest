@@ -17,6 +17,10 @@ const schema = {
 		label: 'Thumbnail',
 		type: 'image',
 	},
+	metaImage: {
+		label: 'Meta Image',
+		type: 'image',
+	},
 	name: {
 		isRequired: true,
 		type: 'text',
@@ -188,6 +192,11 @@ const schema = {
 
 	tags: {
 		label: 'tags',
+		isRequired: false,
+		type: 'tag',
+	},
+	metaKeywords: {
+		label: 'Meta Keywords',
 		isRequired: false,
 		type: 'tag',
 	},

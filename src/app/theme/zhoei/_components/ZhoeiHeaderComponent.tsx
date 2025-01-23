@@ -38,7 +38,11 @@ const ZhoeiHeaderComponent = ({ data, dataModel }: { data: any; dataModel: any }
 			</HeaderSection> */}
 				<Center>
 					<Image
-						w='160px'
+						w={{
+							base: `${data?.basic?.logoWidthSm}px`,
+							md:
+								display == 'lg' ? `${data?.basic?.logoWidthLg}px` : `${data?.basic?.logoWidthSm}px`,
+						}}
 						h='auto'
 						maxH='50px'
 						objectFit='contain'

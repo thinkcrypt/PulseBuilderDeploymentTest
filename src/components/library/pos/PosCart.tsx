@@ -12,9 +12,8 @@ import {
 	EmptyCartModal,
 	SpaceBetween,
 	IconButton,
+	useGetCartTotalMutation,
 } from '@/components/library';
-
-import { useGetCartTotalMutation } from '@/store/services/ordersApi';
 
 import EditablePriceItem from './pos-card/EditablePriceItem';
 import CartItem from './pos-card/CartItem/CartItem';
@@ -25,7 +24,7 @@ import AddressWidget from './pos-card/AddressWidget';
 import { formFields as createCustomer } from '@/models/customer';
 import CartPriceContainer from './CartPriceContainer';
 
-import { CartContainer, SummaryContainer } from '.';
+import { CartContainer } from '.';
 
 const PosCart = () => {
 	const dispatch: any = useAppDispatch();

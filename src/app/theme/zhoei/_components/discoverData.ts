@@ -1,16 +1,16 @@
 const data = [
-	{
-		name: 'discover.subTitle',
-		label: 'Title',
-		isRequired: true,
-		type: 'text',
-	},
-	{
-		name: 'discover.title',
-		label: 'Title',
-		isRequired: true,
-		type: 'textarea',
-	},
+	// {
+	// 	name: 'discover.subTitle',
+	// 	label: 'Title',
+	// 	isRequired: true,
+	// 	type: 'text',
+	// },
+	// {
+	// 	name: 'discover.title',
+	// 	label: 'Title',
+	// 	isRequired: true,
+	// 	type: 'textarea',
+	// },
 	{
 		name: 'discover.items[0].image',
 		label: 'Image',

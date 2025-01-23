@@ -57,7 +57,7 @@ const layout = [
 	},
 	{
 		sectionTitle: 'SEO',
-		fields: ['meta.title', 'meta.description'],
+		fields: ['metaImage', 'meta.title', 'meta.description', 'metaKeywords'],
 	},
 ];
 

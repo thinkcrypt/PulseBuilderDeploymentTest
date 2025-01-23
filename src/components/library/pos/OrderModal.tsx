@@ -61,6 +61,7 @@ const OrderModal = () => {
 	const [note, setNote] = useState('');
 	const [status, setStatus] = useState('confirmed');
 	const [emailReceipt, setEmailReceipt] = useState(false);
+	const [trnxRef, setTrnxRef] = useState<any>();
 
 	const [createOrder, createOrderResult] = useAddOrderMutation();
 	const { isSuccess, isError, isLoading, error, data } = createOrderResult;
@@ -101,6 +102,7 @@ const OrderModal = () => {
 			address,
 			customer: user,
 			emailReceipt,
+			trnxRef,
 		});
 	};
 
@@ -187,7 +189,13 @@ const OrderModal = () => {
 				valueType='select'
 				onChange={(e: any) => setPaymentMethod(e?.target?.value)}
 				label='Payment Method'
-				options={['cash', 'credit card', 'bkash', 'nagad', 'other']}
+				options={['cash', 'card', 'bkash', 'nagad', 'other']}
+			/>
+			<PosInput
+				value={trnxRef}
+				type='text'
+				onChange={(e: any) => setTrnxRef(e?.target?.value)}
+				label='TRNX REF.'
 			/>
 			<PosInput
 				value={status}
