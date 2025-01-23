@@ -7,6 +7,7 @@ import {
 	useColorModeValue,
 	Grid,
 	FlexProps,
+	HeadingProps,
 } from '@chakra-ui/react';
 import { Icon, padding, radius, shadow } from '../../';
 
@@ -32,9 +33,10 @@ const headingContainerProps: FlexProps = {
 	gap: 2,
 };
 
-const headingProps = {
-	fontWeight: '600',
-	fontSize: { base: '1.15rem', md: '1.25rem' },
+const headingProps: HeadingProps = {
+	fontWeight: '700',
+	textTransform: 'uppercase',
+	fontSize: { base: '1.15rem', md: '1.3rem' },
 };
 
 const containerProps: FlexProps = {

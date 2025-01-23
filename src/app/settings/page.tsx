@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Column, Layout, StaticPage } from '@/components/library';
-import { UserEdit, StoreEdit, StoreSocials } from './_components';
+import { UserEdit, StoreEdit, StoreSocials, StoreSeo } from './_components';
 import { Heading, Text } from '@chakra-ui/react';
 
 const section = {
@@ -24,6 +24,7 @@ const SettingsPage = () => {
 					<UserEdit />
 					<StoreEdit />
 					<StoreSocials />
+					<StoreSeo />
 				</Column>
 			</StaticPage>
 		</Layout>
