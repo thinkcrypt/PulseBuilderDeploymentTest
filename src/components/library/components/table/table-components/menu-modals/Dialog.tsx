@@ -55,7 +55,8 @@ const Dialog: FC<ModalProps & DrawerProps & { children: ReactNode }> = ({ childr
 };
 
 const modalContentCss: ModalContentProps = {
-	marginTop: '10vh',
+	marginTop: '5vh',
+	marginBottom: '5vh',
 	boxShadow: 'lg',
 	borderRadius: radius.MODAL,
 	bg: 'container.newLight',
