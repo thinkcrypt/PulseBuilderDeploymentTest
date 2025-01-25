@@ -39,8 +39,6 @@ const ExistingSubDomain = () => {
 	);
 
 	useEffect(() => {
-		console.log('setting status:', status);
-
 		if (deployStatusFetching) return;
 		if (status != 'READY' && !deployStatusFetching) {
 			console.log(deployStatus?.status);

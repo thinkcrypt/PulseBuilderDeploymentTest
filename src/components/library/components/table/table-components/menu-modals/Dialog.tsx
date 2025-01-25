@@ -2,10 +2,12 @@
 import {
 	Drawer,
 	DrawerContent,
+	DrawerContentProps,
 	DrawerOverlay,
 	DrawerProps,
 	Modal,
 	ModalContent,
+	ModalContentProps,
 	ModalOverlay,
 	ModalProps,
 } from '@chakra-ui/react';
@@ -25,17 +27,7 @@ const Dialog: FC<ModalProps & DrawerProps & { children: ReactNode }> = ({ childr
 
 				<DrawerContent
 					onClick={(e: any) => e.stopPropagation()}
-					overflowY='scroll'
-					bg='container.newLight'
-					_dark={{
-						bg: 'menu.dark',
-					}}
-					shadow='2xl'
-					w='100%'
-					maxH='85vh'
-					minH='20vh'
-					userSelect='none'
-					borderTopRadius='20px'>
+					{...drawerContentCss}>
 					{children}
 				</DrawerContent>
 			</Drawer>
@@ -55,16 +47,35 @@ const Dialog: FC<ModalProps & DrawerProps & { children: ReactNode }> = ({ childr
 			/>
 			<ModalContent
 				onClick={(e: any) => e.stopPropagation()}
-				boxShadow='lg'
-				borderRadius={radius.MODAL}
-				bg='container.newLight'
-				_dark={{
-					bg: 'menu.dark',
-				}}>
+				{...modalContentCss}>
 				{children}
 			</ModalContent>
 		</Modal>
 	);
+};
+
+const modalContentCss: ModalContentProps = {
+	marginTop: '10vh',
+	boxShadow: 'lg',
+	borderRadius: radius.MODAL,
+	bg: 'container.newLight',
+	_dark: {
+		bg: 'menu.dark',
+	},
+};
+
+const drawerContentCss: DrawerContentProps = {
+	overflowY: 'scroll',
+	bg: 'container.newLight',
+	_dark: {
+		bg: 'menu.dark',
+	},
+	shadow: '2xl',
+	w: '100%',
+	maxH: '85vh',
+	minH: '20vh',
+	userSelect: 'none',
+	borderTopRadius: '20px',
 };
 
 export default Dialog;

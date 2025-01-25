@@ -158,6 +158,8 @@ export const colors: any = {
 	menu: {
 		light: '#fff',
 		dark: DARK,
+		blurLight: 'rgba(255, 255, 255, 0.5)',
+		blurDark: 'rgba(14,14,14,.8)',
 	},
 	navbar: {
 		400: BLACK,

@@ -1,11 +1,10 @@
 import React, { FormEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { Flex, useDisclosure } from '@chakra-ui/react';
 
-import { useCustomToast, useIsMobile, useFormData } from '../hooks';
+import { useCustomToast, useIsMobile, useFormData } from '../../hooks';
 
 import {
 	ModalFormSection,
-	InputData,
 	usePostMutation,
 	useUpdateByIdMutation,
 	FormMain,
@@ -18,28 +17,9 @@ import {
 	DialogFooter,
 	Dialog,
 	DialogBody,
-	DrawerContentContainer,
-	ModalContent,
-} from '../';
+} from '../..';
 
-type CreateModalProps = {
-	data: InputData<any>[];
-	trigger?: any;
-	path: string;
-	type?: 'post' | 'update';
-	id?: string;
-	title?: string;
-	invalidate?: any;
-	children?: any;
-	doc?: any;
-	populate?: any;
-	prompt?: {
-		title?: string;
-		body?: string;
-		btnText?: string;
-		successMsg?: string;
-	};
-};
+import CreateModalProps from './types';
 
 const CreateModal = (props: CreateModalProps) => {
 	const { data, trigger, path, title, type, id, invalidate, children, doc, prompt, populate } =
@@ -50,8 +30,6 @@ const CreateModal = (props: CreateModalProps) => {
 	const [fetch, { data: prevData, isFetching, isUninitialized }] = useLazyGetByIdToEditQuery();
 	const [formData, setFormData] = useFormData<any>(data, populate || prevData);
 	const isMobile = useIsMobile();
-
-	const Content = isMobile ? DrawerContentContainer : ModalContent;
 
 	const [callApi, result] = usePostMutation();
 	const [updateApi, updateResult] = useUpdateByIdMutation();

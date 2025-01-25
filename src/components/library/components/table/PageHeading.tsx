@@ -62,9 +62,9 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 			flexDir={{ base: 'column', md: 'row' }}
 			gap={2}
 			justify='space-between'
-			{...props}
 			align={{ base: 'flex-start', md: 'center' }}
-			pt={4}>
+			pt={2}
+			{...props}>
 			<Heading fontSize={{ base: '1.5rem', md: '1.75rem' }}>{title}</Heading>
 			<Flex
 				gap={2}

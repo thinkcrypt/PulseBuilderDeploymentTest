@@ -105,19 +105,19 @@ const CustomTable: React.FC<CustomTableProps> = ({
 					</Thead>
 					<Tbody>{tbody}</Tbody>
 				</Table>
+				{data?.docsInPage == 0 && (
+					<TableErrorMessage title='No results found.'>
+						There {`aren't`} any results for that query. Try using different filters.
+					</TableErrorMessage>
+				)}
+				{isError && (
+					<TableErrorMessage title='Error Fetching Data.'>
+						{error?.data?.message ||
+							`There has been an error while fetching data. Please try refreshing the page.`}
+					</TableErrorMessage>
+				)}
 			</TableContainer>
 
-			{data?.docsInPage == 0 && (
-				<TableErrorMessage title='No results found.'>
-					There {`aren't`} any results for that query. Try using different filters.
-				</TableErrorMessage>
-			)}
-			{isError && (
-				<TableErrorMessage title='Error Fetching Data.'>
-					{error?.data?.message ||
-						`There has been an error while fetching data. Please try refreshing the page.`}
-				</TableErrorMessage>
-			)}
 			{pagination && <ResultContainer data={data} />}
 		</>
 	);

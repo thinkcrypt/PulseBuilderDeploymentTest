@@ -48,7 +48,7 @@ const viewCollections: TableObjectProps = {
 			title: 'Mark as Active',
 			path: 'collections',
 			id: (data: any) => data?._id,
-			body: { isActive: false },
+			body: { isActive: true },
 			renderCondition: (data: any) => !data?.isActive,
 			prompt: {
 				title: 'Mark as Active',

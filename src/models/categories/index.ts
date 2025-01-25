@@ -77,6 +77,32 @@ const getAll: TableObjectProps = {
 			dataModel: convertToViewFields({ schema }),
 		},
 		{
+			title: 'Mark as Active',
+			type: 'update-api',
+			body: {
+				isActive: true,
+			},
+			prompt: {
+				title: 'Mark as Active',
+				body: 'Are you sure you want to mark this category as active?',
+				successMsg: 'Category marked as active successfully',
+			},
+			renderCondition: (data: any) => !data.isActive,
+		},
+		{
+			title: 'Mark as Inactive',
+			type: 'update-api',
+			body: {
+				isActive: false,
+			},
+			prompt: {
+				title: 'Mark as Inactive',
+				body: 'Are you sure you want to mark this category as inactive?',
+				successMsg: 'Category marked as inactive successfully',
+			},
+			renderCondition: (data: any) => data.isActive,
+		},
+		{
 			title: 'Mark as Featured',
 			type: 'update-api',
 			body: {

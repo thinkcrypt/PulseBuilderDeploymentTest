@@ -1,7 +1,6 @@
 'use client';
 import { Column, Layout, StaticPage, useGetOneQuery } from '@/components/library';
 import { Heading, Text } from '@chakra-ui/react';
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { DeleteSubDomain, DeployProject, ExistingSubDomain } from './_components';
 

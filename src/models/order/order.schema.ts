@@ -132,6 +132,13 @@ const schema = {
 		default: true,
 		tableKey: 'customer.name',
 	},
+	location: {
+		label: 'Location',
+		type: 'text',
+		displayInTable: true,
+		default: true,
+		tableKey: 'location.name',
+	},
 };
 
 export default schema;
