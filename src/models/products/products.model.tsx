@@ -32,7 +32,7 @@ const layout = [
 	},
 	{
 		sectionTitle: 'Stock Information',
-		fields: ['allowStock', ['stock', 'lowStockAlert']],
+		fields: [['stock', 'lowStockAlert']],
 	},
 	{
 		sectionTitle: 'Discount Information',
@@ -57,6 +57,7 @@ const layout = [
 	},
 	{
 		sectionTitle: 'SEO',
+		description: 'SEO settings for this product',
 		fields: ['metaImage', 'meta.title', 'meta.description', 'metaKeywords'],
 	},
 ];
@@ -71,7 +72,7 @@ const tableLayout: any[] = [
 	'isActive',
 	'slug',
 	'status',
-	'allowStock',
+	//
 	'stock',
 	'sku',
 	'isFeatured',

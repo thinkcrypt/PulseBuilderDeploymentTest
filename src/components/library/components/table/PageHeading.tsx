@@ -1,4 +1,4 @@
-import { Flex, FlexProps, Heading, Button, useColorModeValue } from '@chakra-ui/react';
+import { Flex, FlexProps, Heading, Button, useColorModeValue, TextProps } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 import { CreateModal, Icon } from '../../';
@@ -42,39 +42,51 @@ const PageHeading: React.FC<PageHeadingProps> = ({
 		</Button>
 	);
 	const exportButton = <ExportModal path={path} />;
-	const toButton = isModal ? (
-		<CreateModal
-			trigger={btn}
-			type='post'
-			path={path}
-			data={data}
-			invalidate={table?.invalidate}
-			prompt={table?.button?.prompt}
-		/>
-	) : href ? (
-		<Link href={href}>{btn}</Link>
-	) : (
-		btn
-	);
+	const renderButton = () => {
+		if (isModal)
+			return (
+				<CreateModal
+					trigger={btn}
+					type='post'
+					path={path}
+					data={data}
+					invalidate={table?.invalidate}
+					prompt={table?.button?.prompt}
+				/>
+			);
+		else if (href) return <Link href={href}>{btn}</Link>;
+		else return btn;
+	};
 
 	return (
 		<Flex
-			flexDir={{ base: 'column', md: 'row' }}
-			gap={2}
-			justify='space-between'
-			align={{ base: 'flex-start', md: 'center' }}
-			pt={2}
+			{...containerCss}
 			{...props}>
-			<Heading fontSize={{ base: '1.5rem', md: '1.75rem' }}>{title}</Heading>
-			<Flex
-				gap={2}
-				w='full'
-				justify='flex-end'>
+			<Heading {...headingCss}>{title}</Heading>
+			<Flex {...buttonGroupCss}>
 				<>{Boolean(exportData) && exportButton}</>
-				<>{(Boolean(button) || isModal) && toButton}</>
+				<>{(Boolean(button) || isModal) && renderButton()}</>
 			</Flex>
 		</Flex>
 	);
+};
+
+const containerCss: FlexProps = {
+	flexDir: { base: 'column', md: 'row' },
+	gap: 2,
+	justify: 'space-between',
+	align: { base: 'flex-start', md: 'center' },
+	pt: 4,
+};
+
+const headingCss: TextProps = {
+	fontSize: { base: '1.5rem', md: '1.75rem' },
+};
+
+const buttonGroupCss: FlexProps = {
+	gap: 2,
+	w: 'full',
+	justify: 'flex-end',
 };
 
 export default PageHeading;

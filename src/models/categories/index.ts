@@ -22,12 +22,17 @@ const createLayout = [
 	},
 	{
 		sectionTitle: 'Description',
-		fields: ['shortDescription', 'longDescription'],
+		fields: ['shortDescription'],
 	},
 	{
 		sectionTitle: 'Display Settings',
 		description: 'Select the display settings for this category',
 		fields: ['priority', ['isActive', 'isFeatured'], ['displayInMenu', 'displayInHomePage']],
+	},
+	{
+		sectionTitle: 'SEO',
+		description: 'SEO settings for this category',
+		fields: ['metaImage', 'meta.title', 'meta.description', 'metaKeywords'],
 	},
 ];
 

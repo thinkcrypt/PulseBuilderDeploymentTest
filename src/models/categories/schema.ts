@@ -34,7 +34,7 @@ const schema: SchemaProps = {
 		default: true,
 	},
 	shortDescription: {
-		label: 'Short Description',
+		label: 'Description',
 		type: 'textarea',
 	},
 	longDescription: {
@@ -81,6 +81,23 @@ const schema: SchemaProps = {
 		type: 'date',
 		default: true,
 		displayInTable: true,
+	},
+	metaKeywords: {
+		label: 'Meta Keywords',
+		isRequired: false,
+		type: 'tag',
+	},
+	'meta.title': {
+		label: 'Meta Title',
+		type: 'text',
+	},
+	'meta.description': {
+		label: 'Meta Description',
+		type: 'textarea',
+	},
+	metaImage: {
+		label: 'Meta Image',
+		type: 'image',
 	},
 };
 

@@ -1,5 +1,5 @@
 import React, { FormEvent, KeyboardEvent, useEffect, useState } from 'react';
-import { Flex, useDisclosure } from '@chakra-ui/react';
+import { Button, Flex, useDisclosure } from '@chakra-ui/react';
 
 import { useCustomToast, useIsMobile, useFormData } from '../../hooks';
 
@@ -95,7 +95,8 @@ const CreateModal = (props: CreateModalProps) => {
 	};
 
 	useEffect(() => {
-		if (isSuccess && !isLoading) onModalClose();
+		if (isLoading) return;
+		if (isSuccess) onModalClose();
 	}, [isLoading]);
 
 	useEffect(() => {
@@ -112,11 +113,14 @@ const CreateModal = (props: CreateModalProps) => {
 					Discard
 				</DiscardButton>
 			)}
-			<ModalSubmitButton
+			<Button
 				{...(isMobile && { w: 'full' })}
-				isLoading={isLoading}>
-				{prompt?.btnText || 'Confirm'}
-			</ModalSubmitButton>
+				// loadingText='Processing'
+				// spinnerPlacement='start'
+				type='submit'
+				size='sm'>
+				{isLoading ? 'Processing...' : prompt?.btnText || 'Confirm'}
+			</Button>
 		</>
 	);
 

@@ -70,23 +70,25 @@ const createCollection: InputData<FormDataType>[] = [
 		endOfSection: true,
 	},
 	{
-		sectionTitle: 'Meta Data',
+		sectionTitle: 'SEO Settings',
+		name: 'metaImage',
+		label: 'Image',
+		type: 'image',
+	},
+	{
 		name: 'meta.title',
-		label: 'Meta Title',
-		isRequired: false,
+		label: 'Title',
 		type: 'text',
 	},
 	{
 		name: 'meta.description',
-		label: 'Meta Description',
-		isRequired: false,
+		label: 'Description',
 		type: 'textarea',
 	},
 	{
-		name: 'meta.keywords',
+		name: 'metaKeywords',
 		label: 'Meta Keywords',
-		isRequired: false,
-		type: 'text',
+		type: 'tag',
 		endOfSection: true,
 	},
 ];
