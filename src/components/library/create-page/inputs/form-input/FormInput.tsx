@@ -30,6 +30,7 @@ import {
 	BLineHeight,
 	BOpacity,
 	VSlider,
+	VSectionDataArray,
 } from '../../../';
 
 type Option = {
@@ -110,6 +111,7 @@ const FormInput: FC<FormInputProps> = ({
 		case 'image-array':
 			return (
 				<VImageArray
+					limit={item?.limit}
 					isRequired={isRequired}
 					onChange={props.onChange}
 					helper={item?.helper}
@@ -304,6 +306,21 @@ const FormInput: FC<FormInputProps> = ({
 					name={props.name}
 					helper={item?.helper}
 					hasImage={item?.hasImage}
+					limit={item?.limit}
+					section={item?.section}
+					{...props}
+				/>
+			);
+		case 'section-data-array':
+			return (
+				<VSectionDataArray
+					onChange={props.onChange}
+					isRequired={isRequired}
+					name={props.name}
+					helper={item?.helper}
+					hasImage={item?.hasImage}
+					limit={item?.limit}
+					section={item?.section}
 					{...props}
 				/>
 			);

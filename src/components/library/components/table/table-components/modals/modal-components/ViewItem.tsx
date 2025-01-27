@@ -1,16 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import {
-	Badge,
-	Box,
-	Center,
-	Flex,
-	Grid,
-	GridProps,
-	Heading,
-	Image,
-	Skeleton,
-	Text,
-} from '@chakra-ui/react';
+import { Badge, Box, Flex, Grid, GridProps, Heading, Skeleton, Text } from '@chakra-ui/react';
 import { Align, Column, ImageContainer, PLACEHOLDER_IMAGE, RenderTag } from '../../../../../';
 
 type ViewItemProps = GridProps & {
@@ -86,13 +75,25 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 
 		case 'tag':
 			return (
-				<Box alignItems='center'>
-					{children && (
-						<Badge colorScheme={colorScheme ? colorScheme(children) : 'gray'}>
-							{children?.toString()}
-						</Badge>
-					)}
-				</Box>
+				<Flex
+					alignItems='center'
+					flexWrap='wrap'
+					gap={2}>
+					{Array.isArray(children)
+						? children.map((item: any, i: number) => (
+								<Badge
+									colorScheme='purple'
+									variant='subtle'
+									key={i}>
+									{item?.toString()}
+								</Badge>
+						  ))
+						: children && (
+								<Badge colorScheme={colorScheme ? colorScheme(children) : 'gray'}>
+									{children?.toString()}
+								</Badge>
+						  )}
+				</Flex>
 			);
 		case 'checkbox':
 			return (
@@ -157,30 +158,6 @@ const renderContent = ({ type, children, colorScheme, path }: any) => {
 	}
 };
 
-const SkeletonContent = ({ isLoading, children }: { isLoading: boolean; children: ReactNode }) => (
-	<Skeleton
-		isLoaded={!isLoading}
-		height={isLoading ? '20px' : 'auto'}
-		width={isLoading ? '100px' : 'full'}>
-		{children}
-	</Skeleton>
-);
-
-const GridContainer = ({ children }: GridProps & { children: ReactNode }) => (
-	<Grid
-		justifyContent='center'
-		px={6}
-		pb={2}
-		gridTemplateColumns='2fr 3fr'
-		gap='32px'
-		borderBottomWidth={1}
-		borderColor='border.light'
-		_dark={{ borderColor: 'border.dark' }}
-		_last={{ borderBottomWidth: 0 }}>
-		{children}
-	</Grid>
-);
-
 const ViewItem: FC<ViewItemProps> = ({
 	title,
 	type,
@@ -201,5 +178,29 @@ const ViewItem: FC<ViewItemProps> = ({
 		</GridContainer>
 	);
 };
+
+const GridContainer = ({ children }: GridProps & { children: ReactNode }) => (
+	<Grid
+		justifyContent='center'
+		px={6}
+		pb={2}
+		gridTemplateColumns='2fr 3fr'
+		gap='32px'
+		borderBottomWidth={1}
+		borderColor='border.light'
+		_dark={{ borderColor: 'border.dark' }}
+		_last={{ borderBottomWidth: 0 }}>
+		{children}
+	</Grid>
+);
+
+const SkeletonContent = ({ isLoading, children }: { isLoading: boolean; children: ReactNode }) => (
+	<Skeleton
+		isLoaded={!isLoading}
+		height={isLoading ? '20px' : 'auto'}
+		width={isLoading ? '100px' : 'full'}>
+		{children}
+	</Skeleton>
+);
 
 export default ViewItem;

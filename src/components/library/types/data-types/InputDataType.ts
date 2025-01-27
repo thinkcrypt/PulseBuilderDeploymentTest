@@ -41,6 +41,7 @@ type InputDataType =
 	| 'font-size'
 	| 'line-height'
 	| 'slider'
+	| 'section-data-array'
 	| 'opacity';
 
 export default InputDataType;

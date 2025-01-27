@@ -82,14 +82,14 @@ const ViewPage = () => {
 		<Layout
 			title='Customer'
 			path='customers'>
-			<Column gap={6}>
-				<Heading size='md'>Basic Info</Heading>
-				<ViewById
-					schema={schema['customers']}
-					path='customers'
-					id={id}
-				/>
-			</Column>
+			<ViewById
+				mt={4}
+				heading='Basic Info'
+				schema={schema['customers']}
+				path='customers'
+				id={id}
+			/>
+
 			<Column
 				gap={2}
 				py={6}

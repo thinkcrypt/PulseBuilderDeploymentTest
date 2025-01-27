@@ -115,8 +115,9 @@ const schema = {
 	},
 
 	images: {
-		label: 'Images',
+		label: 'Images [Upto 6 images]',
 		type: 'image-array',
+		limit: 6,
 	},
 
 	collection: {
@@ -223,9 +224,13 @@ const schema = {
 		type: 'custom-attribute',
 	},
 	customSections: {
-		label: 'Custom Sections',
+		label: 'Custom Section',
 		type: 'custom-section-array',
 		isRequired: false,
+		section: {
+			addBtnText: 'Add New Section',
+			title: 'Add A new custom section',
+		},
 		// dataModel: [
 		// 	{ name: 'title', label: 'Title', type: 'text' },
 		// 	{ name: 'description', label: 'Description', type: 'textarea' },
@@ -237,7 +242,28 @@ const schema = {
 		label: 'Frequently Asked Questions',
 		type: 'custom-section-array',
 		isRequired: false,
+		section: {
+			addBtnText: 'Add FAQ',
+			title: 'Add FAQ',
+		},
 	},
+	// custom: {
+	// 	label: 'Custom Questions',
+	// 	type: 'section-data-array',
+	// 	isRequired: false,
+	// 	limit: 3,
+	// 	section: {
+	// 		addBtnText: 'Add FAQ',
+	// 		title: 'Add FAQ',
+	// 		display: { image: 'image', title: 'question', description: 'answer' },
+	// 		dataModel: [
+	// 			{ name: 'image', label: 'Image', type: 'image' },
+	// 			{ name: 'question', label: 'Question', type: 'text', isRequired: true },
+	// 			{ name: 'answer', label: 'Answer', type: 'textarea' },
+	// 			{ name: 'href', label: 'Link', type: 'text' },
+	// 		],
+	// 	},
+	// },
 	'meta.title': {
 		label: 'Meta Title',
 		type: 'text',

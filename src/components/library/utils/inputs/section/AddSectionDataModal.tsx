@@ -1,22 +1,19 @@
 'use client';
-import { Button, Flex, IconButton, Text, useDisclosure } from '@chakra-ui/react';
+import { Button, Flex, FlexProps, IconButton, Text, useDisclosure } from '@chakra-ui/react';
 import React, { FC, useEffect, useState } from 'react';
 
 import {
 	Column,
 	createFormFields,
 	DeleteImageButton,
+	FormMain,
 	Icon,
 	InsertModal,
 	InsertModalBody,
 	InsertModalCloseButton,
 	InsertModalContent,
-	InsertModalFooter,
 	InsertModalHeader,
 	InsertModalOverlay,
-	VImage,
-	VInput,
-	VTextarea,
 } from '../../../';
 
 type UploadModalProps = {
@@ -29,13 +26,12 @@ type UploadModalProps = {
 	name: string;
 	prevVal?: { image?: string; title: string; description: string };
 	index?: number;
-	dataModel?: any;
+	dataModel: any;
 	hasImage?: boolean;
 	section?: any;
 };
 
-const AddSectionModal: FC<UploadModalProps> = ({
-	multiple,
+const AddSectionDataModal: FC<UploadModalProps> = ({
 	trigger,
 	handleDataChange,
 	handleDelete,
@@ -45,56 +41,28 @@ const AddSectionModal: FC<UploadModalProps> = ({
 	prevVal,
 	index = 0,
 	dataModel,
-	hasImage,
 	section,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const [val, setVal] = useState<{
-		image?: string;
-		title: string;
-		description: string;
-	}>(
-		prevVal || {
-			image: '',
-			title: '',
-			description: '',
-		}
-	);
+	const [formData, setFormData] = useState<any>({});
+	const [changedData, setChangedData] = useState<any>({});
 
 	const closeModal = () => {
-		hasImage
-			? setVal({
-					image: '',
-					title: '',
-					description: '',
-			  })
-			: setVal({
-					title: '',
-					description: '',
-			  });
-
+		setFormData({});
+		setChangedData({});
 		onClose();
 	};
 
 	const openModal = () => {
-		if (hasImage) setVal(prevVal || { image: '', title: '', description: '' });
-		else setVal(prevVal || { title: '', description: '' });
+		setFormData(prevVal || {});
 		onOpen();
 	};
 
-	const handleChange = (e: any) => {
-		const { name, value } = e.target;
-		setVal(prevVal => ({ ...prevVal, [name]: value }));
-	};
-
-	const handleImage = (e: any) => {
-		setVal(prevVal => ({ ...prevVal, image: e }));
-	};
-
-	const handleAddSection = () => {
-		if (!val.title || !val.description) return;
-		const newArr = [...(Array.isArray(value) ? value : []), val];
+	const handleAddSection = (e: any) => {
+		e.preventDefault();
+		e.stopPropagation();
+		const newArr = [...(Array.isArray(value) ? value : []), formData];
 		if (handleDataChange) {
 			const event = {
 				target: {
@@ -104,17 +72,19 @@ const AddSectionModal: FC<UploadModalProps> = ({
 			} as any;
 			handleDataChange(event);
 		}
+		setFormData({});
 
-		setVal({ title: '', description: '' });
-		onClose();
+		closeModal();
 	};
 
-	const handleEditSection = () => {
-		if (!val.title || !val.description) return;
+	const handleEditSection = (e: any) => {
+		// if (!val.title || !val.description) return;
+		e.preventDefault();
+		e.stopPropagation();
 
 		const newArr = Array.isArray(value) ? [...value] : [];
 		if (index >= 0 && index < newArr.length) {
-			newArr[index] = val;
+			newArr[index] = formData;
 		}
 
 		if (handleDataChange) {
@@ -135,7 +105,7 @@ const AddSectionModal: FC<UploadModalProps> = ({
 		add: (
 			<Button
 				size='sm'
-				colorScheme='brand'>
+				variant='white'>
 				{section?.addBtnText || 'Add Item'}
 			</Button>
 		),
@@ -170,6 +140,7 @@ const AddSectionModal: FC<UploadModalProps> = ({
 				<Flex onClick={openModal}>{triggerButton}</Flex>
 			)}
 			<InsertModal
+				size='3xl'
 				isOpen={isOpen}
 				onClose={closeModal}>
 				<InsertModalOverlay />
@@ -179,56 +150,44 @@ const AddSectionModal: FC<UploadModalProps> = ({
 					</InsertModalHeader>
 					<InsertModalCloseButton />
 					<InsertModalBody flex={1}>
-						<Column gap={4}>
-							{/* <Text>{JSON.stringify(section)}</Text> */}
-							{section?.dataModel && <></>}
-							{hasImage && (
-								<VImage
-									name='image'
-									label='Image'
-									value={val?.image}
-									onChange={handleImage}
-								/>
-							)}
-							<VInput
-								name='title'
-								label='Title'
-								value={val?.title}
-								onChange={handleChange}
+						<Column
+							gap={4}
+							as='form'
+							onSubmit={handleSubmit}>
+							<FormMain
+								fields={section?.dataModel}
+								formData={formData}
+								setFormData={setFormData}
+								setChangedData={setChangedData}
+								isModal={true}
 							/>
-							<VTextarea
-								name='description'
-								label='Description'
-								value={val?.description}
-								h='full'
-								minH='300px'
-								onChange={handleChange}
-							/>
+							<Flex {...footerCss}>
+								<Button
+									variant='white'
+									size='sm'
+									onClick={onClose}>
+									Discard
+								</Button>
+								<Button
+									size='sm'
+									type='submit'>
+									{type == 'add' ? 'Add' : 'Update'}
+								</Button>
+							</Flex>
 						</Column>
 					</InsertModalBody>
-
-					<InsertModalFooter>
-						<Flex
-							gap={2}
-							flex={1}>
-							<Button
-								size='sm'
-								isDisabled={!val.title || !val.description}
-								onClick={handleSubmit}>
-								{type == 'add' ? 'Add' : 'Update'}
-							</Button>
-							<Button
-								colorScheme='gray'
-								size='sm'
-								onClick={onClose}>
-								Cancel
-							</Button>
-						</Flex>
-					</InsertModalFooter>
 				</InsertModalContent>
 			</InsertModal>
 		</>
 	);
 };
 
-export default AddSectionModal;
+const footerCss: FlexProps = {
+	justify: 'flex-end',
+	pb: 4,
+	align: 'center',
+	gap: 2,
+	flex: 1,
+};
+
+export default AddSectionDataModal;

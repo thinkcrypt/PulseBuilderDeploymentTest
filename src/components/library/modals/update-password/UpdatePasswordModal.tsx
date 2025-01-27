@@ -99,16 +99,16 @@ const UpdatePasswordModal = ({ trigger, path }: { trigger?: any; path?: any }) =
 						<ModalFooter py={4}>
 							<Button
 								mr={2}
-								size='xs'
-								onClick={onModalClose}
-								colorScheme='gray'>
+								size='sm'
+								variant='white'
+								onClick={onModalClose}>
 								Discard
 							</Button>
 							<Button
-								size='xs'
+								size='sm'
 								type='submit'
 								isLoading={result.isLoading}>
-								Confirm
+								Update
 							</Button>
 						</ModalFooter>
 					</form>

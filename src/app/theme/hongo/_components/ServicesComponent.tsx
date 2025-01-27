@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Grid, Heading, Text, Flex, Image } from '@chakra-ui/react';
 import { HoverContentContainer, Column, HomeContentProps } from '@/components/library';
 import { PADDING_X } from '.';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppSelector } from '@/hooks';
 
 const ServicesComponent: FC<HomeContentProps> = ({ dataModel, content, path, data }) => {
 	const serviceData = content?.services;
@@ -23,7 +23,7 @@ const ServicesComponent: FC<HomeContentProps> = ({ dataModel, content, path, dat
 				templateColumns={{
 					base: 'repeat(1, 1fr)',
 					md: display == 'sm' ? '1fr' : 'repeat(2, 1fr)',
-					lg: display == 'sm' ? '1fr' : 'repeat(3, 1fr)',
+					lg: display == 'sm' ? '1fr' : 'repeat(4, 1fr)',
 					xl: display == 'sm' ? '1fr' : 'repeat(4, 1fr)',
 				}}
 				gap={4}

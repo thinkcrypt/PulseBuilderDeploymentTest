@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react';
 
 import { FormControl, Image, Stack, Flex, Text, Heading } from '@chakra-ui/react';
 import { HelperText, Label, ImageContainer, Column } from '../../../';
-import AddSectionModal from './AddSectionModal';
 import DeleteSection from './DeleteSection';
+import AddSectionDataModal from './AddSectionDataModal';
 
 type FormDataType = {
 	value: any;
@@ -18,7 +18,7 @@ type FormDataType = {
 	section?: any;
 };
 
-const VSection: FC<FormDataType> = ({
+const VSectionDataArray: FC<FormDataType> = ({
 	value,
 	onChange,
 	isRequired = false,
@@ -26,13 +26,10 @@ const VSection: FC<FormDataType> = ({
 	helper,
 	isDisabled = false,
 	name,
-	hasImage,
 	limit = 999,
 	section,
 	...props
 }) => {
-	const type = value ? 'edit' : 'add';
-
 	const imageComponent = (
 		<ImageContainer>
 			<Image
@@ -58,10 +55,10 @@ const VSection: FC<FormDataType> = ({
 							w='full'
 							align='center'
 							gap={6}>
-							{hasImage && (
+							{section?.display?.image && (
 								<Image
 									objectFit='contain'
-									src={item?.image}
+									src={item?.[section?.display?.image]}
 									h='64px'
 									w='64px'
 								/>
@@ -72,19 +69,17 @@ const VSection: FC<FormDataType> = ({
 								<Flex
 									justify='space-between'
 									align='center'>
-									<Heading size='md'>
-										{item?.title} {item?.section?.addBtnText}
-									</Heading>
+									<Heading size='md'>{item?.[section?.display?.title]}</Heading>
 									<Flex gap={1}>
-										<AddSectionModal
+										<AddSectionDataModal
 											value={value}
 											type='edit'
 											handleDataChange={onChange}
 											name={name}
 											index={i}
 											prevVal={item}
-											hasImage={hasImage}
 											section={section}
+											dataModel={section?.dataModel}
 										/>
 										<DeleteSection
 											idx={i}
@@ -95,21 +90,21 @@ const VSection: FC<FormDataType> = ({
 									</Flex>
 								</Flex>
 
-								<Text>{item?.description} </Text>
+								<Text noOfLines={6}>{item?.[section?.display?.description]}</Text>
 							</Column>
 						</Flex>
 					))}
 				</Column>
 				{value && value?.length >= limit ? null : (
 					<Flex>
-						<AddSectionModal
+						<AddSectionDataModal
 							value={value}
 							type='add'
 							handleDataChange={onChange}
 							multiple={true}
 							name={name}
-							hasImage={hasImage}
 							section={section}
+							dataModel={section?.dataModel}
 						/>
 					</Flex>
 				)}
@@ -119,4 +114,4 @@ const VSection: FC<FormDataType> = ({
 	);
 };
 
-export default VSection;
+export default VSectionDataArray;

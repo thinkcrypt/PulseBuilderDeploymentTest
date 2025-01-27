@@ -54,7 +54,7 @@ const ViewInfo = ({ slug, id }: { slug: string; id: string }) => {
 	return (
 		<Column
 			gap={4}
-			pt={2}>
+			pt={4}>
 			{viewFields.map((item: ViewModalDataModelProps, i: number) => {
 				const { title, dataKey, type, colorScheme, path } = item;
 

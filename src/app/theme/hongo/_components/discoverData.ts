@@ -4,6 +4,7 @@ const data = [
 		label: 'Services',
 		isRequired: true,
 		type: 'custom-section-array',
+		limit: 4,
 		hasImage: true,
 	},
 ];

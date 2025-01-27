@@ -48,4 +48,5 @@ export { default as VEditor } from './VEditor';
 export * from './input-components';
 
 export { default as VFont } from './Vfont';
+export { default as VSectionDataArray } from './section/VSectionDataArray';
 export * from './sliders';
