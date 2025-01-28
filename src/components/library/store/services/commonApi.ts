@@ -167,6 +167,16 @@ export const userApi = mainApi.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, { path, invalidate = [] }) => [path, ...invalidate],
 		}),
+		deleteProductlistByKeyId: builder.mutation<
+			any,
+			{ path: string; id: string; key: string; invalidate?: string[] }
+		>({
+			query: ({ path, id, key, invalidate }): any => ({
+				url: `${path}/${id}?key=${key}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: (result, error, { path, id, invalidate }: any) => [path, ...invalidate],
+		}),
 	}),
 });
 
@@ -189,4 +199,5 @@ export const {
 	useGetOneQuery,
 	useLazyGetAllQuery,
 	useGetQuery,
+	useDeleteProductlistByKeyIdMutation,
 } = userApi;
