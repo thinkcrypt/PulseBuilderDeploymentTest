@@ -69,11 +69,11 @@ export default function UserFeedback() {
 				<Col
 					gap={2}
 					pb={2}>
-					<DashContainer>
+					<DashContainer pt={4}>
 						<SpaceBetween
 							align='center'
 							px={4}>
-							<Heading size='md'>Recent Orders</Heading>
+							<Heading size='sm'>Recent Orders</Heading>
 							<Link href='/orders'>
 								<Button size='xs'>View Orders</Button>
 							</Link>
@@ -82,21 +82,21 @@ export default function UserFeedback() {
 					</DashContainer>
 				</Col>
 				<Column gap={2}>
-					<DashContainer>
+					<DashContainer pt={4}>
 						<SpaceBetween
 							align='center'
 							px={4}>
-							<Heading size='md'>Top Selling Products</Heading>
+							<Heading size='sm'>Top Selling Products</Heading>
 						</SpaceBetween>
 						<TopProducts />
 					</DashContainer>
 				</Column>
 				<Column gap={2}>
-					<DashContainer>
+					<DashContainer pt={4}>
 						<SpaceBetween
 							align='center'
 							px={4}>
-							<Heading size='md'>Top Customers</Heading>
+							<Heading size='sm'>Top Customers</Heading>
 						</SpaceBetween>
 						<TopCustomers />
 					</DashContainer>
