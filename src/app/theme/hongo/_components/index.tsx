@@ -39,3 +39,5 @@ export { default as footerData } from './footerData';
 export { default as storeData } from './storeData';
 
 export const PADDING_X = { base: 6, md: 24 };
+
+export { default as sidebarData } from './_data/sidebar';

@@ -60,6 +60,10 @@ const FormMain: FC<FormMainType> = ({
 				return (e: any) => handleNestedImage({ e, dataKey: key || 'image', ...params });
 			case 'nested-string':
 				return (e: any) => handleNestedString({ e, ...params });
+			case 'nested-select':
+				return (e: any) => handleNestedString({ e, ...params });
+			case 'nested-data-menu':
+				return (e: any) => handleNestedString({ e, ...params });
 
 			default:
 				return (e: any) => handleChange({ e, ...params });

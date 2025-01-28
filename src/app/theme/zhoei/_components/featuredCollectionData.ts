@@ -1,5 +1,3 @@
-import { start } from 'repl';
-
 const data = [
 	{
 		startofSection: true,

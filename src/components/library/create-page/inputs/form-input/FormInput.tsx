@@ -140,6 +140,27 @@ const FormInput: FC<FormInputProps> = ({
 					))}
 				</VSelect>
 			);
+		case 'nested-select':
+			return (
+				<VSelect
+					isRequired={isRequired}
+					helper={item?.helper}
+					{...props}>
+					<option
+						value=''
+						disabled
+						selected>
+						Select option
+					</option>
+					{options?.map((option: any, i: number) => (
+						<option
+							key={i}
+							value={option?.value}>
+							{option?.label}
+						</option>
+					))}
+				</VSelect>
+			);
 		case 'font-weight':
 			return (
 				<VSelect
@@ -203,6 +224,17 @@ const FormInput: FC<FormInputProps> = ({
 				/>
 			);
 		case 'data-menu':
+			return (
+				<VDataMenu
+					dataModel={dataModel}
+					isRequired={isRequired}
+					model={props?.model || ''}
+					field={item?.menuField || 'name'}
+					helper={item?.helper}
+					{...props}
+				/>
+			);
+		case 'nested-data-menu':
 			return (
 				<VDataMenu
 					dataModel={dataModel}
