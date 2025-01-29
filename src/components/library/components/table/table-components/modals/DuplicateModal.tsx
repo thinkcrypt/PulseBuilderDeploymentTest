@@ -69,7 +69,7 @@ const DuplicateModal: React.FC<DeleteItemModalProps> = ({ title, path, id }) => 
 									ref={cancelRef}
 									onClick={closeItem}
 									size='sm'
-									colorScheme='gray'>
+									variant='white'>
 									Discard
 								</Button>
 							)}
