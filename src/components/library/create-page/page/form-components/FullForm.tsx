@@ -102,7 +102,7 @@ const FullForm: FC<FullFormProps> = ({ layout, dataModel, formData, setFormData,
 const Row = ({ children, cols, ...props }: GridProps & { children: ReactNode; cols?: string }) => (
 	<Grid
 		pb={4}
-		gridTemplateColumns={{ base: '1fr 1fr', md: cols || '1fr 1fr' }}
+		gridTemplateColumns={{ base: '1fr', md: cols || '1fr 1fr' }}
 		gap={2}
 		{...props}>
 		{children}

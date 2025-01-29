@@ -51,7 +51,13 @@ const TableData: React.FC<TableDataPropsType> = ({
 				</CustomTd>
 			);
 		case 'number':
-			return <CustomTd {...props}> {children?.toLocaleString()}</CustomTd>;
+			return (
+				<CustomTd
+					isNumeric={true}
+					{...props}>
+					{children?.toLocaleString()}
+				</CustomTd>
+			);
 
 		case 'image-text':
 			return (
