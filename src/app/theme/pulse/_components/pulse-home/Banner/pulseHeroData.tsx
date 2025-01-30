@@ -2,7 +2,8 @@ const pulseHeroData = [
 	{
 		sectionTitle: 'Hero Section',
 		name: 'hero.images',
-		label: 'Hero Images',
+		label: 'Hero Images (Upto 5)',
+		limit: 5,
 		type: 'image-array',
 	},
 	{

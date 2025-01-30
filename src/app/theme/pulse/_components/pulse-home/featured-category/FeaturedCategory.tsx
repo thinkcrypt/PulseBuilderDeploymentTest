@@ -1,8 +1,9 @@
-import { Box, BoxProps, Flex, Grid, TextProps } from '@chakra-ui/react';
+import { Box, BoxProps, Flex, Grid, Text, TextProps } from '@chakra-ui/react';
 
 import { FC } from 'react';
 import { CollectionCard } from './components';
 import {
+	generateTextModel,
 	HoverContentContainer,
 	useGetItemNameById,
 } from '@/components/library';
@@ -24,6 +25,26 @@ const TEMPLATE_COLUMN = {
 	xl: 'repeat(6, 1fr)',
 	'2xl': 'repeat(8, 1fr)',
 };
+const headingModel = [
+	{
+		sectionTitle: 'Title',
+		name: `collections.title`,
+		label: 'Content',
+		isRequired: true,
+		type: 'text',
+	},
+	...generateTextModel('collectionsCss.titleCss', 'Title Style'),
+];
+const subHeadingModel = [
+	{
+		sectionTitle: 'Sub Title',
+		name: `collections.subTitle`,
+		label: 'Content',
+		isRequired: true,
+		type: 'text',
+	},
+	...generateTextModel('collectionsCss.subTitleCss', 'Title Style'),
+];
 
 const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 	path,
@@ -37,6 +58,7 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 	const css = content?.collectionsCss;
 	return (
 		<HoverContentContainer
+			section={true}
 			type='content'
 			path={path}
 			title='Banner Information'
@@ -51,12 +73,54 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 		>
 			<Box py='2rem'>
 				<Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
-					<Title basic={basic} css={css} textAlign={css?.align}>
-						{collections?.title}
-					</Title>
-					<SubTitle basic={basic} css={css} textAlign={css?.align}>
+					<HoverContentContainer
+						component={true}
+						type='content'
+						path={path}
+						title='Featured Title'
+						data={content}
+						dataModel={headingModel}
+					>
+						<Text
+							{...css?.titleCss}
+							textAlign={css?.align}
+							fontSize={{
+								base: css?.titleCss?.fontSize.base,
+								md:
+									display == 'sm'
+										? css?.titleCss?.fontSize.base
+										: css?.fontSize.md,
+							}}
+						>
+							{collections?.title}
+						</Text>
+					</HoverContentContainer>
+					<HoverContentContainer
+						component={true}
+						type='content'
+						path={path}
+						title='Featured Sub Title'
+						data={content}
+						dataModel={subHeadingModel}
+					>
+						<Text
+							{...css?.subTitleCss}
+							textAlign={css?.align}
+							fontSize={{
+								base: css?.titleCss?.fontSize.base,
+								md:
+									display == 'sm'
+										? css?.titleCss?.fontSize.base
+										: css?.titleCss?.fontSize.md,
+							}}
+						>
+							{collections?.subTitle}
+						</Text>
+					</HoverContentContainer>
+
+					{/* <SubTitle basic={basic} css={css} textAlign={css?.align}>
 						{collections?.subTitle}
-					</SubTitle>
+					</SubTitle> */}
 				</Flex>
 				<Grid
 					templateColumns={{

@@ -33,6 +33,7 @@ const HomeContentPage = () => {
 	
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
 		path: 'pulse',
+		
 	});
 	// console.log('pulse datass:::', data);
 	const dispatch = useAppDispatch();

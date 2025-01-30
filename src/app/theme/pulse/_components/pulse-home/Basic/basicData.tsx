@@ -95,7 +95,7 @@ const basicDataSchema = [
 		name: 'primaryFont',
 		label: 'Primary Font',
 		options: fontOptions,
-		type: 'select',
+		type: 'font',
 		span: 1,
 	},
 	{
@@ -109,7 +109,7 @@ const basicDataSchema = [
 		name: 'secondaryFont',
 		label: 'Secondary Font',
 		options: fontOptions,
-		type: 'select',
+		type: 'font',
 		span: 1,
 	},
 	{
@@ -121,8 +121,3 @@ const basicDataSchema = [
 ];
 
 export default basicDataSchema;
-
-
-
-
-

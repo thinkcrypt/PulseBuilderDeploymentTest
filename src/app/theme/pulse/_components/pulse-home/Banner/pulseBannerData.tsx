@@ -9,12 +9,17 @@ const pulseBannerData = [
 		sectionTitle: 'Typography',
 		name: 'banner.fontFamily',
 		label: 'Font Family',
-		type: 'text',
+		type: 'font',
 	},
 	{
 		name: 'banner.textAlign',
 		label: 'Text Align',
-		type: 'text',
+		type: 'select',
+		options: [
+			{ label: 'Left', value: 'left' },
+			{ label: 'Center', value: 'center' },
+			{ label: 'Right', value: 'right' },
+		],
 		span: 1,
 	},
 	{
@@ -33,7 +38,7 @@ const pulseBannerData = [
 	{
 		name: 'banner.fontWeight',
 		label: 'Font Weight',
-		type: 'number',
+		type: 'font-weight',
 		span: 1,
 	},
 	{

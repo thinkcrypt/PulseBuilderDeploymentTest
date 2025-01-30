@@ -22,16 +22,16 @@ const pulseHeaderData = [
 	},
 
 	{
-		sectionTitle: 'Header Height [BG]',
+		sectionTitle: '...',
 		name: 'header.height',
-		label: 'Header Height',
+		label: 'Header Height [BG]',
 		type: 'number',
 		span: 1,
 	},
 	{
-		sectionTitle: 'Header Height [SM]',
+		
 		name: 'header.heightSm',
-		label: 'Header Height',
+		label: 'Header Height [Sm]',
 		type: 'number',
 		span: 1,
 	},
