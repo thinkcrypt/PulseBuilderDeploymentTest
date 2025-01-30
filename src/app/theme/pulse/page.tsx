@@ -1,28 +1,36 @@
 'use client';
-import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
+import {
+	EditorLayoutSuspense,
+	useAppDispatch,
+	resetBuilder,
+	push,
+} from '@/components/library';
 import React, { useEffect } from 'react';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { PulseHero } from './_components/Banner';
-import pulseHeroData from './_components/Banner/pulseHeroData';
-import ServiceContent from './_components/services/ServiceContent';
-import serviceData from './_components/services/serviceData';
-import SponsoredBannerTwo from './_components/Sponsored-Banners/SponsoredBannerTwo';
-import sponsoredBannerTwoData from './_components/Sponsored-Banners/sponsoredBannerTwoData';
-import SponsoredBannerThree from './_components/Sponsored-Banners/SponsoredBannerThree';
-import sponsoredBannerThreeData from './_components/Sponsored-Banners/sponsoredBannerThreeData';
-import PulseProductListComponent from './_components/PulseProductList/PulseProduct';
-import { FeaturedCategory } from './_components/featured-category';
+import {
+	PulseHero,
+	pulseHeroData,
+	ServiceContent,
+	serviceData,
+	SponsoredBannerTwo,
+	sponsoredBannerTwoData,
+	SponsoredBannerThree,
+	sponsoredBannerThreeData,
+	PulseProductListComponent,
+	FeaturedCategory,
+	productListSchema,
+	ProductListTwo,
+	ProductListThree,
+	featuredCategoriesData,
+	homeSidebarData,
+	SponsoredBannerOne,
+	sponsoredBannerOneData,
+	PageLayout,
+} from './_components/index';
 import { Box } from '@chakra-ui/react';
-import productListSchema from './_components/PulseProductList/productListSchema';
-import ProductListTwo from './_components/PulseProductList/ProductListTwo';
-import ProductListThree from './_components/PulseProductList/ProductListThree';
-import { featuredCategoriesData } from './_components/FeatureProduct/Product';
-import { homeSidebarData } from './_components/sidebarData/sidebarData';
-import SponsoredBannerOne from './_components/Sponsored-Banners/SponsoredBannerOne';
-import sponsoredBannerOneData from './_components/Sponsored-Banners/sponsoredBannerOneData';
-import PageLayout from './_core-components/components/pageLayout/PageLayout';
 
 const HomeContentPage = () => {
+	
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
 		path: 'pulse',
 	});
@@ -51,7 +59,8 @@ const HomeContentPage = () => {
 			path='/home-content'
 			title='Home Content'
 			position='relative'
-			gap={0}>
+			gap={0}
+		>
 			<PageLayout>
 				<Box bg={data?.basic?.bgColor}>
 					<PulseHero

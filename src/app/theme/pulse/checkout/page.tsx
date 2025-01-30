@@ -1,20 +1,25 @@
 'use client';
-import { FC, useEffect } from 'react';
-import basicDataSchema from '../_components/Basic/basicData';
-import cartSchema from '../_components/Header/cartDrawerSchema2';
-import productCartStyleSchema from '../_components/PulseProductList/productCartStyleSchema';
+import { useEffect } from 'react';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
-import Checkout from './_components/Checkout';
-import checkoutCssSchema from './_components/checkoutSchema';
-import Banner from '../_components/Banner/Banner';
-import { pulseBannerData } from '../_components/Banner';
-import { PulseHeader, pulseHeaderData } from '../_components/Header';
-import navSchema from '../_components/nav-bar/components/navSchema';
-import PulseFooter from '../_components/footer/Footer';
-import pulseFooterSchema from '../_components/footer/components/pulseFooterSchema';
-import SimpleNavBar from '../_components/nav-bar/SimpleNavBar';
-import { homeSidebarData } from '../_components/sidebarData/sidebarData';
+import {
+	EditorLayoutSuspense,
+	useAppDispatch,
+	resetBuilder,
+	push,
+} from '@/components/library';
+import {
+	Checkout,
+	checkoutCssSchema,
+	Banner,
+	PulseHeader,
+	pulseHeaderData,
+	pulseBannerData,
+	navSchema,
+	PulseFooter,
+	pulseFooterSchema,
+	SimpleNavBar,
+	homeSidebarData,
+} from '../_components/index';
 
 const CheckoutPage = () => {
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
@@ -44,7 +49,8 @@ const CheckoutPage = () => {
 			path='/home-content'
 			title='Home Content'
 			position='relative'
-			gap={0}>
+			gap={0}
+		>
 			<Banner
 				data={data}
 				path='pulse'

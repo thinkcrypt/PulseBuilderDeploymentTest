@@ -1,48 +1,120 @@
-const data = [
-	// {
-	// 	name: 'discover.subTitle',
-	// 	label: 'Title',
-	// 	isRequired: true,
-	// 	type: 'text',
-	// },
-	// {
-	// 	name: 'discover.title',
-	// 	label: 'Title',
-	// 	isRequired: true,
-	// 	type: 'textarea',
-	// },
+const linkOptions = [
 	{
-		name: 'discover.items[0].image',
-		label: 'Image',
-		isRequired: false,
-		type: 'nested-image',
+		label: 'Page',
+		value: 'page',
 	},
 	{
-		name: 'discover.items[0].btnText',
-		label: 'Button Text',
-		isRequired: true,
-		type: 'nested-string',
+		label: 'Product',
+		value: 'product',
 	},
 	{
-		name: 'discover.items[1].image',
-		label: 'Image',
-		isRequired: false,
-		type: 'nested-image',
+		label: 'Category',
+		value: 'category',
 	},
 	{
-		name: 'discover.items[1].btnText',
-		label: 'Button Text',
-		isRequired: true,
-		type: 'nested-string',
+		label: 'Collection',
+		value: 'collection',
 	},
-
-	// {
-	// 	name: 'hero.btnText',
-	// 	label: 'Button Text',
-	// 	isRequired: true,
-	// 	type: 'text',
-	// 	endOfSection: true,
-	// },
+	{
+		label: 'External Link',
+		value: 'external',
+	},
 ];
+
+const pageOptions = [
+	{
+		label: 'Home',
+		value: '/',
+	},
+	{
+		label: 'All Categories',
+		value: '/category',
+	},
+	{
+		label: 'FAQ',
+		value: '/faq',
+	},
+	{
+		label: 'Shop',
+		value: '/explore',
+	},
+	{
+		label: 'Contact',
+		value: '/contact-us',
+	},
+];
+
+const generateItemConfig = (index: number) => [
+	{
+		name: `discover.items[${index}].image`,
+		label: 'Image',
+		isRequired: false,
+		type: 'nested-image',
+	},
+	{
+		name: `discover.items[${index}].btnText`,
+		label: 'Button Text',
+		isRequired: true,
+		type: 'nested-string',
+	},
+	{
+		name: `discover.items[${index}].type`,
+		label: 'Link Type',
+		type: 'nested-select',
+		isRequired: true,
+		options: linkOptions,
+	},
+	{
+		name: `discover.items[${index}].href`,
+		label: 'Select Page',
+		type: 'nested-select',
+		options: pageOptions,
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.discover?.items[index]?.type === 'page';
+		},
+	},
+	{
+		name: `discover.items[${index}].href`,
+		label: 'Select Product',
+		type: 'nested-data-menu',
+		model: 'products',
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.discover?.items[index]?.type === 'product';
+		},
+	},
+	{
+		name: `discover.items[${index}].href`,
+		label: 'Enter External Link [eg. https://google.com]',
+		type: 'nested-string',
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.discover?.items[index]?.type === 'external';
+		},
+	},
+	{
+		name: `discover.items[${index}].href`,
+		label: 'Select Collection',
+		type: 'nested-data-menu',
+		model: 'collections',
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.discover?.items[index]?.type === 'collection';
+		},
+	},
+	{
+		name: `discover.items[${index}].href`,
+		label: 'Select Category',
+		type: 'nested-data-menu',
+		model: 'categories',
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.discover?.items[index]?.type === 'category';
+		},
+	},
+];
+
+const data = [...generateItemConfig(0), ...generateItemConfig(1)];
 
 export default data;

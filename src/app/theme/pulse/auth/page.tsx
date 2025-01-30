@@ -8,7 +8,8 @@ import {
 	resetBuilder,
 	push,
 } from '@/components/library';
-import LoginModal from './_components/LoginModal';
+import { LoginModal } from '../_components';
+
 
 const AuthPage = () => {
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({

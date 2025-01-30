@@ -2,19 +2,29 @@
 
 import { useEffect } from 'react';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
-import PulseFooter from '../_components/footer/Footer';
-import pulseFooterSchema from '../_components/footer/components/pulseFooterSchema';
-import ProductDetailsPage from './ProductDetailsPage';
-import { productDetailsData } from './index';
-import { ProductSpecifications } from '../product-specifications';
-import Banner from '../_components/Banner/Banner';
-import { pulseBannerData } from '../_components/Banner';
-import { PulseHeader, pulseHeaderData } from '../_components/Header';
-import navSchema from '../_components/nav-bar/components/navSchema';
-import { productSpecificiationsData } from '../product-specifications/index';
-import SimpleNavBar from '../_components/nav-bar/SimpleNavBar';
-import { homeSidebarData } from '../_components/sidebarData/sidebarData';
+import {
+	EditorLayoutSuspense,
+	useAppDispatch,
+	resetBuilder,
+	push,
+} from '@/components/library';
+
+import {
+	homeSidebarData,
+	PulseFooter,
+	pulseFooterSchema,
+	productDetailsData,
+	Banner,
+	pulseBannerData,
+	PulseHeader,
+	pulseHeaderData,
+	navSchema,
+	SimpleNavBar,
+	ProductDetailsPage,
+	ProductSpecifications,
+	productSpecificiationsData,
+	PageLayout,
+} from '../_components/index';
 
 //
 const ProductDetails = () => {
@@ -48,65 +58,24 @@ const ProductDetails = () => {
 			path='/home-content'
 			title='Home Content'
 			position='relative'
-			gap={0}>
-			<Banner
-				data={data}
-				path='pulse'
-				content={data?.content}
-				basic={data?.basic}
-				dataModel={pulseBannerData}
-			/>
-
-			<PulseHeader
-				data={data}
-				basic={data?.basic}
-				path='pulse'
-				content={data?.content}
-				dataModel={pulseHeaderData}
-			/>
-
-			<SimpleNavBar
-				data={data}
-				basic={data?.basic}
-				path='pulse'
-				content={data?.content}
-				dataModel={navSchema}
-			/>
-			{/* <Banner
-				data={data}
-				path='pulse'
-				content={data?.content}
-				basic={data?.basic}
-				dataModel={pulseBannerData}
-			/> */}
-			<ProductDetailsPage
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={productDetailsData}
-			/>
-			<ProductSpecifications
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={productSpecificiationsData}
-			/>
-
-			<PulseFooter
-				data={data}
-				path='pulse'
-				basic={data?.basic}
-				content={data?.content}
-				dataModel={pulseFooterSchema}
-			/>
-			{/* <FooterConfig
-				data={data}
-				path='hongo'
-				content={data?.content}
-				dataModel={footerData}
-			/> */}
+			gap={0}
+		>
+			<PageLayout>
+				<ProductDetailsPage
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={productDetailsData}
+				/>
+				<ProductSpecifications
+					data={data}
+					path='pulse'
+					basic={data?.basic}
+					content={data?.content}
+					dataModel={productSpecificiationsData}
+				/>
+			</PageLayout>
 		</EditorLayoutSuspense>
 	);
 };
