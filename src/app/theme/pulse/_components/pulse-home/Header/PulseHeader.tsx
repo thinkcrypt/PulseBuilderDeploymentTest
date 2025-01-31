@@ -1,15 +1,6 @@
 import React, { FC, ReactNode } from 'react';
+import { Box, BoxProps, Center, CenterProps, Flex, Grid, GridItem } from '@chakra-ui/react';
 import {
-	Box,
-	BoxProps,
-	Center,
-	CenterProps,
-	Flex,
-	Grid,
-	GridItem,
-} from '@chakra-ui/react';
-import {
-	HomeContentProps,
 	HoverContentContainer,
 	Icon,
 	IconNameOptions,
@@ -29,9 +20,6 @@ import {
 	placeholderLogo,
 	NormalText,
 	SearchDrawer,
-	zIndex,
-	sectionPadding,
-	maxWidth,
 	HeaderContainer,
 } from '../../../_components/index';
 import LoginModal from '../../auth/components/LoginModal';
@@ -68,13 +56,7 @@ type HeaderProps = {
 	basic?: any;
 };
 // dataModel, content, path, data
-const HeaderConfig: FC<HeaderProps> = ({
-	dataModel,
-	content,
-	path,
-	data,
-	basic,
-}) => {
+const HeaderConfig: FC<HeaderProps> = ({ dataModel, content, path, data, basic }) => {
 	const header = content?.header;
 	const doc: HeaderConfigProps = content?.header;
 
@@ -86,10 +68,7 @@ const HeaderConfig: FC<HeaderProps> = ({
 	const { cartItems } = useAppSelector(state => state.cart);
 	const { display } = useAppSelector(state => state.builder);
 	// console.log('display val::', display);
-	const cartTotal = cartItems.reduce(
-		(acc: any, item: any) => acc + item.qty,
-		0
-	);
+	const cartTotal = cartItems.reduce((acc: any, item: any) => acc + item.qty, 0);
 	const pathUrl = usePathname();
 	return (
 		<HoverContentContainer
@@ -107,21 +86,20 @@ const HeaderConfig: FC<HeaderProps> = ({
 			edit={pathUrl === '/pulse/search-page' ? false : true}
 			h={{
 				base: `${content?.header?.heightSm}px`,
-				md:
-					display == 'sm'
-						? `${content?.header?.heightSm}px`
-						: `${content?.header?.height}px`,
-			}}
-		>
+				md: display == 'sm' ? `${content?.header?.heightSm}px` : `${content?.header?.height}px`,
+			}}>
 			<HeaderContainer header={header}>
-				<SectionPadding w='full' h='full' display='flex' alignItems='center'>
+				<SectionPadding
+					w='full'
+					h='full'
+					display='flex'
+					alignItems='center'>
 					<Grid
 						gridTemplateColumns={{
 							base: '1fr 1.5fr 1fr',
 							sm: 'repeat(3, 1fr)',
 						}}
-						w='full'
-					>
+						w='full'>
 						<SimpleMenuDrawer
 							//   display={{ base: "block", xl: "none" }}
 							display={{
@@ -132,8 +110,13 @@ const HeaderConfig: FC<HeaderProps> = ({
 							content={content}
 						/>
 
-						<GridItem w='full' colSpan={{ base: 1.5, sm: 1 }}>
-							<LogoImage header={header} src={basic?.logo || placeholderLogo} />
+						<GridItem
+							w='full'
+							colSpan={{ base: 1.5, sm: 1 }}>
+							<LogoImage
+								header={header}
+								src={basic?.logo || placeholderLogo}
+							/>
 						</GridItem>
 
 						<Flex
@@ -143,18 +126,22 @@ const HeaderConfig: FC<HeaderProps> = ({
 								base: 'none',
 								xl: display == 'sm' ? 'none' : 'flex',
 							}}
-							justifyContent='center'
-						>
-							<SearchBox basic={basic} content={content} header={header} />
+							justifyContent='center'>
+							<SearchBox
+								basic={basic}
+								content={content}
+								header={header}
+							/>
 						</Flex>
 
 						<Flex
 							justifyContent='flex-end'
 							gap={{ base: 1, sm: 2 }}
 							alignItems='center'
-							w='full'
-						>
-							<SearchDrawer basic={basic} content={content}>
+							w='full'>
+							<SearchDrawer
+								basic={basic}
+								content={content}>
 								<HeaderIcon
 									basic={basic}
 									//   display={{ base: "flex", xl: "none" }}
@@ -176,10 +163,18 @@ const HeaderConfig: FC<HeaderProps> = ({
 								/>
 							</Link>
 
-							{!isLoggedIn && <LoginModal basic={basic} content={content} />}
+							{!isLoggedIn && (
+								<LoginModal
+									basic={basic}
+									content={content}
+								/>
+							)}
 							{isLoggedIn && (
 								<Link href='/dashboard/account'>
-									<LoggedInIcon firstLetter={firstLetter} header={header} />
+									<LoggedInIcon
+										firstLetter={firstLetter}
+										header={header}
+									/>
 								</Link>
 							)}
 						</Flex>
@@ -217,8 +212,7 @@ const HeaderIcon = ({
 		_hover={{
 			bg: header?.iconHoverBg || 'gray.300',
 		}}
-		{...props}
-	>
+		{...props}>
 		{type == 'cart' && (
 			<Center
 				position='absolute'
@@ -227,27 +221,28 @@ const HeaderIcon = ({
 				bg={header?.tagBg || '#d4692b'}
 				w='20px'
 				h='20px'
-				borderRadius='50%'
-			>
+				borderRadius='50%'>
 				<NormalText
 					basic={basic}
 					fontSize='10px'
 					fontWeight='bold'
-					color={header?.tagFg || '#fff'}
-				>
+					color={header?.tagFg || '#fff'}>
 					{cartTotal}
 				</NormalText>
 			</Center>
 		)}
-		<Icon size={header?.iconSize} color={header?.iconFg} name={name} />
+		<Icon
+			size={header?.iconSize}
+			color={header?.iconFg}
+			name={name}
+		/>
 	</Center>
 );
 
-const SectionPadding = ({
-	children,
-	...props
-}: BoxProps & { children: ReactNode }) => (
-	<Box mx='auto' {...props}>
+const SectionPadding = ({ children, ...props }: BoxProps & { children: ReactNode }) => (
+	<Box
+		mx='auto'
+		{...props}>
 		{children}
 	</Box>
 );

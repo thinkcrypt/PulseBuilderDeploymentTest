@@ -1,14 +1,5 @@
 import { FC, ReactNode } from 'react';
-import {
-	Box,
-	BoxProps,
-	Center,
-	Flex,
-	FlexProps,
-	Grid,
-	Image,
-	TextProps,
-} from '@chakra-ui/react';
+import { Box, BoxProps, Center, Flex, FlexProps, Grid, Image, TextProps } from '@chakra-ui/react';
 
 const TEMPLATE_COLUMN = {
 	base: 'repeat(2, 1fr)',
@@ -39,13 +30,7 @@ type ServiceContentProps = {
 };
 
 // dataModel, content, path, data
-const ServiceContent: FC<HomeContentProps> = ({
-	dataModel,
-	content,
-	path,
-	data,
-	basic,
-}) => {
+const ServiceContent: FC<HomeContentProps> = ({ dataModel, content, path, data, basic }) => {
 	const banner = content?.banner;
 	const serviceCSS = content?.serviceCSS;
 	const header = content?.header;
@@ -54,16 +39,9 @@ const ServiceContent: FC<HomeContentProps> = ({
 	let serviceContent = content?.serviceContent;
 	if (content?.serviceContent?.length > 0) {
 		serviceContent =
-			display === 'sm'
-				? content?.serviceContent.slice(0, 3)
-				: content?.serviceContent;
+			display === 'sm' ? content?.serviceContent.slice(0, 3) : content?.serviceContent;
 	} else {
-		serviceContent = [
-			PLACEHOLDER_IMAGE,
-			PLACEHOLDER_IMAGE,
-			PLACEHOLDER_IMAGE,
-			PLACEHOLDER_IMAGE,
-		];
+		serviceContent = [PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE];
 	}
 	console.log('service content:::', serviceContent);
 	const css = content?.serviceCSS;
@@ -82,14 +60,12 @@ const ServiceContent: FC<HomeContentProps> = ({
 			}}
 			position='sticky'
 			top='0'
-			mt='32px'
-		>
+			mt='32px'>
 			<Flex
 				w='full'
 				py='2rem'
 				bg={css?.bgColor}
-				display={{ base: 'none', lg: 'flex' }}
-			>
+				display={{ base: 'none', lg: 'flex' }}>
 				{serviceContent?.map((item: any, i: number) => (
 					<ServiceCard
 						key={i}
@@ -115,22 +91,6 @@ const ServiceContent: FC<HomeContentProps> = ({
 
 export default ServiceContent;
 //
-const SectionPadding = ({
-	children,
-	...props
-}: BoxProps & { children: ReactNode }) => (
-	<Box
-		px={{
-			base: padding.PADDING_X_MOBILE,
-			lg: padding.PADDING_X_LG,
-			'2xl': padding.PADDING_X_2XL,
-		}}
-		w='full'
-		{...props}
-	>
-		{children}
-	</Box>
-);
 
 const Title = ({
 	basic,
@@ -146,8 +106,7 @@ const Title = ({
 		fontSize={{ base: `${css?.titleSizeBASE}px`, lg: `${css?.titleSizeBG}px` }}
 		color={css?.titleColor}
 		css={css}
-		{...props}
-	>
+		{...props}>
 		{children}
 	</Heading>
 );
@@ -161,7 +120,10 @@ const ServiceImage = ({
 	css: any;
 	src: string;
 }) => (
-	<Flex w={`${css?.imageWidth}px`} h={`${css?.imageHeight}px`} {...props}>
+	<Flex
+		w={`${css?.imageWidth}px`}
+		h={`${css?.imageHeight}px`}
+		{...props}>
 		<Image
 			w='full'
 			h='auto'
@@ -184,11 +146,22 @@ const ServiceCard = ({
 	image: string;
 	text: string;
 }) => (
-	<Flex alignItems='center' {...props}>
-		<Center w='40px' h='40px' mr='12px' ml='4px'>
-			<ServiceImage src={image} css={css} />
+	<Flex
+		alignItems='center'
+		{...props}>
+		<Center
+			w='40px'
+			h='40px'
+			mr='12px'
+			ml='4px'>
+			<ServiceImage
+				src={image}
+				css={css}
+			/>
 		</Center>
-		<Title basic={basic} css={css}>
+		<Title
+			basic={basic}
+			css={css}>
 			{text}
 		</Title>
 	</Flex>

@@ -38,12 +38,14 @@ type InputDataType =
 	| 'custom-section-array'
 	| 'font'
 	| 'font-weight'
+	| 'fint-size'
 	| 'font-style'
 	| 'shadow'
 	| 'font-size'
 	| 'line-height'
 	| 'slider'
 	| 'section-data-array'
+	| 'alignment'
 	| 'opacity';
 
 export default InputDataType;

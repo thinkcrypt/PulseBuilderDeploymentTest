@@ -18,9 +18,9 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
 		path: 'pulse',
 	});
-	console.log('pulse data:', data);
+
 	const { display } = useAppSelector(state => state.builder);
-	// console.log('pulse data:::', data);
+
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());

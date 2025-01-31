@@ -2,11 +2,7 @@ import { Box, BoxProps, Flex, Grid, Text, TextProps } from '@chakra-ui/react';
 
 import { FC } from 'react';
 import { CollectionCard } from './components';
-import {
-	generateTextModel,
-	HoverContentContainer,
-	useGetItemNameById,
-} from '@/components/library';
+import { generateTextModel, HoverContentContainer, useGetItemNameById } from '@/components/library';
 import { PADDING_X, Heading, NormalText } from '../../../_components/index';
 import { useAppSelector } from '@/hooks';
 
@@ -46,13 +42,7 @@ const subHeadingModel = [
 	...generateTextModel('collectionsCss.subTitleCss', 'Title Style'),
 ];
 
-const FeaturedCategory: FC<FeaturedCategoryProps> = ({
-	path,
-	data,
-	content,
-	basic,
-	dataModel,
-}) => {
+const FeaturedCategory: FC<FeaturedCategoryProps> = ({ path, data, content, basic, dataModel }) => {
 	const { display } = useAppSelector(state => state.builder);
 	const collections = content?.collections;
 	const css = content?.collectionsCss;
@@ -69,29 +59,27 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 				md: display === 'sm' ? PADDING_X.base : PADDING_X.md,
 			}}
 			position='sticky'
-			top='0'
-		>
+			top='0'>
 			<Box py='2rem'>
-				<Flex py='1rem' flexDir='column' alignItems={css?.align} mb='1rem'>
+				<Flex
+					py='1rem'
+					flexDir='column'
+					alignItems={css?.align}
+					mb='1rem'>
 					<HoverContentContainer
 						component={true}
 						type='content'
 						path={path}
 						title='Featured Title'
 						data={content}
-						dataModel={headingModel}
-					>
+						dataModel={headingModel}>
 						<Text
 							{...css?.titleCss}
 							textAlign={css?.align}
 							fontSize={{
 								base: css?.titleCss?.fontSize.base,
-								md:
-									display == 'sm'
-										? css?.titleCss?.fontSize.base
-										: css?.fontSize.md,
-							}}
-						>
+								md: display == 'sm' ? css?.titleCss?.fontSize.base : css?.fontSize.md,
+							}}>
 							{collections?.title}
 						</Text>
 					</HoverContentContainer>
@@ -101,19 +89,14 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 						path={path}
 						title='Featured Sub Title'
 						data={content}
-						dataModel={subHeadingModel}
-					>
+						dataModel={subHeadingModel}>
 						<Text
 							{...css?.subTitleCss}
 							textAlign={css?.align}
 							fontSize={{
 								base: css?.titleCss?.fontSize.base,
-								md:
-									display == 'sm'
-										? css?.titleCss?.fontSize.base
-										: css?.titleCss?.fontSize.md,
-							}}
-						>
+								md: display == 'sm' ? css?.titleCss?.fontSize.base : css?.titleCss?.fontSize.md,
+							}}>
 							{collections?.subTitle}
 						</Text>
 					</HoverContentContainer>
@@ -127,8 +110,7 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 						base: '1fr 1fr',
 						xl: display === 'sm' ? '1fr 1fr 1fr' : 'repeat(8, 1fr)',
 					}}
-					gap={css?.outerGap}
-				>
+					gap={css?.outerGap}>
 					{collections?.items?.slice(0, 16)?.map((item: any, i: number) => (
 						<CollectionCard
 							basic={basic}
@@ -162,8 +144,7 @@ const Title = ({
 		fontWeight={css?.titleFontWeight}
 		css={css}
 		basic={basic}
-		{...props}
-	>
+		{...props}>
 		{children}
 	</Heading>
 );
@@ -183,8 +164,7 @@ const SubTitle = ({
 		fontWeight={css?.titleFontWeight}
 		css={css}
 		basic={basic}
-		{...props}
-	>
+		{...props}>
 		{children}
 	</NormalText>
 );

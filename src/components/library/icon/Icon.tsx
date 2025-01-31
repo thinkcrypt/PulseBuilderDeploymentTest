@@ -73,6 +73,8 @@ import { FaDesktop } from 'react-icons/fa';
 import { FaPeopleGroup } from 'react-icons/fa6';
 import { MdInventory } from 'react-icons/md';
 import { BiTransferAlt } from 'react-icons/bi';
+import { IoEye } from 'react-icons/io5';
+import { IoEyeOff } from 'react-icons/io5';
 
 export type IconNameOptions =
 	| 'action-menu'
@@ -114,6 +116,8 @@ export type IconNameOptions =
 	| 'expense'
 	| 'expense-categories'
 	| 'export-doc'
+	| 'eye'
+	| 'eye-off'
 	| 'feedback'
 	| 'feedbacks'
 	| 'fields'
@@ -198,6 +202,8 @@ const icons: any = {
 	envelope: FaRegEnvelope,
 	expense: FaMoneyCheckDollar,
 	'export-doc': TbFileExport,
+	eye: IoEye,
+	'eye-off': IoEyeOff,
 	feedback: FcFeedback,
 	feedbacks: MdFeedback,
 	fields: FaTable,
