@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
-import { Center, Flex, Grid, Heading, Spacer, Text } from '@chakra-ui/react';
-import { HoverContentContainer, Column } from '@/components/library';
+import { Flex, Grid, Spacer } from '@chakra-ui/react';
+import {
+	HoverContentContainer,
+	Column,
+	PLACEHOLDER_IMAGE,
+} from '@/components/library';
 import { HomeContentProps } from '.';
 import { BgImage } from '@/builder';
 import { SubHeading, Title } from './hero';
@@ -143,7 +147,7 @@ const FeaturedCollection: FC<HomeContentProps> = ({
 }) => {
 	const data = content.featuredCollection;
 	const { display } = useAppSelector(state => state.builder);
-	console.log(schema(1));
+	console.log('zohei featured:', data);
 	return (
 		// <HoverContentContainer
 		// 	title='Featured Collection'
@@ -167,7 +171,7 @@ const FeaturedCollection: FC<HomeContentProps> = ({
 					component={true}
 					dataModel={schema(i)}
 				>
-					<BgImage key={i} src={item?.image} {...bgCss}>
+					<BgImage key={i} src={item?.image || PLACEHOLDER_IMAGE} {...bgCss}>
 						<Column gap={8} w='full'>
 							<Column gap={4}>
 								<Title

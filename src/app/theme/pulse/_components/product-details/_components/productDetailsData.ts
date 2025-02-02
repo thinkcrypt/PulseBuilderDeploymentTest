@@ -1,58 +1,5 @@
 const productDetailsData = [
 	{
-		sectionTitle: 'Product Title',
-		name: 'productPage.titleColor',
-		label: 'Title Color',
-		type: 'color',
-		span: 1,
-	},
-	{
-		name: 'productPage.titleFontSizeBase',
-		label: 'Title Font Size Base',
-		type: 'number',
-		span: 1,
-	},
-	{
-		name: 'productPage.titleFontSizeBg',
-		label: 'Title Font Size BG',
-		type: 'number',
-		span: 1,
-	},
-	{
-		name: 'productPage.titleFontWeight',
-		label: 'Title Font Weight',
-		type: 'number',
-		span: 1,
-		endOfSection: true,
-	},
-
-	{
-		sectionTitle: 'Product Price',
-		name: 'productPage.priceColor',
-		label: 'Price Color',
-		type: 'color',
-		span: 1,
-	},
-	{
-		name: 'productPage.priceFontSizeBase',
-		label: 'Font Size Base',
-		type: 'number',
-		span: 1,
-	},
-	{
-		name: 'productPage.priceFontSizeBg',
-		label: 'Font Size BG',
-		type: 'number',
-		span: 1,
-	},
-	{
-		name: 'productPage.priceFontWeight',
-		label: 'Font Weight',
-		type: 'number',
-		span: 1,
-		endOfSection: true,
-	},
-	{
 		sectionTitle: 'Badge',
 		name: 'productPage.badgeBg',
 		label: 'Background',

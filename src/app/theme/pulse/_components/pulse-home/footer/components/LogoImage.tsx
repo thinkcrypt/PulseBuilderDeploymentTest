@@ -17,8 +17,8 @@ const LogoImage: FC<LogoImageProps> = ({ src, header, ...props }) => {
 			>
 				<Image
 					src={src}
-					w='full'
-					h='auto'
+					w={`${header?.logoWidth}px`}
+					h={`${header?.logoHeight}px`}
 					alt='Logo Image'
 					objectFit='contain'
 				/>

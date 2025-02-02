@@ -4,7 +4,6 @@ import {
 	Column,
 	Button,
 	AddProductListModal,
-	SpaceBetween,
 	DeleteProductListModal,
 	EditProductListModal,
 	HoverContentContainer,
@@ -34,13 +33,6 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, data }
 						key={i}
 						item={item}
 						dataModel={dataModel}>
-						{/* <HeadingContainer>
-							<Column>
-								<Heading>{item.title}</Heading>
-								<Text>{item.subTitle}</Text>
-							</Column>
-						</HeadingContainer> */}
-
 						<TopContainer>
 							<Column
 								gap={4}
@@ -57,17 +49,6 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, data }
 									{item?.subTitle}
 								</SubHeading>
 							</Column>
-							{/* <Flex gap={3}>
-								<ArrowButton
-									name='arrow-left'
-									onClick={() => swiperRef?.slidePrev()}
-								/>
-
-								<ArrowButton
-									name='arrow-right'
-									onClick={() => swiperRef?.slideNext()}
-								/>
-							</Flex> */}
 						</TopContainer>
 
 						<CollectionDetails
@@ -81,21 +62,14 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, data }
 
 			<AddProductListModal
 				dataModel={dataModel}
-				path='hongo'>
+				path='nexa'>
 				<Center
-					mx={8}
-					cursor='pointer'
+					{...addContainerCss}
 					borderColor={data?.basic?.btnColor}
 					_dark={{
 						borderColor: data?.basic?.btnColor,
 						color: data?.basic?.btnColor,
-					}}
-					my={4}
-					h='100px'
-					w='full'
-					fontSize='2rem'
-					border='1px dashed'
-					borderRadius={4}>
+					}}>
 					<Heading
 						fontFamily={data?.basic?.primaryFont}
 						_dark={{ color: data?.basic?.btnColor }}>
@@ -107,14 +81,17 @@ const ProductListComponent: FC<HomeContentProps> = ({ dataModel, content, data }
 	);
 };
 
-// const Container = ({ children }: { children: ReactNode }) => (
-// 	<Column
-// 		p={4}
-// 		borderRadius='lg'
-// 		border='1px dashed'>
-// 		{children}
-// 	</Column>
-// );
+const addContainerCss: FlexProps = {
+	mx: 8,
+	cursor: 'pointer',
+	my: 4,
+	h: '100px',
+	textAlign: 'center',
+	w: 'full',
+	fontSize: '2rem',
+	border: '1px dashed',
+	borderRadius: 4,
+};
 
 const TopContainer: FC<FlexChild> = ({ children }) => (
 	<ColRow

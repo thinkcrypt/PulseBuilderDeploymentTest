@@ -141,7 +141,7 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 	title,
 	id,
 	children,
-	path = 'nexa',
+	path = 'pulse',
 	productListKeys,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -159,14 +159,14 @@ const DeleteProductListModal: React.FC<DeleteItemModalProps> = ({
 		if (productListKeys) {
 			triggerProduct({
 				id: id,
-				path: `/contents/product/pulse`,
+				path: `/contents/product/${path}`,
 				key: productListKeys,
 				invalidate: ['content', 'product', 'products'],
 			});
 		} else {
 			trigger({
 				id: id,
-				path: `/contents/product/pulse`,
+				path: `/contents/product/${path}`,
 				invalidate: ['content', 'product', 'products'],
 			});
 		}

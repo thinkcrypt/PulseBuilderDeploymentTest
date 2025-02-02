@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Button, Grid } from '@chakra-ui/react';
 import { BgImage } from '@/builder';
-import { Column, HoverContentContainer } from '@/components/library';
+import { Column, HoverContentContainer, PLACEHOLDER_IMAGE } from '@/components/library';
 import { SubHeading, Title } from './hero';
 import { useAppSelector } from '@/hooks';
 
@@ -50,7 +50,7 @@ const imageModel = (index: number) => [
 const DiscoverItem: FC<ItemProps> = ({ data, image, btnText }) => {
 	return (
 		<BgImage
-			src={image}
+			src={image || PLACEHOLDER_IMAGE}
 			h='340px'
 			p='32px'
 			align='flex-end'
@@ -119,7 +119,10 @@ const Discover: FC<{
 							color: data?.basic?.secondaryTextColor,
 						}}
 						fontFamily={data?.basic?.secondaryFont}>
-						{data?.content?.discover?.subTitle}
+						{data?.content?.discover?.subTitle &&
+						data?.content?.discover?.subTitle.trim().length > 0
+							? data?.content?.discover?.subTitle
+							: 'Enter Text'}
 					</SubHeading>
 				</HoverContentContainer>
 
@@ -135,7 +138,9 @@ const Discover: FC<{
 							color: data?.basic?.primaryTextColor,
 						}}
 						type={display == 'sm' ? 'h5' : 'h3'}>
-						{data?.content?.discover?.title}
+						{data?.content?.discover?.title && data?.content?.discover?.title.trim().length > 0
+							? data?.content?.discover?.title
+							: 'Enter Text'}
 					</Title>
 				</HoverContentContainer>
 			</Column>
