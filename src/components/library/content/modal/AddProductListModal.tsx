@@ -177,11 +177,6 @@ const AddProductListModal = ({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [formData, setFormData] = useFormData<any>(dataModel);
-	// product list keys
-	// const [productListKeys, setProductListKeys] = useState<string>('');
-	// const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-	// 	setProductListKeys(event.target.value);
-	// };
 
 	const [trigger, result] = useAddHomeCategoryMutation();
 
@@ -252,9 +247,6 @@ const AddProductListModal = ({
 									setFormData={setFormData}
 									setChangedData={setChangedData}
 									isModal={true}
-									// hasProductlistKey={hasProductlistKey ? true : false}
-									// productListKeys={productListKeys}
-									// handleChangeProductList={handleChange}
 								/>
 							</ModalFormSection>
 						</ModalBody>

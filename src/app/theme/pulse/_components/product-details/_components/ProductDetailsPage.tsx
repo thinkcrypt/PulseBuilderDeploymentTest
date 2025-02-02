@@ -23,7 +23,7 @@ import { AddToCart, Quantity } from './index';
 import ProductPrice from './ProductPrice';
 import { useAppSelector } from '@/hooks';
 
-const headingModel = [...generateTextModel('productPage.titleCss', 'Title Style')];
+const headingModel = [...generateTextModel('productPageCss.titleCss', 'Title Style')];
 
 export const PADDING_X = { base: 6, md: 24 };
 const ProductDetailsPage: FC<any> = ({ data, dataModel, content, path, basic }) => {
@@ -92,27 +92,19 @@ const ProductDetailsPage: FC<any> = ({ data, dataModel, content, path, basic }) 
 							data={content}
 							dataModel={headingModel}>
 							<Text
-								{...css?.titleCss}
+								mb='1rem'
+								{...content?.productPageCss?.titleCss}
 								fontSize={{
-									base: `${css?.titleFontSizeBase}px`,
+									base: `${content?.productPageCss?.titleCss?.fontSize?.base}px`,
 									md:
-										display === 'sm' ? `${css?.titleFontSizeBase}px` : `${css?.titleFontSizeBg}px`,
-								}}>
+										display === 'sm'
+											? `${content?.productPageCss?.titleCss?.fontSize?.base}px`
+											: `${content?.productPageCss?.titleCss?.fontSize?.md}px`,
+								}}
+								fontFamily={content?.productPageCss?.titleCss?.fontFamily || basic?.primaryFont}>
 								{productData?.name}
 							</Text>
 						</HoverContentContainer>
-
-						<Heading
-							basic={basic}
-							fontSize={{
-								base: `${css?.titleFontSizeBase}px`,
-								lg: css?.titleFontSizeBg,
-							}}
-							color={css?.titleColor}
-							fontWeight={css?.titleFontWeight}
-							mb='1rem'>
-							{productData?.name}
-						</Heading>
 
 						<ProductBadge
 							mb='1rem'
