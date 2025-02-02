@@ -38,8 +38,7 @@ const SimpleNavItems: FC<SimpleNavItemsProps> = ({
 			style={{
 				display: 'inline-block',
 				lineHeight: '32px',
-			}}
-		>
+			}}>
 			<NormalText
 				h='full'
 				alignItems='center'
@@ -53,8 +52,7 @@ const SimpleNavItems: FC<SimpleNavItemsProps> = ({
 				_hover={{
 					color: css?.hoverFg,
 				}}
-				{...props}
-			>
+				{...props}>
 				{name}
 			</NormalText>
 		</Link>

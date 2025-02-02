@@ -7,7 +7,7 @@ type InputContainerProps = SelectProps & {
 	label: string;
 	isRequired?: boolean;
 	helper?: string;
-	value: string | boolean;
+	value: string | boolean | number;
 	children: React.ReactNode;
 	placeholder?: any;
 };

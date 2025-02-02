@@ -1,11 +1,7 @@
 import { Box, BoxProps, Flex, FlexProps } from '@chakra-ui/react';
 import { FC, ReactNode, useState } from 'react';
 import { generateTextModel, HoverContentContainer } from '@/components/library';
-import {
-	PADDING_X,
-	useColors,
-	SimpleNavItems,
-} from '../../../_components/index';
+import { PADDING_X, useColors, SimpleNavItems } from '../../../_components/index';
 import { useAppSelector } from '@/hooks';
 
 const navModel = [
@@ -29,9 +25,6 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 }) => {
 	const [hoverItem, setHoverItem] = useState<number | null>(null);
 
-	const handleHoverToggle = (index: number | null) => {
-		setHoverItem(index);
-	};
 	const { display } = useAppSelector(state => state.builder);
 	const collections =
 		display == 'lg'
@@ -56,7 +49,7 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 			position='sticky'
 			top='0'
 		>
-			<Box zIndex={-1} w='full' bg={css?.bgColor} py='1rem' {...props}>
+			<Box w='full' bg={css?.bgColor} py='1rem' {...props}>
 				{collections?.map((item: any, i: number) => (
 					<SimpleNavItems
 						key={i}
@@ -64,6 +57,7 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 						item={item}
 						index={i}
 						css={css}
+						fontFamily={basic?.primaryFont}
 						basic={basic}
 						id={item?.id}
 						path={item?.type}
@@ -74,29 +68,3 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 	);
 };
 export default SimpleNavBar;
-
-const ScrollBox = ({
-	children,
-	...props
-}: FlexProps & { children: ReactNode }) => {
-	const colors = useColors();
-
-	return (
-		<Flex
-			overflowX='auto'
-			whiteSpace='nowrap'
-			sx={{
-				'&::-webkit-scrollbar': {
-					height: '6px',
-				},
-				'&::-webkit-scrollbar-thumb': {
-					background: colors?.scrollBar || 'gray',
-					borderRadius: '3px',
-				},
-			}}
-			{...props}
-		>
-			{children}{' '}
-		</Flex>
-	);
-};

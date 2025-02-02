@@ -49,4 +49,7 @@ export * from './input-components';
 
 export { default as VFont } from './Vfont';
 export { default as VSectionDataArray } from './section/VSectionDataArray';
+export { default as VFontSize } from './VFontSize';
 export * from './sliders';
+
+export { default as VAlignment } from './VAlign';

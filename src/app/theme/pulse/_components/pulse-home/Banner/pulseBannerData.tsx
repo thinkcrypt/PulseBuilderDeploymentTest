@@ -14,25 +14,21 @@ const pulseBannerData = [
 	{
 		name: 'banner.textAlign',
 		label: 'Text Align',
-		type: 'select',
-		options: [
-			{ label: 'Left', value: 'left' },
-			{ label: 'Center', value: 'center' },
-			{ label: 'Right', value: 'right' },
-		],
+		type: 'alignment',
+
 		span: 1,
 	},
 	{
 		name: 'banner.height',
 		label: 'Height',
 		isRequired: true,
-		type: 'color',
+		type: 'number',
 		span: 1,
 	},
 	{
 		name: 'banner.fontSize',
 		label: 'Font Size',
-		type: 'number',
+		type: 'font-size',
 		span: 1,
 	},
 	{

@@ -34,13 +34,13 @@ const navSchema = [
 	{
 		name: 'headerCategories.fontSize',
 		label: 'Font Size',
-		type: 'number',
+		type: 'font-size',
 		span: 1,
 	},
 	{
 		name: 'headerCategories.fontWeight',
 		label: 'Font Weight',
-		type: 'number',
+		type: 'font-weight',
 		span: 1,
 	},
 	{

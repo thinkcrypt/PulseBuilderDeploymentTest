@@ -35,13 +35,13 @@ const generateTextModel = (key: string, title?: string) => [
 	{
 		name: `${key}.fontSize.base`,
 		label: 'Font Size (Sm)',
-		type: 'number',
+		type: 'font-size',
 		span: 1,
 	},
 	{
 		name: `${key}.fontSize.md`,
 		label: 'Font Size (Lg)',
-		type: 'number',
+		type: 'font-size',
 		span: 1,
 	},
 

@@ -31,6 +31,8 @@ import {
 	BOpacity,
 	VSlider,
 	VSectionDataArray,
+	VFontSize,
+	VAlignment,
 } from '../../../';
 
 type Option = {
@@ -140,6 +142,16 @@ const FormInput: FC<FormInputProps> = ({
 					))}
 				</VSelect>
 			);
+		case 'alignment':
+			return (
+				<VAlignment
+					type={type}
+					isRequired={isRequired}
+					helper={item?.helper}
+					{...props}
+				/>
+			);
+
 		case 'nested-select':
 			return (
 				<VSelect
@@ -160,6 +172,15 @@ const FormInput: FC<FormInputProps> = ({
 						</option>
 					))}
 				</VSelect>
+			);
+		case 'font-size':
+			return (
+				<VFontSize
+					type={type}
+					isRequired={isRequired}
+					helper={item?.helper}
+					{...props}
+				/>
 			);
 		case 'font-weight':
 			return (
