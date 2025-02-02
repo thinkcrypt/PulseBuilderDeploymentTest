@@ -53,3 +53,4 @@ export { default as VFontSize } from './VFontSize';
 export * from './sliders';
 
 export { default as VAlignment } from './VAlign';
+export * from './arc';

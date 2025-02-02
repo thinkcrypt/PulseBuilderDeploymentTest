@@ -14,8 +14,7 @@ const Heading: FC<HeadngProps> = ({ children, css, basic, ...props }) => {
 			fontSize='1rem'
 			fontFamily={css?.primaryFont || basic?.primaryFont}
 			color={css?.color || basic?.primaryTextColor}
-			{...props}
-		>
+			{...props}>
 			{children}
 		</Text>
 	);

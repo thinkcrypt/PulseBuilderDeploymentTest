@@ -1,10 +1,5 @@
 'use client';
-import {
-	EditorLayoutSuspense,
-	useAppDispatch,
-	resetBuilder,
-	push,
-} from '@/components/library';
+import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
 import React, { useEffect } from 'react';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import {
@@ -30,10 +25,8 @@ import {
 import { Box } from '@chakra-ui/react';
 
 const HomeContentPage = () => {
-	
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
 		path: 'pulse',
-		
 	});
 	// console.log('pulse datass:::', data);
 	const dispatch = useAppDispatch();
@@ -60,8 +53,7 @@ const HomeContentPage = () => {
 			path='/home-content'
 			title='Home Content'
 			position='relative'
-			gap={0}
-		>
+			gap={0}>
 			<PageLayout>
 				<Box bg={data?.basic?.bgColor}>
 					<PulseHero

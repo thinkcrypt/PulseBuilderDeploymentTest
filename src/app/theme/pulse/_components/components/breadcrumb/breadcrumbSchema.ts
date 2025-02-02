@@ -1,29 +1,32 @@
 export const breadcrumbSchema = [
 	{
-		sectionTitle: 'Breadcrumb Css',
+		sectionTitle: 'Breadcrumb Style',
 		name: 'breadCrumbCss.bgColor',
 		label: 'Background Color',
 		type: 'color',
-		span: 1,
 	},
 	{
 		name: 'breadCrumbCss.fgColor',
 		label: 'Foreground Color',
 		type: 'color',
+		span: 1,
 	},
 	{
 		name: 'breadCrumbCss.hoverColor',
 		label: 'Hover Color',
 		type: 'color',
+		span: 1,
 	},
 	{
 		name: 'breadCrumbCss.fontSize',
 		label: 'Font Size',
-		type: 'number',
+		type: 'font-size',
+		span: 1,
 	},
 	{
 		name: 'breadCrumbCss.fontWeight',
 		label: 'Font Weight',
-		type: 'number',
+		type: 'font-weight',
+		span: 1,
 	},
 ];

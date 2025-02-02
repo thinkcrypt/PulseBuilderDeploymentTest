@@ -176,6 +176,7 @@ const FormInput: FC<FormInputProps> = ({
 		case 'font-size':
 			return (
 				<VFontSize
+					options={[10, 11, 12, 13, 14, 15, 16, 18, 20, 24, 32, 36, 40, 48, 64, 96, 128]}
 					type={type}
 					isRequired={isRequired}
 					helper={item?.helper}

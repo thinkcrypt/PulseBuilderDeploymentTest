@@ -6,11 +6,7 @@ type LoggedInIconProps = CenterProps & {
 	firstLetter: string;
 };
 
-const LoggedInIcon: FC<LoggedInIconProps> = ({
-	header,
-	firstLetter,
-	...props
-}) => {
+const LoggedInIcon: FC<LoggedInIconProps> = ({ header, firstLetter, ...props }) => {
 	return (
 		<Center
 			w={{ base: '30px', md: `${header?.iconSize + 14}px` }}
@@ -25,8 +21,7 @@ const LoggedInIcon: FC<LoggedInIconProps> = ({
 			}}
 			fontWeight='bold'
 			fontSize={header?.iconSize}
-			{...props}
-		>
+			{...props}>
 			{firstLetter}
 		</Center>
 	);

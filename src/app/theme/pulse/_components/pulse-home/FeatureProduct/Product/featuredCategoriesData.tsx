@@ -12,39 +12,10 @@ const featuredCategoriesData = [
 		sectionTitle: 'Align',
 		name: 'collectionsCss.align',
 		label: 'Align',
-		type: 'select',
-		options: [
-			{ label: 'Left', value: 'left' },
-			{ label: 'Center', value: 'center' },
-		],
+		type: 'alignment',
 		span: 1,
 	},
-	{
-		sectionTitle: 'Subtitle',
-		name: 'collectionsCss.subTitleColor',
-		label: 'Color',
-		type: 'color',
-		span: 1,
-	},
-	{
-		name: 'collectionsCss.subTitleFontSizeBASE',
-		label: 'Font Size (BASE)',
-		type: 'number',
-		span: 1,
-	},
-	{
-		name: 'collectionsCss.subTitleFontSizeBG',
-		label: 'Font Size (BG)',
-		type: 'number',
-		span: 1,
-	},
-	{
-		name: 'collectionsCss.subTitleFontWeight',
-		label: 'Font Weight',
-		type: 'number',
-		span: 1,
-		endOfSection: true,
-	},
+
 	// card
 	{
 		sectionTitle: 'Card',
@@ -68,12 +39,12 @@ const featuredCategoriesData = [
 	{
 		name: 'collectionsCss.fontSize',
 		label: 'Font Size',
-		type: 'number',
+		type: 'font-size',
 		span: 1,
 	},
 	{
 		name: 'collectionsCss.fontWeight',
-		label: 'Font Weight',
+		label: 'font-weight',
 		type: 'number',
 		span: 1,
 	},

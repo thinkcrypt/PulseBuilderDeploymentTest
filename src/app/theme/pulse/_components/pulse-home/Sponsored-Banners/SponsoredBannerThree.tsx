@@ -1,4 +1,4 @@
-import { HoverContentContainer } from '@/components/library';
+import { generateImageModel, HoverContentContainer } from '@/components/library';
 import { Box, Flex, FlexProps, Image } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { PADDING_X } from '../../../_components/index';
@@ -11,6 +11,16 @@ type SponsoredBannerThreeProps = FlexProps & {
 	dataModel: any;
 	data: any;
 };
+
+const model = [
+	{
+		sectionTitle: 'Href',
+		name: `sponsoredBannerThree.href`,
+		label: 'Href',
+		type: 'text',
+	},
+	...generateImageModel('sponsoredBannerThree.css', 'Banner Style'),
+];
 
 const SponsoredBannerThree: FC<SponsoredBannerThreeProps> = ({
 	content,
@@ -29,38 +39,50 @@ const SponsoredBannerThree: FC<SponsoredBannerThreeProps> = ({
 			path={path}
 			title='Banner Information'
 			data={content}
-			dataModel={dataModel}
+			dataModel={model}
 			bg={basic?.bgColor}
 			px={{
 				base: PADDING_X.base,
 				md: display === 'sm' ? PADDING_X.base : PADDING_X.md,
-			}}
-			position='sticky'
-			top='0'
-		>
-			<Flex w='full' {...props}>
+			}}>
+			<Flex
+				w='full'
+				{...props}>
 				<Box
-					w='full'
-					position='relative'
-					overflow='hidden'
-					// aspectRatio={16 / 9}
-					h={{
-						base: bannerData?.heightBase,
-						lg:
-							display === 'sm'
-								? bannerData?.heightBase
-								: `${bannerData?.height}px`,
+					width={{
+						base: bannerData?.css?.width.base,
+						md: display === 'sm' ? bannerData?.css?.width?.base : bannerData?.css?.width?.md,
 					}}
-					{...props}
-				>
+					h={{
+						base: bannerData?.css?.height.base,
+						md: display === 'sm' ? bannerData?.css?.height?.base : bannerData?.css?.height?.md,
+					}}
+					{...props}>
 					<Image
-						borderRadius={`${bannerData?.borderRadius}px`}
-						w='full'
-						h='full'
-						aspectRatio={16 / 9}
-						objectFit='cover'
-						src={bannerData?.image}
-						alt='Banner Image'
+						{...bannerData?.css}
+						h={{
+							base: bannerData?.css?.height.base,
+							md: display === 'sm' ? bannerData?.css?.height?.base : bannerData?.css?.height?.md,
+						}}
+						width={{
+							base: bannerData?.css?.width.base,
+							md: display === 'sm' ? bannerData?.css?.width?.base : bannerData?.css?.width?.md,
+						}}
+						src={bannerData?.css?.src?.md}
+						// src={{
+						// 	base: bannerData?.css?.src?.base || bannerData?.src?.md,
+						// 	md:
+						// 		display === 'sm'
+						// 			? bannerData?.css?.src?.base || bannerData?.src?.md
+						// 			: bannerData?.css?.src?.md,
+						// }}
+						// borderRadius={`${bannerData?.borderRadius}px`}
+						// w='full'
+						// h='full'
+						// aspectRatio={16 / 9}
+						// objectFit='cover'
+						// src={bannerData?.image}
+						// alt='Banner Image'
 					/>
 				</Box>
 			</Flex>
