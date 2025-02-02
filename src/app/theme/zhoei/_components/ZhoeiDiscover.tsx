@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Button, Grid } from '@chakra-ui/react';
 import { BgImage } from '@/builder';
-import { Column, HoverContentContainer } from '@/components/library';
+import { Column, HoverContentContainer, PLACEHOLDER_IMAGE } from '@/components/library';
 import { SubHeading, Title } from './hero';
 import { useAppSelector } from '@/hooks';
 
@@ -50,7 +50,7 @@ const imageModel = (index: number) => [
 const DiscoverItem: FC<ItemProps> = ({ data, image, btnText }) => {
 	return (
 		<BgImage
-			src={image}
+			src={image || PLACEHOLDER_IMAGE}
 			h='340px'
 			p='32px'
 			align='flex-end'
