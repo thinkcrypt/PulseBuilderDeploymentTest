@@ -101,19 +101,16 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({ path, data, content, basi
 							{collections?.subTitle}
 						</Text>
 					</HoverContentContainer>
-
-					{/* <SubTitle basic={basic} css={css} textAlign={css?.align}>
-						{collections?.subTitle}
-					</SubTitle> */}
 				</Flex>
 				<Grid
 					templateColumns={{
 						base: '1fr 1fr',
-						xl: display === 'sm' ? '1fr 1fr 1fr' : 'repeat(8, 1fr)',
+						xl: display === 'sm' ? '1fr 1fr 1fr' : 'repeat(7, 1fr)',
 					}}
 					gap={css?.outerGap}>
 					{collections?.items?.slice(0, 16)?.map((item: any, i: number) => (
 						<CollectionCard
+							fontFamily={basic?.primaryFont}
 							basic={basic}
 							key={i}
 							path={item?.type}

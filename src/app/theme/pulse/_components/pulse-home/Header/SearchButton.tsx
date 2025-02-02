@@ -5,7 +5,7 @@ type SearchButtonProps = ButtonProps & {
 	header: any;
 };
 
-const SearchButton: FC<SearchButtonProps> = ({ header }) => {
+const SearchButton: FC<SearchButtonProps> = ({ header, ...props }) => {
 	return (
 		<Button
 			w={`${header?.btnWidth}px`}
@@ -19,7 +19,7 @@ const SearchButton: FC<SearchButtonProps> = ({ header }) => {
 				bg: header?.btnHoverBg,
 				color: header?.btnHoverFg,
 			}}
-		>
+			{...props}>
 			{header?.btnText}
 		</Button>
 	);

@@ -2,24 +2,11 @@
 
 import { useEffect } from 'react';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
-import {
-	EditorLayoutSuspense,
-	useAppDispatch,
-	resetBuilder,
-	push,
-} from '@/components/library';
+import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
 
 import {
 	homeSidebarData,
-	PulseFooter,
-	pulseFooterSchema,
 	productDetailsData,
-	Banner,
-	pulseBannerData,
-	PulseHeader,
-	pulseHeaderData,
-	navSchema,
-	SimpleNavBar,
 	ProductDetailsPage,
 	ProductSpecifications,
 	productSpecificiationsData,
@@ -58,8 +45,7 @@ const ProductDetails = () => {
 			path='/home-content'
 			title='Home Content'
 			position='relative'
-			gap={0}
-		>
+			gap={0}>
 			<PageLayout>
 				<ProductDetailsPage
 					data={data}

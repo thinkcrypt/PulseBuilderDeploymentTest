@@ -75,6 +75,9 @@ import { MdInventory } from 'react-icons/md';
 import { BiTransferAlt } from 'react-icons/bi';
 import { IoEye } from 'react-icons/io5';
 import { IoEyeOff } from 'react-icons/io5';
+import { MdAlignHorizontalCenter } from 'react-icons/md';
+import { MdAlignHorizontalLeft } from 'react-icons/md';
+import { MdAlignHorizontalRight } from 'react-icons/md';
 
 export type IconNameOptions =
 	| 'action-menu'
@@ -156,7 +159,10 @@ export type IconNameOptions =
 	| 'undo'
 	| 'user'
 	| 'z-cart'
-	| 'z-grid';
+	| 'z-grid'
+	| 'align-left'
+	| 'align-center'
+	| 'align-right';
 
 type IconProps = {
 	size?: number;
@@ -246,6 +252,11 @@ const icons: any = {
 	//zhoei icons
 	'z-cart': IoBagOutline,
 	'z-grid': IoGridOutline,
+
+	//alignment
+	'align-left': MdAlignHorizontalLeft,
+	'align-center': MdAlignHorizontalCenter,
+	'align-right': MdAlignHorizontalRight,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

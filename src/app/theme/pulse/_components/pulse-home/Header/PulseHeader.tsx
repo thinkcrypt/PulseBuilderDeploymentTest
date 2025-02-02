@@ -153,15 +153,14 @@ const HeaderConfig: FC<HeaderProps> = ({ dataModel, content, path, data, basic }
 									name='search'
 								/>
 							</SearchDrawer>
-							<Link href='/cart'>
-								<HeaderIcon
-									type={'cart'}
-									basic={basic}
-									header={header}
-									name='cart'
-									cartTotal={cartTotal}
-								/>
-							</Link>
+
+							<HeaderIcon
+								type={'cart'}
+								basic={basic}
+								header={header}
+								name='cart'
+								cartTotal={cartTotal}
+							/>
 
 							{!isLoggedIn && (
 								<LoginModal
@@ -170,12 +169,11 @@ const HeaderConfig: FC<HeaderProps> = ({ dataModel, content, path, data, basic }
 								/>
 							)}
 							{isLoggedIn && (
-								<Link href='/dashboard/account'>
-									<LoggedInIcon
-										firstLetter={firstLetter}
-										header={header}
-									/>
-								</Link>
+								<LoggedInIcon
+									fontFamily={basic?.secondaryFont}
+									firstLetter={firstLetter}
+									header={header}
+								/>
 							)}
 						</Flex>
 					</Grid>

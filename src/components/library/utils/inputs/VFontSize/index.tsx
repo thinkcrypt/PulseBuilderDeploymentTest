@@ -12,6 +12,7 @@ type InputContainerProps = InputProps &
 		helper?: string;
 		value: string | number | undefined;
 		placeholder?: any;
+		options: number[];
 	};
 
 const VFontSize: FC<InputContainerProps> = ({
@@ -20,6 +21,7 @@ const VFontSize: FC<InputContainerProps> = ({
 	placeholder,
 	value,
 	helper,
+	options,
 	...props
 }) => {
 	const ref = useRef<HTMLInputElement>(null);
@@ -85,6 +87,6 @@ const selectCss: SelectProps = {
 	focusBorderColor: 'container.borderLight',
 };
 
-const options = [10, 11, 12, 13, 14, 15, 16, 18, 20, 24, 32, 36, 40, 48, 64, 96, 128];
+//const options = [10, 11, 12, 13, 14, 15, 16, 18, 20, 24, 32, 36, 40, 48, 64, 96, 128];
 
 export default VFontSize;

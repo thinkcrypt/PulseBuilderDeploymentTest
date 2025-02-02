@@ -3,11 +3,7 @@ import React, { FC } from 'react';
 
 import Link from 'next/link';
 import { useGetItemNameById } from '@/components/library';
-import {
-	FlexColumn,
-	NormalText,
-	cartBoxShadow,
-} from '../../../../_components/index';
+import { FlexColumn, NormalText, cartBoxShadow } from '../../../../_components/index';
 type CollectionCard = BoxProps & {
 	item?: any;
 	css?: any;
@@ -15,6 +11,7 @@ type CollectionCard = BoxProps & {
 	path?: any;
 	id?: any;
 	data?: any;
+	fontFamily?: any;
 };
 
 const CollectionCard: FC<CollectionCard> = ({
@@ -24,6 +21,7 @@ const CollectionCard: FC<CollectionCard> = ({
 	basic,
 	id,
 	data,
+	fontFamily,
 	...props
 }) => {
 	const { name, image } = useGetItemNameById({
@@ -33,12 +31,14 @@ const CollectionCard: FC<CollectionCard> = ({
 	// console.log("name image", name, image);
 	return (
 		<Link href={`/category/${id}`}>
-			<CardWrapper css={css} basic={basic} {...props}>
+			<CardWrapper
+				css={css}
+				basic={basic}
+				{...props}>
 				<Flex
 					w={`${css?.imageWidth}px`}
 					h={`${css?.imageHeight}px`}
-					maxH='60px'
-				>
+					maxH='60px'>
 					<Image
 						w={'full'}
 						h={'auto'}
@@ -48,14 +48,14 @@ const CollectionCard: FC<CollectionCard> = ({
 					/>
 				</Flex>
 				<NormalText
+					fontFamily={fontFamily}
 					basic={basic}
 					color={css?.fgColor}
 					fontSize={css?.fontSize}
 					fontWeight={css?.fontWeight}
 					textAlign='center'
 					_hover={{ color: 'inherit' }}
-					mt='12px'
-				>
+					mt='12px'>
 					{name}
 				</NormalText>
 			</CardWrapper>
@@ -81,8 +81,7 @@ const CardWrapper = ({
 		_hover={{ color: css?.fgColorHover }}
 		py={css?.innerGap}
 		px={css?.innerGap}
-		{...props}
-	>
+		{...props}>
 		{children}
 	</FlexColumn>
 );

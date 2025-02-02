@@ -11,20 +11,18 @@ type LogoImageProps = FlexProps & {
 const LogoImage: FC<LogoImageProps> = ({ src, header, ...props }) => {
 	const { display } = useAppSelector(state => state.builder);
 	return (
-		<Link style={{ width: '100%', height: '100%' }} href='/'>
+		<Link
+			style={{ width: '100%', height: '100%' }}
+			href='/'>
 			<Flex
 				justifyContent={{
 					base: 'flex-start',
 					xl: display == 'sm' ? 'center' : 'flex-start',
-				}}
-				// w="full"
-				// h="full"
-			>
+				}}>
 				<Flex
 					w={`${header?.logoWidth}px`}
 					h={`${header?.logoHeight}px`}
-					{...props}
-				>
+					{...props}>
 					<Image
 						src={src}
 						w='full'
