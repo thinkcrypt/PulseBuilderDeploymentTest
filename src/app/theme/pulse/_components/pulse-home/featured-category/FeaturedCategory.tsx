@@ -33,7 +33,7 @@ const headingModel = [
 		isRequired: true,
 		type: 'text',
 	},
-	...generateTextModel('collectionsCss.titleCss', 'Title Style'),
+	...generateTextModel('collectionsCss?.titleCss', 'Title Style'),
 ];
 const subHeadingModel = [
 	{
@@ -43,7 +43,7 @@ const subHeadingModel = [
 		isRequired: true,
 		type: 'text',
 	},
-	...generateTextModel('collectionsCss.subTitleCss', 'Title Style'),
+	...generateTextModel('collectionsCss?.subTitleCss', 'Title Style'),
 ];
 
 const FeaturedCategory: FC<FeaturedCategoryProps> = ({
@@ -56,6 +56,7 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
 	const { display } = useAppSelector(state => state.builder);
 	const collections = content?.collections;
 	const css = content?.collectionsCss;
+	// console.log('css', css?.titleCss);
 	return (
 		<HoverContentContainer
 			section={true}

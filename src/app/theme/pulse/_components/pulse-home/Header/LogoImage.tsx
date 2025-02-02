@@ -30,7 +30,7 @@ const LogoImage: FC<LogoImageProps> = ({ src, header, ...props }) => {
 						w='full'
 						h='full'
 						alt='Logo Image'
-						objectFit='cover'
+						objectFit='contain'
 					/>
 				</Flex>
 			</Flex>

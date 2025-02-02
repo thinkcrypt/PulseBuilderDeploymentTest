@@ -1,6 +1,6 @@
 import { Box, BoxProps, Flex, FlexProps } from '@chakra-ui/react';
 import { FC, ReactNode, useState } from 'react';
-import { HoverContentContainer } from '@/components/library';
+import { generateTextModel, HoverContentContainer } from '@/components/library';
 import {
 	PADDING_X,
 	useColors,
@@ -8,6 +8,9 @@ import {
 } from '../../../_components/index';
 import { useAppSelector } from '@/hooks';
 
+const navModel = [
+	...generateTextModel('headerCategories?.navFont', 'Nav Font Style'),
+];
 type SimpleNavBarProps = BoxProps & {
 	content: any;
 	basic: any;
@@ -38,9 +41,10 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 
 	return (
 		<HoverContentContainer
+			section={true}
 			type='content'
 			path={path}
-			title='Banner Information'
+			title='Nav Categories'
 			data={content}
 			edit={true}
 			dataModel={dataModel}
@@ -52,8 +56,7 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 			position='sticky'
 			top='0'
 		>
-			<Box w='full' bg={css?.bgColor} py='1rem' {...props}>
-				{/* <ScrollBox> */}
+			<Box zIndex={-1} w='full' bg={css?.bgColor} py='1rem' {...props}>
 				{collections?.map((item: any, i: number) => (
 					<SimpleNavItems
 						key={i}
@@ -66,7 +69,6 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 						path={item?.type}
 					/>
 				))}
-				{/* </ScrollBox> */}
 			</Box>
 		</HoverContentContainer>
 	);

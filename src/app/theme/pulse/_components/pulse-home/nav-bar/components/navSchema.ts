@@ -1,5 +1,4 @@
 const navSchema = [
-
 	{
 		name: 'headerCategories.bgColor',
 		label: 'Background Color',
@@ -24,6 +23,12 @@ const navSchema = [
 		name: 'headerCategories.fgColor',
 		label: 'Foreground Color',
 		type: 'color',
+		span: 1,
+	},
+	{
+		name: 'headerCategories.fontFamily',
+		label: 'Font Family',
+		type: 'font',
 		span: 1,
 	},
 	{
