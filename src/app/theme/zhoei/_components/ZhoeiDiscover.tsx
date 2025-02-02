@@ -119,7 +119,10 @@ const Discover: FC<{
 							color: data?.basic?.secondaryTextColor,
 						}}
 						fontFamily={data?.basic?.secondaryFont}>
-						{data?.content?.discover?.subTitle}
+						{data?.content?.discover?.subTitle &&
+						data?.content?.discover?.subTitle.trim().length > 0
+							? data?.content?.discover?.subTitle
+							: 'Enter Text'}
 					</SubHeading>
 				</HoverContentContainer>
 
@@ -135,7 +138,9 @@ const Discover: FC<{
 							color: data?.basic?.primaryTextColor,
 						}}
 						type={display == 'sm' ? 'h5' : 'h3'}>
-						{data?.content?.discover?.title}
+						{data?.content?.discover?.title && data?.content?.discover?.title.trim().length > 0
+							? data?.content?.discover?.title
+							: 'Enter Text'}
 					</Title>
 				</HoverContentContainer>
 			</Column>

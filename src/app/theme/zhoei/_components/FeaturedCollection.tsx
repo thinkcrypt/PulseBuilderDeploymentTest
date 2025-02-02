@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Center, Flex, Grid, Heading, Spacer, Text } from '@chakra-ui/react';
-import { HoverContentContainer, Column } from '@/components/library';
+import { Flex, Grid, Spacer } from '@chakra-ui/react';
+import { HoverContentContainer, Column, PLACEHOLDER_IMAGE } from '@/components/library';
 import { HomeContentProps } from '.';
 import { BgImage } from '@/builder';
 import { SubHeading, Title } from './hero';
@@ -162,7 +162,7 @@ const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, data: as
 					dataModel={schema(i)}>
 					<BgImage
 						key={i}
-						src={item?.image}
+						src={item?.image || PLACEHOLDER_IMAGE}
 						{...bgCss}>
 						<Column
 							gap={8}
