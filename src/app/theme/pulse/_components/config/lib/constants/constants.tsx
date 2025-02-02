@@ -29,7 +29,9 @@ export const currency = {
 // export const productCardBoxShadow = "0px 0px 6px -3px rgb(0, 0, 0, .2)";
 // export const cartBoxShadowHover = "0 2px 5px rgba(0, 0, 0, 0.1);";
 
-export const placeholderLogo = './logo/placeholderImage.png';
+export const placeholderLogo =
+	'https://images.unsplash.com/photo-1531860898813-8cecde84646c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+// export const placeholderLogo = './logo/placeholderImage.png';
 
 const BASE_SIDEBAR_WIDTH = '240px';
 const BASE_SIDEBAR_WIDTH_SMALL = '20PX';

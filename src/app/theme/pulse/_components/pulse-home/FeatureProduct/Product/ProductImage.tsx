@@ -1,3 +1,4 @@
+import { useAppSelector } from '@/hooks';
 import { Flex, FlexProps, Image } from '@chakra-ui/react';
 
 import React, { FC } from 'react';
@@ -8,8 +9,12 @@ type ProductImageProps = FlexProps & {
 };
 
 const ProductImage: FC<ProductImageProps> = ({ src, css, ...props }) => {
+	const { display } = useAppSelector(state => state.builder);
 	return (
-		<Flex w='full' maxH='450px'>
+		<Flex
+			w='full'
+			h={{ base: '360px', md: display === 'sm' ? '360px' : '400px' }}
+		>
 			<Image
 				w='full'
 				h='full'

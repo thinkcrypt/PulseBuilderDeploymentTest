@@ -15,7 +15,13 @@ const LogoImage: FC<LogoImageProps> = ({ src, header, ...props }) => {
 				h={`${header?.logoHeight}px`}
 				{...props}
 			>
-				<Image src={src} w='full' h='auto' alt='Logo Image' objectFit='cover' />
+				<Image
+					src={src}
+					w={`${header?.logoWidth}px`}
+					h={`${header?.logoHeight}px`}
+					alt='Logo Image'
+					objectFit='contain'
+				/>
 			</Flex>
 		</Link>
 	);

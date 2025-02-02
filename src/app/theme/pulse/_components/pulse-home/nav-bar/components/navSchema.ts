@@ -26,6 +26,12 @@ const navSchema = [
 		span: 1,
 	},
 	{
+		name: 'headerCategories.fontFamily',
+		label: 'Font Family',
+		type: 'font',
+		span: 1,
+	},
+	{
 		name: 'headerCategories.fontSize',
 		label: 'Font Size',
 		type: 'font-size',

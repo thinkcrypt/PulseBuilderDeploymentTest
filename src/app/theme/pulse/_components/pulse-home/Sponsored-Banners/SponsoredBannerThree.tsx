@@ -1,4 +1,7 @@
-import { generateImageModel, HoverContentContainer } from '@/components/library';
+import {
+	generateImageModel,
+	HoverContentContainer,
+} from '@/components/library';
 import { Box, Flex, FlexProps, Image } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { PADDING_X } from '../../../_components/index';
@@ -13,6 +16,106 @@ type SponsoredBannerThreeProps = FlexProps & {
 };
 
 const model = [
+	{
+		name: `sponsoredBannerThree.type`,
+		label: 'Link Type',
+		type: 'nested-select',
+		isRequired: true,
+		options: [
+			{
+				label: 'Page',
+				value: 'page',
+			},
+			{
+				label: 'Product',
+				value: 'product',
+			},
+			{
+				label: 'Category',
+				value: 'category',
+			},
+			{
+				label: 'Collection',
+				value: 'collection',
+			},
+			{
+				label: 'External Link',
+				value: 'external',
+			},
+		],
+	},
+	{
+		name: `sponsoredBannerThree.href`,
+		label: 'Select Page',
+		type: 'nested-select',
+		options: [
+			{
+				label: 'Home',
+				value: '/',
+			},
+			{
+				label: 'All Categories',
+				value: '/category',
+			},
+			{
+				label: 'FAQ',
+				value: '/faq',
+			},
+			{
+				label: 'Shop',
+				value: '/explore',
+			},
+			{
+				label: 'Contact',
+				value: '/contact-us',
+			},
+		],
+
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.sponsoredBannerThree.type === 'page';
+		},
+	},
+	{
+		name: `sponsoredBannerThree.href`,
+		label: 'Select Product',
+		type: 'nested-data-menu',
+		model: 'products',
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.sponsoredBannerThree.type === 'product';
+		},
+	},
+	{
+		name: `sponsoredBannerThree.href`,
+		label: 'Enter External Link [eg. https://google.com]',
+		type: 'nested-string',
+		isRequired: true,
+		renderCondition: (data: any) => {
+			return data?.sponsoredBannerThree.type === 'external';
+		},
+	},
+	{
+		name: `sponsoredBannerThree.href`,
+		label: 'Select Collection',
+		type: 'nested-data-menu',
+		model: 'collections',
+		isRequired: true,
+
+		renderCondition: (data: any) => {
+			return data?.sponsoredBannerThree.type === 'collection';
+		},
+	},
+	{
+		name: `sponsoredBannerThree.href`,
+		label: 'Select Cateogry',
+		type: 'nested-data-menu',
+		model: 'categories',
+		isRequired: true,
+		renderCondition: (data: any) =>
+			data?.sponsoredBannerThree.type == 'category',
+	},
+
 	{
 		sectionTitle: 'Href',
 		name: `sponsoredBannerThree.href`,
@@ -44,31 +147,44 @@ const SponsoredBannerThree: FC<SponsoredBannerThreeProps> = ({
 			px={{
 				base: PADDING_X.base,
 				md: display === 'sm' ? PADDING_X.base : PADDING_X.md,
-			}}>
-			<Flex
-				w='full'
-				{...props}>
+			}}
+		>
+			<Flex w='full' {...props}>
 				<Box
 					width={{
 						base: bannerData?.css?.width.base,
-						md: display === 'sm' ? bannerData?.css?.width?.base : bannerData?.css?.width?.md,
+						md:
+							display === 'sm'
+								? bannerData?.css?.width?.base
+								: bannerData?.css?.width?.md,
 					}}
 					h={{
 						base: bannerData?.css?.height.base,
-						md: display === 'sm' ? bannerData?.css?.height?.base : bannerData?.css?.height?.md,
+						md:
+							display === 'sm'
+								? bannerData?.css?.height?.base
+								: bannerData?.css?.height?.md,
 					}}
-					{...props}>
+					{...props}
+				>
 					<Image
 						{...bannerData?.css}
 						h={{
 							base: bannerData?.css?.height.base,
-							md: display === 'sm' ? bannerData?.css?.height?.base : bannerData?.css?.height?.md,
+							md:
+								display === 'sm'
+									? bannerData?.css?.height?.base
+									: bannerData?.css?.height?.md,
 						}}
 						width={{
 							base: bannerData?.css?.width.base,
-							md: display === 'sm' ? bannerData?.css?.width?.base : bannerData?.css?.width?.md,
+							md:
+								display === 'sm'
+									? bannerData?.css?.width?.base
+									: bannerData?.css?.width?.md,
 						}}
 						src={bannerData?.css?.src?.md}
+						alt='Ad image'
 						// src={{
 						// 	base: bannerData?.css?.src?.base || bannerData?.src?.md,
 						// 	md:

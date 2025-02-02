@@ -17,7 +17,15 @@ export const userApi = mainApi.injectEndpoints({
 			providesTags: (result, error, { path }) => [path],
 		}),
 		getSum: builder.query<any, any>({
-			query: ({ path, field, filters = {} }: { path: string; field: string; filters?: any }) => ({
+			query: ({
+				path,
+				field,
+				filters = {},
+			}: {
+				path: string;
+				field: string;
+				filters?: any;
+			}) => ({
 				url: `${path}/get/sum/${field}`,
 				params: { ...filters },
 			}),
@@ -41,28 +49,56 @@ export const userApi = mainApi.injectEndpoints({
 
 		getSelectData: builder.query<any, string>({
 			query: (id: any) => `${id}?limit=1000&fields=name&sort=name`,
-			providesTags: ['filters', 'products', 'brands', 'categories', 'coupons', 'collections'],
+			providesTags: [
+				'filters',
+				'products',
+				'brands',
+				'categories',
+				'coupons',
+				'collections',
+			],
 		}),
-		getById: builder.query<any, { path: string; id: any; invalidate?: string[] }>({
+		getById: builder.query<
+			any,
+			{ path: string; id: any; invalidate?: string[] }
+		>({
 			query: ({ path, id, invalidate = [] }): any => `${path}/${id}`,
-			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
+			providesTags: (result, error, { path, invalidate = [] }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
 
 		get: builder.query<any, { path: string; invalidate?: string[] }>({
 			query: ({ path, invalidate = [] }): any => `${path}`,
-			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
+			providesTags: (result, error, { path, invalidate = [] }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
 
 		getOne: builder.query<any, { path: string; invalidate?: string[] }>({
 			query: ({ path, invalidate = [] }): any => `${path}/get/one`,
-			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
+			providesTags: (result, error, { path, invalidate = [] }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
 
-		getByIdToEdit: builder.query<any, { path: string; id: any; invalidate?: string[] }>({
+		getByIdToEdit: builder.query<
+			any,
+			{ path: string; id: any; invalidate?: string[] }
+		>({
 			query: ({ path, id, invalidate }): any => `${path}/edit/${id}`,
-			providesTags: (result, error, { path, invalidate = [] }: any) => [path, ...invalidate],
+			providesTags: (result, error, { path, invalidate = [] }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
-		post: builder.mutation<any, { path: string; body: any; invalidate?: string[]; type?: string }>({
+		post: builder.mutation<
+			any,
+			{ path: string; body: any; invalidate?: string[]; type?: string }
+		>({
 			query: ({ path, body, invalidate }): any => ({
 				url: path,
 				method: 'POST',
@@ -74,7 +110,10 @@ export const userApi = mainApi.injectEndpoints({
 				...invalidate,
 			],
 		}),
-		export: builder.mutation<any, { path: string; body: any; invalidate?: string; type?: string }>({
+		export: builder.mutation<
+			any,
+			{ path: string; body: any; invalidate?: string; type?: string }
+		>({
 			query: ({ path, body, invalidate, type = 'csv' }): any => ({
 				url: `${path}/export/${type}`,
 				method: 'POST',
@@ -93,7 +132,10 @@ export const userApi = mainApi.injectEndpoints({
 
 					const timestamp = date.toISOString().replace(/[:.]/g, '-');
 					const name = arg?.path.toUpperCase().replace('/', '_');
-					link.setAttribute('download', `${name}_${timestamp}.${fileExtension}`);
+					link.setAttribute(
+						'download',
+						`${name}_${timestamp}.${fileExtension}`
+					);
 
 					document.body.appendChild(link);
 					link.click();
@@ -142,30 +184,51 @@ export const userApi = mainApi.injectEndpoints({
 				method: 'PUT',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [path, ...invalidate],
+			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
-		deleteById: builder.mutation<any, { path: string; id: string; invalidate?: string[] }>({
+		deleteById: builder.mutation<
+			any,
+			{ path: string; id: string; invalidate?: string[] }
+		>({
 			query: ({ path, id, invalidate }): any => ({
 				url: `${path}/${id}`,
 				method: 'DELETE',
 			}),
-			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [path, ...invalidate],
+			invalidatesTags: (result, error, { path, id, invalidate = [] }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
-		updateMany: builder.mutation<any, { path: string; body: any; invalidate?: any }>({
+		updateMany: builder.mutation<
+			any,
+			{ path: string; body: any; invalidate?: any }
+		>({
 			query: ({ path, body }): any => ({
 				url: `${path}/update/many`,
 				method: 'PUT',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, invalidate = '' }) => [path, invalidate],
+			invalidatesTags: (result, error, { path, invalidate = '' }) => [
+				path,
+				invalidate,
+			],
 		}),
-		copyItem: builder.mutation<any, { path: string; body: any; invalidate?: string[] }>({
+		copyItem: builder.mutation<
+			any,
+			{ path: string; body: any; invalidate?: string[] }
+		>({
 			query: ({ path, body, invalidate }): any => ({
 				url: `${path}/copy/${body.id}`,
 				method: 'PUT',
 				body: body,
 			}),
-			invalidatesTags: (result, error, { path, invalidate = [] }) => [path, ...invalidate],
+			invalidatesTags: (result, error, { path, invalidate = [] }) => [
+				path,
+				...invalidate,
+			],
 		}),
 		deleteProductlistByKeyId: builder.mutation<
 			any,
@@ -175,7 +238,10 @@ export const userApi = mainApi.injectEndpoints({
 				url: `${path}/${id}?key=${key}`,
 				method: 'DELETE',
 			}),
-			invalidatesTags: (result, error, { path, id, invalidate }: any) => [path, ...invalidate],
+			invalidatesTags: (result, error, { path, id, invalidate }: any) => [
+				path,
+				...invalidate,
+			],
 		}),
 	}),
 });

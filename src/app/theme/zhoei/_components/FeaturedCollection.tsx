@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import { Flex, Grid, Spacer } from '@chakra-ui/react';
-import { HoverContentContainer, Column, PLACEHOLDER_IMAGE } from '@/components/library';
+import {
+	HoverContentContainer,
+	Column,
+	PLACEHOLDER_IMAGE,
+} from '@/components/library';
 import { HomeContentProps } from '.';
 import { BgImage } from '@/builder';
 import { SubHeading, Title } from './hero';
@@ -130,15 +134,20 @@ const schema = (i: number) => {
 			type: 'nested-data-menu',
 			model: 'categories',
 			isRequired: true,
-			renderCondition: (data: any) => data?.featuredCollection[i].type == 'category',
+			renderCondition: (data: any) =>
+				data?.featuredCollection[i].type == 'category',
 		},
 	];
 };
 
-const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, data: asData }) => {
+const FeaturedCollection: FC<HomeContentProps> = ({
+	dataModel,
+	content,
+	data: asData,
+}) => {
 	const data = content.featuredCollection;
 	const { display } = useAppSelector(state => state.builder);
-	console.log(schema(1));
+	console.log('zohei featured:', data);
 	return (
 		// <HoverContentContainer
 		// 	title='Featured Collection'
@@ -151,7 +160,8 @@ const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, data: as
 			bg={asData?.basic?.bgColor}
 			p={display == 'sm' ? 4 : 8}
 			gridTemplateColumns={display == 'sm' ? '1fr' : '1fr 1fr 1fr'}
-			gap={4}>
+			gap={4}
+		>
 			{data?.map((item: ItemProps, i: number) => (
 				<HoverContentContainer
 					title='Featured Collection'
@@ -159,24 +169,22 @@ const FeaturedCollection: FC<HomeContentProps> = ({ dataModel, content, data: as
 					key={i}
 					h='520px'
 					component={true}
-					dataModel={schema(i)}>
-					<BgImage
-						key={i}
-						src={item?.image || PLACEHOLDER_IMAGE}
-						{...bgCss}>
-						<Column
-							gap={8}
-							w='full'>
+					dataModel={schema(i)}
+				>
+					<BgImage key={i} src={item?.image || PLACEHOLDER_IMAGE} {...bgCss}>
+						<Column gap={8} w='full'>
 							<Column gap={4}>
 								<Title
 									type='h5'
 									fontFamily={asData?.basic?.primaryFont}
-									color={asData?.basic?.brandTextColor}>
+									color={asData?.basic?.brandTextColor}
+								>
 									{item?.title}
 								</Title>
 								<SubHeading
 									color={asData?.basic?.secondaryTextColor}
-									fontFamily={asData?.basic?.brandTextColor}>
+									fontFamily={asData?.basic?.brandTextColor}
+								>
 									{item?.subTitle}
 								</SubHeading>
 							</Column>
