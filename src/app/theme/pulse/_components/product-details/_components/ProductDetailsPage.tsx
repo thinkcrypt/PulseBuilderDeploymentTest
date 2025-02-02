@@ -24,6 +24,7 @@ import ProductPrice from './ProductPrice';
 import { useAppSelector } from '@/hooks';
 
 const headingModel = [...generateTextModel('productPageCss.titleCss', 'Title Style')];
+const priceModel = [...generateTextModel('productPageCss.priceTextCss', 'Title Style')];
 
 export const PADDING_X = { base: 6, md: 24 };
 const ProductDetailsPage: FC<any> = ({ data, dataModel, content, path, basic }) => {
@@ -113,11 +114,35 @@ const ProductDetailsPage: FC<any> = ({ data, dataModel, content, path, basic }) 
 							css={css}
 							content={content}
 						/>
-						<ProductPrice
+						<HoverContentContainer
+							component={true}
+							type='content'
+							path={path}
+							title='Text'
+							data={content}
+							dataModel={priceModel}>
+							<Text
+								mb='1rem'
+								{...content?.productPageCss?.priceTextCss}
+								fontSize={{
+									base: `${content?.productPageCss?.priceTextCss?.fontSize?.base}px`,
+									md:
+										display === 'sm'
+											? `${content?.productPageCss?.priceTextCss?.fontSize?.base}px`
+											: `${content?.productPageCss?.priceTextCss?.fontSize?.md}px`,
+								}}
+								fontFamily={
+									content?.productPageCss?.priceTextCss?.fontFamily || basic?.primaryFont
+								}>
+								BDT. {productData?.price.toLocaleString()}
+							</Text>
+						</HoverContentContainer>
+
+						{/* <ProductPrice
 							css={css}
 							basic={basic}
 							productData={productData}
-						/>
+						/> */}
 
 						<NormalText
 							color={css?.textPrimary}

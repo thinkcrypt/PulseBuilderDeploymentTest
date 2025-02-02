@@ -1,7 +1,6 @@
-
 import { Box, BoxProps, Center, Flex, TextProps } from '@chakra-ui/react';
 import { FC } from 'react';
-import {NormalText} from '../../../_components/index';
+import { NormalText } from '../../../_components/index';
 
 type ProductPriceProps = TextProps & {
 	css?: any;
@@ -9,13 +8,7 @@ type ProductPriceProps = TextProps & {
 	productData: any;
 };
 
-const ProductPrice: FC<ProductPriceProps> = ({
-	basic,
-	css,
-	title,
-	productData,
-	...props
-}) => {
+const ProductPrice: FC<ProductPriceProps> = ({ basic, css, title, productData, ...props }) => {
 	// const colors = useColors();
 
 	const discountValue =
@@ -30,7 +23,9 @@ const ProductPrice: FC<ProductPriceProps> = ({
 		: productData?.price;
 
 	return (
-		<Flex alignItems='center' mb='1rem'>
+		<Flex
+			alignItems='center'
+			mb='1rem'>
 			<NormalText
 				basic={basic}
 				css={css}
@@ -40,8 +35,7 @@ const ProductPrice: FC<ProductPriceProps> = ({
 				}}
 				fontWeight={css?.priceFontWeight}
 				color={css?.priceColor}
-				mr='12px'
-			>
+				mr='12px'>
 				{`Tk. ${finalPrice?.toLocaleString()}`}
 			</NormalText>
 
@@ -53,8 +47,7 @@ const ProductPrice: FC<ProductPriceProps> = ({
 					fontSize={`14px`}
 					fontWeight='600'
 					color={css?.textSecondary}
-					{...props}
-				>
+					{...props}>
 					{`Tk. ${productData?.price?.toLocaleString()}`}
 				</NormalText>
 			)}
