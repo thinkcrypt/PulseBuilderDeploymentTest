@@ -58,11 +58,11 @@ const BannerSlider: FC<BannerSliderProps> = ({ hero }) => {
 	const isSingleImage = images.length === 1;
 
 	const settings = {
-		dots: !isSingleImage, // Hide dots if only one image
-		infinite: !isSingleImage, // Disable infinite loop if one image
+		dots: false, // Hide dots if only one image
+		infinite: false, // Disable infinite loop if one image
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		autoplay: !isSingleImage, // Disable autoplay if one image
+		autoplay: false, // Disable autoplay if one image
 		autoplaySpeed: 3000,
 		pauseOnHover: true,
 		speed: 1000,

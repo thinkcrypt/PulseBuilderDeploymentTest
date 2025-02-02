@@ -56,7 +56,7 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 
 		return display == 'sm'
 			? data?.doc
-					?.slice(0, 2)
+					?.slice(0, 1)
 					?.map((item: any, i: number) => (
 						<ProductCard data={item} key={i} basic={config} css={css} />
 					))
@@ -72,8 +72,8 @@ const PulseCollectionDetails: FC<HongoCollectionDetailsProps> = ({
 			borderBottom='1px solid'
 			borderBottomColor={config?.borderColor}
 			gridTemplateColumns={{
-				base: '1fr 1fr',
-				md: display == 'sm' ? '1fr 1fr' : '1fr 1fr 1fr 1fr',
+				base: '1fr',
+				md: display == 'sm' ? '1fr' : '1fr 1fr 1fr 1fr',
 			}}
 			py={4}
 			gap={4}

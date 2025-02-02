@@ -15,6 +15,7 @@ const serviceData = [
 		type: 'number',
 		span: 1,
 	},
+
 	{
 		name: 'serviceCSS.imageWidth',
 		label: 'Image Width',
@@ -25,31 +26,16 @@ const serviceData = [
 		name: 'serviceCSS.imageRadius',
 		label: 'Image Radius',
 		type: 'number',
+		span: 1,
+		endOfSection: true,
 	},
 	{
-		name: 'serviceCSS.bgColor',
-		label: 'Background Color',
-		type: 'color',
+		sectionTitle: 'Typography',
+		name: 'serviceCSS.fontFamily',
+		label: 'Font',
+		type: 'font',
 		span: 1,
 	},
-	{
-		name: 'serviceCSS.titleColor',
-		label: 'Title Color',
-		type: 'color',
-		span: 1,
-	},
-	{
-		name: 'serviceCSS.boxShadow',
-		label: 'Title Color',
-		type: 'color',
-		span: 1,
-	},
-	// {
-	//   name: "serviceCSS.descriptionColor",
-	//   label: "Description Color",
-	//   type: "color",
-	//   span: 1,
-	// },
 	{
 		name: 'serviceCSS.titleSizeBG',
 		label: 'Title Size (BG)',
@@ -62,18 +48,31 @@ const serviceData = [
 		type: 'number',
 		span: 1,
 	},
+	{
+		name: 'serviceCSS.titleColor',
+		label: 'Title Color',
+		type: 'color',
+		span: 1,
+	},
+	{
+		name: 'serviceCSS.bgColor',
+		label: 'Background Color',
+		type: 'color',
+		span: 1,
+		endOfSection: true,
+	},
 	// {
-	// 	name: 'serviceCSS.descriptionSize',
-	// 	label: 'Description Size',
+	// 	name: 'serviceCSS.boxShadow',
+	// 	label: 'Box Shadow',
+	// 	type: 'color',
+	// 	span: 1,
+	// },
+	// {
+	// 	name: 'serviceCSS.borderRadius',
+	// 	label: 'Border Radius',
 	// 	type: 'number',
 	// 	span: 1,
 	// },
-	{
-		name: 'serviceCSS.borderRadius',
-		label: 'Border Radius',
-		type: 'number',
-		span: 1,
-	},
 	{
 		sectionTitle: 'Show/Hide Divider',
 		name: 'serviceCSS.showDivider',
@@ -83,6 +82,7 @@ const serviceData = [
 			{ label: 'Show', value: true },
 			{ label: 'Hide', value: false },
 		],
+		endOfSection: true,
 	},
 	{
 		name: 'serviceCSS.dividerColor',

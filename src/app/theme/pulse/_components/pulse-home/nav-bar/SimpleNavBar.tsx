@@ -1,7 +1,11 @@
 import { Box, BoxProps, Flex, FlexProps } from '@chakra-ui/react';
 import { FC, ReactNode, useState } from 'react';
 import { generateTextModel, HoverContentContainer } from '@/components/library';
-import { PADDING_X, useColors, SimpleNavItems } from '../../../_components/index';
+import {
+	PADDING_X,
+	useColors,
+	SimpleNavItems,
+} from '../../../_components/index';
 import { useAppSelector } from '@/hooks';
 
 const navModel = [
@@ -34,7 +38,7 @@ const SimpleNavBar: FC<SimpleNavBarProps> = ({
 
 	return (
 		<HoverContentContainer
-			section={true}
+			// section={true}
 			type='content'
 			path={path}
 			title='Nav Categories'

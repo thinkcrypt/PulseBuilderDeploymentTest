@@ -1,5 +1,10 @@
 'use client';
-import { EditorLayoutSuspense, useAppDispatch, resetBuilder, push } from '@/components/library';
+import {
+	EditorLayoutSuspense,
+	useAppDispatch,
+	resetBuilder,
+	push,
+} from '@/components/library';
 import React, { useEffect } from 'react';
 import { useGetContentQuery } from '@/components/library/store/services/contentApi';
 import {
@@ -23,12 +28,14 @@ import {
 	PageLayout,
 } from './_components/index';
 import { Box } from '@chakra-ui/react';
+import PulseFeaturedCollection from './_components/pulse-home/AdSection/PulseFeaturedCollection';
+import featuredAdSchema from './_components/pulse-home/AdSection/dataModel';
 
 const HomeContentPage = () => {
 	const { data, isLoading, isSuccess, isFetching } = useGetContentQuery({
 		path: 'pulse',
 	});
-	// console.log('pulse datass:::', data);
+	console.log('pulse datass:::', data);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(resetBuilder());
@@ -53,7 +60,8 @@ const HomeContentPage = () => {
 			path='/home-content'
 			title='Home Content'
 			position='relative'
-			gap={0}>
+			gap={0}
+		>
 			<PageLayout>
 				<Box bg={data?.basic?.bgColor}>
 					<PulseHero
@@ -103,6 +111,13 @@ const HomeContentPage = () => {
 						content={data?.content}
 						dataModel={sponsoredBannerTwoData}
 					/>
+					{/* <PulseFeaturedCollection
+						path='pulse'
+						dataModel={featuredAdSchema}
+						content={data?.content}
+						data={data}
+					/> */}
+
 					<ProductListTwo
 						data={data}
 						path='pulse'
