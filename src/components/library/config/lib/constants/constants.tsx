@@ -72,6 +72,14 @@ export const zIndex = {
 	SIDEBAR: 998,
 };
 
+export const radius = {
+	CONTAINER: '8px',
+	MODAL: '16px',
+	BUTTON: '6px',
+	INPUT: '6px',
+	SELECT_CONTAINER: '6px',
+};
+
 export const styles = {
 	backdropFilter: 'blur(5px)',
 	BACKDROP_FILTER: 'blur(5px)',
@@ -156,6 +164,20 @@ export const styles = {
 			},
 		},
 	},
+	STAT_CONTAINER: {
+		borderRadius: radius.CONTAINER,
+		alignItems: 'center',
+		w: 'full',
+		p: 4,
+		bg: 'container.newLight',
+		borderColor: 'container.borderLight',
+		borderWidth: 1,
+		boxShadow: shadow.DASH,
+		_dark: {
+			bg: 'menu.dark',
+			borderColor: 'container.borderDark',
+		} as any,
+	},
 };
 
 // export const color = {
@@ -163,14 +185,6 @@ export const styles = {
 // 		LIGHT: 'rgba(250, 250, 250, .8)',
 // 	},
 // };
-
-export const radius = {
-	CONTAINER: '8px',
-	MODAL: '16px',
-	BUTTON: '6px',
-	INPUT: '6px',
-	SELECT_CONTAINER: '6px',
-};
 
 export const BASE_LIMIT = 16;
 

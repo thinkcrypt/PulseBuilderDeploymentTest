@@ -24,6 +24,7 @@ import {
 	OrderTable,
 	ShopQr,
 	DeployQr,
+	PackageCard,
 } from '@/components/dashboard';
 
 import Link from 'next/link';
@@ -36,10 +37,11 @@ export default function UserFeedback() {
 			path='dashboard'>
 			<Grid
 				pt={{ base: 2, md: 4 }}
-				gridTemplateColumns={{ base: '1fr', md: '1fr' }}
+				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }}
 				gap={2}>
 				{/* <ShopQr /> */}
 				<DeployQr />
+				<PackageCard />
 			</Grid>
 			<Grid
 				gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
