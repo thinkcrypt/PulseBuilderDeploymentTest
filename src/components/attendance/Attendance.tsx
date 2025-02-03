@@ -21,6 +21,7 @@ const Attendance: FC<AttendanceProps> = ({
 			flex={1}
 			h='100vh'
 			gap={2}
+			py='128px'
 			bg='sidebar.light'
 			_dark={{ bg: 'container.dark' }}
 			px={4}
@@ -38,7 +39,8 @@ const Attendance: FC<AttendanceProps> = ({
 					mx={{ md: 'auto' }}
 					boxShadow='lg'
 					borderRadius='24px'
-					h={{ base: '80vh', md: '70vh' }}>
+					h={{ base: '80vh', md: '70vh' }}
+					{...props}>
 					<Center
 						pb={{ base: 16, md: 8 }}
 						flexDir='column'

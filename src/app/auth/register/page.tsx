@@ -5,11 +5,12 @@ import { useRegisterMutation } from '@/store/services/authApi';
 import { login } from '@/components/library/store/slices/authSlice';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
-const LoginPage: FC<{}> = () => {
+const RegisterPage: FC<{}> = () => {
 	const [formData, setFormData] = useState<any>({
 		name: undefined,
 		email: undefined,
-		restaurant: undefined,
+		shopName: undefined,
+		phone: undefined,
 		password: undefined,
 		confirm: undefined,
 	});
@@ -43,13 +44,22 @@ const LoginPage: FC<{}> = () => {
 		<Attendance
 			title='Register'
 			isLoading={isLoading}
-			handleSubmit={handleSubmit}>
+			handleSubmit={handleSubmit}
+			h='100%'
+			py='128px'>
 			<VInput
-				label='Name'
+				label='Your Full Name'
 				isRequired
 				value={formData.name}
 				onChange={handleChange}
 				name='name'
+			/>
+			<VInput
+				label='Shop Name'
+				isRequired
+				value={formData.shopName}
+				onChange={handleChange}
+				name='shopName'
 			/>
 			<VInput
 				label='Email'
@@ -59,12 +69,17 @@ const LoginPage: FC<{}> = () => {
 				name='email'
 			/>
 			<VInput
-				label='Restaurant name'
-				isRequired
-				value={formData.restaurant}
-				onChange={handleChange}
-				name='restaurant'
+				label='Package'
+				value={'14 Days Trial'}
+				isDisabled
 			/>
+			<VInput
+				label='Phone Number'
+				value={formData.phone}
+				onChange={handleChange}
+				name='phone'
+			/>
+
 			<VInput
 				label='Password'
 				isRequired
@@ -85,4 +100,4 @@ const LoginPage: FC<{}> = () => {
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;
