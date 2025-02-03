@@ -1,10 +1,6 @@
 import React, { FC } from 'react';
 import { BoxProps, Center, Flex, Grid, Spacer } from '@chakra-ui/react';
-import {
-	HoverContentContainer,
-	Column,
-	PLACEHOLDER_IMAGE,
-} from '@/components/library';
+import { HoverContentContainer, Column, PLACEHOLDER_IMAGE } from '@/components/library';
 // import { HomeContentProps } from '.';
 type SponsoredBannerTwoProps = BoxProps & {
 	content: any;
@@ -133,17 +129,12 @@ const schema = (i: number) => {
 			type: 'nested-data-menu',
 			model: 'categories',
 			isRequired: true,
-			renderCondition: (data: any) =>
-				data?.sponsoredBannerTwo[i].type == 'category',
+			renderCondition: (data: any) => data?.sponsoredBannerTwo[i].type == 'category',
 		},
 	];
 };
 
-const SponsoredBannerTwo: FC<SponsoredBannerTwoProps> = ({
-	dataModel,
-	content,
-	data: asData,
-}) => {
+const SponsoredBannerTwo: FC<SponsoredBannerTwoProps> = ({ dataModel, content, data: asData }) => {
 	const data = content.sponsoredBannerTwo;
 	const { display } = useAppSelector(state => state.builder);
 	// console.log('pulse sponser two:', data);
@@ -155,16 +146,14 @@ const SponsoredBannerTwo: FC<SponsoredBannerTwoProps> = ({
 			data={content}
 			bg={asData?.basic?.bgColor}
 			p={display == 'sm' ? 4 : 8}
-			dataModel={sponsoredBannerTwoData}
-		>
+			dataModel={sponsoredBannerTwoData}>
 			{!data || (data?.length == 0 && <Center>No Content Added Yet</Center>)}
 			<Grid
 				bg={asData?.basic?.bgColor}
 				p={display == 'sm' ? 4 : 8}
 				gridTemplateColumns={display == 'sm' ? '1fr' : '1fr 1fr 1fr'}
-				gap={4}
-			>
-				{data?.map((item: ItemProps, i: number) => (
+				gap={4}>
+				{/* {data?.map((item: ItemProps, i: number) => (
 					<HoverContentContainer
 						path='pulse'
 						title='Featured Collection'
@@ -172,22 +161,24 @@ const SponsoredBannerTwo: FC<SponsoredBannerTwoProps> = ({
 						key={i}
 						h='520px'
 						component={true}
-						dataModel={schema(i)}
-					>
-						<BgImage key={i} src={item?.image || PLACEHOLDER_IMAGE} {...bgCss}>
-							<Column gap={8} w='full'>
+						dataModel={schema(i)}>
+						<BgImage
+							key={i}
+							src={item?.image || PLACEHOLDER_IMAGE}
+							{...bgCss}>
+							<Column
+								gap={8}
+								w='full'>
 								<Column gap={4}>
 									<Title
 										type='h5'
 										fontFamily={asData?.basic?.primaryFont}
-										color={asData?.basic?.brandTextColor}
-									>
+										color={asData?.basic?.brandTextColor}>
 										{item?.title}
 									</Title>
 									<SubHeading
 										color={asData?.basic?.secondaryTextColor}
-										fontFamily={asData?.basic?.brandTextColor}
-									>
+										fontFamily={asData?.basic?.brandTextColor}>
 										{item?.subTitle}
 									</SubHeading>
 								</Column>
@@ -203,7 +194,7 @@ const SponsoredBannerTwo: FC<SponsoredBannerTwoProps> = ({
 							</Column>
 						</BgImage>
 					</HoverContentContainer>
-				))}
+				))} */}
 			</Grid>
 		</HoverContentContainer>
 	);
