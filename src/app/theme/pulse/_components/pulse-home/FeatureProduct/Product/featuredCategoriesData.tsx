@@ -70,7 +70,7 @@ const featuredCategoriesData = [
 	{
 		name: 'collectionsCss.boxShadow',
 		label: 'Box Shadow',
-		type: 'color',
+		type: 'text',
 		span: 1,
 	},
 	{

@@ -98,6 +98,7 @@ const HomeContentPage = () => {
 
 					<PulseProductListComponent
 						data={data}
+						isLoading={isLoading}
 						path='pulse'
 						basic={data?.basic}
 						content={data?.content}

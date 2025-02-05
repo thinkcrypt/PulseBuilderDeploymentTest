@@ -21,18 +21,21 @@ import { NormalText } from '../text';
 import PulseCollectionDetails from './PulseCollection';
 import { PADDING_X } from '../../../_components/index';
 import { useAppSelector } from '@/hooks';
+import ServiceCardSkeleton from '../../components/pulse-skeleton/ServiceCardSkeleton';
 type HomeContentProps = {
 	content: any;
 	dataModel: any;
 	path: any;
 	data?: any;
 	basic?: any;
+	isLoading?: any;
 };
 const PulseProductListComponent: FC<HomeContentProps> = ({
 	dataModel,
 	content,
 	basic,
 	path,
+	isLoading,
 	data,
 }) => {
 	const { display } = useAppSelector(state => state.builder);
@@ -56,6 +59,7 @@ const PulseProductListComponent: FC<HomeContentProps> = ({
 			position='sticky'
 			top='0'
 		>
+			{isLoading && <ServiceCardSkeleton />}
 			<Column gap={0}>
 				{/* Here goes our sytled product card */}
 				{productList?.map((item: any, i: number) => (
